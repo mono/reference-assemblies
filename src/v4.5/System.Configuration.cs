@@ -260,6 +260,7 @@ namespace System.Configuration
         public ConfigurationElementProperty(System.Configuration.ConfigurationValidatorBase validator) { }
         public System.Configuration.ConfigurationValidatorBase Validator { get { throw null; } }
     }
+#if CONFIG_DEP
     [System.SerializableAttribute]
     public partial class ConfigurationErrorsException : System.Configuration.ConfigurationException
     {
@@ -284,6 +285,7 @@ namespace System.Configuration
         public static int GetLineNumber(System.Xml.XmlReader reader) { throw null; }
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+#endif
     public partial class ConfigurationFileMap : System.ICloneable
     {
         public ConfigurationFileMap() { }
