@@ -4215,7 +4215,7 @@ namespace System.Xml.Xsl.Runtime
         public static System.Xml.Xsl.Runtime.XmlQueryNodeSequence CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryNodeSequence seq, System.Xml.XPath.XPathNavigator navigator) { throw null; }
         public System.Xml.Xsl.Runtime.XmlQueryNodeSequence DocOrderDistinct(System.Collections.Generic.IComparer<System.Xml.XPath.XPathNavigator> comparer) { throw null; }
         protected override void OnItemsChanged() { }
-        int System.Collections.Generic.ICollection.get_Count() { throw null; }
+        int System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Count { get { throw null; } }
         void System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Add(System.Xml.XPath.XPathItem value) { }
         void System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Clear() { }
         bool System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Contains(System.Xml.XPath.XPathItem value) { throw null; }

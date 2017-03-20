@@ -21,7 +21,7 @@
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
 namespace Mono.Messaging.RabbitMQ
 {
-    public delegate RabbitMQ.Client.IConnection CreateConnectionDelegate(string host);
+    public delegate global::RabbitMQ.Client.IConnection CreateConnectionDelegate(string host);
     public partial interface IMessagingContext : System.IDisposable
     {
         void Delete(Mono.Messaging.QueueReference qRef);
@@ -29,22 +29,22 @@ namespace Mono.Messaging.RabbitMQ
         Mono.Messaging.IMessage Receive(Mono.Messaging.QueueReference qRef, System.TimeSpan timeout, Mono.Messaging.RabbitMQ.IsMatch matcher, bool ack);
         void Send(Mono.Messaging.QueueReference qRef, Mono.Messaging.IMessage msg);
     }
-    public delegate bool IsMatch(RabbitMQ.Client.Events.BasicDeliverEventArgs result);
+    public delegate bool IsMatch(global::RabbitMQ.Client.Events.BasicDeliverEventArgs result);
     public partial class MessageFactory
     {
         public MessageFactory(Mono.Messaging.RabbitMQ.RabbitMQMessagingProvider provider) { }
-        public static System.DateTime AmqpTimestampToDateTime(RabbitMQ.Client.AmqpTimestamp ats) { throw null; }
-        public static RabbitMQ.Client.AmqpTimestamp DateTimeToAmqpTimestamp(System.DateTime t) { throw null; }
+        public static System.DateTime AmqpTimestampToDateTime(global::RabbitMQ.Client.AmqpTimestamp ats) { throw null; }
+        public static global::RabbitMQ.Client.AmqpTimestamp DateTimeToAmqpTimestamp(System.DateTime t) { throw null; }
         public static string GetString(System.Collections.IDictionary properties, string key) { throw null; }
-        public Mono.Messaging.IMessage ReadMessage(Mono.Messaging.QueueReference destination, RabbitMQ.Client.Events.BasicDeliverEventArgs result) { throw null; }
+        public Mono.Messaging.IMessage ReadMessage(Mono.Messaging.QueueReference destination, global::RabbitMQ.Client.Events.BasicDeliverEventArgs result) { throw null; }
         public static int TimeSpanToMillis(System.TimeSpan timespan) { throw null; }
-        public RabbitMQ.Client.Content.IMessageBuilder WriteMessage(RabbitMQ.Client.IModel ch, Mono.Messaging.IMessage msg) { throw null; }
+        public global::RabbitMQ.Client.Content.IMessageBuilder WriteMessage(global::RabbitMQ.Client.IModel ch, Mono.Messaging.IMessage msg) { throw null; }
     }
     public partial class MessagingContext : Mono.Messaging.RabbitMQ.IMessagingContext, System.IDisposable
     {
         public MessagingContext(Mono.Messaging.RabbitMQ.MessageFactory factory, string host, Mono.Messaging.RabbitMQ.CreateConnectionDelegate createConnection) { }
-        public RabbitMQ.Client.IConnection Connection { get { throw null; } }
-        public RabbitMQ.Client.IModel Model { get { throw null; } }
+        public global::RabbitMQ.Client.IConnection Connection { get { throw null; } }
+        public global::RabbitMQ.Client.IModel Model { get { throw null; } }
         public void Delete(Mono.Messaging.QueueReference qRef) { }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
@@ -102,8 +102,8 @@ namespace Mono.Messaging.RabbitMQ
         public void Close() { }
         public static void Delete(Mono.Messaging.QueueReference qRef) { }
         public Mono.Messaging.IMessageEnumerator GetMessageEnumerator() { throw null; }
-        void Mono.Messaging.IMessageQueue.add_PeekCompleted(Mono.Messaging.CompletedEventHandler value) { }
-        void Mono.Messaging.IMessageQueue.add_ReceiveCompleted(Mono.Messaging.CompletedEventHandler value) { }
+        event Mono.Messaging.CompletedEventHandler Mono.Messaging.IMessageQueue.PeekCompleted { add { } remove { } }
+        event Mono.Messaging.CompletedEventHandler Mono.Messaging.IMessageQueue.ReceiveCompleted { add { } remove { } }
         System.IAsyncResult Mono.Messaging.IMessageQueue.BeginPeek() { throw null; }
         System.IAsyncResult Mono.Messaging.IMessageQueue.BeginPeek(System.TimeSpan timeout) { throw null; }
         System.IAsyncResult Mono.Messaging.IMessageQueue.BeginPeek(System.TimeSpan timeout, object stateObject) { throw null; }
@@ -114,8 +114,6 @@ namespace Mono.Messaging.RabbitMQ
         System.IAsyncResult Mono.Messaging.IMessageQueue.BeginReceive(System.TimeSpan timeout, object stateObject, System.AsyncCallback callback) { throw null; }
         Mono.Messaging.IMessage Mono.Messaging.IMessageQueue.EndPeek(System.IAsyncResult asyncResult) { throw null; }
         Mono.Messaging.IMessage Mono.Messaging.IMessageQueue.EndReceive(System.IAsyncResult asyncResult) { throw null; }
-        void Mono.Messaging.IMessageQueue.remove_PeekCompleted(Mono.Messaging.CompletedEventHandler value) { }
-        void Mono.Messaging.IMessageQueue.remove_ReceiveCompleted(Mono.Messaging.CompletedEventHandler value) { }
         void Mono.Messaging.IMessageQueue.SendPeekCompleted(System.IAsyncResult result) { }
         void Mono.Messaging.IMessageQueue.SendReceiveCompleted(System.IAsyncResult result) { }
         public Mono.Messaging.IMessage Peek() { throw null; }
