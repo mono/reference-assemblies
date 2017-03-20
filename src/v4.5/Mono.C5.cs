@@ -102,8 +102,8 @@ namespace C5
         public virtual void AddAll<U>(System.Collections.Generic.IEnumerable<U> items) where U : T { }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         [C5.TestedAttribute]
         public override bool Check() { throw null; }
         [C5.TestedAttribute]
@@ -676,8 +676,8 @@ namespace C5
         public T this[int i] { get { throw null; } }
         public C5.IDirectedCollectionValue<T> this[int start, int end] { get { throw null; } }
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         public override object Clone() { throw null; }
         public int CountFrom(T bot) { throw null; }
         public int CountFromTo(T bot, T top) { throw null; }
@@ -710,8 +710,8 @@ namespace C5
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
         public C5.IList<T> Underlying { get { throw null; } }
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         public override object Clone() { throw null; }
         public T Dequeue() { throw null; }
         public void Dispose() { }
@@ -945,8 +945,8 @@ namespace C5
         public virtual void AddAll<U>(System.Collections.Generic.IEnumerable<U> items) where U : T { }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         [C5.TestedAttribute]
         public override bool Check() { throw null; }
         [C5.TestedAttribute]
@@ -1098,8 +1098,8 @@ namespace C5
         public override C5.IDirectedCollectionValue<T> Backwards() { throw null; }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         [C5.TestedAttribute]
         public virtual bool Check() { throw null; }
         [C5.TestedAttribute]
@@ -1719,8 +1719,8 @@ namespace C5
         public override C5.IDirectedCollectionValue<T> Backwards() { throw null; }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         [C5.TestedAttribute]
         public virtual bool Check() { throw null; }
         [C5.TestedAttribute]
@@ -2052,8 +2052,8 @@ namespace C5
         public void AddSorted<U>(System.Collections.Generic.IEnumerable<U> items) where U : T { }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         C5.IDirectedEnumerable<T> C5.ISorted<T>.RangeFrom(T bot) { throw null; }
         C5.IDirectedEnumerable<T> C5.ISorted<T>.RangeFromTo(T bot, T top) { throw null; }
         C5.IDirectedEnumerable<T> C5.ISorted<T>.RangeTo(T top) { throw null; }
@@ -2246,8 +2246,8 @@ namespace C5
         public override C5.IDirectedCollectionValue<T> Backwards() { throw null; }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.ISorted<T>.RangeFrom(T bot) { throw null; }
         [C5.TestedAttribute]
@@ -2395,8 +2395,8 @@ namespace C5
         public override C5.IDirectedCollectionValue<T> Backwards() { throw null; }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.IDirectedEnumerable<T>.Backwards() { throw null; }
-        int C5.IIndexed.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
-        int C5.IIndexed.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindIndex(C5.Fun<T, bool> predicate) { throw null; }
+        int C5.IIndexed<T>.FindLastIndex(C5.Fun<T, bool> predicate) { throw null; }
         [C5.TestedAttribute]
         C5.IDirectedEnumerable<T> C5.ISorted<T>.RangeFrom(T bot) { throw null; }
         [C5.TestedAttribute]
