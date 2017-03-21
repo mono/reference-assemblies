@@ -5251,6 +5251,7 @@ namespace System.ComponentModel.Design.Serialization
         void System.IDisposable.Dispose() { }
     }
 }
+#if CONFIG_DEP
 namespace System.Configuration
 {
     [System.AttributeUsageAttribute((System.AttributeTargets)(128))]
@@ -5728,6 +5729,7 @@ namespace System.Configuration
         public UserSettingsGroup() { }
     }
 }
+#endif
 namespace System.Diagnostics
 {
     [System.Diagnostics.SwitchLevelAttribute(typeof(bool))]
@@ -5908,12 +5910,14 @@ namespace System.Diagnostics
         public override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string message) { }
         public override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string format, params object[] args) { }
     }
+#if CONFIG_DEP
     [System.ObsoleteAttribute("This class is obsoleted")]
     public partial class DiagnosticsConfigurationHandler : System.Configuration.IConfigurationSectionHandler
     {
         public DiagnosticsConfigurationHandler() { }
         public virtual object Create(object parent, object configContext, System.Xml.XmlNode section) { throw null; }
     }
+#endif
     public partial class EntryWrittenEventArgs : System.EventArgs
     {
         public EntryWrittenEventArgs() { }
@@ -6972,7 +6976,9 @@ namespace System.Diagnostics
     {
         protected Switch(string displayName, string description) { }
         protected Switch(string displayName, string description, string defaultSwitchValue) { }
+#if XML_DEP
         [System.Xml.Serialization.XmlIgnoreAttribute]
+#endif
         public System.Collections.Specialized.StringDictionary Attributes { get { throw null; } }
         public string Description { get { throw null; } }
         public string DisplayName { get { throw null; } }
@@ -9084,6 +9090,7 @@ namespace System.Net.Cache
         public override string ToString() { throw null; }
     }
 }
+#if CONFIG_DEP
 namespace System.Net.Configuration
 {
     public sealed partial class AuthenticationModuleElement : System.Configuration.ConfigurationElement
@@ -9479,6 +9486,7 @@ namespace System.Net.Configuration
         protected override void PostDeserialize() { }
     }
 }
+#endif
 namespace System.Net.Mail
 {
     public partial class AlternateView : System.Net.Mail.AttachmentBase
