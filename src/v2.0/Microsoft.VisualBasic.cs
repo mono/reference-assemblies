@@ -13,7 +13,6 @@
 [assembly:System.Reflection.AssemblyInformationalVersionAttribute("8.0.50727.42")]
 [assembly:System.Reflection.AssemblyProductAttribute("vbruntime")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.VisualBasic.dll")]
-[assembly:System.Reflection.AssemblyVersionAttribute("8.0.0.0")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("8.0.0.0")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
@@ -50,35 +49,31 @@ namespace Microsoft.VisualBasic
     public sealed partial class Collection : System.Collections.ICollection, System.Collections.IList, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
         public Collection() { }
-        public int Count { get { throw null; } }
-        int IList_Count { get { throw null; } }
-        [System.Runtime.CompilerServices.IndexerName("IList_Item")]
-        object this[int index] { get { throw null; } set { } }
-        bool IsFixedSize { get { throw null; } }
-        bool IsReadOnly { get { throw null; } }
-        bool IsSynchronized { get { throw null; } }
-        public object this[int Index] { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public object this[object Index] { get { throw null; } }
         public object this[string Key] { get { throw null; } }
-        object SyncRoot { get { throw null; } }
-        public void Add(object Item, string Key=null, object Before=null, object After=null) { }
+        public object this[int Index] { get { throw null; } }
+        public int Count { get { throw null; } }
+        public void Add(object Item, string Key = null, object Before = null, object After = null) { }
         public void Clear() { }
         public bool Contains(string Key) { throw null; }
-        void CopyTo(System.Array array, int index) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        System.Collections.IEnumerator IEnumerable_GetEnumerator() { throw null; }
-        bool IListContains(object value) { throw null; }
-        int IList_Add(object value) { throw null; }
-        void IList_Clear() { }
-        int IndexOf(object value) { throw null; }
-        void Insert(int index, object value) { }
-        void OnDeserialization(object sender) { }
         public void Remove(int Index) { }
-        void Remove(object value) { }
         public void Remove(string Key) { }
-        void RemoveAt(int index) { }
+        public object SyncRoot { get { throw null; } }
+        public bool IsReadOnly { get { throw null; } }
+        public bool IsSynchronized { get { throw null; } }
+        public bool IsFixedSize { get { throw null; } }
+        public void CopyTo(System.Array array, int index) { }
+        public void OnDeserialization(object sender) { }
+        public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        object System.Collections.IList.this[int Index] { get { throw null; } set { } }
+        int System.Collections.IList.Add(object value) { throw null; }
+        bool System.Collections.IList.Contains(object value) { throw null; }
+        int System.Collections.IList.IndexOf(object value) { throw null; }
+        void System.Collections.IList.Insert(int index, object value) { }
+        void System.Collections.IList.Remove(object value) { }
+        void System.Collections.IList.RemoveAt(int index) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), Inherited=false, AllowMultiple=false)]
     public sealed partial class ComClassAttribute : System.Attribute
@@ -397,7 +392,7 @@ namespace Microsoft.VisualBasic
         public static void FilePut(int FileNumber, string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
         public static void FilePut(int FileNumber, System.ValueType Value, long RecordNumber=(long)-1) { }
         [System.ObsoleteAttribute("This member has been deprectated. Try FilePutObject.")]
-        public static void FilePut(object FileNumber, object Value, object RecordNumber=-1) { }
+        public static void FilePut(object FileNumber, object Value, object RecordNumber=null) { }
         public static void FilePutObject(int FileNumber, object Value, long RecordNumber=(long)-1) { }
         public static void FileWidth(int FileNumber, int RecordWidth) { }
         public static int FreeFile() { throw null; }
@@ -1646,7 +1641,7 @@ namespace Microsoft.VisualBasic.FileIO
         public Microsoft.VisualBasic.FileIO.FieldType TextFieldType { get { throw null; } set { } }
         public bool TrimWhiteSpace { get { throw null; } set { } }
         public void Close() { }
-        void Dispose() { }
+        public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         ~TextFieldParser() { }
         public string PeekChars(int numberOfChars) { throw null; }
