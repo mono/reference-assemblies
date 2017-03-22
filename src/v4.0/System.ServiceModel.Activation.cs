@@ -65,12 +65,18 @@ namespace System.ServiceModel
 namespace System.ServiceModel.Activation
 {
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+#if SERVICEMODEL_DEP
     public partial class ServiceHostFactory : System.ServiceModel.Activation.ServiceHostFactoryBase
+#else
+    public partial class ServiceHostFactory
+#endif
     {
         public ServiceHostFactory() { }
+#if SERVICEMODEL_DEP
         [System.MonoTODOAttribute]
         public override System.ServiceModel.ServiceHostBase CreateServiceHost(string constructorString, System.Uri[] baseAddresses) { throw null; }
         [System.MonoTODOAttribute("untested")]
         protected virtual System.ServiceModel.ServiceHost CreateServiceHost(System.Type serviceType, System.Uri[] baseAddresses) { throw null; }
+#endif
     }
 }

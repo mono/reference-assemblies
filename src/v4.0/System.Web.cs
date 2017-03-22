@@ -4748,8 +4748,10 @@ namespace System.Web.Configuration
         public System.Web.Configuration.WebControlsSection WebControls { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("webParts")]
         public System.Web.Configuration.WebPartsSection WebParts { get { throw null; } }
+#if SERVICES_DEP
         [System.Configuration.ConfigurationPropertyAttribute("webServices")]
         public System.Web.Services.Configuration.WebServicesSection WebServices { get { throw null; } }
+#endif
         [System.Configuration.ConfigurationPropertyAttribute("xhtmlConformance")]
         public System.Web.Configuration.XhtmlConformanceSection XhtmlConformance { get { throw null; } }
     }
