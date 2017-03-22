@@ -810,7 +810,7 @@ namespace Microsoft.Build.Tasks
     }
     public partial class TaskLoggingHelperExtension : Microsoft.Build.Utilities.TaskLoggingHelper
     {
-        internal TaskLoggingHelperExtension() { }
+        internal TaskLoggingHelperExtension() : base(null) { }
         [System.MonoTODOAttribute]
         public System.Resources.ResourceManager TaskSharedResources { get { throw null; } set { } }
         [System.MonoTODOAttribute]
