@@ -5864,7 +5864,7 @@ namespace System.Collections.Generic
         public List(int capacity) { }
         public int Capacity { get { throw null; } set { } }
         public int Count { get { throw null; } }
-        public T this[int index] { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]get { throw null; } [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]set { } }
+        public T this[int index] { get { throw null; } set { } }
         bool System.Collections.Generic.ICollection<T>.IsReadOnly { get { throw null; } }
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
