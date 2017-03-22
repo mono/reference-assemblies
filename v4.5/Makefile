@@ -3,7 +3,7 @@ SOURCEDIR := ../src/$(PROFILE)/
 
 CSC ?= csc
 CSC_COMMON_ARGS := -nologo -noconfig -optimize -nostdlib -unsafe -deterministic -publicsign -debug- -target:library -nowarn:612 -nowarn:618
-Q_CSC = $(if $(V),,@echo "CSC     [$(PROFILE)] $(1)";)
+Q_CSC = $(if $(V),,@echo "CSC   [$(PROFILE)] $(1)";)
 
 ASSEMBLIES := Accessibility Commons.Xml.Relaxng CustomMarshalers I18N.CJK I18N.MidEast I18N.Other I18N.Rare I18N.West I18N	\
 	IBM.Data.DB2 ICSharpCode.SharpZipLib Microsoft.Build.Engine Microsoft.Build.Framework Microsoft.Build.Tasks.v4.0	\
