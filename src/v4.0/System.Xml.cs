@@ -3363,6 +3363,7 @@ namespace System.Xml.Serialization.Advanced
         public void Remove(System.Xml.Serialization.Advanced.SchemaImporterExtension extension) { }
     }
 }
+#if CONFIG_DEP
 namespace System.Xml.Serialization.Configuration
 {
     public sealed partial class DateTimeSerializationSection : System.Configuration.ConfigurationSection
@@ -3430,6 +3431,7 @@ namespace System.Xml.Serialization.Configuration
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
 }
+#endif
 namespace System.Xml.XPath
 {
     public partial interface IXPathNavigable
