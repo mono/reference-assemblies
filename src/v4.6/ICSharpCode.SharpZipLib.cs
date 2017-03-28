@@ -13,6 +13,7 @@
 [assembly:System.Reflection.AssemblyTitleAttribute("ICSharpCode.SharpZipLibrary")]
 [assembly:System.Reflection.AssemblyTrademarkAttribute("")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 namespace ICSharpCode.SharpZipLib
 {

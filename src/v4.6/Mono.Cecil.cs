@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 [assembly:System.Reflection.AssemblyVersionAttribute("0.10.0.0")]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 
 // this is not complete, it is just to break the dependency on Mono.Cecil in the Mono.Debugger.Soft assembly
 namespace Mono.Cecil

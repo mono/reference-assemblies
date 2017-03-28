@@ -11,6 +11,7 @@
 [assembly:System.Reflection.AssemblyProductAttribute("MONO CLI")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Mono.Http.dll")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 namespace Mono.Http
 {
