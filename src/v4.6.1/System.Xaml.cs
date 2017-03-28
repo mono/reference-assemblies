@@ -835,6 +835,7 @@ namespace System.Xaml
         public bool SkipDuplicatePropertyCheck { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.MonoTODOAttribute("Ignored")]
         public bool SkipProvideValueOnRoot { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Uri SourceBamlUri { get { throw null; } set { } }
         public System.EventHandler<System.Windows.Markup.XamlSetValueEventArgs> XamlSetValueHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     [System.SerializableAttribute]

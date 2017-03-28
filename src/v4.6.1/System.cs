@@ -7066,6 +7066,7 @@ namespace System.Diagnostics
         [System.ComponentModel.NotifyParentPropertyAttribute(true)]
         public bool LoadUserProfile { get { throw null; } set { } }
         public System.Security.SecureString Password { get { throw null; } set { } }
+        public string PasswordInClearText { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.NotifyParentPropertyAttribute(true)]
         [System.Diagnostics.MonitoringDescriptionAttribute("Whether the process's error output is written to the Process instance's StandardError member.")]
@@ -9019,6 +9020,7 @@ namespace System.Net
     {
         protected TransportContext() { }
         public abstract System.Security.Authentication.ExtendedProtection.ChannelBinding GetChannelBinding(System.Security.Authentication.ExtendedProtection.ChannelBindingKind kind);
+        public virtual System.Collections.Generic.IEnumerable<System.Security.Authentication.ExtendedProtection.TokenBinding> GetTlsTokenBindings() { throw null; }
     }
     public enum TransportType
     {
@@ -12455,6 +12457,17 @@ namespace System.Security.Authentication.ExtendedProtection
         public System.Security.Authentication.ExtendedProtection.ServiceNameCollection Merge(System.Collections.IEnumerable serviceNames) { throw null; }
         public System.Security.Authentication.ExtendedProtection.ServiceNameCollection Merge(string serviceName) { throw null; }
     }
+    public partial class TokenBinding
+    {
+        internal TokenBinding() { }
+        public System.Security.Authentication.ExtendedProtection.TokenBindingType BindingType { get { throw null; } }
+        public byte[] GetRawTokenBindingId() { throw null; }
+    }
+    public enum TokenBindingType
+    {
+        Provided = 0,
+        Referred = 1,
+    }
 }
 #if CONFIG_DEP
 namespace System.Security.Authentication.ExtendedProtection.Configuration
@@ -12858,10 +12871,13 @@ namespace System.Security.Cryptography.X509Certificates
         CtlNotTimeValid = 131072,
         CtlNotValidForUsage = 524288,
         Cyclic = 128,
+        ExplicitDistrust = 67108864,
         HasExcludedNameConstraint = 32768,
         HasNotDefinedNameConstraint = 8192,
         HasNotPermittedNameConstraint = 16384,
+        HasNotSupportedCriticalExtension = 134217728,
         HasNotSupportedNameConstraint = 4096,
+        HasWeakSignature = 1048576,
         InvalidBasicConstraints = 1024,
         InvalidExtension = 256,
         InvalidNameConstraints = 2048,

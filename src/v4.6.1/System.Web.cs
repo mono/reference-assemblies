@@ -7940,6 +7940,7 @@ namespace System.Web.Security
         public int MinRequiredNonAlphanumericCharacters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int MinRequiredPasswordLength { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string PasswordStrengthError { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Nullable<int> PasswordStrengthRegexTimeout { get { throw null; } set { } }
         public string PasswordStrengthRegularExpression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Type ResourceType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override string FormatErrorMessage(string name) { throw null; }
@@ -18533,6 +18534,7 @@ namespace System.Web.UI.WebControls
     public partial class RegularExpressionValidator : System.Web.UI.WebControls.BaseValidator
     {
         public RegularExpressionValidator() { }
+        public System.Nullable<int> MatchTimeout { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.EditorAttribute("System.Web.UI.Design.WebControls.RegexTypeEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.Web.UI.ThemeableAttribute(false)]

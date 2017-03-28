@@ -172,6 +172,7 @@ namespace System.ServiceProcess
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ServiceProcess.ServiceProcessDescriptionAttribute("The type of this service.")]
         public System.ServiceProcess.ServiceType ServiceType { get { throw null; } }
+        public System.ServiceProcess.ServiceStartMode StartType { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ServiceProcess.ServiceProcessDescriptionAttribute("The status of the service, e.g., Running or Stopped.")]
         public System.ServiceProcess.ServiceControllerStatus Status { get { throw null; } }
@@ -308,8 +309,10 @@ namespace System.ServiceProcess
     public enum ServiceStartMode
     {
         Automatic = 2,
+        Boot = 0,
         Disabled = 4,
         Manual = 3,
+        System = 1,
     }
     [System.FlagsAttribute]
     public enum ServiceType

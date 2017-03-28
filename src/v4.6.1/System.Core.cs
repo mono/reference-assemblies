@@ -3511,7 +3511,15 @@ namespace System.Security.Cryptography
         public override string SignatureAlgorithm { get { throw null; } }
         public static new System.Security.Cryptography.ECDsa Create() { throw null; }
         public static new System.Security.Cryptography.ECDsa Create(string algorithm) { throw null; }
+        protected virtual byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        protected virtual byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual byte[] SignData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual byte[] SignData(byte[] data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual byte[] SignData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public abstract byte[] SignHash(byte[] hash);
+        public bool VerifyData(byte[] data, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual bool VerifyData(byte[] data, int offset, int count, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public bool VerifyData(System.IO.Stream data, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public abstract bool VerifyHash(byte[] hash, byte[] signature);
     }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
@@ -3526,6 +3534,8 @@ namespace System.Security.Cryptography
         protected override void Dispose(bool disposing) { }
         public override void FromXmlString(string xmlString) { }
         public void FromXmlString(string xml, System.Security.Cryptography.ECKeyXmlFormat format) { }
+        protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public byte[] SignData(byte[] data) { throw null; }
         public byte[] SignData(byte[] data, int offset, int count) { throw null; }
         public byte[] SignData(System.IO.Stream data) { throw null; }
@@ -3738,6 +3748,11 @@ namespace System.Security.Cryptography.X509Certificates
         public System.Security.Cryptography.X509Certificates.TimestampInformation Timestamp { get { throw null; } }
         public System.Security.Cryptography.X509Certificates.TrustStatus TrustStatus { get { throw null; } }
         public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
+    }
+    public static partial class ECDsaCertificateExtensions
+    {
+        public static System.Security.Cryptography.ECDsa GetECDsaPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
+        public static System.Security.Cryptography.ECDsa GetECDsaPublicKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
     }
     public static partial class RSACertificateExtensions
     {
