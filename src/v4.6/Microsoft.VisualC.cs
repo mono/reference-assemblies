@@ -15,24 +15,25 @@ namespace Microsoft.VisualC
     public sealed partial class DecoratedNameAttribute : System.Attribute
     {
         public DecoratedNameAttribute() { }
+        public DecoratedNameAttribute(string decoratedName) { }
     }
-    public sealed partial class IsConstModifier : System.Attribute
+    public sealed partial class IsConstModifier
     {
         public IsConstModifier() { }
     }
-    public sealed partial class IsCXXReferenceModifier : System.Attribute
+    public sealed partial class IsCXXReferenceModifier
     {
         public IsCXXReferenceModifier() { }
     }
-    public sealed partial class IsLongModifier : System.Attribute
+    public sealed partial class IsLongModifier
     {
         public IsLongModifier() { }
     }
-    public sealed partial class IsSignedModifier : System.Attribute
+    public sealed partial class IsSignedModifier
     {
         public IsSignedModifier() { }
     }
-    public sealed partial class IsVolatileModifier : System.Attribute
+    public sealed partial class IsVolatileModifier
     {
         public IsVolatileModifier() { }
     }
@@ -41,11 +42,11 @@ namespace Microsoft.VisualC
         public int m_dwAttrs;
         public MiscellaneousBitsAttribute(int miscellaneousBits) { }
     }
-    public sealed partial class NeedsCopyConstructorModifier : System.Attribute
+    public sealed partial class NeedsCopyConstructorModifier
     {
         public NeedsCopyConstructorModifier() { }
     }
-    public sealed partial class NoSignSpecifiedModifier : System.Attribute
+    public sealed partial class NoSignSpecifiedModifier
     {
         public NoSignSpecifiedModifier() { }
     }

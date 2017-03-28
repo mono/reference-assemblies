@@ -67,6 +67,7 @@ namespace System.ServiceModel.Dispatcher
     public partial class StrictAndMessageFilter : System.ServiceModel.Dispatcher.MessageFilter
     {
         public StrictAndMessageFilter(System.ServiceModel.Dispatcher.MessageFilter filter1, System.ServiceModel.Dispatcher.MessageFilter filter2) { }
+        protected internal override System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData> CreateFilterTable<TFilterData>() { throw null; }
         public override bool Match(System.ServiceModel.Channels.Message message) { throw null; }
         public override bool Match(System.ServiceModel.Channels.MessageBuffer buffer) { throw null; }
     }
@@ -114,6 +115,7 @@ namespace System.ServiceModel.Routing
     {
         public RoutingConfiguration() { }
         public RoutingConfiguration(System.ServiceModel.Dispatcher.MessageFilterTable<System.Collections.Generic.IEnumerable<System.ServiceModel.Description.ServiceEndpoint>> filterTable, bool routeOnHeadersOnly) { }
+        public bool EnsureOrderedDispatch { get { throw null; } set { } }
         public System.ServiceModel.Dispatcher.MessageFilterTable<System.Collections.Generic.IEnumerable<System.ServiceModel.Description.ServiceEndpoint>> FilterTable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public bool RouteOnHeadersOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool SoapProcessingEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -126,9 +128,10 @@ namespace System.ServiceModel.Routing
         void System.ServiceModel.IExtension<System.ServiceModel.ServiceHostBase>.Detach(System.ServiceModel.ServiceHostBase owner) { }
     }
     [System.ServiceModel.ServiceBehaviorAttribute(AddressFilterMode=(System.ServiceModel.AddressFilterMode)(2), InstanceContextMode=(System.ServiceModel.InstanceContextMode)(0), UseSynchronizationContext=false, ValidateMustUnderstand=false)]
-    public sealed partial class RoutingService : System.ServiceModel.Routing.IDuplexSessionRouter, System.ServiceModel.Routing.IRequestReplyRouter, System.ServiceModel.Routing.ISimplexDatagramRouter, System.ServiceModel.Routing.ISimplexSessionRouter
+    public sealed partial class RoutingService : System.IDisposable, System.ServiceModel.Routing.IDuplexSessionRouter, System.ServiceModel.Routing.IRequestReplyRouter, System.ServiceModel.Routing.ISimplexDatagramRouter, System.ServiceModel.Routing.ISimplexSessionRouter
     {
         internal RoutingService() { }
+        void System.IDisposable.Dispose() { }
         System.IAsyncResult System.ServiceModel.Routing.IDuplexSessionRouter.BeginProcessMessage(System.ServiceModel.Channels.Message message, System.AsyncCallback callback, object state) { throw null; }
         void System.ServiceModel.Routing.IDuplexSessionRouter.EndProcessMessage(System.IAsyncResult result) { }
         System.IAsyncResult System.ServiceModel.Routing.IRequestReplyRouter.BeginProcessRequest(System.ServiceModel.Channels.Message message, System.AsyncCallback callback, object state) { throw null; }
@@ -199,12 +202,13 @@ namespace System.ServiceModel.Routing.Configuration
     public partial class FilterElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public FilterElementCollection() { }
-        public System.ServiceModel.Routing.Configuration.FilterElement this[int index] { get { throw null; } }
+        public System.ServiceModel.Routing.Configuration.FilterElement this[int index] { get { throw null; } set { } }
         public new System.ServiceModel.Routing.Configuration.FilterElement this[string name] { get { throw null; } }
         public void Add(System.ServiceModel.Routing.Configuration.FilterElement element) { }
         public void Clear() { }
         protected override System.Configuration.ConfigurationElement CreateNewElement() { throw null; }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
+        protected override bool IsElementRemovable(System.Configuration.ConfigurationElement element) { throw null; }
         public override bool IsReadOnly() { throw null; }
         public void Remove(System.ServiceModel.Routing.Configuration.FilterElement element) { }
     }
@@ -266,19 +270,19 @@ namespace System.ServiceModel.Routing.Configuration
     public partial class NamespaceElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public NamespaceElementCollection() { }
-        public System.ServiceModel.Routing.Configuration.NamespaceElement this[int index] { get { throw null; } }
+        public System.ServiceModel.Routing.Configuration.NamespaceElement this[int index] { get { throw null; } set { } }
         public new System.ServiceModel.Routing.Configuration.NamespaceElement this[string name] { get { throw null; } }
         public void Add(System.ServiceModel.Routing.Configuration.NamespaceElement element) { }
         public void Clear() { }
         protected override System.Configuration.ConfigurationElement CreateNewElement() { throw null; }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
-        public override bool IsReadOnly() { throw null; }
         public void Remove(System.ServiceModel.Routing.Configuration.NamespaceElement element) { }
     }
     public sealed partial class RoutingExtensionElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public RoutingExtensionElement() { }
         public override System.Type BehaviorType { get { throw null; } }
+        public bool EnsureOrderedDispatch { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("filterTableName", DefaultValue=null)]
         public string FilterTableName { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("routeOnHeadersOnly", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]

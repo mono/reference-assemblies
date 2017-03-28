@@ -112,7 +112,7 @@ namespace System.Management
         public System.Management.ManagementBaseObject StatusObject { [System.MonoTODOAttribute]get { throw null; } }
     }
     public delegate void CompletedEventHandler(object sender, System.Management.CompletedEventArgs e);
-    public partial class ConnectionOptions : System.Management.ManagementOptions, System.ICloneable
+    public partial class ConnectionOptions : System.Management.ManagementOptions
     {
         [System.MonoTODOAttribute]
         public ConnectionOptions() { }
@@ -131,12 +131,13 @@ namespace System.Management
         public string Locale { get { throw null; } set { } }
         [System.MonoTODOAttribute]
         public string Password { set { } }
+        public System.Security.SecureString SecurePassword { set { } }
         [System.MonoTODOAttribute]
         public string Username { get { throw null; } set { } }
         [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
-    public partial class DeleteOptions : System.Management.ManagementOptions, System.ICloneable
+    public partial class DeleteOptions : System.Management.ManagementOptions
     {
         [System.MonoTODOAttribute]
         public DeleteOptions() { }
@@ -196,7 +197,7 @@ namespace System.Management
         Identify = 2,
         Impersonate = 3,
     }
-    public partial class InvokeMethodOptions : System.Management.ManagementOptions, System.ICloneable
+    public partial class InvokeMethodOptions : System.Management.ManagementOptions
     {
         [System.MonoTODOAttribute]
         public InvokeMethodOptions() { }
@@ -365,7 +366,7 @@ namespace System.Management
         public void RemoveAll() { }
     }
     [System.SerializableAttribute]
-    public partial class ManagementObject : System.Management.ManagementBaseObject
+    public partial class ManagementObject : System.Management.ManagementBaseObject, System.ICloneable
     {
         [System.MonoTODOAttribute]
         public ManagementObject() : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
@@ -741,7 +742,7 @@ namespace System.Management
             public void Reset() { }
         }
     }
-    public partial class ObjectGetOptions : System.Management.ManagementOptions, System.ICloneable
+    public partial class ObjectGetOptions : System.Management.ManagementOptions
     {
         [System.MonoTODOAttribute]
         public ObjectGetOptions() { }
@@ -831,7 +832,7 @@ namespace System.Management
             public void Reset() { }
         }
     }
-    public partial class PutOptions : System.Management.ManagementOptions, System.ICloneable
+    public partial class PutOptions : System.Management.ManagementOptions
     {
         public PutOptions() { }
         public PutOptions(System.Management.ManagementNamedValueCollection context) { }

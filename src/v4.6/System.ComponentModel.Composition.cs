@@ -110,11 +110,11 @@ namespace System.ComponentModel.Composition
         public CompositionException(string message, System.Exception innerException) { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.ComponentModel.Composition.CompositionError> Errors { get { throw null; } }
         public override string Message { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Exception> RootCauses { get { throw null; } }
     }
     public enum CreationPolicy
     {
         Any = 0,
-        NewScope = 3,
         NonShared = 2,
         Shared = 1,
     }
@@ -132,7 +132,6 @@ namespace System.ComponentModel.Composition
     {
         public ExportFactory(System.Func<System.Tuple<T, System.Action>> exportLifetimeContextCreator) { }
         public System.ComponentModel.Composition.ExportLifetimeContext<T> CreateExport() { throw null; }
-        protected virtual bool OnFilterScopedCatalog(System.ComponentModel.Composition.Primitives.ComposablePartDefinition composablePartDefinition) { throw null; }
     }
     public partial class ExportFactory<T, TMetadata> : System.ComponentModel.Composition.ExportFactory<T>
     {

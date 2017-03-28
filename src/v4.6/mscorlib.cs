@@ -273,6 +273,8 @@ namespace System
     public sealed partial class ActivationContext : System.IDisposable, System.Runtime.Serialization.ISerializable
     {
         internal ActivationContext() { }
+        public byte[] ApplicationManifestBytes { get { throw null; } }
+        public byte[] DeploymentManifestBytes { get { throw null; } }
         public System.ActivationContext.ContextForm Form { get { throw null; } }
         public System.ApplicationIdentity Identity { get { throw null; } }
         [System.MonoTODOAttribute("Missing validation")]
@@ -297,6 +299,8 @@ namespace System
         internal Activator() { }
         public static System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName) { throw null; }
         public static System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
+        public static System.Runtime.Remoting.ObjectHandle CreateInstance(System.ActivationContext activationContext) { throw null; }
+        public static System.Runtime.Remoting.ObjectHandle CreateInstance(System.ActivationContext activationContext, string[] activationCustomData) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.ObjectHandle CreateInstance(System.AppDomain domain, string assemblyName, string typeName) { throw null; }
         [System.Security.SecurityCriticalAttribute]
@@ -366,8 +370,6 @@ namespace System
     public static partial class AppContext
     {
         public static string BaseDirectory { get { throw null; } }
-        public static string TargetFrameworkName { get { throw null; } }
-        public static object GetData(string name) { throw null; }
         public static void SetSwitch(string switchName, bool isEnabled) { }
         public static bool TryGetSwitch(string switchName, out bool isEnabled) { isEnabled = default(bool); throw null; }
     }
@@ -502,7 +504,7 @@ namespace System
         public System.Reflection.Assembly[] GetAssemblies() { throw null; }
         [System.ObsoleteAttribute("AppDomain.GetCurrentThreadId has been deprecated because it does not provide a stable Id when managed threads are running on fibers (aka lightweight threads). To get a stable identifier for a managed thread, use the ManagedThreadId property on Thread.'")]
         public static int GetCurrentThreadId() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public object GetData(string name) { throw null; }
+        public object GetData(string name) { throw null; }
         public new System.Type GetType() { throw null; }
         public override object InitializeLifetimeService() { throw null; }
         public System.Nullable<bool> IsCompatibilitySwitchSet(string value) { throw null; }
@@ -592,6 +594,8 @@ namespace System
         public System.AppDomainInitializer AppDomainInitializer { get { throw null; } set { } }
         [System.MonoLimitationAttribute("it needs to be used to invoke the initializer within the created domain")]
         public string[] AppDomainInitializerArguments { get { throw null; } set { } }
+        public string AppDomainManagerAssembly { get { throw null; } set { } }
+        public string AppDomainManagerType { get { throw null; } set { } }
         public string ApplicationBase { get { throw null; } set { } }
         public string ApplicationName { get { throw null; } set { } }
         [System.MonoNotSupportedAttribute("This property exists but not considered.")]
@@ -607,8 +611,10 @@ namespace System
         public string LicenseFile { get { throw null; } set { } }
         [System.MonoLimitationAttribute("In Mono this is controlled by the --share-code flag")]
         public System.LoaderOptimization LoaderOptimization { get { throw null; } set { } }
+        public string[] PartialTrustVisibleAssemblies { get { throw null; } set { } }
         public string PrivateBinPath { get { throw null; } set { } }
         public string PrivateBinPathProbe { get { throw null; } set { } }
+        public bool SandboxInterop { get { throw null; } set { } }
         public string ShadowCopyDirectories { get { throw null; } set { } }
         public string ShadowCopyFiles { get { throw null; } set { } }
         public string TargetFrameworkName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -618,6 +624,7 @@ namespace System
         public void SetCompatibilitySwitches(System.Collections.Generic.IEnumerable<string> switches) { }
         [System.MonoNotSupportedAttribute("This method exists but not considered.")]
         public void SetConfigurationBytes(byte[] value) { }
+        public void SetNativeFunction(string functionName, int functionVersion, System.IntPtr functionPointer) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -786,8 +793,6 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static T[] Empty<T>() { throw null; }
         public static bool Exists<T>(T[] array, System.Predicate<T> match) { throw null; }
-        public static void Fill<T>(T[] array, T value) { }
-        public static void Fill<T>(T[] array, T value, int startIndex, int count) { }
         public static T[] FindAll<T>(T[] array, System.Predicate<T> match) { throw null; }
         public static int FindIndex<T>(T[] array, int startIndex, int count, System.Predicate<T> match) { throw null; }
         public static int FindIndex<T>(T[] array, int startIndex, System.Predicate<T> match) { throw null; }
@@ -843,8 +848,6 @@ namespace System
         public static void Reverse(System.Array array) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Reverse(System.Array array, int index, int length) { }
-        public static void Reverse<T>(T[] array) { }
-        public static void Reverse<T>(T[] array, int index, int length) { }
         public void SetValue(object value, int index) { }
         public void SetValue(object value, int index1, int index2) { }
         public void SetValue(object value, int index1, int index2, int index3) { }
@@ -3706,7 +3709,6 @@ namespace System
         protected MulticastDelegate(object target, string method) : base (default(object), default(string)) { }
         protected MulticastDelegate(System.Type target, string method) : base (default(object), default(string)) { }
         protected sealed override System.Delegate CombineImpl(System.Delegate follow) { throw null; }
-        protected sealed override object DynamicInvokeImpl(object[] args) { throw null; }
         public sealed override bool Equals(object obj) { throw null; }
         public sealed override int GetHashCode() { throw null; }
         public sealed override System.Delegate[] GetInvocationList() { throw null; }
@@ -4605,79 +4607,11 @@ namespace System
         public static System.Tuple<T1, T2, T3, T4, T5, T6, T7> Create<T1, T2, T3, T4, T5, T6, T7>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7) { throw null; }
         public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8>> Create<T1, T2, T3, T4, T5, T6, T7, T8>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, T8 item8) { throw null; }
     }
-    public static partial class TupleExtensions
-    {
-        public static void Deconstruct<T1>(this System.Tuple<T1> value, out T1 item1) { item1 = default(T1); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15, out T16 item16) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); item16 = default(T16); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15, out T16 item16, out T17 item17) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); item16 = default(T16); item17 = default(T17); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15, out T16 item16, out T17 item17, out T18 item18) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); item16 = default(T16); item17 = default(T17); item18 = default(T18); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15, out T16 item16, out T17 item17, out T18 item18, out T19 item19) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); item16 = default(T16); item17 = default(T17); item18 = default(T18); item19 = default(T19); }
-        public static void Deconstruct<T1, T2>(this System.Tuple<T1, T2> value, out T1 item1, out T2 item2) { item1 = default(T1); item2 = default(T2); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19, T20>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15, out T16 item16, out T17 item17, out T18 item18, out T19 item19, out T20 item20) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); item16 = default(T16); item17 = default(T17); item18 = default(T18); item19 = default(T19); item20 = default(T20); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19, T20, T21>>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9, out T10 item10, out T11 item11, out T12 item12, out T13 item13, out T14 item14, out T15 item15, out T16 item16, out T17 item17, out T18 item18, out T19 item19, out T20 item20, out T21 item21) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); item10 = default(T10); item11 = default(T11); item12 = default(T12); item13 = default(T13); item14 = default(T14); item15 = default(T15); item16 = default(T16); item17 = default(T17); item18 = default(T18); item19 = default(T19); item20 = default(T20); item21 = default(T21); }
-        public static void Deconstruct<T1, T2, T3>(this System.Tuple<T1, T2, T3> value, out T1 item1, out T2 item2, out T3 item3) { item1 = default(T1); item2 = default(T2); item3 = default(T3); }
-        public static void Deconstruct<T1, T2, T3, T4>(this System.Tuple<T1, T2, T3, T4> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); }
-        public static void Deconstruct<T1, T2, T3, T4, T5>(this System.Tuple<T1, T2, T3, T4, T5> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6>(this System.Tuple<T1, T2, T3, T4, T5, T6> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); }
-        public static void Deconstruct<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9>> value, out T1 item1, out T2 item2, out T3 item3, out T4 item4, out T5 item5, out T6 item6, out T7 item7, out T8 item8, out T9 item9) { item1 = default(T1); item2 = default(T2); item3 = default(T3); item4 = default(T4); item5 = default(T5); item6 = default(T6); item7 = default(T7); item8 = default(T8); item9 = default(T9); }
-        public static System.Tuple<T1> ToTuple<T1>(this System.ValueTuple<T1> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15>>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16>>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17>>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18>>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18, T19>>> value) { throw null; }
-        public static System.Tuple<T1, T2> ToTuple<T1, T2>(this System.ValueTuple<T1, T2> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19, T20>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18, T19, T20>>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19, T20, T21>>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18, T19, T20, T21>>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3> ToTuple<T1, T2, T3>(this System.ValueTuple<T1, T2, T3> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4> ToTuple<T1, T2, T3, T4>(this System.ValueTuple<T1, T2, T3, T4> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5> ToTuple<T1, T2, T3, T4, T5>(this System.ValueTuple<T1, T2, T3, T4, T5> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6> ToTuple<T1, T2, T3, T4, T5, T6>(this System.ValueTuple<T1, T2, T3, T4, T5, T6> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7> ToTuple<T1, T2, T3, T4, T5, T6, T7>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8>> value) { throw null; }
-        public static System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9>> ToTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9>> value) { throw null; }
-        public static System.ValueTuple<T1> ToValueTuple<T1>(this System.Tuple<T1> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18, T19>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2> ToValueTuple<T1, T2>(this System.Tuple<T1, T2> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18, T19, T20>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19, T20>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9, T10, T11, T12, T13, T14, System.ValueTuple<T15, T16, T17, T18, T19, T20, T21>>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T20, T21>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9, T10, T11, T12, T13, T14, System.Tuple<T15, T16, T17, T18, T19, T20, T21>>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3> ToValueTuple<T1, T2, T3>(this System.Tuple<T1, T2, T3> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4> ToValueTuple<T1, T2, T3, T4>(this System.Tuple<T1, T2, T3, T4> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5> ToValueTuple<T1, T2, T3, T4, T5>(this System.Tuple<T1, T2, T3, T4, T5> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6> ToValueTuple<T1, T2, T3, T4, T5, T6>(this System.Tuple<T1, T2, T3, T4, T5, T6> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> ToValueTuple<T1, T2, T3, T4, T5, T6, T7>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8>> value) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9>> value) { throw null; }
-    }
     [System.SerializableAttribute]
-    public partial class Tuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1) { }
         public T1 Item1 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4687,13 +4621,11 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2) { }
         public T1 Item1 { get { throw null; } }
         public T2 Item2 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4703,14 +4635,12 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2, T3 item3) { }
         public T1 Item1 { get { throw null; } }
         public T2 Item2 { get { throw null; } }
         public T3 Item3 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4720,15 +4650,13 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4) { }
         public T1 Item1 { get { throw null; } }
         public T2 Item2 { get { throw null; } }
         public T3 Item3 { get { throw null; } }
         public T4 Item4 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4738,7 +4666,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5) { }
         public T1 Item1 { get { throw null; } }
@@ -4746,8 +4674,6 @@ namespace System
         public T3 Item3 { get { throw null; } }
         public T4 Item4 { get { throw null; } }
         public T5 Item5 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4757,7 +4683,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6) { }
         public T1 Item1 { get { throw null; } }
@@ -4766,8 +4692,6 @@ namespace System
         public T4 Item4 { get { throw null; } }
         public T5 Item5 { get { throw null; } }
         public T6 Item6 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4777,7 +4701,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7) { }
         public T1 Item1 { get { throw null; } }
@@ -4787,8 +4711,6 @@ namespace System
         public T5 Item5 { get { throw null; } }
         public T6 Item6 { get { throw null; } }
         public T7 Item7 { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4798,7 +4720,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
+    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, TRest rest) { }
         public T1 Item1 { get { throw null; } }
@@ -4809,8 +4731,6 @@ namespace System
         public T6 Item6 { get { throw null; } }
         public T7 Item7 { get { throw null; } }
         public TRest Rest { get { throw null; } }
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4886,7 +4806,7 @@ namespace System
         public bool IsValueType { get { throw null; } }
         public bool IsVisible { get { throw null; } }
         public override System.Reflection.MemberTypes MemberType { get { throw null; } }
-        public abstract override System.Reflection.Module Module { get; }
+        public abstract new System.Reflection.Module Module { get; }
         public abstract string Namespace { get; }
         public override System.Type ReflectedType { get { throw null; } }
         public virtual System.Runtime.InteropServices.StructLayoutAttribute StructLayoutAttribute { get { throw null; } }
@@ -5311,187 +5231,6 @@ namespace System
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public delegate void UnhandledExceptionEventHandler(object sender, System.UnhandledExceptionEventArgs e);
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
-    public partial struct ValueTuple : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple>, System.IEquatable<System.ValueTuple>, System.Runtime.CompilerServices.ITuple
-    {
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple other) { throw null; }
-        public static System.ValueTuple Create() { throw null; }
-        public static System.ValueTuple<T1> Create<T1>(T1 item1) { throw null; }
-        public static System.ValueTuple<T1, T2> Create<T1, T2>(T1 item1, T2 item2) { throw null; }
-        public static System.ValueTuple<T1, T2, T3> Create<T1, T2, T3>(T1 item1, T2 item2, T3 item3) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4> Create<T1, T2, T3, T4>(T1 item1, T2 item2, T3 item3, T4 item4) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5> Create<T1, T2, T3, T4, T5>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6> Create<T1, T2, T3, T4, T5, T6>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> Create<T1, T2, T3, T4, T5, T6, T7>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7) { throw null; }
-        public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8>> Create<T1, T2, T3, T4, T5, T6, T7, T8>(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, T8 item8) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct ValueTuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1>>, System.IEquatable<System.ValueTuple<T1>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public ValueTuple(T1 item1) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2>>, System.IEquatable<System.ValueTuple<T1, T2>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public ValueTuple(T1 item1, T2 item2) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3>>, System.IEquatable<System.ValueTuple<T1, T2, T3>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public T3 Item3;
-        public ValueTuple(T1 item1, T2 item2, T3 item3) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2, T3> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2, T3> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public T3 Item3;
-        public T4 Item4;
-        public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2, T3, T4> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2, T3, T4> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public T3 Item3;
-        public T4 Item4;
-        public T5 Item5;
-        public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public T3 Item3;
-        public T4 Item4;
-        public T5 Item5;
-        public T6 Item6;
-        public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5, T6> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5, T6> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7>>, System.Runtime.CompilerServices.ITuple
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public T3 Item3;
-        public T4 Item4;
-        public T5 Item5;
-        public T6 Item6;
-        public T7 Item7;
-        public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>>, System.Runtime.CompilerServices.ITuple where TRest : struct
-    {
-        public T1 Item1;
-        public T2 Item2;
-        public T3 Item3;
-        public T4 Item4;
-        public T5 Item5;
-        public T6 Item6;
-        public T7 Item7;
-        public TRest Rest;
-        public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, TRest rest) { throw null;}
-        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
-        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
-        public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> other) { throw null; }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> other) { throw null; }
-        public override int GetHashCode() { throw null; }
-        int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
-        bool System.Collections.IStructuralEquatable.Equals(object other, System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.Collections.IStructuralEquatable.GetHashCode(System.Collections.IEqualityComparer comparer) { throw null; }
-        int System.IComparable.CompareTo(object other) { throw null; }
-        public override string ToString() { throw null; }
-    }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public abstract partial class ValueType
@@ -5570,6 +5309,7 @@ namespace System
     {
         string BaseDirectory { get; }
         string DynamicDirectory { get; }
+        System.Security.Policy.Evidence Evidence { get; }
         string FriendlyName { get; }
         string RelativeSearchPath { get; }
         bool ShadowCopyFiles { get; }
@@ -5625,12 +5365,15 @@ namespace System
         System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyRef, System.Security.Policy.Evidence assemblySecurity);
         System.Reflection.Assembly Load(string assemblyString);
         System.Reflection.Assembly Load(string assemblyString, System.Security.Policy.Evidence assemblySecurity);
+        void SetAppDomainPolicy(System.Security.Policy.PolicyLevel domainPolicy);
         [System.Security.SecurityCriticalAttribute]
         void SetCachePath(string s);
         [System.Security.SecurityCriticalAttribute]
         void SetData(string name, object data);
+        void SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy policy);
         [System.Security.SecurityCriticalAttribute]
         void SetShadowCopyPath(string s);
+        void SetThreadPrincipal(System.Security.Principal.IPrincipal principal);
         string ToString();
     }
 }
@@ -6120,13 +5863,11 @@ namespace System.Collections.Concurrent
         public System.Collections.Generic.ICollection<TValue> Values { get { throw null; } }
         public TValue AddOrUpdate(TKey key, System.Func<TKey, TValue> addValueFactory, System.Func<TKey, TValue, TValue> updateValueFactory) { throw null; }
         public TValue AddOrUpdate(TKey key, TValue addValue, System.Func<TKey, TValue, TValue> updateValueFactory) { throw null; }
-        public TValue AddOrUpdate<TArg>(TKey key, System.Func<TKey, TArg, TValue> addValueFactory, System.Func<TKey, TValue, TArg, TValue> updateValueFactory, TArg factoryArgument) { throw null; }
         public void Clear() { }
         public bool ContainsKey(TKey key) { throw null; }
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> GetEnumerator() { throw null; }
         public TValue GetOrAdd(TKey key, System.Func<TKey, TValue> valueFactory) { throw null; }
         public TValue GetOrAdd(TKey key, TValue value) { throw null; }
-        public TValue GetOrAdd<TArg>(TKey key, System.Func<TKey, TArg, TValue> valueFactory, TArg factoryArgument) { throw null; }
         void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Add(System.Collections.Generic.KeyValuePair<TKey, TValue> keyValuePair) { }
         bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Contains(System.Collections.Generic.KeyValuePair<TKey, TValue> keyValuePair) { throw null; }
         void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.CopyTo(System.Collections.Generic.KeyValuePair<TKey, TValue>[] array, int index) { }
@@ -6156,7 +5897,6 @@ namespace System.Collections.Concurrent
         public bool IsEmpty { get { throw null; } }
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
-        public void Clear() { }
         public void CopyTo(T[] array, int index) { }
         public void Enqueue(T item) { }
         public System.Collections.Generic.IEnumerator<T> GetEnumerator() { throw null; }
@@ -7379,11 +7119,6 @@ namespace System.Diagnostics.Tracing
         public bool DisableEvent(int eventId) { throw null; }
         public bool EnableEvent(int eventId) { throw null; }
     }
-    public partial class EventCounter
-    {
-        public EventCounter(string name, System.Diagnostics.Tracing.EventSource eventSource) { }
-        public void WriteMetric(float value) { }
-    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(12), Inherited=false)]
     public partial class EventDataAttribute : System.Attribute
     {
@@ -7451,7 +7186,7 @@ namespace System.Diagnostics.Tracing
         public void EnableEvents(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventLevel level) { }
         public void EnableEvents(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventLevel level, System.Diagnostics.Tracing.EventKeywords matchAnyKeyword) { }
         public void EnableEvents(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventLevel level, System.Diagnostics.Tracing.EventKeywords matchAnyKeyword, System.Collections.Generic.IDictionary<string, string> arguments) { }
-        public static int EventSourceIndex(System.Diagnostics.Tracing.EventSource eventSource) { throw null; }
+        protected static int EventSourceIndex(System.Diagnostics.Tracing.EventSource eventSource) { throw null; }
         protected internal virtual void OnEventSourceCreated(System.Diagnostics.Tracing.EventSource eventSource) { }
         protected internal abstract void OnEventWritten(System.Diagnostics.Tracing.EventWrittenEventArgs eventData);
     }
@@ -7492,8 +7227,6 @@ namespace System.Diagnostics.Tracing
         public System.Guid Guid { get { throw null; } }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventSourceSettings Settings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
-        public event System.EventHandler<System.Diagnostics.Tracing.EventCommandEventArgs> EventCommandExecuted { add { } remove { } }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         ~EventSource() { }
@@ -7518,6 +7251,7 @@ namespace System.Diagnostics.Tracing
         public static void SetCurrentThreadActivityId(System.Guid activityId) { }
         [System.MonoTODOAttribute]
         public static void SetCurrentThreadActivityId(System.Guid activityId, out System.Guid oldActivityThatWillContinue) { oldActivityThatWillContinue = default(System.Guid); }
+        public override string ToString() { throw null; }
         public void Write(string eventName) { }
         public void Write(string eventName, System.Diagnostics.Tracing.EventSourceOptions options) { }
         protected void WriteEvent(int eventId) { }
@@ -9891,15 +9625,15 @@ namespace System.IO.IsolatedStorage
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class IsolatedStorageFileStream : System.IO.FileStream
     {
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode) : base (default(string), default(System.IO.FileMode)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access) : base (default(string), default(System.IO.FileMode)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) : base (default(string), default(System.IO.FileMode)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize) : base (default(string), default(System.IO.FileMode)) { }
         [System.Security.Permissions.FileIOPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
-        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(System.IntPtr), default(System.IO.FileAccess)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
+        public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
         public override bool CanRead { get { throw null; } }
         public override bool CanSeek { get { throw null; } }
         public override bool CanWrite { get { throw null; } }
@@ -9916,10 +9650,12 @@ namespace System.IO.IsolatedStorage
         public override void EndWrite(System.IAsyncResult asyncResult) { }
         public override void Flush() { }
         public override void Flush(bool flushToDisk) { }
+        public override void Lock(long position, long length) { }
         public override int Read(byte[] buffer, int offset, int count) { throw null; }
         public override int ReadByte() { throw null; }
         public override long Seek(long offset, System.IO.SeekOrigin origin) { throw null; }
         public override void SetLength(long value) { }
+        public override void Unlock(long position, long length) { }
         public override void Write(byte[] buffer, int offset, int count) { }
         public override void WriteByte(byte value) { }
     }
@@ -11191,7 +10927,7 @@ namespace System.Reflection
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    public sealed partial class ReflectionTypeLoadException : System.SystemException
+    public sealed partial class ReflectionTypeLoadException : System.SystemException, System.Runtime.Serialization.ISerializable
     {
         public ReflectionTypeLoadException(System.Type[] classes, System.Exception[] exceptions) { }
         public ReflectionTypeLoadException(System.Type[] classes, System.Exception[] exceptions, string message) { }
@@ -11401,14 +11137,18 @@ namespace System.Reflection.Emit
         internal AssemblyBuilder() { }
         public override string CodeBase { get { throw null; } }
         public override System.Reflection.MethodInfo EntryPoint { get { throw null; } }
+        public override System.Security.Policy.Evidence Evidence { get { throw null; } }
         public override string FullName { get { throw null; } }
         public override bool GlobalAssemblyCache { get { throw null; } }
+        public override long HostContext { get { throw null; } }
         public override string ImageRuntimeVersion { get { throw null; } }
         public override bool IsDynamic { get { throw null; } }
         public override string Location { get { throw null; } }
         public override System.Reflection.Module ManifestModule { get { throw null; } }
+        public override System.Security.PermissionSet PermissionSet { get { throw null; } }
         [System.MonoTODOAttribute]
         public override bool ReflectionOnly { get { throw null; } }
+        public override System.Security.SecurityRuleSet SecurityRuleSet { get { throw null; } }
         public void AddResourceFile(string name, string fileName) { }
         public void AddResourceFile(string name, string fileName, System.Reflection.ResourceAttributes attribute) { }
         public static System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access) { throw null; }
@@ -11427,6 +11167,7 @@ namespace System.Reflection.Emit
         public override bool Equals(object obj) { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
         public override object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
+        public override System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
         public System.Reflection.Emit.ModuleBuilder GetDynamicModule(string name) { throw null; }
         public override System.Type[] GetExportedTypes() { throw null; }
         public override System.IO.FileStream GetFile(string name) { throw null; }
@@ -11576,6 +11317,9 @@ namespace System.Reflection.Emit
         public override System.Reflection.CallingConventions CallingConvention { get { throw null; } }
         public override System.Type DeclaringType { get { throw null; } }
         public bool InitLocals { get { throw null; } set { } }
+        public override bool IsSecurityCritical { get { throw null; } }
+        public override bool IsSecuritySafeCritical { get { throw null; } }
+        public override bool IsSecurityTransparent { get { throw null; } }
         public override System.RuntimeMethodHandle MethodHandle { get { throw null; } }
         public override System.Reflection.Module Module { get { throw null; } }
         public override string Name { get { throw null; } }
@@ -11799,6 +11543,7 @@ namespace System.Reflection.Emit
         public override System.Reflection.GenericParameterAttributes GenericParameterAttributes { get { throw null; } }
         public override int GenericParameterPosition { get { throw null; } }
         public override System.Guid GUID { get { throw null; } }
+        public override bool IsConstructedGenericType { get { throw null; } }
         public override bool IsGenericParameter { get { throw null; } }
         public override bool IsGenericType { get { throw null; } }
         public override bool IsGenericTypeDefinition { get { throw null; } }
@@ -11823,7 +11568,6 @@ namespace System.Reflection.Emit
         public override System.Reflection.FieldInfo GetField(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
         public override System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingAttr) { throw null; }
         public override System.Type[] GetGenericArguments() { throw null; }
-        public override System.Type[] GetGenericParameterConstraints() { throw null; }
         public override System.Type GetGenericTypeDefinition() { throw null; }
         [System.MonoTODOAttribute]
         public override int GetHashCode() { throw null; }
@@ -11847,7 +11591,6 @@ namespace System.Reflection.Emit
         protected override bool IsByRefImpl() { throw null; }
         protected override bool IsCOMObjectImpl() { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
-        public override bool IsInstanceOfType(object o) { throw null; }
         protected override bool IsPointerImpl() { throw null; }
         protected override bool IsPrimitiveImpl() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -11964,6 +11707,9 @@ namespace System.Reflection.Emit
         public bool InitLocals { get { throw null; } set { } }
         public override bool IsGenericMethod { get { throw null; } }
         public override bool IsGenericMethodDefinition { get { throw null; } }
+        public override bool IsSecurityCritical { get { throw null; } }
+        public override bool IsSecuritySafeCritical { get { throw null; } }
+        public override bool IsSecurityTransparent { get { throw null; } }
         public override System.RuntimeMethodHandle MethodHandle { get { throw null; } }
         public override System.Reflection.Module Module { get { throw null; } }
         public override string Name { get { throw null; } }
@@ -12050,6 +11796,7 @@ namespace System.Reflection.Emit
         internal ModuleBuilder() { }
         public override System.Reflection.Assembly Assembly { get { throw null; } }
         public override string FullyQualifiedName { get { throw null; } }
+        public override int MDStreamVersion { get { throw null; } }
         public override int MetadataToken { get { throw null; } }
         public override System.Guid ModuleVersionId { get { throw null; } }
         public override string Name { get { throw null; } }
@@ -12087,6 +11834,7 @@ namespace System.Reflection.Emit
         public System.Reflection.Emit.MethodToken GetConstructorToken(System.Reflection.ConstructorInfo constructor, System.Collections.Generic.IEnumerable<System.Type> optionalParameterTypes) { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
         public override object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
+        public override System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
         public override System.Reflection.FieldInfo GetField(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
         public override System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingFlags) { throw null; }
         public System.Reflection.Emit.FieldToken GetFieldToken(System.Reflection.FieldInfo field) { throw null; }
@@ -12095,9 +11843,11 @@ namespace System.Reflection.Emit
         public override System.Reflection.MethodInfo[] GetMethods(System.Reflection.BindingFlags bindingFlags) { throw null; }
         public System.Reflection.Emit.MethodToken GetMethodToken(System.Reflection.MethodInfo method) { throw null; }
         public System.Reflection.Emit.MethodToken GetMethodToken(System.Reflection.MethodInfo method, System.Collections.Generic.IEnumerable<System.Type> optionalParameterTypes) { throw null; }
+        public override void GetPEKind(out System.Reflection.PortableExecutableKinds peKind, out System.Reflection.ImageFileMachine machine) { peKind = default(System.Reflection.PortableExecutableKinds); machine = default(System.Reflection.ImageFileMachine); }
         [System.MonoTODOAttribute]
         public System.Reflection.Emit.SignatureToken GetSignatureToken(byte[] sigBytes, int sigLength) { throw null; }
         public System.Reflection.Emit.SignatureToken GetSignatureToken(System.Reflection.Emit.SignatureHelper sigHelper) { throw null; }
+        public override System.Security.Cryptography.X509Certificates.X509Certificate GetSignerCertificate() { throw null; }
         public System.Reflection.Emit.StringToken GetStringConstant(string str) { throw null; }
         public System.Diagnostics.SymbolStore.ISymbolWriter GetSymWriter() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -12637,7 +12387,6 @@ namespace System.Reflection.Emit
         public override System.Reflection.Assembly Assembly { get { throw null; } }
         public override string AssemblyQualifiedName { get { throw null; } }
         public override System.Type BaseType { get { throw null; } }
-        public override bool ContainsGenericParameters { get { throw null; } }
         public override System.Reflection.MethodBase DeclaringMethod { get { throw null; } }
         public override System.Type DeclaringType { get { throw null; } }
         public override string FullName { get { throw null; } }
@@ -12649,6 +12398,9 @@ namespace System.Reflection.Emit
         public override bool IsGenericParameter { get { throw null; } }
         public override bool IsGenericType { get { throw null; } }
         public override bool IsGenericTypeDefinition { get { throw null; } }
+        public override bool IsSecurityCritical { get { throw null; } }
+        public override bool IsSecuritySafeCritical { get { throw null; } }
+        public override bool IsSecurityTransparent { get { throw null; } }
         public override System.Reflection.Module Module { get { throw null; } }
         public override string Name { get { throw null; } }
         public override string Namespace { get { throw null; } }
@@ -12741,7 +12493,6 @@ namespace System.Reflection.Emit
         protected override bool IsPrimitiveImpl() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public override bool IsSubclassOf(System.Type c) { throw null; }
-        protected override bool IsValueTypeImpl() { throw null; }
         public override System.Type MakeArrayType() { throw null; }
         public override System.Type MakeArrayType(int rank) { throw null; }
         public override System.Type MakeByRefType() { throw null; }
@@ -12786,14 +12537,6 @@ namespace System.Reflection.Emit
         public static System.Reflection.Emit.UnmanagedMarshal DefineLPArray(System.Runtime.InteropServices.UnmanagedType elemType) { throw null; }
         public static System.Reflection.Emit.UnmanagedMarshal DefineSafeArray(System.Runtime.InteropServices.UnmanagedType elemType) { throw null; }
         public static System.Reflection.Emit.UnmanagedMarshal DefineUnmanagedMarshal(System.Runtime.InteropServices.UnmanagedType unmanagedType) { throw null; }
-    }
-}
-namespace System.Reflection.Metadata
-{
-    public static partial class AssemblyExtensions
-    {
-        [System.CLSCompliantAttribute(false)]
-        public unsafe static bool TryGetRawMetadata(this System.Reflection.Assembly assembly, out byte* blob, out int length) { blob = default(byte*); length = default(int); throw null; }
     }
 }
 namespace System.Resources
@@ -12987,6 +12730,11 @@ namespace System.Runtime
         [System.MonoTODOAttribute]
         public void Dispose() { }
         ~MemoryFailPoint() { }
+    }
+    public static partial class ProfileOptimization
+    {
+        public static void SetProfileRoot(string directoryPath) { }
+        public static void StartProfile(string profile) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(96), AllowMultiple=false, Inherited=false)]
     public sealed partial class TargetedPatchingOptOutAttribute : System.Attribute
@@ -13334,11 +13082,6 @@ namespace System.Runtime.CompilerServices
     {
         public IteratorStateMachineAttribute(System.Type stateMachineType) : base (default(System.Type)) { }
     }
-    public partial interface ITuple
-    {
-        object this[int index] { get; }
-        int Length { get; }
-    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(2304), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -13430,7 +13173,6 @@ namespace System.Runtime.CompilerServices
         public static int GetHashCode(object o) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static object GetObjectValue(object obj) { throw null; }
         public static void InitializeArray(System.Array array, System.RuntimeFieldHandle fldHandle) { }
-        public static bool IsReferenceOrContainsReferences<T>() { throw null; }
         [System.MonoTODOAttribute("Currently a no-op")]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void PrepareConstrainedRegions() { }
@@ -13452,7 +13194,6 @@ namespace System.Runtime.CompilerServices
         public static void ProbeForSufficientStack() { }
         public static void RunClassConstructor(System.RuntimeTypeHandle type) { }
         public static void RunModuleConstructor(System.ModuleHandle module) { }
-        public static bool TryEnsureSufficientExecutionStack() { throw null; }
         public delegate void CleanupCode(object userData, bool exceptionThrown);
         public delegate void TryCode(object userData);
     }
@@ -13514,13 +13255,6 @@ namespace System.Runtime.CompilerServices
         public void OnCompleted(System.Action continuation) { }
         [System.Security.SecurityCriticalAttribute]
         public void UnsafeOnCompleted(System.Action continuation) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(11148))]
-    [System.CLSCompliantAttribute(false)]
-    public sealed partial class TupleElementNamesAttribute : System.Attribute
-    {
-        public TupleElementNamesAttribute(string[] transformNames) { }
-        public System.Collections.Generic.IList<string> TransformNames { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(5148), Inherited=false, AllowMultiple=false)]
     public sealed partial class TypeForwardedFromAttribute : System.Attribute
@@ -13596,6 +13330,18 @@ namespace System.Runtime.ConstrainedExecution
         public System.Runtime.ConstrainedExecution.Consistency ConsistencyGuarantee { get { throw null; } }
     }
 }
+namespace System.Runtime.DesignerServices
+{
+    public sealed partial class WindowsRuntimeDesignerContext
+    {
+        public WindowsRuntimeDesignerContext(System.Collections.Generic.IEnumerable<string> paths, string name) { }
+        public string Name { get { throw null; } }
+        public System.Reflection.Assembly GetAssembly(string assemblyName) { throw null; }
+        public System.Type GetType(string typeName) { throw null; }
+        public static void InitializeSharedContext(System.Collections.Generic.IEnumerable<string> paths) { }
+        public static void SetIterationContext(System.Runtime.DesignerServices.WindowsRuntimeDesignerContext context) { }
+    }
+}
 namespace System.Runtime.ExceptionServices
 {
     public sealed partial class ExceptionDispatchInfo
@@ -13629,6 +13375,7 @@ namespace System.Runtime.Hosting
         public System.ActivationContext ActivationContext { get { throw null; } }
         public string[] ActivationData { get { throw null; } }
         public System.ApplicationIdentity ApplicationIdentity { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
     }
     [System.MonoTODOAttribute("missing manifest support")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -14119,21 +13866,21 @@ namespace System.Runtime.InteropServices
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
-    public enum FUNCFLAGS
+    public enum FUNCFLAGS : short
     {
-        FUNCFLAG_FBINDABLE = 4,
-        FUNCFLAG_FDEFAULTBIND = 32,
-        FUNCFLAG_FDEFAULTCOLLELEM = 256,
-        FUNCFLAG_FDISPLAYBIND = 16,
-        FUNCFLAG_FHIDDEN = 64,
-        FUNCFLAG_FIMMEDIATEBIND = 4096,
-        FUNCFLAG_FNONBROWSABLE = 1024,
-        FUNCFLAG_FREPLACEABLE = 2048,
-        FUNCFLAG_FREQUESTEDIT = 8,
-        FUNCFLAG_FRESTRICTED = 1,
-        FUNCFLAG_FSOURCE = 2,
-        FUNCFLAG_FUIDEFAULT = 512,
-        FUNCFLAG_FUSESGETLASTERROR = 128,
+        FUNCFLAG_FBINDABLE = (short)4,
+        FUNCFLAG_FDEFAULTBIND = (short)32,
+        FUNCFLAG_FDEFAULTCOLLELEM = (short)256,
+        FUNCFLAG_FDISPLAYBIND = (short)16,
+        FUNCFLAG_FHIDDEN = (short)64,
+        FUNCFLAG_FIMMEDIATEBIND = (short)4096,
+        FUNCFLAG_FNONBROWSABLE = (short)1024,
+        FUNCFLAG_FREPLACEABLE = (short)2048,
+        FUNCFLAG_FREQUESTEDIT = (short)8,
+        FUNCFLAG_FRESTRICTED = (short)1,
+        FUNCFLAG_FSOURCE = (short)2,
+        FUNCFLAG_FUIDEFAULT = (short)512,
+        FUNCFLAG_FUSESGETLASTERROR = (short)128,
     }
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
@@ -14245,13 +13992,13 @@ namespace System.Runtime.InteropServices
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
-    public enum IDLFLAG
+    public enum IDLFLAG : short
     {
-        IDLFLAG_FIN = 1,
-        IDLFLAG_FLCID = 4,
-        IDLFLAG_FOUT = 2,
-        IDLFLAG_FRETVAL = 8,
-        IDLFLAG_NONE = 0,
+        IDLFLAG_FIN = (short)1,
+        IDLFLAG_FLCID = (short)4,
+        IDLFLAG_FOUT = (short)2,
+        IDLFLAG_FRETVAL = (short)8,
+        IDLFLAG_NONE = (short)0,
     }
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
@@ -14392,12 +14139,12 @@ namespace System.Runtime.InteropServices
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
-    public enum LIBFLAGS
+    public enum LIBFLAGS : short
     {
-        LIBFLAG_FCONTROL = 2,
-        LIBFLAG_FHASDISKIMAGE = 8,
-        LIBFLAG_FHIDDEN = 4,
-        LIBFLAG_FRESTRICTED = 1,
+        LIBFLAG_FCONTROL = (short)2,
+        LIBFLAG_FHASDISKIMAGE = (short)8,
+        LIBFLAG_FHIDDEN = (short)4,
+        LIBFLAG_FRESTRICTED = (short)1,
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64), Inherited=false, AllowMultiple=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -14421,7 +14168,6 @@ namespace System.Runtime.InteropServices
         public static bool AreComObjectsAvailableForCleanup() { throw null; }
         [System.MonoTODOAttribute]
         public static object BindToMoniker(string monikerName) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr BufferToBSTR(System.Array ptr, int slen) { throw null; }
         [System.MonoTODOAttribute]
         public static void ChangeWrapperHandleStrength(object otp, bool fIsWeak) { }
         [System.MonoTODOAttribute]
@@ -14558,8 +14304,6 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringBSTR(System.IntPtr ptr) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringUni(System.IntPtr ptr) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringUni(System.IntPtr ptr, int len) { throw null; }
-        public static string PtrToStringUTF8(System.IntPtr ptr) { throw null; }
-        public static string PtrToStringUTF8(System.IntPtr ptr, int byteLen) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static void PtrToStructure(System.IntPtr ptr, object structure) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -14619,7 +14363,6 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static int SizeOf(System.Type t) { throw null; }
         public static int SizeOf<T>() { throw null; }
         public static int SizeOf<T>(T structure) { throw null; }
-        public static System.IntPtr StringToAllocatedMemoryUTF8(string s) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr StringToBSTR(string s) { throw null; }
         public static System.IntPtr StringToCoTaskMemAnsi(string s) { throw null; }
         public static System.IntPtr StringToCoTaskMemAuto(string s) { throw null; }
@@ -14666,7 +14409,6 @@ namespace System.Runtime.InteropServices
         public static void ZeroFreeBSTR(System.IntPtr s) { }
         public static void ZeroFreeCoTaskMemAnsi(System.IntPtr s) { }
         public static void ZeroFreeCoTaskMemUnicode(System.IntPtr s) { }
-        public static void ZeroFreeCoTaskMemUTF8(System.IntPtr s) { }
         public static void ZeroFreeGlobalAllocAnsi(System.IntPtr s) { }
         public static void ZeroFreeGlobalAllocUnicode(System.IntPtr s) { }
     }
@@ -14723,16 +14465,16 @@ namespace System.Runtime.InteropServices
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
-    public enum PARAMFLAG
+    public enum PARAMFLAG : short
     {
-        PARAMFLAG_FHASCUSTDATA = 64,
-        PARAMFLAG_FHASDEFAULT = 32,
-        PARAMFLAG_FIN = 1,
-        PARAMFLAG_FLCID = 4,
-        PARAMFLAG_FOPT = 16,
-        PARAMFLAG_FOUT = 2,
-        PARAMFLAG_FRETVAL = 8,
-        PARAMFLAG_NONE = 0,
+        PARAMFLAG_FHASCUSTDATA = (short)64,
+        PARAMFLAG_FHASDEFAULT = (short)32,
+        PARAMFLAG_FIN = (short)1,
+        PARAMFLAG_FLCID = (short)4,
+        PARAMFLAG_FOPT = (short)16,
+        PARAMFLAG_FOUT = (short)2,
+        PARAMFLAG_FRETVAL = (short)8,
+        PARAMFLAG_NONE = (short)0,
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -14849,7 +14591,7 @@ namespace System.Runtime.InteropServices
         public SafeArrayTypeMismatchException(string message) { }
         public SafeArrayTypeMismatchException(string message, System.Exception inner) { }
     }
-    public abstract partial class SafeBuffer : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid, System.IDisposable
+    public abstract partial class SafeBuffer : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
     {
         protected SafeBuffer(bool ownsHandle) : base (default(bool)) { }
         [System.CLSCompliantAttribute(false)]
@@ -14998,23 +14740,23 @@ namespace System.Runtime.InteropServices
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
-    public enum TYPEFLAGS
+    public enum TYPEFLAGS : short
     {
-        TYPEFLAG_FAGGREGATABLE = 1024,
-        TYPEFLAG_FAPPOBJECT = 1,
-        TYPEFLAG_FCANCREATE = 2,
-        TYPEFLAG_FCONTROL = 32,
-        TYPEFLAG_FDISPATCHABLE = 4096,
-        TYPEFLAG_FDUAL = 64,
-        TYPEFLAG_FHIDDEN = 16,
-        TYPEFLAG_FLICENSED = 4,
-        TYPEFLAG_FNONEXTENSIBLE = 128,
-        TYPEFLAG_FOLEAUTOMATION = 256,
-        TYPEFLAG_FPREDECLID = 8,
-        TYPEFLAG_FPROXY = 16384,
-        TYPEFLAG_FREPLACEABLE = 2048,
-        TYPEFLAG_FRESTRICTED = 512,
-        TYPEFLAG_FREVERSEBIND = 8192,
+        TYPEFLAG_FAGGREGATABLE = (short)1024,
+        TYPEFLAG_FAPPOBJECT = (short)1,
+        TYPEFLAG_FCANCREATE = (short)2,
+        TYPEFLAG_FCONTROL = (short)32,
+        TYPEFLAG_FDISPATCHABLE = (short)4096,
+        TYPEFLAG_FDUAL = (short)64,
+        TYPEFLAG_FHIDDEN = (short)16,
+        TYPEFLAG_FLICENSED = (short)4,
+        TYPEFLAG_FNONEXTENSIBLE = (short)128,
+        TYPEFLAG_FOLEAUTOMATION = (short)256,
+        TYPEFLAG_FPREDECLID = (short)8,
+        TYPEFLAG_FPROXY = (short)16384,
+        TYPEFLAG_FREPLACEABLE = (short)2048,
+        TYPEFLAG_FRESTRICTED = (short)512,
+        TYPEFLAG_FREVERSEBIND = (short)8192,
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(5144), AllowMultiple=false, Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -15119,6 +14861,7 @@ namespace System.Runtime.InteropServices
     public enum TypeLibImporterFlags
     {
         ImportAsAgnostic = 2048,
+        ImportAsArm = 16384,
         ImportAsItanium = 1024,
         ImportAsX64 = 512,
         ImportAsX86 = 256,
@@ -15445,8 +15188,6 @@ namespace System.Runtime.InteropServices
         LPStr = 20,
         LPStruct = 43,
         LPTStr = 22,
-        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        LPUTF8Str = 48,
         LPWStr = 21,
         R4 = 11,
         R8 = 12,
@@ -15533,21 +15274,21 @@ namespace System.Runtime.InteropServices
     [System.FlagsAttribute]
     [System.ObsoleteAttribute]
     [System.SerializableAttribute]
-    public enum VARFLAGS
+    public enum VARFLAGS : short
     {
-        VARFLAG_FBINDABLE = 4,
-        VARFLAG_FDEFAULTBIND = 32,
-        VARFLAG_FDEFAULTCOLLELEM = 256,
-        VARFLAG_FDISPLAYBIND = 16,
-        VARFLAG_FHIDDEN = 64,
-        VARFLAG_FIMMEDIATEBIND = 4096,
-        VARFLAG_FNONBROWSABLE = 1024,
-        VARFLAG_FREADONLY = 1,
-        VARFLAG_FREPLACEABLE = 2048,
-        VARFLAG_FREQUESTEDIT = 8,
-        VARFLAG_FRESTRICTED = 128,
-        VARFLAG_FSOURCE = 2,
-        VARFLAG_FUIDEFAULT = 512,
+        VARFLAG_FBINDABLE = (short)4,
+        VARFLAG_FDEFAULTBIND = (short)32,
+        VARFLAG_FDEFAULTCOLLELEM = (short)256,
+        VARFLAG_FDISPLAYBIND = (short)16,
+        VARFLAG_FHIDDEN = (short)64,
+        VARFLAG_FIMMEDIATEBIND = (short)4096,
+        VARFLAG_FNONBROWSABLE = (short)1024,
+        VARFLAG_FREADONLY = (short)1,
+        VARFLAG_FREPLACEABLE = (short)2048,
+        VARFLAG_FREQUESTEDIT = (short)8,
+        VARFLAG_FRESTRICTED = (short)128,
+        VARFLAG_FSOURCE = (short)2,
+        VARFLAG_FUIDEFAULT = (short)512,
     }
     [System.SerializableAttribute]
     public sealed partial class VariantWrapper
@@ -16971,28 +16712,6 @@ namespace System.Runtime.InteropServices.WindowsRuntime
         public WriteOnlyArrayAttribute() { }
     }
 }
-namespace System.Runtime.Loader
-{
-    public abstract partial class AssemblyLoadContext
-    {
-        protected AssemblyLoadContext() { }
-        public static System.Runtime.Loader.AssemblyLoadContext Default { get { throw null; } }
-        public event System.Func<System.Runtime.Loader.AssemblyLoadContext, System.Reflection.AssemblyName, System.Reflection.Assembly> Resolving { add { } remove { } }
-        public event System.Action<System.Runtime.Loader.AssemblyLoadContext> Unloading { add { } remove { } }
-        public static System.Reflection.AssemblyName GetAssemblyName(string assemblyPath) { throw null; }
-        public static System.Runtime.Loader.AssemblyLoadContext GetLoadContext(System.Reflection.Assembly assembly) { throw null; }
-        protected abstract System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyName);
-        public System.Reflection.Assembly LoadFromAssemblyName(System.Reflection.AssemblyName assemblyName) { throw null; }
-        public System.Reflection.Assembly LoadFromAssemblyPath(string assemblyPath) { throw null; }
-        public System.Reflection.Assembly LoadFromNativeImagePath(string nativeImagePath, string assemblyPath) { throw null; }
-        public System.Reflection.Assembly LoadFromStream(System.IO.Stream assembly) { throw null; }
-        public System.Reflection.Assembly LoadFromStream(System.IO.Stream assembly, System.IO.Stream assemblySymbols) { throw null; }
-        protected virtual System.IntPtr LoadUnmanagedDll(string unmanagedDllName) { throw null; }
-        protected System.IntPtr LoadUnmanagedDllFromPath(string unmanagedDllPath) { throw null; }
-        public void SetProfileOptimizationRoot(string directoryPath) { }
-        public void StartProfileOptimization(string profile) { }
-    }
-}
 namespace System.Runtime.Remoting
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17755,7 +17474,6 @@ namespace System.Runtime.Remoting.Messaging
         public object[] CallSiteActivationAttributes { get { throw null; } }
         public System.Collections.IList ContextProperties { get { throw null; } }
         public override System.Collections.IDictionary Properties { get { throw null; } }
-        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17890,7 +17608,7 @@ namespace System.Runtime.Remoting.Messaging
         public string GetArgName(int index) { throw null; }
         public object GetInArg(int argNum) { throw null; }
         public string GetInArgName(int index) { throw null; }
-        public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         [System.MonoTODOAttribute]
         public virtual object HeaderHandler(System.Runtime.Remoting.Messaging.Header[] h) { throw null; }
         public virtual void Init() { }
@@ -19045,11 +18763,6 @@ namespace System.Runtime.Serialization.Formatters.Binary
 }
 namespace System.Runtime.Versioning
 {
-    public static partial class CompatibilitySwitch
-    {
-        public static string GetValue(string compatibilitySwitchName) { throw null; }
-        public static bool IsEnabled(string compatibilitySwitchName) { throw null; }
-    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(5887), AllowMultiple=false, Inherited=false)]
     public sealed partial class ComponentGuaranteesAttribute : System.Attribute
     {
@@ -19174,6 +18887,10 @@ namespace System.Security
         public virtual System.Security.Policy.PolicyLevel DomainPolicy { get { throw null; } }
         public virtual System.Security.HostSecurityManagerOptions Flags { get { throw null; } }
         public virtual System.Security.Policy.ApplicationTrust DetermineApplicationTrust(System.Security.Policy.Evidence applicationEvidence, System.Security.Policy.Evidence activatorEvidence, System.Security.Policy.TrustManagerContext context) { throw null; }
+        public virtual System.Security.Policy.EvidenceBase GenerateAppDomainEvidence(System.Type evidenceType) { throw null; }
+        public virtual System.Security.Policy.EvidenceBase GenerateAssemblyEvidence(System.Type evidenceType, System.Reflection.Assembly assembly) { throw null; }
+        public virtual System.Type[] GetHostSuppliedAppDomainEvidenceTypes() { throw null; }
+        public virtual System.Type[] GetHostSuppliedAssemblyEvidenceTypes(System.Reflection.Assembly assembly) { throw null; }
         public virtual System.Security.Policy.Evidence ProvideAppDomainEvidence(System.Security.Policy.Evidence inputEvidence) { throw null; }
         public virtual System.Security.Policy.Evidence ProvideAssemblyEvidence(System.Reflection.Assembly loadedAssembly, System.Security.Policy.Evidence inputEvidence) { throw null; }
         public virtual System.Security.PermissionSet ResolvePolicy(System.Security.Policy.Evidence evidence) { throw null; }
@@ -19262,6 +18979,7 @@ namespace System.Security
         public virtual bool IsSynchronized { get { throw null; } }
         public virtual object SyncRoot { get { throw null; } }
         public System.Security.IPermission AddPermission(System.Security.IPermission perm) { throw null; }
+        protected virtual System.Security.IPermission AddPermissionImpl(System.Security.IPermission perm) { throw null; }
         [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Assertion=true)]
         public void Assert() { }
@@ -19276,9 +18994,11 @@ namespace System.Security
         public override bool Equals(object obj) { throw null; }
         public virtual void FromXml(System.Security.SecurityElement et) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
+        protected virtual System.Collections.IEnumerator GetEnumeratorImpl() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override int GetHashCode() { throw null; }
         public System.Security.IPermission GetPermission(System.Type permClass) { throw null; }
+        protected virtual System.Security.IPermission GetPermissionImpl(System.Type permClass) { throw null; }
         public System.Security.PermissionSet Intersect(System.Security.PermissionSet other) { throw null; }
         public bool IsEmpty() { throw null; }
         public bool IsSubsetOf(System.Security.PermissionSet target) { throw null; }
@@ -19286,8 +19006,10 @@ namespace System.Security
         [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
         public void PermitOnly() { }
         public System.Security.IPermission RemovePermission(System.Type permClass) { throw null; }
+        protected virtual System.Security.IPermission RemovePermissionImpl(System.Type permClass) { throw null; }
         public static void RevertAssert() { }
         public System.Security.IPermission SetPermission(System.Security.IPermission perm) { throw null; }
+        protected virtual System.Security.IPermission SetPermissionImpl(System.Security.IPermission perm) { throw null; }
         [System.MonoTODOAttribute("may not be required")]
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
         public override string ToString() { throw null; }
@@ -19302,6 +19024,19 @@ namespace System.Security
         Enterprise = 2,
         Machine = 1,
         User = 0,
+    }
+    public sealed partial class ReadOnlyPermissionSet : System.Security.PermissionSet
+    {
+        public ReadOnlyPermissionSet(System.Security.SecurityElement permissionSetXml) : base (default(System.Security.Permissions.PermissionState)) { }
+        public override bool IsReadOnly { get { throw null; } }
+        protected override System.Security.IPermission AddPermissionImpl(System.Security.IPermission perm) { throw null; }
+        public override System.Security.PermissionSet Copy() { throw null; }
+        public override void FromXml(System.Security.SecurityElement et) { }
+        protected override System.Collections.IEnumerator GetEnumeratorImpl() { throw null; }
+        protected override System.Security.IPermission GetPermissionImpl(System.Type permClass) { throw null; }
+        protected override System.Security.IPermission RemovePermissionImpl(System.Type permClass) { throw null; }
+        protected override System.Security.IPermission SetPermissionImpl(System.Security.IPermission perm) { throw null; }
+        public override System.Security.SecurityElement ToXml() { throw null; }
     }
     [System.MonoTODOAttribute("work in progress - encryption is missing")]
     public sealed partial class SecureString : System.IDisposable
@@ -19613,26 +19348,26 @@ namespace System.Security.AccessControl
         SystemAlarm = 3,
         SystemAudit = 2,
     }
-    public enum AceType
+    public enum AceType : byte
     {
-        AccessAllowed = 0,
-        AccessAllowedCallback = 9,
-        AccessAllowedCallbackObject = 11,
-        AccessAllowedCompound = 4,
-        AccessAllowedObject = 5,
-        AccessDenied = 1,
-        AccessDeniedCallback = 10,
-        AccessDeniedCallbackObject = 12,
-        AccessDeniedObject = 6,
-        MaxDefinedAceType = 16,
-        SystemAlarm = 3,
-        SystemAlarmCallback = 14,
-        SystemAlarmCallbackObject = 16,
-        SystemAlarmObject = 8,
-        SystemAudit = 2,
-        SystemAuditCallback = 13,
-        SystemAuditCallbackObject = 15,
-        SystemAuditObject = 7,
+        AccessAllowed = (byte)0,
+        AccessAllowedCallback = (byte)9,
+        AccessAllowedCallbackObject = (byte)11,
+        AccessAllowedCompound = (byte)4,
+        AccessAllowedObject = (byte)5,
+        AccessDenied = (byte)1,
+        AccessDeniedCallback = (byte)10,
+        AccessDeniedCallbackObject = (byte)12,
+        AccessDeniedObject = (byte)6,
+        MaxDefinedAceType = (byte)16,
+        SystemAlarm = (byte)3,
+        SystemAlarmCallback = (byte)14,
+        SystemAlarmCallbackObject = (byte)16,
+        SystemAlarmObject = (byte)8,
+        SystemAudit = (byte)2,
+        SystemAuditCallback = (byte)13,
+        SystemAuditCallbackObject = (byte)15,
+        SystemAuditObject = (byte)7,
     }
     [System.FlagsAttribute]
     public enum AuditFlags
@@ -20201,8 +19936,8 @@ namespace System.Security.AccessControl
         public virtual void AddAccessRule(System.Security.AccessControl.AccessRule<T> rule) { }
         public virtual void AddAuditRule(System.Security.AccessControl.AuditRule<T> rule) { }
         public override System.Security.AccessControl.AuditRule AuditRuleFactory(System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AuditFlags flags) { throw null; }
-        protected void Persist(System.Runtime.InteropServices.SafeHandle handle) { }
-        protected void Persist(string name) { }
+        protected internal void Persist(System.Runtime.InteropServices.SafeHandle handle) { }
+        protected internal void Persist(string name) { }
         public virtual bool RemoveAccessRule(System.Security.AccessControl.AccessRule<T> rule) { throw null; }
         public virtual void RemoveAccessRuleAll(System.Security.AccessControl.AccessRule<T> rule) { }
         public virtual void RemoveAccessRuleSpecific(System.Security.AccessControl.AccessRule<T> rule) { }
@@ -20817,16 +20552,8 @@ namespace System.Security.Cryptography
         public abstract byte[] CreateSignature(byte[] rgbHash);
         public abstract System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters);
         public override void FromXmlString(string xmlString) { }
-        protected virtual byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
-        protected virtual byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public abstract void ImportParameters(System.Security.Cryptography.DSAParameters parameters);
-        public virtual byte[] SignData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
-        public byte[] SignData(byte[] data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
-        public virtual byte[] SignData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public override string ToXmlString(bool includePrivateParameters) { throw null; }
-        public bool VerifyData(byte[] data, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
-        public virtual bool VerifyData(byte[] data, int offset, int count, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
-        public virtual bool VerifyData(System.IO.Stream data, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public abstract bool VerifySignature(byte[] rgbHash, byte[] rgbSignature);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -20851,9 +20578,6 @@ namespace System.Security.Cryptography
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public byte[] ExportCspBlob(bool includePrivateParameters) { throw null; }
         public override System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
-        ~DSACryptoServiceProvider() { }
-        protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
-        protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void ImportCspBlob(byte[] keyBlob) { }
         public override void ImportParameters(System.Security.Cryptography.DSAParameters parameters) { }
@@ -21094,7 +20818,6 @@ namespace System.Security.Cryptography
     {
         public MD5CryptoServiceProvider() { }
         protected override void Dispose(bool disposing) { }
-        ~MD5CryptoServiceProvider() { }
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
         protected override byte[] HashFinal() { throw null; }
         public override void Initialize() { }
@@ -21250,7 +20973,6 @@ namespace System.Security.Cryptography
         public RNGCryptoServiceProvider(System.Security.Cryptography.CspParameters cspParams) { }
         public RNGCryptoServiceProvider(string str) { }
         protected override void Dispose(bool disposing) { }
-        ~RNGCryptoServiceProvider() { }
         public override void GetBytes(byte[] data) { }
         public override void GetNonZeroBytes(byte[] data) { }
     }
@@ -21307,7 +21029,6 @@ namespace System.Security.Cryptography
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public byte[] ExportCspBlob(bool includePrivateParameters) { throw null; }
         public override System.Security.Cryptography.RSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
-        ~RSACryptoServiceProvider() { }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -21459,7 +21180,6 @@ namespace System.Security.Cryptography
     {
         public SHA1CryptoServiceProvider() { }
         protected override void Dispose(bool disposing) { }
-        ~SHA1CryptoServiceProvider() { }
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
         protected override byte[] HashFinal() { throw null; }
         public override void Initialize() { }
@@ -21708,7 +21428,6 @@ namespace System.Security.Cryptography.X509Certificates
     public enum X509KeyStorageFlags
     {
         DefaultKeySet = 0,
-        EphemeralKeySet = 32,
         Exportable = 4,
         MachineKeySet = 2,
         PersistKeySet = 16,
@@ -22513,6 +22232,7 @@ namespace System.Security.Policy
     {
         public ApplicationDirectory(string name) { }
         public string Directory { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         public override bool Equals(object o) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -22564,6 +22284,7 @@ namespace System.Security.Policy
         public System.Collections.Generic.IList<System.Security.Policy.StrongName> FullTrustAssemblies { get { throw null; } }
         public bool IsApplicationTrustedToRun { get { throw null; } set { } }
         public bool Persist { get { throw null; } set { } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public void FromXml(System.Security.SecurityElement element) { }
         public System.Security.SecurityElement ToXml() { throw null; }
     }
@@ -22659,6 +22380,7 @@ namespace System.Security.Policy
         [System.ObsoleteAttribute]
         public Evidence(object[] hostEvidence, object[] assemblyEvidence) { }
         public Evidence(System.Security.Policy.Evidence evidence) { }
+        public Evidence(System.Security.Policy.EvidenceBase[] hostEvidence, System.Security.Policy.EvidenceBase[] assemblyEvidence) { }
         [System.ObsoleteAttribute]
         public int Count { get { throw null; } }
         public bool IsReadOnly { get { throw null; } }
@@ -22667,8 +22389,10 @@ namespace System.Security.Policy
         public object SyncRoot { get { throw null; } }
         [System.ObsoleteAttribute]
         public void AddAssembly(object id) { }
+        public void AddAssemblyEvidence<T>(T evidence) where T : System.Security.Policy.EvidenceBase { }
         [System.ObsoleteAttribute]
         public void AddHost(object id) { }
+        public void AddHostEvidence<T>(T evidence) where T : System.Security.Policy.EvidenceBase { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void Clear() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -22676,9 +22400,11 @@ namespace System.Security.Policy
         [System.ObsoleteAttribute]
         public void CopyTo(System.Array array, int index) { }
         public System.Collections.IEnumerator GetAssemblyEnumerator() { throw null; }
+        public T GetAssemblyEvidence<T>() where T : System.Security.Policy.EvidenceBase { throw null; }
         [System.ObsoleteAttribute]
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public System.Collections.IEnumerator GetHostEnumerator() { throw null; }
+        public T GetHostEvidence<T>() where T : System.Security.Policy.EvidenceBase { throw null; }
         public void Merge(System.Security.Policy.Evidence evidence) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void RemoveType(System.Type t) { }
@@ -22722,6 +22448,7 @@ namespace System.Security.Policy
     public sealed partial class GacInstalled : System.Security.Policy.EvidenceBase, System.Security.Policy.IIdentityPermissionFactory
     {
         public GacInstalled() { }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         public System.Security.IPermission CreateIdentityPermission(System.Security.Policy.Evidence evidence) { throw null; }
         public override bool Equals(object o) { throw null; }
@@ -22750,8 +22477,11 @@ namespace System.Security.Policy
         public Hash(System.Reflection.Assembly assembly) { }
         public byte[] MD5 { get { throw null; } }
         public byte[] SHA1 { get { throw null; } }
+        public byte[] SHA256 { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public static System.Security.Policy.Hash CreateMD5(byte[] md5) { throw null; }
         public static System.Security.Policy.Hash CreateSHA1(byte[] sha1) { throw null; }
+        public static System.Security.Policy.Hash CreateSHA256(byte[] sha256) { throw null; }
         public byte[] GenerateHash(System.Security.Cryptography.HashAlgorithm hashAlg) { throw null; }
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
@@ -22827,12 +22557,13 @@ namespace System.Security.Policy
         public System.Security.PermissionSet DeniedPermissions { get { throw null; } }
         public System.Security.PermissionSet OptionalPermissions { get { throw null; } }
         public System.Security.PermissionSet RequestedPermissions { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public System.Security.Policy.PermissionRequestEvidence Copy() { throw null; }
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    public partial class PolicyException : System.SystemException, System.Runtime.InteropServices._Exception
+    public partial class PolicyException : System.SystemException
     {
         public PolicyException() { }
         protected PolicyException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
@@ -22908,6 +22639,7 @@ namespace System.Security.Policy
     {
         public Publisher(System.Security.Cryptography.X509Certificates.X509Certificate cert) { }
         public System.Security.Cryptography.X509Certificates.X509Certificate Certificate { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         public System.Security.IPermission CreateIdentityPermission(System.Security.Policy.Evidence evidence) { throw null; }
         public override bool Equals(object o) { throw null; }
@@ -22936,6 +22668,7 @@ namespace System.Security.Policy
     {
         public Site(string name) { }
         public string Name { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         public static System.Security.Policy.Site CreateFromUrl(string url) { throw null; }
         public System.Security.IPermission CreateIdentityPermission(System.Security.Policy.Evidence evidence) { throw null; }
@@ -22967,6 +22700,7 @@ namespace System.Security.Policy
         public string Name { get { throw null; } }
         public System.Security.Permissions.StrongNamePublicKeyBlob PublicKey { get { throw null; } }
         public System.Version Version { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         public System.Security.IPermission CreateIdentityPermission(System.Security.Policy.Evidence evidence) { throw null; }
         public override bool Equals(object o) { throw null; }
@@ -23026,6 +22760,7 @@ namespace System.Security.Policy
     {
         public Url(string name) { }
         public string Value { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         public System.Security.IPermission CreateIdentityPermission(System.Security.Policy.Evidence evidence) { throw null; }
         public override bool Equals(object o) { throw null; }
@@ -23054,6 +22789,7 @@ namespace System.Security.Policy
     {
         public Zone(System.Security.SecurityZone zone) { }
         public System.Security.SecurityZone SecurityZone { get { throw null; } }
+        public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
         [System.MonoTODOAttribute("Not user configurable yet")]
         public static System.Security.Policy.Zone CreateFromUrl(string url) { throw null; }
@@ -23327,7 +23063,7 @@ namespace System.Security.Principal
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    public partial class WindowsIdentity : System.Security.Claims.ClaimsIdentity, System.IDisposable, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable, System.Security.Principal.IIdentity
+    public partial class WindowsIdentity : System.Security.Claims.ClaimsIdentity, System.IDisposable, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
         [System.NonSerializedAttribute]
         public new const string DefaultIssuer = "AD AUTHORITY";
@@ -23341,12 +23077,15 @@ namespace System.Security.Principal
         public WindowsIdentity(System.IntPtr userToken, string type, System.Security.Principal.WindowsAccountType acctType, bool isAuthenticated) { }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public WindowsIdentity(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        protected WindowsIdentity(System.Security.Principal.WindowsIdentity identity) { }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public WindowsIdentity(string sUserPrincipalName) { }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public WindowsIdentity(string sUserPrincipalName, string type) { }
         public Microsoft.Win32.SafeHandles.SafeAccessTokenHandle AccessToken { get { throw null; } }
         public sealed override string AuthenticationType { get { throw null; } }
+        public override System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> Claims { get { throw null; } }
+        public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> DeviceClaims { get { throw null; } }
         [System.MonoTODOAttribute("not implemented")]
         public System.Security.Principal.IdentityReferenceCollection Groups { get { throw null; } }
         [System.MonoTODOAttribute("not implemented")]
@@ -23364,6 +23103,8 @@ namespace System.Security.Principal
         [System.MonoTODOAttribute("not implemented")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Security.Principal.SecurityIdentifier User { get { throw null; } }
+        public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> UserClaims { get { throw null; } }
+        public override System.Security.Claims.ClaimsIdentity Clone() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void Dispose() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -23399,7 +23140,9 @@ namespace System.Security.Principal
     public partial class WindowsPrincipal : System.Security.Claims.ClaimsPrincipal
     {
         public WindowsPrincipal(System.Security.Principal.WindowsIdentity ntIdentity) { }
+        public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> DeviceClaims { get { throw null; } }
         public override System.Security.Principal.IIdentity Identity { get { throw null; } }
+        public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> UserClaims { get { throw null; } }
         public virtual bool IsInRole(int rid) { throw null; }
         [System.MonoTODOAttribute("not implemented")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -24488,13 +24231,6 @@ namespace System.Threading
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public delegate void ParameterizedThreadStart(object obj);
-    public sealed partial class PreAllocatedOverlapped : System.IDisposable
-    {
-        [System.CLSCompliantAttribute(false)]
-        public PreAllocatedOverlapped(System.Threading.IOCompletionCallback callback, object state, object pinData) { }
-        public void Dispose() { }
-        ~PreAllocatedOverlapped() { }
-    }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class ReaderWriterLock : System.Runtime.ConstrainedExecution.CriticalFinalizerObject
     {

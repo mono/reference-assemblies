@@ -58,7 +58,7 @@ namespace System
 namespace System.Transactions
 {
     [System.SerializableAttribute]
-    public sealed partial class CommittableTransaction : System.Transactions.Transaction, System.IAsyncResult, System.IDisposable, System.Runtime.Serialization.ISerializable
+    public sealed partial class CommittableTransaction : System.Transactions.Transaction, System.IAsyncResult
     {
         public CommittableTransaction() { }
         public CommittableTransaction(System.TimeSpan timeout) { }
@@ -70,8 +70,6 @@ namespace System.Transactions
         public System.IAsyncResult BeginCommit(System.AsyncCallback asyncCallback, object asyncState) { throw null; }
         public void Commit() { }
         public void EndCommit(System.IAsyncResult asyncResult) { }
-        [System.MonoTODOAttribute("Not implemented")]
-        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public enum DependentCloneOption
     {
@@ -80,12 +78,28 @@ namespace System.Transactions
     }
     [System.MonoTODOAttribute("Not supported yet")]
     [System.SerializableAttribute]
-    public sealed partial class DependentTransaction : System.Transactions.Transaction, System.Runtime.Serialization.ISerializable
+    public sealed partial class DependentTransaction : System.Transactions.Transaction
     {
         internal DependentTransaction() { }
         [System.MonoTODOAttribute]
         public void Complete() { }
-        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+    }
+    public sealed partial class DistributedTransactionPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
+    {
+        public DistributedTransactionPermission(System.Security.Permissions.PermissionState state) { }
+        public override System.Security.IPermission Copy() { throw null; }
+        public override void FromXml(System.Security.SecurityElement securityElement) { }
+        public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
+        public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
+        public bool IsUnrestricted() { throw null; }
+        public override System.Security.SecurityElement ToXml() { throw null; }
+        public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
+    }
+    public sealed partial class DistributedTransactionPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
+    {
+        public DistributedTransactionPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
+        public new bool Unrestricted { get { throw null; } set { } }
+        public override System.Security.IPermission CreatePermission() { throw null; }
     }
     public partial class Enlistment
     {
@@ -109,7 +123,7 @@ namespace System.Transactions
     public partial interface IDtcTransaction
     {
         void Abort(System.IntPtr reason, int retaining, int async);
-        void Commit(int retaining, int commitType, int reserved);
+        void Commit(int retaining, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.I4)]int commitType, int reserved);
         void GetTransactionInfo(System.IntPtr transactionInformation);
     }
     public partial interface IEnlistmentNotification
@@ -181,15 +195,12 @@ namespace System.Transactions
         internal Transaction() { }
         public static System.Transactions.Transaction Current { get { throw null; } set { } }
         public System.Transactions.IsolationLevel IsolationLevel { get { throw null; } }
-        public System.Guid PromoterType { get { throw null; } }
         public System.Transactions.TransactionInformation TransactionInformation { get { throw null; } }
         public event System.Transactions.TransactionCompletedEventHandler TransactionCompleted { add { } remove { } }
-        protected System.IAsyncResult BeginCommitInternal(System.AsyncCallback callback) { throw null; }
         public System.Transactions.Transaction Clone() { throw null; }
         [System.MonoTODOAttribute]
         public System.Transactions.DependentTransaction DependentClone(System.Transactions.DependentCloneOption cloneOption) { throw null; }
         public void Dispose() { }
-        protected void EndCommitInternal(System.IAsyncResult ar) { }
         [System.MonoTODOAttribute("Only SinglePhase commit supported for durable resource managers.")]
         [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
         public System.Transactions.Enlistment EnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.IEnlistmentNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
@@ -197,24 +208,21 @@ namespace System.Transactions
         [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
         public System.Transactions.Enlistment EnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public bool EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification) { throw null; }
-        public bool EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification, System.Guid promoterType) { throw null; }
         [System.MonoTODOAttribute("EnlistmentOptions being ignored")]
         public System.Transactions.Enlistment EnlistVolatile(System.Transactions.IEnlistmentNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         [System.MonoTODOAttribute("EnlistmentOptions being ignored")]
         public System.Transactions.Enlistment EnlistVolatile(System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
-        public byte[] GetPromotedToken() { throw null; }
         public static bool operator ==(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
         public static bool operator !=(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
         [System.MonoTODOAttribute("Only Local Transaction Manager supported. Cannot have more than 1 durable resource per transaction.")]
         [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
-        public System.Transactions.Enlistment PromoteAndEnlistDurable(System.Guid manager, System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Transactions.ISinglePhaseNotification notification, System.Transactions.EnlistmentOptions options) { throw null; }
+        public System.Transactions.Enlistment PromoteAndEnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Transactions.ISinglePhaseNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public void Rollback() { }
         public void Rollback(System.Exception e) { }
-        public void SetDistributedTransactionIdentifier(System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Guid distributedTransactionIdentifier) { }
         [System.MonoTODOAttribute]
-        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
     public partial class TransactionAbortedException : System.Transactions.TransactionException
@@ -257,7 +265,6 @@ namespace System.Transactions
     [System.MonoTODOAttribute]
     public static partial class TransactionInterop
     {
-        public static readonly System.Guid PromoterTypeDtc;
         [System.MonoTODOAttribute]
         public static System.Transactions.IDtcTransaction GetDtcTransaction(System.Transactions.Transaction transaction) { throw null; }
         [System.MonoTODOAttribute]
@@ -323,12 +330,12 @@ namespace System.Transactions
         public TransactionScope(System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.TimeSpan scopeTimeout) { }
-        public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.TimeSpan scopeTimeout, System.Transactions.TransactionScopeAsyncFlowOption asyncFlow) { }
+        public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.TimeSpan scopeTimeout, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionOptions transactionOptions) { }
         [System.MonoTODOAttribute("EnterpriseServicesInteropOption not supported")]
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionOptions transactionOptions, System.Transactions.EnterpriseServicesInteropOption interopOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionOptions transactionOptions, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
-        public TransactionScope(System.Transactions.TransactionScopeOption option, System.Transactions.TransactionScopeAsyncFlowOption asyncFlow) { }
+        public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
         public void Complete() { }
         public void Dispose() { }
     }
@@ -354,23 +361,25 @@ namespace System.Transactions
 }
 namespace System.Transactions.Configuration
 {
-    public partial class DefaultSettingsSection : System.Configuration.ConfigurationSection
+    public sealed partial class DefaultSettingsSection : System.Configuration.ConfigurationSection
     {
         public DefaultSettingsSection() { }
         [System.Configuration.ConfigurationPropertyAttribute("distributedTransactionManagerName", DefaultValue="")]
         public string DistributedTransactionManagerName { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("timeout", DefaultValue="00:01:00")]
         [System.Configuration.TimeSpanValidatorAttribute(MinValueString="00:00:00", MaxValueString="10675199.02:48:05.4775807")]
         public System.TimeSpan Timeout { get { throw null; } set { } }
     }
-    public partial class MachineSettingsSection : System.Configuration.ConfigurationSection
+    public sealed partial class MachineSettingsSection : System.Configuration.ConfigurationSection
     {
         public MachineSettingsSection() { }
         [System.Configuration.ConfigurationPropertyAttribute("maxTimeout", DefaultValue="00:10:00")]
         [System.Configuration.TimeSpanValidatorAttribute(MinValueString="00:00:00", MaxValueString="10675199.02:48:05.4775807")]
         public System.TimeSpan MaxTimeout { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    public partial class TransactionsSectionGroup : System.Configuration.ConfigurationSectionGroup
+    public sealed partial class TransactionsSectionGroup : System.Configuration.ConfigurationSectionGroup
     {
         public TransactionsSectionGroup() { }
         [System.Configuration.ConfigurationPropertyAttribute("defaultSettings")]

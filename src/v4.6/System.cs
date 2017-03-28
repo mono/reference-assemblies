@@ -1523,7 +1523,7 @@ namespace System.CodeDom.Compiler
         protected abstract void GenerateSnippetMember(System.CodeDom.CodeSnippetTypeMember e);
         protected virtual void GenerateSnippetStatement(System.CodeDom.CodeSnippetStatement e) { }
         protected void GenerateStatement(System.CodeDom.CodeStatement e) { }
-        protected void GenerateStatements(System.CodeDom.CodeStatementCollection stmts) { }
+        protected void GenerateStatements(System.CodeDom.CodeStatementCollection stms) { }
         protected abstract void GenerateThisReferenceExpression(System.CodeDom.CodeThisReferenceExpression e);
         protected abstract void GenerateThrowExceptionStatement(System.CodeDom.CodeThrowExceptionStatement e);
         protected abstract void GenerateTryCatchFinallyStatement(System.CodeDom.CodeTryCatchFinallyStatement e);
@@ -1881,7 +1881,6 @@ namespace System.Collections.Concurrent
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
         public void Add(T item) { }
-        public void Clear() { }
         public void CopyTo(T[] array, int index) { }
         public System.Collections.Generic.IEnumerator<T> GetEnumerator() { throw null; }
         bool System.Collections.Concurrent.IProducerConsumerCollection<T>.TryAdd(T item) { throw null; }
@@ -1990,8 +1989,6 @@ namespace System.Collections.Generic
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public T[] ToArray() { throw null; }
         public void TrimExcess() { }
-        public bool TryDequeue(out T result) { result = default(T); throw null; }
-        public bool TryPeek(out T result) { result = default(T); throw null; }
         [System.SerializableAttribute]
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<T>, System.Collections.IEnumerator, System.IDisposable
@@ -2161,7 +2158,7 @@ namespace System.Collections.Generic
         void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.CopyTo(System.Collections.Generic.KeyValuePair<TKey, TValue>[] array, int arrayIndex) { }
         bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Remove(System.Collections.Generic.KeyValuePair<TKey, TValue> keyValuePair) { throw null; }
         System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey,TValue>>.GetEnumerator() { throw null; }
-        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        void System.Collections.ICollection.CopyTo(System.Array array, int arrayIndex) { }
         void System.Collections.IDictionary.Add(object key, object value) { }
         bool System.Collections.IDictionary.Contains(object key) { throw null; }
         System.Collections.IDictionaryEnumerator System.Collections.IDictionary.GetEnumerator() { throw null; }
@@ -2217,7 +2214,6 @@ namespace System.Collections.Generic
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        public bool TryGetValue(T equalValue, out T actualValue) { actualValue = default(T); throw null; }
         public void UnionWith(System.Collections.Generic.IEnumerable<T> other) { }
         [System.SerializableAttribute]
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
@@ -2255,8 +2251,6 @@ namespace System.Collections.Generic
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public T[] ToArray() { throw null; }
         public void TrimExcess() { }
-        public bool TryPeek(out T result) { result = default(T); throw null; }
-        public bool TryPop(out T result) { result = default(T); throw null; }
         [System.SerializableAttribute]
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<T>, System.Collections.IEnumerator, System.IDisposable
@@ -5626,8 +5620,6 @@ namespace System.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("enabled", DefaultValue=(System.UriIdnScope)(0), Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
         public System.UriIdnScope Enabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        public override bool Equals(object o) { throw null; }
-        public override int GetHashCode() { throw null; }
     }
     public partial class IgnoreSectionHandler : System.Configuration.IConfigurationSectionHandler
     {
@@ -5648,8 +5640,6 @@ namespace System.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("enabled", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
         public bool Enabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        public override bool Equals(object o) { throw null; }
-        public override int GetHashCode() { throw null; }
     }
     public partial interface ISettingsProviderService
     {
@@ -5687,6 +5677,23 @@ namespace System.Configuration
     public sealed partial class NoSettingsVersionUpgradeAttribute : System.Attribute
     {
         public NoSettingsVersionUpgradeAttribute() { }
+    }
+    public sealed partial class SchemeSettingElement : System.Configuration.ConfigurationElement
+    {
+        public SchemeSettingElement() { }
+        public System.GenericUriParserOptions GenericUriParserOptions { get { throw null; } }
+        public string Name { get { throw null; } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+    }
+    public sealed partial class SchemeSettingElementCollection : System.Configuration.ConfigurationElementCollection
+    {
+        public SchemeSettingElementCollection() { }
+        public override System.Configuration.ConfigurationElementCollectionType CollectionType { get { throw null; } }
+        public System.Configuration.SchemeSettingElement this[int index] { get { throw null; } }
+        public new System.Configuration.SchemeSettingElement this[string name] { get { throw null; } }
+        protected override System.Configuration.ConfigurationElement CreateNewElement() { throw null; }
+        protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
+        public int IndexOf(System.Configuration.SchemeSettingElement element) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(128))]
     public partial class SettingAttribute : System.Attribute
@@ -5948,6 +5955,7 @@ namespace System.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("iriParsing")]
         public System.Configuration.IriParsingElement IriParsing { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        public System.Configuration.SchemeSettingElementCollection SchemeSettings { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(128))]
     public sealed partial class UserScopedSettingAttribute : System.Configuration.SettingAttribute
@@ -7057,9 +7065,6 @@ namespace System.Diagnostics
         [System.ComponentModel.NotifyParentPropertyAttribute(true)]
         public bool LoadUserProfile { get { throw null; } set { } }
         public System.Security.SecureString Password { get { throw null; } set { } }
-        [System.ComponentModel.BrowsableAttribute(false)]
-        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public string PasswordInClearText { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.NotifyParentPropertyAttribute(true)]
         [System.Diagnostics.MonitoringDescriptionAttribute("Whether the process's error output is written to the Process instance's StandardError member.")]
@@ -7631,7 +7636,6 @@ namespace System.IO
         public void BeginInit() { }
         protected override void Dispose(bool disposing) { }
         public void EndInit() { }
-        ~FileSystemWatcher() { }
         protected void OnChanged(System.IO.FileSystemEventArgs e) { }
         protected void OnCreated(System.IO.FileSystemEventArgs e) { }
         protected void OnDeleted(System.IO.FileSystemEventArgs e) { }
@@ -7748,19 +7752,14 @@ namespace System.IO.Compression
         public override long Position { get { throw null; } set { } }
         public override System.IAsyncResult BeginRead(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState) { throw null; }
         public override System.IAsyncResult BeginWrite(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState) { throw null; }
-        public override System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize, System.Threading.CancellationToken cancellationToken) { throw null; }
         protected override void Dispose(bool disposing) { }
         public override int EndRead(System.IAsyncResult asyncResult) { throw null; }
         public override void EndWrite(System.IAsyncResult asyncResult) { }
         public override void Flush() { }
-        public override System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken) { throw null; }
         public override int Read(byte[] array, int offset, int count) { throw null; }
-        public override System.Threading.Tasks.Task<int> ReadAsync(byte[] array, int offset, int count, System.Threading.CancellationToken cancellationToken) { throw null; }
-        public override int ReadByte() { throw null; }
         public override long Seek(long offset, System.IO.SeekOrigin origin) { throw null; }
         public override void SetLength(long value) { }
         public override void Write(byte[] array, int offset, int count) { }
-        public override System.Threading.Tasks.Task WriteAsync(byte[] array, int offset, int count, System.Threading.CancellationToken cancellationToken) { throw null; }
     }
 }
 namespace System.IO.Ports
@@ -8355,7 +8354,7 @@ namespace System.Net
         public override System.IO.Stream GetRequestStream() { throw null; }
         public override System.Net.WebResponse GetResponse() { throw null; }
     }
-    public partial class FtpWebResponse : System.Net.WebResponse
+    public partial class FtpWebResponse : System.Net.WebResponse, System.IDisposable
     {
         internal FtpWebResponse() { }
         public string BannerMessage { get { throw null; } }
@@ -8521,7 +8520,7 @@ namespace System.Net
     }
     public partial class HttpListenerTimeoutManager
     {
-        public HttpListenerTimeoutManager() { }
+        internal HttpListenerTimeoutManager() { }
         [System.MonoTODOAttribute]
         public System.TimeSpan DrainEntityBody { get { throw null; } set { } }
         [System.MonoTODOAttribute]
@@ -8671,6 +8670,7 @@ namespace System.Net
     [System.SerializableAttribute]
     public partial class HttpWebRequest : System.Net.WebRequest, System.Runtime.Serialization.ISerializable
     {
+        public HttpWebRequest() { }
         [System.ObsoleteAttribute("Serialization is obsoleted for this type", false)]
         protected HttpWebRequest(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public string Accept { get { throw null; } set { } }
@@ -8745,8 +8745,9 @@ namespace System.Net
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.SerializableAttribute]
-    public partial class HttpWebResponse : System.Net.WebResponse, System.IDisposable, System.Runtime.Serialization.ISerializable
+    public partial class HttpWebResponse : System.Net.WebResponse, System.Runtime.Serialization.ISerializable
     {
+        public HttpWebResponse() { }
         [System.ObsoleteAttribute("Serialization is obsoleted for this type", false)]
         protected HttpWebResponse(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public string CharacterSet { get { throw null; } }
@@ -8770,7 +8771,6 @@ namespace System.Net
         protected override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public string GetResponseHeader(string headerName) { throw null; }
         public override System.IO.Stream GetResponseStream() { throw null; }
-        void System.IDisposable.Dispose() { }
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     public partial interface IAuthenticationModule
@@ -9018,7 +9018,6 @@ namespace System.Net
     {
         protected TransportContext() { }
         public abstract System.Security.Authentication.ExtendedProtection.ChannelBinding GetChannelBinding(System.Security.Authentication.ExtendedProtection.ChannelBindingKind kind);
-        public virtual System.Collections.Generic.IEnumerable<System.Security.Authentication.ExtendedProtection.TokenBinding> GetTlsTokenBindings() { throw null; }
     }
     public enum TransportType
     {
@@ -9401,7 +9400,6 @@ namespace System.Net
         public bool BypassProxyOnLocal { get { throw null; } set { } }
         public System.Net.ICredentials Credentials { get { throw null; } set { } }
         public bool UseDefaultCredentials { get { throw null; } set { } }
-        public static System.Net.IWebProxy CreateDefaultProxy() { throw null; }
         [System.ObsoleteAttribute("This method has been deprecated. Please use the proxy selected for you by default. http://go.microsoft.com/fwlink/?linkid=14202")]
         public static System.Net.WebProxy GetDefaultProxy() { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
@@ -9744,6 +9742,24 @@ namespace System.Net.Configuration
         [System.MonoTODOAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
     }
+    public sealed partial class HttpListenerElement : System.Configuration.ConfigurationElement
+    {
+        public HttpListenerElement() { }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        public System.Net.Configuration.HttpListenerTimeoutsElement Timeouts { get { throw null; } }
+        public bool UnescapeRequestUrl { get { throw null; } }
+    }
+    public sealed partial class HttpListenerTimeoutsElement : System.Configuration.ConfigurationElement
+    {
+        public HttpListenerTimeoutsElement() { }
+        public System.TimeSpan DrainEntityBody { get { throw null; } }
+        public System.TimeSpan EntityBody { get { throw null; } }
+        public System.TimeSpan HeaderWait { get { throw null; } }
+        public System.TimeSpan IdleConnection { get { throw null; } }
+        public long MinSendBytesPerSecond { get { throw null; } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        public System.TimeSpan RequestQueue { get { throw null; } }
+    }
     public sealed partial class HttpWebRequestElement : System.Configuration.ConfigurationElement
     {
         public HttpWebRequestElement() { }
@@ -9870,6 +9886,7 @@ namespace System.Net.Configuration
         public int DnsRefreshTimeout { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("enableDnsRoundRobin", DefaultValue="False")]
         public bool EnableDnsRoundRobin { get { throw null; } set { } }
+        public System.Net.Security.EncryptionPolicy EncryptionPolicy { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("expect100Continue", DefaultValue="True")]
         public bool Expect100Continue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
@@ -9881,6 +9898,7 @@ namespace System.Net.Configuration
     public sealed partial class SettingsSection : System.Configuration.ConfigurationSection
     {
         public SettingsSection() { }
+        public System.Net.Configuration.HttpListenerElement HttpListener { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("httpWebRequest")]
         public System.Net.Configuration.HttpWebRequestElement HttpWebRequest { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("ipv6")]
@@ -9894,10 +9912,12 @@ namespace System.Net.Configuration
         public System.Net.Configuration.SocketElement Socket { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("webProxyScript")]
         public System.Net.Configuration.WebProxyScriptElement WebProxyScript { get { throw null; } }
+        public System.Net.Configuration.WebUtilityElement WebUtility { get { throw null; } }
     }
     public sealed partial class SmtpNetworkElement : System.Configuration.ConfigurationElement
     {
         public SmtpNetworkElement() { }
+        public string ClientDomain { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("defaultCredentials", DefaultValue="False")]
         public bool DefaultCredentials { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("enableSsl", DefaultValue=false)]
@@ -9944,6 +9964,7 @@ namespace System.Net.Configuration
         public bool AlwaysUseCompletionPortsForAccept { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("alwaysUseCompletionPortsForConnect", DefaultValue="False")]
         public bool AlwaysUseCompletionPortsForConnect { get { throw null; } set { } }
+        public System.Net.Sockets.IPProtectionLevel IPProtectionLevel { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.MonoTODOAttribute]
         protected override void PostDeserialize() { }
@@ -10009,18 +10030,25 @@ namespace System.Net.Configuration
         [System.MonoTODOAttribute]
         protected override void PostDeserialize() { }
     }
+    public sealed partial class WebUtilityElement : System.Configuration.ConfigurationElement
+    {
+        public WebUtilityElement() { }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        public System.Net.Configuration.UnicodeDecodingConformance UnicodeDecodingConformance { get { throw null; } set { } }
+        public System.Net.Configuration.UnicodeEncodingConformance UnicodeEncodingConformance { get { throw null; } set { } }
+    }
 }
 #endif
 namespace System.Net.Mail
 {
     public partial class AlternateView : System.Net.Mail.AttachmentBase
     {
-        public AlternateView(System.IO.Stream contentStream) : base (default(System.IO.Stream)) { }
-        public AlternateView(System.IO.Stream contentStream, System.Net.Mime.ContentType contentType) : base (default(System.IO.Stream)) { }
-        public AlternateView(System.IO.Stream contentStream, string mediaType) : base (default(System.IO.Stream)) { }
-        public AlternateView(string fileName) : base (default(System.IO.Stream)) { }
-        public AlternateView(string fileName, System.Net.Mime.ContentType contentType) : base (default(System.IO.Stream)) { }
-        public AlternateView(string fileName, string mediaType) : base (default(System.IO.Stream)) { }
+        public AlternateView(System.IO.Stream contentStream) : base (default(string)) { }
+        public AlternateView(System.IO.Stream contentStream, System.Net.Mime.ContentType contentType) : base (default(string)) { }
+        public AlternateView(System.IO.Stream contentStream, string mediaType) : base (default(string)) { }
+        public AlternateView(string fileName) : base (default(string)) { }
+        public AlternateView(string fileName, System.Net.Mime.ContentType contentType) : base (default(string)) { }
+        public AlternateView(string fileName, string mediaType) : base (default(string)) { }
         public System.Uri BaseUri { get { throw null; } set { } }
         public System.Net.Mail.LinkedResourceCollection LinkedResources { get { throw null; } }
         public static System.Net.Mail.AlternateView CreateAlternateViewFromString(string content) { throw null; }
@@ -10039,12 +10067,12 @@ namespace System.Net.Mail
     }
     public partial class Attachment : System.Net.Mail.AttachmentBase
     {
-        public Attachment(System.IO.Stream contentStream, System.Net.Mime.ContentType contentType) : base (default(System.IO.Stream)) { }
-        public Attachment(System.IO.Stream contentStream, string name) : base (default(System.IO.Stream)) { }
-        public Attachment(System.IO.Stream contentStream, string name, string mediaType) : base (default(System.IO.Stream)) { }
-        public Attachment(string fileName) : base (default(System.IO.Stream)) { }
-        public Attachment(string fileName, System.Net.Mime.ContentType contentType) : base (default(System.IO.Stream)) { }
-        public Attachment(string fileName, string mediaType) : base (default(System.IO.Stream)) { }
+        public Attachment(System.IO.Stream contentStream, System.Net.Mime.ContentType contentType) : base (default(string)) { }
+        public Attachment(System.IO.Stream contentStream, string name) : base (default(string)) { }
+        public Attachment(System.IO.Stream contentStream, string name, string mediaType) : base (default(string)) { }
+        public Attachment(string fileName) : base (default(string)) { }
+        public Attachment(string fileName, System.Net.Mime.ContentType contentType) : base (default(string)) { }
+        public Attachment(string fileName, string mediaType) : base (default(string)) { }
         public System.Net.Mime.ContentDisposition ContentDisposition { get { throw null; } }
         public string Name { get { throw null; } set { } }
         public System.Text.Encoding NameEncoding { get { throw null; } set { } }
@@ -10087,12 +10115,12 @@ namespace System.Net.Mail
     }
     public partial class LinkedResource : System.Net.Mail.AttachmentBase
     {
-        public LinkedResource(System.IO.Stream contentStream) : base (default(System.IO.Stream)) { }
-        public LinkedResource(System.IO.Stream contentStream, System.Net.Mime.ContentType contentType) : base (default(System.IO.Stream)) { }
-        public LinkedResource(System.IO.Stream contentStream, string mediaType) : base (default(System.IO.Stream)) { }
-        public LinkedResource(string fileName) : base (default(System.IO.Stream)) { }
-        public LinkedResource(string fileName, System.Net.Mime.ContentType contentType) : base (default(System.IO.Stream)) { }
-        public LinkedResource(string fileName, string mediaType) : base (default(System.IO.Stream)) { }
+        public LinkedResource(System.IO.Stream contentStream) : base (default(string)) { }
+        public LinkedResource(System.IO.Stream contentStream, System.Net.Mime.ContentType contentType) : base (default(string)) { }
+        public LinkedResource(System.IO.Stream contentStream, string mediaType) : base (default(string)) { }
+        public LinkedResource(string fileName) : base (default(string)) { }
+        public LinkedResource(string fileName, System.Net.Mime.ContentType contentType) : base (default(string)) { }
+        public LinkedResource(string fileName, string mediaType) : base (default(string)) { }
         public System.Uri ContentLink { get { throw null; } set { } }
         public static System.Net.Mail.LinkedResource CreateLinkedResourceFromString(string content) { throw null; }
         public static System.Net.Mail.LinkedResource CreateLinkedResourceFromString(string content, System.Net.Mime.ContentType contentType) { throw null; }
@@ -10226,7 +10254,7 @@ namespace System.Net.Mail
         public SmtpException(string message, System.Exception innerException) { }
         public System.Net.Mail.SmtpStatusCode StatusCode { get { throw null; } set { } }
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
-        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.SerializableAttribute]
     public partial class SmtpFailedRecipientException : System.Net.Mail.SmtpException, System.Runtime.Serialization.ISerializable
@@ -10252,7 +10280,7 @@ namespace System.Net.Mail
         public SmtpFailedRecipientsException(string message, System.Net.Mail.SmtpFailedRecipientException[] innerExceptions) { }
         public System.Net.Mail.SmtpFailedRecipientException[] InnerExceptions { get { throw null; } }
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
-        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.SerializableAttribute]
     public sealed partial class SmtpPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
@@ -10690,11 +10718,12 @@ namespace System.Net.NetworkInformation
         internal NetworkAvailabilityEventArgs() { }
         public bool IsAvailable { get { throw null; } }
     }
-    public sealed partial class NetworkChange
+    public partial class NetworkChange
     {
         public NetworkChange() { }
         public static event System.Net.NetworkInformation.NetworkAddressChangedEventHandler NetworkAddressChanged { add { } remove { } }
         public static event System.Net.NetworkInformation.NetworkAvailabilityChangedEventHandler NetworkAvailabilityChanged { add { } remove { } }
+        public static void RegisterNetworkChange(System.Net.NetworkInformation.NetworkChange nc) { }
     }
     [System.FlagsAttribute]
     public enum NetworkInformationAccess
@@ -10812,10 +10841,11 @@ namespace System.Net.NetworkInformation
         public override string ToString() { throw null; }
     }
     [System.MonoTODOAttribute("IPv6 support is missing")]
-    public partial class Ping : System.ComponentModel.Component, System.IDisposable
+    public partial class Ping : System.ComponentModel.Component
     {
         public Ping() { }
         public event System.Net.NetworkInformation.PingCompletedEventHandler PingCompleted { add { } remove { } }
+        protected override void Dispose(bool disposing) { }
         protected void OnPingCompleted(System.Net.NetworkInformation.PingCompletedEventArgs e) { }
         public System.Net.NetworkInformation.PingReply Send(System.Net.IPAddress address) { throw null; }
         public System.Net.NetworkInformation.PingReply Send(System.Net.IPAddress address, int timeout) { throw null; }
@@ -10842,7 +10872,6 @@ namespace System.Net.NetworkInformation
         public System.Threading.Tasks.Task<System.Net.NetworkInformation.PingReply> SendPingAsync(string hostNameOrAddress, int timeout) { throw null; }
         public System.Threading.Tasks.Task<System.Net.NetworkInformation.PingReply> SendPingAsync(string hostNameOrAddress, int timeout, byte[] buffer) { throw null; }
         public System.Threading.Tasks.Task<System.Net.NetworkInformation.PingReply> SendPingAsync(string hostNameOrAddress, int timeout, byte[] buffer, System.Net.NetworkInformation.PingOptions options) { throw null; }
-        void System.IDisposable.Dispose() { }
     }
     public partial class PingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
     {
@@ -11119,7 +11148,7 @@ namespace System.Net.Security
         RemoteCertificateNameMismatch = 2,
         RemoteCertificateNotAvailable = 1,
     }
-    public partial class SslStream : System.Net.Security.AuthenticatedStream, System.IDisposable
+    public partial class SslStream : System.Net.Security.AuthenticatedStream
     {
         public SslStream(System.IO.Stream innerStream) : base (default(System.IO.Stream), default(bool)) { }
         public SslStream(System.IO.Stream innerStream, bool leaveInnerStreamOpen) : base (default(System.IO.Stream), default(bool)) { }
@@ -11576,6 +11605,9 @@ namespace System.Net.Sockets
         public System.Net.Sockets.TransmitFileOptions SendPacketsFlags { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.MonoTODOAttribute("unused property")]
         public int SendPacketsSendSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public System.Net.Sockets.SocketClientAccessPolicyProtocol SocketClientAccessPolicyProtocol { get { throw null; } set { } }
         public System.Net.Sockets.SocketError SocketError { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Net.Sockets.SocketFlags SocketFlags { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public object UserToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -11752,41 +11784,11 @@ namespace System.Net.Sockets
         UpdateConnectContext = 28688,
         UseLoopback = 64,
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct SocketReceiveFromResult
-    {
-        public int ReceivedBytes;
-        public System.Net.EndPoint RemoteEndPoint;
-    }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct SocketReceiveMessageFromResult
-    {
-        public System.Net.Sockets.IPPacketInformation PacketInformation;
-        public int ReceivedBytes;
-        public System.Net.EndPoint RemoteEndPoint;
-        public System.Net.Sockets.SocketFlags SocketFlags;
-    }
     public enum SocketShutdown
     {
         Both = 2,
         Receive = 0,
         Send = 1,
-    }
-    public static partial class SocketTaskExtensions
-    {
-        public static System.Threading.Tasks.Task<System.Net.Sockets.Socket> AcceptAsync(this System.Net.Sockets.Socket socket) { throw null; }
-        public static System.Threading.Tasks.Task<System.Net.Sockets.Socket> AcceptAsync(this System.Net.Sockets.Socket socket, System.Net.Sockets.Socket acceptSocket) { throw null; }
-        public static System.Threading.Tasks.Task ConnectAsync(this System.Net.Sockets.Socket socket, System.Net.EndPoint remoteEP) { throw null; }
-        public static System.Threading.Tasks.Task ConnectAsync(this System.Net.Sockets.Socket socket, System.Net.IPAddress address, int port) { throw null; }
-        public static System.Threading.Tasks.Task ConnectAsync(this System.Net.Sockets.Socket socket, System.Net.IPAddress[] addresses, int port) { throw null; }
-        public static System.Threading.Tasks.Task ConnectAsync(this System.Net.Sockets.Socket socket, string host, int port) { throw null; }
-        public static System.Threading.Tasks.Task<int> ReceiveAsync(this System.Net.Sockets.Socket socket, System.ArraySegment<byte> buffer, System.Net.Sockets.SocketFlags socketFlags) { throw null; }
-        public static System.Threading.Tasks.Task<int> ReceiveAsync(this System.Net.Sockets.Socket socket, System.Collections.Generic.IList<System.ArraySegment<byte>> buffers, System.Net.Sockets.SocketFlags socketFlags) { throw null; }
-        public static System.Threading.Tasks.Task<System.Net.Sockets.SocketReceiveFromResult> ReceiveFromAsync(this System.Net.Sockets.Socket socket, System.ArraySegment<byte> buffer, System.Net.Sockets.SocketFlags socketFlags, System.Net.EndPoint remoteEndPoint) { throw null; }
-        public static System.Threading.Tasks.Task<System.Net.Sockets.SocketReceiveMessageFromResult> ReceiveMessageFromAsync(this System.Net.Sockets.Socket socket, System.ArraySegment<byte> buffer, System.Net.Sockets.SocketFlags socketFlags, System.Net.EndPoint remoteEndPoint) { throw null; }
-        public static System.Threading.Tasks.Task<int> SendAsync(this System.Net.Sockets.Socket socket, System.ArraySegment<byte> buffer, System.Net.Sockets.SocketFlags socketFlags) { throw null; }
-        public static System.Threading.Tasks.Task<int> SendAsync(this System.Net.Sockets.Socket socket, System.Collections.Generic.IList<System.ArraySegment<byte>> buffers, System.Net.Sockets.SocketFlags socketFlags) { throw null; }
-        public static System.Threading.Tasks.Task<int> SendToAsync(this System.Net.Sockets.Socket socket, System.ArraySegment<byte> buffer, System.Net.Sockets.SocketFlags socketFlags, System.Net.EndPoint remoteEP) { throw null; }
     }
     public enum SocketType
     {
@@ -11943,7 +11945,7 @@ namespace System.Net.Sockets
 }
 namespace System.Net.WebSockets
 {
-    public partial class ClientWebSocket : System.Net.WebSockets.WebSocket, System.IDisposable
+    public sealed partial class ClientWebSocket : System.Net.WebSockets.WebSocket
     {
         public ClientWebSocket() { }
         public override System.Nullable<System.Net.WebSockets.WebSocketCloseStatus> CloseStatus { get { throw null; } }
@@ -11962,7 +11964,7 @@ namespace System.Net.WebSockets
     }
     public sealed partial class ClientWebSocketOptions
     {
-        public ClientWebSocketOptions() { }
+        internal ClientWebSocketOptions() { }
         public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Net.CookieContainer Cookies { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Net.ICredentials Credentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -11976,7 +11978,7 @@ namespace System.Net.WebSockets
     }
     public partial class HttpListenerWebSocketContext : System.Net.WebSockets.WebSocketContext
     {
-        public HttpListenerWebSocketContext() { }
+        internal HttpListenerWebSocketContext() { }
         [System.MonoTODOAttribute]
         public override System.Net.CookieCollection CookieCollection { get { throw null; } }
         [System.MonoTODOAttribute]
@@ -12090,7 +12092,9 @@ namespace System.Net.WebSockets
         public WebSocketException(System.Net.WebSockets.WebSocketError error, string message, System.Exception innerException) { }
         public WebSocketException(string message) { }
         public WebSocketException(string message, System.Exception innerException) { }
+        public override int ErrorCode { get { throw null; } }
         public System.Net.WebSockets.WebSocketError WebSocketErrorCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public enum WebSocketMessageType
     {
@@ -12117,6 +12121,13 @@ namespace System.Net.WebSockets
         Connecting = 1,
         None = 0,
         Open = 2,
+    }
+}
+namespace System.Reflection
+{
+    public partial interface ICustomTypeProvider
+    {
+        System.Type GetCustomType();
     }
 }
 namespace System.Runtime.InteropServices
@@ -12443,17 +12454,6 @@ namespace System.Security.Authentication.ExtendedProtection
         public System.Security.Authentication.ExtendedProtection.ServiceNameCollection Merge(System.Collections.IEnumerable serviceNames) { throw null; }
         public System.Security.Authentication.ExtendedProtection.ServiceNameCollection Merge(string serviceName) { throw null; }
     }
-    public partial class TokenBinding
-    {
-        internal TokenBinding() { }
-        public System.Security.Authentication.ExtendedProtection.TokenBindingType BindingType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public byte[] GetRawTokenBindingId() { throw null; }
-    }
-    public enum TokenBindingType
-    {
-        Provided = 0,
-        Referred = 1,
-    }
 }
 #if CONFIG_DEP
 namespace System.Security.Authentication.ExtendedProtection.Configuration
@@ -12482,8 +12482,8 @@ namespace System.Security.Authentication.ExtendedProtection.Configuration
     public sealed partial class ServiceNameElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public ServiceNameElementCollection() { }
-        public System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElement this[int index] { get { throw null; } }
-        public new System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElement this[string name] { get { throw null; } }
+        public System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElement this[int index] { get { throw null; } set { } }
+        public new System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElement this[string name] { get { throw null; } set { } }
         public void Add(System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElement element) { }
         public void Clear() { }
         protected override System.Configuration.ConfigurationElement CreateNewElement() { throw null; }
@@ -12495,6 +12495,13 @@ namespace System.Security.Authentication.ExtendedProtection.Configuration
     }
 }
 #endif
+namespace System.Security.Claims
+{
+    public static partial class DynamicRoleClaimProvider
+    {
+        public static void AddDynamicRoleClaims(System.Security.Claims.ClaimsIdentity claimsIdentity, System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> claims) { }
+    }
+}
 namespace System.Security.Cryptography
 {
     public partial class AsnEncodedData
@@ -12683,8 +12690,6 @@ namespace System.Security.Cryptography.X509Certificates
         public System.Security.Cryptography.X509Certificates.X500DistinguishedName SubjectName { get { throw null; } }
         public string Thumbprint { get { throw null; } }
         public int Version { get { throw null; } }
-        [System.MonoTODOAttribute("X509ContentType.SerializedCert is not supported")]
-        public override byte[] Export(System.Security.Cryptography.X509Certificates.X509ContentType contentType, string password) { throw null; }
         [System.MonoTODOAttribute("Detection limited to Cert, Pfx, Pkcs12, Pkcs7 and Unknown")]
         public static System.Security.Cryptography.X509Certificates.X509ContentType GetCertContentType(byte[] rawData) { throw null; }
         [System.MonoTODOAttribute("Detection limited to Cert, Pfx, Pkcs12 and Unknown")]
@@ -12797,7 +12802,6 @@ namespace System.Security.Cryptography.X509Certificates
         public static System.Security.Cryptography.X509Certificates.X509Chain Create() { throw null; }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
-        ~X509Chain() { }
         public void Reset() { }
     }
     public partial class X509ChainElement
@@ -12853,13 +12857,10 @@ namespace System.Security.Cryptography.X509Certificates
         CtlNotTimeValid = 131072,
         CtlNotValidForUsage = 524288,
         Cyclic = 128,
-        ExplicitDistrust = 67108864,
         HasExcludedNameConstraint = 32768,
         HasNotDefinedNameConstraint = 8192,
         HasNotPermittedNameConstraint = 16384,
-        HasNotSupportedCriticalExtension = 134217728,
         HasNotSupportedNameConstraint = 4096,
-        HasWeakSignature = 1048576,
         InvalidBasicConstraints = 1024,
         InvalidExtension = 256,
         InvalidNameConstraints = 2048,
@@ -13134,6 +13135,13 @@ namespace System.Security.Permissions
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
+    public sealed partial class TypeDescriptorPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
+    {
+        public TypeDescriptorPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
+        public System.Security.Permissions.TypeDescriptorPermissionFlags Flags { get { throw null; } set { } }
+        public bool RestrictedRegistrationAccess { get { throw null; } set { } }
+        public override System.Security.IPermission CreatePermission() { throw null; }
+    }
     [System.FlagsAttribute]
     [System.SerializableAttribute]
     public enum TypeDescriptorPermissionFlags
@@ -13230,10 +13238,6 @@ namespace System.Text.RegularExpressions
         public Regex(string pattern, System.Text.RegularExpressions.RegexOptions options) { }
         public Regex(string pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout) { }
         public static int CacheSize { get { throw null; } set { } }
-        [System.CLSCompliantAttribute(false)]
-        protected System.Collections.IDictionary CapNames { get { throw null; } set { } }
-        [System.CLSCompliantAttribute(false)]
-        protected System.Collections.IDictionary Caps { get { throw null; } set { } }
         public System.TimeSpan MatchTimeout { get { throw null; } }
         public System.Text.RegularExpressions.RegexOptions Options { get { throw null; } }
         public bool RightToLeft { get { throw null; } }

@@ -30,11 +30,11 @@ namespace Microsoft.VisualBasic
         NormalFocus = (short)1,
         NormalNoFocus = (short)4,
     }
-    public enum AudioPlayMode : short
+    public enum AudioPlayMode
     {
-        Background = (short)1,
-        BackgroundLoop = (short)2,
-        WaitToComplete = (short)0,
+        Background = 1,
+        BackgroundLoop = 2,
+        WaitToComplete = 0,
     }
     public enum CallType
     {
@@ -49,31 +49,31 @@ namespace Microsoft.VisualBasic
     public sealed partial class Collection : System.Collections.ICollection, System.Collections.IList, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
         public Collection() { }
-        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)]
         public object this[object Index] { get { throw null; } }
         public object this[string Key] { get { throw null; } }
         public object this[int Index] { get { throw null; } }
-        public int Count { get { throw null; } }
         public void Add(object Item, string Key = null, object Before = null, object After = null) { }
-        public void Clear() { }
         public bool Contains(string Key) { throw null; }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public void Remove(int Index) { }
         public void Remove(string Key) { }
-        public object SyncRoot { get { throw null; } }
-        public bool IsReadOnly { get { throw null; } }
-        public bool IsSynchronized { get { throw null; } }
-        public bool IsFixedSize { get { throw null; } }
-        public void CopyTo(System.Array array, int index) { }
-        public void OnDeserialization(object sender) { }
-        public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         object System.Collections.IList.this[int Index] { get { throw null; } set { } }
         int System.Collections.IList.Add(object value) { throw null; }
+        void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
         int System.Collections.IList.IndexOf(object value) { throw null; }
         void System.Collections.IList.Insert(int index, object value) { }
         void System.Collections.IList.Remove(object value) { }
         void System.Collections.IList.RemoveAt(int index) { }
+        bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
+        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
+        void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
+        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), Inherited=false, AllowMultiple=false)]
     public sealed partial class ComClassAttribute : System.Attribute
@@ -81,7 +81,7 @@ namespace Microsoft.VisualBasic
         public ComClassAttribute() { }
         public ComClassAttribute(string _ClassID) { }
         public ComClassAttribute(string _ClassID, string _InterfaceID) { }
-        public ComClassAttribute(string _ClassID, string _InterfaceID, string _EventID) { }
+        public ComClassAttribute(string _ClassID, string _InterfaceID, string _EventId) { }
         public string ClassID { get { throw null; } }
         public string EventID { get { throw null; } }
         public string InterfaceID { get { throw null; } }
@@ -95,6 +95,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Constants
     {
+        internal Constants() { }
         public const Microsoft.VisualBasic.MsgBoxResult vbAbort = (Microsoft.VisualBasic.MsgBoxResult)(3);
         public const Microsoft.VisualBasic.MsgBoxStyle vbAbortRetryIgnore = (Microsoft.VisualBasic.MsgBoxStyle)(2);
         public const Microsoft.VisualBasic.MsgBoxStyle vbApplicationModal = (Microsoft.VisualBasic.MsgBoxStyle)(0);
@@ -197,7 +198,6 @@ namespace Microsoft.VisualBasic
         public const Microsoft.VisualBasic.MsgBoxResult vbYes = (Microsoft.VisualBasic.MsgBoxResult)(6);
         public const Microsoft.VisualBasic.MsgBoxStyle vbYesNo = (Microsoft.VisualBasic.MsgBoxStyle)(4);
         public const Microsoft.VisualBasic.MsgBoxStyle vbYesNoCancel = (Microsoft.VisualBasic.MsgBoxStyle)(3);
-        public Constants() { }
     }
     public sealed partial class ControlChars
     {
@@ -216,7 +216,9 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Conversion
     {
-        public Conversion() { }
+        internal Conversion() { }
+        public static object CTypeDynamic(object Expression, System.Type TargetType) { throw null; }
+        public static TargetType CTypeDynamic<TargetType>(object Expression) { throw null; }
         public static string ErrorToString() { throw null; }
         public static string ErrorToString(int ErrorNumber) { throw null; }
         public static decimal Fix(decimal Number) { throw null; }
@@ -267,7 +269,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class DateAndTime
     {
-        public DateAndTime() { }
+        internal DateAndTime() { }
         public static string DateString { get { throw null; } set { } }
         public static System.DateTime Now { get { throw null; } }
         public static System.DateTime TimeOfDay { get { throw null; } set { } }
@@ -349,14 +351,14 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class FileSystem
     {
-        public FileSystem() { }
+        internal FileSystem() { }
         public static void ChDir(string Path) { }
         public static void ChDrive(char Drive) { }
         public static void ChDrive(string Drive) { }
         public static string CurDir() { throw null; }
         public static string CurDir(char Drive) { throw null; }
         public static string Dir() { throw null; }
-        public static string Dir(string Pathname, Microsoft.VisualBasic.FileAttribute Attributes=(Microsoft.VisualBasic.FileAttribute)(0)) { throw null; }
+        public static string Dir(string PathName, Microsoft.VisualBasic.FileAttribute Attributes=(Microsoft.VisualBasic.FileAttribute)(0)) { throw null; }
         public static bool EOF(int FileNumber) { throw null; }
         public static Microsoft.VisualBasic.OpenMode FileAttr(int FileNumber) { throw null; }
         public static void FileClose(params int[] FileNumbers) { }
@@ -438,7 +440,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Financial
     {
-        public Financial() { }
+        internal Financial() { }
         public static double DDB(double Cost, double Salvage, double Life, double Period, double Factor=2) { throw null; }
         public static double FV(double Rate, double NPer, double Pmt, double PV=0, Microsoft.VisualBasic.DueDate Due=(Microsoft.VisualBasic.DueDate)(0)) { throw null; }
         public static double IPmt(double Rate, double Per, double NPer, double PV, double FV=0, Microsoft.VisualBasic.DueDate Due=(Microsoft.VisualBasic.DueDate)(0)) { throw null; }
@@ -474,7 +476,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Globals
     {
-        public Globals() { }
+        internal Globals() { }
         public static string ScriptEngine { get { throw null; } }
         public static int ScriptEngineBuildVersion { get { throw null; } }
         public static int ScriptEngineMajorVersion { get { throw null; } }
@@ -488,7 +490,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Information
     {
-        public Information() { }
+        internal Information() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public static int Erl() { throw null; }
         public static Microsoft.VisualBasic.ErrObject Err() { throw null; }
@@ -511,7 +513,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Interaction
     {
-        public Interaction() { }
+        internal Interaction() { }
         public static void AppActivate(int ProcessId) { }
         public static void AppActivate(string Title) { }
         public static void Beep() { }
@@ -528,16 +530,11 @@ namespace Microsoft.VisualBasic
         public static string GetSetting(string AppName, string Section, string Key, string Default="") { throw null; }
         public static object IIf(bool Expression, object TruePart, object FalsePart) { throw null; }
         public static string InputBox(string Prompt, string Title="", string DefaultResponse="", int XPos=-1, int YPos=-1) { throw null; }
-        public static Microsoft.VisualBasic.MsgBoxResult MsgBox(object Prompt, Microsoft.VisualBasic.MsgBoxStyle Button=(Microsoft.VisualBasic.MsgBoxStyle)(0), object Title=null) { throw null; }
+        public static Microsoft.VisualBasic.MsgBoxResult MsgBox(object Prompt, Microsoft.VisualBasic.MsgBoxStyle Buttons=(Microsoft.VisualBasic.MsgBoxStyle)(0), object Title=null) { throw null; }
         public static string Partition(long Number, long Start, long Stop, long Interval) { throw null; }
         public static void SaveSetting(string AppName, string Section, string Key, string Setting) { }
-        public static int Shell(string Pathname, Microsoft.VisualBasic.AppWinStyle Style=(Microsoft.VisualBasic.AppWinStyle)(2), bool Wait=false, int Timeout=-1) { throw null; }
+        public static int Shell(string PathName, Microsoft.VisualBasic.AppWinStyle Style=(Microsoft.VisualBasic.AppWinStyle)(2), bool Wait=false, int Timeout=-1) { throw null; }
         public static object Switch(params object[] VarExpr) { throw null; }
-        public partial class InputForm : System.Windows.Forms.Form
-        {
-            public InputForm(string Prompt, string Title="", string DefaultResponse="", int XPos=-1, int YPos=-1) { }
-            public string Run() { throw null; }
-        }
     }
     public enum MsgBoxResult
     {
@@ -614,7 +611,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Strings
     {
-        public Strings() { }
+        internal Strings() { }
         public static int Asc(char String) { throw null; }
         public static int Asc(string String) { throw null; }
         public static int AscW(char String) { throw null; }
@@ -729,7 +726,7 @@ namespace Microsoft.VisualBasic
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class VBMath
     {
-        public VBMath() { }
+        internal VBMath() { }
         public static void Randomize() { }
         public static void Randomize(double Number) { }
         public static float Rnd() { throw null; }
@@ -887,7 +884,7 @@ namespace Microsoft.VisualBasic.ApplicationServices
     public partial class WindowsFormsApplicationBase : Microsoft.VisualBasic.ApplicationServices.ConsoleApplicationBase
     {
         public WindowsFormsApplicationBase() { }
-        public WindowsFormsApplicationBase(Microsoft.VisualBasic.ApplicationServices.AuthenticationMode mode) { }
+        public WindowsFormsApplicationBase(Microsoft.VisualBasic.ApplicationServices.AuthenticationMode authenticationMode) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Forms.ApplicationContext ApplicationContext { get { throw null; } }
         protected bool EnableVisualStyles { get { throw null; } set { } }
@@ -897,7 +894,7 @@ namespace Microsoft.VisualBasic.ApplicationServices
         public int MinimumSplashScreenDisplayTime { get { throw null; } set { } }
         public System.Windows.Forms.FormCollection OpenForms { get { throw null; } }
         public bool SaveMySettingsOnExit { get { throw null; } set { } }
-        protected Microsoft.VisualBasic.ApplicationServices.ShutdownMode ShutdownStyle { get { throw null; } set { } }
+        protected internal Microsoft.VisualBasic.ApplicationServices.ShutdownMode ShutdownStyle { get { throw null; } set { } }
         public System.Windows.Forms.Form SplashScreen { get { throw null; } set { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected static bool UseCompatibleTextRendering { get { throw null; } }
@@ -945,7 +942,7 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal ByteType() { }
         public static byte FromObject(object Value) { throw null; }
-        public static byte FromString(string value) { throw null; }
+        public static byte FromString(string Value) { throw null; }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public sealed partial class CharArrayType
@@ -959,13 +956,14 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal CharType() { }
         public static char FromObject(object Value) { throw null; }
-        public static char FromString(string value) { throw null; }
+        public static char FromString(string Value) { throw null; }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public sealed partial class Conversions
     {
         internal Conversions() { }
         public static object ChangeType(object Expression, System.Type TargetType) { throw null; }
+        public static object FallbackUserDefinedConversion(object Expression, System.Type TargetType) { throw null; }
         public static string FromCharAndCount(char Value, int Count) { throw null; }
         public static string FromCharArray(char[] Value) { throw null; }
         public static string FromCharArraySubset(char[] Value, int StartIndex, int Length) { throw null; }
@@ -1160,21 +1158,31 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal LongType() { }
         public static long FromObject(object Value) { throw null; }
-        public static long FromString(string value) { throw null; }
+        public static long FromString(string Value) { throw null; }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public sealed partial class NewLateBinding
     {
         internal NewLateBinding() { }
+        public static object FallbackCall(object Instance, string MemberName, object[] Arguments, string[] ArgumentNames, bool IgnoreReturn) { throw null; }
+        public static object FallbackGet(object Instance, string MemberName, object[] Arguments, string[] ArgumentNames) { throw null; }
+        public static void FallbackIndexSet(object Instance, object[] Arguments, string[] ArgumentNames) { }
+        public static void FallbackIndexSetComplex(object Instance, object[] Arguments, string[] ArgumentNames, bool OptimisticSet, bool RValueBase) { }
+        public static object FallbackInvokeDefault1(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
+        public static object FallbackInvokeDefault2(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
+        public static void FallbackSet(object Instance, string MemberName, object[] Arguments) { }
+        public static void FallbackSetComplex(object Instance, string MemberName, object[] Arguments, bool OptimisticSet, bool RValueBase) { }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateCall(object Instance, System.Type Type, string MemberName, object[] Arguments, string[] ArgumentNames, System.Type[] TypeArguments, bool[] CopyBack, bool IgnoreReturn) { throw null; }
+        public static object LateCallInvokeDefault(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public static bool LateCanEvaluate(object instance, System.Type type, string memberName, object[] arguments, bool allowFunctionEvaluation, bool allowPropertyEvaluation) { throw null; }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateGet(object Instance, System.Type Type, string MemberName, object[] Arguments, string[] ArgumentNames, System.Type[] TypeArguments, bool[] CopyBack) { throw null; }
+        public static object LateGetInvokeDefault(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateIndexGet(object Instance, object[] Arguments, string[] ArgumentNames) { throw null; }
@@ -1228,7 +1236,7 @@ namespace Microsoft.VisualBasic.CompilerServices
         public static object NotObj(object obj) { throw null; }
         public static int ObjTst(object o1, object o2, bool TextCompare) { throw null; }
         public static object PlusObj(object obj) { throw null; }
-        public static object PowObj(object o1, object o2) { throw null; }
+        public static object PowObj(object obj1, object obj2) { throw null; }
         public static object ShiftLeftObj(object o1, int amount) { throw null; }
         public static object ShiftRightObj(object o1, int amount) { throw null; }
         public static object StrCatObj(object vLeft, object vRight) { throw null; }
@@ -1258,6 +1266,7 @@ namespace Microsoft.VisualBasic.CompilerServices
         public static bool ConditionalCompareObjectNotEqual(object Left, object Right, bool TextCompare) { throw null; }
         public static object DivideObject(object Left, object Right) { throw null; }
         public static object ExponentObject(object Left, object Right) { throw null; }
+        public static object FallbackInvokeUserDefinedOperator(object vbOp, object[] Arguments) { throw null; }
         public static object IntDivideObject(object Left, object Right) { throw null; }
         public static object LeftShiftObject(object Operand, object Amount) { throw null; }
         public static object LikeObject(object Source, object Pattern, Microsoft.VisualBasic.CompareMethod CompareOption) { throw null; }
@@ -1271,13 +1280,6 @@ namespace Microsoft.VisualBasic.CompilerServices
         public static object RightShiftObject(object Operand, object Amount) { throw null; }
         public static object SubtractObject(object Left, object Right) { throw null; }
         public static object XorObject(object Left, object Right) { throw null; }
-        public enum CompareResult
-        {
-            Equal = 1,
-            Greater = 2,
-            Less = 0,
-            NotResolved = 3,
-        }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(2048), Inherited=false, AllowMultiple=false)]
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -1309,7 +1311,7 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal ShortType() { }
         public static short FromObject(object Value) { throw null; }
-        public static short FromString(string value) { throw null; }
+        public static short FromString(string Value) { throw null; }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public sealed partial class SingleType
@@ -1317,7 +1319,7 @@ namespace Microsoft.VisualBasic.CompilerServices
         internal SingleType() { }
         public static float FromObject(object Value) { throw null; }
         public static float FromObject(object Value, System.Globalization.NumberFormatInfo NumberFormat) { throw null; }
-        public static float FromString(string value) { throw null; }
+        public static float FromString(string Value) { throw null; }
         public static float FromString(string Value, System.Globalization.NumberFormatInfo NumberFormat) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), Inherited=false, AllowMultiple=false)]
@@ -1338,21 +1340,21 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal StringType() { }
         public static string FromBoolean(bool Value) { throw null; }
-        public static string FromByte(byte value) { throw null; }
+        public static string FromByte(byte Value) { throw null; }
         public static string FromChar(char Value) { throw null; }
-        public static string FromDate(System.DateTime value) { throw null; }
+        public static string FromDate(System.DateTime Value) { throw null; }
         public static string FromDecimal(decimal Value) { throw null; }
         public static string FromDecimal(decimal Value, System.Globalization.NumberFormatInfo NumberFormat) { throw null; }
-        public static string FromDouble(double value) { throw null; }
+        public static string FromDouble(double Value) { throw null; }
         public static string FromDouble(double Value, System.Globalization.NumberFormatInfo NumberFormat) { throw null; }
         public static string FromInteger(int Value) { throw null; }
-        public static string FromLong(long value) { throw null; }
+        public static string FromLong(long Value) { throw null; }
         public static string FromObject(object Value) { throw null; }
-        public static string FromShort(short value) { throw null; }
-        public static string FromSingle(float value) { throw null; }
+        public static string FromShort(short Value) { throw null; }
+        public static string FromSingle(float Value) { throw null; }
         public static string FromSingle(float Value, System.Globalization.NumberFormatInfo NumberFormat) { throw null; }
         public static void MidStmtStr(ref string sDest, int StartPosition, int MaxInsertLength, string sInsert) { }
-        public static int StrCmp(string sLeft, string sRight, bool textCompare) { throw null; }
+        public static int StrCmp(string sLeft, string sRight, bool TextCompare) { throw null; }
         public static bool StrLike(string Source, string Pattern, Microsoft.VisualBasic.CompareMethod CompareOption) { throw null; }
         public static bool StrLikeBinary(string Source, string Pattern) { throw null; }
         public static bool StrLikeText(string Source, string Pattern) { throw null; }

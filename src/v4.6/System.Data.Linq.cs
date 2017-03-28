@@ -170,6 +170,14 @@ namespace System.Data.Linq
         internal CompiledQuery() { }
         [System.MonoTODOAttribute]
         public System.Linq.Expressions.LambdaExpression Expression { get { throw null; } }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         [System.MonoTODOAttribute]
         public static System.Func<TArg0, TResult> Compile<TArg0, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         [System.MonoTODOAttribute]
@@ -178,6 +186,10 @@ namespace System.Data.Linq
         public static System.Func<TArg0, TArg1, TArg2, TResult> Compile<TArg0, TArg1, TArg2, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         [System.MonoTODOAttribute]
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
+        public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
     }
     public enum ConflictMode
     {
@@ -198,7 +210,6 @@ namespace System.Data.Linq
         public System.IO.TextWriter Log { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Data.Linq.Mapping.MetaModel Mapping { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public bool ObjectTrackingEnabled { get { throw null; } set { } }
-        public bool QueryCacheEnabled { get { throw null; } set { } }
         public System.Data.Common.DbTransaction Transaction { get { throw null; } set { } }
         public void CreateDatabase() { }
         protected internal System.Linq.IQueryable<TResult> CreateMethodCallQuery<TResult>(object instance, System.Reflection.MethodInfo methodInfo, params object[] parameters) { throw null; }
@@ -210,12 +221,11 @@ namespace System.Data.Linq
         protected internal void ExecuteDynamicDelete(object entity) { }
         protected internal void ExecuteDynamicInsert(object entity) { }
         protected internal void ExecuteDynamicUpdate(object entity) { }
-        protected System.Data.Linq.IExecuteResult ExecuteMethodCall(object instance, System.Reflection.MethodInfo methodInfo, params object[] parameters) { throw null; }
+        protected internal System.Data.Linq.IExecuteResult ExecuteMethodCall(object instance, System.Reflection.MethodInfo methodInfo, params object[] parameters) { throw null; }
         public System.Collections.IEnumerable ExecuteQuery(System.Type elementType, string query, params object[] parameters) { throw null; }
-        public System.Collections.Generic.IEnumerable<TResult> ExecuteQuery<TResult>(string query, params object[] parameters) where TResult : new() { throw null; }
+        public System.Collections.Generic.IEnumerable<TResult> ExecuteQuery<TResult>(string query, params object[] parameters) { throw null; }
         public System.Data.Linq.ChangeSet GetChangeSet() { throw null; }
         public System.Data.Common.DbCommand GetCommand(System.Linq.IQueryable query) { throw null; }
-        public System.Data.IDbCommand GetIDbCommand(System.Linq.IQueryable query) { throw null; }
         public System.Data.Linq.ITable GetTable(System.Type type) { throw null; }
         public System.Data.Linq.Table<TEntity> GetTable<TEntity>() where TEntity : class { throw null; }
         public void Refresh(System.Data.Linq.RefreshMode mode, System.Collections.IEnumerable entities) { }
@@ -232,8 +242,6 @@ namespace System.Data.Linq
         public DataLoadOptions() { }
         public void AssociateWith(System.Linq.Expressions.LambdaExpression expression) { }
         public void AssociateWith<T>(System.Linq.Expressions.Expression<System.Func<T, object>> expression) { }
-        public bool GetAssociationCriteria(System.Reflection.MemberInfo memberInfo, out System.Linq.Expressions.LambdaExpression associationCriteria) { associationCriteria = default(System.Linq.Expressions.LambdaExpression); throw null; }
-        public bool IsImmediate(System.Reflection.MemberInfo memberInfo) { throw null; }
         public void LoadWith(System.Linq.Expressions.LambdaExpression expression) { }
         public void LoadWith<T>(System.Linq.Expressions.Expression<System.Func<T, object>> expression) { }
     }
@@ -265,13 +273,10 @@ namespace System.Data.Linq
         public EntitySet() { }
         public EntitySet(System.Action<TEntity> onAdd, System.Action<TEntity> onRemove) { }
         public int Count { get { throw null; } }
-        public bool HasAssignedValues { get { throw null; } }
         public bool HasLoadedOrAssignedValues { get { throw null; } }
-        public bool HasLoadedValues { get { throw null; } }
         public bool IsDeferred { get { throw null; } }
         public TEntity this[int index] { get { throw null; } set { } }
         bool System.Collections.Generic.ICollection<TEntity>.IsReadOnly { get { throw null; } }
-        int System.Collections.ICollection.Count { get { throw null; } }
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
@@ -296,12 +301,10 @@ namespace System.Data.Linq
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
-        void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
         int System.Collections.IList.IndexOf(object value) { throw null; }
         void System.Collections.IList.Insert(int index, object value) { }
         void System.Collections.IList.Remove(object value) { }
-        void System.Collections.IList.RemoveAt(int index) { }
         System.Collections.IList System.ComponentModel.IListSource.GetList() { throw null; }
     }
     public partial class ForeignKeyReferenceAlreadyHasValueException : System.InvalidOperationException
@@ -341,6 +344,12 @@ namespace System.Data.Linq
         object GetOriginalEntityState(object entity);
         void InsertAllOnSubmit(System.Collections.IEnumerable entities);
         void InsertOnSubmit(object entity);
+    }
+    public partial interface ITable<TEntity> : System.Collections.Generic.IEnumerable<TEntity>, System.Collections.IEnumerable, System.Linq.IQueryable, System.Linq.IQueryable<TEntity> where TEntity : class
+    {
+        void Attach(TEntity entity);
+        void DeleteOnSubmit(TEntity entity);
+        void InsertOnSubmit(TEntity entity);
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
     public partial struct Link<T>
@@ -412,7 +421,7 @@ namespace System.Data.Linq
         KeepCurrentValues = 0,
         OverwriteCurrentValues = 2,
     }
-    public sealed partial class Table<TEntity> : System.Collections.Generic.IEnumerable<TEntity>, System.Collections.IEnumerable, System.ComponentModel.IListSource, System.Data.Linq.ITable, System.Linq.IQueryable, System.Linq.IQueryable<TEntity>, System.Linq.IQueryProvider where TEntity : class
+    public sealed partial class Table<TEntity> : System.Collections.Generic.IEnumerable<TEntity>, System.Collections.IEnumerable, System.ComponentModel.IListSource, System.Data.Linq.ITable, System.Data.Linq.ITable<TEntity>, System.Linq.IQueryable, System.Linq.IQueryable<TEntity>, System.Linq.IQueryProvider where TEntity : class
     {
         internal Table() { }
         public System.Data.Linq.DataContext Context { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
@@ -451,9 +460,9 @@ namespace System.Data.Linq
         void System.Data.Linq.ITable.InsertAllOnSubmit(System.Collections.IEnumerable entities) { }
         void System.Data.Linq.ITable.InsertOnSubmit(object entity) { }
         System.Linq.IQueryable System.Linq.IQueryProvider.CreateQuery(System.Linq.Expressions.Expression expression) { throw null; }
-        System.Linq.IQueryable<S> System.Linq.IQueryProvider.CreateQuery<S>(System.Linq.Expressions.Expression expr) { throw null; }
+        System.Linq.IQueryable<TResult> System.Linq.IQueryProvider.CreateQuery<TResult>(System.Linq.Expressions.Expression expression) { throw null; }
         object System.Linq.IQueryProvider.Execute(System.Linq.Expressions.Expression expression) { throw null; }
-        S System.Linq.IQueryProvider.Execute<S>(System.Linq.Expressions.Expression expression) { throw null; }
+        TResult System.Linq.IQueryProvider.Execute<TResult>(System.Linq.Expressions.Expression expression) { throw null; }
         public override string ToString() { throw null; }
     }
 }
@@ -722,15 +731,15 @@ namespace System.Data.Linq.Mapping
 }
 namespace System.Data.Linq.SqlClient
 {
-    public partial class Sql2000Provider : System.Data.Linq.SqlClient.SqlProvider
+    public sealed partial class Sql2000Provider : System.Data.Linq.SqlClient.SqlProvider
     {
         public Sql2000Provider() { }
     }
-    public partial class Sql2005Provider : System.Data.Linq.SqlClient.SqlProvider
+    public sealed partial class Sql2005Provider : System.Data.Linq.SqlClient.SqlProvider
     {
         public Sql2005Provider() { }
     }
-    public partial class Sql2008Provider : System.Data.Linq.SqlClient.SqlProvider
+    public sealed partial class Sql2008Provider : System.Data.Linq.SqlClient.SqlProvider
     {
         public Sql2008Provider() { }
     }
