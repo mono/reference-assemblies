@@ -13,6 +13,7 @@
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Text.Encoding.dll")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Text.Decoder))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Text.DecoderExceptionFallback))]

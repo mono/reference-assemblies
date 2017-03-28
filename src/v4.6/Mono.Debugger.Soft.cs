@@ -7,6 +7,7 @@
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Mono Soft Debugger API library")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Mono.Debugger.Soft.dll")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace Mono.Debugger.Soft

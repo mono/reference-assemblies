@@ -16,6 +16,7 @@
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.IdentityModel.Selectors, PublicKey=00000000000000000400000000000000")]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.ServiceModel, PublicKey=00000000000000000400000000000000")]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.ServiceModel.Web, PublicKey=00000000000000000400000000000000")]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]

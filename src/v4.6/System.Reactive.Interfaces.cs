@@ -15,6 +15,7 @@
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Reactive.Interfaces")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IObservable<>))]

@@ -8,6 +8,7 @@
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Commons.Xml.Relaxng.dll")]
 [assembly:System.Reflection.AssemblyFileVersionAttribute("0.0.0.1")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
 namespace Commons.Xml

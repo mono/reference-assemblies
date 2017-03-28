@@ -17,6 +17,7 @@
 [assembly:System.Reflection.AssemblyTrademarkAttribute("")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly:System.Runtime.InteropServices.GuidAttribute("6fd72360-ebfc-4097-96fa-2ee418c04f7b")]

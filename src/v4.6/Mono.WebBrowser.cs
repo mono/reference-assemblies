@@ -12,6 +12,7 @@
 [assembly:System.Reflection.AssemblyProductAttribute("Mono.WebBrowser")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Mono.WebBrowser")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 namespace Mono.WebBrowser
 {

@@ -13,6 +13,7 @@
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.IO.Pipes.dll")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(Microsoft.Win32.SafeHandles.SafePipeHandle))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.Pipes.AnonymousPipeClientStream))]

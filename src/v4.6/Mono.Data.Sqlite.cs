@@ -14,6 +14,7 @@
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Data.SQLite")]
 [assembly:System.Reflection.AssemblyTrademarkAttribute("")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
+[assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
