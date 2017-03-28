@@ -16,7 +16,6 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Data.CommandBehavior))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Data.CommandType))]
-[assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Data.Common.DbColumn))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Data.Common.DbCommand))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Data.Common.DbConnection))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Data.Common.DbConnectionStringBuilder))]
@@ -52,6 +51,5 @@ namespace System.Data.Common
     public static partial class DbDataReaderExtensions
     {
         public static bool CanGetColumnSchema(this System.Data.Common.DbDataReader reader) { throw null; }
-        public static System.Collections.ObjectModel.ReadOnlyCollection<System.Data.Common.DbColumn> GetColumnSchema(this System.Data.Common.DbDataReader reader) { throw null; }
     }
 }

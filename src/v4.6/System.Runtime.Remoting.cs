@@ -247,39 +247,44 @@ namespace System.Runtime.Remoting.Channels.Http
 }
 namespace System.Runtime.Remoting.Channels.Ipc
 {
-    public partial class IpcChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver, System.Runtime.Remoting.Channels.IChannelSender
+    public partial class IpcChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver, System.Runtime.Remoting.Channels.IChannelSender, System.Runtime.Remoting.Channels.ISecurableChannel
     {
         public IpcChannel() { }
         public IpcChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IClientChannelSinkProvider clientSinkProvider, System.Runtime.Remoting.Channels.IServerChannelSinkProvider serverSinkProvider) { }
+        public IpcChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IClientChannelSinkProvider clientSinkProvider, System.Runtime.Remoting.Channels.IServerChannelSinkProvider serverSinkProvider, System.Security.AccessControl.CommonSecurityDescriptor securityDescriptor) { }
         public IpcChannel(string portName) { }
         public object ChannelData { get { throw null; } }
         public string ChannelName { get { throw null; } }
         public int ChannelPriority { get { throw null; } }
+        public bool IsSecured { get { throw null; } set { } }
         public System.Runtime.Remoting.Messaging.IMessageSink CreateMessageSink(string url, object remoteChannelData, out string objectURI) { objectURI = default(string); throw null; }
         public string[] GetUrlsForUri(string objectURI) { throw null; }
         public string Parse(string url, out string objectURI) { objectURI = default(string); throw null; }
         public void StartListening(object data) { }
         public void StopListening(object data) { }
     }
-    public partial class IpcClientChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelSender
+    public partial class IpcClientChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelSender, System.Runtime.Remoting.Channels.ISecurableChannel
     {
         public IpcClientChannel() { }
         public IpcClientChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IClientChannelSinkProvider sinkProvider) { }
         public IpcClientChannel(string name, System.Runtime.Remoting.Channels.IClientChannelSinkProvider sinkProvider) { }
         public string ChannelName { get { throw null; } }
         public int ChannelPriority { get { throw null; } }
+        public bool IsSecured { get { throw null; } set { } }
         public virtual System.Runtime.Remoting.Messaging.IMessageSink CreateMessageSink(string url, object remoteChannelData, out string objectURI) { objectURI = default(string); throw null; }
         public string Parse(string url, out string objectURI) { objectURI = default(string); throw null; }
     }
-    public partial class IpcServerChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver
+    public partial class IpcServerChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver, System.Runtime.Remoting.Channels.ISecurableChannel
     {
         public IpcServerChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IServerChannelSinkProvider sinkProvider) { }
+        public IpcServerChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IServerChannelSinkProvider sinkProvider, System.Security.AccessControl.CommonSecurityDescriptor securityDescriptor) { }
         public IpcServerChannel(string portName) { }
         public IpcServerChannel(string name, string portName) { }
         public IpcServerChannel(string name, string portName, System.Runtime.Remoting.Channels.IServerChannelSinkProvider sinkProvider) { }
         public object ChannelData { get { throw null; } }
         public string ChannelName { get { throw null; } }
         public int ChannelPriority { get { throw null; } }
+        public bool IsSecured { get { throw null; } set { } }
         public string GetChannelUri() { throw null; }
         public virtual string[] GetUrlsForUri(string objectUri) { throw null; }
         public string Parse(string url, out string objectURI) { objectURI = default(string); throw null; }
@@ -289,7 +294,7 @@ namespace System.Runtime.Remoting.Channels.Ipc
 }
 namespace System.Runtime.Remoting.Channels.Tcp
 {
-    public partial class TcpChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver, System.Runtime.Remoting.Channels.IChannelSender
+    public partial class TcpChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver, System.Runtime.Remoting.Channels.IChannelSender, System.Runtime.Remoting.Channels.ISecurableChannel
     {
         public TcpChannel() { }
         public TcpChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IClientChannelSinkProvider clientSinkProvider, System.Runtime.Remoting.Channels.IServerChannelSinkProvider serverSinkProvider) { }
@@ -297,31 +302,35 @@ namespace System.Runtime.Remoting.Channels.Tcp
         public object ChannelData { get { throw null; } }
         public string ChannelName { get { throw null; } }
         public int ChannelPriority { get { throw null; } }
+        public bool IsSecured { get { throw null; } set { } }
         public System.Runtime.Remoting.Messaging.IMessageSink CreateMessageSink(string url, object remoteChannelData, out string objectURI) { objectURI = default(string); throw null; }
         public string[] GetUrlsForUri(string objectURI) { throw null; }
         public string Parse(string url, out string objectURI) { objectURI = default(string); throw null; }
         public void StartListening(object data) { }
         public void StopListening(object data) { }
     }
-    public partial class TcpClientChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelSender
+    public partial class TcpClientChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelSender, System.Runtime.Remoting.Channels.ISecurableChannel
     {
         public TcpClientChannel() { }
         public TcpClientChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IClientChannelSinkProvider sinkProvider) { }
         public TcpClientChannel(string name, System.Runtime.Remoting.Channels.IClientChannelSinkProvider sinkProvider) { }
         public string ChannelName { get { throw null; } }
         public int ChannelPriority { get { throw null; } }
+        public bool IsSecured { get { throw null; } set { } }
         public virtual System.Runtime.Remoting.Messaging.IMessageSink CreateMessageSink(string url, object remoteChannelData, out string objectURI) { objectURI = default(string); throw null; }
         public string Parse(string url, out string objectURI) { objectURI = default(string); throw null; }
     }
-    public partial class TcpServerChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver
+    public partial class TcpServerChannel : System.Runtime.Remoting.Channels.IChannel, System.Runtime.Remoting.Channels.IChannelReceiver, System.Runtime.Remoting.Channels.ISecurableChannel
     {
         public TcpServerChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IServerChannelSinkProvider sinkProvider) { }
+        public TcpServerChannel(System.Collections.IDictionary properties, System.Runtime.Remoting.Channels.IServerChannelSinkProvider sinkProvider, System.Runtime.Remoting.Channels.IAuthorizeRemotingConnection authorizeCallback) { }
         public TcpServerChannel(int port) { }
         public TcpServerChannel(string name, int port) { }
         public TcpServerChannel(string name, int port, System.Runtime.Remoting.Channels.IServerChannelSinkProvider sinkProvider) { }
         public object ChannelData { get { throw null; } }
         public string ChannelName { get { throw null; } }
         public int ChannelPriority { get { throw null; } }
+        public bool IsSecured { get { throw null; } set { } }
         public string GetChannelUri() { throw null; }
         public virtual string[] GetUrlsForUri(string objectUri) { throw null; }
         public string Parse(string url, out string objectURI) { objectURI = default(string); throw null; }

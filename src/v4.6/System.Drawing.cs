@@ -2069,6 +2069,17 @@ namespace System.Drawing
         public static System.Drawing.Image GetImageFromResource(System.Type t, string imageName, bool large) { throw null; }
     }
 }
+#if CONFIG_DEP
+namespace System.Drawing.Configuration
+{
+    public sealed partial class SystemDrawingSection : System.Configuration.ConfigurationSection
+    {
+        public SystemDrawingSection() { }
+        public string BitmapSuffix { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+    }
+}
+#endif
 namespace System.Drawing.Design
 {
     public sealed partial class CategoryNameCollection : System.Collections.ReadOnlyCollectionBase
@@ -3138,6 +3149,7 @@ namespace System.Drawing.Imaging
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, byte[] value, bool undefined) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, short value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, short[] value) { }
+        public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numberValues, System.Drawing.Imaging.EncoderParameterValueType type, System.IntPtr value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator, int denominator) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int NumberOfValues, int Type, int Value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator1, int demoninator1, int numerator2, int demoninator2) { }

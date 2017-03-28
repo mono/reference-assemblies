@@ -79,7 +79,10 @@ namespace System.Collections.Specialized
     public partial class CollectionChangedEventManager : System.Windows.WeakEventManager
     {
         internal CollectionChangedEventManager() { }
+        public static void AddHandler(System.Collections.Specialized.INotifyCollectionChanged source, System.EventHandler<System.Collections.Specialized.NotifyCollectionChangedEventArgs> handler) { }
         public static void AddListener(System.Collections.Specialized.INotifyCollectionChanged source, System.Windows.IWeakEventListener listener) { }
+        protected override System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
+        public static void RemoveHandler(System.Collections.Specialized.INotifyCollectionChanged source, System.EventHandler<System.Collections.Specialized.NotifyCollectionChangedEventArgs> handler) { }
         public static void RemoveListener(System.Collections.Specialized.INotifyCollectionChanged source, System.Windows.IWeakEventListener listener) { }
         protected override void StartListening(object source) { }
         protected override void StopListening(object source) { }
@@ -90,7 +93,10 @@ namespace System.ComponentModel
     public partial class CurrentChangedEventManager : System.Windows.WeakEventManager
     {
         internal CurrentChangedEventManager() { }
+        public static void AddHandler(System.ComponentModel.ICollectionView source, System.EventHandler<System.EventArgs> handler) { }
         public static void AddListener(System.ComponentModel.ICollectionView source, System.Windows.IWeakEventListener listener) { }
+        protected override System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
+        public static void RemoveHandler(System.ComponentModel.ICollectionView source, System.EventHandler<System.EventArgs> handler) { }
         public static void RemoveListener(System.ComponentModel.ICollectionView source, System.Windows.IWeakEventListener listener) { }
         protected override void StartListening(object source) { }
         protected override void StopListening(object source) { }
@@ -106,7 +112,10 @@ namespace System.ComponentModel
     public partial class CurrentChangingEventManager : System.Windows.WeakEventManager
     {
         internal CurrentChangingEventManager() { }
+        public static void AddHandler(System.ComponentModel.ICollectionView source, System.EventHandler<System.ComponentModel.CurrentChangingEventArgs> handler) { }
         public static void AddListener(System.ComponentModel.ICollectionView source, System.Windows.IWeakEventListener listener) { }
+        protected override System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
+        public static void RemoveHandler(System.ComponentModel.ICollectionView source, System.EventHandler<System.ComponentModel.CurrentChangingEventArgs> handler) { }
         public static void RemoveListener(System.ComponentModel.ICollectionView source, System.Windows.IWeakEventListener listener) { }
         protected override void StartListening(object source) { }
         protected override void StopListening(object source) { }
@@ -134,6 +143,7 @@ namespace System.ComponentModel
         public override bool CanResetValue(object component) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static System.ComponentModel.DependencyPropertyDescriptor FromName(string name, System.Type ownerType, System.Type targetType) { throw null; }
+        public static System.ComponentModel.DependencyPropertyDescriptor FromName(string name, System.Type ownerType, System.Type targetType, bool ignorePropertyType) { throw null; }
         public static System.ComponentModel.DependencyPropertyDescriptor FromProperty(System.ComponentModel.PropertyDescriptor property) { throw null; }
         public static System.ComponentModel.DependencyPropertyDescriptor FromProperty(System.Windows.DependencyProperty dependencyProperty, System.Type targetType) { throw null; }
         public override System.ComponentModel.PropertyDescriptorCollection GetChildProperties(object instance, System.Attribute[] filter) { throw null; }
@@ -145,6 +155,15 @@ namespace System.ComponentModel
         public override void SetValue(object component, object value) { }
         public override bool ShouldSerializeValue(object component) { throw null; }
         public override string ToString() { throw null; }
+    }
+    public partial class ErrorsChangedEventManager : System.Windows.WeakEventManager
+    {
+        internal ErrorsChangedEventManager() { }
+        public static void AddHandler(System.ComponentModel.INotifyDataErrorInfo source, System.EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> handler) { }
+        protected override System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
+        public static void RemoveHandler(System.ComponentModel.INotifyDataErrorInfo source, System.EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> handler) { }
+        protected override void StartListening(object source) { }
+        protected override void StopListening(object source) { }
     }
     public abstract partial class GroupDescription : System.ComponentModel.INotifyPropertyChanged
     {
@@ -190,6 +209,18 @@ namespace System.ComponentModel
     {
         System.ComponentModel.ICollectionView CreateView();
     }
+    public partial interface ICollectionViewLiveShaping
+    {
+        bool CanChangeLiveFiltering { get; }
+        bool CanChangeLiveGrouping { get; }
+        bool CanChangeLiveSorting { get; }
+        System.Nullable<bool> IsLiveFiltering { get; set; }
+        System.Nullable<bool> IsLiveGrouping { get; set; }
+        System.Nullable<bool> IsLiveSorting { get; set; }
+        System.Collections.ObjectModel.ObservableCollection<string> LiveFilteringProperties { get; }
+        System.Collections.ObjectModel.ObservableCollection<string> LiveGroupingProperties { get; }
+        System.Collections.ObjectModel.ObservableCollection<string> LiveSortingProperties { get; }
+    }
     public partial interface IEditableCollectionView
     {
         bool CanAddNew { get; }
@@ -234,8 +265,11 @@ namespace System.ComponentModel
     public partial class PropertyChangedEventManager : System.Windows.WeakEventManager
     {
         internal PropertyChangedEventManager() { }
+        public static void AddHandler(System.ComponentModel.INotifyPropertyChanged source, System.EventHandler<System.ComponentModel.PropertyChangedEventArgs> handler, string propertyName) { }
         public static void AddListener(System.ComponentModel.INotifyPropertyChanged source, System.Windows.IWeakEventListener listener, string propertyName) { }
+        protected override System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
         protected override bool Purge(object source, object data, bool purgeAll) { throw null; }
+        public static void RemoveHandler(System.ComponentModel.INotifyPropertyChanged source, System.EventHandler<System.ComponentModel.PropertyChangedEventArgs> handler, string propertyName) { }
         public static void RemoveListener(System.ComponentModel.INotifyPropertyChanged source, System.Windows.IWeakEventListener listener, string propertyName) { }
         protected override void StartListening(object source) { }
         protected override void StopListening(object source) { }
@@ -306,6 +340,7 @@ namespace System.Diagnostics
         public static System.Diagnostics.TraceSource NameScopeSource { get { throw null; } }
         public static System.Diagnostics.TraceSource ResourceDictionarySource { get { throw null; } }
         public static System.Diagnostics.TraceSource RoutedEventSource { get { throw null; } }
+        public static System.Diagnostics.TraceSource ShellSource { get { throw null; } }
         public static System.Diagnostics.PresentationTraceLevel GetTraceLevel(object element) { throw null; }
         public static void Refresh() { }
         public static void SetTraceLevel(object element, System.Diagnostics.PresentationTraceLevel traceLevel) { }
@@ -414,6 +449,7 @@ namespace System.IO.Packaging
     {
         internal PackageDigitalSignature() { }
         public System.IO.Packaging.CertificateEmbeddingOption CertificateEmbeddingOption { get { throw null; } }
+        public System.Security.Cryptography.Xml.Signature Signature { get { throw null; } set { } }
         public System.IO.Packaging.PackagePart SignaturePart { get { throw null; } }
         public string SignatureType { get { throw null; } }
         public byte[] SignatureValue { get { throw null; } }
@@ -452,6 +488,7 @@ namespace System.IO.Packaging
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate) { throw null; }
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationshipSelector> relationshipSelectors) { throw null; }
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationshipSelector> relationshipSelectors, string signatureId) { throw null; }
+        public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationshipSelector> relationshipSelectors, string signatureId, System.Collections.Generic.IEnumerable<System.Security.Cryptography.Xml.DataObject> signatureObjects, System.Collections.Generic.IEnumerable<System.Security.Cryptography.Xml.Reference> objectReferences) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static System.Security.Cryptography.X509Certificates.X509ChainStatusFlags VerifyCertificate(System.Security.Cryptography.X509Certificates.X509Certificate certificate) { throw null; }
         public System.IO.Packaging.VerifyResult VerifySignatures(bool exitOnFailure) { throw null; }
@@ -459,8 +496,8 @@ namespace System.IO.Packaging
     public abstract partial class PackagePart
     {
         protected PackagePart(System.IO.Packaging.Package package, System.Uri partUri) { }
-        protected internal PackagePart(System.IO.Packaging.Package package, System.Uri partUri, string contentType) { }
-        protected internal PackagePart(System.IO.Packaging.Package package, System.Uri partUri, string contentType, System.IO.Packaging.CompressionOption compressionOption) { }
+        protected PackagePart(System.IO.Packaging.Package package, System.Uri partUri, string contentType) { }
+        protected PackagePart(System.IO.Packaging.Package package, System.Uri partUri, string contentType, System.IO.Packaging.CompressionOption compressionOption) { }
         public System.IO.Packaging.CompressionOption CompressionOption { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public string ContentType { get { throw null; } }
         public System.IO.Packaging.Package Package { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
@@ -482,6 +519,7 @@ namespace System.IO.Packaging
     {
         internal PackagePartCollection() { }
         public System.Collections.Generic.IEnumerator<System.IO.Packaging.PackagePart> GetEnumerator() { throw null; }
+        System.Collections.Generic.IEnumerator<System.IO.Packaging.PackagePart> System.Collections.Generic.IEnumerable<System.IO.Packaging.PackagePart>.GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
     public abstract partial class PackageProperties : System.IDisposable
@@ -970,6 +1008,12 @@ namespace System.Windows
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
     }
+    public static partial class BaseCompatibilityPreferences
+    {
+        public static bool FlowDispatcherSynchronizationContextPriority { get { throw null; } set { } }
+        public static bool InlineDispatcherSynchronizationContextSend { get { throw null; } set { } }
+        public static bool ReuseDispatcherSynchronizationContextInstance { get { throw null; } set { } }
+    }
     public delegate object CoerceValueCallback(System.Windows.DependencyObject d, object baseValue);
     public partial class DependencyObject : System.Windows.Threading.DispatcherObject
     {
@@ -989,9 +1033,10 @@ namespace System.Windows
         public void InvalidateProperty(System.Windows.DependencyProperty dp) { }
         protected virtual void OnPropertyChanged(System.Windows.DependencyPropertyChangedEventArgs e) { }
         public object ReadLocalValue(System.Windows.DependencyProperty dp) { throw null; }
+        public void SetCurrentValue(System.Windows.DependencyProperty dp, object value) { }
         public void SetValue(System.Windows.DependencyProperty dp, object value) { }
         public void SetValue(System.Windows.DependencyPropertyKey key, object value) { }
-        protected virtual bool ShouldSerializeProperty(System.Windows.DependencyProperty dp) { throw null; }
+        protected internal virtual bool ShouldSerializeProperty(System.Windows.DependencyProperty dp) { throw null; }
     }
     public partial class DependencyObjectType
     {
@@ -1084,7 +1129,7 @@ namespace System.Windows
         protected System.Windows.Freezable CreateInstance() { throw null; }
         protected abstract System.Windows.Freezable CreateInstanceCore();
         public void Freeze() { }
-        protected static bool Freeze(System.Windows.Freezable freezable, bool isChecking) { throw null; }
+        protected internal static bool Freeze(System.Windows.Freezable freezable, bool isChecking) { throw null; }
         protected virtual bool FreezeCore(bool isChecking) { throw null; }
         public System.Windows.Freezable GetAsFrozen() { throw null; }
         protected virtual void GetAsFrozenCore(System.Windows.Freezable sourceFreezable) { }
@@ -1106,6 +1151,7 @@ namespace System.Windows
     {
         public Int32Rect(int x, int y, int width, int height) { throw null;}
         public static System.Windows.Int32Rect Empty { get { throw null; } }
+        public bool HasArea { get { throw null; } }
         public int Height { get { throw null; } set { } }
         public bool IsEmpty { get { throw null; } }
         public int Width { get { throw null; } set { } }
@@ -1157,6 +1203,32 @@ namespace System.Windows
         public static bool operator !=(System.Windows.LocalValueEnumerator obj1, System.Windows.LocalValueEnumerator obj2) { throw null; }
         public void Reset() { }
     }
+    public partial class NameScope : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string, object>>, System.Collections.Generic.IDictionary<string, object>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>, System.Collections.IEnumerable, System.Windows.Markup.INameScope, System.Windows.Markup.INameScopeDictionary
+    {
+        public static readonly System.Windows.DependencyProperty NameScopeProperty;
+        public NameScope() { }
+        public int Count { get { throw null; } }
+        public bool IsReadOnly { get { throw null; } }
+        public object this[string key] { get { throw null; } set { } }
+        public System.Collections.Generic.ICollection<string> Keys { get { throw null; } }
+        public System.Collections.Generic.ICollection<object> Values { get { throw null; } }
+        public void Add(System.Collections.Generic.KeyValuePair<string, object> item) { }
+        public void Add(string key, object value) { }
+        public void Clear() { }
+        public bool Contains(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
+        public bool ContainsKey(string key) { throw null; }
+        public void CopyTo(System.Collections.Generic.KeyValuePair<string, object>[] array, int arrayIndex) { }
+        public object FindName(string name) { throw null; }
+        public static System.Windows.Markup.INameScope GetNameScope(System.Windows.DependencyObject dependencyObject) { throw null; }
+        public void RegisterName(string name, object scopedElement) { }
+        public bool Remove(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
+        public bool Remove(string key) { throw null; }
+        public static void SetNameScope(System.Windows.DependencyObject dependencyObject, System.Windows.Markup.INameScope value) { }
+        System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.GetEnumerator() { throw null; }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
+        public bool TryGetValue(string key, out object value) { value = default(object); throw null; }
+        public void UnregisterName(string name) { }
+    }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.PointConverter))]
     [System.Windows.Markup.ValueSerializerAttribute(typeof(System.Windows.Converters.PointValueSerializer))]
     [System.SerializableAttribute]
@@ -1184,7 +1256,7 @@ namespace System.Windows
         public static System.Windows.Point Parse(string source) { throw null; }
         public static System.Windows.Vector Subtract(System.Windows.Point point1, System.Windows.Point point2) { throw null; }
         public static System.Windows.Point Subtract(System.Windows.Point point, System.Windows.Vector vector) { throw null; }
-        string System.IFormattable.ToString(string format, System.IFormatProvider formatProvider) { throw null; }
+        string System.IFormattable.ToString(string format, System.IFormatProvider provider) { throw null; }
         public override string ToString() { throw null; }
         public string ToString(System.IFormatProvider provider) { throw null; }
     }
@@ -1319,6 +1391,7 @@ namespace System.Windows
         public void Close(System.TimeSpan fadeoutDuration) { }
         [System.Security.SecurityCriticalAttribute]
         public void Show(bool autoClose) { }
+        public void Show(bool autoClose, bool topMost) { }
     }
     public delegate bool ValidateValueCallback(object value);
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.VectorConverter))]
@@ -1384,7 +1457,10 @@ namespace System.Windows
         protected void DeliverEvent(object sender, System.EventArgs args) { }
         protected void DeliverEventToList(object sender, System.EventArgs args, System.Windows.WeakEventManager.ListenerList list) { }
         protected static System.Windows.WeakEventManager GetCurrentManager(System.Type managerType) { throw null; }
+        protected virtual System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
+        protected void ProtectedAddHandler(object source, System.Delegate handler) { }
         protected void ProtectedAddListener(object source, System.Windows.IWeakEventListener listener) { }
+        protected void ProtectedRemoveHandler(object source, System.Delegate handler) { }
         protected void ProtectedRemoveListener(object source, System.Windows.IWeakEventListener listener) { }
         protected virtual bool Purge(object source, object data, bool purgeAll) { throw null; }
         protected void Remove(object source) { }
@@ -1401,13 +1477,33 @@ namespace System.Windows
             public bool IsEmpty { get { throw null; } }
             public System.Windows.IWeakEventListener this[int index] { get { throw null; } }
             public void Add(System.Windows.IWeakEventListener listener) { }
+            public void AddHandler(System.Delegate handler) { }
             public bool BeginUse() { throw null; }
-            public System.Windows.WeakEventManager.ListenerList Clone() { throw null; }
+            public virtual System.Windows.WeakEventManager.ListenerList Clone() { throw null; }
+            protected void CopyTo(System.Windows.WeakEventManager.ListenerList newList) { }
+            public virtual bool DeliverEvent(object sender, System.EventArgs args, System.Type managerType) { throw null; }
             public void EndUse() { }
             public static bool PrepareForWriting(ref System.Windows.WeakEventManager.ListenerList list) { throw null; }
             public bool Purge() { throw null; }
             public void Remove(System.Windows.IWeakEventListener listener) { }
+            public void RemoveHandler(System.Delegate handler) { }
         }
+        protected partial class ListenerList<TEventArgs> : System.Windows.WeakEventManager.ListenerList where TEventArgs : System.EventArgs
+        {
+            public ListenerList() { }
+            public ListenerList(int capacity) { }
+            public override System.Windows.WeakEventManager.ListenerList Clone() { throw null; }
+            public override bool DeliverEvent(object sender, System.EventArgs e, System.Type managerType) { throw null; }
+        }
+    }
+    public partial class WeakEventManager<TEventSource, TEventArgs> : System.Windows.WeakEventManager where TEventArgs : System.EventArgs
+    {
+        internal WeakEventManager() { }
+        public static void AddHandler(TEventSource source, string eventName, System.EventHandler<TEventArgs> handler) { }
+        protected override System.Windows.WeakEventManager.ListenerList NewListenerList() { throw null; }
+        public static void RemoveHandler(TEventSource source, string eventName, System.EventHandler<TEventArgs> handler) { }
+        protected override void StartListening(object source) { }
+        protected override void StopListening(object source) { }
     }
 }
 namespace System.Windows.Converters
@@ -1990,6 +2086,10 @@ namespace System.Windows.Threading
         [System.Security.SecurityCriticalAttribute]
         public static void ExitAllFrames() { }
         public static System.Windows.Threading.Dispatcher FromThread(System.Threading.Thread thread) { throw null; }
+        public void Invoke(System.Action callback) { }
+        public void Invoke(System.Action callback, System.Windows.Threading.DispatcherPriority priority) { }
+        public void Invoke(System.Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { }
+        public void Invoke(System.Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken, System.TimeSpan timeout) { }
         public object Invoke(System.Delegate method, params object[] args) { throw null; }
         public object Invoke(System.Delegate method, System.TimeSpan timeout, params object[] args) { throw null; }
         public object Invoke(System.Delegate method, System.TimeSpan timeout, System.Windows.Threading.DispatcherPriority priority, params object[] args) { throw null; }
@@ -2015,8 +2115,15 @@ namespace System.Windows.Threading
         public System.Windows.Threading.DispatcherOperation InvokeAsync(System.Action callback) { throw null; }
         public System.Windows.Threading.DispatcherOperation InvokeAsync(System.Action callback, System.Windows.Threading.DispatcherPriority priority) { throw null; }
         public System.Windows.Threading.DispatcherOperation InvokeAsync(System.Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { throw null; }
+        public System.Windows.Threading.DispatcherOperation<TResult> InvokeAsync<TResult>(System.Func<TResult> callback) { throw null; }
+        public System.Windows.Threading.DispatcherOperation<TResult> InvokeAsync<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority) { throw null; }
+        public System.Windows.Threading.DispatcherOperation<TResult> InvokeAsync<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public void InvokeShutdown() { }
+        public TResult Invoke<TResult>(System.Func<TResult> callback) { throw null; }
+        public TResult Invoke<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority) { throw null; }
+        public TResult Invoke<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { throw null; }
+        public TResult Invoke<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken, System.TimeSpan timeout) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static void PushFrame(System.Windows.Threading.DispatcherFrame frame) { }
         [System.Security.SecurityCriticalAttribute]
@@ -2024,6 +2131,8 @@ namespace System.Windows.Threading
         public static void ValidatePriority(System.Windows.Threading.DispatcherPriority priority, string parameterName) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void VerifyAccess() { }
+        public static System.Windows.Threading.DispatcherPriorityAwaitable Yield() { throw null; }
+        public static System.Windows.Threading.DispatcherPriorityAwaitable Yield(System.Windows.Threading.DispatcherPriority priority) { throw null; }
     }
     public partial class DispatcherEventArgs : System.EventArgs
     {
@@ -2051,6 +2160,7 @@ namespace System.Windows.Threading
         public event System.Windows.Threading.DispatcherHookEventHandler OperationCompleted { add { } remove { } }
         public event System.Windows.Threading.DispatcherHookEventHandler OperationPosted { add { } remove { } }
         public event System.Windows.Threading.DispatcherHookEventHandler OperationPriorityChanged { add { } remove { } }
+        public event System.Windows.Threading.DispatcherHookEventHandler OperationStarted { add { } remove { } }
     }
     public abstract partial class DispatcherObject
     {
@@ -2062,7 +2172,7 @@ namespace System.Windows.Threading
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void VerifyAccess() { }
     }
-    public sealed partial class DispatcherOperation
+    public partial class DispatcherOperation
     {
         internal DispatcherOperation() { }
         public System.Windows.Threading.Dispatcher Dispatcher { get { throw null; } }
@@ -2073,6 +2183,8 @@ namespace System.Windows.Threading
         public event System.EventHandler Aborted { add { } remove { } }
         public event System.EventHandler Completed { add { } remove { } }
         public bool Abort() { throw null; }
+        public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { throw null; }
+        protected virtual object InvokeDelegateCore() { throw null; }
         public System.Windows.Threading.DispatcherOperationStatus Wait() { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public System.Windows.Threading.DispatcherOperationStatus Wait(System.TimeSpan timeout) { throw null; }
@@ -2084,6 +2196,14 @@ namespace System.Windows.Threading
         Completed = 2,
         Executing = 3,
         Pending = 0,
+    }
+    public partial class DispatcherOperation<TResult> : System.Windows.Threading.DispatcherOperation
+    {
+        internal DispatcherOperation() { }
+        public new TResult Result { get { throw null; } }
+        public new System.Threading.Tasks.Task<TResult> Task { get { throw null; } }
+        public new System.Runtime.CompilerServices.TaskAwaiter<TResult> GetAwaiter() { throw null; }
+        protected override object InvokeDelegateCore() { throw null; }
     }
     public enum DispatcherPriority
     {
@@ -2100,6 +2220,16 @@ namespace System.Windows.Threading
         Send = 10,
         SystemIdle = 1,
     }
+    public partial struct DispatcherPriorityAwaitable
+    {
+        public System.Windows.Threading.DispatcherPriorityAwaiter GetAwaiter() { throw null; }
+    }
+    public partial struct DispatcherPriorityAwaiter : System.Runtime.CompilerServices.INotifyCompletion
+    {
+        public bool IsCompleted { get { throw null; } }
+        public void GetResult() { }
+        public void OnCompleted(System.Action continuation) { }
+    }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
     public partial struct DispatcherProcessingDisabled : System.IDisposable
     {
@@ -2113,6 +2243,7 @@ namespace System.Windows.Threading
     {
         public DispatcherSynchronizationContext() { }
         public DispatcherSynchronizationContext(System.Windows.Threading.Dispatcher dispatcher) { }
+        public DispatcherSynchronizationContext(System.Windows.Threading.Dispatcher dispatcher, System.Windows.Threading.DispatcherPriority priority) { }
         public override System.Threading.SynchronizationContext CreateCopy() { throw null; }
         public override void Post(System.Threading.SendOrPostCallback d, object state) { }
         public override void Send(System.Threading.SendOrPostCallback d, object state) { }

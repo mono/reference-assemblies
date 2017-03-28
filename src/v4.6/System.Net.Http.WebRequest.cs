@@ -61,11 +61,11 @@ namespace System.Net.Http
         public bool AllowPipelining { get { throw null; } set { } }
         public System.Net.Security.AuthenticationLevel AuthenticationLevel { get { throw null; } set { } }
         public System.Net.Cache.RequestCachePolicy CachePolicy { get { throw null; } set { } }
-        public new System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get { throw null; } }
         [System.MonoTODOAttribute]
         public System.TimeSpan ContinueTimeout { get { throw null; } set { } }
         public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get { throw null; } set { } }
-        public new int MaxResponseHeadersLength { get { throw null; } set { } }
+        public int MaxResponseHeadersLength { get { throw null; } set { } }
         public int ReadWriteTimeout { get { throw null; } set { } }
         public System.Net.Security.RemoteCertificateValidationCallback ServerCertificateValidationCallback { get { throw null; } set { } }
         public bool UnsafeAuthenticatedConnectionSharing { get { throw null; } set { } }

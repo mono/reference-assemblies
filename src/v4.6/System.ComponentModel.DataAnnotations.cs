@@ -243,7 +243,6 @@ namespace System.ComponentModel.DataAnnotations
     public partial class RegularExpressionAttribute : System.ComponentModel.DataAnnotations.ValidationAttribute
     {
         public RegularExpressionAttribute(string pattern) { }
-        public int MatchTimeoutInMilliseconds { get { throw null; } set { } }
         public string Pattern { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string FormatErrorMessage(string name) { throw null; }
         public override bool IsValid(object value) { throw null; }

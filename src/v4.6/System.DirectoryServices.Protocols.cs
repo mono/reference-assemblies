@@ -68,7 +68,7 @@ namespace System.DirectoryServices.Protocols
     }
     public partial class AddResponse : System.DirectoryServices.Protocols.DirectoryResponse
     {
-        public AddResponse() { }
+        internal AddResponse() { }
     }
     public partial class AsqRequestControl : System.DirectoryServices.Protocols.DirectoryControl
     {
@@ -108,7 +108,7 @@ namespace System.DirectoryServices.Protocols
     [System.MonoTODOAttribute]
     public sealed partial class BerConverter
     {
-        public BerConverter() { }
+        internal BerConverter() { }
         [System.MonoTODOAttribute]
         public static object[] Decode(string format, byte[] value) { throw null; }
         [System.MonoTODOAttribute]
@@ -198,7 +198,7 @@ namespace System.DirectoryServices.Protocols
     [System.MonoTODOAttribute]
     public partial class DirectoryAttributeCollection : System.Collections.CollectionBase
     {
-        internal DirectoryAttributeCollection() { }
+        public DirectoryAttributeCollection() { }
         public System.DirectoryServices.Protocols.DirectoryAttribute this[int index] { get { throw null; } set { } }
         public int Add(System.DirectoryServices.Protocols.DirectoryAttribute attribute) { throw null; }
         public void AddRange(System.DirectoryServices.Protocols.DirectoryAttributeCollection attributeCollection) { }
@@ -290,7 +290,7 @@ namespace System.DirectoryServices.Protocols
     }
     public partial class DirectoryNotificationControl : System.DirectoryServices.Protocols.DirectoryControl
     {
-        internal DirectoryNotificationControl() : base (default(string), default(byte[]), default(bool), default(bool)) { }
+        public DirectoryNotificationControl() : base (default(string), default(byte[]), default(bool), default(bool)) { }
     }
     public abstract partial class DirectoryOperation
     {
@@ -331,13 +331,13 @@ namespace System.DirectoryServices.Protocols
         public virtual System.DirectoryServices.Protocols.ResultCode ResultCode { get { throw null; } }
     }
     [System.FlagsAttribute]
-    public enum DirectorySynchronizationOptions
+    public enum DirectorySynchronizationOptions : long
     {
-        IncrementalValues = 8,
-        None = 0,
-        ObjectSecurity = 1,
-        ParentsFirst = 2,
-        PublicDataOnly = 4,
+        IncrementalValues = (long)2147483648,
+        None = (long)0,
+        ObjectSecurity = (long)1,
+        ParentsFirst = (long)2048,
+        PublicDataOnly = (long)8192,
     }
     public partial class DirSyncRequestControl : System.DirectoryServices.Protocols.DirectoryControl
     {
@@ -397,7 +397,7 @@ namespace System.DirectoryServices.Protocols
     [System.MonoTODOAttribute]
     public partial class DsmlErrorResponse : System.DirectoryServices.Protocols.DirectoryResponse
     {
-        public DsmlErrorResponse() { }
+        internal DsmlErrorResponse() { }
         public override System.DirectoryServices.Protocols.DirectoryControl[] Controls { get { throw null; } }
         public string Detail { get { throw null; } }
         public override string ErrorMessage { get { throw null; } }
@@ -418,7 +418,7 @@ namespace System.DirectoryServices.Protocols
     [System.MonoTODOAttribute]
     public partial class DsmlRequestDocument : System.DirectoryServices.Protocols.DsmlDocument, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
-        internal DsmlRequestDocument() { }
+        public DsmlRequestDocument() { }
         public int Count { get { throw null; } }
         public System.DirectoryServices.Protocols.DsmlDocumentProcessing DocumentProcessing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.DirectoryServices.Protocols.DsmlErrorProcessing ErrorProcessing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -457,35 +457,22 @@ namespace System.DirectoryServices.Protocols
     [System.MonoTODOAttribute]
     public partial class DsmlResponseDocument : System.DirectoryServices.Protocols.DsmlDocument, System.Collections.ICollection, System.Collections.IEnumerable
     {
-        public DsmlResponseDocument() { }
+        internal DsmlResponseDocument() { }
         public int Count { get { throw null; } }
-        public System.DirectoryServices.Protocols.DsmlDocumentProcessing DocumentProcessing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.DirectoryServices.Protocols.DsmlErrorProcessing ErrorProcessing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.MonoTODOAttribute]
         public bool IsErrorResponse { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        protected bool IsFixedSize { get { throw null; } }
         [System.MonoTODOAttribute]
         public bool IsOperationError { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        protected bool IsReadOnly { get { throw null; } }
         protected bool IsSynchronized { get { throw null; } }
-        public System.DirectoryServices.Protocols.DirectoryResponse this[int index] { get { throw null; } set { } }
+        public System.DirectoryServices.Protocols.DirectoryResponse this[int index] { get { throw null; } }
         [System.MonoTODOAttribute]
         public string RequestId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ResponseId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.DirectoryServices.Protocols.DsmlResponseOrder ResponseOrder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected object SyncRoot { get { throw null; } }
         int System.Collections.ICollection.Count { get { throw null; } }
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
-        public int Add(System.DirectoryServices.Protocols.DirectoryResponse request) { throw null; }
-        public void Clear() { }
-        public bool Contains(System.DirectoryServices.Protocols.DirectoryResponse value) { throw null; }
         public void CopyTo(System.DirectoryServices.Protocols.DirectoryResponse[] value, int i) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        public int IndexOf(System.DirectoryServices.Protocols.DirectoryResponse value) { throw null; }
-        public void Insert(int index, System.DirectoryServices.Protocols.DirectoryResponse value) { }
-        public void Remove(System.DirectoryServices.Protocols.DirectoryResponse value) { }
-        public void RemoveAt(int index) { }
         void System.Collections.ICollection.CopyTo(System.Array value, int i) { }
         [System.MonoTODOAttribute]
         public override System.Xml.XmlDocument ToXml() { throw null; }
@@ -594,7 +581,7 @@ namespace System.DirectoryServices.Protocols
     }
     public partial class LazyCommitControl : System.DirectoryServices.Protocols.DirectoryControl
     {
-        internal LazyCommitControl() : base (default(string), default(byte[]), default(bool), default(bool)) { }
+        public LazyCommitControl() : base (default(string), default(byte[]), default(bool), default(bool)) { }
     }
     [System.MonoTODOAttribute]
     public partial class LdapConnection : System.DirectoryServices.Protocols.DirectoryConnection, System.IDisposable
@@ -700,25 +687,25 @@ namespace System.DirectoryServices.Protocols
         public void StopTransportLayerSecurity() { }
     }
     [System.FlagsAttribute]
-    public enum LocatorFlags
+    public enum LocatorFlags : long
     {
-        AvoidSelf = 16384,
-        DirectoryServicesPreferred = 32,
-        DirectoryServicesRequired = 16,
-        ForceRediscovery = 1,
-        GCRequired = 64,
-        GoodTimeServerPreferred = 8192,
-        IPRequired = 512,
-        IsDnsName = 131072,
-        IsFlatName = 65536,
-        KdcRequired = 1024,
-        None = 0,
-        OnlyLdapNeeded = 32768,
-        PdcRequired = 128,
-        ReturnDnsName = 1073741824,
-        ReturnFlatName = -2147483647,
-        TimeServerRequired = 2048,
-        WriteableRequired = 4096,
+        AvoidSelf = (long)16384,
+        DirectoryServicesPreferred = (long)32,
+        DirectoryServicesRequired = (long)16,
+        ForceRediscovery = (long)1,
+        GCRequired = (long)64,
+        GoodTimeServerPreferred = (long)8192,
+        IPRequired = (long)512,
+        IsDnsName = (long)131072,
+        IsFlatName = (long)65536,
+        KdcRequired = (long)1024,
+        None = (long)0,
+        OnlyLdapNeeded = (long)32768,
+        PdcRequired = (long)128,
+        ReturnDnsName = (long)1073741824,
+        ReturnFlatName = (long)2147483648,
+        TimeServerRequired = (long)2048,
+        WriteableRequired = (long)4096,
     }
     public partial class ModifyDNRequest : System.DirectoryServices.Protocols.DirectoryRequest
     {
@@ -763,7 +750,7 @@ namespace System.DirectoryServices.Protocols
     public partial class PageResultResponseControl : System.DirectoryServices.Protocols.DirectoryControl
     {
         internal PageResultResponseControl() : base (default(string), default(byte[]), default(bool), default(bool)) { }
-        public byte[] Cookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public byte[] Cookie { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         [System.MonoTODOAttribute]
         public int TotalCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
@@ -858,8 +845,8 @@ namespace System.DirectoryServices.Protocols
     }
     public enum SearchOption
     {
-        DomainScope = 0,
-        PhantomRoot = 1,
+        DomainScope = 1,
+        PhantomRoot = 2,
     }
     public partial class SearchOptionsControl : System.DirectoryServices.Protocols.DirectoryControl
     {
@@ -991,14 +978,14 @@ namespace System.DirectoryServices.Protocols
     }
     public enum SecurityProtocol
     {
-        Pct1Client = 1,
-        Pct1Server = 0,
-        Ssl2Client = 3,
-        Ssl2Server = 2,
-        Ssl3Client = 5,
-        Ssl3Server = 4,
-        Tls1Client = 7,
-        Tls1Server = 6,
+        Pct1Client = 2,
+        Pct1Server = 1,
+        Ssl2Client = 8,
+        Ssl2Server = 4,
+        Ssl3Client = 32,
+        Ssl3Server = 16,
+        Tls1Client = 128,
+        Tls1Server = 64,
     }
     public partial class ShowDeletedControl : System.DirectoryServices.Protocols.DirectoryControl
     {
@@ -1043,8 +1030,6 @@ namespace System.DirectoryServices.Protocols
         protected TlsOperationException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public TlsOperationException(string message) { }
         public TlsOperationException(string message, System.Exception inner) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
-        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     public partial class TreeDeleteControl : System.DirectoryServices.Protocols.DirectoryControl
     {

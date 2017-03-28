@@ -16,7 +16,6 @@
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
-[assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.Web, PublicKey=002400000480000094000000060200000024000052534131000400000100010007d1fa57c4aed9f0a32e84aa0faefd0de9e8fd6aec8f87fb03766c834c99921eb23be79ad9d5dcc1dd9ad236132102900b723cf980957fc4e177108fc607774f29e8320e92ea05ece4e821c0a5efe8f1645c4c0c93c1ab99285d622caa652c1dfad63d745d6f2de5f17e5eaf0fc4963d261c8a12436518206dc093344d5ad293")]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -113,6 +112,7 @@ namespace System.Configuration
     {
         internal Configuration() { }
         public System.Configuration.AppSettingsSection AppSettings { get { throw null; } }
+        public System.Func<string, string> AssemblyStringTransformer { get { throw null; } set { } }
         public System.Configuration.ConnectionStringsSection ConnectionStrings { get { throw null; } }
         public System.Configuration.ContextInformation EvaluationContext { get { throw null; } }
         public string FilePath { get { throw null; } }
@@ -122,6 +122,8 @@ namespace System.Configuration
         public System.Configuration.ConfigurationSectionGroup RootSectionGroup { get { throw null; } }
         public System.Configuration.ConfigurationSectionGroupCollection SectionGroups { get { throw null; } }
         public System.Configuration.ConfigurationSectionCollection Sections { get { throw null; } }
+        public System.Runtime.Versioning.FrameworkName TargetFramework { get { throw null; } set { } }
+        public System.Func<string, string> TypeStringTransformer { get { throw null; } set { } }
         public System.Configuration.ConfigurationSection GetSection(string sectionName) { throw null; }
         public System.Configuration.ConfigurationSectionGroup GetSectionGroup(string sectionGroupName) { throw null; }
         public void Save() { }
@@ -166,9 +168,11 @@ namespace System.Configuration
     public abstract partial class ConfigurationElement
     {
         protected ConfigurationElement() { }
+        public System.Configuration.Configuration CurrentConfiguration { get { throw null; } }
         public System.Configuration.ElementInformation ElementInformation { get { throw null; } }
         protected internal virtual System.Configuration.ConfigurationElementProperty ElementProperty { get { throw null; } }
         protected System.Configuration.ContextInformation EvaluationContext { get { throw null; } }
+        protected bool HasContext { get { throw null; } }
         protected internal object this[System.Configuration.ConfigurationProperty prop] { get { throw null; } set { } }
         protected internal object this[string propertyName] { get { throw null; } set { } }
         public System.Configuration.ConfigurationLockCollection LockAllAttributesExcept { get { throw null; } }
@@ -180,6 +184,8 @@ namespace System.Configuration
         protected internal virtual void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
         public override bool Equals(object compareTo) { throw null; }
         public override int GetHashCode() { throw null; }
+        protected virtual string GetTransformedAssemblyString(string assemblyName) { throw null; }
+        protected virtual string GetTransformedTypeString(string typeName) { throw null; }
         protected internal virtual void Init() { }
         protected internal virtual void InitializeDefault() { }
         protected internal virtual bool IsModified() { throw null; }
@@ -216,7 +222,7 @@ namespace System.Configuration
         public object SyncRoot { get { throw null; } }
         protected virtual bool ThrowOnDuplicate { get { throw null; } }
         protected virtual void BaseAdd(System.Configuration.ConfigurationElement element) { }
-        protected void BaseAdd(System.Configuration.ConfigurationElement element, bool throwIfExists) { }
+        protected internal void BaseAdd(System.Configuration.ConfigurationElement element, bool throwIfExists) { }
         protected virtual void BaseAdd(int index, System.Configuration.ConfigurationElement element) { }
         protected internal void BaseClear() { }
         protected internal System.Configuration.ConfigurationElement BaseGet(int index) { throw null; }
@@ -338,6 +344,7 @@ namespace System.Configuration
         public static System.Configuration.Configuration OpenMachineConfiguration() { throw null; }
         [System.MonoLimitationAttribute("ConfigurationUserLevel parameter is not supported.")]
         public static System.Configuration.Configuration OpenMappedExeConfiguration(System.Configuration.ExeConfigurationFileMap fileMap, System.Configuration.ConfigurationUserLevel userLevel) { throw null; }
+        public static System.Configuration.Configuration OpenMappedExeConfiguration(System.Configuration.ExeConfigurationFileMap fileMap, System.Configuration.ConfigurationUserLevel userLevel, bool preLoad) { throw null; }
         public static System.Configuration.Configuration OpenMappedMachineConfiguration(System.Configuration.ConfigurationFileMap fileMap) { throw null; }
         public static void RefreshSection(string sectionName) { }
     }
@@ -370,9 +377,12 @@ namespace System.Configuration
         public System.ComponentModel.TypeConverter Converter { get { throw null; } }
         public object DefaultValue { get { throw null; } }
         public string Description { get { throw null; } }
+        public bool IsAssemblyStringTransformationRequired { get { throw null; } }
         public bool IsDefaultCollection { get { throw null; } }
         public bool IsKey { get { throw null; } }
         public bool IsRequired { get { throw null; } }
+        public bool IsTypeStringTransformationRequired { get { throw null; } }
+        public bool IsVersionCheckRequired { get { throw null; } }
         public string Name { get { throw null; } }
         public System.Type Type { get { throw null; } }
         public System.Configuration.ConfigurationValidatorBase Validator { get { throw null; } }
@@ -434,6 +444,9 @@ namespace System.Configuration
         [System.MonoTODOAttribute]
         protected internal override void ResetModified() { }
         protected internal virtual string SerializeSection(System.Configuration.ConfigurationElement parentElement, string name, System.Configuration.ConfigurationSaveMode saveMode) { throw null; }
+        protected internal virtual bool ShouldSerializeElementInTargetVersion(System.Configuration.ConfigurationElement element, string elementName, System.Runtime.Versioning.FrameworkName targetFramework) { throw null; }
+        protected internal virtual bool ShouldSerializePropertyInTargetVersion(System.Configuration.ConfigurationProperty property, string propertyName, System.Runtime.Versioning.FrameworkName targetFramework, System.Configuration.ConfigurationElement parentConfigurationElement) { throw null; }
+        protected internal virtual bool ShouldSerializeSectionInTargetVersion(System.Runtime.Versioning.FrameworkName targetFramework) { throw null; }
     }
     [System.SerializableAttribute]
     public sealed partial class ConfigurationSectionCollection : System.Collections.Specialized.NameObjectCollectionBase
@@ -471,6 +484,7 @@ namespace System.Configuration
         public void ForceDeclaration() { }
         [System.MonoTODOAttribute]
         public void ForceDeclaration(bool force) { }
+        protected internal virtual bool ShouldSerializeSectionGroupInTargetVersion(System.Runtime.Versioning.FrameworkName targetFramework) { throw null; }
     }
     [System.SerializableAttribute]
     public sealed partial class ConfigurationSectionGroupCollection : System.Collections.Specialized.NameObjectCollectionBase
@@ -609,6 +623,7 @@ namespace System.Configuration
     public sealed partial class ExeConfigurationFileMap : System.Configuration.ConfigurationFileMap
     {
         public ExeConfigurationFileMap() { }
+        public ExeConfigurationFileMap(string machineConfigFileName) { }
         public string ExeConfigFilename { get { throw null; } set { } }
         public string LocalUserConfigFilename { get { throw null; } set { } }
         public string RoamingUserConfigFilename { get { throw null; } set { } }
@@ -732,6 +747,12 @@ namespace System.Configuration
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public string Value { get { throw null; } set { } }
+    }
+    public enum OverrideMode
+    {
+        Allow = 1,
+        Deny = 2,
+        Inherit = 0,
     }
     public partial class PositiveTimeSpanValidator : System.Configuration.ConfigurationValidatorBase
     {
@@ -866,6 +887,7 @@ namespace System.Configuration
         public string CspProviderName { get { throw null; } }
         public string KeyContainerName { get { throw null; } }
         public System.Security.Cryptography.RSAParameters RsaPublicKey { get { throw null; } }
+        public bool UseFIPS { get { throw null; } }
         public bool UseMachineContainer { get { throw null; } }
         public bool UseOAEP { get { throw null; } }
         [System.MonoTODOAttribute]
@@ -901,6 +923,9 @@ namespace System.Configuration
         public bool IsLocked { get { throw null; } }
         public bool IsProtected { get { throw null; } }
         public string Name { get { throw null; } }
+        public System.Configuration.OverrideMode OverrideMode { get { throw null; } set { } }
+        public System.Configuration.OverrideMode OverrideModeDefault { get { throw null; } set { } }
+        public System.Configuration.OverrideMode OverrideModeEffective { get { throw null; } }
         public System.Configuration.ProtectedConfigurationProvider ProtectionProvider { get { throw null; } }
         [System.MonoTODOAttribute]
         public bool RequirePermission { get { throw null; } set { } }

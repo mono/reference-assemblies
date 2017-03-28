@@ -54,6 +54,7 @@ namespace System.ServiceModel
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
         public System.Text.Encoding WriteEncoding { get { throw null; } set { } }
+        public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
@@ -94,6 +95,20 @@ namespace System.ServiceModel.Activation
 }
 namespace System.ServiceModel.Channels
 {
+    public sealed partial class JavascriptCallbackResponseMessageProperty
+    {
+        public JavascriptCallbackResponseMessageProperty() { }
+        public string CallbackFunctionName { get { throw null; } set { } }
+        public static string Name { get { throw null; } }
+        public System.Nullable<System.Net.HttpStatusCode> StatusCode { get { throw null; } set { } }
+    }
+    public abstract partial class StreamBodyWriter : System.ServiceModel.Channels.BodyWriter
+    {
+        protected StreamBodyWriter(bool isBuffered) : base (default(bool)) { }
+        protected override System.ServiceModel.Channels.BodyWriter OnCreateBufferedCopy(int maxBufferSize) { throw null; }
+        protected abstract void OnWriteBodyContents(System.IO.Stream stream);
+        protected override void OnWriteBodyContents(System.Xml.XmlDictionaryWriter writer) { }
+    }
     public sealed partial class WebBodyFormatMessageProperty : System.ServiceModel.Channels.IMessageProperty
     {
         public const string Name = "WebBodyFormatMessageProperty";
@@ -119,6 +134,7 @@ namespace System.ServiceModel.Channels
         public WebMessageEncodingBindingElement() { }
         public WebMessageEncodingBindingElement(System.Text.Encoding writeEncoding) { }
         public System.ServiceModel.Channels.WebContentTypeMapper ContentTypeMapper { get { throw null; } set { } }
+        public bool CrossDomainScriptAccessEnabled { get { throw null; } set { } }
         [System.MonoTODOAttribute]
         public int MaxReadPoolSize { get { throw null; } set { } }
         [System.MonoTODOAttribute]
@@ -146,7 +162,7 @@ namespace System.ServiceModel.Configuration
         public WebHttpBindingCollectionElement() { }
         protected internal override System.ServiceModel.Channels.Binding GetDefault() { throw null; }
     }
-    public partial class WebHttpBindingElement : System.ServiceModel.Configuration.StandardBindingElement, System.ServiceModel.Configuration.IBindingConfigurationElement
+    public partial class WebHttpBindingElement : System.ServiceModel.Configuration.StandardBindingElement
     {
         public WebHttpBindingElement() { }
         public WebHttpBindingElement(string name) { }
@@ -155,6 +171,8 @@ namespace System.ServiceModel.Configuration
         protected override System.Type BindingElementType { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
+        public string ContentTypeMapper { get { throw null; } set { } }
+        public bool CrossDomainScriptAccessEnabled { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue="StrongWildcard", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue="524288", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
@@ -186,7 +204,13 @@ namespace System.ServiceModel.Configuration
     public sealed partial class WebHttpElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public WebHttpElement() { }
+        public bool AutomaticFormatSelectionEnabled { get { throw null; } set { } }
         public override System.Type BehaviorType { get { throw null; } }
+        public System.ServiceModel.Web.WebMessageBodyStyle DefaultBodyStyle { get { throw null; } set { } }
+        public System.ServiceModel.Web.WebMessageFormat DefaultOutgoingResponseFormat { get { throw null; } set { } }
+        public bool FaultExceptionEnabled { get { throw null; } set { } }
+        public bool HelpEnabled { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal override object CreateBehavior() { throw null; }
     }
     public partial class WebHttpEndpointCollectionElement : System.ServiceModel.Configuration.StandardEndpointCollectionElement<System.ServiceModel.Description.WebHttpEndpoint, System.ServiceModel.Configuration.WebHttpEndpointElement>
@@ -237,7 +261,7 @@ namespace System.ServiceModel.Configuration
         protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement channelEndpointElement) { }
         protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
     }
-    public sealed partial class WebHttpSecurityElement : System.Configuration.ConfigurationElement
+    public sealed partial class WebHttpSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public WebHttpSecurityElement() { }
         [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue="None", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
@@ -317,6 +341,14 @@ namespace System.ServiceModel.Configuration
 }
 namespace System.ServiceModel.Description
 {
+    public partial class JsonFaultDetail
+    {
+        public JsonFaultDetail() { }
+        public System.ServiceModel.ExceptionDetail ExceptionDetail { get { throw null; } set { } }
+        public string ExceptionType { get { throw null; } set { } }
+        public string Message { get { throw null; } set { } }
+        public string StackTrace { get { throw null; } set { } }
+    }
     public partial class WebHttpBehavior : System.ServiceModel.Description.IEndpointBehavior
     {
         public WebHttpBehavior() { }
@@ -326,6 +358,7 @@ namespace System.ServiceModel.Description
         public virtual System.ServiceModel.Web.WebMessageFormat DefaultOutgoingResponseFormat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual bool FaultExceptionEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual bool HelpEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected internal string JavascriptCallbackParameterName { get { throw null; } set { } }
         public virtual void AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
         [System.MonoTODOAttribute]
         protected virtual void AddClientErrorInspector(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.ClientRuntime clientRuntime) { }
@@ -341,7 +374,6 @@ namespace System.ServiceModel.Description
         [System.MonoTODOAttribute("check UriTemplate validity")]
         public virtual void Validate(System.ServiceModel.Description.ServiceEndpoint endpoint) { }
         protected virtual void ValidateBinding(System.ServiceModel.Description.ServiceEndpoint endpoint) { }
-        protected void ValidateOperation(System.ServiceModel.Description.OperationDescription operation) { }
     }
     [System.MonoTODOAttribute]
     public partial class WebHttpEndpoint : System.ServiceModel.Description.WebServiceEndpoint
@@ -357,9 +389,12 @@ namespace System.ServiceModel.Description
     public sealed partial class WebScriptEnablingBehavior : System.ServiceModel.Description.WebHttpBehavior
     {
         public WebScriptEnablingBehavior() { }
+        public override bool AutomaticFormatSelectionEnabled { get { throw null; } set { } }
         public override System.ServiceModel.Web.WebMessageBodyStyle DefaultBodyStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override System.ServiceModel.Web.WebMessageFormat DefaultOutgoingRequestFormat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override System.ServiceModel.Web.WebMessageFormat DefaultOutgoingResponseFormat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public override bool FaultExceptionEnabled { get { throw null; } set { } }
+        public override bool HelpEnabled { get { throw null; } set { } }
         [System.MonoTODOAttribute]
         protected override void AddClientErrorInspector(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.ClientRuntime clientRuntime) { }
         [System.MonoTODOAttribute]
@@ -412,15 +447,26 @@ namespace System.ServiceModel.Dispatcher
     }
     public partial class WebHttpDispatchOperationSelector : System.ServiceModel.Dispatcher.IDispatchOperationSelector
     {
+        public const string HttpOperationNamePropertyName = "HttpOperationName";
         public const string HttpOperationSelectorUriMatchedPropertyName = "UriMatched";
         protected WebHttpDispatchOperationSelector() { }
         public WebHttpDispatchOperationSelector(System.ServiceModel.Description.ServiceEndpoint endpoint) { }
+        public virtual System.UriTemplate GetUriTemplate(string operationName) { throw null; }
         public string SelectOperation(ref System.ServiceModel.Channels.Message message) { throw null; }
         protected virtual string SelectOperation(ref System.ServiceModel.Channels.Message message, out bool uriMatched) { uriMatched = default(bool); throw null; }
     }
 }
 namespace System.ServiceModel.Web
 {
+    public sealed partial class AspNetCacheProfileAttribute : System.Attribute, System.ServiceModel.Description.IOperationBehavior
+    {
+        public AspNetCacheProfileAttribute(string cacheProfileName) { }
+        public string CacheProfileName { get { throw null; } }
+        public void AddBindingParameters(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
+        public void ApplyClientBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.ClientOperation clientOperation) { }
+        public void ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.DispatchOperation dispatchOperation) { }
+        public void Validate(System.ServiceModel.Description.OperationDescription operationDescription) { }
+    }
     public partial class IncomingWebRequestContext
     {
         internal IncomingWebRequestContext() { }
@@ -428,9 +474,23 @@ namespace System.ServiceModel.Web
         public long ContentLength { get { throw null; } }
         public string ContentType { get { throw null; } }
         public System.Net.WebHeaderCollection Headers { get { throw null; } }
+        public System.Collections.Generic.IEnumerable<string> IfMatch { get { throw null; } }
+        public System.Nullable<System.DateTime> IfModifiedSince { get { throw null; } }
+        public System.Collections.Generic.IEnumerable<string> IfNoneMatch { get { throw null; } }
+        public System.Nullable<System.DateTime> IfUnmodifiedSince { get { throw null; } }
         public string Method { get { throw null; } }
         public System.UriTemplateMatch UriTemplateMatch { get { throw null; } set { } }
         public string UserAgent { get { throw null; } }
+        public void CheckConditionalRetrieve(System.DateTime lastModified) { }
+        public void CheckConditionalRetrieve(System.Guid entityTag) { }
+        public void CheckConditionalRetrieve(int entityTag) { }
+        public void CheckConditionalRetrieve(long entityTag) { }
+        public void CheckConditionalRetrieve(string entityTag) { }
+        public void CheckConditionalUpdate(System.Guid entityTag) { }
+        public void CheckConditionalUpdate(int entityTag) { }
+        public void CheckConditionalUpdate(long entityTag) { }
+        public void CheckConditionalUpdate(string entityTag) { }
+        public System.Collections.ObjectModel.Collection<System.Net.Mime.ContentType> GetAcceptHeaderElements() { throw null; }
     }
     public partial class IncomingWebResponseContext
     {
@@ -442,6 +502,15 @@ namespace System.ServiceModel.Web
         public string Location { get { throw null; } }
         public System.Net.HttpStatusCode StatusCode { get { throw null; } }
         public string StatusDescription { get { throw null; } }
+    }
+    public sealed partial class JavascriptCallbackBehaviorAttribute : System.Attribute, System.ServiceModel.Description.IContractBehavior
+    {
+        public JavascriptCallbackBehaviorAttribute() { }
+        public string UrlParameterName { get { throw null; } set { } }
+        public void AddBindingParameters(System.ServiceModel.Description.ContractDescription contractDescription, System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
+        public void ApplyClientBehavior(System.ServiceModel.Description.ContractDescription contractDescription, System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.ClientRuntime clientRuntime) { }
+        public void ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription contractDescription, System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.DispatchRuntime dispatchRuntime) { }
+        public void Validate(System.ServiceModel.Description.ContractDescription contractDescription, System.ServiceModel.Description.ServiceEndpoint endpoint) { }
     }
     public partial class OutgoingWebRequestContext
     {
@@ -461,20 +530,26 @@ namespace System.ServiceModel.Web
     public partial class OutgoingWebResponseContext
     {
         internal OutgoingWebResponseContext() { }
+        public System.Text.Encoding BindingWriteEncoding { get { throw null; } }
         public long ContentLength { get { throw null; } set { } }
         public string ContentType { get { throw null; } set { } }
         public string ETag { get { throw null; } set { } }
+        public System.Nullable<System.ServiceModel.Web.WebMessageFormat> Format { get { throw null; } set { } }
         public System.Net.WebHeaderCollection Headers { get { throw null; } }
         public System.DateTime LastModified { get { throw null; } set { } }
         public string Location { get { throw null; } set { } }
         public System.Net.HttpStatusCode StatusCode { get { throw null; } set { } }
         public string StatusDescription { get { throw null; } set { } }
         public bool SuppressEntityBody { get { throw null; } set { } }
+        public void SetETag(System.Guid entityTag) { }
+        public void SetETag(int entityTag) { }
+        public void SetETag(long entityTag) { }
+        public void SetETag(string entityTag) { }
         public void SetStatusAsCreated(System.Uri locationUri) { }
         public void SetStatusAsNotFound() { }
         public void SetStatusAsNotFound(string description) { }
     }
-    public partial class WebChannelFactory<TChannel> : System.ServiceModel.ChannelFactory<TChannel>
+    public partial class WebChannelFactory<TChannel> : System.ServiceModel.ChannelFactory<TChannel> where TChannel : class
     {
         public WebChannelFactory() { }
         public WebChannelFactory(System.ServiceModel.Channels.Binding binding) { }
@@ -485,6 +560,21 @@ namespace System.ServiceModel.Web
         public WebChannelFactory(System.Type channelType) { }
         public WebChannelFactory(System.Uri remoteAddress) { }
         protected override void OnOpening() { }
+    }
+    public partial class WebFaultException : System.ServiceModel.FaultException
+    {
+        public WebFaultException(System.Net.HttpStatusCode statusCode) { }
+        protected WebFaultException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        public System.Net.HttpStatusCode StatusCode { get { throw null; } }
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+    }
+    public partial class WebFaultException<T> : System.ServiceModel.FaultException<T>
+    {
+        protected WebFaultException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base (default(T)) { }
+        public WebFaultException(T detail, System.Net.HttpStatusCode statusCode) : base (default(T)) { }
+        public WebFaultException(T detail, System.Net.HttpStatusCode statusCode, System.Collections.Generic.IEnumerable<System.Type> knownTypes) : base (default(T)) { }
+        public System.Net.HttpStatusCode StatusCode { get { throw null; } }
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
     public sealed partial class WebGetAttribute : System.Attribute, System.ServiceModel.Description.IOperationBehavior
@@ -497,10 +587,10 @@ namespace System.ServiceModel.Web
         public System.ServiceModel.Web.WebMessageFormat RequestFormat { get { throw null; } set { } }
         public System.ServiceModel.Web.WebMessageFormat ResponseFormat { get { throw null; } set { } }
         public string UriTemplate { get { throw null; } set { } }
-        void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
-        void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.Dispatcher.ClientOperation client) { }
-        void System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.Dispatcher.DispatchOperation service) { }
-        void System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription operation) { }
+        void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
+        void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.ClientOperation clientOperation) { }
+        void System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.DispatchOperation dispatchOperation) { }
+        void System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription operationDescription) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
     public sealed partial class WebInvokeAttribute : System.Attribute, System.ServiceModel.Description.IOperationBehavior
@@ -514,10 +604,10 @@ namespace System.ServiceModel.Web
         public System.ServiceModel.Web.WebMessageFormat RequestFormat { get { throw null; } set { } }
         public System.ServiceModel.Web.WebMessageFormat ResponseFormat { get { throw null; } set { } }
         public string UriTemplate { get { throw null; } set { } }
-        void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
-        void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.Dispatcher.ClientOperation client) { }
-        void System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.Dispatcher.DispatchOperation service) { }
-        void System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription operation) { }
+        void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
+        void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.ClientOperation clientOperation) { }
+        void System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.DispatchOperation dispatchOperation) { }
+        void System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription operationDescription) { }
     }
     public enum WebMessageBodyStyle
     {
@@ -545,7 +635,21 @@ namespace System.ServiceModel.Web
         public System.ServiceModel.Channels.Message CreateAtom10Response(System.ServiceModel.Syndication.SyndicationItem item) { throw null; }
         public System.ServiceModel.Channels.Message CreateJsonResponse<T>(T instance) { throw null; }
         public System.ServiceModel.Channels.Message CreateJsonResponse<T>(T instance, System.Runtime.Serialization.Json.DataContractJsonSerializer serializer) { throw null; }
+        public System.ServiceModel.Channels.Message CreateStreamResponse(System.Action<System.IO.Stream> streamWriter, string contentType) { throw null; }
+        public System.ServiceModel.Channels.Message CreateStreamResponse(System.IO.Stream stream, string contentType) { throw null; }
+        public System.ServiceModel.Channels.Message CreateStreamResponse(System.ServiceModel.Channels.StreamBodyWriter bodyWriter, string contentType) { throw null; }
+        public System.ServiceModel.Channels.Message CreateTextResponse(System.Action<System.IO.TextWriter> textWriter, string contentType) { throw null; }
+        public System.ServiceModel.Channels.Message CreateTextResponse(System.Action<System.IO.TextWriter> textWriter, string contentType, System.Text.Encoding encoding) { throw null; }
+        public System.ServiceModel.Channels.Message CreateTextResponse(string text) { throw null; }
+        public System.ServiceModel.Channels.Message CreateTextResponse(string text, string contentType) { throw null; }
+        public System.ServiceModel.Channels.Message CreateTextResponse(string text, string contentType, System.Text.Encoding encoding) { throw null; }
+        public System.ServiceModel.Channels.Message CreateXmlResponse(System.Xml.Linq.XDocument document) { throw null; }
+        public System.ServiceModel.Channels.Message CreateXmlResponse(System.Xml.Linq.XElement element) { throw null; }
+        public System.ServiceModel.Channels.Message CreateXmlResponse<T>(T instance) { throw null; }
+        public System.ServiceModel.Channels.Message CreateXmlResponse<T>(T instance, System.Runtime.Serialization.XmlObjectSerializer serializer) { throw null; }
+        public System.ServiceModel.Channels.Message CreateXmlResponse<T>(T instance, System.Xml.Serialization.XmlSerializer serializer) { throw null; }
         public void Detach(System.ServiceModel.OperationContext owner) { }
+        public System.UriTemplate GetUriTemplate(string operationName) { throw null; }
     }
     public partial class WebServiceHost : System.ServiceModel.ServiceHost
     {

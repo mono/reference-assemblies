@@ -60,6 +60,11 @@ namespace System
 }
 namespace System.Windows.Markup
 {
+    public partial class AcceptedMarkupExtensionExpressionTypeAttribute : System.Attribute
+    {
+        public AcceptedMarkupExtensionExpressionTypeAttribute(System.Type type) { }
+        public System.Type Type { get { throw null; } set { } }
+    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(196), Inherited=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class AmbientAttribute : System.Attribute
@@ -540,8 +545,8 @@ namespace System.Xaml
     }
     public partial class XamlDirective : System.Xaml.XamlMember
     {
-        public XamlDirective(System.Collections.Generic.IEnumerable<string> xamlNamespaces, string name, System.Xaml.XamlType xamlType, System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> typeConverter, System.Xaml.Schema.AllowedMemberLocations allowedLocation) : base (default(System.Reflection.EventInfo), default(System.Xaml.XamlSchemaContext)) { }
-        public XamlDirective(string xamlNamespace, string name) : base (default(System.Reflection.EventInfo), default(System.Xaml.XamlSchemaContext)) { }
+        public XamlDirective(System.Collections.Generic.IEnumerable<string> xamlNamespaces, string name, System.Xaml.XamlType xamlType, System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> typeConverter, System.Xaml.Schema.AllowedMemberLocations allowedLocation) : base (default(string), default(System.Xaml.XamlType), default(bool)) { }
+        public XamlDirective(string xamlNamespace, string name) : base (default(string), default(System.Xaml.XamlType), default(bool)) { }
         public System.Xaml.Schema.AllowedMemberLocations AllowedLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override int GetHashCode() { throw null; }
         public override System.Collections.Generic.IList<string> GetXamlNamespaces() { throw null; }
@@ -584,8 +589,8 @@ namespace System.Xaml
         public XamlException(string message) { }
         public XamlException(string message, System.Exception innerException) { }
         public XamlException(string message, System.Exception innerException, int lineNumber, int linePosition) { }
-        public int LineNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected internal set { } }
-        public int LinePosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected internal set { } }
+        public int LineNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
+        public int LinePosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
         public override string Message { get { throw null; } }
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
@@ -728,21 +733,24 @@ namespace System.Xaml
         public System.Xaml.XamlReader Reader { get { throw null; } }
         public System.Xaml.XamlWriter Writer { get { throw null; } }
     }
-    public enum XamlNodeType
+    public enum XamlNodeType : byte
     {
-        EndMember = 5,
-        EndObject = 3,
-        GetObject = 2,
-        NamespaceDeclaration = 7,
-        None = 0,
-        StartMember = 4,
-        StartObject = 1,
-        Value = 6,
+        EndMember = (byte)5,
+        EndObject = (byte)3,
+        GetObject = (byte)2,
+        NamespaceDeclaration = (byte)7,
+        None = (byte)0,
+        StartMember = (byte)4,
+        StartObject = (byte)1,
+        Value = (byte)6,
     }
     public partial class XamlObjectEventArgs : System.EventArgs
     {
         public XamlObjectEventArgs(object instance) { }
+        public int ElementLineNumber { get { throw null; } }
+        public int ElementLinePosition { get { throw null; } }
         public object Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Uri SourceBamlUri { get { throw null; } }
     }
     public partial class XamlObjectReader : System.Xaml.XamlReader
     {
@@ -783,11 +791,11 @@ namespace System.Xaml
         public bool ShouldProvideLineInfo { get { throw null; } }
         public void Clear() { }
         protected override void Dispose(bool disposing) { }
-        protected internal virtual void OnAfterBeginInit(object value) { }
-        protected internal virtual void OnAfterEndInit(object value) { }
-        protected internal virtual void OnAfterProperties(object value) { }
-        protected internal virtual void OnBeforeProperties(object value) { }
-        protected internal virtual bool OnSetValue(object eventSender, System.Xaml.XamlMember member, object value) { throw null; }
+        protected virtual void OnAfterBeginInit(object value) { }
+        protected virtual void OnAfterEndInit(object value) { }
+        protected virtual void OnAfterProperties(object value) { }
+        protected virtual void OnBeforeProperties(object value) { }
+        protected virtual bool OnSetValue(object eventSender, System.Xaml.XamlMember member, object value) { throw null; }
         public void SetLineInfo(int lineNumber, int linePosition) { }
         public override void WriteEndMember() { }
         public override void WriteEndObject() { }
@@ -974,11 +982,11 @@ namespace System.Xaml
         protected virtual System.Collections.Generic.IList<System.Xaml.XamlType> LookupAllowedContentTypes() { throw null; }
         protected virtual System.Xaml.XamlMember LookupAttachableMember(string name) { throw null; }
         protected virtual System.Xaml.XamlType LookupBaseType() { throw null; }
-        protected internal virtual System.Xaml.Schema.XamlCollectionKind LookupCollectionKind() { throw null; }
+        protected virtual System.Xaml.Schema.XamlCollectionKind LookupCollectionKind() { throw null; }
         protected virtual bool LookupConstructionRequiresArguments() { throw null; }
         protected virtual System.Xaml.XamlMember LookupContentProperty() { throw null; }
         protected virtual System.Collections.Generic.IList<System.Xaml.XamlType> LookupContentWrappers() { throw null; }
-        protected internal virtual System.Reflection.ICustomAttributeProvider LookupCustomAttributeProvider() { throw null; }
+        protected virtual System.Reflection.ICustomAttributeProvider LookupCustomAttributeProvider() { throw null; }
         protected virtual System.Xaml.Schema.XamlValueConverter<System.Xaml.XamlDeferringLoader> LookupDeferringLoader() { throw null; }
         protected virtual System.Xaml.Schema.XamlTypeInvoker LookupInvoker() { throw null; }
         protected virtual bool LookupIsAmbient() { throw null; }
@@ -1149,12 +1157,12 @@ namespace System.Xaml.Schema
         False = 2,
         True = 1,
     }
-    public enum XamlCollectionKind
+    public enum XamlCollectionKind : byte
     {
-        Array = 3,
-        Collection = 1,
-        Dictionary = 2,
-        None = 0,
+        Array = (byte)3,
+        Collection = (byte)1,
+        Dictionary = (byte)2,
+        None = (byte)0,
     }
     public partial class XamlMemberInvoker
     {

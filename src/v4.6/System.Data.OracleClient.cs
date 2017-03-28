@@ -180,14 +180,11 @@ namespace System.Data.OracleClient
     {
         internal OracleClientFactory() { }
         public static readonly System.Data.OracleClient.OracleClientFactory Instance;
-        [System.MonoTODOAttribute]
-        public override bool CanCreateDataSourceEnumerator { get { throw null; } }
         public override System.Data.Common.DbCommand CreateCommand() { throw null; }
         public override System.Data.Common.DbCommandBuilder CreateCommandBuilder() { throw null; }
         public override System.Data.Common.DbConnection CreateConnection() { throw null; }
         public override System.Data.Common.DbConnectionStringBuilder CreateConnectionStringBuilder() { throw null; }
         public override System.Data.Common.DbDataAdapter CreateDataAdapter() { throw null; }
-        public override System.Data.Common.DbDataSourceEnumerator CreateDataSourceEnumerator() { throw null; }
         public override System.Data.Common.DbParameter CreateParameter() { throw null; }
         public override System.Security.CodeAccessPermission CreatePermission(System.Security.Permissions.PermissionState state) { throw null; }
     }
@@ -238,7 +235,6 @@ namespace System.Data.OracleClient
         public object Clone() { throw null; }
         protected override System.Data.Common.DbParameter CreateDbParameter() { throw null; }
         public new System.Data.OracleClient.OracleParameter CreateParameter() { throw null; }
-        protected override void Dispose(bool disposing) { }
         protected override System.Data.Common.DbDataReader ExecuteDbDataReader(System.Data.CommandBehavior behavior) { throw null; }
         public override int ExecuteNonQuery() { throw null; }
         public int ExecuteOracleNonQuery(out System.Data.OracleClient.OracleString rowid) { rowid = default(System.Data.OracleClient.OracleString); throw null; }
@@ -247,25 +243,24 @@ namespace System.Data.OracleClient
         public new System.Data.OracleClient.OracleDataReader ExecuteReader(System.Data.CommandBehavior behavior) { throw null; }
         public override object ExecuteScalar() { throw null; }
         public override void Prepare() { }
+        public void ResetCommandTimeout() { }
     }
     public sealed partial class OracleCommandBuilder : System.Data.Common.DbCommandBuilder
     {
         public OracleCommandBuilder() { }
         public OracleCommandBuilder(System.Data.OracleClient.OracleDataAdapter adapter) { }
+        public override System.Data.Common.CatalogLocation CatalogLocation { get { throw null; } set { } }
+        public override string CatalogSeparator { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         public new System.Data.OracleClient.OracleDataAdapter DataAdapter { get { throw null; } set { } }
-        [System.ComponentModel.BrowsableAttribute(false)]
-        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public override string QuotePrefix { get { throw null; } set { } }
-        [System.ComponentModel.BrowsableAttribute(false)]
-        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public override string QuoteSuffix { get { throw null; } set { } }
+        public override string SchemaSeparator { get { throw null; } set { } }
         [System.MonoTODOAttribute]
         protected override void ApplyParameterInfo(System.Data.Common.DbParameter parameter, System.Data.DataRow datarow, System.Data.StatementType statementType, bool whereClause) { }
         public static void DeriveParameters(System.Data.OracleClient.OracleCommand command) { }
-        protected override void Dispose(bool disposing) { }
         public new System.Data.OracleClient.OracleCommand GetDeleteCommand() { throw null; }
+        public new System.Data.OracleClient.OracleCommand GetDeleteCommand(bool useColumnsForParameterNames) { throw null; }
         public new System.Data.OracleClient.OracleCommand GetInsertCommand() { throw null; }
+        public new System.Data.OracleClient.OracleCommand GetInsertCommand(bool useColumnsForParameterNames) { throw null; }
         [System.MonoTODOAttribute]
         protected override string GetParameterName(int parameterOrdinal) { throw null; }
         [System.MonoTODOAttribute]
@@ -273,10 +268,11 @@ namespace System.Data.OracleClient
         [System.MonoTODOAttribute]
         protected override string GetParameterPlaceholder(int parameterOrdinal) { throw null; }
         public new System.Data.OracleClient.OracleCommand GetUpdateCommand() { throw null; }
-        [System.MonoTODOAttribute("Figure out what else needs to be cleaned up when we refresh.")]
-        public override void RefreshSchema() { }
+        public new System.Data.OracleClient.OracleCommand GetUpdateCommand(bool useColumnsForParameterNames) { throw null; }
+        public override string QuoteIdentifier(string unquotedIdentifier) { throw null; }
         [System.MonoTODOAttribute]
         protected override void SetRowUpdatingHandler(System.Data.Common.DbDataAdapter adapter) { }
+        public override string UnquoteIdentifier(string quotedIdentifier) { throw null; }
     }
     [System.ComponentModel.DefaultEventAttribute("InfoMessage")]
     public sealed partial class OracleConnection : System.Data.Common.DbConnection, System.ICloneable
@@ -310,6 +306,8 @@ namespace System.Data.OracleClient
         public new System.Data.OracleClient.OracleTransaction BeginTransaction(System.Data.IsolationLevel il) { throw null; }
         [System.MonoTODOAttribute]
         public override void ChangeDatabase(string value) { }
+        public static void ClearAllPools() { }
+        public static void ClearPool(System.Data.OracleClient.OracleConnection connection) { }
         public override void Close() { }
         public new System.Data.OracleClient.OracleCommand CreateCommand() { throw null; }
         protected override System.Data.Common.DbCommand CreateDbCommand() { throw null; }
@@ -317,6 +315,7 @@ namespace System.Data.OracleClient
         protected override void Dispose(bool disposing) { }
         [System.MonoTODOAttribute]
         public void EnlistDistributedTransaction(System.EnterpriseServices.ITransaction distributedTransaction) { }
+        public override void EnlistTransaction(System.Transactions.Transaction transaction) { }
         public override System.Data.DataTable GetSchema() { throw null; }
         public override System.Data.DataTable GetSchema(string collectionName) { throw null; }
         public override System.Data.DataTable GetSchema(string collectionName, string[] restrictionValues) { throw null; }
@@ -372,6 +371,7 @@ namespace System.Data.OracleClient
         public override System.Collections.ICollection Values { get { throw null; } }
         public override void Clear() { }
         public override bool ContainsKey(string keyword) { throw null; }
+        protected override void GetProperties(System.Collections.Hashtable propertyDescriptors) { }
         public override bool Remove(string keyword) { throw null; }
         [System.MonoNotSupportedAttribute("")]
         public override bool ShouldSerialize(string keyword) { throw null; }
@@ -380,7 +380,7 @@ namespace System.Data.OracleClient
     [System.ComponentModel.DefaultEventAttribute("RowUpdated")]
     [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OracleDataAdapterDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.OracleDataAdapterToolboxItem, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    public sealed partial class OracleDataAdapter : System.Data.Common.DbDataAdapter, System.Data.IDataAdapter, System.Data.IDbDataAdapter
+    public sealed partial class OracleDataAdapter : System.Data.Common.DbDataAdapter, System.Data.IDataAdapter, System.Data.IDbDataAdapter, System.ICloneable
     {
         public OracleDataAdapter() { }
         public OracleDataAdapter(System.Data.OracleClient.OracleCommand selectCommand) { }
@@ -405,10 +405,18 @@ namespace System.Data.OracleClient
         public new System.Data.OracleClient.OracleCommand UpdateCommand { get { throw null; } set { } }
         public event System.Data.OracleClient.OracleRowUpdatedEventHandler RowUpdated { add { } remove { } }
         public event System.Data.OracleClient.OracleRowUpdatingEventHandler RowUpdating { add { } remove { } }
+        protected override int AddToBatch(System.Data.IDbCommand command) { throw null; }
+        protected override void ClearBatch() { }
         protected override System.Data.Common.RowUpdatedEventArgs CreateRowUpdatedEvent(System.Data.DataRow dataRow, System.Data.IDbCommand command, System.Data.StatementType statementType, System.Data.Common.DataTableMapping tableMapping) { throw null; }
         protected override System.Data.Common.RowUpdatingEventArgs CreateRowUpdatingEvent(System.Data.DataRow dataRow, System.Data.IDbCommand command, System.Data.StatementType statementType, System.Data.Common.DataTableMapping tableMapping) { throw null; }
+        protected override int ExecuteBatch() { throw null; }
+        protected override System.Data.IDataParameter GetBatchedParameter(int commandIdentifier, int parameterIndex) { throw null; }
+        protected override bool GetBatchedRecordsAffected(int commandIdentifier, out int recordsAffected, out System.Exception error) { recordsAffected = default(int); error = default(System.Exception); throw null; }
+        protected override void InitializeBatching() { }
         protected override void OnRowUpdated(System.Data.Common.RowUpdatedEventArgs value) { }
         protected override void OnRowUpdating(System.Data.Common.RowUpdatingEventArgs value) { }
+        object System.ICloneable.Clone() { throw null; }
+        protected override void TerminateBatching() { }
     }
     public sealed partial class OracleDataReader : System.Data.Common.DbDataReader
     {
@@ -421,7 +429,6 @@ namespace System.Data.OracleClient
         public override object this[string name] { get { throw null; } }
         public override int RecordsAffected { get { throw null; } }
         public override void Close() { }
-        ~OracleDataReader() { }
         public override bool GetBoolean(int i) { throw null; }
         public override byte GetByte(int i) { throw null; }
         public override long GetBytes(int i, long fieldOffset, byte[] buffer2, int bufferoffset, int length) { throw null; }
@@ -565,6 +572,7 @@ namespace System.Data.OracleClient
         [System.MonoTODOAttribute]
         public override void SetLength(long value) { }
         public override void Write(byte[] buffer, int offset, int count) { }
+        public override void WriteByte(byte value) { }
     }
     public enum OracleLobOpenMode
     {
@@ -695,7 +703,7 @@ namespace System.Data.OracleClient
         public static System.Data.OracleClient.OracleNumber Truncate(System.Data.OracleClient.OracleNumber n, int position) { throw null; }
     }
     [System.ComponentModel.TypeConverterAttribute("System.Data.OracleClient.OracleParameter.OracleParameterConverter")]
-    public sealed partial class OracleParameter : System.Data.Common.DbParameter, System.Data.IDataParameter, System.Data.IDbDataParameter, System.ICloneable, System.IDisposable
+    public sealed partial class OracleParameter : System.Data.Common.DbParameter, System.Data.IDataParameter, System.Data.IDbDataParameter, System.ICloneable
     {
         public OracleParameter() { }
         public OracleParameter(string name, System.Data.OracleClient.OracleType oracleType) { }
@@ -732,8 +740,6 @@ namespace System.Data.OracleClient
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public override object Value { get { throw null; } set { } }
-        public void Dispose() { }
-        ~OracleParameter() { }
         public override void ResetDbType() { }
         public void ResetOracleType() { }
         object System.ICloneable.Clone() { throw null; }
@@ -760,11 +766,13 @@ namespace System.Data.OracleClient
         public System.Data.OracleClient.OracleParameter Add(string parameterName, object value) { throw null; }
         public override void AddRange(System.Array values) { }
         public void AddRange(System.Data.OracleClient.OracleParameter[] values) { }
+        public System.Data.OracleClient.OracleParameter AddWithValue(string parameterName, object value) { throw null; }
         public override void Clear() { }
         public bool Contains(System.Data.OracleClient.OracleParameter value) { throw null; }
         public override bool Contains(object value) { throw null; }
         public override bool Contains(string parameterName) { throw null; }
         public override void CopyTo(System.Array array, int index) { }
+        public void CopyTo(System.Data.OracleClient.OracleParameter[] array, int index) { }
         public override System.Collections.IEnumerator GetEnumerator() { throw null; }
         protected override System.Data.Common.DbParameter GetParameter(int index) { throw null; }
         protected override System.Data.Common.DbParameter GetParameter(string parameterName) { throw null; }
@@ -782,17 +790,31 @@ namespace System.Data.OracleClient
     }
     [System.MonoTODOAttribute("Current MS implementation of Data Provider requires FullTrust")]
     [System.SerializableAttribute]
-    public sealed partial class OraclePermission : System.Data.Common.DBDataPermission
+    public sealed partial class OraclePermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
-        public OraclePermission(System.Security.Permissions.PermissionState state) : base (default(System.Security.Permissions.PermissionState)) { }
+        public OraclePermission(System.Security.Permissions.PermissionState state) { }
+        public bool AllowBlankPassword { get { throw null; } set { } }
+        public void Add(string connectionString, string restrictions, System.Data.KeyRestrictionBehavior behavior) { }
         public override System.Security.IPermission Copy() { throw null; }
+        public override void FromXml(System.Security.SecurityElement securityElement) { }
+        public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
+        public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
+        public bool IsUnrestricted() { throw null; }
+        public override System.Security.SecurityElement ToXml() { throw null; }
+        public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
     [System.SerializableAttribute]
-    public sealed partial class OraclePermissionAttribute : System.Data.Common.DBDataPermissionAttribute
+    public sealed partial class OraclePermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public OraclePermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
+        public bool AllowBlankPassword { get { throw null; } set { } }
+        public string ConnectionString { get { throw null; } set { } }
+        public System.Data.KeyRestrictionBehavior KeyRestrictionBehavior { get { throw null; } set { } }
+        public string KeyRestrictions { get { throw null; } set { } }
         public override System.Security.IPermission CreatePermission() { throw null; }
+        public bool ShouldSerializeConnectionString() { throw null; }
+        public bool ShouldSerializeKeyRestrictions() { throw null; }
     }
     public sealed partial class OracleRowUpdatedEventArgs : System.Data.Common.RowUpdatedEventArgs
     {

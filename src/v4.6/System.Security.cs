@@ -92,21 +92,43 @@ namespace System.Security.Cryptography
         CurrentUser = 0,
         LocalMachine = 1,
     }
+    public abstract partial class DataProtector
+    {
+        protected DataProtector(string applicationName, string primaryPurpose, string[] specificPurposes) { }
+        protected string ApplicationName { get { throw null; } }
+        protected virtual bool PrependHashedPurposeToPlaintext { get { throw null; } }
+        protected string PrimaryPurpose { get { throw null; } }
+        protected System.Collections.Generic.IEnumerable<string> SpecificPurposes { get { throw null; } }
+        public static System.Security.Cryptography.DataProtector Create(string providerClass, string applicationName, string primaryPurpose, params string[] specificPurposes) { throw null; }
+        protected virtual byte[] GetHashedPurpose() { throw null; }
+        public abstract bool IsReprotectRequired(byte[] encryptedData);
+        public byte[] Protect(byte[] userData) { throw null; }
+        protected abstract byte[] ProviderProtect(byte[] userData);
+        protected abstract byte[] ProviderUnprotect(byte[] encryptedData);
+        public byte[] Unprotect(byte[] encryptedData) { throw null; }
+    }
+    public sealed partial class DpapiDataProtector : System.Security.Cryptography.DataProtector
+    {
+        public DpapiDataProtector(string appName, string primaryPurpose, params string[] specificPurpose) : base (default(string), default(string), default(string[])) { }
+        protected override bool PrependHashedPurposeToPlaintext { get { throw null; } }
+        public System.Security.Cryptography.DataProtectionScope Scope { get { throw null; } set { } }
+        public override bool IsReprotectRequired(byte[] encryptedData) { throw null; }
+        protected override byte[] ProviderProtect(byte[] userData) { throw null; }
+        protected override byte[] ProviderUnprotect(byte[] encryptedData) { throw null; }
+    }
     public enum MemoryProtectionScope
     {
         CrossProcess = 1,
         SameLogon = 2,
         SameProcess = 0,
     }
-    public sealed partial class ProtectedData
+    public static partial class ProtectedData
     {
-        internal ProtectedData() { }
         public static byte[] Protect(byte[] userData, byte[] optionalEntropy, System.Security.Cryptography.DataProtectionScope scope) { throw null; }
         public static byte[] Unprotect(byte[] encryptedData, byte[] optionalEntropy, System.Security.Cryptography.DataProtectionScope scope) { throw null; }
     }
-    public sealed partial class ProtectedMemory
+    public static partial class ProtectedMemory
     {
-        internal ProtectedMemory() { }
         [System.MonoTODOAttribute("only supported on Windows 2000 SP3 and later")]
         public static void Protect(byte[] userData, System.Security.Cryptography.MemoryProtectionScope scope) { }
         [System.MonoTODOAttribute("only supported on Windows 2000 SP3 and later")]
@@ -577,6 +599,7 @@ namespace System.Security.Cryptography.Xml
         public System.Security.Cryptography.PaddingMode Padding { get { throw null; } set { } }
         public string Recipient { get { throw null; } set { } }
         public System.Xml.XmlResolver Resolver { get { throw null; } set { } }
+        public int XmlDSigSearchDepth { get { throw null; } set { } }
         public void AddKeyNameMapping(string keyName, object keyObject) { }
         public void ClearKeyNameMappings() { }
         public byte[] DecryptData(System.Security.Cryptography.Xml.EncryptedData encryptedData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
@@ -838,7 +861,9 @@ namespace System.Security.Cryptography.Xml
         public System.Security.Cryptography.Xml.KeyInfo KeyInfo { get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Xml.XmlResolver Resolver { set { } }
+        public System.Collections.ObjectModel.Collection<string> SafeCanonicalizationMethods { get { throw null; } }
         public System.Security.Cryptography.Xml.Signature Signature { get { throw null; } }
+        public System.Func<System.Security.Cryptography.Xml.SignedXml, bool> SignatureFormatValidator { get { throw null; } set { } }
         public string SignatureLength { get { throw null; } }
         public string SignatureMethod { get { throw null; } }
         public byte[] SignatureValue { get { throw null; } }
