@@ -3949,6 +3949,7 @@ namespace System.Data.SqlClient
     [System.FlagsAttribute]
     public enum SqlBulkCopyOptions
     {
+        AllowEncryptedValueModifications = 64,
         CheckConstraints = 2,
         Default = 0,
         FireTriggers = 16,
@@ -4006,9 +4007,24 @@ namespace System.Data.SqlClient
         public SqlClientPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
         public override System.Security.IPermission CreatePermission() { throw null; }
     }
-    public sealed partial class SqlColumnEncryptionCertificateStoreProvider : System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider
+    public partial class SqlColumnEncryptionCertificateStoreProvider : System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider
     {
+        public const string ProviderName = "MSSQL_CERTIFICATE_STORE";
         public SqlColumnEncryptionCertificateStoreProvider() { }
+        public override byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey) { throw null; }
+        public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey) { throw null; }
+    }
+    public partial class SqlColumnEncryptionCngProvider : System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider
+    {
+        public const string ProviderName = "MSSQL_CNG_STORE";
+        public SqlColumnEncryptionCngProvider() { }
+        public override byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey) { throw null; }
+        public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey) { throw null; }
+    }
+    public partial class SqlColumnEncryptionCspProvider : System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider
+    {
+        public const string ProviderName = "MSSQL_CSP_PROVIDER";
+        public SqlColumnEncryptionCspProvider() { }
         public override byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey) { throw null; }
         public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey) { throw null; }
     }
@@ -4325,6 +4341,7 @@ namespace System.Data.SqlClient
         [System.ComponentModel.DisplayNameAttribute("Transaction Binding")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public string TransactionBinding { get { throw null; } set { } }
+        public bool TransparentNetworkIPResolution { get { throw null; } set { } }
         [System.ComponentModel.DisplayNameAttribute("TrustServerCertificate")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public bool TrustServerCertificate { get { throw null; } set { } }

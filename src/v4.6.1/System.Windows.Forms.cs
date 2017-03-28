@@ -14715,6 +14715,7 @@ namespace System.Windows.Forms
         protected override void OnHandleDestroyed(System.EventArgs e) { }
         protected virtual void OnTextAlignChanged(System.EventArgs e) { }
         public void Paste(string text) { }
+        protected override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     [System.ComponentModel.DefaultBindingPropertyAttribute("Text")]

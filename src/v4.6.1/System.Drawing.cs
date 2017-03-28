@@ -2193,6 +2193,7 @@ namespace System.Drawing.Design
         public System.Collections.ICollection Filter { get { throw null; } set { } }
         public bool IsTransient { get { throw null; } set { } }
         public virtual bool Locked { get { throw null; } }
+        public System.Drawing.Bitmap OriginalBitmap { get { throw null; } set { } }
         public System.Collections.IDictionary Properties { get { throw null; } }
         public string TypeName { get { throw null; } set { } }
         public virtual string Version { get { throw null; } }

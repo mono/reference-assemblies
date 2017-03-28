@@ -196,6 +196,7 @@ namespace System.Transactions
         internal Transaction() { }
         public static System.Transactions.Transaction Current { get { throw null; } set { } }
         public System.Transactions.IsolationLevel IsolationLevel { get { throw null; } }
+        public System.Guid PromoterType { get { throw null; } }
         public System.Transactions.TransactionInformation TransactionInformation { get { throw null; } }
         public event System.Transactions.TransactionCompletedEventHandler TransactionCompleted { add { } remove { } }
         public System.Transactions.Transaction Clone() { throw null; }
@@ -209,12 +210,14 @@ namespace System.Transactions
         [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
         public System.Transactions.Enlistment EnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public bool EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification) { throw null; }
+        public bool EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification, System.Guid promoterType) { throw null; }
         [System.MonoTODOAttribute("EnlistmentOptions being ignored")]
         public System.Transactions.Enlistment EnlistVolatile(System.Transactions.IEnlistmentNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         [System.MonoTODOAttribute("EnlistmentOptions being ignored")]
         public System.Transactions.Enlistment EnlistVolatile(System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
+        public byte[] GetPromotedToken() { throw null; }
         public static bool operator ==(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
         public static bool operator !=(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
         [System.MonoTODOAttribute("Only Local Transaction Manager supported. Cannot have more than 1 durable resource per transaction.")]
@@ -222,6 +225,7 @@ namespace System.Transactions
         public System.Transactions.Enlistment PromoteAndEnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Transactions.ISinglePhaseNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public void Rollback() { }
         public void Rollback(System.Exception e) { }
+        public void SetDistributedTransactionIdentifier(System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Guid distributedTransactionIdentifier) { }
         [System.MonoTODOAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext context) { }
     }
@@ -266,6 +270,7 @@ namespace System.Transactions
     [System.MonoTODOAttribute]
     public static partial class TransactionInterop
     {
+        public static readonly System.Guid PromoterTypeDtc;
         [System.MonoTODOAttribute]
         public static System.Transactions.IDtcTransaction GetDtcTransaction(System.Transactions.Transaction transaction) { throw null; }
         [System.MonoTODOAttribute]
