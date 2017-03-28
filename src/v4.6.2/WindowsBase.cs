@@ -169,7 +169,9 @@ namespace System.ComponentModel
     public abstract partial class GroupDescription : System.ComponentModel.INotifyPropertyChanged
     {
         protected GroupDescription() { }
+        public System.Collections.IComparer CustomSort { get { throw null; } set { } }
         public System.Collections.ObjectModel.ObservableCollection<object> GroupNames { get { throw null; } }
+        public System.ComponentModel.SortDescriptionCollection SortDescriptions { get { throw null; } }
         protected virtual event System.ComponentModel.PropertyChangedEventHandler PropertyChanged { add { } remove { } }
         event System.ComponentModel.PropertyChangedEventHandler System.ComponentModel.INotifyPropertyChanged.PropertyChanged { add { } remove { } }
         public abstract object GroupNameFromItem(object item, int level, System.Globalization.CultureInfo culture);
@@ -177,6 +179,7 @@ namespace System.ComponentModel
         protected virtual void OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeGroupNames() { throw null; }
+        public bool ShouldSerializeSortDescriptions() { throw null; }
     }
     public partial interface ICollectionView : System.Collections.IEnumerable, System.Collections.Specialized.INotifyCollectionChanged
     {

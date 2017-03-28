@@ -701,11 +701,31 @@ namespace System.Web
     public sealed partial class HttpCachePolicy
     {
         internal HttpCachePolicy() { }
+        public System.DateTime UtcTimestampCreated { get { throw null; } set { } }
         public System.Web.HttpCacheVaryByContentEncodings VaryByContentEncodings { get { throw null; } }
         public System.Web.HttpCacheVaryByHeaders VaryByHeaders { get { throw null; } }
         public System.Web.HttpCacheVaryByParams VaryByParams { get { throw null; } }
         public void AddValidationCallback(System.Web.HttpCacheValidateHandler handler, object data) { }
         public void AppendCacheExtension(string extension) { }
+        public System.Web.HttpCacheability GetCacheability() { throw null; }
+        public string GetCacheExtensions() { throw null; }
+        public string GetETag() { throw null; }
+        public bool GetETagFromFileDependencies() { throw null; }
+        public System.DateTime GetExpires() { throw null; }
+        public bool GetIgnoreRangeRequests() { throw null; }
+        public bool GetLastModifiedFromFileDependencies() { throw null; }
+        public System.TimeSpan GetMaxAge() { throw null; }
+        public bool GetNoServerCaching() { throw null; }
+        public bool GetNoStore() { throw null; }
+        public bool GetNoTransforms() { throw null; }
+        public int GetOmitVaryStar() { throw null; }
+        public System.TimeSpan GetProxyMaxAge() { throw null; }
+        public System.Web.HttpCacheRevalidation GetRevalidation() { throw null; }
+        public System.DateTime GetUtcLastModified() { throw null; }
+        public string GetVaryByCustom() { throw null; }
+        public bool HasSlidingExpiration() { throw null; }
+        public bool IsModified() { throw null; }
+        public bool IsValidUntilExpires() { throw null; }
         public void SetAllowResponseInBrowserHistory(bool allow) { }
         public void SetCacheability(System.Web.HttpCacheability cacheability) { }
         public void SetCacheability(System.Web.HttpCacheability cacheability, string field) { }
@@ -793,6 +813,8 @@ namespace System.Web
     {
         public HttpCacheVaryByContentEncodings() { }
         public bool this[string contentEncoding] { get { throw null; } set { } }
+        public string[] GetContentEncodings() { throw null; }
+        public void SetContentEncodings(string[] contentEncodings) { }
     }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
     public sealed partial class HttpCacheVaryByHeaders
@@ -803,6 +825,8 @@ namespace System.Web
         public bool UserAgent { get { throw null; } set { } }
         public bool UserCharSet { get { throw null; } set { } }
         public bool UserLanguage { get { throw null; } set { } }
+        public string[] GetHeaders() { throw null; }
+        public void SetHeaders(string[] headers) { }
         public void VaryByUnspecifiedParameters() { }
     }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
@@ -811,6 +835,8 @@ namespace System.Web
         public HttpCacheVaryByParams() { }
         public bool IgnoreParams { get { throw null; } set { } }
         public bool this[string header] { get { throw null; } set { } }
+        public string[] GetParams() { throw null; }
+        public void SetParams(string[] parameters) { }
     }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
@@ -2608,6 +2634,7 @@ namespace System.Web.Caching
         public AggregateCacheDependency() { }
         public void Add(params System.Web.Caching.CacheDependency[] dependencies) { }
         protected override void DependencyDispose() { }
+        public override string[] GetFileDependencies() { throw null; }
         public override string GetUniqueID() { throw null; }
     }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
@@ -2649,6 +2676,7 @@ namespace System.Web.Caching
         protected virtual void DependencyDispose() { }
         public void Dispose() { }
         protected internal void FinishInit() { }
+        public virtual string[] GetFileDependencies() { throw null; }
         public virtual string GetUniqueID() { throw null; }
         protected void NotifyDependencyChanged(object sender, System.EventArgs e) { }
         protected void SetUtcLastModified(System.DateTime utcLastModified) { }
@@ -2731,12 +2759,28 @@ namespace System.Web.Caching
         public abstract void Remove(string key);
         public abstract void Set(string key, object entry, System.DateTime utcExpiry);
     }
+    public abstract partial class OutputCacheProviderAsync : System.Web.Caching.OutputCacheProvider
+    {
+        protected OutputCacheProviderAsync() { }
+        public abstract System.Threading.Tasks.Task<object> AddAsync(string key, object entry, System.DateTime utcExpiry);
+        public abstract System.Threading.Tasks.Task<object> GetAsync(string key);
+        public abstract System.Threading.Tasks.Task RemoveAsync(string key);
+        public abstract System.Threading.Tasks.Task SetAsync(string key, object entry, System.DateTime utcExpiry);
+    }
     public sealed partial class OutputCacheProviderCollection : System.Configuration.Provider.ProviderCollection
     {
         public OutputCacheProviderCollection() { }
         public new System.Web.Caching.OutputCacheProvider this[string name] { get { throw null; } }
         public override void Add(System.Configuration.Provider.ProviderBase provider) { }
         public void CopyTo(System.Web.Caching.OutputCacheProvider[] array, int index) { }
+    }
+    public static partial class OutputCacheUtility
+    {
+        public static System.Web.Caching.CacheDependency CreateCacheDependency(System.Web.HttpResponse response) { throw null; }
+        public static System.Collections.ArrayList GetContentBuffers(System.Web.HttpResponse response) { throw null; }
+        public static System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.Web.HttpCacheValidateHandler, object>> GetValidationCallbacks(System.Web.HttpResponse response) { throw null; }
+        public static void SetContentBuffers(System.Web.HttpResponse response, System.Collections.ArrayList buffers) { }
+        public static string SetupKernelCaching(string originalCacheUrl, System.Web.HttpResponse response) { throw null; }
     }
     [System.SerializableAttribute]
     public abstract partial class ResponseElement
@@ -5632,6 +5676,23 @@ namespace System.Web.Configuration.Internal
         void GetSiteIDAndVPathFromConfigPath(string configPath, out string siteID, out string vpath);
     }
 }
+namespace System.Web.Globalization
+{
+    public partial interface IStringLocalizerProvider
+    {
+        string GetLocalizedString(System.Globalization.CultureInfo culture, string name, params object[] arguments);
+    }
+    public sealed partial class ResourceFileStringLocalizerProvider : System.Web.Globalization.IStringLocalizerProvider
+    {
+        public const string ResourceFileName = "DataAnnotation.Localization";
+        public ResourceFileStringLocalizerProvider() { }
+        public string GetLocalizedString(System.Globalization.CultureInfo culture, string name, params object[] arguments) { throw null; }
+    }
+    public static partial class StringLocalizerProviders
+    {
+        public static System.Web.Globalization.IStringLocalizerProvider DataAnnotationStringLocalizerProvider { get { throw null; } set { } }
+    }
+}
 namespace System.Web.Handlers
 {
     public sealed partial class AssemblyResourceLoader : System.Web.IHttpHandler
@@ -6751,6 +6812,8 @@ namespace System.Web.ModelBinding
         protected internal System.ComponentModel.DataAnnotations.ValidationAttribute Attribute { get { throw null; } }
         protected internal string ErrorMessage { get { throw null; } }
         public override bool IsRequired { get { throw null; } }
+        protected virtual string GetLocalizedErrorMessage(string errorMessage) { throw null; }
+        protected string GetLocalizedString(string name, params object[] arguments) { throw null; }
         public override System.Collections.Generic.IEnumerable<System.Web.ModelBinding.ModelValidationResult> Validate(object container) { throw null; }
     }
     public partial class DataAnnotationsModelValidatorProvider : System.Web.ModelBinding.AssociatedValidatorProvider
@@ -6867,6 +6930,16 @@ namespace System.Web.ModelBinding
     {
         public KeyValuePairModelBinder() { }
         public bool BindModel(System.Web.ModelBinding.ModelBindingExecutionContext modelBindingExecutionContext, System.Web.ModelBinding.ModelBindingContext bindingContext) { throw null; }
+    }
+    public sealed partial class MaxLengthAttributeAdapter : System.Web.ModelBinding.DataAnnotationsModelValidator<System.ComponentModel.DataAnnotations.MaxLengthAttribute>
+    {
+        public MaxLengthAttributeAdapter(System.Web.ModelBinding.ModelMetadata metadata, System.Web.ModelBinding.ModelBindingExecutionContext context, System.ComponentModel.DataAnnotations.MaxLengthAttribute attribute) : base (default(System.Web.ModelBinding.ModelMetadata), default(System.Web.ModelBinding.ModelBindingExecutionContext), default(System.ComponentModel.DataAnnotations.MaxLengthAttribute)) { }
+        protected override string GetLocalizedErrorMessage(string errorMessage) { throw null; }
+    }
+    public sealed partial class MinLengthAttributeAdapter : System.Web.ModelBinding.DataAnnotationsModelValidator<System.ComponentModel.DataAnnotations.MinLengthAttribute>
+    {
+        public MinLengthAttributeAdapter(System.Web.ModelBinding.ModelMetadata metadata, System.Web.ModelBinding.ModelBindingExecutionContext context, System.ComponentModel.DataAnnotations.MinLengthAttribute attribute) : base (default(System.Web.ModelBinding.ModelMetadata), default(System.Web.ModelBinding.ModelBindingExecutionContext), default(System.ComponentModel.DataAnnotations.MinLengthAttribute)) { }
+        protected override string GetLocalizedErrorMessage(string errorMessage) { throw null; }
     }
     public partial class ModelBinderDictionary : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.Type, System.Web.ModelBinding.IModelBinder>>, System.Collections.Generic.IDictionary<System.Type, System.Web.ModelBinding.IModelBinder>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.Type, System.Web.ModelBinding.IModelBinder>>, System.Collections.IEnumerable
     {
@@ -7159,10 +7232,12 @@ namespace System.Web.ModelBinding
     public sealed partial class RangeAttributeAdapter : System.Web.ModelBinding.DataAnnotationsModelValidator<System.ComponentModel.DataAnnotations.RangeAttribute>
     {
         public RangeAttributeAdapter(System.Web.ModelBinding.ModelMetadata metadata, System.Web.ModelBinding.ModelBindingExecutionContext context, System.ComponentModel.DataAnnotations.RangeAttribute attribute) : base (default(System.Web.ModelBinding.ModelMetadata), default(System.Web.ModelBinding.ModelBindingExecutionContext), default(System.ComponentModel.DataAnnotations.RangeAttribute)) { }
+        protected override string GetLocalizedErrorMessage(string errorMessage) { throw null; }
     }
     public sealed partial class RegularExpressionAttributeAdapter : System.Web.ModelBinding.DataAnnotationsModelValidator<System.ComponentModel.DataAnnotations.RegularExpressionAttribute>
     {
         public RegularExpressionAttributeAdapter(System.Web.ModelBinding.ModelMetadata metadata, System.Web.ModelBinding.ModelBindingExecutionContext context, System.ComponentModel.DataAnnotations.RegularExpressionAttribute attribute) : base (default(System.Web.ModelBinding.ModelMetadata), default(System.Web.ModelBinding.ModelBindingExecutionContext), default(System.ComponentModel.DataAnnotations.RegularExpressionAttribute)) { }
+        protected override string GetLocalizedErrorMessage(string errorMessage) { throw null; }
     }
     public sealed partial class RequiredAttributeAdapter : System.Web.ModelBinding.DataAnnotationsModelValidator<System.ComponentModel.DataAnnotations.RequiredAttribute>
     {
@@ -7208,6 +7283,7 @@ namespace System.Web.ModelBinding
     public sealed partial class StringLengthAttributeAdapter : System.Web.ModelBinding.DataAnnotationsModelValidator<System.ComponentModel.DataAnnotations.StringLengthAttribute>
     {
         public StringLengthAttributeAdapter(System.Web.ModelBinding.ModelMetadata metadata, System.Web.ModelBinding.ModelBindingExecutionContext context, System.ComponentModel.DataAnnotations.StringLengthAttribute attribute) : base (default(System.Web.ModelBinding.ModelMetadata), default(System.Web.ModelBinding.ModelBindingExecutionContext), default(System.ComponentModel.DataAnnotations.StringLengthAttribute)) { }
+        protected override string GetLocalizedErrorMessage(string errorMessage) { throw null; }
     }
     public sealed partial class TypeConverterModelBinder : System.Web.ModelBinding.IModelBinder
     {
@@ -8564,6 +8640,11 @@ namespace System.Web.SessionState
         void Remove(string name);
         void RemoveAt(int index);
     }
+    public partial interface ISessionStateModule : System.Web.IHttpModule
+    {
+        void ReleaseSessionState(System.Web.HttpContext context);
+        System.Threading.Tasks.Task ReleaseSessionStateAsync(System.Web.HttpContext context);
+    }
     [System.Runtime.InteropServices.GuidAttribute("7297744b-e188-40bf-b7e9-56698d25cf44")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface IStateRuntime
@@ -8622,7 +8703,7 @@ namespace System.Web.SessionState
         StateServer = 2,
     }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
-    public sealed partial class SessionStateModule : System.Web.IHttpModule
+    public sealed partial class SessionStateModule : System.Web.IHttpModule, System.Web.SessionState.ISessionStateModule
     {
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public SessionStateModule() { }
@@ -8631,6 +8712,8 @@ namespace System.Web.SessionState
         public void Dispose() { }
         [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Read="MONO_XSP_STATIC_SESSION")]
         public void Init(System.Web.HttpApplication app) { }
+        public void ReleaseSessionState(System.Web.HttpContext context) { }
+        public System.Threading.Tasks.Task ReleaseSessionStateAsync(System.Web.HttpContext context) { throw null; }
     }
     public partial class SessionStateStoreData
     {
@@ -8661,6 +8744,8 @@ namespace System.Web.SessionState
         public static void AddHttpSessionStateToContext(System.Web.HttpContext context, System.Web.SessionState.IHttpSessionState container) { }
         public static System.Web.SessionState.IHttpSessionState GetHttpSessionStateFromContext(System.Web.HttpContext context) { throw null; }
         public static System.Web.HttpStaticObjectsCollection GetSessionStaticObjects(System.Web.HttpContext context) { throw null; }
+        public static bool IsSessionStateReadOnly(System.Web.HttpContext context) { throw null; }
+        public static bool IsSessionStateRequired(System.Web.HttpContext context) { throw null; }
         public static void RaiseSessionEnd(System.Web.SessionState.IHttpSessionState session, object eventSource, System.EventArgs eventArgs) { }
         public static void RemoveHttpSessionStateFromContext(System.Web.HttpContext context) { }
     }
