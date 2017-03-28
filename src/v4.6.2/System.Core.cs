@@ -3183,6 +3183,22 @@ namespace System.Security
 }
 namespace System.Security.Cryptography
 {
+    public sealed partial class AesCng : System.Security.Cryptography.Aes
+    {
+        public AesCng() { }
+        public AesCng(string keyName) { }
+        public AesCng(string keyName, System.Security.Cryptography.CngProvider provider) { }
+        public AesCng(string keyName, System.Security.Cryptography.CngProvider provider, System.Security.Cryptography.CngKeyOpenOptions openOptions) { }
+        public override byte[] Key { get { throw null; } set { } }
+        public override int KeySize { get { throw null; } set { } }
+        public override System.Security.Cryptography.ICryptoTransform CreateDecryptor() { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateDecryptor(byte[] rgbKey, byte[] rgbIV) { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateEncryptor() { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateEncryptor(byte[] rgbKey, byte[] rgbIV) { throw null; }
+        protected override void Dispose(bool disposing) { }
+        public override void GenerateIV() { }
+        public override void GenerateKey() { }
+    }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class AesCryptoServiceProvider : System.Security.Cryptography.Aes
     {
@@ -3441,6 +3457,23 @@ namespace System.Security.Cryptography
         None = 0,
         ProtectKey = 1,
     }
+    public sealed partial class DSACng : System.Security.Cryptography.DSA
+    {
+        public DSACng() { }
+        public DSACng(int keySize) { }
+        public DSACng(System.Security.Cryptography.CngKey key) { }
+        public System.Security.Cryptography.CngKey Key { get { throw null; } }
+        public override string KeyExchangeAlgorithm { get { throw null; } }
+        public override System.Security.Cryptography.KeySizes[] LegalKeySizes { get { throw null; } }
+        public override string SignatureAlgorithm { get { throw null; } }
+        public override byte[] CreateSignature(byte[] rgbHash) { throw null; }
+        protected override void Dispose(bool disposing) { }
+        public override System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
+        protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public override void ImportParameters(System.Security.Cryptography.DSAParameters parameters) { }
+        public override bool VerifySignature(byte[] rgbHash, byte[] rgbSignature) { throw null; }
+    }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class ECDiffieHellman : System.Security.Cryptography.AsymmetricAlgorithm
     {
@@ -3450,7 +3483,12 @@ namespace System.Security.Cryptography
         public override string SignatureAlgorithm { get { throw null; } }
         public static new System.Security.Cryptography.ECDiffieHellman Create() { throw null; }
         public static new System.Security.Cryptography.ECDiffieHellman Create(string algorithm) { throw null; }
-        public abstract byte[] DeriveKeyMaterial(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey);
+        public byte[] DeriveKeyFromHash(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual byte[] DeriveKeyFromHash(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] secretPrepend, byte[] secretAppend) { throw null; }
+        public byte[] DeriveKeyFromHmac(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] hmacKey) { throw null; }
+        public virtual byte[] DeriveKeyFromHmac(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] hmacKey, byte[] secretPrepend, byte[] secretAppend) { throw null; }
+        public virtual byte[] DeriveKeyMaterial(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
+        public virtual byte[] DeriveKeyTls(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, byte[] prfLabel, byte[] prfSeed) { throw null; }
     }
     public sealed partial class ECDiffieHellmanCng : System.Security.Cryptography.ECDiffieHellman
     {
@@ -3467,8 +3505,11 @@ namespace System.Security.Cryptography
         public byte[] SecretPrepend { get { throw null; } set { } }
         public byte[] Seed { get { throw null; } set { } }
         public bool UseSecretAgreementAsHmacKey { get { throw null; } }
+        public override byte[] DeriveKeyFromHash(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] secretPrepend, byte[] secretAppend) { throw null; }
+        public override byte[] DeriveKeyFromHmac(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] hmacKey, byte[] secretPrepend, byte[] secretAppend) { throw null; }
         public byte[] DeriveKeyMaterial(System.Security.Cryptography.CngKey otherPartyPublicKey) { throw null; }
         public override byte[] DeriveKeyMaterial(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
+        public override byte[] DeriveKeyTls(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, byte[] prfLabel, byte[] prfSeed) { throw null; }
         public Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle DeriveSecretAgreementHandle(System.Security.Cryptography.CngKey otherPartyPublicKey) { throw null; }
         public Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle DeriveSecretAgreementHandle(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
         protected override void Dispose(bool disposing) { }
@@ -3501,7 +3542,7 @@ namespace System.Security.Cryptography
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         public virtual byte[] ToByteArray() { throw null; }
-        public abstract string ToXmlString();
+        public virtual string ToXmlString() { throw null; }
     }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class ECDsa : System.Security.Cryptography.AsymmetricAlgorithm
@@ -3584,9 +3625,13 @@ namespace System.Security.Cryptography
         public RSACng(int keySize) { }
         public RSACng(System.Security.Cryptography.CngKey key) { }
         public System.Security.Cryptography.CngKey Key { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override string KeyExchangeAlgorithm { get { throw null; } }
+        public override string SignatureAlgorithm { get { throw null; } }
         public override byte[] Decrypt(byte[] data, System.Security.Cryptography.RSAEncryptionPadding padding) { throw null; }
+        public override byte[] DecryptValue(byte[] rgb) { throw null; }
         protected override void Dispose(bool disposing) { }
         public override byte[] Encrypt(byte[] data, System.Security.Cryptography.RSAEncryptionPadding padding) { throw null; }
+        public override byte[] EncryptValue(byte[] rgb) { throw null; }
         public override System.Security.Cryptography.RSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
         protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
@@ -3733,6 +3778,22 @@ namespace System.Security.Cryptography
         public System.Security.Cryptography.AsymmetricAlgorithm PublicKey { get { throw null; } }
         public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
     }
+    public sealed partial class TripleDESCng : System.Security.Cryptography.TripleDES
+    {
+        public TripleDESCng() { }
+        public TripleDESCng(string keyName) { }
+        public TripleDESCng(string keyName, System.Security.Cryptography.CngProvider provider) { }
+        public TripleDESCng(string keyName, System.Security.Cryptography.CngProvider provider, System.Security.Cryptography.CngKeyOpenOptions openOptions) { }
+        public override byte[] Key { get { throw null; } set { } }
+        public override int KeySize { get { throw null; } set { } }
+        public override System.Security.Cryptography.ICryptoTransform CreateDecryptor() { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateDecryptor(byte[] rgbKey, byte[] rgbIV) { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateEncryptor() { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateEncryptor(byte[] rgbKey, byte[] rgbIV) { throw null; }
+        protected override void Dispose(bool disposing) { }
+        public override void GenerateIV() { }
+        public override void GenerateKey() { }
+    }
 }
 namespace System.Security.Cryptography.X509Certificates
 {
@@ -3748,6 +3809,11 @@ namespace System.Security.Cryptography.X509Certificates
         public System.Security.Cryptography.X509Certificates.TimestampInformation Timestamp { get { throw null; } }
         public System.Security.Cryptography.X509Certificates.TrustStatus TrustStatus { get { throw null; } }
         public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
+    }
+    public static partial class DSACertificateExtensions
+    {
+        public static System.Security.Cryptography.DSA GetDSAPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
+        public static System.Security.Cryptography.DSA GetDSAPublicKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
     }
     public static partial class ECDsaCertificateExtensions
     {

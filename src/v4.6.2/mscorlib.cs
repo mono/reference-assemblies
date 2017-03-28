@@ -7179,9 +7179,11 @@ namespace System.Diagnostics.Tracing
         Verbose = 5,
         Warning = 3,
     }
-    public abstract partial class EventListener : System.IDisposable
+    public partial class EventListener : System.IDisposable
     {
-        protected EventListener() { }
+        public EventListener() { }
+        public event System.EventHandler<System.Diagnostics.Tracing.EventSourceCreatedEventArgs> EventSourceCreated { add { } remove { } }
+        public event System.EventHandler<System.Diagnostics.Tracing.EventWrittenEventArgs> EventWritten { add { } remove { } }
         public void DisableEvents(System.Diagnostics.Tracing.EventSource eventSource) { }
         public virtual void Dispose() { }
         public void EnableEvents(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventLevel level) { }
@@ -7189,7 +7191,7 @@ namespace System.Diagnostics.Tracing
         public void EnableEvents(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventLevel level, System.Diagnostics.Tracing.EventKeywords matchAnyKeyword, System.Collections.Generic.IDictionary<string, string> arguments) { }
         protected static int EventSourceIndex(System.Diagnostics.Tracing.EventSource eventSource) { throw null; }
         protected internal virtual void OnEventSourceCreated(System.Diagnostics.Tracing.EventSource eventSource) { }
-        protected internal abstract void OnEventWritten(System.Diagnostics.Tracing.EventWrittenEventArgs eventData);
+        protected internal virtual void OnEventWritten(System.Diagnostics.Tracing.EventWrittenEventArgs eventData) { }
     }
     [System.FlagsAttribute]
     public enum EventManifestOptions
@@ -7228,6 +7230,7 @@ namespace System.Diagnostics.Tracing
         public System.Guid Guid { get { throw null; } }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventSourceSettings Settings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public event System.EventHandler<System.Diagnostics.Tracing.EventCommandEventArgs> EventCommandExecuted { add { } remove { } }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         ~EventSource() { }
@@ -7297,6 +7300,11 @@ namespace System.Diagnostics.Tracing
         public string Guid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string LocalizationResources { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+    }
+    public partial class EventSourceCreatedEventArgs : System.EventArgs
+    {
+        public EventSourceCreatedEventArgs() { }
+        public System.Diagnostics.Tracing.EventSource EventSource { get { throw null; } }
     }
     [System.SerializableAttribute]
     public partial class EventSourceException : System.Exception
@@ -20553,8 +20561,16 @@ namespace System.Security.Cryptography
         public abstract byte[] CreateSignature(byte[] rgbHash);
         public abstract System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters);
         public override void FromXmlString(string xmlString) { }
+        protected virtual byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        protected virtual byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public abstract void ImportParameters(System.Security.Cryptography.DSAParameters parameters);
+        public virtual byte[] SignData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public byte[] SignData(byte[] data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual byte[] SignData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public override string ToXmlString(bool includePrivateParameters) { throw null; }
+        public bool VerifyData(byte[] data, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual bool VerifyData(byte[] data, int offset, int count, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual bool VerifyData(System.IO.Stream data, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public abstract bool VerifySignature(byte[] rgbHash, byte[] rgbSignature);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -20579,6 +20595,8 @@ namespace System.Security.Cryptography
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public byte[] ExportCspBlob(bool includePrivateParameters) { throw null; }
         public override System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
+        protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void ImportCspBlob(byte[] keyBlob) { }
         public override void ImportParameters(System.Security.Cryptography.DSAParameters parameters) { }

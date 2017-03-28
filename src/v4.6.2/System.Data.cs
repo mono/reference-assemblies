@@ -3867,6 +3867,12 @@ namespace System.Data.SqlClient
         ReadWrite = 0,
     }
     public delegate void OnChangeEventHandler(object sender, System.Data.SqlClient.SqlNotificationEventArgs e);
+    public enum PoolBlockingPeriod
+    {
+        AlwaysBlock = 1,
+        Auto = 0,
+        NeverBlock = 2,
+    }
     public enum SortOrder
     {
         Ascending = 0,
@@ -4171,6 +4177,8 @@ namespace System.Data.SqlClient
         public string AccessToken { get { throw null; } set { } }
         [System.MonoTODOAttribute]
         public System.Guid ClientConnectionId { get { throw null; } }
+        public static System.TimeSpan ColumnEncryptionKeyCacheTtl { get { throw null; } set { } }
+        public static bool ColumnEncryptionQueryMetadataCacheEnabled { get { throw null; } set { } }
         public static System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> ColumnEncryptionTrustedMasterKeyPaths { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.SQL.Design.SqlConnectionStringEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
@@ -4332,6 +4340,7 @@ namespace System.Data.SqlClient
         [System.ComponentModel.DisplayNameAttribute("Persist Security Info")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public bool PersistSecurityInfo { get { throw null; } set { } }
+        public System.Data.SqlClient.PoolBlockingPeriod PoolBlockingPeriod { get { throw null; } set { } }
         [System.ComponentModel.DisplayNameAttribute("Pooling")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public bool Pooling { get { throw null; } set { } }
