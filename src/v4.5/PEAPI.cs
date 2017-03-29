@@ -275,6 +275,12 @@ namespace PEAPI
         internal DataConstant() { }
         public uint DataOffset { get { throw null; } set { } }
     }
+    public enum DataSegment
+    {
+        CIL = 2,
+        Data = 0,
+        TLS = 1,
+    }
     public partial class DeclSecurity : PEAPI.BaseDeclSecurity
     {
         internal DeclSecurity() { }
@@ -472,6 +478,7 @@ namespace PEAPI
         InternalCall = 4096,
         Native = 1,
         NoInLining = 8,
+        NoOptimization = 64,
         Optil = 2,
         PreserveSig = 128,
         Runtime = 3,

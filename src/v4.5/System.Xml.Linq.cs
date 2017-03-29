@@ -74,7 +74,6 @@ namespace System.Xml.Linq
         public static System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Elements<T>(this System.Collections.Generic.IEnumerable<T> source) where T : System.Xml.Linq.XContainer { throw null; }
         public static System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Elements<T>(this System.Collections.Generic.IEnumerable<T> source, System.Xml.Linq.XName name) where T : System.Xml.Linq.XContainer { throw null; }
         public static System.Collections.Generic.IEnumerable<T> InDocumentOrder<T>(this System.Collections.Generic.IEnumerable<T> source) where T : System.Xml.Linq.XNode { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public static System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> Nodes<T>(this System.Collections.Generic.IEnumerable<T> source) where T : System.Xml.Linq.XContainer { throw null; }
         public static void Remove(this System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> source) { }
         public static void Remove<T>(this System.Collections.Generic.IEnumerable<T> source) where T : System.Xml.Linq.XNode { }
@@ -197,7 +196,6 @@ namespace System.Xml.Linq
         public System.Xml.Linq.XElement Element(System.Xml.Linq.XName name) { throw null; }
         public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Elements() { throw null; }
         public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Elements(System.Xml.Linq.XName name) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> Nodes() { throw null; }
         public void RemoveNodes() { }
         public void ReplaceNodes(object content) { }
@@ -423,9 +421,7 @@ namespace System.Xml.Linq
         public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf(System.Xml.Linq.XName name) { throw null; }
         public bool IsAfter(System.Xml.Linq.XNode node) { throw null; }
         public bool IsBefore(System.Xml.Linq.XNode node) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesAfterSelf() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesBeforeSelf() { throw null; }
         public static System.Xml.Linq.XNode ReadFrom(System.Xml.XmlReader reader) { throw null; }
         public void Remove() { }
@@ -463,7 +459,6 @@ namespace System.Xml.Linq
         public void AddAnnotation(object annotation) { }
         public object Annotation(System.Type type) { throw null; }
         public System.Collections.Generic.IEnumerable<object> Annotations(System.Type type) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<T> Annotations<T>() where T : class { throw null; }
         public T Annotation<T>() where T : class { throw null; }
         public void RemoveAnnotations(System.Type type) { }

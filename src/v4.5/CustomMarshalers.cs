@@ -57,60 +57,60 @@ namespace System.Runtime.InteropServices.CustomMarshalers
 {
     public partial class EnumerableToDispatchMarshaler : System.Runtime.InteropServices.ICustomMarshaler
     {
-        public EnumerableToDispatchMarshaler() { }
+        internal EnumerableToDispatchMarshaler() { }
         [System.MonoTODOAttribute]
-        public void CleanUpManagedData(object pManagedObj) { }
+        public virtual void CleanUpManagedData(object pManagedObj) { }
         [System.MonoTODOAttribute]
-        public void CleanUpNativeData(System.IntPtr pNativeData) { }
+        public virtual void CleanUpNativeData(System.IntPtr pNativeData) { }
         [System.MonoTODOAttribute]
         public static System.Runtime.InteropServices.ICustomMarshaler GetInstance(string pstrCookie) { throw null; }
         [System.MonoTODOAttribute]
-        public int GetNativeDataSize() { throw null; }
+        public virtual int GetNativeDataSize() { throw null; }
         [System.MonoTODOAttribute]
-        public System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
+        public virtual System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
         [System.MonoTODOAttribute]
-        public object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
+        public virtual object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
     }
     public partial class EnumeratorToEnumVariantMarshaler : System.Runtime.InteropServices.ICustomMarshaler
     {
-        public EnumeratorToEnumVariantMarshaler() { }
-        public void CleanUpManagedData(object pManagedObj) { }
-        public void CleanUpNativeData(System.IntPtr pNativeData) { }
+        internal EnumeratorToEnumVariantMarshaler() { }
+        public virtual void CleanUpManagedData(object pManagedObj) { }
+        public virtual void CleanUpNativeData(System.IntPtr pNativeData) { }
         public static System.Runtime.InteropServices.ICustomMarshaler GetInstance(string pstrCookie) { throw null; }
-        public int GetNativeDataSize() { throw null; }
-        public System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
-        public object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
+        public virtual int GetNativeDataSize() { throw null; }
+        public virtual System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
+        public virtual object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
     }
     public partial class ExpandoToDispatchExMarshaler : System.Runtime.InteropServices.ICustomMarshaler
     {
-        public ExpandoToDispatchExMarshaler() { }
+        internal ExpandoToDispatchExMarshaler() { }
         [System.MonoTODOAttribute]
-        public void CleanUpManagedData(object pManagedObj) { }
+        public virtual void CleanUpManagedData(object pManagedObj) { }
         [System.MonoTODOAttribute]
-        public void CleanUpNativeData(System.IntPtr pNativeData) { }
+        public virtual void CleanUpNativeData(System.IntPtr pNativeData) { }
         [System.MonoTODOAttribute]
         public static System.Runtime.InteropServices.ICustomMarshaler GetInstance(string pstrCookie) { throw null; }
         [System.MonoTODOAttribute]
-        public int GetNativeDataSize() { throw null; }
+        public virtual int GetNativeDataSize() { throw null; }
         [System.MonoTODOAttribute]
-        public System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
+        public virtual System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
         [System.MonoTODOAttribute]
-        public object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
+        public virtual object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
     }
     public partial class TypeToTypeInfoMarshaler : System.Runtime.InteropServices.ICustomMarshaler
     {
-        public TypeToTypeInfoMarshaler() { }
+        internal TypeToTypeInfoMarshaler() { }
         [System.MonoTODOAttribute]
-        public void CleanUpManagedData(object pManagedObj) { }
+        public virtual void CleanUpManagedData(object pManagedObj) { }
         [System.MonoTODOAttribute]
-        public void CleanUpNativeData(System.IntPtr pNativeData) { }
+        public virtual void CleanUpNativeData(System.IntPtr pNativeData) { }
         [System.MonoTODOAttribute]
         public static System.Runtime.InteropServices.ICustomMarshaler GetInstance(string pstrCookie) { throw null; }
         [System.MonoTODOAttribute]
-        public int GetNativeDataSize() { throw null; }
+        public virtual int GetNativeDataSize() { throw null; }
         [System.MonoTODOAttribute]
-        public System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
+        public virtual System.IntPtr MarshalManagedToNative(object pManagedObj) { throw null; }
         [System.MonoTODOAttribute]
-        public object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
+        public virtual object MarshalNativeToManaged(System.IntPtr pNativeData) { throw null; }
     }
 }

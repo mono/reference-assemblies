@@ -42,9 +42,11 @@ namespace System.ServiceModel.Discovery
         public void AnnounceOffline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata) { }
         public void AnnounceOfflineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata) { }
         public void AnnounceOfflineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata, object userState) { }
+        public System.Threading.Tasks.Task AnnounceOfflineTaskAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata) { throw null; }
         public void AnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata) { }
         public void AnnounceOnlineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata) { }
         public void AnnounceOnlineAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata, object userState) { }
+        public System.Threading.Tasks.Task AnnounceOnlineTaskAsync(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata) { throw null; }
         public System.IAsyncResult BeginAnnounceOffline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata, System.AsyncCallback callback, object state) { throw null; }
         public System.IAsyncResult BeginAnnounceOnline(System.ServiceModel.Discovery.EndpointDiscoveryMetadata discoveryMetadata, System.AsyncCallback callback, object state) { throw null; }
         public void Close() { }
@@ -115,10 +117,14 @@ namespace System.ServiceModel.Discovery
         public System.ServiceModel.Discovery.FindResponse Find(System.ServiceModel.Discovery.FindCriteria criteria) { throw null; }
         public void FindAsync(System.ServiceModel.Discovery.FindCriteria criteria) { }
         public void FindAsync(System.ServiceModel.Discovery.FindCriteria criteria, object userState) { }
+        public System.Threading.Tasks.Task<System.ServiceModel.Discovery.FindResponse> FindTaskAsync(System.ServiceModel.Discovery.FindCriteria criteria) { throw null; }
+        public System.Threading.Tasks.Task<System.ServiceModel.Discovery.FindResponse> FindTaskAsync(System.ServiceModel.Discovery.FindCriteria criteria, System.Threading.CancellationToken cancellationToken) { throw null; }
         public void Open() { }
         public System.ServiceModel.Discovery.ResolveResponse Resolve(System.ServiceModel.Discovery.ResolveCriteria criteria) { throw null; }
         public void ResolveAsync(System.ServiceModel.Discovery.ResolveCriteria criteria) { }
         public void ResolveAsync(System.ServiceModel.Discovery.ResolveCriteria criteria, object userState) { }
+        public System.Threading.Tasks.Task<System.ServiceModel.Discovery.ResolveResponse> ResolveTaskAsync(System.ServiceModel.Discovery.ResolveCriteria criteria) { throw null; }
+        public System.Threading.Tasks.Task<System.ServiceModel.Discovery.ResolveResponse> ResolveTaskAsync(System.ServiceModel.Discovery.ResolveCriteria criteria, System.Threading.CancellationToken cancellationToken) { throw null; }
         void System.IDisposable.Dispose() { }
         void System.ServiceModel.ICommunicationObject.Abort() { }
         System.IAsyncResult System.ServiceModel.ICommunicationObject.BeginClose(System.AsyncCallback callback, object state) { throw null; }
@@ -482,7 +488,7 @@ namespace System.ServiceModel.Discovery.Configuration
         protected override void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ChannelEndpointElement serviceEndpointElement) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
         protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement channelEndpointElement) { }
-        protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement channelEndpointElement) { }
+        protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
     }
     public partial class DiscoveryVersionConverter : System.ComponentModel.TypeConverter
     {
@@ -588,7 +594,7 @@ namespace System.ServiceModel.Discovery.Configuration
         protected override void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ChannelEndpointElement serviceEndpointElement) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
         protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement channelEndpointElement) { }
-        protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement channelEndpointElement) { }
+        protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
     }
     public partial class UdpDiscoveryEndpointCollectionElement : System.ServiceModel.Configuration.StandardEndpointCollectionElement<System.ServiceModel.Discovery.UdpDiscoveryEndpoint, System.ServiceModel.Discovery.Configuration.UdpDiscoveryEndpointElement>
     {
@@ -613,7 +619,7 @@ namespace System.ServiceModel.Discovery.Configuration
         protected override void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ChannelEndpointElement serviceEndpointElement) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
         protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement channelEndpointElement) { }
-        protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement channelEndpointElement) { }
+        protected override void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement) { }
     }
     public sealed partial class UdpTransportSettingsElement : System.Configuration.ConfigurationElement
     {

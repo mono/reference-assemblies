@@ -855,7 +855,6 @@ namespace Newtonsoft.Json.Linq
         public void AddFirst(object content) { }
         public override Newtonsoft.Json.Linq.JEnumerable<Newtonsoft.Json.Linq.JToken> Children() { throw null; }
         public Newtonsoft.Json.JsonWriter CreateWriter() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<Newtonsoft.Json.Linq.JToken> Descendants() { throw null; }
         protected virtual void OnAddingNew(System.ComponentModel.AddingNewEventArgs e) { }
         protected virtual void OnCollectionChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e) { }
@@ -908,16 +907,15 @@ namespace Newtonsoft.Json.Linq
         protected override System.Collections.Generic.IList<Newtonsoft.Json.Linq.JToken> ChildrenTokens { get { throw null; } }
         public override Newtonsoft.Json.Linq.JToken this[object key] { get { throw null; } set { } }
         public Newtonsoft.Json.Linq.JToken this[string propertyName] { get { throw null; } set { } }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,Newtonsoft.Json.Linq.JToken>>.IsReadOnly { get { throw null; } }
-        System.Collections.Generic.ICollection<string> System.Collections.Generic.IDictionary<string,Newtonsoft.Json.Linq.JToken>.Keys { get { throw null; } }
-        System.Collections.Generic.ICollection<Newtonsoft.Json.Linq.JToken> System.Collections.Generic.IDictionary<string,Newtonsoft.Json.Linq.JToken>.Values { get { throw null; } }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,Newtonsoft.Json.Linq.JToken>>.IsReadOnly { get { throw null; } }
+        System.Collections.Generic.ICollection<string> System.Collections.Generic.IDictionary<System.String,Newtonsoft.Json.Linq.JToken>.Keys { get { throw null; } }
+        System.Collections.Generic.ICollection<Newtonsoft.Json.Linq.JToken> System.Collections.Generic.IDictionary<System.String,Newtonsoft.Json.Linq.JToken>.Values { get { throw null; } }
         public override Newtonsoft.Json.Linq.JTokenType Type { get { throw null; } }
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged { add { } remove { } }
         public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging { add { } remove { } }
         public void Add(string propertyName, Newtonsoft.Json.Linq.JToken value) { }
         public static new Newtonsoft.Json.Linq.JObject FromObject(object o) { throw null; }
         public static new Newtonsoft.Json.Linq.JObject FromObject(object o, Newtonsoft.Json.JsonSerializer jsonSerializer) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken>> GetEnumerator() { throw null; }
         protected override System.Dynamic.DynamicMetaObject GetMetaObject(System.Linq.Expressions.Expression parameter) { throw null; }
         public static new Newtonsoft.Json.Linq.JObject Load(Newtonsoft.Json.JsonReader reader) { throw null; }
@@ -928,12 +926,12 @@ namespace Newtonsoft.Json.Linq
         public Newtonsoft.Json.Linq.JProperty Property(string name) { throw null; }
         public Newtonsoft.Json.Linq.JEnumerable<Newtonsoft.Json.Linq.JToken> PropertyValues() { throw null; }
         public bool Remove(string propertyName) { throw null; }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,Newtonsoft.Json.Linq.JToken>>.Add(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken> item) { }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,Newtonsoft.Json.Linq.JToken>>.Clear() { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,Newtonsoft.Json.Linq.JToken>>.Contains(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken> item) { throw null; }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,Newtonsoft.Json.Linq.JToken>>.CopyTo(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken>[] array, int arrayIndex) { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,Newtonsoft.Json.Linq.JToken>>.Remove(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken> item) { throw null; }
-        bool System.Collections.Generic.IDictionary<string,Newtonsoft.Json.Linq.JToken>.ContainsKey(string key) { throw null; }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,Newtonsoft.Json.Linq.JToken>>.Add(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken> item) { }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,Newtonsoft.Json.Linq.JToken>>.Clear() { }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,Newtonsoft.Json.Linq.JToken>>.Contains(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken> item) { throw null; }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,Newtonsoft.Json.Linq.JToken>>.CopyTo(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken>[] array, int arrayIndex) { }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,Newtonsoft.Json.Linq.JToken>>.Remove(System.Collections.Generic.KeyValuePair<string, Newtonsoft.Json.Linq.JToken> item) { throw null; }
+        bool System.Collections.Generic.IDictionary<System.String,Newtonsoft.Json.Linq.JToken>.ContainsKey(string key) { throw null; }
         System.ComponentModel.AttributeCollection System.ComponentModel.ICustomTypeDescriptor.GetAttributes() { throw null; }
         string System.ComponentModel.ICustomTypeDescriptor.GetClassName() { throw null; }
         string System.ComponentModel.ICustomTypeDescriptor.GetComponentName() { throw null; }
@@ -998,11 +996,8 @@ namespace Newtonsoft.Json.Linq
         public abstract Newtonsoft.Json.Linq.JTokenType Type { get; }
         public void AddAfterSelf(object content) { }
         public void AddBeforeSelf(object content) { }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<Newtonsoft.Json.Linq.JToken> AfterSelf() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<Newtonsoft.Json.Linq.JToken> Ancestors() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<Newtonsoft.Json.Linq.JToken> BeforeSelf() { throw null; }
         public virtual Newtonsoft.Json.Linq.JEnumerable<Newtonsoft.Json.Linq.JToken> Children() { throw null; }
         public Newtonsoft.Json.Linq.JEnumerable<T> Children<T>() where T : Newtonsoft.Json.Linq.JToken { throw null; }

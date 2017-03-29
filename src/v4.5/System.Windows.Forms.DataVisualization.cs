@@ -124,7 +124,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class AnnotationCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.Annotation>
     {
-        public AnnotationCollection() { }
+        internal AnnotationCollection() { }
         [System.MonoTODOAttribute]
         public override System.Windows.Forms.DataVisualization.Charting.Annotation FindByName(string name) { throw null; }
     }
@@ -156,6 +156,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public override int ShadowOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override System.Windows.Forms.DataVisualization.Charting.TextStyle TextStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override bool Visible { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
     }
     public partial class AnnotationPathPoint : System.Windows.Forms.DataVisualization.Charting.ChartElement
     {
@@ -169,7 +170,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class AnnotationPathPointCollection : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<System.Windows.Forms.DataVisualization.Charting.AnnotationPathPoint>
     {
-        public AnnotationPathPointCollection() { }
+        public AnnotationPathPointCollection(System.Windows.Forms.DataVisualization.Charting.PolylineAnnotation annotation) { }
         protected override void Dispose(bool disposing) { }
         public override void Invalidate() { }
     }
@@ -189,6 +190,13 @@ namespace System.Windows.Forms.DataVisualization.Charting
     public partial class AnnotationSmartLabelStyle : System.Windows.Forms.DataVisualization.Charting.SmartLabelStyle
     {
         public AnnotationSmartLabelStyle() { }
+        public AnnotationSmartLabelStyle(object chartElement) { }
+        public override System.Drawing.Color CalloutBackColor { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle CalloutLineAnchorCapStyle { get { throw null; } set { } }
+        public override System.Drawing.Color CalloutLineColor { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.ChartDashStyle CalloutLineDashStyle { get { throw null; } set { } }
+        public override int CalloutLineWidth { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.LabelCalloutStyle CalloutStyle { get { throw null; } set { } }
     }
     public partial class AnovaResult
     {
@@ -244,14 +252,14 @@ namespace System.Windows.Forms.DataVisualization.Charting
         Simple = 0,
         Tailed = 2,
     }
-    public partial class Axis : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement, System.IDisposable
+    public partial class Axis : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
         public Axis() { }
         public Axis(System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea, System.Windows.Forms.DataVisualization.Charting.AxisName axisTypeName) { }
         public System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle ArrowStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual System.Windows.Forms.DataVisualization.Charting.AxisName AxisName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public virtual double Crossing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Windows.Forms.DataVisualization.Charting.CustomLabelCollection CustomLabels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Windows.Forms.DataVisualization.Charting.CustomLabelsCollection CustomLabels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Windows.Forms.DataVisualization.Charting.AxisEnabled Enabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Drawing.Color InterlacedColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public double Interval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -292,6 +300,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public System.Drawing.Font TitleFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Drawing.Color TitleForeColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string ToolTip { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
         [System.MonoTODOAttribute]
         public double GetPosition(double axisValue) { throw null; }
         [System.MonoTODOAttribute]
@@ -544,6 +553,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public void ApplyPaletteColors() { }
         [System.MonoTODOAttribute]
         public void BeginInit() { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         [System.MonoTODOAttribute]
         public void DataBind() { }
         [System.MonoTODOAttribute]
@@ -557,6 +567,8 @@ namespace System.Windows.Forms.DataVisualization.Charting
         protected override void Dispose(bool disposing) { }
         [System.MonoTODOAttribute]
         public void EndInit() { }
+        public System.Windows.Forms.DataVisualization.Charting.ChartElementOutline GetChartElementOutline(object element, System.Windows.Forms.DataVisualization.Charting.ChartElementType elementType) { throw null; }
+        public new object GetService(System.Type serviceType) { throw null; }
         [System.MonoTODOAttribute]
         public System.Windows.Forms.DataVisualization.Charting.HitTestResult HitTest(int x, int y) { throw null; }
         [System.MonoTODOAttribute]
@@ -565,14 +577,29 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public System.Windows.Forms.DataVisualization.Charting.HitTestResult[] HitTest(int x, int y, bool ignoreTransparent, params System.Windows.Forms.DataVisualization.Charting.ChartElementType[] requestedElement) { throw null; }
         [System.MonoTODOAttribute]
         public System.Windows.Forms.DataVisualization.Charting.HitTestResult HitTest(int x, int y, System.Windows.Forms.DataVisualization.Charting.ChartElementType requestedElement) { throw null; }
+        public new void Invalidate() { }
+        public new void Invalidate(System.Drawing.Rectangle rectangle) { }
         [System.MonoTODOAttribute]
         public void LoadTemplate(System.IO.Stream stream) { }
         [System.MonoTODOAttribute]
         public void LoadTemplate(string name) { }
+        protected override void OnCursorChanged(System.EventArgs e) { }
+        protected virtual void OnCustomize() { }
+        protected virtual void OnCustomizeLegend(System.Windows.Forms.DataVisualization.Charting.LegendItemsCollection legendItems, string legendName) { }
+        protected override void OnDoubleClick(System.EventArgs e) { }
+        protected virtual void OnFormatNumber(System.Windows.Forms.DataVisualization.Charting.FormatNumberEventArgs e) { }
+        protected override void OnLocationChanged(System.EventArgs e) { }
+        protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) { }
+        protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) { }
+        protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
         protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs pevent) { }
         protected virtual void OnPostPaint(System.Windows.Forms.DataVisualization.Charting.ChartPaintEventArgs e) { }
         protected virtual void OnPrePaint(System.Windows.Forms.DataVisualization.Charting.ChartPaintEventArgs e) { }
+        protected override void OnResize(System.EventArgs e) { }
+        protected override void OnRightToLeftChanged(System.EventArgs e) { }
+        protected override void OnSystemColorsChanged(System.EventArgs e) { }
+        public override void Refresh() { }
         [System.MonoTODOAttribute]
         public void ResetAutoValues() { }
         [System.MonoTODOAttribute]
@@ -583,6 +610,8 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public void SaveImage(string imageFileName, System.Drawing.Imaging.ImageFormat format) { }
         [System.MonoTODOAttribute]
         public void SaveImage(string imageFileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat format) { }
+        public void UpdateAnnotations() { }
+        public void UpdateCursor() { }
     }
     public partial class ChartArea : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
@@ -645,7 +674,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class ChartAreaCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.ChartArea>
     {
-        public ChartAreaCollection() { }
+        internal ChartAreaCollection() { }
         public System.Windows.Forms.DataVisualization.Charting.ChartArea Add(string name) { throw null; }
     }
     public enum ChartColorPalette
@@ -684,9 +713,9 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public override int GetHashCode() { throw null; }
         public override string ToString() { throw null; }
     }
-    public abstract partial class ChartElementCollection<T> : System.Collections.ObjectModel.Collection<T> where T : System.Windows.Forms.DataVisualization.Charting.ChartElement
+    public abstract partial class ChartElementCollection<T> : System.Collections.ObjectModel.Collection<T>, System.IDisposable where T : System.Windows.Forms.DataVisualization.Charting.ChartElement
     {
-        protected ChartElementCollection() { }
+        internal ChartElementCollection() { }
         protected override void ClearItems() { }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
@@ -696,6 +725,14 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public virtual void ResumeUpdates() { }
         protected override void SetItem(int index, T item) { }
         public virtual void SuspendUpdates() { }
+    }
+    public partial class ChartElementOutline : System.IDisposable
+    {
+        internal ChartElementOutline() { }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Drawing.PointF> Markers { get { throw null; } }
+        public System.Drawing.Drawing2D.GraphicsPath OutlinePath { get { throw null; } }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
     }
     public enum ChartElementType
     {
@@ -723,7 +760,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         TickMarks = 4,
         Title = 1,
     }
-    public partial class ChartGraphics : System.Windows.Forms.DataVisualization.Charting.ChartElement, System.IDisposable
+    public partial class ChartGraphics : System.Windows.Forms.DataVisualization.Charting.ChartElement
     {
         internal ChartGraphics() { }
         public System.Drawing.Graphics Graphics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -836,14 +873,14 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public abstract partial class ChartNamedElement : System.Windows.Forms.DataVisualization.Charting.ChartElement
     {
-        public ChartNamedElement() { }
-        public ChartNamedElement(string name) { }
+        protected ChartNamedElement() { }
+        protected ChartNamedElement(string name) { }
         [System.ComponentModel.DefaultValueAttribute("")]
         public virtual string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
-    public partial class ChartNamedElementCollection<T> : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<T> where T : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
+    public abstract partial class ChartNamedElementCollection<T> : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<T> where T : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
-        public ChartNamedElementCollection() { }
+        internal ChartNamedElementCollection() { }
         public T this[string name] { get { throw null; } set { } }
         protected virtual string NamePrefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         [System.MonoTODOAttribute]
@@ -871,7 +908,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class ChartSerializer
     {
-        public ChartSerializer() { }
+        internal ChartSerializer() { }
         public System.Windows.Forms.DataVisualization.Charting.SerializationContents Content { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Windows.Forms.DataVisualization.Charting.SerializationFormat Format { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool IsResetWhenLoading { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -967,7 +1004,8 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class CustomizeLegendEventArgs : System.EventArgs
     {
-        public CustomizeLegendEventArgs() { }
+        public CustomizeLegendEventArgs(System.Windows.Forms.DataVisualization.Charting.LegendItemsCollection legendItems) { }
+        public CustomizeLegendEventArgs(System.Windows.Forms.DataVisualization.Charting.LegendItemsCollection legendItems, string legendName) { }
         public System.Windows.Forms.DataVisualization.Charting.LegendItemsCollection LegendItems { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public string LegendName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
@@ -992,9 +1030,9 @@ namespace System.Windows.Forms.DataVisualization.Charting
         [System.MonoTODOAttribute]
         public System.Windows.Forms.DataVisualization.Charting.CustomLabel Clone() { throw null; }
     }
-    public partial class CustomLabelCollection : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<System.Windows.Forms.DataVisualization.Charting.CustomLabel>
+    public partial class CustomLabelsCollection : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<System.Windows.Forms.DataVisualization.Charting.CustomLabel>
     {
-        public CustomLabelCollection() { }
+        internal CustomLabelsCollection() { }
         [System.MonoTODOAttribute]
         public System.Windows.Forms.DataVisualization.Charting.CustomLabel Add(double fromPosition, double toPosition, string text) { throw null; }
         [System.MonoTODOAttribute]
@@ -1012,7 +1050,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class CustomProperties
     {
-        public CustomProperties() { }
+        internal CustomProperties() { }
     }
     public partial class DataFormula
     {
@@ -1159,7 +1197,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class DataPointCollection : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<System.Windows.Forms.DataVisualization.Charting.DataPoint>
     {
-        public DataPointCollection() { }
+        internal DataPointCollection() { }
         [System.MonoTODOAttribute]
         public System.Windows.Forms.DataVisualization.Charting.DataPoint Add(params double[] y) { throw null; }
         [System.MonoTODOAttribute]
@@ -1211,9 +1249,15 @@ namespace System.Windows.Forms.DataVisualization.Charting
         [System.MonoTODOAttribute]
         public void InsertY(int index, params object[] yValue) { }
     }
+    public partial class DataPointComparer : System.Collections.Generic.IComparer<System.Windows.Forms.DataVisualization.Charting.DataPoint>
+    {
+        public DataPointComparer(System.Windows.Forms.DataVisualization.Charting.Series series, System.Windows.Forms.DataVisualization.Charting.PointSortOrder sortOrder, string sortBy) { }
+        public int Compare(System.Windows.Forms.DataVisualization.Charting.DataPoint x, System.Windows.Forms.DataVisualization.Charting.DataPoint y) { throw null; }
+    }
     public partial class DataPointCustomProperties : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
         public DataPointCustomProperties() { }
+        public DataPointCustomProperties(System.Windows.Forms.DataVisualization.Charting.Series series, bool pointProperties) { }
         public virtual string AxisLabel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Windows.Forms.DataVisualization.Charting.GradientStyle BackGradientStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle BackHatchStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -1232,9 +1276,9 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public bool IsValueShownAsLabel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool IsVisibleInLegend { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.MonoTODOAttribute]
-        public string this[int idx] { get { throw null; } set { } }
+        public string this[int index] { get { throw null; } }
         [System.MonoTODOAttribute]
-        public string this[string propName] { get { throw null; } set { } }
+        public string this[string name] { get { throw null; } set { } }
         public virtual string Label { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int LabelAngle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Drawing.Color LabelBackColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -1313,11 +1357,11 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public float Y { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void FromRectangleF(System.Drawing.RectangleF rect) { }
         public System.Drawing.RectangleF ToRectangleF() { throw null; }
-        public override string ToString() { throw null; }
     }
     public partial class EllipseAnnotation : System.Windows.Forms.DataVisualization.Charting.RectangleAnnotation
     {
         public EllipseAnnotation() { }
+        public override string AnnotationType { get { throw null; } }
     }
     public enum FinancialFormula
     {
@@ -1420,6 +1464,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     public partial class HorizontalLineAnnotation : System.Windows.Forms.DataVisualization.Charting.LineAnnotation
     {
         public HorizontalLineAnnotation() { }
+        public override string AnnotationType { get { throw null; } }
     }
     public partial interface IDataPointFilter
     {
@@ -1520,6 +1565,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public bool IsEndLabelVisible { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool IsStaggered { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool TruncatedLabels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
     }
     public partial class Legend : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
@@ -1597,10 +1643,11 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public virtual System.Drawing.Size SeriesSymbolSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual string Text { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual string ToolTip { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
     }
     public partial class LegendCellCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.LegendCell>
     {
-        public LegendCellCollection() { }
+        internal LegendCellCollection() { }
         [System.MonoTODOAttribute]
         public int Add(System.Windows.Forms.DataVisualization.Charting.LegendCellType cellType, string text, System.Drawing.ContentAlignment alignment) { throw null; }
         [System.MonoTODOAttribute]
@@ -1609,6 +1656,8 @@ namespace System.Windows.Forms.DataVisualization.Charting
     public partial class LegendCellColumn : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
         public LegendCellColumn() { }
+        public LegendCellColumn(string headerText, System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType columnType, string text) { }
+        public LegendCellColumn(string headerText, System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType columnType, string text, System.Drawing.ContentAlignment alignment) { }
         public virtual System.Drawing.ContentAlignment Alignment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual System.Drawing.Color BackColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual System.Windows.Forms.DataVisualization.Charting.LegendCellColumnType ColumnType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -1627,10 +1676,12 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public virtual System.Drawing.Size SeriesSymbolSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual string Text { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual string ToolTip { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
+        public bool ShouldSerializeMargins() { throw null; }
     }
     public partial class LegendCellColumnCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.LegendCellColumn>
     {
-        public LegendCellColumnCollection() { }
+        internal LegendCellColumnCollection() { }
         [System.MonoTODOAttribute]
         protected override void Dispose(bool disposing) { }
     }
@@ -1647,7 +1698,8 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class LegendCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.Legend>
     {
-        public LegendCollection() { }
+        internal LegendCollection() { }
+        public System.Windows.Forms.DataVisualization.Charting.Legend Add(string name) { throw null; }
     }
     public enum LegendImageStyle
     {
@@ -1687,6 +1739,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public System.Drawing.Color ShadowColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int ShadowOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string ToolTip { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
     }
     public enum LegendItemOrder
     {
@@ -1696,7 +1749,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class LegendItemsCollection : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<System.Windows.Forms.DataVisualization.Charting.LegendItem>
     {
-        public LegendItemsCollection() { }
+        internal LegendItemsCollection() { }
         [System.MonoTODOAttribute]
         public int Add(System.Drawing.Color color, string text) { throw null; }
         [System.MonoTODOAttribute]
@@ -1797,7 +1850,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
         Triangle = 4,
     }
     [System.ComponentModel.DefaultPropertyAttribute("Name")]
-    public partial class NamedImage : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement, System.IDisposable
+    public partial class NamedImage : System.Windows.Forms.DataVisualization.Charting.ChartNamedElement
     {
         public NamedImage() { }
         public NamedImage(string name, System.Drawing.Image image) { }
@@ -1809,7 +1862,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class NamedImagesCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.NamedImage>
     {
-        public NamedImagesCollection() { }
+        internal NamedImagesCollection() { }
     }
     public partial class Point3D
     {
@@ -1836,6 +1889,13 @@ namespace System.Windows.Forms.DataVisualization.Charting
     public partial class PolygonAnnotation : System.Windows.Forms.DataVisualization.Charting.PolylineAnnotation
     {
         public PolygonAnnotation() { }
+        public override string AnnotationType { get { throw null; } }
+        public override System.Drawing.Color BackColor { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.GradientStyle BackGradientStyle { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle BackHatchStyle { get { throw null; } set { } }
+        public override System.Drawing.Color BackSecondaryColor { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle EndCap { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle StartCap { get { throw null; } set { } }
     }
     public partial class PolylineAnnotation : System.Windows.Forms.DataVisualization.Charting.Annotation
     {
@@ -1854,10 +1914,12 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public virtual bool IsFreeDrawPlacement { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual System.Windows.Forms.DataVisualization.Charting.LineAnchorCapStyle StartCap { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override System.Windows.Forms.DataVisualization.Charting.TextStyle TextStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
+        public override void EndPlacement() { }
     }
     public partial class PrintingManager : System.IDisposable
     {
-        public PrintingManager() { }
+        public PrintingManager(System.ComponentModel.Design.IServiceContainer container) { }
         public System.Drawing.Printing.PrintDocument PrintDocument { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.MonoTODOAttribute]
         public void Dispose() { }
@@ -1876,6 +1938,13 @@ namespace System.Windows.Forms.DataVisualization.Charting
     {
         public RectangleAnnotation() { }
         public override string AnnotationType { get { throw null; } }
+        public override System.Drawing.Color BackColor { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.GradientStyle BackGradientStyle { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle BackHatchStyle { get { throw null; } set { } }
+        public override System.Drawing.Color BackSecondaryColor { get { throw null; } set { } }
+        public override System.Drawing.Color LineColor { get { throw null; } set { } }
+        public override System.Windows.Forms.DataVisualization.Charting.ChartDashStyle LineDashStyle { get { throw null; } set { } }
+        public override int LineWidth { get { throw null; } set { } }
     }
     [System.FlagsAttribute]
     public enum ScrollBarButtonStyles
@@ -1896,7 +1965,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class ScrollBarEventArgs : System.EventArgs
     {
-        public ScrollBarEventArgs() { }
+        public ScrollBarEventArgs(System.Windows.Forms.DataVisualization.Charting.Axis axis, int x, int y, System.Windows.Forms.DataVisualization.Charting.ScrollBarButtonType buttonType) { }
         public System.Windows.Forms.DataVisualization.Charting.Axis Axis { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Windows.Forms.DataVisualization.Charting.ScrollBarButtonType ButtonType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Windows.Forms.DataVisualization.Charting.ChartArea ChartArea { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
@@ -2002,7 +2071,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class SeriesCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.Series>
     {
-        public SeriesCollection() { }
+        internal SeriesCollection() { }
         public System.Windows.Forms.DataVisualization.Charting.Series Add(string name) { throw null; }
     }
     public partial class SmartLabelStyle
@@ -2030,7 +2099,7 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class StatisticFormula
     {
-        public StatisticFormula() { }
+        internal StatisticFormula() { }
         [System.MonoTODOAttribute]
         public System.Windows.Forms.DataVisualization.Charting.AnovaResult Anova(double probability, string inputSeriesNames) { throw null; }
         [System.MonoTODOAttribute]
@@ -2098,10 +2167,11 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public System.Drawing.StringAlignment TextLineAlignment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Windows.Forms.DataVisualization.Charting.TextOrientation TextOrientation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string ToolTip { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        protected override void Dispose(bool disposing) { }
     }
     public partial class StripLinesCollection : System.Windows.Forms.DataVisualization.Charting.ChartElementCollection<System.Windows.Forms.DataVisualization.Charting.StripLine>
     {
-        public StripLinesCollection() { }
+        internal StripLinesCollection() { }
     }
     public partial class TextAnnotation : System.Windows.Forms.DataVisualization.Charting.Annotation
     {
@@ -2117,6 +2187,9 @@ namespace System.Windows.Forms.DataVisualization.Charting
         public override System.Windows.Forms.DataVisualization.Charting.ChartDashStyle LineDashStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override int LineWidth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual string Text { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public void BeginTextEditing() { }
+        public override void EndPlacement() { }
+        public void StopTextEditing() { }
     }
     public enum TextAntiAliasingQuality
     {
@@ -2191,7 +2264,8 @@ namespace System.Windows.Forms.DataVisualization.Charting
     }
     public partial class TitleCollection : System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection<System.Windows.Forms.DataVisualization.Charting.Title>
     {
-        public TitleCollection() { }
+        internal TitleCollection() { }
+        public System.Windows.Forms.DataVisualization.Charting.Title Add(string name) { throw null; }
     }
     public partial class ToolTipEventArgs : System.EventArgs
     {
@@ -2218,10 +2292,12 @@ namespace System.Windows.Forms.DataVisualization.Charting
     public partial class VerticalLineAnnotation : System.Windows.Forms.DataVisualization.Charting.LineAnnotation
     {
         public VerticalLineAnnotation() { }
+        public override string AnnotationType { get { throw null; } }
     }
     public partial class ViewEventArgs : System.EventArgs
     {
-        public ViewEventArgs() { }
+        public ViewEventArgs(System.Windows.Forms.DataVisualization.Charting.Axis axis, double newPosition) { }
+        public ViewEventArgs(System.Windows.Forms.DataVisualization.Charting.Axis axis, double newPosition, double newSize, System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType newSizeType) { }
         public System.Windows.Forms.DataVisualization.Charting.Axis Axis { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Windows.Forms.DataVisualization.Charting.ChartArea ChartArea { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public double NewPosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }

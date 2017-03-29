@@ -178,6 +178,12 @@ namespace System.Messaging
         SttMer = 7,
         SttRoot = 10,
     }
+    public sealed partial class Cursor : System.IDisposable
+    {
+        internal Cursor() { }
+        public void Close() { }
+        public void Dispose() { }
+    }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
     public partial class DefaultPropertiesToSend
     {
@@ -384,6 +390,7 @@ namespace System.Messaging
         [System.ComponentModel.ReadOnlyAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgLabel")]
         public string Label { get { throw null; } set { } }
+        public long LookupId { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MsgMessageType")]
         public System.Messaging.MessageType MessageType { get { throw null; } }
@@ -399,6 +406,7 @@ namespace System.Messaging
         [System.ComponentModel.ReadOnlyAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgResponseQueue")]
         public System.Messaging.MessageQueue ResponseQueue { get { throw null; } set { } }
+        public System.Messaging.SecurityContext SecurityContext { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.ReadOnlyAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgSenderCertificate")]
@@ -464,7 +472,6 @@ namespace System.Messaging
         public void Close() { }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
-        ~MessageEnumerator() { }
         public bool MoveNext() { throw null; }
         public bool MoveNext(System.TimeSpan timeout) { throw null; }
         public System.Messaging.Message RemoveCurrent() { throw null; }
@@ -474,6 +481,14 @@ namespace System.Messaging
         public System.Messaging.Message RemoveCurrent(System.TimeSpan timeout, System.Messaging.MessageQueueTransaction transaction) { throw null; }
         public System.Messaging.Message RemoveCurrent(System.TimeSpan timeout, System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
         public void Reset() { }
+    }
+    public enum MessageLookupAction
+    {
+        Current = 0,
+        First = 4,
+        Last = 8,
+        Next = 1,
+        Previous = 2,
     }
     [System.SerializableAttribute]
     public enum MessagePriority
@@ -488,7 +503,7 @@ namespace System.Messaging
         VeryLow = 1,
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
-    public partial class MessagePropertyFilter
+    public partial class MessagePropertyFilter : System.ICloneable
     {
         [System.MonoTODOAttribute]
         public MessagePropertyFilter() { }
@@ -567,6 +582,7 @@ namespace System.Messaging
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgLabel")]
         public bool Label { get { throw null; } set { } }
+        public bool LookupId { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgMessageType")]
         public bool MessageType { get { throw null; } set { } }
@@ -622,6 +638,7 @@ namespace System.Messaging
         [System.Messaging.MessagingDescriptionAttribute("MsgUseTracing")]
         public bool UseTracing { get { throw null; } set { } }
         public void ClearAll() { }
+        public virtual object Clone() { throw null; }
         public void SetAll() { }
         [System.MonoTODOAttribute]
         public void SetDefaults() { }
@@ -637,7 +654,10 @@ namespace System.Messaging
         public MessageQueue() { }
         public MessageQueue(string path) { }
         public MessageQueue(string path, bool sharedModeDenyReceive) { }
+        public MessageQueue(string path, bool sharedModeDenyReceive, bool enableCache) { }
+        public MessageQueue(string path, bool sharedModeDenyReceive, bool enableCache, System.Messaging.QueueAccessMode accessMode) { }
         public MessageQueue(string path, System.Messaging.QueueAccessMode accessMode) { }
+        public System.Messaging.QueueAccessMode AccessMode { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MQ_Authenticate")]
         public bool Authenticate { get { throw null; } set { } }
@@ -704,6 +724,7 @@ namespace System.Messaging
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         [System.Messaging.MessagingDescriptionAttribute("MQ_MessageReadPropertyFilter")]
         public System.Messaging.MessagePropertyFilter MessageReadPropertyFilter { get { throw null; } set { } }
+        public string MulticastAddress { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.EditorAttribute("System.Messaging.Design.QueuePathEditor", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
@@ -738,10 +759,12 @@ namespace System.Messaging
         public event System.Messaging.ReceiveCompletedEventHandler ReceiveCompleted { add { } remove { } }
         public System.IAsyncResult BeginPeek() { throw null; }
         public System.IAsyncResult BeginPeek(System.TimeSpan timeout) { throw null; }
+        public System.IAsyncResult BeginPeek(System.TimeSpan timeout, System.Messaging.Cursor cursor, System.Messaging.PeekAction action, object state, System.AsyncCallback callback) { throw null; }
         public System.IAsyncResult BeginPeek(System.TimeSpan timeout, object stateObject) { throw null; }
         public System.IAsyncResult BeginPeek(System.TimeSpan timeout, object stateObject, System.AsyncCallback callback) { throw null; }
         public System.IAsyncResult BeginReceive() { throw null; }
         public System.IAsyncResult BeginReceive(System.TimeSpan timeout) { throw null; }
+        public System.IAsyncResult BeginReceive(System.TimeSpan timeout, System.Messaging.Cursor cursor, object state, System.AsyncCallback callback) { throw null; }
         public System.IAsyncResult BeginReceive(System.TimeSpan timeout, object stateObject) { throw null; }
         public System.IAsyncResult BeginReceive(System.TimeSpan timeout, object stateObject, System.AsyncCallback callback) { throw null; }
         [System.MonoTODOAttribute]
@@ -749,6 +772,7 @@ namespace System.Messaging
         public void Close() { }
         public static System.Messaging.MessageQueue Create(string path) { throw null; }
         public static System.Messaging.MessageQueue Create(string path, bool transactional) { throw null; }
+        public System.Messaging.Cursor CreateCursor() { throw null; }
         public static void Delete(string path) { }
         protected override void Dispose(bool disposing) { }
         public System.Messaging.Message EndPeek(System.IAsyncResult asyncResult) { throw null; }
@@ -779,17 +803,24 @@ namespace System.Messaging
         public static System.Messaging.MessageQueue[] GetPublicQueuesByLabel(string label) { throw null; }
         [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueue[] GetPublicQueuesByMachine(string machineName) { throw null; }
+        public static System.Messaging.SecurityContext GetSecurityContext() { throw null; }
         public System.Messaging.Message Peek() { throw null; }
         public System.Messaging.Message Peek(System.TimeSpan timeout) { throw null; }
+        public System.Messaging.Message Peek(System.TimeSpan timeout, System.Messaging.Cursor cursor, System.Messaging.PeekAction action) { throw null; }
         public System.Messaging.Message PeekByCorrelationId(string correlationId) { throw null; }
         public System.Messaging.Message PeekByCorrelationId(string correlationId, System.TimeSpan timeout) { throw null; }
         public System.Messaging.Message PeekById(string id) { throw null; }
         public System.Messaging.Message PeekById(string id, System.TimeSpan timeout) { throw null; }
+        public System.Messaging.Message PeekByLookupId(long lookupId) { throw null; }
+        public System.Messaging.Message PeekByLookupId(System.Messaging.MessageLookupAction action, long lookupId) { throw null; }
         public void Purge() { }
         public System.Messaging.Message Receive() { throw null; }
         public System.Messaging.Message Receive(System.Messaging.MessageQueueTransaction transaction) { throw null; }
         public System.Messaging.Message Receive(System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
         public System.Messaging.Message Receive(System.TimeSpan timeout) { throw null; }
+        public System.Messaging.Message Receive(System.TimeSpan timeout, System.Messaging.Cursor cursor) { throw null; }
+        public System.Messaging.Message Receive(System.TimeSpan timeout, System.Messaging.Cursor cursor, System.Messaging.MessageQueueTransaction transaction) { throw null; }
+        public System.Messaging.Message Receive(System.TimeSpan timeout, System.Messaging.Cursor cursor, System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
         public System.Messaging.Message Receive(System.TimeSpan timeout, System.Messaging.MessageQueueTransaction transaction) { throw null; }
         public System.Messaging.Message Receive(System.TimeSpan timeout, System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
         public System.Messaging.Message ReceiveByCorrelationId(string correlationId) { throw null; }
@@ -804,6 +835,9 @@ namespace System.Messaging
         public System.Messaging.Message ReceiveById(string id, System.TimeSpan timeout) { throw null; }
         public System.Messaging.Message ReceiveById(string id, System.TimeSpan timeout, System.Messaging.MessageQueueTransaction transaction) { throw null; }
         public System.Messaging.Message ReceiveById(string id, System.TimeSpan timeout, System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
+        public System.Messaging.Message ReceiveByLookupId(long lookupId) { throw null; }
+        public System.Messaging.Message ReceiveByLookupId(System.Messaging.MessageLookupAction action, long lookupId, System.Messaging.MessageQueueTransaction transaction) { throw null; }
+        public System.Messaging.Message ReceiveByLookupId(System.Messaging.MessageLookupAction action, long lookupId, System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
         [System.MonoTODOAttribute]
         public void Refresh() { }
         [System.MonoTODOAttribute]
@@ -873,7 +907,6 @@ namespace System.Messaging
         public void Close() { }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
-        ~MessageQueueEnumerator() { }
         public bool MoveNext() { throw null; }
         public void Reset() { }
     }
@@ -945,6 +978,7 @@ namespace System.Messaging
         MachineExists = -1072824256,
         MachineNotFound = -1072824307,
         MessageAlreadyReceived = -1072824291,
+        MessageNotFound = -1072824184,
         MessageStorageFailed = -1072824278,
         MissingConnectorType = -1072824235,
         MqisReadOnlyMode = -1072824224,
@@ -991,7 +1025,7 @@ namespace System.Messaging
         WriteNotAllowed = -1072824219,
     }
     [System.SerializableAttribute]
-    public partial class MessageQueueException : System.Runtime.InteropServices.ExternalException
+    public partial class MessageQueueException : System.Runtime.InteropServices.ExternalException, System.Runtime.Serialization.ISerializable
     {
         protected MessageQueueException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string Message { get { throw null; } }
@@ -1018,6 +1052,7 @@ namespace System.Messaging
         public long MaximumJournalSize { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.SizeConverter))]
         public long MaximumQueueSize { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string MulticastAddress { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.EditorAttribute("System.Messaging.Design.QueuePathEditor", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
@@ -1164,6 +1199,11 @@ namespace System.Messaging
         [System.MonoTODOAttribute("localization")]
         public override string Description { get { throw null; } }
     }
+    public enum PeekAction
+    {
+        Current = -2147483648,
+        Next = -2147483647,
+    }
     public partial class PeekCompletedEventArgs : System.EventArgs
     {
         internal PeekCompletedEventArgs() { }
@@ -1189,6 +1229,11 @@ namespace System.Messaging
     }
     [System.SerializableAttribute]
     public delegate void ReceiveCompletedEventHandler(object sender, System.Messaging.ReceiveCompletedEventArgs e);
+    public sealed partial class SecurityContext : System.IDisposable
+    {
+        internal SecurityContext() { }
+        public void Dispose() { }
+    }
     [System.FlagsAttribute]
     [System.SerializableAttribute]
     public enum StandardAccessRights
@@ -1260,6 +1305,8 @@ namespace System.Messaging.Design
         public void ChoosePath() { }
         [System.MonoTODOAttribute]
         public void DoubleClicked(object source, System.EventArgs e) { }
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e) { }
+        protected override void OnHandleCreated(System.EventArgs e) { }
         [System.MonoTODOAttribute]
         public void SelectQueue(System.Messaging.MessageQueue queue) { }
     }

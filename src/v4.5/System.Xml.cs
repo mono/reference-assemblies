@@ -152,7 +152,6 @@ namespace System.Xml
         public override System.Xml.XmlNode PrependChild(System.Xml.XmlNode newChild) { throw null; }
         public override System.Xml.XmlNode RemoveChild(System.Xml.XmlNode oldChild) { throw null; }
         public override System.Xml.XmlNode ReplaceChild(System.Xml.XmlNode newChild, System.Xml.XmlNode oldChild) { throw null; }
-        [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]
         public override void WriteContentTo(System.Xml.XmlWriter w) { }
         public override void WriteTo(System.Xml.XmlWriter w) { }
     }
@@ -193,7 +192,7 @@ namespace System.Xml
     public abstract partial class XmlCharacterData : System.Xml.XmlLinkedNode
     {
         protected internal XmlCharacterData(string data, System.Xml.XmlDocument doc) { }
-        public virtual string Data { [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]get { throw null; } set { } }
+        public virtual string Data { get { throw null; } set { } }
         public override string InnerText { get { throw null; } set { } }
         public virtual int Length { get { throw null; } }
         public override string Value { get { throw null; } set { } }
@@ -338,7 +337,6 @@ namespace System.Xml
         public event System.Xml.XmlNodeChangedEventHandler NodeRemoving { add { } remove { } }
         public override System.Xml.XmlNode CloneNode(bool deep) { throw null; }
         public System.Xml.XmlAttribute CreateAttribute(string name) { throw null; }
-        [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]
         public System.Xml.XmlAttribute CreateAttribute(string qualifiedName, string namespaceURI) { throw null; }
         public virtual System.Xml.XmlAttribute CreateAttribute(string prefix, string localName, string namespaceURI) { throw null; }
         public virtual System.Xml.XmlCDataSection CreateCDataSection(string data) { throw null; }
@@ -512,7 +510,7 @@ namespace System.Xml
     public partial class XmlNamedNodeMap : System.Collections.IEnumerable
     {
         internal XmlNamedNodeMap() { }
-        public virtual int Count { [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]get { throw null; } }
+        public virtual int Count { get { throw null; } }
         public virtual System.Collections.IEnumerator GetEnumerator() { throw null; }
         public virtual System.Xml.XmlNode GetNamedItem(string name) { throw null; }
         public virtual System.Xml.XmlNode GetNamedItem(string localName, string namespaceURI) { throw null; }
@@ -557,11 +555,11 @@ namespace System.Xml
         public virtual System.Xml.XmlAttributeCollection Attributes { get { throw null; } }
         public virtual string BaseURI { get { throw null; } }
         public virtual System.Xml.XmlNodeList ChildNodes { get { throw null; } }
-        public virtual System.Xml.XmlNode FirstChild { [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]get { throw null; } }
+        public virtual System.Xml.XmlNode FirstChild { get { throw null; } }
         public virtual bool HasChildNodes { get { throw null; } }
         public virtual string InnerText { get { throw null; } set { } }
         public virtual string InnerXml { get { throw null; } set { } }
-        public virtual bool IsReadOnly { [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]get { throw null; } }
+        public virtual bool IsReadOnly { get { throw null; } }
         public virtual System.Xml.XmlElement this[string name] { get { throw null; } }
         public virtual System.Xml.XmlElement this[string localname, string ns] { get { throw null; } }
         public virtual System.Xml.XmlNode LastChild { get { throw null; } }
@@ -588,7 +586,6 @@ namespace System.Xml
         public virtual System.Xml.XmlNode InsertBefore(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild) { throw null; }
         public virtual void Normalize() { }
         public virtual System.Xml.XmlNode PrependChild(System.Xml.XmlNode newChild) { throw null; }
-        [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]
         public virtual void RemoveAll() { }
         public virtual System.Xml.XmlNode RemoveChild(System.Xml.XmlNode oldChild) { throw null; }
         public virtual System.Xml.XmlNode ReplaceChild(System.Xml.XmlNode newChild, System.Xml.XmlNode oldChild) { throw null; }
@@ -838,7 +835,6 @@ namespace System.Xml
         public abstract bool MoveToAttribute(string name);
         public abstract bool MoveToAttribute(string name, string ns);
         public virtual System.Xml.XmlNodeType MoveToContent() { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<System.Xml.XmlNodeType> MoveToContentAsync() { throw null; }
         public abstract bool MoveToElement();
         public abstract bool MoveToFirstAttribute();
@@ -847,7 +843,6 @@ namespace System.Xml
         public virtual System.Threading.Tasks.Task<bool> ReadAsync() { throw null; }
         public abstract bool ReadAttributeValue();
         public virtual object ReadContentAs(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<object> ReadContentAsAsync(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver) { throw null; }
         public virtual int ReadContentAsBase64(byte[] buffer, int index, int count) { throw null; }
         public virtual System.Threading.Tasks.Task<int> ReadContentAsBase64Async(byte[] buffer, int index, int count) { throw null; }
@@ -862,13 +857,11 @@ namespace System.Xml
         public virtual int ReadContentAsInt() { throw null; }
         public virtual long ReadContentAsLong() { throw null; }
         public virtual object ReadContentAsObject() { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<object> ReadContentAsObjectAsync() { throw null; }
         public virtual string ReadContentAsString() { throw null; }
         public virtual System.Threading.Tasks.Task<string> ReadContentAsStringAsync() { throw null; }
         public virtual object ReadElementContentAs(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver) { throw null; }
         public virtual object ReadElementContentAs(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver, string localName, string namespaceURI) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<object> ReadElementContentAsAsync(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver) { throw null; }
         public virtual int ReadElementContentAsBase64(byte[] buffer, int index, int count) { throw null; }
         public virtual System.Threading.Tasks.Task<int> ReadElementContentAsBase64Async(byte[] buffer, int index, int count) { throw null; }
@@ -890,11 +883,9 @@ namespace System.Xml
         public virtual long ReadElementContentAsLong(string localName, string namespaceURI) { throw null; }
         public virtual object ReadElementContentAsObject() { throw null; }
         public virtual object ReadElementContentAsObject(string localName, string namespaceURI) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<object> ReadElementContentAsObjectAsync() { throw null; }
         public virtual string ReadElementContentAsString() { throw null; }
         public virtual string ReadElementContentAsString(string localName, string namespaceURI) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<string> ReadElementContentAsStringAsync() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual string ReadElementString() { throw null; }
@@ -904,10 +895,8 @@ namespace System.Xml
         public virtual string ReadElementString(string localname, string ns) { throw null; }
         public virtual void ReadEndElement() { }
         public virtual string ReadInnerXml() { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<string> ReadInnerXmlAsync() { throw null; }
         public virtual string ReadOuterXml() { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task<string> ReadOuterXmlAsync() { throw null; }
         public virtual void ReadStartElement() { }
         public virtual void ReadStartElement(string name) { }
@@ -966,6 +955,7 @@ namespace System.Xml
         public virtual System.Uri ResolveUri(System.Uri baseUri, string relativeUri) { throw null; }
         public virtual bool SupportsType(System.Uri absoluteUri, System.Type type) { throw null; }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public partial class XmlSecureResolver : System.Xml.XmlResolver
     {
@@ -1157,7 +1147,6 @@ namespace System.Xml
         public override System.Net.ICredentials Credentials { set { } }
         public System.Net.IWebProxy Proxy { set { } }
         public override object GetEntity(System.Uri absoluteUri, string role, System.Type ofObjectToReturn) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public override System.Threading.Tasks.Task<object> GetEntityAsync(System.Uri absoluteUri, string role, System.Type ofObjectToReturn) { throw null; }
         [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
         public override System.Uri ResolveUri(System.Uri baseUri, string relativeUri) { throw null; }
@@ -1261,13 +1250,10 @@ namespace System.Xml
         public virtual System.Threading.Tasks.Task FlushAsync() { throw null; }
         public abstract string LookupPrefix(string ns);
         public virtual void WriteAttributes(System.Xml.XmlReader reader, bool defattr) { }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task WriteAttributesAsync(System.Xml.XmlReader reader, bool defattr) { throw null; }
         public void WriteAttributeString(string localName, string value) { }
-        [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]
         public void WriteAttributeString(string localName, string ns, string value) { }
         public void WriteAttributeString(string prefix, string localName, string ns, string value) { }
-        [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline across NGen image boundaries")]
         public System.Threading.Tasks.Task WriteAttributeStringAsync(string prefix, string localName, string ns, string value) { throw null; }
         public abstract void WriteBase64(byte[] buffer, int index, int count);
         public virtual System.Threading.Tasks.Task WriteBase64Async(byte[] buffer, int index, int count) { throw null; }
@@ -1286,7 +1272,6 @@ namespace System.Xml
         public void WriteElementString(string localName, string value) { }
         public void WriteElementString(string localName, string ns, string value) { }
         public void WriteElementString(string prefix, string localName, string ns, string value) { }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public System.Threading.Tasks.Task WriteElementStringAsync(string prefix, string localName, string ns, string value) { throw null; }
         public abstract void WriteEndAttribute();
         protected internal virtual System.Threading.Tasks.Task WriteEndAttributeAsync() { throw null; }
@@ -1305,12 +1290,10 @@ namespace System.Xml
         public virtual void WriteNode(System.Xml.XmlReader reader, bool defattr) { }
         public virtual void WriteNode(System.Xml.XPath.XPathNavigator navigator, bool defattr) { }
         public virtual System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XmlReader reader, bool defattr) { throw null; }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XPath.XPathNavigator navigator, bool defattr) { throw null; }
         public abstract void WriteProcessingInstruction(string name, string text);
         public virtual System.Threading.Tasks.Task WriteProcessingInstructionAsync(string name, string text) { throw null; }
         public virtual void WriteQualifiedName(string localName, string ns) { }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
         public virtual System.Threading.Tasks.Task WriteQualifiedNameAsync(string localName, string ns) { throw null; }
         public abstract void WriteRaw(char[] buffer, int index, int count);
         public abstract void WriteRaw(string data);
@@ -4217,7 +4200,6 @@ namespace System.Xml.Xsl.Runtime
         public static System.Xml.Xsl.Runtime.XmlQueryNodeSequence CreateOrReuse(System.Xml.Xsl.Runtime.XmlQueryNodeSequence seq, System.Xml.XPath.XPathNavigator navigator) { throw null; }
         public System.Xml.Xsl.Runtime.XmlQueryNodeSequence DocOrderDistinct(System.Collections.Generic.IComparer<System.Xml.XPath.XPathNavigator> comparer) { throw null; }
         protected override void OnItemsChanged() { }
-        int System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Count { get { throw null; } }
         void System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Add(System.Xml.XPath.XPathItem value) { }
         void System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Clear() { }
         bool System.Collections.Generic.ICollection<System.Xml.XPath.XPathItem>.Contains(System.Xml.XPath.XPathItem value) { throw null; }

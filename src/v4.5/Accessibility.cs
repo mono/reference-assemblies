@@ -25,6 +25,33 @@
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
 namespace Accessibility
 {
+    public enum AnnoScope
+    {
+        ANNO_CONTAINER = 1,
+        ANNO_THIS = 0,
+    }
+    public partial interface CAccPropServices : Accessibility.IAccPropServices
+    {
+    }
+    public partial class CAccPropServicesClass : Accessibility.CAccPropServices, Accessibility.IAccPropServices
+    {
+        public CAccPropServicesClass() { }
+        public virtual void ClearHmenuProps([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps) { }
+        public virtual void ClearHwndProps([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps) { }
+        public virtual void ClearProps([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps) { }
+        public virtual void ComposeHmenuIdentityString([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.Out]System.IntPtr ppIDString, out uint pdwIDStringLen) { ppIDString = default(System.IntPtr); pdwIDStringLen = default(uint); }
+        public virtual void ComposeHwndIdentityString([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.Out]System.IntPtr ppIDString, out uint pdwIDStringLen) { ppIDString = default(System.IntPtr); pdwIDStringLen = default(uint); }
+        public virtual void DecomposeHmenuIdentityString([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.Out]System.IntPtr phmenu, out uint pidChild) { phmenu = default(System.IntPtr); pidChild = default(uint); }
+        public virtual void DecomposeHwndIdentityString([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.Out]System.IntPtr phwnd, out uint pidObject, out uint pidChild) { phwnd = default(System.IntPtr); pidObject = default(uint); pidChild = default(uint); }
+        public virtual void SetHmenuProp([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]object var) { }
+        public virtual void SetHmenuPropServer([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]Accessibility.IAccPropServer pServer, [System.Runtime.InteropServices.In]Accessibility.AnnoScope AnnoScope) { }
+        public virtual void SetHmenuPropStr([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string str) { }
+        public virtual void SetHwndProp([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]object var) { }
+        public virtual void SetHwndPropServer([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]Accessibility.IAccPropServer pServer, [System.Runtime.InteropServices.In]Accessibility.AnnoScope AnnoScope) { }
+        public virtual void SetHwndPropStr([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string str) { }
+        public virtual void SetPropServer([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]Accessibility.IAccPropServer pServer, [System.Runtime.InteropServices.In]Accessibility.AnnoScope AnnoScope) { }
+        public virtual void SetPropValue([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]object var) { }
+    }
     public partial interface IAccessible
     {
         int accChildCount { get; }
@@ -48,5 +75,45 @@ namespace Accessibility
         string get_accValue(object childID);
         void set_accName(object childID, string newName);
         void set_accValue(object childID, string newValue);
+    }
+    public partial interface IAccessibleHandler
+    {
+        void AccessibleObjectFromID([System.Runtime.InteropServices.In]int hwnd, [System.Runtime.InteropServices.In]int lObjectID, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]out Accessibility.IAccessible pIAccessible);
+    }
+    public partial interface IAccIdentity
+    {
+        void GetIdentityString([System.Runtime.InteropServices.In]uint dwIDChild, [System.Runtime.InteropServices.Out]System.IntPtr ppIDString, out uint pdwIDStringLen);
+    }
+    public partial interface IAccPropServer
+    {
+        void GetPropValue([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]out object pvarValue, out int pfHasProp);
+    }
+    public partial interface IAccPropServices
+    {
+        void ClearHmenuProps([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps);
+        void ClearHwndProps([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps);
+        void ClearProps([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps);
+        void ComposeHmenuIdentityString([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.Out]System.IntPtr ppIDString, out uint pdwIDStringLen);
+        void ComposeHwndIdentityString([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.Out]System.IntPtr ppIDString, out uint pdwIDStringLen);
+        void DecomposeHmenuIdentityString([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.Out]System.IntPtr phmenu, out uint pidChild);
+        void DecomposeHwndIdentityString([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.Out]System.IntPtr phwnd, out uint pidObject, out uint pidChild);
+        void SetHmenuProp([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]object var);
+        void SetHmenuPropServer([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]Accessibility.IAccPropServer pServer, [System.Runtime.InteropServices.In]Accessibility.AnnoScope AnnoScope);
+        void SetHmenuPropStr([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hmenu, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string str);
+        void SetHwndProp([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]object var);
+        void SetHwndPropServer([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]Accessibility.IAccPropServer pServer, [System.Runtime.InteropServices.In]Accessibility.AnnoScope AnnoScope);
+        void SetHwndPropStr([System.Runtime.InteropServices.In]ref Accessibility._RemotableHandle hwnd, [System.Runtime.InteropServices.In]uint idObject, [System.Runtime.InteropServices.In]uint idChild, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string str);
+        void SetPropServer([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]ref System.Guid paProps, [System.Runtime.InteropServices.In]int cProps, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]Accessibility.IAccPropServer pServer, [System.Runtime.InteropServices.In]Accessibility.AnnoScope AnnoScope);
+        void SetPropValue([System.Runtime.InteropServices.In]ref byte pIDString, [System.Runtime.InteropServices.In]uint dwIDStringLen, [System.Runtime.InteropServices.In]System.Guid idProp, [System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Struct)]object var);
+    }
+    public partial struct _RemotableHandle
+    {
+        public int fContext;
+        public Accessibility.__MIDL_IWinTypes_0009 u;
+    }
+    public partial struct __MIDL_IWinTypes_0009
+    {
+        public int hInproc;
+        public int hRemote;
     }
 }

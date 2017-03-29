@@ -198,6 +198,7 @@ namespace Mono.Simd
         public static Mono.Simd.AccelMode MethodAccelerationMode(System.Type type, string method) { throw null; }
         public static Mono.Simd.AccelMode MethodAccelerationMode(System.Type type, string method, params System.Type[] signature) { throw null; }
     }
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16, Pack=1)]
     public partial struct Vector16b
     {
@@ -296,6 +297,7 @@ namespace Mono.Simd
         public override string ToString() { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16, Pack=1)]
     public partial struct Vector16sb
     {
@@ -388,6 +390,7 @@ namespace Mono.Simd
         public static void StoreAligned(ref Mono.Simd.Vector16sb res, Mono.Simd.Vector16sb val) { }
         public override string ToString() { throw null; }
     }
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector2d
     {
@@ -474,6 +477,7 @@ namespace Mono.Simd
         public static void StoreAligned(ref Mono.Simd.Vector2d res, Mono.Simd.Vector2d val) { }
         public override string ToString() { throw null; }
     }
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector2l
     {
@@ -557,6 +561,7 @@ namespace Mono.Simd
         public override string ToString() { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector2ul
     {
@@ -634,6 +639,7 @@ namespace Mono.Simd
         public static void StoreAligned(ref Mono.Simd.Vector2ul res, Mono.Simd.Vector2ul val) { }
         public override string ToString() { throw null; }
     }
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector4f
     {
@@ -730,6 +736,7 @@ namespace Mono.Simd
         public static void StoreAligned(ref Mono.Simd.Vector4f res, Mono.Simd.Vector4f val) { }
         public override string ToString() { throw null; }
     }
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector4i
     {
@@ -823,6 +830,7 @@ namespace Mono.Simd
         public override string ToString() { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector4ui
     {
@@ -908,6 +916,7 @@ namespace Mono.Simd
         public static void StoreAligned(ref Mono.Simd.Vector4ui res, Mono.Simd.Vector4ui val) { }
         public override string ToString() { throw null; }
     }
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector8s
     {
@@ -1005,6 +1014,7 @@ namespace Mono.Simd
         public override string ToString() { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
+    [System.ObsoleteAttribute("Use the types in the System.Numerics.Vectors namespace")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, Size=16)]
     public partial struct Vector8us
     {

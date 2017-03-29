@@ -19,7 +19,7 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 namespace Mono.CodeContracts.Rewrite
 {
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct AssemblyRef
     {
         public AssemblyRef(Mono.CodeContracts.Rewrite.AssemblyRef.TwoStreams streams) { throw null;}
@@ -31,7 +31,7 @@ namespace Mono.CodeContracts.Rewrite
         public Mono.CodeContracts.Rewrite.AssemblyRef.TwoStreams Streams { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static implicit operator Mono.CodeContracts.Rewrite.AssemblyRef (System.IO.Stream stream) { throw null; }
         public static implicit operator Mono.CodeContracts.Rewrite.AssemblyRef (string filename) { throw null; }
-        [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+        [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct TwoStreams
         {
             public TwoStreams(System.IO.Stream assembly, System.IO.Stream symbols) { throw null;}
@@ -361,7 +361,6 @@ namespace Mono.CodeContracts.Static.DataStructures
         public static Mono.CodeContracts.Static.DataStructures.Sequence<T> From(params T[] elems) { throw null; }
         public override int GetHashCode() { throw null; }
         public static int LengthOf(Mono.CodeContracts.Static.DataStructures.Sequence<T> list) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public static System.Collections.Generic.IEnumerable<T> PrivateGetEnumerable(Mono.CodeContracts.Static.DataStructures.Sequence<T> list) { throw null; }
         public static Mono.CodeContracts.Static.DataStructures.Sequence<S> Select<S>(Mono.CodeContracts.Static.DataStructures.Sequence<T> list, System.Func<T, S> selector) { throw null; }
         public static Mono.CodeContracts.Static.DataStructures.Sequence<T> Singleton(T value) { throw null; }

@@ -68,7 +68,9 @@ namespace System.Resources
     public sealed partial class ResXDataNode : System.Runtime.Serialization.ISerializable
     {
         public ResXDataNode(string name, object value) { }
+        public ResXDataNode(string name, object value, System.Func<System.Type, string> typeNameConverter) { }
         public ResXDataNode(string name, System.Resources.ResXFileRef fileRef) { }
+        public ResXDataNode(string name, System.Resources.ResXFileRef fileRef, System.Func<System.Type, string> typeNameConverter) { }
         public string Comment { get { throw null; } set { } }
         public System.Resources.ResXFileRef FileRef { get { throw null; } }
         public string Name { get { throw null; } set { } }
@@ -139,8 +141,11 @@ namespace System.Resources
         public static readonly string SoapSerializedObjectMimeType;
         public static readonly string Version;
         public ResXResourceWriter(System.IO.Stream stream) { }
+        public ResXResourceWriter(System.IO.Stream stream, System.Func<System.Type, string> typeNameConverter) { }
         public ResXResourceWriter(System.IO.TextWriter textWriter) { }
+        public ResXResourceWriter(System.IO.TextWriter textWriter, System.Func<System.Type, string> typeNameConverter) { }
         public ResXResourceWriter(string fileName) { }
+        public ResXResourceWriter(string fileName, System.Func<System.Type, string> typeNameConverter) { }
         public string BasePath { get { throw null; } set { } }
         [System.MonoTODOAttribute("Stub, not implemented")]
         public virtual void AddAlias(string aliasName, System.Reflection.AssemblyName assemblyName) { }
@@ -823,7 +828,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected static System.Drawing.Image GetPictureFromIPictureDisp(object picture) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        protected virtual new System.Drawing.Rectangle GetScaledBounds(System.Drawing.Rectangle bounds, System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { throw null; }
+        protected override System.Drawing.Rectangle GetScaledBounds(System.Drawing.Rectangle bounds, System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected static System.DateTime GetTimeFromOADate(double date) { throw null; }
         public bool HasPropertyPages() { throw null; }
@@ -841,7 +846,7 @@ namespace System.Windows.Forms
         protected override void OnLostFocus(System.EventArgs e) { }
         public override bool PreProcessMessage(ref System.Windows.Forms.Message msg) { throw null; }
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected bool PropsValid() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -1091,10 +1096,10 @@ namespace System.Windows.Forms
         [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         protected virtual System.ComponentModel.PropertyDescriptorCollection GetItemProperties(System.Type listType, int offset, System.Collections.ArrayList dataSources, System.Collections.ArrayList listAccessors) { throw null; }
         protected internal abstract string GetListName(System.Collections.ArrayList listAccessors);
-        protected void OnBindingComplete(System.Windows.Forms.BindingCompleteEventArgs args) { }
+        protected internal void OnBindingComplete(System.Windows.Forms.BindingCompleteEventArgs args) { }
         protected internal abstract void OnCurrentChanged(System.EventArgs e);
-        protected abstract void OnCurrentItemChanged(System.EventArgs e);
-        protected void OnDataError(System.Exception e) { }
+        protected internal abstract void OnCurrentItemChanged(System.EventArgs e);
+        protected internal void OnDataError(System.Exception e) { }
         protected void PullData() { }
         protected void PushData() { }
         public abstract void RemoveAt(int index);
@@ -1188,7 +1193,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultEventAttribute("CurrentChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("DataSource")]
     [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.BindingSourceDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
-    public partial class BindingSource : System.ComponentModel.Component, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList, System.ComponentModel.IBindingList, System.ComponentModel.IBindingListView, System.ComponentModel.ICancelAddNew, System.ComponentModel.IComponent, System.ComponentModel.ISupportInitialize, System.ComponentModel.ISupportInitializeNotification, System.ComponentModel.ITypedList, System.IDisposable, System.Windows.Forms.ICurrencyManagerProvider
+    public partial class BindingSource : System.ComponentModel.Component, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList, System.ComponentModel.IBindingList, System.ComponentModel.IBindingListView, System.ComponentModel.ICancelAddNew, System.ComponentModel.ISupportInitialize, System.ComponentModel.ISupportInitializeNotification, System.ComponentModel.ITypedList, System.Windows.Forms.ICurrencyManagerProvider
     {
         public BindingSource() { }
         public BindingSource(System.ComponentModel.IContainer container) { }
@@ -1397,7 +1402,7 @@ namespace System.Windows.Forms
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         public void PerformClick() { }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         public override string ToString() { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
@@ -1601,7 +1606,7 @@ namespace System.Windows.Forms
         protected override void OnHandleCreated(System.EventArgs e) { }
         protected override void OnKeyDown(System.Windows.Forms.KeyEventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         public override string ToString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class CheckBoxAccessibleObject : System.Windows.Forms.ButtonBase.ButtonBaseAccessibleObject
@@ -2243,7 +2248,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override bool ProcessDialogChar(char charCode) { throw null; }
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected virtual bool ProcessTabKey(bool forward) { throw null; }
         protected override void Select(bool directed, bool forward) { }
         bool System.Windows.Forms.IContainerControl.ActivateControl(System.Windows.Forms.Control control) { throw null; }
@@ -2473,6 +2478,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.AmbientValueAttribute((System.Windows.Forms.ImeMode)(-1))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Windows.Forms.ImeMode ImeMode { get { throw null; } set { } }
+        protected virtual System.Windows.Forms.ImeMode ImeModeBase { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2528,6 +2534,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public string ProductVersion { get { throw null; } }
+        protected static System.Windows.Forms.ImeMode PropagatingImeMode { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2537,7 +2544,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Drawing.Region Region { get { throw null; } set { } }
         [System.ObsoleteAttribute]
-        protected bool RenderRightToLeft { get { throw null; } }
+        protected internal bool RenderRightToLeft { get { throw null; } }
         protected bool ResizeRedraw { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -2686,7 +2693,7 @@ namespace System.Windows.Forms
         public event System.ComponentModel.CancelEventHandler Validating { add { } remove { } }
         public event System.EventHandler VisibleChanged { add { } remove { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        protected void AccessibilityNotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int childID) { }
+        protected internal void AccessibilityNotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int childID) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected void AccessibilityNotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int objectID, int childID) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2720,7 +2727,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public static System.Windows.Forms.Control FromHandle(System.IntPtr handle) { throw null; }
         protected virtual System.Windows.Forms.AccessibleObject GetAccessibilityObjectById(int objectId) { throw null; }
-        protected internal System.Windows.Forms.AutoSizeMode GetAutoSizeMode() { throw null; }
+        protected System.Windows.Forms.AutoSizeMode GetAutoSizeMode() { throw null; }
         public System.Windows.Forms.Control GetChildAtPoint(System.Drawing.Point pt) { throw null; }
         public System.Windows.Forms.Control GetChildAtPoint(System.Drawing.Point pt, System.Windows.Forms.GetChildAtPointSkip skipValue) { throw null; }
         public System.Windows.Forms.IContainerControl GetContainerControl() { throw null; }
@@ -2729,7 +2736,7 @@ namespace System.Windows.Forms
         public virtual System.Drawing.Size GetPreferredSize(System.Drawing.Size proposedSize) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual System.Drawing.Rectangle GetScaledBounds(System.Drawing.Rectangle bounds, System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { throw null; }
-        protected internal bool GetStyle(System.Windows.Forms.ControlStyles flag) { throw null; }
+        protected bool GetStyle(System.Windows.Forms.ControlStyles flag) { throw null; }
         protected bool GetTopLevel() { throw null; }
         public void Hide() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2928,7 +2935,7 @@ namespace System.Windows.Forms
         protected virtual bool ProcessKeyEventArgs(ref System.Windows.Forms.Message m) { throw null; }
         protected internal virtual bool ProcessKeyMessage(ref System.Windows.Forms.Message m) { throw null; }
         protected virtual bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
-        protected virtual bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal virtual bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected void RaiseDragEvent(object key, System.Windows.Forms.DragEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2970,7 +2977,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected System.Windows.Forms.LeftRightAlignment RtlTranslateAlignment(System.Windows.Forms.LeftRightAlignment align) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        protected System.Drawing.ContentAlignment RtlTranslateContent(System.Drawing.ContentAlignment align) { throw null; }
+        protected internal System.Drawing.ContentAlignment RtlTranslateContent(System.Drawing.ContentAlignment align) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected System.Windows.Forms.HorizontalAlignment RtlTranslateHorizontal(System.Windows.Forms.HorizontalAlignment align) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2999,7 +3006,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void SetClientSizeCore(int x, int y) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        protected internal void SetStyle(System.Windows.Forms.ControlStyles flag, bool value) { }
+        protected void SetStyle(System.Windows.Forms.ControlStyles flag, bool value) { }
         protected void SetTopLevel(bool value) { }
         protected virtual void SetVisibleCore(bool value) { }
         public void Show() { }
@@ -3012,7 +3019,7 @@ namespace System.Windows.Forms
         void System.Windows.Forms.IDropTarget.OnDragOver(System.Windows.Forms.DragEventArgs drgEvent) { }
         public void Update() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        protected void UpdateBounds() { }
+        protected internal void UpdateBounds() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected void UpdateBounds(int x, int y, int width, int height) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -3231,9 +3238,9 @@ namespace System.Windows.Forms
         public override System.ComponentModel.PropertyDescriptorCollection GetItemProperties() { throw null; }
         protected internal override string GetListName(System.Collections.ArrayList listAccessors) { throw null; }
         protected internal override void OnCurrentChanged(System.EventArgs e) { }
-        protected override void OnCurrentItemChanged(System.EventArgs e) { }
+        protected internal override void OnCurrentItemChanged(System.EventArgs e) { }
         protected virtual void OnItemChanged(System.Windows.Forms.ItemChangedEventArgs e) { }
-        protected void OnMetaDataChanged(System.EventArgs e) { }
+        protected internal void OnMetaDataChanged(System.EventArgs e) { }
         protected virtual void OnPositionChanged(System.EventArgs e) { }
         public void Refresh() { }
         public override void RemoveAt(int index) { }
@@ -3940,7 +3947,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(1))]
-    public partial class DataGridView : System.Windows.Forms.Control, System.ComponentModel.IComponent, System.ComponentModel.ISupportInitialize, System.IDisposable, System.Windows.Forms.IBindableComponent, System.Windows.Forms.IDropTarget
+    public partial class DataGridView : System.Windows.Forms.Control, System.ComponentModel.ISupportInitialize
     {
         public DataGridView() { }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -4397,7 +4404,7 @@ namespace System.Windows.Forms
         protected virtual void OnAllowUserToResizeRowsChanged(System.EventArgs e) { }
         protected virtual void OnAlternatingRowsDefaultCellStyleChanged(System.EventArgs e) { }
         protected virtual void OnAutoGenerateColumnsChanged(System.EventArgs e) { }
-        protected internal virtual void OnAutoSizeColumnModeChanged(System.Windows.Forms.DataGridViewAutoSizeColumnModeEventArgs e) { }
+        protected virtual void OnAutoSizeColumnModeChanged(System.Windows.Forms.DataGridViewAutoSizeColumnModeEventArgs e) { }
         protected virtual void OnAutoSizeColumnsModeChanged(System.Windows.Forms.DataGridViewAutoSizeColumnsModeEventArgs e) { }
         protected virtual void OnAutoSizeRowsModeChanged(System.Windows.Forms.DataGridViewAutoSizeModeEventArgs e) { }
         protected virtual void OnBackgroundColorChanged(System.EventArgs e) { }
@@ -4414,7 +4421,7 @@ namespace System.Windows.Forms
         protected virtual void OnCellDoubleClick(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnCellEndEdit(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnCellEnter(System.Windows.Forms.DataGridViewCellEventArgs e) { }
-        protected internal virtual void OnCellErrorTextChanged(System.Windows.Forms.DataGridViewCellEventArgs e) { }
+        protected virtual void OnCellErrorTextChanged(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnCellErrorTextNeeded(System.Windows.Forms.DataGridViewCellErrorTextNeededEventArgs e) { }
         protected virtual void OnCellFormatting(System.Windows.Forms.DataGridViewCellFormattingEventArgs e) { }
         protected virtual void OnCellLeave(System.Windows.Forms.DataGridViewCellEventArgs e) { }
@@ -4425,8 +4432,8 @@ namespace System.Windows.Forms
         protected virtual void OnCellMouseLeave(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnCellMouseMove(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
         protected virtual void OnCellMouseUp(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
-        protected virtual void OnCellPainting(System.Windows.Forms.DataGridViewCellPaintingEventArgs e) { }
-        protected internal virtual void OnCellParsing(System.Windows.Forms.DataGridViewCellParsingEventArgs e) { }
+        protected internal virtual void OnCellPainting(System.Windows.Forms.DataGridViewCellPaintingEventArgs e) { }
+        protected virtual void OnCellParsing(System.Windows.Forms.DataGridViewCellParsingEventArgs e) { }
         protected virtual void OnCellStateChanged(System.Windows.Forms.DataGridViewCellStateChangedEventArgs e) { }
         protected virtual void OnCellStyleChanged(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnCellStyleContentChanged(System.Windows.Forms.DataGridViewCellStyleContentChangedEventArgs e) { }
@@ -4435,29 +4442,29 @@ namespace System.Windows.Forms
         protected virtual void OnCellValidated(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnCellValidating(System.Windows.Forms.DataGridViewCellValidatingEventArgs e) { }
         protected virtual void OnCellValueChanged(System.Windows.Forms.DataGridViewCellEventArgs e) { }
-        protected internal virtual void OnCellValueNeeded(System.Windows.Forms.DataGridViewCellValueEventArgs e) { }
-        protected internal virtual void OnCellValuePushed(System.Windows.Forms.DataGridViewCellValueEventArgs e) { }
+        protected virtual void OnCellValueNeeded(System.Windows.Forms.DataGridViewCellValueEventArgs e) { }
+        protected virtual void OnCellValuePushed(System.Windows.Forms.DataGridViewCellValueEventArgs e) { }
         protected virtual void OnColumnAdded(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnContextMenuStripChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnDataPropertyNameChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnDefaultCellStyleChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnDisplayIndexChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnContextMenuStripChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnDataPropertyNameChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnDefaultCellStyleChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnDisplayIndexChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
         protected virtual void OnColumnDividerDoubleClick(System.Windows.Forms.DataGridViewColumnDividerDoubleClickEventArgs e) { }
-        protected internal virtual void OnColumnDividerWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnHeaderCellChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnDividerWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnHeaderCellChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
         protected virtual void OnColumnHeaderMouseClick(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
         protected virtual void OnColumnHeaderMouseDoubleClick(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
         protected virtual void OnColumnHeadersBorderStyleChanged(System.EventArgs e) { }
         protected virtual void OnColumnHeadersDefaultCellStyleChanged(System.EventArgs e) { }
         protected virtual void OnColumnHeadersHeightChanged(System.EventArgs e) { }
         protected virtual void OnColumnHeadersHeightSizeModeChanged(System.Windows.Forms.DataGridViewAutoSizeModeEventArgs e) { }
-        protected internal virtual void OnColumnMinimumWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnNameChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnMinimumWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnNameChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
         protected virtual void OnColumnRemoved(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnSortModeChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnStateChanged(System.Windows.Forms.DataGridViewColumnStateChangedEventArgs e) { }
-        protected internal virtual void OnColumnToolTipTextChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
-        protected internal virtual void OnColumnWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnSortModeChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnStateChanged(System.Windows.Forms.DataGridViewColumnStateChangedEventArgs e) { }
+        protected virtual void OnColumnToolTipTextChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
+        protected virtual void OnColumnWidthChanged(System.Windows.Forms.DataGridViewColumnEventArgs e) { }
         protected virtual void OnCurrentCellChanged(System.EventArgs e) { }
         protected virtual void OnCurrentCellDirtyStateChanged(System.EventArgs e) { }
         protected override void OnCursorChanged(System.EventArgs e) { }
@@ -4501,33 +4508,33 @@ namespace System.Windows.Forms
         protected virtual void OnReadOnlyChanged(System.EventArgs e) { }
         protected override void OnResize(System.EventArgs e) { }
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
-        protected internal virtual void OnRowContextMenuStripChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
+        protected virtual void OnRowContextMenuStripChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowContextMenuStripNeeded(System.Windows.Forms.DataGridViewRowContextMenuStripNeededEventArgs e) { }
-        protected internal virtual void OnRowDefaultCellStyleChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
+        protected virtual void OnRowDefaultCellStyleChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowDirtyStateNeeded(System.Windows.Forms.QuestionEventArgs e) { }
         protected virtual void OnRowDividerDoubleClick(System.Windows.Forms.DataGridViewRowDividerDoubleClickEventArgs e) { }
         protected virtual void OnRowDividerHeightChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowEnter(System.Windows.Forms.DataGridViewCellEventArgs e) { }
-        protected internal virtual void OnRowErrorTextChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
+        protected virtual void OnRowErrorTextChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowErrorTextNeeded(System.Windows.Forms.DataGridViewRowErrorTextNeededEventArgs e) { }
-        protected internal virtual void OnRowHeaderCellChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
+        protected virtual void OnRowHeaderCellChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowHeaderMouseClick(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
         protected virtual void OnRowHeaderMouseDoubleClick(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
         protected virtual void OnRowHeadersBorderStyleChanged(System.EventArgs e) { }
         protected virtual void OnRowHeadersDefaultCellStyleChanged(System.EventArgs e) { }
         protected virtual void OnRowHeadersWidthChanged(System.EventArgs e) { }
         protected virtual void OnRowHeadersWidthSizeModeChanged(System.Windows.Forms.DataGridViewAutoSizeModeEventArgs e) { }
-        protected internal virtual void OnRowHeightChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
+        protected virtual void OnRowHeightChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowHeightInfoNeeded(System.Windows.Forms.DataGridViewRowHeightInfoNeededEventArgs e) { }
         protected virtual void OnRowHeightInfoPushed(System.Windows.Forms.DataGridViewRowHeightInfoPushedEventArgs e) { }
         protected virtual void OnRowLeave(System.Windows.Forms.DataGridViewCellEventArgs e) { }
-        protected internal virtual void OnRowMinimumHeightChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
+        protected virtual void OnRowMinimumHeightChanged(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected internal virtual void OnRowPostPaint(System.Windows.Forms.DataGridViewRowPostPaintEventArgs e) { }
         protected internal virtual void OnRowPrePaint(System.Windows.Forms.DataGridViewRowPrePaintEventArgs e) { }
         protected virtual void OnRowsAdded(System.Windows.Forms.DataGridViewRowsAddedEventArgs e) { }
         protected virtual void OnRowsDefaultCellStyleChanged(System.EventArgs e) { }
         protected virtual void OnRowsRemoved(System.Windows.Forms.DataGridViewRowsRemovedEventArgs e) { }
-        protected internal virtual void OnRowStateChanged(int rowIndex, System.Windows.Forms.DataGridViewRowStateChangedEventArgs e) { }
+        protected virtual void OnRowStateChanged(int rowIndex, System.Windows.Forms.DataGridViewRowStateChangedEventArgs e) { }
         protected virtual void OnRowUnshared(System.Windows.Forms.DataGridViewRowEventArgs e) { }
         protected virtual void OnRowValidated(System.Windows.Forms.DataGridViewCellEventArgs e) { }
         protected virtual void OnRowValidating(System.Windows.Forms.DataGridViewCellCancelEventArgs e) { }
@@ -5027,7 +5034,11 @@ namespace System.Windows.Forms
         public System.Windows.Forms.DataGridViewCell this[int index] { get { throw null; } set { } }
         public System.Windows.Forms.DataGridViewCell this[string columnName] { get { throw null; } set { } }
         protected override System.Collections.ArrayList List { get { throw null; } }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
         public event System.ComponentModel.CollectionChangeEventHandler CollectionChanged { add { } remove { } }
         public virtual int Add(System.Windows.Forms.DataGridViewCell dataGridViewCell) { throw null; }
@@ -5041,11 +5052,15 @@ namespace System.Windows.Forms
         protected void OnCollectionChanged(System.ComponentModel.CollectionChangeEventArgs e) { }
         public virtual void Remove(System.Windows.Forms.DataGridViewCell cell) { }
         public virtual void RemoveAt(int index) { }
+        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
+        void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
         int System.Collections.IList.IndexOf(object value) { throw null; }
         void System.Collections.IList.Insert(int index, object value) { }
         void System.Collections.IList.Remove(object value) { }
+        void System.Collections.IList.RemoveAt(int index) { }
     }
     public partial class DataGridViewCellContextMenuStripNeededEventArgs : System.Windows.Forms.DataGridViewCellEventArgs
     {
@@ -5267,6 +5282,7 @@ namespace System.Windows.Forms
         {
             public DataGridViewCheckBoxCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
             public override string DefaultAction { get { throw null; } }
+            public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
             public override void DoDefaultAction() { }
             public override int GetChildCount() { throw null; }
         }
@@ -5397,7 +5413,11 @@ namespace System.Windows.Forms
         public System.Windows.Forms.DataGridViewColumn this[int index] { get { throw null; } }
         public System.Windows.Forms.DataGridViewColumn this[string columnName] { get { throw null; } }
         protected override System.Collections.ArrayList List { get { throw null; } }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
         public event System.ComponentModel.CollectionChangeEventHandler CollectionChanged { add { } remove { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -5421,11 +5441,15 @@ namespace System.Windows.Forms
         public virtual void Remove(string columnName) { }
         public virtual void Remove(System.Windows.Forms.DataGridViewColumn dataGridViewColumn) { }
         public virtual void RemoveAt(int index) { }
+        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
+        void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
         int System.Collections.IList.IndexOf(object value) { throw null; }
         void System.Collections.IList.Insert(int index, object value) { }
         void System.Collections.IList.Remove(object value) { }
+        void System.Collections.IList.RemoveAt(int index) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
     public sealed partial class DataGridViewColumnDesignTimeVisibleAttribute : System.Attribute
@@ -5466,7 +5490,6 @@ namespace System.Windows.Forms
         protected override System.Drawing.Size GetPreferredSize(System.Drawing.Graphics graphics, System.Windows.Forms.DataGridViewCellStyle cellStyle, int rowIndex, System.Drawing.Size constraintSize) { throw null; }
         protected override object GetValue(int rowIndex) { throw null; }
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates dataGridViewElementState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
-        protected override void PaintBorder(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle) { }
         protected override bool SetValue(int rowIndex, object value) { throw null; }
         public override string ToString() { throw null; }
         protected partial class DataGridViewColumnHeaderCellAccessibleObject : System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject
@@ -5542,7 +5565,6 @@ namespace System.Windows.Forms
         protected override void OnEnter(int rowIndex, bool throughMouseClick) { }
         protected override void OnLeave(int rowIndex, bool throughMouseClick) { }
         protected override void OnMouseClick(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
-        protected override void OnMouseDown(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
         protected override void OnMouseEnter(int rowIndex) { }
         protected override void OnMouseLeave(int rowIndex) { }
         protected override void OnMouseMove(System.Windows.Forms.DataGridViewCellMouseEventArgs e) { }
@@ -5572,7 +5594,6 @@ namespace System.Windows.Forms
             public void RemoveAt(int index) { }
             void System.Collections.ICollection.CopyTo(System.Array destination, int index) { }
             int System.Collections.IList.Add(object item) { throw null; }
-            public void ThrowIfOwnerIsDataBound() { }
         }
     }
     [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewComboBoxColumnDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
@@ -6073,10 +6094,12 @@ namespace System.Windows.Forms
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
+        void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
         int System.Collections.IList.IndexOf(object value) { throw null; }
         void System.Collections.IList.Insert(int index, object value) { }
         void System.Collections.IList.Remove(object value) { }
+        void System.Collections.IList.RemoveAt(int index) { }
     }
     public partial class DataGridViewRowContextMenuStripNeededEventArgs : System.EventArgs
     {
@@ -6119,7 +6142,6 @@ namespace System.Windows.Forms
         protected override object GetValue(int rowIndex) { throw null; }
         [System.MonoInternalNoteAttribute("Needs row header cell selected/edit pencil glyphs")]
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates cellState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
-        protected override void PaintBorder(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle) { }
         protected override bool SetValue(int rowIndex, object value) { throw null; }
         public override string ToString() { throw null; }
         protected partial class DataGridViewRowHeaderCellAccessibleObject : System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject
@@ -6229,7 +6251,11 @@ namespace System.Windows.Forms
         internal DataGridViewSelectedCellCollection() { }
         public System.Windows.Forms.DataGridViewCell this[int index] { get { throw null; } }
         protected override System.Collections.ArrayList List { get { throw null; } }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Clear() { }
@@ -6237,6 +6263,8 @@ namespace System.Windows.Forms
         public void CopyTo(System.Windows.Forms.DataGridViewCell[] array, int index) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Insert(int index, System.Windows.Forms.DataGridViewCell dataGridViewCell) { }
+        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
         void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
@@ -6251,7 +6279,11 @@ namespace System.Windows.Forms
         internal DataGridViewSelectedColumnCollection() { }
         public System.Windows.Forms.DataGridViewColumn this[int index] { get { throw null; } }
         protected override System.Collections.ArrayList List { get { throw null; } }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Clear() { }
@@ -6259,6 +6291,8 @@ namespace System.Windows.Forms
         public void CopyTo(System.Windows.Forms.DataGridViewColumn[] array, int index) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Insert(int index, System.Windows.Forms.DataGridViewColumn dataGridViewColumn) { }
+        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
         void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
@@ -6273,7 +6307,11 @@ namespace System.Windows.Forms
         internal DataGridViewSelectedRowCollection() { }
         public System.Windows.Forms.DataGridViewRow this[int index] { get { throw null; } }
         protected override System.Collections.ArrayList List { get { throw null; } }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Clear() { }
@@ -6281,6 +6319,8 @@ namespace System.Windows.Forms
         public void CopyTo(System.Windows.Forms.DataGridViewRow[] array, int index) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Insert(int index, System.Windows.Forms.DataGridViewRow dataGridViewRow) { }
+        void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         int System.Collections.IList.Add(object value) { throw null; }
         void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
@@ -6426,15 +6466,15 @@ namespace System.Windows.Forms
         public virtual void SetImage(System.Drawing.Image image) { }
         public virtual void SetText(string textData) { }
         public virtual void SetText(string textData, System.Windows.Forms.TextDataFormat format) { }
-        int System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise(ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetc, System.Runtime.InteropServices.ComTypes.ADVF advf, System.Runtime.InteropServices.ComTypes.IAdviseSink adviseSink, out int connection) { connection = default(int); throw null; }
-        void System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise(int connection) { }
+        int System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise(ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetc, System.Runtime.InteropServices.ComTypes.ADVF advf, System.Runtime.InteropServices.ComTypes.IAdviseSink pAdvSink, out int pdwConnection) { pdwConnection = default(int); throw null; }
+        void System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise(int dwConnection) { }
         int System.Runtime.InteropServices.ComTypes.IDataObject.EnumDAdvise(out System.Runtime.InteropServices.ComTypes.IEnumSTATDATA enumAdvise) { enumAdvise = default(System.Runtime.InteropServices.ComTypes.IEnumSTATDATA); throw null; }
-        System.Runtime.InteropServices.ComTypes.IEnumFORMATETC System.Runtime.InteropServices.ComTypes.IDataObject.EnumFormatEtc(System.Runtime.InteropServices.ComTypes.DATADIR direction) { throw null; }
-        int System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatIn, out System.Runtime.InteropServices.ComTypes.FORMATETC formatOut) { formatOut = default(System.Runtime.InteropServices.ComTypes.FORMATETC); throw null; }
-        void System.Runtime.InteropServices.ComTypes.IDataObject.GetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC format, out System.Runtime.InteropServices.ComTypes.STGMEDIUM medium) { medium = default(System.Runtime.InteropServices.ComTypes.STGMEDIUM); }
-        void System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere(ref System.Runtime.InteropServices.ComTypes.FORMATETC format, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM medium) { }
-        int System.Runtime.InteropServices.ComTypes.IDataObject.QueryGetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC format) { throw null; }
-        void System.Runtime.InteropServices.ComTypes.IDataObject.SetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatIn, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM medium, bool release) { }
+        System.Runtime.InteropServices.ComTypes.IEnumFORMATETC System.Runtime.InteropServices.ComTypes.IDataObject.EnumFormatEtc(System.Runtime.InteropServices.ComTypes.DATADIR dwDirection) { throw null; }
+        int System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc(ref System.Runtime.InteropServices.ComTypes.FORMATETC pformatetcIn, out System.Runtime.InteropServices.ComTypes.FORMATETC pformatetcOut) { pformatetcOut = default(System.Runtime.InteropServices.ComTypes.FORMATETC); throw null; }
+        void System.Runtime.InteropServices.ComTypes.IDataObject.GetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc, out System.Runtime.InteropServices.ComTypes.STGMEDIUM medium) { medium = default(System.Runtime.InteropServices.ComTypes.STGMEDIUM); }
+        void System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM medium) { }
+        int System.Runtime.InteropServices.ComTypes.IDataObject.QueryGetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc) { throw null; }
+        void System.Runtime.InteropServices.ComTypes.IDataObject.SetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetcIn, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM pmedium, bool fRelease) { }
     }
     public enum DataSourceUpdateMode
     {
@@ -7094,7 +7134,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.DisplayNameAttribute("FlowBreak")]
         public bool GetFlowBreak(System.Windows.Forms.Control control) { throw null; }
-        protected override void OnLayout(System.Windows.Forms.LayoutEventArgs levent) { }
         [System.ComponentModel.DisplayNameAttribute("FlowBreak")]
         public void SetFlowBreak(System.Windows.Forms.Control control, bool value) { }
         bool System.ComponentModel.IExtenderProvider.CanExtend(object obj) { throw null; }
@@ -7463,7 +7502,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnMdiChildActivate(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        protected internal virtual void OnMenuComplete(System.EventArgs e) { }
+        protected virtual void OnMenuComplete(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnMenuStart(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -7491,7 +7530,7 @@ namespace System.Windows.Forms
         protected override bool ProcessDialogChar(char charCode) { throw null; }
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         protected override bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override bool ProcessTabKey(bool forward) { throw null; }
         public void RemoveOwnedForm(System.Windows.Forms.Form ownedForm) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -7782,7 +7821,7 @@ namespace System.Windows.Forms
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void OnFontChanged(System.EventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
@@ -8343,10 +8382,20 @@ namespace System.Windows.Forms
         }
     }
     [System.SerializableAttribute]
-    public sealed partial class ImageListStreamer : System.Runtime.Serialization.ISerializable
+    public sealed partial class ImageListStreamer : System.IDisposable, System.Runtime.Serialization.ISerializable
     {
         internal ImageListStreamer() { }
+        public void Dispose() { }
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
+    }
+    public static partial class ImeContext
+    {
+        public static void Disable(System.IntPtr handle) { }
+        public static void Enable(System.IntPtr handle) { }
+        public static System.Windows.Forms.ImeMode GetImeMode(System.IntPtr handle) { throw null; }
+        public static bool IsOpen(System.IntPtr handle) { throw null; }
+        public static void SetImeStatus(System.Windows.Forms.ImeMode imeMode, System.IntPtr handle) { }
+        public static void SetOpenStatus(bool open, System.IntPtr handle) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum ImeMode
@@ -8365,6 +8414,11 @@ namespace System.Windows.Forms
         Off = 2,
         On = 1,
         OnHalf = 12,
+    }
+    public partial struct ImeModeConversion
+    {
+        public static System.Collections.Generic.Dictionary<System.Windows.Forms.ImeMode, System.Windows.Forms.ImeModeConversion> ImeModeConversionBits { get { throw null; } }
+        public static bool IsCurrentConversionTableSupported { get { throw null; } }
     }
     public partial interface IMessageFilter
     {
@@ -8823,7 +8877,7 @@ namespace System.Windows.Forms
         protected System.Drawing.Rectangle CalcImageRenderBounds(System.Drawing.Image image, System.Drawing.Rectangle r, System.Drawing.ContentAlignment align) { throw null; }
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void Dispose(bool disposing) { }
-        protected internal void DrawImage(System.Drawing.Graphics g, System.Drawing.Image image, System.Drawing.Rectangle r, System.Drawing.ContentAlignment align) { }
+        protected void DrawImage(System.Drawing.Graphics g, System.Drawing.Image image, System.Drawing.Rectangle r, System.Drawing.ContentAlignment align) { }
         public override System.Drawing.Size GetPreferredSize(System.Drawing.Size proposedSize) { throw null; }
         protected override void OnEnabledChanged(System.EventArgs e) { }
         protected override void OnFontChanged(System.EventArgs e) { }
@@ -8837,7 +8891,7 @@ namespace System.Windows.Forms
         protected virtual void OnTextAlignChanged(System.EventArgs e) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
@@ -8950,6 +9004,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public new System.Windows.Forms.Padding Padding { get { throw null; } set { } }
         System.Windows.Forms.DialogResult System.Windows.Forms.IButtonControl.DialogResult { get { throw null; } set { } }
+        public new bool TabStop { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public override string Text { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
@@ -8962,7 +9017,6 @@ namespace System.Windows.Forms
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void CreateHandle() { }
         protected override void OnAutoSizeChanged(System.EventArgs e) { }
-        protected override void OnClick(System.EventArgs e) { }
         protected override void OnEnabledChanged(System.EventArgs e) { }
         protected override void OnFontChanged(System.EventArgs e) { }
         protected override void OnGotFocus(System.EventArgs e) { }
@@ -9377,7 +9431,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool FormattingEnabled { get { throw null; } set { } }
         public abstract int SelectedIndex { get; set; }
-        [System.ComponentModel.BindableAttribute((System.ComponentModel.BindableSupport)(1))]
+        [System.ComponentModel.BindableAttribute(true)]
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -9611,23 +9665,23 @@ namespace System.Windows.Forms
         protected virtual void OnAfterLabelEdit(System.Windows.Forms.LabelEditEventArgs e) { }
         protected override void OnBackgroundImageChanged(System.EventArgs e) { }
         protected virtual void OnBeforeLabelEdit(System.Windows.Forms.LabelEditEventArgs e) { }
-        protected internal virtual void OnCacheVirtualItems(System.Windows.Forms.CacheVirtualItemsEventArgs e) { }
-        protected internal virtual void OnColumnClick(System.Windows.Forms.ColumnClickEventArgs e) { }
+        protected virtual void OnCacheVirtualItems(System.Windows.Forms.CacheVirtualItemsEventArgs e) { }
+        protected virtual void OnColumnClick(System.Windows.Forms.ColumnClickEventArgs e) { }
         protected virtual void OnColumnReordered(System.Windows.Forms.ColumnReorderedEventArgs e) { }
         protected virtual void OnColumnWidthChanged(System.Windows.Forms.ColumnWidthChangedEventArgs e) { }
         protected virtual void OnColumnWidthChanging(System.Windows.Forms.ColumnWidthChangingEventArgs e) { }
-        protected internal virtual void OnDrawColumnHeader(System.Windows.Forms.DrawListViewColumnHeaderEventArgs e) { }
-        protected internal virtual void OnDrawItem(System.Windows.Forms.DrawListViewItemEventArgs e) { }
-        protected internal virtual void OnDrawSubItem(System.Windows.Forms.DrawListViewSubItemEventArgs e) { }
+        protected virtual void OnDrawColumnHeader(System.Windows.Forms.DrawListViewColumnHeaderEventArgs e) { }
+        protected virtual void OnDrawItem(System.Windows.Forms.DrawListViewItemEventArgs e) { }
+        protected virtual void OnDrawSubItem(System.Windows.Forms.DrawListViewSubItemEventArgs e) { }
         protected override void OnFontChanged(System.EventArgs e) { }
         protected override void OnHandleCreated(System.EventArgs e) { }
         protected override void OnHandleDestroyed(System.EventArgs e) { }
         protected virtual void OnItemActivate(System.EventArgs e) { }
-        protected internal virtual void OnItemCheck(System.Windows.Forms.ItemCheckEventArgs ice) { }
-        protected internal virtual void OnItemChecked(System.Windows.Forms.ItemCheckedEventArgs e) { }
+        protected virtual void OnItemCheck(System.Windows.Forms.ItemCheckEventArgs ice) { }
+        protected virtual void OnItemChecked(System.Windows.Forms.ItemCheckedEventArgs e) { }
         protected virtual void OnItemDrag(System.Windows.Forms.ItemDragEventArgs e) { }
         protected virtual void OnItemMouseHover(System.Windows.Forms.ListViewItemMouseHoverEventArgs e) { }
-        protected internal virtual void OnItemSelectionChanged(System.Windows.Forms.ListViewItemSelectionChangedEventArgs e) { }
+        protected virtual void OnItemSelectionChanged(System.Windows.Forms.ListViewItemSelectionChangedEventArgs e) { }
         protected override void OnMouseHover(System.EventArgs e) { }
         protected override void OnMouseLeave(System.EventArgs e) { }
         protected override void OnParentChanged(System.EventArgs e) { }
@@ -10424,7 +10478,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.LocalizableAttribute(false)]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public object Tag { get { throw null; } set { } }
-        protected void CloneMenu(System.Windows.Forms.Menu menuSrc) { }
+        protected internal void CloneMenu(System.Windows.Forms.Menu menuSrc) { }
         protected virtual System.IntPtr CreateMenuHandle() { throw null; }
         protected override void Dispose(bool disposing) { }
         public System.Windows.Forms.MenuItem FindMenuItem(int type, System.IntPtr value) { throw null; }
@@ -12055,10 +12109,13 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public virtual bool CanShowCommands { get { throw null; } }
+        public bool CanShowVisualStyleGlyphs { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "ControlText")]
         public System.Drawing.Color CategoryForeColor { get { throw null; } set { } }
+        public System.Drawing.Color CategorySplitterColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsActiveLinkColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsBackColor { get { throw null; } set { } }
+        public System.Drawing.Color CommandsBorderColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsDisabledLinkColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsForeColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsLinkColor { get { throw null; } set { } }
@@ -12081,12 +12138,14 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual System.Type DefaultTabType { get { throw null; } }
+        public System.Drawing.Color DisabledItemForeColor { get { throw null; } set { } }
         protected bool DrawFlatToolbar { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Drawing.Color ForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("Color [Control]")]
         public System.Drawing.Color HelpBackColor { get { throw null; } set { } }
+        public System.Drawing.Color HelpBorderColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("Color [ControlText]")]
         public System.Drawing.Color HelpForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
@@ -12110,6 +12169,8 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Forms.GridItem SelectedGridItem { get { throw null; } set { } }
+        public System.Drawing.Color SelectedItemWithFocusBackColor { get { throw null; } set { } }
+        public System.Drawing.Color SelectedItemWithFocusForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.PropertyGrid+SelectedObjectConverter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
         public object SelectedObject { get { throw null; } set { } }
@@ -12121,7 +12182,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Forms.Design.PropertyTab SelectedTab { get { throw null; } }
         protected internal override bool ShowFocusCues { get { throw null; } }
+        protected virtual System.Drawing.Bitmap ShowPropertyPageImage { get { throw null; } }
         public override System.ComponentModel.ISite Site { get { throw null; } set { } }
+        protected virtual System.Drawing.Bitmap SortByCategoryImage { get { throw null; } }
+        protected virtual System.Drawing.Bitmap SortByPropertyImage { get { throw null; } }
         [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         bool System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.InPropertySet { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -12134,6 +12198,7 @@ namespace System.Windows.Forms
         public bool UseCompatibleTextRendering { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("Color [Window]")]
         public System.Drawing.Color ViewBackColor { get { throw null; } set { } }
+        public System.Drawing.Color ViewBorderColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("Color [WindowText]")]
         public System.Drawing.Color ViewForeColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -12248,7 +12313,7 @@ namespace System.Windows.Forms
         public override void EndCurrentEdit() { }
         protected internal override string GetListName(System.Collections.ArrayList listAccessors) { throw null; }
         protected internal override void OnCurrentChanged(System.EventArgs ea) { }
-        protected override void OnCurrentItemChanged(System.EventArgs ea) { }
+        protected internal override void OnCurrentItemChanged(System.EventArgs ea) { }
         public override void RemoveAt(int index) { }
         public override void ResumeBinding() { }
         public override void SuspendBinding() { }
@@ -12349,7 +12414,7 @@ namespace System.Windows.Forms
         protected override void OnHandleCreated(System.EventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
         public void PerformClick() { }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         public override string ToString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class RadioButtonAccessibleObject : System.Windows.Forms.ButtonBase.ButtonBaseAccessibleObject
@@ -12717,7 +12782,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ScrollableControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    public partial class ScrollableControl : System.Windows.Forms.Control
+    public partial class ScrollableControl : System.Windows.Forms.Control, System.ComponentModel.IComponent, System.IDisposable
     {
         protected const int ScrollStateAutoScrolling = 1;
         protected const int ScrollStateFullDrag = 16;
@@ -13393,6 +13458,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e) { }
+        protected override void OnMove(System.EventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
@@ -14690,6 +14756,7 @@ namespace System.Windows.Forms
         public override System.Drawing.Color ForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool HideSelection { get { throw null; } set { } }
+        protected override System.Windows.Forms.ImeMode ImeModeBase { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.StringArrayEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -15353,7 +15420,7 @@ namespace System.Windows.Forms
         protected override void OnVisibleChanged(System.EventArgs e) { }
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void ResetMinimumSize() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -15365,7 +15432,7 @@ namespace System.Windows.Forms
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         protected virtual void SetDisplayedItems() { }
         protected internal void SetItemLocation(System.Windows.Forms.ToolStripItem item, System.Drawing.Point location) { }
-        protected internal static void SetItemParent(System.Windows.Forms.ToolStripItem item, System.Windows.Forms.ToolStrip parent) { }
+        protected static void SetItemParent(System.Windows.Forms.ToolStripItem item, System.Windows.Forms.ToolStrip parent) { }
         protected override void SetVisibleCore(bool visible) { }
         public override string ToString() { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
@@ -15840,7 +15907,7 @@ namespace System.Windows.Forms
         protected virtual void OnKeyDown(System.Windows.Forms.KeyEventArgs e) { }
         protected virtual void OnKeyPress(System.Windows.Forms.KeyPressEventArgs e) { }
         protected virtual void OnKeyUp(System.Windows.Forms.KeyEventArgs e) { }
-        protected override void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
+        protected internal override void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
         protected virtual void OnLeave(System.EventArgs e) { }
         protected virtual void OnLostFocus(System.EventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
@@ -15851,6 +15918,7 @@ namespace System.Windows.Forms
         protected virtual void OnValidating(System.ComponentModel.CancelEventArgs e) { }
         protected internal override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
         protected internal override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override void ResetBackColor() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -16050,7 +16118,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override bool ProcessDialogChar(char charCode) { throw null; }
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         protected override void ScaleCore(float dx, float dy) { }
@@ -16141,6 +16209,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         public System.Windows.Forms.ToolStripItemCollection DropDownItems { get { throw null; } }
         protected internal virtual System.Drawing.Point DropDownLocation { get { throw null; } }
+        public bool HasDropDown { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public virtual bool HasDropDownItems { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -16468,7 +16537,7 @@ namespace System.Windows.Forms
         protected virtual void OnForeColorChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnGiveFeedback(System.Windows.Forms.GiveFeedbackEventArgs giveFeedbackEvent) { }
-        protected virtual void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
+        protected internal virtual void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
         protected virtual void OnLocationChanged(System.EventArgs e) { }
         protected virtual void OnMouseDown(System.Windows.Forms.MouseEventArgs e) { }
         protected virtual void OnMouseEnter(System.EventArgs e) { }
@@ -16804,6 +16873,7 @@ namespace System.Windows.Forms
         public new bool RightToLeftAutoMirrorImage { get { throw null; } set { } }
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override System.Windows.Forms.ToolStripDropDown CreateDefaultDropDown() { throw null; }
+        protected override void Dispose(bool disposing) { }
         public override System.Drawing.Size GetPreferredSize(System.Drawing.Size constrainingSize) { throw null; }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
         protected internal override void SetBounds(System.Drawing.Rectangle bounds) { }
@@ -16812,7 +16882,7 @@ namespace System.Windows.Forms
     [System.Drawing.ToolboxBitmapAttribute("")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    public partial class ToolStripPanel : System.Windows.Forms.ContainerControl, System.ComponentModel.IComponent, System.IDisposable, System.Windows.Forms.IBindableComponent, System.Windows.Forms.IDropTarget
+    public partial class ToolStripPanel : System.Windows.Forms.ContainerControl, System.ComponentModel.IComponent, System.IDisposable
     {
         public ToolStripPanel() { }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -18076,14 +18146,14 @@ namespace System.Windows.Forms
         public System.Windows.Forms.TreeViewHitTestInfo HitTest(System.Drawing.Point pt) { throw null; }
         public System.Windows.Forms.TreeViewHitTestInfo HitTest(int x, int y) { throw null; }
         protected override bool IsInputKey(System.Windows.Forms.Keys keyData) { throw null; }
-        protected internal virtual void OnAfterCheck(System.Windows.Forms.TreeViewEventArgs e) { }
+        protected virtual void OnAfterCheck(System.Windows.Forms.TreeViewEventArgs e) { }
         protected internal virtual void OnAfterCollapse(System.Windows.Forms.TreeViewEventArgs e) { }
-        protected internal virtual void OnAfterExpand(System.Windows.Forms.TreeViewEventArgs e) { }
+        protected virtual void OnAfterExpand(System.Windows.Forms.TreeViewEventArgs e) { }
         protected virtual void OnAfterLabelEdit(System.Windows.Forms.NodeLabelEditEventArgs e) { }
         protected virtual void OnAfterSelect(System.Windows.Forms.TreeViewEventArgs e) { }
-        protected internal virtual void OnBeforeCheck(System.Windows.Forms.TreeViewCancelEventArgs e) { }
+        protected virtual void OnBeforeCheck(System.Windows.Forms.TreeViewCancelEventArgs e) { }
         protected internal virtual void OnBeforeCollapse(System.Windows.Forms.TreeViewCancelEventArgs e) { }
-        protected internal virtual void OnBeforeExpand(System.Windows.Forms.TreeViewCancelEventArgs e) { }
+        protected virtual void OnBeforeExpand(System.Windows.Forms.TreeViewCancelEventArgs e) { }
         protected virtual void OnBeforeLabelEdit(System.Windows.Forms.NodeLabelEditEventArgs e) { }
         protected virtual void OnBeforeSelect(System.Windows.Forms.TreeViewCancelEventArgs e) { }
         protected virtual void OnDrawNode(System.Windows.Forms.DrawTreeNodeEventArgs e) { }
@@ -18571,7 +18641,6 @@ namespace System.Windows.Forms
     public partial class WebBrowserBase : System.Windows.Forms.Control
     {
         internal WebBrowserBase() { }
-        protected string status;
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public object ActiveXInstance { get { throw null; } }
@@ -18615,7 +18684,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         [System.ComponentModel.LocalizableAttribute(false)]
-        public virtual new System.Windows.Forms.RightToLeft RightToLeft { get { throw null; } set { } }
+        public override System.Windows.Forms.RightToLeft RightToLeft { get { throw null; } set { } }
         public override System.ComponentModel.ISite Site { set { } }
         [System.ComponentModel.BindableAttribute(false)]
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -18766,7 +18835,8 @@ namespace System.Windows.Forms
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
         public override bool PreProcessMessage(ref System.Windows.Forms.Message msg) { throw null; }
-        protected override bool ProcessMnemonic(char charCode) { throw null; }
+        protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class WebBrowserDocumentCompletedEventArgs : System.EventArgs
@@ -18846,14 +18916,6 @@ namespace System.Windows.Forms
         public override void Send(System.Threading.SendOrPostCallback d, object state) { }
         public static void Uninstall() { }
     }
-    public enum XLookupStatus
-    {
-        XBufferOverflow = -1,
-        XLookupBoth = 4,
-        XLookupChars = 2,
-        XLookupKeySym = 3,
-        XLookupNone = 1,
-    }
 }
 namespace System.Windows.Forms.ComponentModel.Com2Interop
 {
@@ -18888,7 +18950,7 @@ namespace System.Windows.Forms.Design
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public virtual new bool AutoSize { get { throw null; } set { } }
+        public override bool AutoSize { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new event System.EventHandler AutoSizeChanged { add { } remove { } }
@@ -18917,7 +18979,7 @@ namespace System.Windows.Forms.Design
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public virtual new bool AutoSize { get { throw null; } set { } }
+        public override bool AutoSize { get { throw null; } set { } }
         public bool CommitOnDeactivate { get { throw null; } set { } }
         protected System.ComponentModel.IComponent Component { get { throw null; } set { } }
         [System.MonoTODOAttribute("Find out what this does.")]

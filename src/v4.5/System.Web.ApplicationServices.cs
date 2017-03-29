@@ -92,7 +92,8 @@ namespace System.Web.Security
         public MembershipCreateUserException(string message, System.Exception innerException) { }
         public MembershipCreateUserException(System.Web.Security.MembershipCreateStatus statusCode) { }
         public System.Web.Security.MembershipCreateStatus StatusCode { get { throw null; } }
-        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext ctx) { }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.Web, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.SerializableAttribute]
@@ -126,27 +127,27 @@ namespace System.Web.Security
         public abstract bool RequiresQuestionAndAnswer { get; }
         public abstract bool RequiresUniqueEmail { get; }
         public event System.Web.Security.MembershipValidatePasswordEventHandler ValidatingPassword { add { } remove { } }
-        public abstract bool ChangePassword(string name, string oldPwd, string newPwd);
-        public abstract bool ChangePasswordQuestionAndAnswer(string name, string password, string newPwdQuestion, string newPwdAnswer);
-        public abstract System.Web.Security.MembershipUser CreateUser(string username, string password, string email, string pwdQuestion, string pwdAnswer, bool isApproved, object providerUserKey, out System.Web.Security.MembershipCreateStatus status);
+        public abstract bool ChangePassword(string username, string oldPassword, string newPassword);
+        public abstract bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer);
+        public abstract System.Web.Security.MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out System.Web.Security.MembershipCreateStatus status);
         protected virtual byte[] DecryptPassword(byte[] encodedPassword) { throw null; }
-        public abstract bool DeleteUser(string name, bool deleteAllRelatedData);
+        public abstract bool DeleteUser(string username, bool deleteAllRelatedData);
         protected virtual byte[] EncryptPassword(byte[] password) { throw null; }
         [System.MonoTODOAttribute("Discover what actually is 4.0 password compatibility mode.")]
         protected virtual byte[] EncryptPassword(byte[] password, System.Web.Configuration.MembershipPasswordCompatibilityMode legacyPasswordCompatibilityMode) { throw null; }
         public abstract System.Web.Security.MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords);
-        public abstract System.Web.Security.MembershipUserCollection FindUsersByName(string nameToMatch, int pageIndex, int pageSize, out int totalRecords);
+        public abstract System.Web.Security.MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords);
         public abstract System.Web.Security.MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords);
         public abstract int GetNumberOfUsersOnline();
-        public abstract string GetPassword(string name, string answer);
+        public abstract string GetPassword(string username, string answer);
         public abstract System.Web.Security.MembershipUser GetUser(object providerUserKey, bool userIsOnline);
-        public abstract System.Web.Security.MembershipUser GetUser(string name, bool userIsOnline);
+        public abstract System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline);
         public abstract string GetUserNameByEmail(string email);
-        protected virtual void OnValidatingPassword(System.Web.Security.ValidatePasswordEventArgs args) { }
-        public abstract string ResetPassword(string name, string answer);
+        protected virtual void OnValidatingPassword(System.Web.Security.ValidatePasswordEventArgs e) { }
+        public abstract string ResetPassword(string username, string answer);
         public abstract bool UnlockUser(string userName);
         public abstract void UpdateUser(System.Web.Security.MembershipUser user);
-        public abstract bool ValidateUser(string name, string password);
+        public abstract bool ValidateUser(string username, string password);
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.Web, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class MembershipProviderCollection : System.Configuration.Provider.ProviderCollection
@@ -179,9 +180,9 @@ namespace System.Web.Security
         public virtual bool ChangePassword(string oldPassword, string newPassword) { throw null; }
         public virtual bool ChangePasswordQuestionAndAnswer(string password, string newPasswordQuestion, string newPasswordAnswer) { throw null; }
         public virtual string GetPassword() { throw null; }
-        public virtual string GetPassword(string answer) { throw null; }
+        public virtual string GetPassword(string passwordAnswer) { throw null; }
         public virtual string ResetPassword() { throw null; }
-        public virtual string ResetPassword(string answer) { throw null; }
+        public virtual string ResetPassword(string passwordAnswer) { throw null; }
         public override string ToString() { throw null; }
         public virtual bool UnlockUser() { throw null; }
     }
@@ -209,16 +210,16 @@ namespace System.Web.Security
     {
         protected RoleProvider() { }
         public abstract string ApplicationName { get; set; }
-        public abstract void AddUsersToRoles(string[] usernames, string[] rolenames);
-        public abstract void CreateRole(string rolename);
-        public abstract bool DeleteRole(string rolename, bool throwOnPopulatedRole);
+        public abstract void AddUsersToRoles(string[] usernames, string[] roleNames);
+        public abstract void CreateRole(string roleName);
+        public abstract bool DeleteRole(string roleName, bool throwOnPopulatedRole);
         public abstract string[] FindUsersInRole(string roleName, string usernameToMatch);
         public abstract string[] GetAllRoles();
         public abstract string[] GetRolesForUser(string username);
-        public abstract string[] GetUsersInRole(string rolename);
-        public abstract bool IsUserInRole(string username, string rolename);
-        public abstract void RemoveUsersFromRoles(string[] usernames, string[] rolenames);
-        public abstract bool RoleExists(string rolename);
+        public abstract string[] GetUsersInRole(string roleName);
+        public abstract bool IsUserInRole(string username, string roleName);
+        public abstract void RemoveUsersFromRoles(string[] usernames, string[] roleNames);
+        public abstract bool RoleExists(string roleName);
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.Web, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class ValidatePasswordEventArgs : System.EventArgs

@@ -65,7 +65,7 @@ namespace System.IdentityModel.Selectors
     }
     public partial class CardSpacePolicyElement
     {
-        public CardSpacePolicyElement(System.Xml.XmlElement target, System.Xml.XmlElement issuer, System.Collections.ObjectModel.Collection<System.Xml.XmlElement> parameters, System.Uri policyNoticeLink, int policyNoticeVersion, bool isManagedIssuer) { }
+        public CardSpacePolicyElement(System.Xml.XmlElement target, System.Xml.XmlElement issuer, System.Collections.ObjectModel.Collection<System.Xml.XmlElement> parameters, System.Uri privacyNoticeLink, int privacyNoticeVersion, bool isManagedIssuer) { }
         public bool IsManagedIssuer { get { throw null; } set { } }
         public System.Xml.XmlElement Issuer { get { throw null; } set { } }
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> Parameters { get { throw null; } }
@@ -76,8 +76,8 @@ namespace System.IdentityModel.Selectors
     public static partial class CardSpaceSelector
     {
         [System.MonoTODOAttribute]
-        public static System.IdentityModel.Tokens.GenericXmlSecurityToken GetToken(System.IdentityModel.Selectors.CardSpacePolicyElement[] policyChain, System.IdentityModel.Selectors.SecurityTokenSerializer serializer) { throw null; }
-        public static System.IdentityModel.Tokens.GenericXmlSecurityToken GetToken(System.Xml.XmlElement endpoint, System.Collections.Generic.IEnumerable<System.Xml.XmlElement> policy, System.Xml.XmlElement requiredRemoteTokenIssuer, System.IdentityModel.Selectors.SecurityTokenSerializer serializer) { throw null; }
+        public static System.IdentityModel.Tokens.GenericXmlSecurityToken GetToken(System.IdentityModel.Selectors.CardSpacePolicyElement[] policyChain, System.IdentityModel.Selectors.SecurityTokenSerializer tokenSerializer) { throw null; }
+        public static System.IdentityModel.Tokens.GenericXmlSecurityToken GetToken(System.Xml.XmlElement endpoint, System.Collections.Generic.IEnumerable<System.Xml.XmlElement> policy, System.Xml.XmlElement requiredRemoteTokenIssuer, System.IdentityModel.Selectors.SecurityTokenSerializer tokenSerializer) { throw null; }
         [System.MonoTODOAttribute]
         public static void Import(string fileName) { }
         [System.MonoTODOAttribute]

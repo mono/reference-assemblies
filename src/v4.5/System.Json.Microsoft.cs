@@ -39,7 +39,6 @@ namespace System.Json
         public bool Contains(System.Json.JsonValue item) { throw null; }
         public void CopyTo(System.Json.JsonValue[] array, int arrayIndex) { }
         public new System.Collections.Generic.IEnumerator<System.Json.JsonValue> GetEnumerator() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         protected override System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue>> GetKeyValuePairEnumerator() { throw null; }
         public int IndexOf(System.Json.JsonValue item) { throw null; }
         public void Insert(int index, System.Json.JsonValue item) { }
@@ -57,7 +56,7 @@ namespace System.Json
         public override System.Json.JsonValue this[string key] { get { throw null; } set { } }
         public override System.Json.JsonType JsonType { get { throw null; } }
         public System.Collections.Generic.ICollection<string> Keys { get { throw null; } }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,System.Json.JsonValue>>.IsReadOnly { get { throw null; } }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Json.JsonValue>>.IsReadOnly { get { throw null; } }
         public System.Collections.Generic.ICollection<System.Json.JsonValue> Values { get { throw null; } }
         public void Add(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { }
         public void Add(string key, System.Json.JsonValue value) { }
@@ -70,8 +69,8 @@ namespace System.Json
         protected override void OnSaveEnded() { }
         protected override void OnSaveStarted() { }
         public bool Remove(string key) { throw null; }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,System.Json.JsonValue>>.Contains(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,System.Json.JsonValue>>.Remove(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Json.JsonValue>>.Contains(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Json.JsonValue>>.Remove(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public bool TryGetValue(string key, out System.Json.JsonValue value) { value = default(System.Json.JsonValue); throw null; }
         public override System.Json.JsonValue ValueOrDefault(string key) { throw null; }
@@ -133,7 +132,6 @@ namespace System.Json
         public static T CastValue<T>(System.Json.JsonValue value) { throw null; }
         public virtual bool ContainsKey(string key) { throw null; }
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue>> GetEnumerator() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         protected virtual System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue>> GetKeyValuePairEnumerator() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual System.Json.JsonValue GetValue(int index) { throw null; }

@@ -50,7 +50,7 @@ namespace System.Json
         public sealed override System.Json.JsonValue this[string key] { get { throw null; } set { } }
         public override System.Json.JsonType JsonType { get { throw null; } }
         public System.Collections.Generic.ICollection<string> Keys { get { throw null; } }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,System.Json.JsonValue>>.IsReadOnly { get { throw null; } }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Json.JsonValue>>.IsReadOnly { get { throw null; } }
         public System.Collections.Generic.ICollection<System.Json.JsonValue> Values { get { throw null; } }
         public void Add(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> pair) { }
         public void Add(string key, System.Json.JsonValue value) { }
@@ -62,8 +62,8 @@ namespace System.Json
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue>> GetEnumerator() { throw null; }
         public bool Remove(string key) { throw null; }
         public override void Save(System.IO.Stream stream) { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,System.Json.JsonValue>>.Contains(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,System.Json.JsonValue>>.Remove(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Json.JsonValue>>.Contains(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Json.JsonValue>>.Remove(System.Collections.Generic.KeyValuePair<string, System.Json.JsonValue> item) { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public bool TryGetValue(string key, out System.Json.JsonValue value) { value = default(System.Json.JsonValue); throw null; }
     }

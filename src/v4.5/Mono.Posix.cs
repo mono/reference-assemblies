@@ -922,6 +922,17 @@ namespace Mono.Unix.Native
         public object Invoke(object[] parameters) { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Cmsghdr
+    {
+        public long cmsg_len;
+        public Mono.Unix.Native.UnixSocketProtocol cmsg_level;
+        public Mono.Unix.Native.UnixSocketControlMessage cmsg_type;
+        public static int Size { get { throw null; } }
+        public static Mono.Unix.Native.Cmsghdr ReadFromBuffer(Mono.Unix.Native.Msghdr msgh, long cmsg) { throw null; }
+        public void WriteToBuffer(Mono.Unix.Native.Msghdr msgh, long cmsg) { }
+    }
+    [System.CLSCompliantAttribute(false)]
     public enum ConfstrName
     {
         _CS_GNU_LIBC_VERSION = 2,
@@ -1306,11 +1317,46 @@ namespace Mono.Unix.Native
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct In6Addr : System.IEquatable<Mono.Unix.Native.In6Addr>
+    {
+        public In6Addr(byte[] buffer) { throw null;}
+        public byte this[int index] { get { throw null; } set { } }
+        public void CopyFrom(byte[] source, int startIndex) { }
+        public void CopyTo(byte[] destination, int startIndex) { }
+        public bool Equals(Mono.Unix.Native.In6Addr value) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public override string ToString() { throw null; }
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct InAddr : System.IEquatable<Mono.Unix.Native.InAddr>
+    {
+        public uint s_addr;
+        public InAddr(byte b0, byte b1, byte b2, byte b3) { throw null;}
+        public InAddr(byte[] buffer) { throw null;}
+        public byte this[int index] { get { throw null; } set { } }
+        public void CopyFrom(byte[] source, int startIndex) { }
+        public void CopyTo(byte[] destination, int startIndex) { }
+        public bool Equals(Mono.Unix.Native.InAddr value) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public override string ToString() { throw null; }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Iovec
     {
         public System.IntPtr iov_base;
         [System.CLSCompliantAttribute(false)]
         public ulong iov_len;
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Linger
+    {
+        public int l_linger;
+        public int l_onoff;
+        public override string ToString() { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
     public enum LockfCommand
@@ -1326,6 +1372,30 @@ namespace Mono.Unix.Native
         F_RDLCK = (short)0,
         F_UNLCK = (short)2,
         F_WRLCK = (short)1,
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.FlagsAttribute]
+    public enum MessageFlags
+    {
+        MSG_CMSG_CLOEXEC = 1073741824,
+        MSG_CONFIRM = 2048,
+        MSG_CTRUNC = 8,
+        MSG_DONTROUTE = 4,
+        MSG_DONTWAIT = 64,
+        MSG_EOR = 128,
+        MSG_ERRQUEUE = 8192,
+        MSG_FASTOPEN = 536870912,
+        MSG_FIN = 512,
+        MSG_MORE = 32768,
+        MSG_NOSIGNAL = 16384,
+        MSG_OOB = 1,
+        MSG_PEEK = 2,
+        MSG_PROXY = 16,
+        MSG_RST = 4096,
+        MSG_SYN = 1024,
+        MSG_TRUNC = 32,
+        MSG_WAITALL = 256,
+        MSG_WAITFORONE = 65536,
     }
     [System.CLSCompliantAttribute(false)]
     [System.FlagsAttribute]
@@ -1389,6 +1459,17 @@ namespace Mono.Unix.Native
         MREMAP_MAYMOVE = (ulong)1,
     }
     [System.CLSCompliantAttribute(false)]
+    public sealed partial class Msghdr
+    {
+        public byte[] msg_control;
+        public long msg_controllen;
+        public Mono.Unix.Native.MessageFlags msg_flags;
+        public Mono.Unix.Native.Iovec[] msg_iov;
+        public int msg_iovlen;
+        public Mono.Unix.Native.Sockaddr msg_name;
+        public Msghdr() { }
+    }
+    [System.CLSCompliantAttribute(false)]
     [System.FlagsAttribute]
     public enum MsyncFlags
     {
@@ -1415,6 +1496,7 @@ namespace Mono.Unix.Native
         public static uint FromFilePermissions(Mono.Unix.Native.FilePermissions value) { throw null; }
         public static int FromLockfCommand(Mono.Unix.Native.LockfCommand value) { throw null; }
         public static short FromLockType(Mono.Unix.Native.LockType value) { throw null; }
+        public static int FromMessageFlags(Mono.Unix.Native.MessageFlags value) { throw null; }
         public static int FromMlockallFlags(Mono.Unix.Native.MlockallFlags value) { throw null; }
         public static int FromMmapFlags(Mono.Unix.Native.MmapFlags value) { throw null; }
         public static int FromMmapProts(Mono.Unix.Native.MmapProts value) { throw null; }
@@ -1429,13 +1511,20 @@ namespace Mono.Unix.Native
         public static int FromPosixMadviseAdvice(Mono.Unix.Native.PosixMadviseAdvice value) { throw null; }
         public static int FromRealTimeSignum(Mono.Unix.Native.RealTimeSignum sig) { throw null; }
         public static short FromSeekFlags(Mono.Unix.Native.SeekFlags value) { throw null; }
+        public static int FromShutdownOption(Mono.Unix.Native.ShutdownOption value) { throw null; }
         public static int FromSignum(Mono.Unix.Native.Signum value) { throw null; }
         public static int FromSysconfName(Mono.Unix.Native.SysconfName value) { throw null; }
         public static int FromSyslogFacility(Mono.Unix.Native.SyslogFacility value) { throw null; }
         public static int FromSyslogLevel(Mono.Unix.Native.SyslogLevel value) { throw null; }
         public static int FromSyslogOptions(Mono.Unix.Native.SyslogOptions value) { throw null; }
         public static System.DateTime FromTimeT(long time) { throw null; }
+        public static int FromUnixAddressFamily(Mono.Unix.Native.UnixAddressFamily value) { throw null; }
         public static Mono.Unix.Native.FilePermissions FromUnixPermissionString(string value) { throw null; }
+        public static int FromUnixSocketControlMessage(Mono.Unix.Native.UnixSocketControlMessage value) { throw null; }
+        public static int FromUnixSocketFlags(Mono.Unix.Native.UnixSocketFlags value) { throw null; }
+        public static int FromUnixSocketOptionName(Mono.Unix.Native.UnixSocketOptionName value) { throw null; }
+        public static int FromUnixSocketProtocol(Mono.Unix.Native.UnixSocketProtocol value) { throw null; }
+        public static int FromUnixSocketType(Mono.Unix.Native.UnixSocketType value) { throw null; }
         public static int FromWaitOptions(Mono.Unix.Native.WaitOptions value) { throw null; }
         public static int FromXattrFlags(Mono.Unix.Native.XattrFlags value) { throw null; }
         public static Mono.Unix.Native.AccessModes ToAccessModes(int value) { throw null; }
@@ -1452,8 +1541,13 @@ namespace Mono.Unix.Native
         public static string ToFopenMode(System.IO.FileAccess access) { throw null; }
         public static string ToFopenMode(System.IO.FileMode mode) { throw null; }
         public static string ToFopenMode(System.IO.FileMode mode, System.IO.FileAccess access) { throw null; }
+        public static Mono.Unix.Native.In6Addr ToIn6Addr(System.Net.IPAddress address) { throw null; }
+        public static Mono.Unix.Native.InAddr ToInAddr(System.Net.IPAddress address) { throw null; }
+        public static System.Net.IPAddress ToIPAddress(Mono.Unix.Native.In6Addr address) { throw null; }
+        public static System.Net.IPAddress ToIPAddress(Mono.Unix.Native.InAddr address) { throw null; }
         public static Mono.Unix.Native.LockfCommand ToLockfCommand(int value) { throw null; }
         public static Mono.Unix.Native.LockType ToLockType(short value) { throw null; }
+        public static Mono.Unix.Native.MessageFlags ToMessageFlags(int value) { throw null; }
         public static Mono.Unix.Native.MlockallFlags ToMlockallFlags(int value) { throw null; }
         public static Mono.Unix.Native.MmapFlags ToMmapFlags(int value) { throw null; }
         public static Mono.Unix.Native.MmapProts ToMmapProts(int value) { throw null; }
@@ -1469,33 +1563,54 @@ namespace Mono.Unix.Native
         public static Mono.Unix.Native.PosixMadviseAdvice ToPosixMadviseAdvice(int value) { throw null; }
         public static Mono.Unix.Native.RealTimeSignum ToRealTimeSignum(int offset) { throw null; }
         public static Mono.Unix.Native.SeekFlags ToSeekFlags(short value) { throw null; }
+        public static Mono.Unix.Native.ShutdownOption ToShutdownOption(int value) { throw null; }
         public static Mono.Unix.Native.Signum ToSignum(int value) { throw null; }
         public static Mono.Unix.Native.SysconfName ToSysconfName(int value) { throw null; }
         public static Mono.Unix.Native.SyslogFacility ToSyslogFacility(int value) { throw null; }
         public static Mono.Unix.Native.SyslogLevel ToSyslogLevel(int value) { throw null; }
         public static Mono.Unix.Native.SyslogOptions ToSyslogOptions(int value) { throw null; }
         public static long ToTimeT(System.DateTime time) { throw null; }
+        public static Mono.Unix.Native.UnixAddressFamily ToUnixAddressFamily(int value) { throw null; }
         public static string ToUnixPermissionString(Mono.Unix.Native.FilePermissions value) { throw null; }
+        public static Mono.Unix.Native.UnixSocketControlMessage ToUnixSocketControlMessage(int value) { throw null; }
+        public static Mono.Unix.Native.UnixSocketFlags ToUnixSocketFlags(int value) { throw null; }
+        public static Mono.Unix.Native.UnixSocketOptionName ToUnixSocketOptionName(int value) { throw null; }
+        public static Mono.Unix.Native.UnixSocketProtocol ToUnixSocketProtocol(int value) { throw null; }
+        public static Mono.Unix.Native.UnixSocketType ToUnixSocketType(int value) { throw null; }
         public static Mono.Unix.Native.WaitOptions ToWaitOptions(int value) { throw null; }
         public static Mono.Unix.Native.XattrFlags ToXattrFlags(int value) { throw null; }
+        public static bool TryCopy(ref Mono.Unix.Native.Cmsghdr source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Flock source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(ref Mono.Unix.Native.In6Addr source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(ref Mono.Unix.Native.InAddr source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Iovec source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(ref Mono.Unix.Native.Linger source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Pollfd source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(Mono.Unix.Native.Sockaddr source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(Mono.Unix.Native.SockaddrIn source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(Mono.Unix.Native.SockaddrIn6 source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Stat source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Statvfs source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Timespec source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Timeval source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Timezone source, System.IntPtr destination) { throw null; }
         public static bool TryCopy(ref Mono.Unix.Native.Utimbuf source, System.IntPtr destination) { throw null; }
+        public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Cmsghdr destination) { destination = default(Mono.Unix.Native.Cmsghdr); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Flock destination) { destination = default(Mono.Unix.Native.Flock); throw null; }
+        public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.In6Addr destination) { destination = default(Mono.Unix.Native.In6Addr); throw null; }
+        public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.InAddr destination) { destination = default(Mono.Unix.Native.InAddr); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Iovec destination) { destination = default(Mono.Unix.Native.Iovec); throw null; }
+        public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Linger destination) { destination = default(Mono.Unix.Native.Linger); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Pollfd destination) { destination = default(Mono.Unix.Native.Pollfd); throw null; }
+        public static bool TryCopy(System.IntPtr source, Mono.Unix.Native.SockaddrIn destination) { throw null; }
+        public static bool TryCopy(System.IntPtr source, Mono.Unix.Native.SockaddrIn6 destination) { throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Stat destination) { destination = default(Mono.Unix.Native.Stat); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Statvfs destination) { destination = default(Mono.Unix.Native.Statvfs); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Timespec destination) { destination = default(Mono.Unix.Native.Timespec); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Timeval destination) { destination = default(Mono.Unix.Native.Timeval); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Timezone destination) { destination = default(Mono.Unix.Native.Timezone); throw null; }
         public static bool TryCopy(System.IntPtr source, out Mono.Unix.Native.Utimbuf destination) { destination = default(Mono.Unix.Native.Utimbuf); throw null; }
+        public static bool TryCopy(System.IntPtr source, long size, Mono.Unix.Native.Sockaddr destination) { throw null; }
         public static bool TryFromAccessModes(Mono.Unix.Native.AccessModes value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromAtFlags(Mono.Unix.Native.AtFlags value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromConfstrName(Mono.Unix.Native.ConfstrName value, out int rval) { rval = default(int); throw null; }
@@ -1507,6 +1622,7 @@ namespace Mono.Unix.Native
         public static bool TryFromFilePermissions(Mono.Unix.Native.FilePermissions value, out uint rval) { rval = default(uint); throw null; }
         public static bool TryFromLockfCommand(Mono.Unix.Native.LockfCommand value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromLockType(Mono.Unix.Native.LockType value, out short rval) { rval = default(short); throw null; }
+        public static bool TryFromMessageFlags(Mono.Unix.Native.MessageFlags value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromMlockallFlags(Mono.Unix.Native.MlockallFlags value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromMmapFlags(Mono.Unix.Native.MmapFlags value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromMmapProts(Mono.Unix.Native.MmapProts value, out int rval) { rval = default(int); throw null; }
@@ -1519,11 +1635,18 @@ namespace Mono.Unix.Native
         public static bool TryFromPosixFadviseAdvice(Mono.Unix.Native.PosixFadviseAdvice value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromPosixMadviseAdvice(Mono.Unix.Native.PosixMadviseAdvice value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromSeekFlags(Mono.Unix.Native.SeekFlags value, out short rval) { rval = default(short); throw null; }
+        public static bool TryFromShutdownOption(Mono.Unix.Native.ShutdownOption value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromSignum(Mono.Unix.Native.Signum value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromSysconfName(Mono.Unix.Native.SysconfName value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromSyslogFacility(Mono.Unix.Native.SyslogFacility value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromSyslogLevel(Mono.Unix.Native.SyslogLevel value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromSyslogOptions(Mono.Unix.Native.SyslogOptions value, out int rval) { rval = default(int); throw null; }
+        public static bool TryFromUnixAddressFamily(Mono.Unix.Native.UnixAddressFamily value, out int rval) { rval = default(int); throw null; }
+        public static bool TryFromUnixSocketControlMessage(Mono.Unix.Native.UnixSocketControlMessage value, out int rval) { rval = default(int); throw null; }
+        public static bool TryFromUnixSocketFlags(Mono.Unix.Native.UnixSocketFlags value, out int rval) { rval = default(int); throw null; }
+        public static bool TryFromUnixSocketOptionName(Mono.Unix.Native.UnixSocketOptionName value, out int rval) { rval = default(int); throw null; }
+        public static bool TryFromUnixSocketProtocol(Mono.Unix.Native.UnixSocketProtocol value, out int rval) { rval = default(int); throw null; }
+        public static bool TryFromUnixSocketType(Mono.Unix.Native.UnixSocketType value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromWaitOptions(Mono.Unix.Native.WaitOptions value, out int rval) { rval = default(int); throw null; }
         public static bool TryFromXattrFlags(Mono.Unix.Native.XattrFlags value, out int rval) { rval = default(int); throw null; }
         public static bool TryToAccessModes(int value, out Mono.Unix.Native.AccessModes rval) { rval = default(Mono.Unix.Native.AccessModes); throw null; }
@@ -1537,6 +1660,7 @@ namespace Mono.Unix.Native
         public static bool TryToFilePermissions(uint value, out Mono.Unix.Native.FilePermissions rval) { rval = default(Mono.Unix.Native.FilePermissions); throw null; }
         public static bool TryToLockfCommand(int value, out Mono.Unix.Native.LockfCommand rval) { rval = default(Mono.Unix.Native.LockfCommand); throw null; }
         public static bool TryToLockType(short value, out Mono.Unix.Native.LockType rval) { rval = default(Mono.Unix.Native.LockType); throw null; }
+        public static bool TryToMessageFlags(int value, out Mono.Unix.Native.MessageFlags rval) { rval = default(Mono.Unix.Native.MessageFlags); throw null; }
         public static bool TryToMlockallFlags(int value, out Mono.Unix.Native.MlockallFlags rval) { rval = default(Mono.Unix.Native.MlockallFlags); throw null; }
         public static bool TryToMmapFlags(int value, out Mono.Unix.Native.MmapFlags rval) { rval = default(Mono.Unix.Native.MmapFlags); throw null; }
         public static bool TryToMmapProts(int value, out Mono.Unix.Native.MmapProts rval) { rval = default(Mono.Unix.Native.MmapProts); throw null; }
@@ -1549,11 +1673,18 @@ namespace Mono.Unix.Native
         public static bool TryToPosixFadviseAdvice(int value, out Mono.Unix.Native.PosixFadviseAdvice rval) { rval = default(Mono.Unix.Native.PosixFadviseAdvice); throw null; }
         public static bool TryToPosixMadviseAdvice(int value, out Mono.Unix.Native.PosixMadviseAdvice rval) { rval = default(Mono.Unix.Native.PosixMadviseAdvice); throw null; }
         public static bool TryToSeekFlags(short value, out Mono.Unix.Native.SeekFlags rval) { rval = default(Mono.Unix.Native.SeekFlags); throw null; }
+        public static bool TryToShutdownOption(int value, out Mono.Unix.Native.ShutdownOption rval) { rval = default(Mono.Unix.Native.ShutdownOption); throw null; }
         public static bool TryToSignum(int value, out Mono.Unix.Native.Signum rval) { rval = default(Mono.Unix.Native.Signum); throw null; }
         public static bool TryToSysconfName(int value, out Mono.Unix.Native.SysconfName rval) { rval = default(Mono.Unix.Native.SysconfName); throw null; }
         public static bool TryToSyslogFacility(int value, out Mono.Unix.Native.SyslogFacility rval) { rval = default(Mono.Unix.Native.SyslogFacility); throw null; }
         public static bool TryToSyslogLevel(int value, out Mono.Unix.Native.SyslogLevel rval) { rval = default(Mono.Unix.Native.SyslogLevel); throw null; }
         public static bool TryToSyslogOptions(int value, out Mono.Unix.Native.SyslogOptions rval) { rval = default(Mono.Unix.Native.SyslogOptions); throw null; }
+        public static bool TryToUnixAddressFamily(int value, out Mono.Unix.Native.UnixAddressFamily rval) { rval = default(Mono.Unix.Native.UnixAddressFamily); throw null; }
+        public static bool TryToUnixSocketControlMessage(int value, out Mono.Unix.Native.UnixSocketControlMessage rval) { rval = default(Mono.Unix.Native.UnixSocketControlMessage); throw null; }
+        public static bool TryToUnixSocketFlags(int value, out Mono.Unix.Native.UnixSocketFlags rval) { rval = default(Mono.Unix.Native.UnixSocketFlags); throw null; }
+        public static bool TryToUnixSocketOptionName(int value, out Mono.Unix.Native.UnixSocketOptionName rval) { rval = default(Mono.Unix.Native.UnixSocketOptionName); throw null; }
+        public static bool TryToUnixSocketProtocol(int value, out Mono.Unix.Native.UnixSocketProtocol rval) { rval = default(Mono.Unix.Native.UnixSocketProtocol); throw null; }
+        public static bool TryToUnixSocketType(int value, out Mono.Unix.Native.UnixSocketType rval) { rval = default(Mono.Unix.Native.UnixSocketType); throw null; }
         public static bool TryToWaitOptions(int value, out Mono.Unix.Native.WaitOptions rval) { rval = default(Mono.Unix.Native.WaitOptions); throw null; }
         public static bool TryToXattrFlags(int value, out Mono.Unix.Native.XattrFlags rval) { rval = default(Mono.Unix.Native.XattrFlags); throw null; }
     }
@@ -1693,6 +1824,13 @@ namespace Mono.Unix.Native
         SEEK_END = (short)2,
         SEEK_SET = (short)0,
     }
+    [System.CLSCompliantAttribute(false)]
+    public enum ShutdownOption
+    {
+        SHUT_RD = 1,
+        SHUT_RDWR = 3,
+        SHUT_WR = 2,
+    }
     public enum SignalAction
     {
         Default = 0,
@@ -1737,6 +1875,76 @@ namespace Mono.Unix.Native
         SIGWINCH = 28,
         SIGXCPU = 24,
         SIGXFSZ = 25,
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial class Sockaddr
+    {
+        public Sockaddr() { }
+        public Mono.Unix.Native.UnixAddressFamily sa_family { get { throw null; } set { } }
+        public static Mono.Unix.Native.Sockaddr FromSockaddrStorage(Mono.Unix.Native.SockaddrStorage storage) { throw null; }
+        public Mono.Unix.Native.SockaddrStorage ToSockaddrStorage() { throw null; }
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public sealed partial class SockaddrIn : Mono.Unix.Native.Sockaddr, System.IEquatable<Mono.Unix.Native.SockaddrIn>
+    {
+        public Mono.Unix.Native.InAddr sin_addr;
+        public ushort sin_port;
+        public SockaddrIn() { }
+        public Mono.Unix.Native.UnixAddressFamily sin_family { get { throw null; } set { } }
+        public bool Equals(Mono.Unix.Native.SockaddrIn value) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public static new Mono.Unix.Native.SockaddrIn FromSockaddrStorage(Mono.Unix.Native.SockaddrStorage storage) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public override string ToString() { throw null; }
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public sealed partial class SockaddrIn6 : Mono.Unix.Native.Sockaddr, System.IEquatable<Mono.Unix.Native.SockaddrIn6>
+    {
+        public Mono.Unix.Native.In6Addr sin6_addr;
+        public uint sin6_flowinfo;
+        public ushort sin6_port;
+        public uint sin6_scope_id;
+        public SockaddrIn6() { }
+        public Mono.Unix.Native.UnixAddressFamily sin6_family { get { throw null; } set { } }
+        public bool Equals(Mono.Unix.Native.SockaddrIn6 value) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public static new Mono.Unix.Native.SockaddrIn6 FromSockaddrStorage(Mono.Unix.Native.SockaddrStorage storage) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public override string ToString() { throw null; }
+    }
+    [System.CLSCompliantAttribute(false)]
+    public sealed partial class SockaddrStorage : Mono.Unix.Native.Sockaddr, System.IEquatable<Mono.Unix.Native.SockaddrStorage>
+    {
+        public SockaddrStorage() { }
+        public SockaddrStorage(int size) { }
+        public byte[] data { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public long data_len { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public void CopyTo(Mono.Unix.Native.Sockaddr address) { }
+        public bool Equals(Mono.Unix.Native.SockaddrStorage value) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public void SetTo(Mono.Unix.Native.Sockaddr address) { }
+        public override string ToString() { throw null; }
+    }
+    [System.CLSCompliantAttribute(false)]
+    public sealed partial class SockaddrUn : Mono.Unix.Native.Sockaddr, System.IEquatable<Mono.Unix.Native.SockaddrUn>
+    {
+        public SockaddrUn() { }
+        public SockaddrUn(int size) { }
+        public SockaddrUn(string path, bool linuxAbstractNamespace=false) { }
+        public bool IsLinuxAbstractNamespace { get { throw null; } }
+        public string Path { get { throw null; } }
+        public Mono.Unix.Native.UnixAddressFamily sun_family { get { throw null; } set { } }
+        public byte[] sun_path { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public long sun_path_len { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Equals(Mono.Unix.Native.SockaddrUn value) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public static new Mono.Unix.Native.SockaddrUn FromSockaddrStorage(Mono.Unix.Native.SockaddrStorage storage) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Stat : System.IEquatable<Mono.Unix.Native.Stat>
@@ -1837,20 +2045,20 @@ namespace Mono.Unix.Native
         public static extern System.IntPtr calloc(ulong nmemb, ulong size);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int clearerr(System.IntPtr stream);
         [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern void exit(int status);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fclose(System.IntPtr stream);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int feof(System.IntPtr stream);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int ferror(System.IntPtr stream);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fflush(System.IntPtr stream);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fgetc(System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fclose(System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int feof(System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int ferror(System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fflush(System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fgetc(System.IntPtr stream);
         public static int fgetpos(System.IntPtr stream, Mono.Unix.Native.FilePosition pos) { throw null; }
         public static System.Text.StringBuilder fgets(System.Text.StringBuilder sb, int size, System.IntPtr stream) { throw null; }
         public static System.Text.StringBuilder fgets(System.Text.StringBuilder sb, System.IntPtr stream) { throw null; }
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr fopen([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, string mode);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr fopen([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, string mode);
         public static int fprintf(System.IntPtr stream, string message) { throw null; }
         [System.ObsoleteAttribute("Not necessarily portable due to cdecl restrictions.\nUse fprintf (IntPtr, string) instead.")]
         public static int fprintf(System.IntPtr stream, string format, params object[] parameters) { throw null; }
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fputc(int c, System.IntPtr stream);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fputs(string s, System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fputc(int c, System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int fputs(string s, System.IntPtr stream);
         [System.CLSCompliantAttribute(false)]
         public static ulong fread(byte[] ptr, System.IntPtr stream) { throw null; }
         [System.CLSCompliantAttribute(false)]
@@ -1859,8 +2067,8 @@ namespace Mono.Unix.Native
         public static extern ulong fread(System.IntPtr ptr, ulong size, ulong nmemb, System.IntPtr stream);
         [System.CLSCompliantAttribute(false)]
         public unsafe static ulong fread(void* ptr, ulong size, ulong nmemb, System.IntPtr stream) { throw null; }
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern void free(System.IntPtr ptr);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr freopen([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, string mode, System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern void free(System.IntPtr ptr);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr freopen([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, string mode, System.IntPtr stream);
         [System.CLSCompliantAttribute(false)]
         public static int fseek(System.IntPtr stream, long offset, Mono.Unix.Native.SeekFlags origin) { throw null; }
         public static int fsetpos(System.IntPtr stream, Mono.Unix.Native.FilePosition pos) { throw null; }
@@ -1873,7 +2081,7 @@ namespace Mono.Unix.Native
         public static extern ulong fwrite(System.IntPtr ptr, ulong size, ulong nmemb, System.IntPtr stream);
         [System.CLSCompliantAttribute(false)]
         public unsafe static ulong fwrite(void* ptr, ulong size, ulong nmemb, System.IntPtr stream) { throw null; }
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getc(System.IntPtr stream);
+        public static int getc(System.IntPtr stream) { throw null; }
         [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getchar();
         public static string getenv(string name) { throw null; }
         public static Mono.Unix.Native.Errno GetLastError() { throw null; }
@@ -1883,7 +2091,7 @@ namespace Mono.Unix.Native
         public static int printf(string message) { throw null; }
         [System.ObsoleteAttribute("Not necessarily portable due to cdecl restrictions.\nUse printf (string) instead.")]
         public static int printf(string format, params object[] parameters) { throw null; }
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int putc(int c, System.IntPtr stream);
+        public static int putc(int c, System.IntPtr stream) { throw null; }
         [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int putchar(int c);
         [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int puts(string s);
         public static int raise(Mono.Unix.Native.RealTimeSignum rts) { throw null; }
@@ -1925,12 +2133,12 @@ namespace Mono.Unix.Native
         public static extern ulong strlen(System.IntPtr s);
         [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.CLSCompliantAttribute(false)]
         public static extern int system(string @string);
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr tmpfile();
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr tmpfile();
         [System.ObsoleteAttribute("Syscall.mkstemp() should be preferred.")]
         public static string tmpnam() { throw null; }
         [System.ObsoleteAttribute("Syscall.mkstemp() should be preferred.")]
         public static string tmpnam(System.Text.StringBuilder s) { throw null; }
-        [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int ungetc(int c, System.IntPtr stream);
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int ungetc(int c, System.IntPtr stream);
         [System.Runtime.InteropServices.DllImport("msvcrt")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.CLSCompliantAttribute(false)]
         public static extern void _Exit(int status);
     }
@@ -1944,9 +2152,12 @@ namespace Mono.Unix.Native
         public static readonly System.IntPtr MAP_FAILED;
         public static readonly long UTIME_NOW;
         public static readonly long UTIME_OMIT;
+        public static int accept(int socket, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public static int accept4(int socket, Mono.Unix.Native.Sockaddr address, Mono.Unix.Native.UnixSocketFlags flags) { throw null; }
         public static int access(string pathname, Mono.Unix.Native.AccessModes mode) { throw null; }
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int acct([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string filename);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern uint alarm(uint seconds);
+        public static int bind(int socket, Mono.Unix.Native.Sockaddr address) { throw null; }
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int brk(System.IntPtr end_data_segment);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int chdir([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path);
         public static int chmod(string path, Mono.Unix.Native.FilePermissions mode) { throw null; }
@@ -1955,7 +2166,14 @@ namespace Mono.Unix.Native
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int close(int fd);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int closedir(System.IntPtr dir);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int closelog();
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern ulong CMSG_ALIGN(ulong length);
+        public static long CMSG_DATA(Mono.Unix.Native.Msghdr msgh, long cmsg) { throw null; }
+        public static long CMSG_FIRSTHDR(Mono.Unix.Native.Msghdr msgh) { throw null; }
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern ulong CMSG_LEN(ulong length);
+        public static long CMSG_NXTHDR(Mono.Unix.Native.Msghdr msgh, long cmsg) { throw null; }
+        [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern ulong CMSG_SPACE(ulong length);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern ulong confstr(Mono.Unix.Native.ConfstrName name, [System.Runtime.InteropServices.Out]System.Text.StringBuilder buf, ulong len);
+        public static int connect(int socket, Mono.Unix.Native.Sockaddr address) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int creat([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string pathname, Mono.Unix.Native.FilePermissions mode);
         [System.ObsoleteAttribute("This is insecure and should not be used", true)]
         public static string crypt(string key, string salt) { throw null; }
@@ -2043,6 +2261,7 @@ namespace Mono.Unix.Native
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getlogin_r([System.Runtime.InteropServices.Out]System.Text.StringBuilder name, ulong bufsize);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.ObsoleteAttribute("Dropped in POSIX 1003.1-2001.  Use Syscall.sysconf (SysconfName._SC_PAGESIZE).")]
         public static extern int getpagesize();
+        public static int getpeername(int socket, Mono.Unix.Native.Sockaddr address) { throw null; }
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getpgid(int pid);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getpgrp();
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getpid();
@@ -2055,6 +2274,13 @@ namespace Mono.Unix.Native
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getresgid(out uint rgid, out uint egid, out uint sgid);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getresuid(out uint ruid, out uint euid, out uint suid);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int getsid(int pid);
+        public static int getsockname(int socket, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public static int getsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, out Mono.Unix.Native.Linger option_value) { option_value = default(Mono.Unix.Native.Linger); throw null; }
+        public static int getsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, out Mono.Unix.Native.Timeval option_value) { option_value = default(Mono.Unix.Native.Timeval); throw null; }
+        public static int getsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, byte[] option_value, ref long option_len) { throw null; }
+        public static int getsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, out int option_value) { option_value = default(int); throw null; }
+        public static int getsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, System.IntPtr option_value, ref long option_len) { throw null; }
+        public unsafe static int getsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, void* option_value, ref long option_len) { throw null; }
         public static int gettimeofday(out Mono.Unix.Native.Timeval tv) { tv = default(Mono.Unix.Native.Timeval); throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int gettimeofday(out Mono.Unix.Native.Timeval tv, out Mono.Unix.Native.Timezone tz);
         public static int gettimeofday(out Mono.Unix.Native.Timezone tz) { tz = default(Mono.Unix.Native.Timezone); throw null; }
@@ -2063,6 +2289,8 @@ namespace Mono.Unix.Native
         public static long getxattr(string path, string name, byte[] value) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern long getxattr([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string name, byte[] value, ulong size);
         public static long getxattr(string path, string name, out byte[] value) { value = default(byte[]); throw null; }
+        [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern uint htonl(uint hostlong);
+        [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern ushort htons(ushort hostshort);
         public static bool isatty(int fd) { throw null; }
         public static int kill(int pid, Mono.Unix.Native.Signum sig) { throw null; }
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int lchown([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, uint owner, uint group);
@@ -2071,6 +2299,7 @@ namespace Mono.Unix.Native
         public static long lgetxattr(string path, string name, out byte[] value) { value = default(byte[]); throw null; }
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int link([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string oldpath, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string newpath);
         public static int linkat(int olddirfd, string oldpath, int newdirfd, string newpath, Mono.Unix.Native.AtFlags flags) { throw null; }
+        [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int listen(int socket, int backlog);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern long listxattr([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, byte[] list, ulong size);
         public static long listxattr(string path, out string[] values) { values = default(string[]); throw null; }
         public static long listxattr(string path, System.Text.Encoding encoding, out string[] values) { values = default(string[]); throw null; }
@@ -2106,6 +2335,8 @@ namespace Mono.Unix.Native
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int munmap(System.IntPtr start, ulong length);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int nanosleep(ref Mono.Unix.Native.Timespec req, ref Mono.Unix.Native.Timespec rem);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int nice(int inc);
+        [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern uint ntohl(uint netlong);
+        [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern ushort ntohs(ushort netshort);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int open([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string pathname, Mono.Unix.Native.OpenFlags flags);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int open([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string pathname, Mono.Unix.Native.OpenFlags flags, Mono.Unix.Native.FilePermissions mode);
         public static int openat(int dirfd, string pathname, Mono.Unix.Native.OpenFlags flags) { throw null; }
@@ -2140,6 +2371,13 @@ namespace Mono.Unix.Native
         public static int readlinkat(int dirfd, string pathname, [System.Runtime.InteropServices.Out]System.Text.StringBuilder buf) { buf = default(System.Text.StringBuilder); throw null; }
         public static int readlinkat(int dirfd, string pathname, [System.Runtime.InteropServices.Out]System.Text.StringBuilder buf, ulong bufsiz) { buf = default(System.Text.StringBuilder); throw null; }
         public static long readv(int fd, Mono.Unix.Native.Iovec[] iov) { throw null; }
+        public static long recv(int socket, byte[] buffer, ulong length, Mono.Unix.Native.MessageFlags flags) { throw null; }
+        public static long recv(int socket, System.IntPtr buffer, ulong length, Mono.Unix.Native.MessageFlags flags) { throw null; }
+        public unsafe static long recv(int socket, void* buffer, ulong length, Mono.Unix.Native.MessageFlags flags) { throw null; }
+        public static long recvfrom(int socket, byte[] buffer, ulong length, Mono.Unix.Native.MessageFlags flags, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public static long recvfrom(int socket, System.IntPtr buffer, ulong length, Mono.Unix.Native.MessageFlags flags, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public unsafe static long recvfrom(int socket, void* buffer, ulong length, Mono.Unix.Native.MessageFlags flags, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public static long recvmsg(int socket, Mono.Unix.Native.Msghdr message, Mono.Unix.Native.MessageFlags flags) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int remap_file_pages(System.IntPtr start, ulong size, Mono.Unix.Native.MmapProts prot, long pgoff, Mono.Unix.Native.MmapFlags flags);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int removexattr([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string name);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int renameat(int olddirfd, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string oldpath, int newdirfd, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string newpath);
@@ -2148,7 +2386,14 @@ namespace Mono.Unix.Native
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int rmdir([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string pathname);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern System.IntPtr sbrk(System.IntPtr increment);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int seekdir(System.IntPtr dir, long offset);
+        public static long send(int socket, byte[] message, ulong length, Mono.Unix.Native.MessageFlags flags) { throw null; }
+        public static long send(int socket, System.IntPtr message, ulong length, Mono.Unix.Native.MessageFlags flags) { throw null; }
+        public unsafe static long send(int socket, void* message, ulong length, Mono.Unix.Native.MessageFlags flags) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern long sendfile(int out_fd, int in_fd, ref long offset, ulong count);
+        public static long sendmsg(int socket, Mono.Unix.Native.Msghdr message, Mono.Unix.Native.MessageFlags flags) { throw null; }
+        public static long sendto(int socket, byte[] message, ulong length, Mono.Unix.Native.MessageFlags flags, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public static long sendto(int socket, System.IntPtr message, ulong length, Mono.Unix.Native.MessageFlags flags, Mono.Unix.Native.Sockaddr address) { throw null; }
+        public unsafe static long sendto(int socket, void* message, ulong length, Mono.Unix.Native.MessageFlags flags, Mono.Unix.Native.Sockaddr address) { throw null; }
         public static int setdomainname(string name) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setdomainname(string name, ulong len);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setegid(uint uid);
@@ -2173,6 +2418,12 @@ namespace Mono.Unix.Native
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setresuid(uint ruid, uint euid, uint suid);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setreuid(uint ruid, uint euid);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setsid();
+        public static int setsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, Mono.Unix.Native.Linger option_value) { throw null; }
+        public static int setsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, Mono.Unix.Native.Timeval option_value) { throw null; }
+        public static int setsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, byte[] option_value, long option_len) { throw null; }
+        public static int setsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, int option_value) { throw null; }
+        public static int setsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, System.IntPtr option_value, long option_len) { throw null; }
+        public unsafe static int setsockopt(int socket, Mono.Unix.Native.UnixSocketProtocol level, Mono.Unix.Native.UnixSocketOptionName option_name, void* option_value, long option_len) { throw null; }
         public static int settimeofday(ref Mono.Unix.Native.Timeval tv) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int settimeofday(ref Mono.Unix.Native.Timeval tv, ref Mono.Unix.Native.Timezone tz);
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setuid(uint uid);
@@ -2181,7 +2432,13 @@ namespace Mono.Unix.Native
         public static int setxattr(string path, string name, byte[] value, Mono.Unix.Native.XattrFlags flags) { throw null; }
         public static int setxattr(string path, string name, byte[] value, ulong size) { throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int setxattr([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string name, byte[] value, ulong size, Mono.Unix.Native.XattrFlags flags);
+        public static int shutdown(int socket, Mono.Unix.Native.ShutdownOption how) { throw null; }
         [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern uint sleep(uint seconds);
+        [System.Runtime.InteropServices.DllImport("libc")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int sockatmark(int socket);
+        public static int socket(Mono.Unix.Native.UnixAddressFamily domain, Mono.Unix.Native.UnixSocketType type, Mono.Unix.Native.UnixSocketFlags flags, Mono.Unix.Native.UnixSocketProtocol protocol) { throw null; }
+        public static int socket(Mono.Unix.Native.UnixAddressFamily domain, Mono.Unix.Native.UnixSocketType type, Mono.Unix.Native.UnixSocketProtocol protocol) { throw null; }
+        public static int socketpair(Mono.Unix.Native.UnixAddressFamily domain, Mono.Unix.Native.UnixSocketType type, Mono.Unix.Native.UnixSocketFlags flags, Mono.Unix.Native.UnixSocketProtocol protocol, out int socket1, out int socket2) { socket1 = default(int); socket2 = default(int); throw null; }
+        public static int socketpair(Mono.Unix.Native.UnixAddressFamily domain, Mono.Unix.Native.UnixSocketType type, Mono.Unix.Native.UnixSocketProtocol protocol, out int socket1, out int socket2) { socket1 = default(int); socket2 = default(int); throw null; }
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int stat([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string file_name, out Mono.Unix.Native.Stat buf);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int statvfs([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "Mono.Unix.Native.FileNameMarshaler")]string path, out Mono.Unix.Native.Statvfs buf);
         [System.Runtime.InteropServices.DllImport("MonoPosixHelper")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]public static extern int stime(ref long t);
@@ -2517,6 +2774,154 @@ namespace Mono.Unix.Native
         public override int GetHashCode() { throw null; }
         public static bool operator ==(Mono.Unix.Native.Timezone lhs, Mono.Unix.Native.Timezone rhs) { throw null; }
         public static bool operator !=(Mono.Unix.Native.Timezone lhs, Mono.Unix.Native.Timezone rhs) { throw null; }
+    }
+    [System.CLSCompliantAttribute(false)]
+    public enum UnixAddressFamily
+    {
+        AF_ALG = 38,
+        AF_APPLETALK = 5,
+        AF_ASH = 18,
+        AF_ATMPVC = 8,
+        AF_ATMSVC = 20,
+        AF_AX25 = 3,
+        AF_BLUETOOTH = 31,
+        AF_BRIDGE = 7,
+        AF_CAIF = 37,
+        AF_CAN = 29,
+        AF_DECnet = 12,
+        AF_ECONET = 19,
+        AF_IEEE802154 = 36,
+        AF_INET = 2,
+        AF_INET6 = 10,
+        AF_IPX = 4,
+        AF_IRDA = 23,
+        AF_ISDN = 34,
+        AF_IUCV = 32,
+        AF_KEY = 15,
+        AF_LLC = 26,
+        AF_NETBEUI = 13,
+        AF_NETLINK = 16,
+        AF_NETROM = 6,
+        AF_NFC = 39,
+        AF_PACKET = 17,
+        AF_PHONET = 35,
+        AF_PPPOX = 24,
+        AF_RDS = 21,
+        AF_ROSE = 11,
+        AF_RXRPC = 33,
+        AF_SECURITY = 14,
+        AF_SNA = 22,
+        AF_TIPC = 30,
+        AF_UNIX = 1,
+        AF_UNSPEC = 0,
+        AF_VSOCK = 40,
+        AF_WANPIPE = 25,
+        AF_X25 = 9,
+        Unknown = 65536,
+    }
+    [System.CLSCompliantAttribute(false)]
+    public enum UnixSocketControlMessage
+    {
+        SCM_CREDENTIALS = 2,
+        SCM_RIGHTS = 1,
+    }
+    [System.CLSCompliantAttribute(false)]
+    [System.FlagsAttribute]
+    public enum UnixSocketFlags
+    {
+        SOCK_CLOEXEC = 524288,
+        SOCK_NONBLOCK = 2048,
+    }
+    [System.CLSCompliantAttribute(false)]
+    public enum UnixSocketOptionName
+    {
+        SO_ACCEPTCONN = 30,
+        SO_ATTACH_FILTER = 26,
+        SO_BINDTODEVICE = 25,
+        SO_BROADCAST = 6,
+        SO_BSDCOMPAT = 14,
+        SO_BUSY_POLL = 46,
+        SO_DEBUG = 1,
+        SO_DETACH_FILTER = 27,
+        SO_DOMAIN = 39,
+        SO_DONTROUTE = 5,
+        SO_ERROR = 4,
+        SO_KEEPALIVE = 9,
+        SO_LINGER = 13,
+        SO_LOCK_FILTER = 44,
+        SO_MARK = 36,
+        SO_MAX_PACING_RATE = 47,
+        SO_NOFCS = 43,
+        SO_NO_CHECK = 11,
+        SO_OOBINLINE = 10,
+        SO_PASSCRED = 16,
+        SO_PASSSEC = 34,
+        SO_PEEK_OFF = 42,
+        SO_PEERCRED = 17,
+        SO_PEERNAME = 28,
+        SO_PEERSEC = 31,
+        SO_PRIORITY = 12,
+        SO_PROTOCOL = 38,
+        SO_RCVBUF = 8,
+        SO_RCVBUFFORCE = 33,
+        SO_RCVLOWAT = 18,
+        SO_RCVTIMEO = 20,
+        SO_REUSEADDR = 2,
+        SO_REUSEPORT = 15,
+        SO_RXQ_OVFL = 40,
+        SO_SECURITY_AUTHENTICATION = 22,
+        SO_SECURITY_ENCRYPTION_NETWORK = 24,
+        SO_SECURITY_ENCRYPTION_TRANSPORT = 23,
+        SO_SELECT_ERR_QUEUE = 45,
+        SO_SNDBUF = 7,
+        SO_SNDBUFFORCE = 32,
+        SO_SNDLOWAT = 19,
+        SO_SNDTIMEO = 21,
+        SO_TIMESTAMP = 29,
+        SO_TIMESTAMPING = 37,
+        SO_TIMESTAMPNS = 35,
+        SO_TYPE = 3,
+        SO_WIFI_STATUS = 41,
+    }
+    [System.CLSCompliantAttribute(false)]
+    public enum UnixSocketProtocol
+    {
+        IPPROTO_AH = 51,
+        IPPROTO_BEETPH = 94,
+        IPPROTO_COMP = 108,
+        IPPROTO_DCCP = 33,
+        IPPROTO_EGP = 8,
+        IPPROTO_ENCAP = 98,
+        IPPROTO_ESP = 50,
+        IPPROTO_GRE = 47,
+        IPPROTO_ICMP = 1,
+        IPPROTO_IDP = 22,
+        IPPROTO_IGMP = 2,
+        IPPROTO_IP = 1024,
+        IPPROTO_IPIP = 4,
+        IPPROTO_IPV6 = 41,
+        IPPROTO_MTP = 92,
+        IPPROTO_PIM = 103,
+        IPPROTO_PUP = 12,
+        IPPROTO_RAW = 255,
+        IPPROTO_RSVP = 46,
+        IPPROTO_SCTP = 132,
+        IPPROTO_TCP = 6,
+        IPPROTO_TP = 29,
+        IPPROTO_UDP = 17,
+        IPPROTO_UDPLITE = 136,
+        SOL_SOCKET = 2048,
+    }
+    [System.CLSCompliantAttribute(false)]
+    public enum UnixSocketType
+    {
+        SOCK_DCCP = 6,
+        SOCK_DGRAM = 2,
+        SOCK_PACKET = 10,
+        SOCK_RAW = 3,
+        SOCK_RDM = 4,
+        SOCK_SEQPACKET = 5,
+        SOCK_STREAM = 1,
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Utimbuf : System.IEquatable<Mono.Unix.Native.Utimbuf>
