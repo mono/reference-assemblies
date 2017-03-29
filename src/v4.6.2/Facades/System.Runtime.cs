@@ -234,8 +234,6 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.CharSet))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.ComVisibleAttribute))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.FieldOffsetAttribute))]
-[assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.GCHandle))]
-[assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.GCHandleType))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.LayoutKind))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.OutAttribute))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.InteropServices.StructLayoutAttribute))]

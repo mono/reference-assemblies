@@ -17,7 +17,6 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.BinaryReader))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.BinaryWriter))]
-[assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.BufferedStream))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.EndOfStreamException))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.FileNotFoundException))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.IO.InvalidDataException))]
