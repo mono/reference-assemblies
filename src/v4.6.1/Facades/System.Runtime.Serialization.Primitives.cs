@@ -29,12 +29,3 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.Serialization.OnSerializingAttribute))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.Serialization.SerializationException))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.Serialization.StreamingContext))]
-namespace System.Runtime.Serialization
-{
-    public partial interface ISerializationSurrogateProvider
-    {
-        object GetDeserializedObject(object obj, System.Type targetType);
-        object GetObjectToSerialize(object obj, System.Type targetType);
-        System.Type GetSurrogateType(System.Type type);
-    }
-}

@@ -31,11 +31,3 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Xml.XmlDictionaryReaderQuotaTypes))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Xml.XmlDictionaryString))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Xml.XmlDictionaryWriter))]
-namespace System.Runtime.Serialization
-{
-    public static partial class DataContractSerializerExtensions
-    {
-        public static System.Runtime.Serialization.ISerializationSurrogateProvider GetSerializationSurrogateProvider(this System.Runtime.Serialization.DataContractSerializer serializer) { throw null; }
-        public static void SetSerializationSurrogateProvider(this System.Runtime.Serialization.DataContractSerializer serializer, System.Runtime.Serialization.ISerializationSurrogateProvider provider) { }
-    }
-}
