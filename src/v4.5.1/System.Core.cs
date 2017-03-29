@@ -1065,6 +1065,7 @@ namespace System.IO.MemoryMappedFiles
     public sealed partial class MemoryMappedViewAccessor : System.IO.UnmanagedMemoryAccessor
     {
         internal MemoryMappedViewAccessor() { }
+        public long PointerOffset { get { throw null; } }
         public Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle SafeMemoryMappedViewHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
@@ -1074,6 +1075,7 @@ namespace System.IO.MemoryMappedFiles
     public sealed partial class MemoryMappedViewStream : System.IO.UnmanagedMemoryStream
     {
         internal MemoryMappedViewStream() { }
+        public long PointerOffset { get { throw null; } }
         public Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle SafeMemoryMappedViewHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }

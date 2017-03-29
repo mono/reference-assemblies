@@ -64,6 +64,14 @@ namespace System.Web.Configuration
         Framework40 = 1,
     }
 }
+namespace System.Web.Hosting
+{
+    public sealed partial class CustomLoaderAttribute : System.Attribute
+    {
+        public CustomLoaderAttribute(System.Type customLoaderType) { }
+        public System.Type CustomLoaderType { get { throw null; } }
+    }
+}
 namespace System.Web.Security
 {
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.Web, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a")]

@@ -727,11 +727,11 @@ namespace System.Data.OracleClient
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         [System.ObsoleteAttribute("Set the precision of a decimal use the Math classes.")]
-        public byte Precision { get { throw null; } set { } }
+        public new byte Precision { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         [System.ObsoleteAttribute("Set the precision of a decimal use the Math classes.")]
-        public byte Scale { get { throw null; } set { } }
+        public new byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
         [System.MonoTODOAttribute]

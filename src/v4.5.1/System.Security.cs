@@ -860,6 +860,7 @@ namespace System.Security.Cryptography.Xml
         public System.Security.Cryptography.Xml.KeyInfo KeyInfo { get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Xml.XmlResolver Resolver { set { } }
+        public System.Collections.ObjectModel.Collection<string> SafeCanonicalizationMethods { get { throw null; } }
         public System.Security.Cryptography.Xml.Signature Signature { get { throw null; } }
         public System.Func<System.Security.Cryptography.Xml.SignedXml, bool> SignatureFormatValidator { get { throw null; } set { } }
         public string SignatureLength { get { throw null; } }
