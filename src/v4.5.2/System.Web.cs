@@ -1409,6 +1409,7 @@ namespace System.Web
         public System.IO.Stream Filter { get { throw null; } set { } }
         public System.Text.Encoding HeaderEncoding { get { throw null; } set { } }
         public System.Collections.Specialized.NameValueCollection Headers { get { throw null; } }
+        public bool HeadersWritten { get { throw null; } }
         public bool IsClientConnected { get { throw null; } }
         public bool IsRequestBeingRedirected { get { throw null; } }
         public System.IO.TextWriter Output { get { throw null; } set { } }
@@ -1420,6 +1421,7 @@ namespace System.Web
         public int SubStatusCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool SupportsAsyncFlush { get { throw null; } }
         public bool SuppressContent { get { throw null; } set { } }
+        public bool SuppressDefaultCacheControlHeader { get { throw null; } set { } }
         public bool SuppressFormsAuthenticationRedirect { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool TrySkipIisCustomErrors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.MonoTODOAttribute("Not implemented")]
@@ -1434,6 +1436,7 @@ namespace System.Web
         public void AddFileDependencies(string[] filenames) { }
         public void AddFileDependency(string filename) { }
         public void AddHeader(string name, string value) { }
+        public System.Web.ISubscriptionToken AddOnSendingHeaders(System.Action<System.Web.HttpContext> callback) { throw null; }
         public void AppendCookie(System.Web.HttpCookie cookie) { }
         public void AppendHeader(string name, string value) { }
         [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Level=(System.Web.AspNetHostingPermissionLevel)(400))]
@@ -1498,6 +1501,7 @@ namespace System.Web
         public virtual System.IO.Stream Filter { get { throw null; } set { } }
         public virtual System.Text.Encoding HeaderEncoding { get { throw null; } set { } }
         public virtual System.Collections.Specialized.NameValueCollection Headers { get { throw null; } }
+        public virtual bool HeadersWritten { get { throw null; } }
         public virtual bool IsClientConnected { get { throw null; } }
         public virtual bool IsRequestBeingRedirected { get { throw null; } }
         public virtual System.IO.TextWriter Output { get { throw null; } set { } }
@@ -1509,6 +1513,7 @@ namespace System.Web
         public virtual int SubStatusCode { get { throw null; } set { } }
         public virtual bool SupportsAsyncFlush { get { throw null; } }
         public virtual bool SuppressContent { get { throw null; } set { } }
+        public virtual bool SuppressDefaultCacheControlHeader { get { throw null; } set { } }
         public virtual bool SuppressFormsAuthenticationRedirect { get { throw null; } set { } }
         public virtual bool TrySkipIisCustomErrors { get { throw null; } set { } }
         public virtual void AddCacheDependency(params System.Web.Caching.CacheDependency[] dependencies) { }
@@ -1519,6 +1524,7 @@ namespace System.Web
         public virtual void AddFileDependencies(string[] filenames) { }
         public virtual void AddFileDependency(string filename) { }
         public virtual void AddHeader(string name, string value) { }
+        public virtual System.Web.ISubscriptionToken AddOnSendingHeaders(System.Action<System.Web.HttpContextBase> callback) { throw null; }
         public virtual void AppendCookie(System.Web.HttpCookie cookie) { }
         public virtual void AppendHeader(string name, string value) { }
         public virtual void AppendToLog(string param) { }
@@ -1585,6 +1591,7 @@ namespace System.Web
         public override System.IO.Stream Filter { get { throw null; } set { } }
         public override System.Text.Encoding HeaderEncoding { get { throw null; } set { } }
         public override System.Collections.Specialized.NameValueCollection Headers { get { throw null; } }
+        public override bool HeadersWritten { get { throw null; } }
         public override bool IsClientConnected { get { throw null; } }
         public override bool IsRequestBeingRedirected { get { throw null; } }
         public override System.IO.TextWriter Output { get { throw null; } set { } }
@@ -1596,6 +1603,7 @@ namespace System.Web
         public override int SubStatusCode { get { throw null; } set { } }
         public override bool SupportsAsyncFlush { get { throw null; } }
         public override bool SuppressContent { get { throw null; } set { } }
+        public override bool SuppressDefaultCacheControlHeader { get { throw null; } set { } }
         public override bool SuppressFormsAuthenticationRedirect { get { throw null; } set { } }
         public override bool TrySkipIisCustomErrors { get { throw null; } set { } }
         public override void AddCacheDependency(params System.Web.Caching.CacheDependency[] dependencies) { }
@@ -1606,6 +1614,7 @@ namespace System.Web
         public override void AddFileDependencies(string[] filenames) { }
         public override void AddFileDependency(string filename) { }
         public override void AddHeader(string name, string value) { }
+        public override System.Web.ISubscriptionToken AddOnSendingHeaders(System.Action<System.Web.HttpContextBase> callback) { throw null; }
         public override void AppendCookie(System.Web.HttpCookie cookie) { }
         public override void AppendHeader(string name, string value) { }
         public override void AppendToLog(string param) { }
@@ -5750,6 +5759,8 @@ namespace System.Web.Hosting
         public static void InitiateShutdown() { }
         public static string MapPath(string virtualPath) { throw null; }
         public static void MessageReceived() { }
+        public static void QueueBackgroundWorkItem(System.Action<System.Threading.CancellationToken> workItem) { }
+        public static void QueueBackgroundWorkItem(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task> workItem) { }
         public static void RegisterObject(System.Web.Hosting.IRegisteredObject obj) { }
         public static void RegisterVirtualPathProvider(System.Web.Hosting.VirtualPathProvider virtualPathProvider) { }
         public static System.IDisposable SetCultures() { throw null; }
