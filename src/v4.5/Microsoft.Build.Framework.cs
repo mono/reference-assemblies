@@ -63,7 +63,6 @@ namespace Microsoft.Build.Framework
     [System.SerializableAttribute]
     public partial class BuildEventContext
     {
-        public static Microsoft.Build.Framework.BuildEventContext Invalid;
         public const int InvalidNodeId = -2;
         public const int InvalidProjectContextId = -2;
         public const int InvalidProjectInstanceId = -1;
@@ -73,6 +72,8 @@ namespace Microsoft.Build.Framework
         public BuildEventContext(int nodeId, int targetId, int projectContextId, int taskId) { }
         public BuildEventContext(int nodeId, int projectInstanceId, int projectContextId, int targetId, int taskId) { }
         public BuildEventContext(int submissionId, int nodeId, int projectInstanceId, int projectContextId, int targetId, int taskId) { }
+        public long BuildRequestId { get { throw null; } }
+        public static Microsoft.Build.Framework.BuildEventContext Invalid { get { throw null; } }
         public int NodeId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public int ProjectContextId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public int ProjectInstanceId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
@@ -95,11 +96,24 @@ namespace Microsoft.Build.Framework
     }
     public delegate void BuildFinishedEventHandler(object sender, Microsoft.Build.Framework.BuildFinishedEventArgs e);
     [System.SerializableAttribute]
-    public partial class BuildMessageEventArgs : Microsoft.Build.Framework.BuildEventArgs
+    public partial class BuildMessageEventArgs : Microsoft.Build.Framework.LazyFormattedBuildEventArgs
     {
         protected BuildMessageEventArgs() { }
         public BuildMessageEventArgs(string message, string helpKeyword, string senderName, Microsoft.Build.Framework.MessageImportance importance) { }
+        public BuildMessageEventArgs(string message, string helpKeyword, string senderName, Microsoft.Build.Framework.MessageImportance importance, System.DateTime eventTimestamp) { }
+        public BuildMessageEventArgs(string message, string helpKeyword, string senderName, Microsoft.Build.Framework.MessageImportance importance, System.DateTime eventTimestamp, params object[] messageArgs) { }
+        public BuildMessageEventArgs(string subcategory, string code, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string helpKeyword, string senderName, Microsoft.Build.Framework.MessageImportance importance) { }
+        public BuildMessageEventArgs(string subcategory, string code, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string helpKeyword, string senderName, Microsoft.Build.Framework.MessageImportance importance, System.DateTime eventTimestamp) { }
+        public BuildMessageEventArgs(string subcategory, string code, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string helpKeyword, string senderName, Microsoft.Build.Framework.MessageImportance importance, System.DateTime eventTimestamp, params object[] messageArgs) { }
+        public string Code { get { throw null; } }
+        public int ColumnNumber { get { throw null; } }
+        public int EndColumnNumber { get { throw null; } }
+        public int EndLineNumber { get { throw null; } }
+        public string File { get { throw null; } }
         public Microsoft.Build.Framework.MessageImportance Importance { get { throw null; } }
+        public int LineNumber { get { throw null; } }
+        public string ProjectFile { get { throw null; } set { } }
+        public string Subcategory { get { throw null; } }
     }
     public delegate void BuildMessageEventHandler(object sender, Microsoft.Build.Framework.BuildMessageEventArgs e);
     [System.SerializableAttribute]
@@ -139,11 +153,20 @@ namespace Microsoft.Build.Framework
         public string Subcategory { get { throw null; } }
     }
     public delegate void BuildWarningEventHandler(object sender, Microsoft.Build.Framework.BuildWarningEventArgs e);
+    public partial class CriticalBuildMessageEventArgs : Microsoft.Build.Framework.BuildMessageEventArgs
+    {
+        protected CriticalBuildMessageEventArgs() { }
+        public CriticalBuildMessageEventArgs(string subcategory, string code, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string helpKeyword, string senderName) { }
+        public CriticalBuildMessageEventArgs(string subcategory, string code, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string helpKeyword, string senderName, System.DateTime eventTimestamp) { }
+        public CriticalBuildMessageEventArgs(string subcategory, string code, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string helpKeyword, string senderName, System.DateTime eventTimestamp, params object[] messageArgs) { }
+    }
     [System.SerializableAttribute]
-    public abstract partial class CustomBuildEventArgs : Microsoft.Build.Framework.BuildEventArgs
+    public abstract partial class CustomBuildEventArgs : Microsoft.Build.Framework.LazyFormattedBuildEventArgs
     {
         protected CustomBuildEventArgs() { }
         protected CustomBuildEventArgs(string message, string helpKeyword, string senderName) { }
+        protected CustomBuildEventArgs(string message, string helpKeyword, string senderName, System.DateTime eventTimestamp) { }
+        protected CustomBuildEventArgs(string message, string helpKeyword, string senderName, System.DateTime eventTimestamp, params object[] messageArgs) { }
     }
     public delegate void CustomBuildEventHandler(object sender, Microsoft.Build.Framework.CustomBuildEventArgs e);
     [System.SerializableAttribute]
@@ -151,6 +174,7 @@ namespace Microsoft.Build.Framework
     {
         protected ExternalProjectFinishedEventArgs() { }
         public ExternalProjectFinishedEventArgs(string message, string helpKeyword, string senderName, string projectFile, bool succeeded) { }
+        public ExternalProjectFinishedEventArgs(string message, string helpKeyword, string senderName, string projectFile, bool succeeded, System.DateTime eventTimestamp) { }
         public string ProjectFile { get { throw null; } }
         public bool Succeeded { get { throw null; } }
     }
@@ -159,6 +183,7 @@ namespace Microsoft.Build.Framework
     {
         protected ExternalProjectStartedEventArgs() { }
         public ExternalProjectStartedEventArgs(string message, string helpKeyword, string senderName, string projectFile, string targetNames) { }
+        public ExternalProjectStartedEventArgs(string message, string helpKeyword, string senderName, string projectFile, string targetNames, System.DateTime eventTimestamp) { }
         public string ProjectFile { get { throw null; } }
         public string TargetNames { get { throw null; } }
     }
@@ -224,6 +249,11 @@ namespace Microsoft.Build.Framework
     {
         Microsoft.Build.Framework.IEventRedirector BuildEventRedirector { get; set; }
         int NodeId { get; set; }
+    }
+    public partial interface IGeneratedTask : Microsoft.Build.Framework.ITask
+    {
+        object GetPropertyValue(Microsoft.Build.Framework.TaskPropertyInfo property);
+        void SetPropertyValue(Microsoft.Build.Framework.TaskPropertyInfo property, object value);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface ILogger
@@ -338,6 +368,7 @@ namespace Microsoft.Build.Framework
     {
         protected ProjectFinishedEventArgs() { }
         public ProjectFinishedEventArgs(string message, string helpKeyword, string projectFile, bool succeeded) { }
+        public ProjectFinishedEventArgs(string message, string helpKeyword, string projectFile, bool succeeded, System.DateTime eventTimestamp) { }
         public string ProjectFile { get { throw null; } }
         public bool Succeeded { get { throw null; } }
     }
@@ -345,12 +376,21 @@ namespace Microsoft.Build.Framework
     [System.SerializableAttribute]
     public partial class ProjectStartedEventArgs : Microsoft.Build.Framework.BuildStatusEventArgs
     {
+        public const int InvalidProjectId = -1;
         protected ProjectStartedEventArgs() { }
+        public ProjectStartedEventArgs(int projectId, string message, string helpKeyword, string projectFile, string targetNames, System.Collections.IEnumerable properties, System.Collections.IEnumerable items, Microsoft.Build.Framework.BuildEventContext parentBuildEventContext) { }
+        public ProjectStartedEventArgs(int projectId, string message, string helpKeyword, string projectFile, string targetNames, System.Collections.IEnumerable properties, System.Collections.IEnumerable items, Microsoft.Build.Framework.BuildEventContext parentBuildEventContext, System.Collections.Generic.IDictionary<string, string> globalProperties, string toolsVersion) { }
+        public ProjectStartedEventArgs(int projectId, string message, string helpKeyword, string projectFile, string targetNames, System.Collections.IEnumerable properties, System.Collections.IEnumerable items, Microsoft.Build.Framework.BuildEventContext parentBuildEventContext, System.DateTime eventTimestamp) { }
         public ProjectStartedEventArgs(string message, string helpKeyword, string projectFile, string targetNames, System.Collections.IEnumerable properties, System.Collections.IEnumerable items) { }
+        public ProjectStartedEventArgs(string message, string helpKeyword, string projectFile, string targetNames, System.Collections.IEnumerable properties, System.Collections.IEnumerable items, System.DateTime eventTimestamp) { }
+        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { get { throw null; } }
         public System.Collections.IEnumerable Items { get { throw null; } }
+        public Microsoft.Build.Framework.BuildEventContext ParentProjectBuildEventContext { get { throw null; } }
         public string ProjectFile { get { throw null; } }
+        public int ProjectId { get { throw null; } }
         public System.Collections.IEnumerable Properties { get { throw null; } }
         public string TargetNames { get { throw null; } }
+        public string ToolsVersion { get { throw null; } }
     }
     public delegate void ProjectStartedEventHandler(object sender, Microsoft.Build.Framework.ProjectStartedEventArgs e);
     public enum RegisteredTaskObjectLifetime
@@ -363,15 +403,31 @@ namespace Microsoft.Build.Framework
     {
         public RequiredAttribute() { }
     }
+    public sealed partial class RequiredRuntimeAttribute : System.Attribute
+    {
+        public RequiredRuntimeAttribute(string runtimeVersion) { }
+        public string RuntimeVersion { get { throw null; } }
+    }
+    public sealed partial class RunInMTAAttribute : System.Attribute
+    {
+        public RunInMTAAttribute() { }
+    }
+    public sealed partial class RunInSTAAttribute : System.Attribute
+    {
+        public RunInSTAAttribute() { }
+    }
     [System.SerializableAttribute]
     public partial class TargetFinishedEventArgs : Microsoft.Build.Framework.BuildStatusEventArgs
     {
         protected TargetFinishedEventArgs() { }
         public TargetFinishedEventArgs(string message, string helpKeyword, string targetName, string projectFile, string targetFile, bool succeeded) { }
+        public TargetFinishedEventArgs(string message, string helpKeyword, string targetName, string projectFile, string targetFile, bool succeeded, System.Collections.IEnumerable targetOutputs) { }
+        public TargetFinishedEventArgs(string message, string helpKeyword, string targetName, string projectFile, string targetFile, bool succeeded, System.DateTime eventTimestamp, System.Collections.IEnumerable targetOutputs) { }
         public string ProjectFile { get { throw null; } }
         public bool Succeeded { get { throw null; } }
         public string TargetFile { get { throw null; } }
         public string TargetName { get { throw null; } }
+        public System.Collections.IEnumerable TargetOutputs { get { throw null; } set { } }
     }
     public delegate void TargetFinishedEventHandler(object sender, Microsoft.Build.Framework.TargetFinishedEventArgs e);
     [System.SerializableAttribute]
@@ -379,6 +435,8 @@ namespace Microsoft.Build.Framework
     {
         protected TargetStartedEventArgs() { }
         public TargetStartedEventArgs(string message, string helpKeyword, string targetName, string projectFile, string targetFile) { }
+        public TargetStartedEventArgs(string message, string helpKeyword, string targetName, string projectFile, string targetFile, string parentTarget, System.DateTime eventTimestamp) { }
+        public string ParentTarget { get { throw null; } }
         public string ProjectFile { get { throw null; } }
         public string TargetFile { get { throw null; } }
         public string TargetName { get { throw null; } }
@@ -389,6 +447,7 @@ namespace Microsoft.Build.Framework
     {
         protected TaskCommandLineEventArgs() { }
         public TaskCommandLineEventArgs(string commandLine, string taskName, Microsoft.Build.Framework.MessageImportance importance) { }
+        public TaskCommandLineEventArgs(string commandLine, string taskName, Microsoft.Build.Framework.MessageImportance importance, System.DateTime eventTimestamp) { }
         public string CommandLine { get { throw null; } }
         public string TaskName { get { throw null; } }
     }
@@ -397,6 +456,7 @@ namespace Microsoft.Build.Framework
     {
         protected TaskFinishedEventArgs() { }
         public TaskFinishedEventArgs(string message, string helpKeyword, string projectFile, string taskFile, string taskName, bool succeeded) { }
+        public TaskFinishedEventArgs(string message, string helpKeyword, string projectFile, string taskFile, string taskName, bool succeeded, System.DateTime eventTimestamp) { }
         public string ProjectFile { get { throw null; } }
         public bool Succeeded { get { throw null; } }
         public string TaskFile { get { throw null; } }
@@ -417,11 +477,250 @@ namespace Microsoft.Build.Framework
     {
         protected TaskStartedEventArgs() { }
         public TaskStartedEventArgs(string message, string helpKeyword, string projectFile, string taskFile, string taskName) { }
+        public TaskStartedEventArgs(string message, string helpKeyword, string projectFile, string taskFile, string taskName, System.DateTime eventTimestamp) { }
         public string ProjectFile { get { throw null; } }
         public string TaskFile { get { throw null; } }
         public string TaskName { get { throw null; } }
     }
     public delegate void TaskStartedEventHandler(object sender, Microsoft.Build.Framework.TaskStartedEventArgs e);
+}
+namespace Microsoft.Build.Framework.XamlTypes
+{
+    public sealed partial class Argument : System.ComponentModel.ISupportInitialize
+    {
+        public Argument() { }
+        public bool IsRequired { get { throw null; } set { } }
+        public string Property { get { throw null; } set { } }
+        public string Separator { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+    }
+    public abstract partial class BaseProperty : System.ComponentModel.ISupportInitialize
+    {
+        protected BaseProperty() { }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Argument> Arguments { get { throw null; } set { } }
+        public string Category { get { throw null; } set { } }
+        public Microsoft.Build.Framework.XamlTypes.Rule ContainingRule { get { throw null; } }
+        public Microsoft.Build.Framework.XamlTypes.DataSource DataSource { get { throw null; } set { } }
+        public string Default { get { throw null; } set { } }
+        public string Description { get { throw null; } set { } }
+        public string DisplayName { get { throw null; } set { } }
+        public string F1Keyword { get { throw null; } set { } }
+        public int HelpContext { get { throw null; } set { } }
+        public string HelpFile { get { throw null; } set { } }
+        public string HelpUrl { get { throw null; } set { } }
+        public bool IncludeInCommandLine { get { throw null; } set { } }
+        public bool IsRequired { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
+        public bool MultipleValuesAllowed { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public bool ReadOnly { get { throw null; } set { } }
+        public string Separator { get { throw null; } set { } }
+        public string Subcategory { get { throw null; } set { } }
+        public string Switch { get { throw null; } set { } }
+        public string SwitchPrefix { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.ValueEditor> ValueEditors { get { throw null; } set { } }
+        public bool Visible { get { throw null; } set { } }
+        public virtual void BeginInit() { }
+        public virtual void EndInit() { }
+    }
+    public sealed partial class BoolProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
+    {
+        public BoolProperty() { }
+        public string ReverseSwitch { get { throw null; } set { } }
+    }
+    public sealed partial class Category : Microsoft.Build.Framework.XamlTypes.CategorySchema, System.ComponentModel.ISupportInitialize
+    {
+        public Category() { }
+        public string Description { get { throw null; } set { } }
+        public string DisplayName { get { throw null; } set { } }
+        public string HelpString { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public string Subtype { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+    }
+    public abstract partial class CategorySchema
+    {
+        protected CategorySchema() { }
+    }
+    public sealed partial class ContentType : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
+    {
+        public ContentType() { }
+        public bool DefaultContentTypeForItemType { get { throw null; } set { } }
+        public string DisplayName { get { throw null; } set { } }
+        public string ItemGroupName { get { throw null; } set { } }
+        public string ItemType { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+        public string GetMetadata(string metadataName) { throw null; }
+        public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
+        public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
+    }
+    public sealed partial class DataSource : System.ComponentModel.ISupportInitialize
+    {
+        public DataSource() { }
+        public bool HasConfigurationCondition { get { throw null; } set { } }
+        public string ItemType { get { throw null; } set { } }
+        public string Label { get { throw null; } set { } }
+        public string MSBuildTarget { get { throw null; } set { } }
+        public string PersistedName { get { throw null; } set { } }
+        public string Persistence { get { throw null; } set { } }
+        public Microsoft.Build.Framework.XamlTypes.DefaultValueSourceLocation SourceOfDefaultValue { get { throw null; } set { } }
+        public string SourceType { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+    }
+    public enum DefaultValueSourceLocation
+    {
+        AfterContext = 1,
+        BeforeContext = 0,
+    }
+    public sealed partial class DynamicEnumProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
+    {
+        public DynamicEnumProperty() { }
+        public string EnumProvider { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> ProviderSettings { get { throw null; } set { } }
+    }
+    public sealed partial class EnumProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
+    {
+        public EnumProperty() { }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.EnumValue> AdmissibleValues { get { throw null; } set { } }
+        public override void EndInit() { }
+    }
+    public sealed partial class EnumValue
+    {
+        public EnumValue() { }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Argument> Arguments { get { throw null; } set { } }
+        public string Description { get { throw null; } set { } }
+        public string DisplayName { get { throw null; } set { } }
+        public string HelpString { get { throw null; } set { } }
+        public bool IsDefault { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public string Switch { get { throw null; } set { } }
+        public string SwitchPrefix { get { throw null; } set { } }
+    }
+    public sealed partial class FileExtension : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode
+    {
+        public FileExtension() { }
+        public string ContentType { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
+        public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
+    }
+    public sealed partial class IntProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
+    {
+        public IntProperty() { }
+        public System.Nullable<int> MaxValue { get { throw null; } set { } }
+        public System.Nullable<int> MinValue { get { throw null; } set { } }
+        public override void EndInit() { }
+    }
+    public partial interface IProjectSchemaNode
+    {
+        System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type);
+        System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes();
+    }
+    public sealed partial class ItemType : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
+    {
+        public ItemType() { }
+        public string DefaultContentType { get { throw null; } set { } }
+        public string DisplayName { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public bool UpToDateCheckInput { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+        public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
+        public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
+    }
+    public partial class NameValuePair
+    {
+        public NameValuePair() { }
+        public string Name { get { throw null; } set { } }
+        public string Value { get { throw null; } set { } }
+    }
+    public sealed partial class ProjectSchemaDefinitions : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode
+    {
+        public ProjectSchemaDefinitions() { }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode> Nodes { get { throw null; } set { } }
+        public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
+        public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
+    }
+    public sealed partial class Rule : Microsoft.Build.Framework.XamlTypes.RuleSchema, Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
+    {
+        public Rule() { }
+        public string AdditionalInputs { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Category> Categories { get { throw null; } set { } }
+        public string CommandLine { get { throw null; } set { } }
+        public Microsoft.Build.Framework.XamlTypes.DataSource DataSource { get { throw null; } set { } }
+        public string Description { get { throw null; } set { } }
+        public string DisplayName { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Category> EvaluatedCategories { get { throw null; } }
+        public string ExecutionDescription { get { throw null; } set { } }
+        public string FileExtension { get { throw null; } set { } }
+        public string HelpString { get { throw null; } set { } }
+        public System.Collections.Generic.Dictionary<string, object> Metadata { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public int Order { get { throw null; } set { } }
+        public string Outputs { get { throw null; } set { } }
+        public Microsoft.Build.Framework.XamlTypes.RuleOverrideMode OverrideMode { get { throw null; } set { } }
+        public string PageTemplate { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.BaseProperty> Properties { get { throw null; } set { } }
+        public bool PropertyPagesHidden { get { throw null; } set { } }
+        public string Separator { get { throw null; } set { } }
+        public bool ShowOnlyRuleProperties { get { throw null; } set { } }
+        public bool SupportsFileBatching { get { throw null; } set { } }
+        public string SwitchPrefix { get { throw null; } set { } }
+        public string ToolName { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+        public System.Collections.Specialized.OrderedDictionary GetPropertiesByCategory() { throw null; }
+        public System.Collections.Generic.IList<Microsoft.Build.Framework.XamlTypes.BaseProperty> GetPropertiesInCategory(string categoryName) { throw null; }
+        public Microsoft.Build.Framework.XamlTypes.BaseProperty GetProperty(string propertyName) { throw null; }
+        public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
+        public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
+    }
+    public sealed partial class RuleBag : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
+    {
+        public RuleBag() { }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Rule> Rules { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+        public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
+        public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
+    }
+    public enum RuleOverrideMode
+    {
+        Extend = 1,
+        Replace = 0,
+    }
+    public abstract partial class RuleSchema
+    {
+        protected RuleSchema() { }
+    }
+    public sealed partial class StringListProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
+    {
+        public StringListProperty() { }
+        public string CommandLineValueSeparator { get { throw null; } set { } }
+        public string RendererValueSeparator { get { throw null; } set { } }
+        public string Subtype { get { throw null; } set { } }
+    }
+    public sealed partial class StringProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
+    {
+        public StringProperty() { }
+        public string Subtype { get { throw null; } set { } }
+    }
+    public sealed partial class ValueEditor : System.ComponentModel.ISupportInitialize
+    {
+        public ValueEditor() { }
+        public string DisplayName { get { throw null; } set { } }
+        public string EditorType { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
+        public void BeginInit() { }
+        public void EndInit() { }
+    }
 }
 namespace System
 {

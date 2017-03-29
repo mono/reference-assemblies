@@ -64,15 +64,16 @@ namespace System.Data.Services
     }
     public sealed partial class DataServiceBehavior
     {
-        public DataServiceBehavior() { }
+        internal DataServiceBehavior() { }
         public bool AcceptCountRequests { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool AcceptProjectionRequests { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool AcceptReplaceFunctionInQuery { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool InvokeInterceptorsOnLinkDelete { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Data.Services.Common.DataServiceProtocolVersion MaxProtocolVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public sealed partial class DataServiceConfiguration : System.Data.Services.IDataServiceConfiguration
     {
-        public DataServiceConfiguration() { }
+        internal DataServiceConfiguration() { }
         public System.Data.Services.DataServiceBehavior DataServiceBehavior { get { throw null; } }
         public bool EnableTypeConversion { get { throw null; } set { } }
         public int MaxBatchCount { get { throw null; } set { } }
@@ -116,7 +117,7 @@ namespace System.Data.Services
     }
     public sealed partial class DataServiceOperationContext
     {
-        public DataServiceOperationContext() { }
+        internal DataServiceOperationContext() { }
         public System.Uri AbsoluteRequestUri { get { throw null; } }
         public System.Uri AbsoluteServiceUri { get { throw null; } }
         public bool IsBatchRequest { get { throw null; } }
@@ -135,7 +136,7 @@ namespace System.Data.Services
     }
     public sealed partial class DataServiceProcessingPipelineEventArgs : System.EventArgs
     {
-        public DataServiceProcessingPipelineEventArgs() { }
+        internal DataServiceProcessingPipelineEventArgs() { }
         public System.Data.Services.DataServiceOperationContext OperationContext { get { throw null; } }
     }
     [System.ServiceModel.Activation.AspNetCompatibilityRequirementsAttribute(RequirementsMode=(System.ServiceModel.Activation.AspNetCompatibilityRequirementsMode)(1))]
@@ -192,7 +193,7 @@ namespace System.Data.Services
     }
     public partial class HandleExceptionArgs
     {
-        public HandleExceptionArgs() { }
+        internal HandleExceptionArgs() { }
         public System.Exception Exception { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string ResponseContentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public int ResponseStatusCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
@@ -287,7 +288,7 @@ namespace System.Data.Services
     }
     public sealed partial class ProcessRequestArgs
     {
-        public ProcessRequestArgs() { }
+        internal ProcessRequestArgs() { }
         public bool IsBatchOperation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Data.Services.DataServiceOperationContext OperationContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Uri RequestUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
@@ -320,6 +321,24 @@ namespace System.Data.Services
         Change = 2,
         Delete = 4,
         None = 0,
+    }
+}
+namespace System.Data.Services.Configuration
+{
+    public sealed partial class DataServicesFeaturesSection : System.Configuration.ConfigurationSection
+    {
+        public DataServicesFeaturesSection() { }
+        public System.Data.Services.Configuration.DataServicesReplaceFunctionFeature ReplaceFunction { get { throw null; } set { } }
+    }
+    public partial class DataServicesReplaceFunctionFeature : System.Configuration.ConfigurationElement
+    {
+        public DataServicesReplaceFunctionFeature() { }
+        public bool Enable { get { throw null; } set { } }
+    }
+    public sealed partial class DataServicesSectionGroup : System.Configuration.ConfigurationSectionGroup
+    {
+        public DataServicesSectionGroup() { }
+        public System.Data.Services.Configuration.DataServicesFeaturesSection Features { get { throw null; } }
     }
 }
 namespace System.Data.Services.Internal

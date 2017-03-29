@@ -173,7 +173,7 @@ namespace System.ComponentModel.Design
         protected virtual void Dispose(bool disposing) { }
         public virtual void DoDefaultAction() { }
         ~ComponentDesigner() { }
-        protected virtual object GetService(System.Type service) { throw null; }
+        protected virtual object GetService(System.Type serviceType) { throw null; }
         public virtual void Initialize(System.ComponentModel.IComponent component) { }
         public virtual void InitializeExistingComponent(System.Collections.IDictionary defaultValues) { }
         public virtual void InitializeNewComponent(System.Collections.IDictionary defaultValues) { }
@@ -222,6 +222,7 @@ namespace System.ComponentModel.Design
         public virtual string Description { get { throw null; } }
         public virtual string DisplayName { get { throw null; } }
         public System.Collections.IDictionary Properties { get { throw null; } }
+        public bool ShowInSourceView { get { throw null; } set { } }
     }
     public partial class DesignerActionItemCollection : System.Collections.CollectionBase
     {
@@ -376,6 +377,7 @@ namespace System.ComponentModel.Design
         public DesignSurface(System.IServiceProvider parentProvider, System.Type rootComponentType) { }
         public DesignSurface(System.Type rootComponentType) { }
         public System.ComponentModel.IContainer ComponentContainer { get { throw null; } }
+        public bool DtelLoading { get { throw null; } set { } }
         public bool IsLoaded { get { throw null; } }
         public System.Collections.ICollection LoadErrors { get { throw null; } }
         protected System.ComponentModel.Design.ServiceContainer ServiceContainer { get { throw null; } }
@@ -427,7 +429,7 @@ namespace System.ComponentModel.Design
     public partial class DesignSurfaceManager : System.IDisposable, System.IServiceProvider
     {
         public DesignSurfaceManager() { }
-        public DesignSurfaceManager(System.IServiceProvider serviceProvider) { }
+        public DesignSurfaceManager(System.IServiceProvider parentProvider) { }
         public virtual System.ComponentModel.Design.DesignSurface ActiveDesignSurface { get { throw null; } set { } }
         public System.ComponentModel.Design.DesignSurfaceCollection DesignSurfaces { get { throw null; } }
         protected System.ComponentModel.Design.ServiceContainer ServiceContainer { get { throw null; } }
@@ -440,7 +442,7 @@ namespace System.ComponentModel.Design
         protected virtual System.ComponentModel.Design.DesignSurface CreateDesignSurfaceCore(System.IServiceProvider parentProvider) { throw null; }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
-        public object GetService(System.Type service) { throw null; }
+        public object GetService(System.Type serviceType) { throw null; }
     }
     public enum DisplayMode
     {
@@ -452,20 +454,20 @@ namespace System.ComponentModel.Design
     public abstract partial class EventBindingService : System.ComponentModel.Design.IEventBindingService
     {
         protected EventBindingService(System.IServiceProvider provider) { }
-        protected abstract string CreateUniqueMethodName(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor eventDescriptor);
+        protected abstract string CreateUniqueMethodName(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e);
         protected virtual void FreeMethod(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e, string methodName) { }
-        protected abstract System.Collections.ICollection GetCompatibleMethods(System.ComponentModel.EventDescriptor eventDescriptor);
-        protected object GetService(System.Type service) { throw null; }
+        protected abstract System.Collections.ICollection GetCompatibleMethods(System.ComponentModel.EventDescriptor e);
+        protected object GetService(System.Type serviceType) { throw null; }
         protected abstract bool ShowCode();
         protected abstract bool ShowCode(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e, string methodName);
         protected abstract bool ShowCode(int lineNumber);
-        string System.ComponentModel.Design.IEventBindingService.CreateUniqueMethodName(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor eventDescriptor) { throw null; }
-        System.Collections.ICollection System.ComponentModel.Design.IEventBindingService.GetCompatibleMethods(System.ComponentModel.EventDescriptor eventDescriptor) { throw null; }
+        string System.ComponentModel.Design.IEventBindingService.CreateUniqueMethodName(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e) { throw null; }
+        System.Collections.ICollection System.ComponentModel.Design.IEventBindingService.GetCompatibleMethods(System.ComponentModel.EventDescriptor e) { throw null; }
         System.ComponentModel.EventDescriptor System.ComponentModel.Design.IEventBindingService.GetEvent(System.ComponentModel.PropertyDescriptor property) { throw null; }
         System.ComponentModel.PropertyDescriptorCollection System.ComponentModel.Design.IEventBindingService.GetEventProperties(System.ComponentModel.EventDescriptorCollection events) { throw null; }
-        System.ComponentModel.PropertyDescriptor System.ComponentModel.Design.IEventBindingService.GetEventProperty(System.ComponentModel.EventDescriptor eventDescriptor) { throw null; }
+        System.ComponentModel.PropertyDescriptor System.ComponentModel.Design.IEventBindingService.GetEventProperty(System.ComponentModel.EventDescriptor e) { throw null; }
         bool System.ComponentModel.Design.IEventBindingService.ShowCode() { throw null; }
-        bool System.ComponentModel.Design.IEventBindingService.ShowCode(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor eventDescriptor) { throw null; }
+        bool System.ComponentModel.Design.IEventBindingService.ShowCode(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e) { throw null; }
         bool System.ComponentModel.Design.IEventBindingService.ShowCode(int lineNumber) { throw null; }
         protected virtual void UseMethod(System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e, string methodName) { }
         protected virtual void ValidateMethodName(string methodName) { }
@@ -491,6 +493,15 @@ namespace System.ComponentModel.Design
     {
         object GetState(System.ComponentModel.IComponent component, string key);
         void SetState(System.ComponentModel.IComponent component, string key, object value);
+    }
+    public partial interface IDesignTimeAssemblyLoader
+    {
+        string GetTargetAssemblyPath(System.Reflection.AssemblyName runtimeOrTargetAssemblyName, string suggestedAssemblyPath, System.Runtime.Versioning.FrameworkName targetFramework);
+        System.Reflection.Assembly LoadRuntimeAssembly(System.Reflection.AssemblyName targetAssemblyName);
+    }
+    public partial interface IMultitargetHelperService
+    {
+        string GetAssemblyQualifiedName(System.Type type);
     }
     public partial class InheritanceService : System.ComponentModel.Design.IInheritanceService, System.IDisposable
     {
@@ -583,7 +594,7 @@ namespace System.ComponentModel.Design
         protected System.Collections.ICollection GetCommandList(System.Guid guid) { throw null; }
         protected object GetService(System.Type serviceType) { throw null; }
         public virtual bool GlobalInvoke(System.ComponentModel.Design.CommandID commandID) { throw null; }
-        public virtual bool GlobalInvoke(System.ComponentModel.Design.CommandID commandID, object arg) { throw null; }
+        public virtual bool GlobalInvoke(System.ComponentModel.Design.CommandID commandId, object arg) { throw null; }
         protected virtual void OnCommandsChanged(System.ComponentModel.Design.MenuCommandsChangedEventArgs e) { }
         public virtual void RemoveCommand(System.ComponentModel.Design.MenuCommand command) { }
         public virtual void RemoveVerb(System.ComponentModel.Design.DesignerVerb verb) { }
@@ -643,6 +654,11 @@ namespace System.ComponentModel.Design
             public SelectorNode(string label, object value) { }
         }
     }
+    public sealed partial class ProjectTargetFrameworkAttribute : System.Attribute
+    {
+        public ProjectTargetFrameworkAttribute(string targetFrameworkMoniker) { }
+        public string TargetFrameworkMoniker { get { throw null; } }
+    }
     public abstract partial class UndoEngine : System.IDisposable
     {
         protected UndoEngine(System.IServiceProvider provider) { }
@@ -663,7 +679,7 @@ namespace System.ComponentModel.Design
         {
             public UndoUnit(System.ComponentModel.Design.UndoEngine engine, string name) { }
             public virtual bool IsEmpty { get { throw null; } }
-            public virtual string Name { get { throw null; } }
+            public string Name { get { throw null; } }
             protected System.ComponentModel.Design.UndoEngine UndoEngine { get { throw null; } }
             public virtual void Close() { }
             public virtual void ComponentAdded(System.ComponentModel.Design.ComponentEventArgs e) { }
@@ -892,9 +908,9 @@ namespace System.ComponentModel.Design.Serialization
         protected enum ReloadOptions
         {
             Default = 0,
-            Force = 1,
-            ModifyOnError = 2,
-            NoFlush = 3,
+            Force = 2,
+            ModifyOnError = 1,
+            NoFlush = 4,
         }
     }
     public sealed partial class CodeDomComponentSerializationService : System.ComponentModel.Design.Serialization.ComponentSerializationService
@@ -958,8 +974,8 @@ namespace System.ComponentModel.Design.Serialization
         public virtual string GetTargetComponentName(System.CodeDom.CodeStatement statement, System.CodeDom.CodeExpression expression, System.Type targetType) { throw null; }
         public virtual object Serialize(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
         public virtual object SerializeAbsolute(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
-        public virtual System.CodeDom.CodeStatementCollection SerializeMember(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object owningobject, System.ComponentModel.MemberDescriptor member) { throw null; }
-        public virtual System.CodeDom.CodeStatementCollection SerializeMemberAbsolute(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object owningobject, System.ComponentModel.MemberDescriptor member) { throw null; }
+        public virtual System.CodeDom.CodeStatementCollection SerializeMember(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object owningObject, System.ComponentModel.MemberDescriptor member) { throw null; }
+        public virtual System.CodeDom.CodeStatementCollection SerializeMemberAbsolute(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object owningObject, System.ComponentModel.MemberDescriptor member) { throw null; }
         [System.ObsoleteAttribute("This method has been deprecated. Use SerializeToExpression or GetExpression instead.")]
         protected System.CodeDom.CodeExpression SerializeToReferenceExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
     }
@@ -971,12 +987,19 @@ namespace System.ComponentModel.Design.Serialization
         protected virtual object DeserializeInstance(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.Type type, object[] parameters, string name, bool addToContainer) { throw null; }
         protected void DeserializePropertiesFromResources(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value, System.Attribute[] filter) { }
         protected void DeserializeStatement(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.CodeDom.CodeStatement statement) { }
-        protected System.CodeDom.CodeExpression GetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance) { throw null; }
-        protected System.ComponentModel.Design.Serialization.CodeDomSerializer GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance) { throw null; }
-        protected System.ComponentModel.Design.Serialization.CodeDomSerializer GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.Type instanceType) { throw null; }
-        protected string GetUniqueName(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance) { throw null; }
+        protected static System.ComponentModel.AttributeCollection GetAttributesFromTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.Type type) { throw null; }
+        protected static System.ComponentModel.AttributeCollection GetAttributesHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance) { throw null; }
+        protected static System.ComponentModel.EventDescriptorCollection GetEventsHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance, System.Attribute[] attributes) { throw null; }
+        protected System.CodeDom.CodeExpression GetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
+        protected static System.ComponentModel.PropertyDescriptorCollection GetPropertiesHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance, System.Attribute[] attributes) { throw null; }
+        protected static System.Type GetReflectionTypeFromTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.Type type) { throw null; }
+        protected static System.Type GetReflectionTypeHelper(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance) { throw null; }
+        protected System.ComponentModel.Design.Serialization.CodeDomSerializer GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
+        protected System.ComponentModel.Design.Serialization.CodeDomSerializer GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.Type valueType) { throw null; }
+        protected static System.ComponentModel.TypeDescriptionProvider GetTargetFrameworkProvider(System.IServiceProvider provider, object instance) { throw null; }
+        protected string GetUniqueName(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
         protected bool IsSerialized(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
-        protected bool IsSerialized(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance, bool honorPreset) { throw null; }
+        protected bool IsSerialized(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value, bool honorPreset) { throw null; }
         protected System.CodeDom.CodeExpression SerializeCreationExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value, out bool isComplete) { isComplete = default(bool); throw null; }
         protected void SerializeEvent(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.CodeDom.CodeStatementCollection statements, object value, System.ComponentModel.EventDescriptor descriptor) { }
         protected void SerializeEvents(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.CodeDom.CodeStatementCollection statements, object value, params System.Attribute[] filter) { }
@@ -985,11 +1008,11 @@ namespace System.ComponentModel.Design.Serialization
         protected void SerializeProperty(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, System.CodeDom.CodeStatementCollection statements, object value, System.ComponentModel.PropertyDescriptor propertyToSerialize) { }
         protected void SerializeResource(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, string resourceName, object value) { }
         protected void SerializeResourceInvariant(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, string resourceName, object value) { }
-        protected System.CodeDom.CodeExpression SerializeToExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance) { throw null; }
+        protected System.CodeDom.CodeExpression SerializeToExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
         protected System.CodeDom.CodeExpression SerializeToResourceExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
         protected System.CodeDom.CodeExpression SerializeToResourceExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value, bool ensureInvariant) { throw null; }
-        protected void SetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance, System.CodeDom.CodeExpression expression) { }
-        protected void SetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object instance, System.CodeDom.CodeExpression expression, bool isPreset) { }
+        protected void SetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value, System.CodeDom.CodeExpression expression) { }
+        protected void SetExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value, System.CodeDom.CodeExpression expression, bool isPreset) { }
     }
     [System.SerializableAttribute]
     public partial class CodeDomSerializerException : System.SystemException
@@ -1031,22 +1054,23 @@ namespace System.ComponentModel.Design.Serialization
         event System.EventHandler System.ComponentModel.Design.Serialization.IDesignerSerializationManager.SerializationComplete { add { } remove { } }
         protected virtual object CreateInstance(System.Type type, System.Collections.ICollection arguments, string name, bool addToContainer) { throw null; }
         public System.IDisposable CreateSession() { throw null; }
-        public object GetSerializer(System.Type componentType, System.Type serializerType) { throw null; }
-        protected virtual object GetService(System.Type service) { throw null; }
-        protected virtual System.Type GetType(string name) { throw null; }
+        public System.Type GetRuntimeType(string typeName) { throw null; }
+        public object GetSerializer(System.Type objectType, System.Type serializerType) { throw null; }
+        protected virtual object GetService(System.Type serviceType) { throw null; }
+        protected virtual System.Type GetType(string typeName) { throw null; }
         protected virtual void OnResolveName(System.ComponentModel.Design.Serialization.ResolveNameEventArgs e) { }
         protected virtual void OnSessionCreated(System.EventArgs e) { }
         protected virtual void OnSessionDisposed(System.EventArgs e) { }
         void System.ComponentModel.Design.Serialization.IDesignerSerializationManager.AddSerializationProvider(System.ComponentModel.Design.Serialization.IDesignerSerializationProvider provider) { }
         object System.ComponentModel.Design.Serialization.IDesignerSerializationManager.CreateInstance(System.Type type, System.Collections.ICollection arguments, string name, bool addToContainer) { throw null; }
         object System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetInstance(string name) { throw null; }
-        string System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetName(object instance) { throw null; }
-        object System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetSerializer(System.Type type, System.Type serializerType) { throw null; }
-        System.Type System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetType(string name) { throw null; }
+        string System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetName(object value) { throw null; }
+        object System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetSerializer(System.Type objectType, System.Type serializerType) { throw null; }
+        System.Type System.ComponentModel.Design.Serialization.IDesignerSerializationManager.GetType(string typeName) { throw null; }
         void System.ComponentModel.Design.Serialization.IDesignerSerializationManager.RemoveSerializationProvider(System.ComponentModel.Design.Serialization.IDesignerSerializationProvider provider) { }
-        void System.ComponentModel.Design.Serialization.IDesignerSerializationManager.ReportError(object error) { }
+        void System.ComponentModel.Design.Serialization.IDesignerSerializationManager.ReportError(object errorInformation) { }
         void System.ComponentModel.Design.Serialization.IDesignerSerializationManager.SetName(object instance, string name) { }
-        object System.IServiceProvider.GetService(System.Type service) { throw null; }
+        object System.IServiceProvider.GetService(System.Type serviceType) { throw null; }
     }
     public sealed partial class ExpressionContext
     {
@@ -1070,7 +1094,7 @@ namespace System.ComponentModel.Design.Serialization
     public sealed partial class ObjectStatementCollection : System.Collections.IEnumerable
     {
         internal ObjectStatementCollection() { }
-        public System.CodeDom.CodeStatementCollection this[object owner] { get { throw null; } }
+        public System.CodeDom.CodeStatementCollection this[object statementOwner] { get { throw null; } }
         public bool ContainsKey(object statementOwner) { throw null; }
         public System.Collections.IDictionaryEnumerator GetEnumerator() { throw null; }
         public void Populate(System.Collections.ICollection statementOwners) { }
@@ -1079,7 +1103,7 @@ namespace System.ComponentModel.Design.Serialization
     }
     public sealed partial class RootContext
     {
-        public RootContext(System.CodeDom.CodeExpression expresion, object value) { }
+        public RootContext(System.CodeDom.CodeExpression expression, object value) { }
         public System.CodeDom.CodeExpression Expression { get { throw null; } }
         public object Value { get { throw null; } }
     }
@@ -1151,10 +1175,14 @@ namespace System.Data.Design
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders) { }
         [System.MonoTODOAttribute]
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option) { }
+        public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace) { }
+        public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace, string basePath) { }
         [System.MonoTODOAttribute]
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Common.DbProviderFactory specifiedFactory) { }
         [System.MonoTODOAttribute]
         public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option) { throw null; }
+        public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace) { throw null; }
+        public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace, string basePath) { throw null; }
         [System.MonoTODOAttribute]
         public static string GetProviderName(string inputFileContent) { throw null; }
         [System.MonoTODOAttribute]
@@ -1173,10 +1201,10 @@ namespace System.Data.Design
         public TypedDataSetGeneratorException() { }
         public TypedDataSetGeneratorException(System.Collections.IList list) { }
         protected TypedDataSetGeneratorException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        public TypedDataSetGeneratorException(string error) { }
-        public TypedDataSetGeneratorException(string error, System.Exception inner) { }
+        public TypedDataSetGeneratorException(string message) { }
+        public TypedDataSetGeneratorException(string message, System.Exception innerException) { }
         public System.Collections.IList ErrorList { get { throw null; } }
-        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class TypedDataSetSchemaImporterExtension : System.Xml.Serialization.Advanced.SchemaImporterExtension
     {
@@ -1186,6 +1214,10 @@ namespace System.Data.Design
         public override string ImportSchemaType(string name, string namespaceName, System.Xml.Schema.XmlSchemaObject context, System.Xml.Serialization.XmlSchemas schemas, System.Xml.Serialization.XmlSchemaImporter importer, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.Xml.Serialization.CodeGenerationOptions options, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
         [System.MonoTODOAttribute]
         public override string ImportSchemaType(System.Xml.Schema.XmlSchemaType type, System.Xml.Schema.XmlSchemaObject context, System.Xml.Serialization.XmlSchemas schemas, System.Xml.Serialization.XmlSchemaImporter importer, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.Xml.Serialization.CodeGenerationOptions options, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
+    }
+    public partial class TypedDataSetSchemaImporterExtensionFx35 : System.Data.Design.TypedDataSetSchemaImporterExtension
+    {
+        public TypedDataSetSchemaImporterExtensionFx35() { }
     }
 }
 namespace System.Diagnostics.Design
@@ -1229,6 +1261,10 @@ namespace System.Messaging.Design
 }
 namespace System.Resources.Tools
 {
+    public partial interface ITargetAwareCodeDomProvider
+    {
+        bool SupportsProperty(System.Type type, string propertyName, bool isWritable);
+    }
     public static partial class StronglyTypedResourceBuilder
     {
         public static System.CodeDom.CodeCompileUnit Create(System.Collections.IDictionary resourceList, string baseName, string generatedCodeNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, bool internalClass, out string[] unmatchable) { unmatchable = default(string[]); throw null; }
@@ -1285,9 +1321,9 @@ namespace System.Web.UI.Design
     {
         public ConnectionStringEditor() { }
         [System.MonoTODOAttribute]
-        public virtual new object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         [System.MonoTODOAttribute]
-        public virtual new System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         [System.MonoTODOAttribute]
         protected virtual string GetProviderName(object instance) { throw null; }
         [System.MonoTODOAttribute]
@@ -1309,6 +1345,7 @@ namespace System.Web.UI.Design
         public virtual string FrameCaption { get { throw null; } }
         [System.MonoTODOAttribute]
         public virtual System.Web.UI.WebControls.Style FrameStyle { get { throw null; } }
+        protected virtual bool NoWrap { get { throw null; } }
         [System.MonoTODOAttribute]
         protected virtual void AddDesignTimeCssAttributes(System.Collections.IDictionary styleAttributes) { }
         [System.MonoTODOAttribute]
@@ -1359,7 +1396,7 @@ namespace System.Web.UI.Design
         [System.MonoTODOAttribute]
         public virtual string ID { get { throw null; } set { } }
         [System.MonoNotSupportedAttribute("")]
-        public bool InTemplateMode { get { throw null; } }
+        protected bool InTemplateMode { get { throw null; } }
         [System.MonoTODOAttribute]
         [System.ObsoleteAttribute("Use Tag.SetDirty() and Tag.IsDirty instead.")]
         public bool IsDirty { get { throw null; } set { } }
@@ -1378,6 +1415,7 @@ namespace System.Web.UI.Design
         public System.Web.UI.Control ViewControl { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
         [System.MonoNotSupportedAttribute("")]
         public virtual bool ViewControlCreated { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
+        protected virtual bool Visible { get { throw null; } }
         [System.MonoNotSupportedAttribute("")]
         protected string CreateErrorDesignTimeHtml(string errorMessage) { throw null; }
         [System.MonoNotSupportedAttribute("")]
@@ -1738,15 +1776,15 @@ namespace System.Web.UI.Design
         [System.MonoTODOAttribute]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         [System.MonoTODOAttribute]
-        int System.Collections.IList.Add(object item) { throw null; }
+        int System.Collections.IList.Add(object value) { throw null; }
         [System.MonoTODOAttribute]
-        bool System.Collections.IList.Contains(object item) { throw null; }
+        bool System.Collections.IList.Contains(object value) { throw null; }
         [System.MonoTODOAttribute]
-        int System.Collections.IList.IndexOf(object item) { throw null; }
+        int System.Collections.IList.IndexOf(object value) { throw null; }
         [System.MonoTODOAttribute]
-        void System.Collections.IList.Insert(int index, object item) { }
+        void System.Collections.IList.Insert(int index, object value) { }
         [System.MonoTODOAttribute]
-        void System.Collections.IList.Remove(object item) { }
+        void System.Collections.IList.Remove(object value) { }
         [System.MonoTODOAttribute]
         void System.Collections.IList.RemoveAt(int index) { }
     }
@@ -2330,6 +2368,33 @@ namespace System.Web.UI.Design
         [System.MonoTODOAttribute]
         public override string GetExpression() { throw null; }
     }
+    public partial class RouteUrlExpressionEditor : System.Web.UI.Design.ExpressionEditor
+    {
+        public RouteUrlExpressionEditor() { }
+        public override object EvaluateExpression(string expression, object parseTimeData, System.Type propertyType, System.IServiceProvider serviceProvider) { throw null; }
+        public override System.Web.UI.Design.ExpressionEditorSheet GetExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) { throw null; }
+    }
+    public partial class RouteUrlExpressionEditorSheet : System.Web.UI.Design.ExpressionEditorSheet
+    {
+        public RouteUrlExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
+        public override bool IsValid { get { throw null; } }
+        public string RouteName { get { throw null; } set { } }
+        public string RouteValues { get { throw null; } set { } }
+        public override string GetExpression() { throw null; }
+    }
+    public partial class RouteValueExpressionEditor : System.Web.UI.Design.ExpressionEditor
+    {
+        public RouteValueExpressionEditor() { }
+        public override object EvaluateExpression(string expression, object parseTimeData, System.Type propertyType, System.IServiceProvider serviceProvider) { throw null; }
+        public override System.Web.UI.Design.ExpressionEditorSheet GetExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) { throw null; }
+    }
+    public partial class RouteValueExpressionEditorSheet : System.Web.UI.Design.ExpressionEditorSheet
+    {
+        public RouteValueExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
+        public override bool IsValid { get { throw null; } }
+        public string RouteValue { get { throw null; } set { } }
+        public override string GetExpression() { throw null; }
+    }
     public partial class SkinIDTypeConverter : System.ComponentModel.TypeConverter
     {
         [System.MonoTODOAttribute]
@@ -2641,10 +2706,12 @@ namespace System.Web.UI.Design
     {
         [System.MonoNotSupportedAttribute("")]
         public ViewRendering(string content, System.Web.UI.Design.DesignerRegionCollection regions) { }
+        public ViewRendering(string content, System.Web.UI.Design.DesignerRegionCollection regions, bool visible) { }
         [System.MonoNotSupportedAttribute("")]
         public string Content { get { throw null; } }
         [System.MonoNotSupportedAttribute("")]
         public System.Web.UI.Design.DesignerRegionCollection Regions { get { throw null; } }
+        public bool Visible { get { throw null; } }
     }
     [System.MonoTODOAttribute]
     [System.SerializableAttribute]
@@ -2822,9 +2889,38 @@ namespace System.Web.UI.Design
         protected override System.Web.UI.Design.UrlBuilderOptions Options { get { throw null; } }
     }
 }
+namespace System.Web.UI.Design.Directives
+{
+    public sealed partial class DirectiveAttribute : System.Attribute
+    {
+        public DirectiveAttribute() { }
+        public bool AllowedOnMobilePages { get { throw null; } set { } }
+        public string BuilderType { get { throw null; } set { } }
+        public bool Culture { get { throw null; } set { } }
+        public string RenameType { get { throw null; } set { } }
+        public bool ServerLanguageExtensions { get { throw null; } set { } }
+        public bool ServerLanguageNames { get { throw null; } set { } }
+    }
+    public static partial class DirectiveRegistry
+    {
+        public static System.Collections.ObjectModel.ReadOnlyCollection<System.Type> GetDirectives(System.Version frameworkVersion, string extension) { throw null; }
+    }
+    public sealed partial class SchemaElementNameAttribute : System.Attribute
+    {
+        public SchemaElementNameAttribute(string value) { }
+        public string Value { get { throw null; } }
+    }
+}
 namespace System.Web.UI.Design.WebControls
 {
-    public partial class AdRotatorDesigner : System.Web.UI.Design.ControlDesigner
+    public partial class AccessDataSourceDesigner : System.Web.UI.Design.WebControls.SqlDataSourceDesigner
+    {
+        public AccessDataSourceDesigner() { }
+        public string DataFile { get { throw null; } set { } }
+        protected override string GetConnectionString() { throw null; }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class AdRotatorDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
     {
         public AdRotatorDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
@@ -2862,38 +2958,53 @@ namespace System.Web.UI.Design.WebControls
     }
     public abstract partial class BaseDataListComponentEditor : System.Windows.Forms.Design.WindowsFormsComponentEditor
     {
-        public BaseDataListComponentEditor(int initial_page) { }
+        public BaseDataListComponentEditor(int initialPage) { }
         public override bool EditComponent(System.ComponentModel.ITypeDescriptorContext context, object obj, System.Windows.Forms.IWin32Window parent) { throw null; }
         protected override int GetInitialComponentEditorPageIndex() { throw null; }
     }
-    public abstract partial class BaseDataListDesigner : System.Web.UI.Design.TemplatedControlDesigner, System.Web.UI.Design.IDataSourceProvider
+    public abstract partial class BaseDataListDesigner : System.Web.UI.Design.TemplatedControlDesigner, System.Web.UI.Design.IDataBindingSchemaProvider, System.Web.UI.Design.IDataSourceProvider
     {
-        public BaseDataListDesigner() { }
+        protected BaseDataListDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
         public string DataKeyField { get { throw null; } set { } }
         public string DataMember { get { throw null; } set { } }
         public string DataSource { get { throw null; } set { } }
-        public override bool DesignTimeHtmlRequiresLoadComplete { get { throw null; } }
-        public override System.ComponentModel.Design.DesignerVerbCollection Verbs { get { throw null; } }
+        public System.Web.UI.Design.IDataSourceDesigner DataSourceDesigner { get { throw null; } }
+        public string DataSourceID { get { throw null; } set { } }
+        public System.Web.UI.Design.DesignerDataSourceView DesignerView { get { throw null; } }
+        bool System.Web.UI.Design.IDataBindingSchemaProvider.CanRefreshSchema { get { throw null; } }
+        System.Web.UI.Design.IDataSourceViewSchema System.Web.UI.Design.IDataBindingSchemaProvider.Schema { get { throw null; } }
         protected override void Dispose(bool disposing) { }
-        protected System.Collections.IEnumerable GetDesignTimeDataSource(System.Collections.IEnumerable selected_data_source, int minimum_rows, out bool dummy_data_source) { dummy_data_source = default(bool); throw null; }
-        protected System.Collections.IEnumerable GetDesignTimeDataSource(int minimum_rows, out bool dummy_data_source) { dummy_data_source = default(bool); throw null; }
-        public virtual System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
-        public virtual object GetSelectedDataSource() { throw null; }
-        public override System.Collections.IEnumerable GetTemplateContainerDataSource(string template_name) { throw null; }
+        protected System.Collections.IEnumerable GetDesignTimeDataSource(System.Collections.IEnumerable selectedDataSource, int minimumRows, out bool dummyDataSource) { dummyDataSource = default(bool); throw null; }
+        protected System.Collections.IEnumerable GetDesignTimeDataSource(int minimumRows, out bool dummyDataSource) { dummyDataSource = default(bool); throw null; }
+        public System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
+        public object GetSelectedDataSource() { throw null; }
+        public override System.Collections.IEnumerable GetTemplateContainerDataSource(string templateName) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        protected internal void InvokePropertyBuilder(int initial_page) { }
+        protected internal void InvokePropertyBuilder(int initialPage) { }
         protected void OnAutoFormat(object sender, System.EventArgs e) { }
+        public override void OnAutoFormatApplied(System.Web.UI.Design.DesignerAutoFormat appliedAutoFormat) { }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs e) { }
         protected internal virtual void OnDataSourceChanged() { }
         protected void OnPropertyBuilder(object sender, System.EventArgs e) { }
+        protected virtual void OnSchemaRefreshed() { }
         protected internal void OnStylesChanged() { }
         protected abstract void OnTemplateEditingVerbsChanged();
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        void System.Web.UI.Design.IDataBindingSchemaProvider.RefreshSchema(bool preferSilent) { }
     }
-    public partial class BaseValidatorDesigner : System.Web.UI.Design.ControlDesigner
+    public partial class BaseValidatorDesigner : System.Web.UI.Design.WebControls.PreviewControlDesigner
     {
         public BaseValidatorDesigner() { }
+        protected override System.Web.UI.Control CreateViewControl() { throw null; }
         public override string GetDesignTimeHtml() { throw null; }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class BulletedListDesigner : System.Web.UI.Design.WebControls.ListControlDesigner
+    {
+        public BulletedListDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override void PostFilterEvents(System.Collections.IDictionary events) { }
     }
     public partial class ButtonDesigner : System.Web.UI.Design.ControlDesigner
     {
@@ -2903,22 +3014,88 @@ namespace System.Web.UI.Design.WebControls
     public partial class CalendarAutoFormatDialog : System.Windows.Forms.Form
     {
         public CalendarAutoFormatDialog(System.Web.UI.WebControls.Calendar calendar) { }
+        protected void DoDelayLoadActions() { }
         protected void OnActivated(object source, System.EventArgs e) { }
-        protected void OnDelayLoadActions() { }
         protected void OnOKClicked(object source, System.EventArgs e) { }
         protected void OnSelChangedScheme(object source, System.EventArgs e) { }
+        protected void SaveComponent() { }
     }
     public partial class CalendarDesigner : System.Web.UI.Design.ControlDesigner
     {
         public CalendarDesigner() { }
-        public override System.ComponentModel.Design.DesignerVerbCollection Verbs { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected void OnAutoFormat(object sender, System.EventArgs e) { }
+    }
+    public partial class ChangePasswordDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public ChangePasswordDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override bool AllowResize { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public bool RenderOuterTable { get { throw null; } set { } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
     public partial class CheckBoxDesigner : System.Web.UI.Design.ControlDesigner
     {
         public CheckBoxDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
+    }
+    public partial class CompositeControlDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public CompositeControlDesigner() { }
+        protected virtual void CreateChildControls() { }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class ContentDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public ContentDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override bool AllowResize { get { throw null; } }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        public override string GetPersistenceContent() { throw null; }
+        protected override void PostFilterProperties(System.Collections.IDictionary properties) { }
+        protected override void PreFilterEvents(System.Collections.IDictionary events) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class ContentPlaceHolderDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public ContentPlaceHolderDesigner() { }
+        public override bool AllowResize { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        public override string GetPersistenceContent() { throw null; }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class CreateUserWizardDesigner : System.Web.UI.Design.WebControls.WizardDesigner
+    {
+        public CreateUserWizardDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override void AddDesignerRegions(System.Web.UI.Design.DesignerRegionCollection regions) { }
+        protected override void ConvertToCustomNavigationTemplate() { }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class CreateUserWizardStepCollectionEditor : System.Web.UI.Design.WebControls.WizardStepCollectionEditor
+    {
+        public CreateUserWizardStepCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override string HelpTopic { get { throw null; } }
+        protected override bool CanRemoveInstance(object value) { throw null; }
+        protected override System.ComponentModel.Design.CollectionEditor.CollectionForm CreateCollectionForm() { throw null; }
     }
     public partial class DataBoundControlDesigner : System.Web.UI.Design.WebControls.BaseDataBoundControlDesigner, System.Web.UI.Design.IDataBindingSchemaProvider, System.Web.UI.Design.IDataSourceProvider
     {
@@ -2963,12 +3140,82 @@ namespace System.Web.UI.Design.WebControls
         [System.MonoNotSupportedAttribute("")]
         object System.Web.UI.Design.IDataSourceProvider.GetSelectedDataSource() { throw null; }
     }
+    public abstract partial class DataControlFieldDesigner
+    {
+        protected DataControlFieldDesigner() { }
+        public abstract string DefaultNodeText { get; }
+        protected System.IServiceProvider ServiceProvider { get { throw null; } }
+        public abstract bool UsesSchema { get; }
+        public abstract System.Web.UI.WebControls.DataControlField CreateField();
+        public abstract System.Web.UI.WebControls.DataControlField CreateField(System.Web.UI.Design.IDataSourceFieldSchema fieldSchema);
+        public abstract System.Web.UI.WebControls.TemplateField CreateTemplateField(System.Web.UI.WebControls.DataControlField dataControlField, System.Web.UI.WebControls.DataBoundControl dataBoundControl);
+        protected string GetNewDataSourceName(System.Type controlType, System.Web.UI.WebControls.DataBoundControlMode mode) { throw null; }
+        public abstract string GetNodeText(System.Web.UI.WebControls.DataControlField dataControlField);
+        protected object GetService(System.Type serviceType) { throw null; }
+        protected System.Web.UI.ITemplate GetTemplate(System.Web.UI.WebControls.DataBoundControl control, string templateContent) { throw null; }
+        protected System.Web.UI.WebControls.TemplateField GetTemplateField(System.Web.UI.WebControls.DataControlField dataControlField, System.Web.UI.WebControls.DataBoundControl dataBoundControl) { throw null; }
+        public abstract bool IsEnabled(System.Web.UI.WebControls.DataBoundControl parent);
+    }
+    public partial class DataControlFieldTypeEditor : System.Drawing.Design.UITypeEditor
+    {
+        public DataControlFieldTypeEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class DataGridColumnCollectionEditor : System.Drawing.Design.UITypeEditor
+    {
+        public DataGridColumnCollectionEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class DataGridComponentEditor : System.Web.UI.Design.WebControls.BaseDataListComponentEditor
+    {
+        public DataGridComponentEditor() : base (default(int)) { }
+        public DataGridComponentEditor(int initialPage) : base (default(int)) { }
+        protected override System.Type[] GetComponentEditorPages() { throw null; }
+    }
+    public partial class DataGridDesigner : System.Web.UI.Design.WebControls.BaseDataListDesigner
+    {
+        public DataGridDesigner() { }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected override System.Web.UI.Design.ITemplateEditingFrame CreateTemplateEditingFrame(System.Web.UI.Design.TemplateEditingVerb verb) { throw null; }
+        protected override void Dispose(bool disposing) { }
+        protected override System.Web.UI.Design.TemplateEditingVerb[] GetCachedTemplateEditingVerbs() { throw null; }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override string GetTemplateContainerDataItemProperty(string templateName) { throw null; }
+        public override string GetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, out bool allowEditing) { allowEditing = default(bool); throw null; }
+        public override System.Type GetTemplatePropertyParentType(string templateName) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        public virtual void OnColumnsChanged() { }
+        protected override void OnTemplateEditingVerbsChanged() { }
+        public override void SetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, string templateContent) { }
+    }
     public partial class DataListComponentEditor : System.Web.UI.Design.WebControls.BaseDataListComponentEditor
     {
         public DataListComponentEditor() : base (default(int)) { }
-        public DataListComponentEditor(int initial_page) : base (default(int)) { }
-        public override bool EditComponent(System.ComponentModel.ITypeDescriptorContext context, object obj, System.Windows.Forms.IWin32Window parent) { throw null; }
+        public DataListComponentEditor(int initialPage) : base (default(int)) { }
         protected override System.Type[] GetComponentEditorPages() { throw null; }
+    }
+    public partial class DataListDesigner : System.Web.UI.Design.WebControls.BaseDataListDesigner
+    {
+        public DataListDesigner() { }
+        public override bool AllowResize { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected bool TemplatesExist { get { throw null; } }
+        protected override System.Web.UI.Design.ITemplateEditingFrame CreateTemplateEditingFrame(System.Web.UI.Design.TemplateEditingVerb verb) { throw null; }
+        protected override void Dispose(bool disposing) { }
+        protected override System.Web.UI.Design.TemplateEditingVerb[] GetCachedTemplateEditingVerbs() { throw null; }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override string GetTemplateContainerDataItemProperty(string templateName) { throw null; }
+        public override string GetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, out bool allowEditing) { allowEditing = default(bool); throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void OnSchemaRefreshed() { }
+        protected override void OnTemplateEditingVerbsChanged() { }
+        public override void SetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, string templateContent) { }
     }
     public partial class DataProviderNameConverter : System.ComponentModel.StringConverter
     {
@@ -2988,6 +3235,68 @@ namespace System.Web.UI.Design.WebControls
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         protected virtual bool IsValidDataSource(System.ComponentModel.IComponent component) { throw null; }
     }
+    public partial class DetailsViewDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
+    {
+        public DetailsViewDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected override int SampleRowCount { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl) { }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void OnClick(System.Web.UI.Design.DesignerRegionMouseEventArgs e) { }
+        protected override void OnSchemaRefreshed() { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class EmbeddedMailObjectCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public EmbeddedMailObjectCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+    }
+    public partial class FormViewDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
+    {
+        public FormViewDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public bool RenderOuterTable { get { throw null; } set { } }
+        protected override int SampleRowCount { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void OnSchemaRefreshed() { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class GridViewDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
+    {
+        public GridViewDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected override int SampleRowCount { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl) { }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void OnClick(System.Web.UI.Design.DesignerRegionMouseEventArgs e) { }
+        protected override void OnSchemaRefreshed() { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class HiddenFieldDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public HiddenFieldDesigner() { }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
     public partial class HierarchicalDataBoundControlDesigner : System.Web.UI.Design.WebControls.BaseDataBoundControlDesigner
     {
         public HierarchicalDataBoundControlDesigner() { }
@@ -3003,14 +3312,28 @@ namespace System.Web.UI.Design.WebControls
         protected virtual System.Web.UI.IHierarchicalEnumerable GetSampleDataSource() { throw null; }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    public partial class HierarchicalDataSourceIDConverter : System.Web.UI.Design.WebControls.DataSourceIDConverter
+    {
+        public HierarchicalDataSourceIDConverter() { }
+        protected override bool IsValidDataSource(System.ComponentModel.IComponent component) { throw null; }
+    }
+    public partial class HotSpotCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public HotSpotCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override string HelpTopic { get { throw null; } }
+        protected override bool CanSelectMultipleInstances() { throw null; }
+        protected override System.Type[] CreateNewItemTypes() { throw null; }
+    }
     public partial class HyperLinkDesigner : System.Web.UI.Design.TextControlDesigner
     {
         public HyperLinkDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
+        public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
     }
     public partial class LabelDesigner : System.Web.UI.Design.TextControlDesigner
     {
         public LabelDesigner() { }
+        public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
     }
     public partial class LinkButtonDesigner : System.Web.UI.Design.TextControlDesigner
     {
@@ -3019,44 +3342,223 @@ namespace System.Web.UI.Design.WebControls
     public partial class ListControlDataBindingHandler : System.Web.UI.Design.DataBindingHandler
     {
         public ListControlDataBindingHandler() { }
-        public override void DataBindControl(System.ComponentModel.Design.IDesignerHost designer_host, System.Web.UI.Control control) { }
+        public override void DataBindControl(System.ComponentModel.Design.IDesignerHost designerHost, System.Web.UI.Control control) { }
     }
     public partial class ListControlDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
     {
         public ListControlDesigner() { }
         public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
-        public string DataKeyField { get { throw null; } set { } }
-        public new string DataMember { get { throw null; } set { } }
-        public new string DataSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string DataTextField { get { throw null; } set { } }
         public string DataValueField { get { throw null; } set { } }
         protected override bool UseDataSourcePickerActionList { get { throw null; } }
         protected override void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl) { }
         public override string GetDesignTimeHtml() { throw null; }
-        public virtual System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
-        public virtual object GetSelectedDataSource() { throw null; }
+        public System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
+        public object GetSelectedDataSource() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        public virtual void OnDataSourceChanged() { }
+        protected override void OnDataSourceChanged(bool forceUpdateView) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class ListItemsCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public ListItemsCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override string HelpTopic { get { throw null; } }
+        protected override bool CanSelectMultipleInstances() { throw null; }
+    }
+    public partial class LiteralDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public LiteralDesigner() { }
+        public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
+    }
+    public partial class LoginDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
+    {
+        public LoginDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override bool AllowResize { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public bool RenderOuterTable { get { throw null; } set { } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class LoginNameDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public LoginNameDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+    }
+    public partial class LoginStatusDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
+    {
+        public LoginStatusDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class LoginViewDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public LoginViewDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs e) { }
-        protected internal virtual void OnDataSourceChanged() { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class MailDefinitionBodyFileNameEditor : System.Web.UI.Design.UrlEditor
+    {
+        public MailDefinitionBodyFileNameEditor() { }
+        protected override string Caption { get { throw null; } }
+        protected override string Filter { get { throw null; } }
+    }
+    public partial class MenuBindingsEditor : System.Drawing.Design.UITypeEditor
+    {
+        public MenuBindingsEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class MenuDesigner : System.Web.UI.Design.WebControls.HierarchicalDataBoundControlDesigner, System.Web.UI.Design.IDataBindingSchemaProvider
+    {
+        public MenuDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected bool CanRefreshSchema { get { throw null; } }
+        protected System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
+        bool System.Web.UI.Design.IDataBindingSchemaProvider.CanRefreshSchema { get { throw null; } }
+        System.Web.UI.Design.IDataSourceViewSchema System.Web.UI.Design.IDataBindingSchemaProvider.Schema { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl) { }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        protected override System.Web.UI.IHierarchicalEnumerable GetSampleDataSource() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected void RefreshSchema(bool preferSilent) { }
+        void System.Web.UI.Design.IDataBindingSchemaProvider.RefreshSchema(bool preferSilent) { }
+    }
+    public partial class MenuItemCollectionEditor : System.Drawing.Design.UITypeEditor
+    {
+        public MenuItemCollectionEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class MenuItemStyleCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public MenuItemStyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override bool CanSelectMultipleInstances() { throw null; }
+        protected override System.ComponentModel.Design.CollectionEditor.CollectionForm CreateCollectionForm() { throw null; }
+        protected override object CreateInstance(System.Type itemType) { throw null; }
+        protected override System.Type[] CreateNewItemTypes() { throw null; }
+    }
+    public partial class MultiViewDesigner : System.Web.UI.Design.ContainerControlDesigner
+    {
+        public MultiViewDesigner() { }
+        protected override bool NoWrap { get { throw null; } }
+    }
+    public partial class ObjectDataSourceDesigner : System.Web.UI.Design.DataSourceDesigner
+    {
+        public ObjectDataSourceDesigner() { }
+        public override bool CanConfigure { get { throw null; } }
+        public override bool CanRefreshSchema { get { throw null; } }
+        public string SelectMethod { get { throw null; } set { } }
+        public string TypeName { get { throw null; } set { } }
+        public override void Configure() { }
+        public override System.Web.UI.Design.DesignerDataSourceView GetView(string viewName) { throw null; }
+        public override string[] GetViewNames() { throw null; }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void RefreshSchema(bool preferSilent) { }
+    }
+    public partial class ObjectDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
+    {
+        public ObjectDesignerDataSourceView(System.Web.UI.Design.WebControls.ObjectDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
+        public override bool CanDelete { get { throw null; } }
+        public override bool CanInsert { get { throw null; } }
+        public override bool CanPage { get { throw null; } }
+        public override bool CanRetrieveTotalRowCount { get { throw null; } }
+        public override bool CanSort { get { throw null; } }
+        public override bool CanUpdate { get { throw null; } }
+        public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
+        public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
+    }
+    public partial class PanelContainerDesigner : System.Web.UI.Design.ContainerControlDesigner
+    {
+        public PanelContainerDesigner() { }
+        public override string FrameCaption { get { throw null; } }
+        public override System.Web.UI.WebControls.Style FrameStyle { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected override void AddDesignTimeCssAttributes(System.Collections.IDictionary styleAttributes) { }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
     }
     public partial class PanelDesigner : System.Web.UI.Design.ReadWriteControlDesigner
     {
         public PanelDesigner() { }
-        protected override void MapPropertyToStyle(string name, object value) { }
+        protected override void MapPropertyToStyle(string propName, object varPropValue) { }
         protected override void OnBehaviorAttached() { }
+    }
+    public partial class ParameterCollectionEditor : System.Drawing.Design.UITypeEditor
+    {
+        public ParameterCollectionEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class ParameterEditorUserControl : System.Windows.Forms.UserControl
+    {
+        public ParameterEditorUserControl(System.IServiceProvider serviceProvider) { }
+        public bool ParametersConfigured { get { throw null; } }
+        public System.ComponentModel.TypeDescriptionProvider TypeDescriptionProvider { get { throw null; } }
+        public event System.EventHandler ParametersChanged { add { } remove { } }
+        public void AddParameters(System.Web.UI.WebControls.Parameter[] parameters) { }
+        public void ClearParameters() { }
+        public System.Web.UI.WebControls.Parameter[] GetParameters() { throw null; }
+        protected virtual void OnParametersChanged(object sender, System.EventArgs e) { }
+        public void SetAllowCollectionChanges(bool allowChanges) { }
+    }
+    public partial class PasswordRecoveryDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public PasswordRecoveryDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override bool AllowResize { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public bool RenderOuterTable { get { throw null; } set { } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class PreviewControlDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public PreviewControlDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
     }
     public partial class RegexEditorDialog : System.Windows.Forms.Form
     {
-        public RegexEditorDialog() { }
+        public RegexEditorDialog(System.ComponentModel.ISite site) { }
         public string RegularExpression { get { throw null; } set { } }
-        protected void CmdHelp_Click(object sender, System.EventArgs e) { }
-        protected void CmdOK_Click(object sender, System.EventArgs e) { }
-        protected void CmdTestValidate_Click(object sender, System.EventArgs e) { }
+        protected void cmdHelp_Click(object sender, System.EventArgs e) { }
+        protected void cmdOK_Click(object sender, System.EventArgs e) { }
+        protected void cmdTestValidate_Click(object sender, System.EventArgs args) { }
         protected override void Dispose(bool disposing) { }
-        protected void LstStandardExpressions_SelectedIndexChanged(object sender, System.EventArgs e) { }
+        protected void lstStandardExpressions_SelectedIndexChanged(object sender, System.EventArgs e) { }
         protected void RegexTypeEditor_Activated(object sender, System.EventArgs e) { }
-        protected void TxtExpression_Changed(object sender, System.EventArgs e) { }
+        protected void txtExpression_TextChanged(object sender, System.EventArgs e) { }
     }
     public partial class RegexTypeEditor : System.Drawing.Design.UITypeEditor
     {
@@ -3067,39 +3569,267 @@ namespace System.Web.UI.Design.WebControls
     public partial class RepeaterDesigner : System.Web.UI.Design.ControlDesigner, System.Web.UI.Design.IDataSourceProvider
     {
         public RepeaterDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
         public string DataMember { get { throw null; } set { } }
         public string DataSource { get { throw null; } set { } }
+        public System.Web.UI.Design.IDataSourceDesigner DataSourceDesigner { get { throw null; } }
+        public string DataSourceID { get { throw null; } set { } }
+        public System.Web.UI.Design.DesignerDataSourceView DesignerView { get { throw null; } }
         protected bool TemplatesExist { get { throw null; } }
         protected override void Dispose(bool disposing) { }
-        protected System.Collections.IEnumerable GetDesignTimeDataSource(System.Collections.IEnumerable selected_data_source, int minimum_rows) { throw null; }
-        protected System.Collections.IEnumerable GetDesignTimeDataSource(int minimum_rows) { throw null; }
+        protected virtual void ExecuteChooseDataSourcePostSteps() { }
+        protected System.Collections.IEnumerable GetDesignTimeDataSource(System.Collections.IEnumerable selectedDataSource, int minimumRows) { throw null; }
+        protected System.Collections.IEnumerable GetDesignTimeDataSource(int minimumRows) { throw null; }
         public override string GetDesignTimeHtml() { throw null; }
         protected override string GetEmptyDesignTimeHtml() { throw null; }
         protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
-        public virtual System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
-        public virtual object GetSelectedDataSource() { throw null; }
+        public System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
+        public object GetSelectedDataSource() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        public override void OnComponentChanged(object source, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
+        public virtual void OnDataSourceChanged() { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class RoleGroupCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public RoleGroupCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override bool CanSelectMultipleInstances() { throw null; }
+    }
+    public partial class SiteMapDataSourceDesigner : System.Web.UI.Design.HierarchicalDataSourceDesigner, System.Web.UI.Design.IDataSourceDesigner
+    {
+        public SiteMapDataSourceDesigner() { }
+        public override bool CanRefreshSchema { get { throw null; } }
+        bool System.Web.UI.Design.IDataSourceDesigner.CanConfigure { get { throw null; } }
+        bool System.Web.UI.Design.IDataSourceDesigner.CanRefreshSchema { get { throw null; } }
+        event System.EventHandler System.Web.UI.Design.IDataSourceDesigner.DataSourceChanged { add { } remove { } }
+        event System.EventHandler System.Web.UI.Design.IDataSourceDesigner.SchemaRefreshed { add { } remove { } }
+        public override System.Web.UI.Design.DesignerHierarchicalDataSourceView GetView(string viewPath) { throw null; }
+        public virtual string[] GetViewNames() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs e) { }
-        protected internal virtual void OnDataSourceChanged() { }
+        public override void RefreshSchema(bool preferSilent) { }
+        void System.Web.UI.Design.IDataSourceDesigner.Configure() { }
+        System.Web.UI.Design.DesignerDataSourceView System.Web.UI.Design.IDataSourceDesigner.GetView(string viewName) { throw null; }
+        string[] System.Web.UI.Design.IDataSourceDesigner.GetViewNames() { throw null; }
+        void System.Web.UI.Design.IDataSourceDesigner.RefreshSchema(bool preferSilent) { }
+        void System.Web.UI.Design.IDataSourceDesigner.ResumeDataSourceEvents() { }
+        void System.Web.UI.Design.IDataSourceDesigner.SuppressDataSourceEvents() { }
+    }
+    public partial class SiteMapDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
+    {
+        public SiteMapDesignerDataSourceView(System.Web.UI.Design.WebControls.SiteMapDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
+        public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
+        public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
+    }
+    public partial class SiteMapDesignerHierarchicalDataSourceView : System.Web.UI.Design.DesignerHierarchicalDataSourceView
+    {
+        public SiteMapDesignerHierarchicalDataSourceView(System.Web.UI.Design.WebControls.SiteMapDataSourceDesigner owner, string viewPath) : base (default(System.Web.UI.Design.IHierarchicalDataSourceDesigner), default(string)) { }
+        public override System.Web.UI.Design.IDataSourceSchema Schema { get { throw null; } }
+        public override System.Web.UI.IHierarchicalEnumerable GetDesignTimeData(out bool isSampleData) { isSampleData = default(bool); throw null; }
+    }
+    public partial class SiteMapPathDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public SiteMapPathDesigner() { }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class SqlDataSourceConnectionStringEditor : System.Web.UI.Design.ConnectionStringEditor
+    {
+        public SqlDataSourceConnectionStringEditor() { }
+        protected override string GetProviderName(object instance) { throw null; }
+        protected override void SetProviderName(object instance, System.ComponentModel.Design.Data.DesignerDataConnection connection) { }
+    }
+    public partial class SqlDataSourceDesigner : System.Web.UI.Design.DataSourceDesigner
+    {
+        public SqlDataSourceDesigner() { }
+        public override bool CanConfigure { get { throw null; } }
+        public override bool CanRefreshSchema { get { throw null; } }
+        public string ConnectionString { get { throw null; } set { } }
+        public System.Web.UI.DataSourceOperation DeleteQuery { get { throw null; } set { } }
+        public System.Web.UI.DataSourceOperation InsertQuery { get { throw null; } set { } }
+        public string ProviderName { get { throw null; } set { } }
+        public string SelectCommand { get { throw null; } set { } }
+        public System.Web.UI.DataSourceOperation SelectQuery { get { throw null; } set { } }
+        public System.Web.UI.DataSourceOperation UpdateQuery { get { throw null; } set { } }
+        public override void Configure() { }
+        protected virtual System.Web.UI.Design.WebControls.SqlDesignerDataSourceView CreateView(string viewName) { throw null; }
+        protected virtual void DeriveParameters(string providerName, System.Data.Common.DbCommand command) { }
+        protected virtual string GetConnectionString() { throw null; }
+        public override System.Web.UI.Design.DesignerDataSourceView GetView(string viewName) { throw null; }
+        public override string[] GetViewNames() { throw null; }
+        protected internal virtual System.Web.UI.WebControls.Parameter[] InferParameterNames(System.ComponentModel.Design.Data.DesignerDataConnection connection, string commandText, System.Web.UI.WebControls.SqlDataSourceCommandType commandType) { throw null; }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void RefreshSchema(bool preferSilent) { }
+    }
+    public partial class SqlDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
+    {
+        public SqlDesignerDataSourceView(System.Web.UI.Design.WebControls.SqlDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
+        public override bool CanDelete { get { throw null; } }
+        public override bool CanInsert { get { throw null; } }
+        public override bool CanPage { get { throw null; } }
+        public override bool CanRetrieveTotalRowCount { get { throw null; } }
+        public override bool CanSort { get { throw null; } }
+        public override bool CanUpdate { get { throw null; } }
+        public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
+        public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
+    }
+    public partial class StyleCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public StyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override object CreateInstance(System.Type itemType) { throw null; }
+    }
+    public partial class SubMenuStyleCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public SubMenuStyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override bool CanSelectMultipleInstances() { throw null; }
+        protected override System.ComponentModel.Design.CollectionEditor.CollectionForm CreateCollectionForm() { throw null; }
+        protected override object CreateInstance(System.Type itemType) { throw null; }
+        protected override System.Type[] CreateNewItemTypes() { throw null; }
+    }
+    public partial class SubstitutionDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public SubstitutionDesigner() { }
+        public override string GetDesignTimeHtml() { throw null; }
     }
     public partial class TableCellsCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public TableCellsCollectionEditor(System.Type type) : base (default(System.Type)) { }
         protected override bool CanSelectMultipleInstances() { throw null; }
-        protected override object CreateInstance(System.Type item_type) { throw null; }
+        protected override object CreateInstance(System.Type itemType) { throw null; }
     }
     public partial class TableDesigner : System.Web.UI.Design.ControlDesigner
     {
         public TableDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
-        public override string GetPersistInnerHtml() { throw null; }
     }
     public partial class TableRowsCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public TableRowsCollectionEditor(System.Type type) : base (default(System.Type)) { }
         protected override bool CanSelectMultipleInstances() { throw null; }
-        protected override object CreateInstance(System.Type item_type) { throw null; }
+        protected override object CreateInstance(System.Type itemType) { throw null; }
+    }
+    public partial class TreeNodeBindingDepthConverter : System.ComponentModel.Int32Converter
+    {
+        public TreeNodeBindingDepthConverter() { }
+        public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
+        public override object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, System.Type destinationType) { throw null; }
+    }
+    public partial class TreeNodeCollectionEditor : System.Drawing.Design.UITypeEditor
+    {
+        public TreeNodeCollectionEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class TreeNodeStyleCollectionEditor : System.Web.UI.Design.WebControls.StyleCollectionEditor
+    {
+        public TreeNodeStyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override System.Type CreateCollectionItemType() { throw null; }
+    }
+    public partial class TreeViewBindingsEditor : System.Drawing.Design.UITypeEditor
+    {
+        public TreeViewBindingsEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public partial class TreeViewDesigner : System.Web.UI.Design.WebControls.HierarchicalDataBoundControlDesigner
+    {
+        public TreeViewDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected void CreateLineImages() { }
+        protected override void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl) { }
+        protected void EditBindings() { }
+        protected void EditNodes() { }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        protected override System.Web.UI.IHierarchicalEnumerable GetSampleDataSource() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class ValidationSummaryDesigner : System.Web.UI.Design.WebControls.PreviewControlDesigner
+    {
+        public ValidationSummaryDesigner() { }
+        protected override System.Web.UI.Control CreateViewControl() { throw null; }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class ViewDesigner : System.Web.UI.Design.ContainerControlDesigner
+    {
+        public ViewDesigner() { }
+        protected override bool NoWrap { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class WizardDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
+    {
+        public WizardDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        protected bool DisplaySideBar { get { throw null; } set { } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        protected override bool UsePreviewControl { get { throw null; } }
+        protected virtual void AddDesignerRegions(System.Web.UI.Design.DesignerRegionCollection regions) { }
+        protected virtual void ConvertToCustomNavigationTemplate() { }
+        protected void ConvertToTemplate(string description, System.ComponentModel.IComponent component, string templateName, string[] keys) { }
+        protected override void CreateChildControls() { }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void OnClick(System.Web.UI.Design.DesignerRegionMouseEventArgs e) { }
+        public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        protected void ResetTemplate(string description, System.ComponentModel.IComponent component, string templateName) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class WizardStepCollectionEditor : System.ComponentModel.Design.CollectionEditor
+    {
+        public WizardStepCollectionEditor(System.Type type) : base (default(System.Type)) { }
+        protected override bool CanSelectMultipleInstances() { throw null; }
+        protected override System.ComponentModel.Design.CollectionEditor.CollectionForm CreateCollectionForm() { throw null; }
+        protected override object CreateInstance(System.Type itemType) { throw null; }
+        protected override System.Type[] CreateNewItemTypes() { throw null; }
+    }
+    public partial class WizardStepEditableRegion : System.Web.UI.Design.EditableDesignerRegion
+    {
+        public WizardStepEditableRegion(System.Web.UI.Design.WebControls.WizardDesigner designer, System.Web.UI.WebControls.WizardStepBase wizardStep) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
+        public System.Web.UI.WebControls.WizardStepBase Step { get { throw null; } }
+    }
+    public partial class WizardStepTemplatedEditableRegion : System.Web.UI.Design.TemplatedEditableDesignerRegion
+    {
+        public WizardStepTemplatedEditableRegion(System.Web.UI.Design.TemplateDefinition templateDefinition, System.Web.UI.WebControls.WizardStepBase wizardStep) : base (default(System.Web.UI.Design.TemplateDefinition)) { }
+        public System.Web.UI.WebControls.WizardStepBase Step { get { throw null; } }
+    }
+    public partial class XmlDataSourceDesigner : System.Web.UI.Design.HierarchicalDataSourceDesigner, System.Web.UI.Design.IDataSourceDesigner
+    {
+        public XmlDataSourceDesigner() { }
+        public override bool CanConfigure { get { throw null; } }
+        public override bool CanRefreshSchema { get { throw null; } }
+        public string Data { get { throw null; } set { } }
+        public string DataFile { get { throw null; } set { } }
+        bool System.Web.UI.Design.IDataSourceDesigner.CanConfigure { get { throw null; } }
+        bool System.Web.UI.Design.IDataSourceDesigner.CanRefreshSchema { get { throw null; } }
+        public string Transform { get { throw null; } set { } }
+        public string TransformFile { get { throw null; } set { } }
+        public string XPath { get { throw null; } set { } }
+        event System.EventHandler System.Web.UI.Design.IDataSourceDesigner.DataSourceChanged { add { } remove { } }
+        event System.EventHandler System.Web.UI.Design.IDataSourceDesigner.SchemaRefreshed { add { } remove { } }
+        public override void Configure() { }
+        public override System.Web.UI.Design.DesignerHierarchicalDataSourceView GetView(string viewPath) { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+        public override void RefreshSchema(bool preferSilent) { }
+        void System.Web.UI.Design.IDataSourceDesigner.Configure() { }
+        System.Web.UI.Design.DesignerDataSourceView System.Web.UI.Design.IDataSourceDesigner.GetView(string viewName) { throw null; }
+        string[] System.Web.UI.Design.IDataSourceDesigner.GetViewNames() { throw null; }
+        void System.Web.UI.Design.IDataSourceDesigner.RefreshSchema(bool preferSilent) { }
+        void System.Web.UI.Design.IDataSourceDesigner.ResumeDataSourceEvents() { }
+        void System.Web.UI.Design.IDataSourceDesigner.SuppressDataSourceEvents() { }
     }
     public partial class XmlDesigner : System.Web.UI.Design.ControlDesigner
     {
@@ -3107,6 +3837,137 @@ namespace System.Web.UI.Design.WebControls
         protected override void Dispose(bool disposing) { }
         public override string GetDesignTimeHtml() { throw null; }
         protected override string GetEmptyDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class XmlDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
+    {
+        public XmlDesignerDataSourceView(System.Web.UI.Design.WebControls.XmlDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
+        public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
+        public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
+    }
+    public partial class XmlDesignerHierarchicalDataSourceView : System.Web.UI.Design.DesignerHierarchicalDataSourceView
+    {
+        public XmlDesignerHierarchicalDataSourceView(System.Web.UI.Design.WebControls.XmlDataSourceDesigner owner, string viewPath) : base (default(System.Web.UI.Design.IHierarchicalDataSourceDesigner), default(string)) { }
+        public override System.Web.UI.Design.IDataSourceSchema Schema { get { throw null; } }
+        public override System.Web.UI.IHierarchicalEnumerable GetDesignTimeData(out bool isSampleData) { isSampleData = default(bool); throw null; }
+    }
+}
+namespace System.Web.UI.Design.WebControls.WebParts
+{
+    public partial class CatalogPartDesigner : System.Web.UI.Design.WebControls.WebParts.PartDesigner
+    {
+        public CatalogPartDesigner() { }
+        protected override System.Web.UI.Control CreateViewControl() { throw null; }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class CatalogZoneDesigner : System.Web.UI.Design.WebControls.WebParts.ToolZoneDesigner
+    {
+        public CatalogZoneDesigner() { }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class ConnectionsZoneDesigner : System.Web.UI.Design.WebControls.WebParts.ToolZoneDesigner
+    {
+        public ConnectionsZoneDesigner() { }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class DeclarativeCatalogPartDesigner : System.Web.UI.Design.WebControls.WebParts.CatalogPartDesigner
+    {
+        public DeclarativeCatalogPartDesigner() { }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class EditorPartDesigner : System.Web.UI.Design.WebControls.WebParts.PartDesigner
+    {
+        public EditorPartDesigner() { }
+        protected override System.Web.UI.Control CreateViewControl() { throw null; }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class EditorZoneDesigner : System.Web.UI.Design.WebControls.WebParts.ToolZoneDesigner
+    {
+        public EditorZoneDesigner() { }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public partial class PageCatalogPartDesigner : System.Web.UI.Design.WebControls.WebParts.CatalogPartDesigner
+    {
+        public PageCatalogPartDesigner() { }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public abstract partial class PartDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
+    {
+        internal PartDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class ProxyWebPartManagerDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public ProxyWebPartManagerDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class ToolZoneDesigner : System.Web.UI.Design.WebControls.WebParts.WebZoneDesigner
+    {
+        public ToolZoneDesigner() { }
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        protected bool ViewInBrowseMode { get { throw null; } }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class WebPartDesigner : System.Web.UI.Design.WebControls.WebParts.PartDesigner
+    {
+        public WebPartDesigner() { }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class WebPartManagerDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        public WebPartManagerDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+    }
+    public partial class WebPartZoneBaseDesigner : System.Web.UI.Design.WebControls.WebParts.WebZoneDesigner
+    {
+        public WebPartZoneBaseDesigner() { }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
+    }
+    public partial class WebPartZoneDesigner : System.Web.UI.Design.WebControls.WebParts.WebPartZoneBaseDesigner
+    {
+        public WebPartZoneDesigner() { }
+        public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
+        public override string GetDesignTimeHtml() { throw null; }
+        public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
+        public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
+        protected override string GetEmptyDesignTimeHtml() { throw null; }
+        public override void Initialize(System.ComponentModel.IComponent component) { }
+        public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
+    }
+    public abstract partial class WebZoneDesigner : System.Web.UI.Design.ControlDesigner
+    {
+        internal WebZoneDesigner() { }
+        protected override bool UsePreviewControl { get { throw null; } }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
 }
@@ -3150,6 +4011,7 @@ namespace System.Windows.Forms.Design
             public bool delaySign;
             [System.MonoTODOAttribute]
             public bool genSources;
+            public bool ignoreRegisteredOcx;
             [System.MonoTODOAttribute]
             public string keyContainer;
             [System.MonoTODOAttribute]
@@ -3273,7 +4135,7 @@ namespace System.Windows.Forms.Design
         public System.Drawing.Point GetLocation(System.ComponentModel.IComponent receiver) { throw null; }
         [System.MonoTODOAttribute]
         public System.ComponentModel.IComponent GetNextComponent(System.ComponentModel.IComponent component, bool forward) { throw null; }
-        protected override object GetService(System.Type service) { throw null; }
+        protected override object GetService(System.Type serviceType) { throw null; }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.CategoryAttribute("Layout")]
         [System.ComponentModel.DesignOnlyAttribute(true)]
@@ -3327,7 +4189,7 @@ namespace System.Windows.Forms.Design
         public override System.Collections.ICollection AssociatedComponents { get { throw null; } }
         [System.MonoTODOAttribute]
         public bool AutoResizeHandles { get { throw null; } set { } }
-        protected internal System.Windows.Forms.Design.Behavior.BehaviorService BehaviorService { get { throw null; } }
+        protected System.Windows.Forms.Design.Behavior.BehaviorService BehaviorService { get { throw null; } }
         public virtual System.Windows.Forms.Control Control { get { throw null; } }
         protected virtual bool EnableDragRect { get { throw null; } }
         [System.MonoTODOAttribute]
@@ -3350,7 +4212,7 @@ namespace System.Windows.Forms.Design
         [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.Design.Behavior.GlyphCollection GetGlyphs(System.Windows.Forms.Design.Behavior.GlyphSelectionType selectionType) { throw null; }
         protected virtual bool GetHitTest(System.Drawing.Point point) { throw null; }
-        protected void HookChildControls(System.Windows.Forms.Control firstControl) { }
+        protected void HookChildControls(System.Windows.Forms.Control firstChild) { }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         [System.MonoTODOAttribute]
         public override void InitializeExistingComponent(System.Collections.IDictionary defaultValues) { }
@@ -3362,10 +4224,10 @@ namespace System.Windows.Forms.Design
         protected virtual void OnCreateHandle() { }
         [System.MonoTODOAttribute]
         protected virtual void OnDragComplete(System.Windows.Forms.DragEventArgs de) { }
-        protected virtual void OnDragDrop(System.Windows.Forms.DragEventArgs e) { }
-        protected virtual void OnDragEnter(System.Windows.Forms.DragEventArgs e) { }
+        protected virtual void OnDragDrop(System.Windows.Forms.DragEventArgs de) { }
+        protected virtual void OnDragEnter(System.Windows.Forms.DragEventArgs de) { }
         protected virtual void OnDragLeave(System.EventArgs e) { }
-        protected virtual void OnDragOver(System.Windows.Forms.DragEventArgs e) { }
+        protected virtual void OnDragOver(System.Windows.Forms.DragEventArgs de) { }
         protected virtual void OnGiveFeedback(System.Windows.Forms.GiveFeedbackEventArgs e) { }
         protected virtual void OnMouseDragBegin(int x, int y) { }
         protected virtual void OnMouseDragEnd(bool cancel) { }
@@ -3377,7 +4239,7 @@ namespace System.Windows.Forms.Design
         public override void OnSetComponentDefaults() { }
         protected virtual void OnSetCursor() { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
-        protected void UnhookChildControls(System.Windows.Forms.Control firstControl) { }
+        protected void UnhookChildControls(System.Windows.Forms.Control firstChild) { }
         protected virtual void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ControlDesignerAccessibleObject : System.Windows.Forms.AccessibleObject
@@ -3447,7 +4309,7 @@ namespace System.Windows.Forms.Design
         public override System.Windows.Forms.Design.SelectionRules SelectionRules { get { throw null; } }
         System.ComponentModel.Design.ViewTechnology[] System.ComponentModel.Design.IRootDesigner.SupportedTechnologies { get { throw null; } }
         protected override void Dispose(bool disposing) { }
-        protected virtual void EnsureMenuEditorService(System.ComponentModel.IComponent component) { }
+        protected virtual void EnsureMenuEditorService(System.ComponentModel.IComponent c) { }
         public override System.Windows.Forms.Design.Behavior.GlyphCollection GetGlyphs(System.Windows.Forms.Design.Behavior.GlyphSelectionType selectionType) { throw null; }
         protected virtual bool GetToolSupported(System.Drawing.Design.ToolboxItem tool) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
@@ -3459,15 +4321,6 @@ namespace System.Windows.Forms.Design
         void System.Drawing.Design.IToolboxUser.ToolPicked(System.Drawing.Design.ToolboxItem tool) { }
         protected virtual void ToolPicked(System.Drawing.Design.ToolboxItem tool) { }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
-        public partial class DesignerViewFrame : System.Windows.Forms.UserControl
-        {
-            public DesignerViewFrame(System.Windows.Forms.Control designedControl, System.Windows.Forms.Design.ComponentTray tray) { }
-            public System.Windows.Forms.Design.ComponentTray ComponentTray { get { throw null; } set { } }
-            public System.Windows.Forms.Control DesignedControl { get { throw null; } set { } }
-            protected override void Dispose(bool disposing) { }
-            public void HideComponentTray() { }
-            public void ShowComponentTray() { }
-        }
     }
     public sealed partial class EventHandlerService
     {
@@ -3537,6 +4390,10 @@ namespace System.Windows.Forms.Design
             ShowTextBox = 16,
         }
     }
+    public partial interface IContainsThemedScrollbarWindows
+    {
+        System.Collections.IEnumerable ThemedScrollbarWindows();
+    }
     public partial class ImageListCodeDomSerializer : System.ComponentModel.Design.Serialization.CodeDomSerializer
     {
         public ImageListCodeDomSerializer() { }
@@ -3544,6 +4401,15 @@ namespace System.Windows.Forms.Design
         public override object Deserialize(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object codeObject) { throw null; }
         [System.MonoTODOAttribute]
         public override object Serialize(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
+    }
+    public partial class ImageListImageEditor : System.Drawing.Design.ImageEditor
+    {
+        public ImageListImageEditor() { }
+        public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
+        protected override string GetFileDialogDescription() { throw null; }
+        protected override System.Type[] GetImageExtenders() { throw null; }
+        public override bool GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+        public override void PaintValue(System.Drawing.Design.PaintValueEventArgs e) { }
     }
     public partial interface IMenuEditorService
     {
@@ -3631,8 +4497,9 @@ namespace System.Windows.Forms.Design
         public override System.Collections.IList SnapLines { get { throw null; } }
         [System.MonoTODOAttribute]
         protected void AddPaddingSnapLines(ref System.Collections.ArrayList snapLines) { }
+        protected internal virtual bool CanAddComponent(System.ComponentModel.IComponent component) { throw null; }
         public virtual bool CanParent(System.Windows.Forms.Control control) { throw null; }
-        public virtual bool CanParent(System.Windows.Forms.Design.ControlDesigner designer) { throw null; }
+        public virtual bool CanParent(System.Windows.Forms.Design.ControlDesigner controlDesigner) { throw null; }
         protected void CreateTool(System.Drawing.Design.ToolboxItem tool) { }
         protected void CreateTool(System.Drawing.Design.ToolboxItem tool, System.Drawing.Point location) { }
         protected void CreateTool(System.Drawing.Design.ToolboxItem tool, System.Drawing.Rectangle bounds) { }
@@ -3652,10 +4519,10 @@ namespace System.Windows.Forms.Design
         public override void InitializeNewComponent(System.Collections.IDictionary defaultValues) { }
         protected static void InvokeCreateTool(System.Windows.Forms.Design.ParentControlDesigner toInvoke, System.Drawing.Design.ToolboxItem tool) { }
         protected override void OnDragComplete(System.Windows.Forms.DragEventArgs de) { }
-        protected override void OnDragDrop(System.Windows.Forms.DragEventArgs e) { }
-        protected override void OnDragEnter(System.Windows.Forms.DragEventArgs e) { }
+        protected override void OnDragDrop(System.Windows.Forms.DragEventArgs de) { }
+        protected override void OnDragEnter(System.Windows.Forms.DragEventArgs de) { }
         protected override void OnDragLeave(System.EventArgs e) { }
-        protected override void OnDragOver(System.Windows.Forms.DragEventArgs e) { }
+        protected override void OnDragOver(System.Windows.Forms.DragEventArgs de) { }
         protected override void OnMouseDragBegin(int x, int y) { }
         protected override void OnMouseDragEnd(bool cancel) { }
         protected override void OnMouseDragMove(int x, int y) { }
@@ -3666,7 +4533,7 @@ namespace System.Windows.Forms.Design
     public partial class ScrollableControlDesigner : System.Windows.Forms.Design.ParentControlDesigner
     {
         public ScrollableControlDesigner() { }
-        protected override bool GetHitTest(System.Drawing.Point point) { throw null; }
+        protected override bool GetHitTest(System.Drawing.Point pt) { throw null; }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     [System.FlagsAttribute]
@@ -3691,6 +4558,17 @@ namespace System.Windows.Forms.Design
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
+    }
+    public enum ThemedScrollbarMode
+    {
+        All = 1,
+        None = 2,
+        OnlyTopLevel = 3,
+    }
+    public partial struct ThemedScrollbarWindow
+    {
+        public System.IntPtr Handle;
+        public System.Windows.Forms.Design.ThemedScrollbarMode Mode;
     }
     public partial class WindowsFormsDesignerOptionService : System.ComponentModel.Design.DesignerOptionService
     {
@@ -3848,9 +4726,9 @@ namespace System.Windows.Forms.Design.Behavior
     public partial class ControlBodyGlyph : System.Windows.Forms.Design.Behavior.ComponentGlyph
     {
         [System.MonoTODOAttribute]
-        public ControlBodyGlyph(System.Drawing.Rectangle bounds, System.Windows.Forms.Cursor cursor, System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.Behavior.Behavior behavior) : base (default(System.ComponentModel.IComponent)) { }
+        public ControlBodyGlyph(System.Drawing.Rectangle bounds, System.Windows.Forms.Cursor cursor, System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.Behavior.Behavior behavior) : base (default(System.ComponentModel.IComponent), default(System.Windows.Forms.Design.Behavior.Behavior)) { }
         [System.MonoTODOAttribute]
-        public ControlBodyGlyph(System.Drawing.Rectangle bounds, System.Windows.Forms.Cursor cursor, System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.ControlDesigner designer) : base (default(System.ComponentModel.IComponent)) { }
+        public ControlBodyGlyph(System.Drawing.Rectangle bounds, System.Windows.Forms.Cursor cursor, System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.ControlDesigner designer) : base (default(System.ComponentModel.IComponent), default(System.Windows.Forms.Design.Behavior.Behavior)) { }
         [System.MonoTODOAttribute]
         public override System.Drawing.Rectangle Bounds { get { throw null; } }
         [System.MonoTODOAttribute]

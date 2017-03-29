@@ -82,13 +82,10 @@ namespace System.Drawing
         public static System.Drawing.Bitmap FromHicon(System.IntPtr hicon) { throw null; }
         public static System.Drawing.Bitmap FromResource(System.IntPtr hinstance, string bitmapName) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public System.IntPtr GetHbitmap() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public System.IntPtr GetHbitmap(System.Drawing.Color background) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public System.IntPtr GetHicon() { throw null; }
         public System.Drawing.Color GetPixel(int x, int y) { throw null; }
         public System.Drawing.Imaging.BitmapData LockBits(System.Drawing.Rectangle rect, System.Drawing.Imaging.ImageLockMode flags, System.Drawing.Imaging.PixelFormat format) { throw null; }
@@ -98,6 +95,16 @@ namespace System.Drawing
         public void SetPixel(int x, int y, System.Drawing.Color color) { }
         public void SetResolution(float xDpi, float yDpi) { }
         public void UnlockBits(System.Drawing.Imaging.BitmapData bitmapdata) { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1))]
+    public partial class BitmapSuffixInSameAssemblyAttribute : System.Attribute
+    {
+        public BitmapSuffixInSameAssemblyAttribute() { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1))]
+    public partial class BitmapSuffixInSatelliteAssemblyAttribute : System.Attribute
+    {
+        public BitmapSuffixInSatelliteAssemblyAttribute() { }
     }
     public abstract partial class Brush : System.MarshalByRefObject, System.ICloneable, System.IDisposable
     {
@@ -262,7 +269,6 @@ namespace System.Drawing
         public void Render() { }
         public void Render(System.Drawing.Graphics target) { }
         [System.MonoTODOAttribute("The targetDC parameter has no equivalent in libgdiplus.")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public void Render(System.IntPtr targetDC) { }
     }
     public sealed partial class BufferedGraphicsContext : System.IDisposable
@@ -271,7 +277,6 @@ namespace System.Drawing
         public System.Drawing.Size MaximumBuffer { get { throw null; } set { } }
         public System.Drawing.BufferedGraphics Allocate(System.Drawing.Graphics targetGraphics, System.Drawing.Rectangle targetRectangle) { throw null; }
         [System.MonoTODOAttribute("The targetDC parameter has no equivalent in libgdiplus.")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public System.Drawing.BufferedGraphics Allocate(System.IntPtr targetDC, System.Drawing.Rectangle targetRectangle) { throw null; }
         public void Dispose() { }
         ~BufferedGraphicsContext() { }
@@ -589,9 +594,7 @@ namespace System.Drawing
         public float GetHeight(float dpi) { throw null; }
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public System.IntPtr ToHfont() { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public void ToLogFont(object logFont) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public void ToLogFont(object logFont, System.Drawing.Graphics graphics) { }
         public override string ToString() { throw null; }
     }
@@ -892,12 +895,10 @@ namespace System.Drawing
         [System.MonoTODOAttribute]
         public static System.Drawing.Graphics FromHdc(System.IntPtr hdc, System.IntPtr hdevice) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public static System.Drawing.Graphics FromHdcInternal(System.IntPtr hdc) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public static System.Drawing.Graphics FromHwnd(System.IntPtr hwnd) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public static System.Drawing.Graphics FromHwndInternal(System.IntPtr hwnd) { throw null; }
         public static System.Drawing.Graphics FromImage(System.Drawing.Image image) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -928,14 +929,11 @@ namespace System.Drawing
         public System.Drawing.SizeF MeasureString(string text, System.Drawing.Font font, int width, System.Drawing.StringFormat format) { throw null; }
         public void MultiplyTransform(System.Drawing.Drawing2D.Matrix matrix) { }
         public void MultiplyTransform(System.Drawing.Drawing2D.Matrix matrix, System.Drawing.Drawing2D.MatrixOrder order) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public void ReleaseHdc() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public void ReleaseHdc(System.IntPtr hdc) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         [System.MonoLimitationAttribute("Can only be used when hdc was provided by Graphics.GetHdc() method")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public void ReleaseHdcInternal(System.IntPtr hdc) { }
         public void ResetClip() { }
         public void ResetTransform() { }
@@ -960,7 +958,7 @@ namespace System.Drawing
         public void TranslateClip(float dx, float dy) { }
         public void TranslateTransform(float dx, float dy) { }
         public void TranslateTransform(float dx, float dy, System.Drawing.Drawing2D.MatrixOrder order) { }
-        public delegate bool DrawImageAbort(System.IntPtr callbackData);
+        public delegate bool DrawImageAbort(System.IntPtr callbackdata);
         public delegate bool EnumerateMetafileProc(System.Drawing.Imaging.EmfPlusRecordType recordType, int flags, int dataSize, System.IntPtr data, System.Drawing.Imaging.PlayRecordCallback callbackData);
     }
     public enum GraphicsUnit
@@ -999,7 +997,6 @@ namespace System.Drawing
         [System.MonoLimitationAttribute("The same icon, SystemIcons.WinLogo, is returned for all file types.")]
         public static System.Drawing.Icon ExtractAssociatedIcon(string filePath) { throw null; }
         ~Icon() { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
         public static System.Drawing.Icon FromHandle(System.IntPtr handle) { throw null; }
         public void Save(System.IO.Stream outputStream) { }
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
@@ -1674,7 +1671,6 @@ namespace System.Drawing
         public void Exclude(System.Drawing.RectangleF rect) { }
         public void Exclude(System.Drawing.Region region) { }
         ~Region() { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public static System.Drawing.Region FromHrgn(System.IntPtr hrgn) { throw null; }
         public System.Drawing.RectangleF GetBounds(System.Drawing.Graphics g) { throw null; }
         public System.IntPtr GetHrgn(System.Drawing.Graphics g) { throw null; }
@@ -1703,7 +1699,6 @@ namespace System.Drawing
         public bool IsVisible(float x, float y, float width, float height, System.Drawing.Graphics g) { throw null; }
         public void MakeEmpty() { }
         public void MakeInfinite() { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public void ReleaseHrgn(System.IntPtr regionHandle) { }
         public void Transform(System.Drawing.Drawing2D.Matrix matrix) { }
         public void Translate(int dx, int dy) { }
@@ -2075,9 +2070,19 @@ namespace System.Drawing
         public static System.Drawing.Image GetImageFromResource(System.Type t, string imageName, bool large) { throw null; }
     }
 }
+#if CONFIG_DEP
+namespace System.Drawing.Configuration
+{
+    public sealed partial class SystemDrawingSection : System.Configuration.ConfigurationSection
+    {
+        public SystemDrawingSection() { }
+        public string BitmapSuffix { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+    }
+}
+#endif
 namespace System.Drawing.Design
 {
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public sealed partial class CategoryNameCollection : System.Collections.ReadOnlyCollectionBase
     {
         public CategoryNameCollection(System.Drawing.Design.CategoryNameCollection value) { }
@@ -2138,8 +2143,6 @@ namespace System.Drawing.Design
         bool GetToolSupported(System.Drawing.Design.ToolboxItem tool);
         void ToolPicked(System.Drawing.Design.ToolboxItem tool);
     }
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class PaintValueEventArgs : System.EventArgs
     {
         public PaintValueEventArgs(System.ComponentModel.ITypeDescriptorContext context, object value, System.Drawing.Graphics graphics, System.Drawing.Rectangle bounds) { }
@@ -2149,8 +2152,6 @@ namespace System.Drawing.Design
         public object Value { get { throw null; } }
     }
     public delegate void PropertyValueUIHandler(System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor propDesc, System.Collections.ArrayList valueUIItemList);
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class PropertyValueUIItem
     {
         public PropertyValueUIItem(System.Drawing.Image uiItemImage, System.Drawing.Design.PropertyValueUIItemInvokeHandler handler, string tooltip) { }
@@ -2160,8 +2161,6 @@ namespace System.Drawing.Design
         public virtual void Reset() { }
     }
     public delegate void PropertyValueUIItemInvokeHandler(System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor descriptor, System.Drawing.Design.PropertyValueUIItem invokedItem);
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class ToolboxComponentsCreatedEventArgs : System.EventArgs
     {
         public ToolboxComponentsCreatedEventArgs(System.ComponentModel.IComponent[] components) { }
@@ -2232,8 +2231,6 @@ namespace System.Drawing.Design
         public int IndexOf(System.Drawing.Design.ToolboxItem value) { throw null; }
     }
     public delegate System.Drawing.Design.ToolboxItem ToolboxItemCreatorCallback(object serializedObject, string format);
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class UITypeEditor
     {
         public UITypeEditor() { }
@@ -2366,16 +2363,16 @@ namespace System.Drawing.Drawing2D
         public System.Drawing.PointF[] PathPoints { get { throw null; } }
         public byte[] PathTypes { get { throw null; } }
         public int PointCount { get { throw null; } }
-        public void AddArc(System.Drawing.Rectangle rect, float start_angle, float sweep_angle) { }
-        public void AddArc(System.Drawing.RectangleF rect, float start_angle, float sweep_angle) { }
-        public void AddArc(int x, int y, int width, int height, float start_angle, float sweep_angle) { }
-        public void AddArc(float x, float y, float width, float height, float start_angle, float sweep_angle) { }
+        public void AddArc(System.Drawing.Rectangle rect, float startAngle, float sweepAngle) { }
+        public void AddArc(System.Drawing.RectangleF rect, float startAngle, float sweepAngle) { }
+        public void AddArc(int x, int y, int width, int height, float startAngle, float sweepAngle) { }
+        public void AddArc(float x, float y, float width, float height, float startAngle, float sweepAngle) { }
         public void AddBezier(System.Drawing.Point pt1, System.Drawing.Point pt2, System.Drawing.Point pt3, System.Drawing.Point pt4) { }
         public void AddBezier(System.Drawing.PointF pt1, System.Drawing.PointF pt2, System.Drawing.PointF pt3, System.Drawing.PointF pt4) { }
         public void AddBezier(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) { }
         public void AddBezier(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4) { }
-        public void AddBeziers(System.Drawing.PointF[] pts) { }
-        public void AddBeziers(params System.Drawing.Point[] pts) { }
+        public void AddBeziers(System.Drawing.PointF[] points) { }
+        public void AddBeziers(params System.Drawing.Point[] points) { }
         public void AddClosedCurve(System.Drawing.PointF[] points) { }
         public void AddClosedCurve(System.Drawing.PointF[] points, float tension) { }
         public void AddClosedCurve(System.Drawing.Point[] points) { }
@@ -2386,12 +2383,12 @@ namespace System.Drawing.Drawing2D
         public void AddCurve(System.Drawing.Point[] points) { }
         public void AddCurve(System.Drawing.Point[] points, int offset, int numberOfSegments, float tension) { }
         public void AddCurve(System.Drawing.Point[] points, float tension) { }
-        public void AddEllipse(System.Drawing.Rectangle r) { }
-        public void AddEllipse(System.Drawing.RectangleF r) { }
+        public void AddEllipse(System.Drawing.Rectangle rect) { }
+        public void AddEllipse(System.Drawing.RectangleF rect) { }
         public void AddEllipse(int x, int y, int width, int height) { }
         public void AddEllipse(float x, float y, float width, float height) { }
-        public void AddLine(System.Drawing.Point a, System.Drawing.Point b) { }
-        public void AddLine(System.Drawing.PointF a, System.Drawing.PointF b) { }
+        public void AddLine(System.Drawing.Point pt1, System.Drawing.Point pt2) { }
+        public void AddLine(System.Drawing.PointF pt1, System.Drawing.PointF pt2) { }
         public void AddLine(int x1, int y1, int x2, int y2) { }
         public void AddLine(float x1, float y1, float x2, float y2) { }
         public void AddLines(System.Drawing.PointF[] points) { }
@@ -2486,8 +2483,8 @@ namespace System.Drawing.Drawing2D
     }
     public sealed partial class HatchBrush : System.Drawing.Brush
     {
-        public HatchBrush(System.Drawing.Drawing2D.HatchStyle hatchStyle, System.Drawing.Color foreColor) { }
-        public HatchBrush(System.Drawing.Drawing2D.HatchStyle hatchStyle, System.Drawing.Color foreColor, System.Drawing.Color backColor) { }
+        public HatchBrush(System.Drawing.Drawing2D.HatchStyle hatchstyle, System.Drawing.Color foreColor) { }
+        public HatchBrush(System.Drawing.Drawing2D.HatchStyle hatchstyle, System.Drawing.Color foreColor, System.Drawing.Color backColor) { }
         public System.Drawing.Color BackgroundColor { get { throw null; } }
         public System.Drawing.Color ForegroundColor { get { throw null; } }
         public System.Drawing.Drawing2D.HatchStyle HatchStyle { get { throw null; } }
@@ -2822,7 +2819,7 @@ namespace System.Drawing.Imaging
     {
         public ColorMatrix() { }
         [System.CLSCompliantAttribute(false)]
-        public ColorMatrix(float[][] matrix) { }
+        public ColorMatrix(float[][] newColorMatrix) { }
         public float this[int row, int column] { get { throw null; } set { } }
         public float Matrix00 { get { throw null; } set { } }
         public float Matrix01 { get { throw null; } set { } }
@@ -3153,9 +3150,10 @@ namespace System.Drawing.Imaging
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, byte[] value, bool undefined) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, short value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, short[] value) { }
+        public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numberValues, System.Drawing.Imaging.EncoderParameterValueType type, System.IntPtr value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator, int denominator) { }
-        public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numberOfValues, int type, int value) { }
-        public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator1, int denominator1, int numerator2, int denominator2) { }
+        public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int NumberOfValues, int Type, int Value) { }
+        public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator1, int demoninator1, int numerator2, int demoninator2) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int[] numerator, int[] denominator) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int[] numerator1, int[] denominator1, int[] numerator2, int[] denominator2) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, long value) { }
@@ -3258,11 +3256,11 @@ namespace System.Drawing.Imaging
         public void SetColorMatrices(System.Drawing.Imaging.ColorMatrix newColorMatrix, System.Drawing.Imaging.ColorMatrix grayMatrix) { }
         public void SetColorMatrices(System.Drawing.Imaging.ColorMatrix newColorMatrix, System.Drawing.Imaging.ColorMatrix grayMatrix, System.Drawing.Imaging.ColorMatrixFlag flags) { }
         public void SetColorMatrices(System.Drawing.Imaging.ColorMatrix newColorMatrix, System.Drawing.Imaging.ColorMatrix grayMatrix, System.Drawing.Imaging.ColorMatrixFlag mode, System.Drawing.Imaging.ColorAdjustType type) { }
-        public void SetColorMatrix(System.Drawing.Imaging.ColorMatrix colorMatrix) { }
-        public void SetColorMatrix(System.Drawing.Imaging.ColorMatrix colorMatrix, System.Drawing.Imaging.ColorMatrixFlag colorMatrixFlag) { }
-        public void SetColorMatrix(System.Drawing.Imaging.ColorMatrix colorMatrix, System.Drawing.Imaging.ColorMatrixFlag colorMatrixFlag, System.Drawing.Imaging.ColorAdjustType colorAdjustType) { }
+        public void SetColorMatrix(System.Drawing.Imaging.ColorMatrix newColorMatrix) { }
+        public void SetColorMatrix(System.Drawing.Imaging.ColorMatrix newColorMatrix, System.Drawing.Imaging.ColorMatrixFlag flags) { }
+        public void SetColorMatrix(System.Drawing.Imaging.ColorMatrix newColorMatrix, System.Drawing.Imaging.ColorMatrixFlag mode, System.Drawing.Imaging.ColorAdjustType type) { }
         public void SetGamma(float gamma) { }
-        public void SetGamma(float gamma, System.Drawing.Imaging.ColorAdjustType coloradjust) { }
+        public void SetGamma(float gamma, System.Drawing.Imaging.ColorAdjustType type) { }
         public void SetNoOp() { }
         public void SetNoOp(System.Drawing.Imaging.ColorAdjustType type) { }
         [System.MonoTODOAttribute("Not supported by libgdiplus")]
@@ -3372,7 +3370,7 @@ namespace System.Drawing.Imaging
         public Metafile(System.IntPtr referenceHdc, System.Drawing.Rectangle frameRect) { }
         public Metafile(System.IntPtr referenceHdc, System.Drawing.Rectangle frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit) { }
         public Metafile(System.IntPtr referenceHdc, System.Drawing.Rectangle frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type) { }
-        public Metafile(System.IntPtr referenceHdc, System.Drawing.Rectangle frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type, string description) { }
+        public Metafile(System.IntPtr referenceHdc, System.Drawing.Rectangle frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type, string desc) { }
         public Metafile(System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect) { }
         public Metafile(System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit) { }
         public Metafile(System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type) { }
@@ -3402,14 +3400,14 @@ namespace System.Drawing.Imaging
         public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit) { }
         public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type) { }
         public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type, string description) { }
-        public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, string description) { }
+        public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, string desc) { }
         public System.IntPtr GetHenhmetafile() { throw null; }
         [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public System.Drawing.Imaging.MetafileHeader GetMetafileHeader() { throw null; }
         [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IntPtr henhmetafile) { throw null; }
         [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
-        public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IntPtr henhmetafile, System.Drawing.Imaging.WmfPlaceableFileHeader wmfHeader) { throw null; }
+        public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IntPtr hmetafile, System.Drawing.Imaging.WmfPlaceableFileHeader wmfHeader) { throw null; }
         [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IO.Stream stream) { throw null; }
         [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
@@ -3544,7 +3542,6 @@ namespace System.Drawing.Printing
     {
         public InvalidPrinterException(System.Drawing.Printing.PrinterSettings settings) { }
         protected InvalidPrinterException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.Printing.MarginsConverter))]
@@ -4069,7 +4066,6 @@ namespace System.Drawing.Text
     {
         public PrivateFontCollection() { }
         public void AddFontFile(string filename) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public void AddMemoryFont(System.IntPtr memory, int length) { }
         protected override void Dispose(bool disposing) { }
     }

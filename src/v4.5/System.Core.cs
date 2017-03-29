@@ -44,7 +44,7 @@ namespace Microsoft.Win32.SafeHandles
 {
     public sealed partial class SafeMemoryMappedFileHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
     {
-        public SafeMemoryMappedFileHandle(System.IntPtr preexistingHandle, bool ownsHandle) : base (default(bool)) { }
+        internal SafeMemoryMappedFileHandle() : base (default(bool)) { }
         [System.MonoTODOAttribute]
         protected override bool ReleaseHandle() { throw null; }
     }
@@ -52,6 +52,27 @@ namespace Microsoft.Win32.SafeHandles
     {
         internal SafeMemoryMappedViewHandle() : base (default(bool)) { }
         protected override bool ReleaseHandle() { throw null; }
+    }
+    public abstract partial class SafeNCryptHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
+    {
+        protected SafeNCryptHandle() : base (default(bool)) { }
+        protected override bool ReleaseHandle() { throw null; }
+        protected abstract bool ReleaseNativeHandle();
+    }
+    public sealed partial class SafeNCryptKeyHandle : Microsoft.Win32.SafeHandles.SafeNCryptHandle
+    {
+        public SafeNCryptKeyHandle() { }
+        protected override bool ReleaseNativeHandle() { throw null; }
+    }
+    public sealed partial class SafeNCryptProviderHandle : Microsoft.Win32.SafeHandles.SafeNCryptHandle
+    {
+        public SafeNCryptProviderHandle() { }
+        protected override bool ReleaseNativeHandle() { throw null; }
+    }
+    public sealed partial class SafeNCryptSecretHandle : Microsoft.Win32.SafeHandles.SafeNCryptHandle
+    {
+        public SafeNCryptSecretHandle() { }
+        protected override bool ReleaseNativeHandle() { throw null; }
     }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
@@ -79,12 +100,43 @@ namespace System
     public delegate TResult Func<in T1, in T2, in T3, in T4, in T5, in T6, in T7, in T8, in T9, in T10, in T11, in T12, in T13, in T14, out TResult>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14);
     public delegate TResult Func<in T1, in T2, in T3, in T4, in T5, in T6, in T7, in T8, in T9, in T10, in T11, in T12, in T13, in T14, in T15, out TResult>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15);
     public delegate TResult Func<in T1, in T2, in T3, in T4, in T5, in T6, in T7, in T8, in T9, in T10, in T11, in T12, in T13, in T14, in T15, in T16, out TResult>(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16);
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
+    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
+    {
+        public MonoDocumentationNoteAttribute(string comment) { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
+    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
+    {
+        public MonoExtensionAttribute(string comment) { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
+    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
+    {
+        public MonoInternalNoteAttribute(string comment) { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
+    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
+    {
+        public MonoLimitationAttribute(string comment) { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
+    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
+    {
+        public MonoNotSupportedAttribute(string comment) { }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
+    internal partial class MonoTODOAttribute : System.Attribute
+    {
+        public MonoTODOAttribute() { }
+        public MonoTODOAttribute(string comment) { }
+        public string Comment { get { throw null; } }
+    }
 }
 namespace System.Collections.Generic
 {
     [System.Diagnostics.DebuggerDisplayAttribute("Count = {Count}")]
-    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Generic.HashSetDebugView<T>")]
-    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Generic.ICollectionDebugView<T>")]
     [System.SerializableAttribute]
     public partial class HashSet<T> : System.Collections.Generic.ICollection<T>, System.Collections.Generic.IEnumerable<T>, System.Collections.Generic.ISet<T>, System.Collections.IEnumerable, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
@@ -105,8 +157,6 @@ namespace System.Collections.Generic
         public static System.Collections.Generic.IEqualityComparer<System.Collections.Generic.HashSet<T>> CreateSetComparer() { throw null; }
         public void ExceptWith(System.Collections.Generic.IEnumerable<T> other) { }
         public System.Collections.Generic.HashSet<T>.Enumerator GetEnumerator() { throw null; }
-        [System.Security.SecurityCriticalAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public void IntersectWith(System.Collections.Generic.IEnumerable<T> other) { }
         public bool IsProperSubsetOf(System.Collections.Generic.IEnumerable<T> other) { throw null; }
@@ -124,7 +174,6 @@ namespace System.Collections.Generic
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public void TrimExcess() { }
         public void UnionWith(System.Collections.Generic.IEnumerable<T> other) { }
-        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
         [System.SerializableAttribute]
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         public partial struct Enumerator : System.Collections.Generic.IEnumerator<T>, System.Collections.IEnumerator, System.IDisposable
@@ -137,12 +186,571 @@ namespace System.Collections.Generic
         }
     }
 }
+namespace System.Diagnostics
+{
+    public partial class EventSchemaTraceListener : System.Diagnostics.TextWriterTraceListener
+    {
+        public EventSchemaTraceListener(string fileName) { }
+        public EventSchemaTraceListener(string fileName, string name) { }
+        public EventSchemaTraceListener(string fileName, string name, int bufferSize) { }
+        public EventSchemaTraceListener(string fileName, string name, int bufferSize, System.Diagnostics.TraceLogRetentionOption logRetentionOption) { }
+        public EventSchemaTraceListener(string fileName, string name, int bufferSize, System.Diagnostics.TraceLogRetentionOption logRetentionOption, long maximumFileSize) { }
+        public EventSchemaTraceListener(string fileName, string name, int bufferSize, System.Diagnostics.TraceLogRetentionOption logRetentionOption, long maximumFileSize, int maximumNumberOfFiles) { }
+        public int BufferSize { get { throw null; } }
+        public override bool IsThreadSafe { get { throw null; } }
+        public long MaximumFileSize { get { throw null; } }
+        public int MaximumNumberOfFiles { get { throw null; } }
+        public System.Diagnostics.TraceLogRetentionOption TraceLogRetentionOption { get { throw null; } }
+        public new System.IO.TextWriter Writer { get { throw null; } set { } }
+        public override void Close() { }
+        public override void Fail(string message, string detailMessage) { }
+        public override void Flush() { }
+        protected override string[] GetSupportedAttributes() { throw null; }
+        public override void TraceData(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object data) { }
+        public override void TraceData(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, params object[] data) { }
+        public override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string message) { }
+        public override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string format, params object[] args) { }
+        public override void TraceTransfer(System.Diagnostics.TraceEventCache eventCache, string source, int id, string message, System.Guid relatedActivityId) { }
+        public override void Write(string message) { }
+        public override void WriteLine(string message) { }
+    }
+    public enum TraceLogRetentionOption
+    {
+        LimitedCircularFiles = 1,
+        LimitedSequentialFiles = 3,
+        SingleFileBoundedSize = 4,
+        SingleFileUnboundedSize = 2,
+        UnlimitedSequentialFiles = 0,
+    }
+    public partial class UnescapedXmlDiagnosticData
+    {
+        public UnescapedXmlDiagnosticData(string xmlPayload) { }
+        public string UnescapedXml { get { throw null; } set { } }
+        public override string ToString() { throw null; }
+    }
+}
+namespace System.Diagnostics.Eventing
+{
+    public partial struct EventDescriptor
+    {
+        public EventDescriptor(int id, byte version, byte channel, byte level, byte opcode, int task, long keywords) { throw null;}
+        public byte Channel { get { throw null; } }
+        public int EventId { get { throw null; } }
+        public long Keywords { get { throw null; } }
+        public byte Level { get { throw null; } }
+        public byte Opcode { get { throw null; } }
+        public int Task { get { throw null; } }
+        public byte Version { get { throw null; } }
+    }
+    public partial class EventProvider : System.IDisposable
+    {
+        public EventProvider(System.Guid providerGuid) { }
+        public virtual void Close() { }
+        public static System.Guid CreateActivityId() { throw null; }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        ~EventProvider() { }
+        public static System.Diagnostics.Eventing.EventProvider.WriteEventErrorCode GetLastWriteEventError() { throw null; }
+        public bool IsEnabled() { throw null; }
+        public bool IsEnabled(byte level, long keywords) { throw null; }
+        public static void SetActivityId(ref System.Guid id) { }
+        protected bool WriteEvent(ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, int dataCount, System.IntPtr data) { throw null; }
+        public bool WriteEvent(ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, params object[] eventPayload) { throw null; }
+        public bool WriteEvent(ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, string data) { throw null; }
+        public bool WriteMessageEvent(string eventMessage) { throw null; }
+        public bool WriteMessageEvent(string eventMessage, byte eventLevel, long eventKeywords) { throw null; }
+        protected bool WriteTransferEvent(ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, System.Guid relatedActivityId, int dataCount, System.IntPtr data) { throw null; }
+        public bool WriteTransferEvent(ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, System.Guid relatedActivityId, params object[] eventPayload) { throw null; }
+        public enum WriteEventErrorCode
+        {
+            EventTooBig = 2,
+            NoError = 0,
+            NoFreeBuffers = 1,
+        }
+    }
+    public partial class EventProviderTraceListener : System.Diagnostics.TraceListener
+    {
+        public EventProviderTraceListener(string providerId) { }
+        public EventProviderTraceListener(string providerId, string name) { }
+        public EventProviderTraceListener(string providerId, string name, string delimiter) { }
+        public string Delimiter { get { throw null; } set { } }
+        public sealed override bool IsThreadSafe { get { throw null; } }
+        public override void Close() { }
+        public override void Fail(string message, string detailMessage) { }
+        public sealed override void Flush() { }
+        protected override string[] GetSupportedAttributes() { throw null; }
+        public sealed override void TraceData(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object data) { }
+        public sealed override void TraceData(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, params object[] data) { }
+        public sealed override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id) { }
+        public sealed override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string message) { }
+        public sealed override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string format, params object[] args) { }
+        public sealed override void TraceTransfer(System.Diagnostics.TraceEventCache eventCache, string source, int id, string message, System.Guid relatedActivityId) { }
+        public sealed override void Write(string message) { }
+        public sealed override void WriteLine(string message) { }
+    }
+}
+namespace System.Diagnostics.Eventing.Reader
+{
+    public partial class EventBookmark : System.Runtime.Serialization.ISerializable
+    {
+        protected EventBookmark(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+    }
+    public sealed partial class EventKeyword
+    {
+        internal EventKeyword() { }
+        public string DisplayName { get { throw null; } }
+        public string Name { get { throw null; } }
+        public long Value { get { throw null; } }
+    }
+    public sealed partial class EventLevel
+    {
+        internal EventLevel() { }
+        public string DisplayName { get { throw null; } }
+        public string Name { get { throw null; } }
+        public int Value { get { throw null; } }
+    }
+    public partial class EventLogConfiguration : System.IDisposable
+    {
+        public EventLogConfiguration(string logName) { }
+        public EventLogConfiguration(string logName, System.Diagnostics.Eventing.Reader.EventLogSession session) { }
+        public bool IsClassicLog { get { throw null; } }
+        public bool IsEnabled { get { throw null; } set { } }
+        public string LogFilePath { get { throw null; } set { } }
+        public System.Diagnostics.Eventing.Reader.EventLogIsolation LogIsolation { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventLogMode LogMode { get { throw null; } set { } }
+        public string LogName { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventLogType LogType { get { throw null; } }
+        public long MaximumSizeInBytes { get { throw null; } set { } }
+        public string OwningProviderName { get { throw null; } }
+        public System.Nullable<int> ProviderBufferSize { get { throw null; } }
+        public System.Nullable<System.Guid> ProviderControlGuid { get { throw null; } }
+        public System.Nullable<long> ProviderKeywords { get { throw null; } set { } }
+        public System.Nullable<int> ProviderLatency { get { throw null; } }
+        public System.Nullable<int> ProviderLevel { get { throw null; } set { } }
+        public System.Nullable<int> ProviderMaximumNumberOfBuffers { get { throw null; } }
+        public System.Nullable<int> ProviderMinimumNumberOfBuffers { get { throw null; } }
+        public System.Collections.Generic.IEnumerable<string> ProviderNames { get { throw null; } }
+        public string SecurityDescriptor { get { throw null; } set { } }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        public void SaveChanges() { }
+    }
+    public partial class EventLogException : System.Exception, System.Runtime.Serialization.ISerializable
+    {
+        public EventLogException() { }
+        protected EventLogException(int errorCode) { }
+        protected EventLogException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
+        public EventLogException(string message) { }
+        public EventLogException(string message, System.Exception innerException) { }
+        public override string Message { get { throw null; } }
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+    }
+    public sealed partial class EventLogInformation
+    {
+        internal EventLogInformation() { }
+        public System.Nullable<int> Attributes { get { throw null; } }
+        public System.Nullable<System.DateTime> CreationTime { get { throw null; } }
+        public System.Nullable<long> FileSize { get { throw null; } }
+        public System.Nullable<bool> IsLogFull { get { throw null; } }
+        public System.Nullable<System.DateTime> LastAccessTime { get { throw null; } }
+        public System.Nullable<System.DateTime> LastWriteTime { get { throw null; } }
+        public System.Nullable<long> OldestRecordNumber { get { throw null; } }
+        public System.Nullable<long> RecordCount { get { throw null; } }
+    }
+    public partial class EventLogInvalidDataException : System.Diagnostics.Eventing.Reader.EventLogException
+    {
+        public EventLogInvalidDataException() { }
+        protected EventLogInvalidDataException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
+        public EventLogInvalidDataException(string message) { }
+        public EventLogInvalidDataException(string message, System.Exception innerException) { }
+    }
+    public enum EventLogIsolation
+    {
+        Application = 0,
+        Custom = 2,
+        System = 1,
+    }
+    public sealed partial class EventLogLink
+    {
+        internal EventLogLink() { }
+        public string DisplayName { get { throw null; } }
+        public bool IsImported { get { throw null; } }
+        public string LogName { get { throw null; } }
+    }
+    public enum EventLogMode
+    {
+        AutoBackup = 1,
+        Circular = 0,
+        Retain = 2,
+    }
+    public partial class EventLogNotFoundException : System.Diagnostics.Eventing.Reader.EventLogException
+    {
+        public EventLogNotFoundException() { }
+        protected EventLogNotFoundException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
+        public EventLogNotFoundException(string message) { }
+        public EventLogNotFoundException(string message, System.Exception innerException) { }
+    }
+    public partial class EventLogPropertySelector : System.IDisposable
+    {
+        public EventLogPropertySelector(System.Collections.Generic.IEnumerable<string> propertyQueries) { }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+    }
+    public partial class EventLogProviderDisabledException : System.Diagnostics.Eventing.Reader.EventLogException
+    {
+        public EventLogProviderDisabledException() { }
+        protected EventLogProviderDisabledException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
+        public EventLogProviderDisabledException(string message) { }
+        public EventLogProviderDisabledException(string message, System.Exception innerException) { }
+    }
+    public partial class EventLogQuery
+    {
+        public EventLogQuery(string path, System.Diagnostics.Eventing.Reader.PathType pathType) { }
+        public EventLogQuery(string path, System.Diagnostics.Eventing.Reader.PathType pathType, string query) { }
+        public bool ReverseDirection { get { throw null; } set { } }
+        public System.Diagnostics.Eventing.Reader.EventLogSession Session { get { throw null; } set { } }
+        public bool TolerateQueryErrors { get { throw null; } set { } }
+    }
+    public partial class EventLogReader : System.IDisposable
+    {
+        public EventLogReader(System.Diagnostics.Eventing.Reader.EventLogQuery eventQuery) { }
+        public EventLogReader(System.Diagnostics.Eventing.Reader.EventLogQuery eventQuery, System.Diagnostics.Eventing.Reader.EventBookmark bookmark) { }
+        public EventLogReader(string path) { }
+        public EventLogReader(string path, System.Diagnostics.Eventing.Reader.PathType pathType) { }
+        public int BatchSize { get { throw null; } set { } }
+        public System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventLogStatus> LogStatus { get { throw null; } }
+        public void CancelReading() { }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        public System.Diagnostics.Eventing.Reader.EventRecord ReadEvent() { throw null; }
+        public System.Diagnostics.Eventing.Reader.EventRecord ReadEvent(System.TimeSpan timeout) { throw null; }
+        public void Seek(System.Diagnostics.Eventing.Reader.EventBookmark bookmark) { }
+        public void Seek(System.Diagnostics.Eventing.Reader.EventBookmark bookmark, long offset) { }
+        public void Seek(System.IO.SeekOrigin origin, long offset) { }
+    }
+    public partial class EventLogReadingException : System.Diagnostics.Eventing.Reader.EventLogException
+    {
+        public EventLogReadingException() { }
+        protected EventLogReadingException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
+        public EventLogReadingException(string message) { }
+        public EventLogReadingException(string message, System.Exception innerException) { }
+    }
+    public partial class EventLogRecord : System.Diagnostics.Eventing.Reader.EventRecord
+    {
+        internal EventLogRecord() { }
+        public override System.Nullable<System.Guid> ActivityId { get { throw null; } }
+        public override System.Diagnostics.Eventing.Reader.EventBookmark Bookmark { get { throw null; } }
+        public string ContainerLog { get { throw null; } }
+        public override int Id { get { throw null; } }
+        public override System.Nullable<long> Keywords { get { throw null; } }
+        public override System.Collections.Generic.IEnumerable<string> KeywordsDisplayNames { get { throw null; } }
+        public override System.Nullable<byte> Level { get { throw null; } }
+        public override string LevelDisplayName { get { throw null; } }
+        public override string LogName { get { throw null; } }
+        public override string MachineName { get { throw null; } }
+        public System.Collections.Generic.IEnumerable<int> MatchedQueryIds { get { throw null; } }
+        public override System.Nullable<short> Opcode { get { throw null; } }
+        public override string OpcodeDisplayName { get { throw null; } }
+        public override System.Nullable<int> ProcessId { get { throw null; } }
+        public override System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventProperty> Properties { get { throw null; } }
+        public override System.Nullable<System.Guid> ProviderId { get { throw null; } }
+        public override string ProviderName { get { throw null; } }
+        public override System.Nullable<int> Qualifiers { get { throw null; } }
+        public override System.Nullable<long> RecordId { get { throw null; } }
+        public override System.Nullable<System.Guid> RelatedActivityId { get { throw null; } }
+        public override System.Nullable<int> Task { get { throw null; } }
+        public override string TaskDisplayName { get { throw null; } }
+        public override System.Nullable<int> ThreadId { get { throw null; } }
+        public override System.Nullable<System.DateTime> TimeCreated { get { throw null; } }
+        public override System.Security.Principal.SecurityIdentifier UserId { get { throw null; } }
+        public override System.Nullable<byte> Version { get { throw null; } }
+        protected override void Dispose(bool disposing) { }
+        public override string FormatDescription() { throw null; }
+        public override string FormatDescription(System.Collections.Generic.IEnumerable<object> values) { throw null; }
+        public System.Collections.Generic.IList<object> GetPropertyValues(System.Diagnostics.Eventing.Reader.EventLogPropertySelector propertySelector) { throw null; }
+        public override string ToXml() { throw null; }
+    }
+    public partial class EventLogSession : System.IDisposable
+    {
+        public EventLogSession() { }
+        public EventLogSession(string server) { }
+        public EventLogSession(string server, string domain, string user, System.Security.SecureString password, System.Diagnostics.Eventing.Reader.SessionAuthentication logOnType) { }
+        public static System.Diagnostics.Eventing.Reader.EventLogSession GlobalSession { get { throw null; } }
+        public void CancelCurrentOperations() { }
+        public void ClearLog(string logName) { }
+        public void ClearLog(string logName, string backupPath) { }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        public void ExportLog(string path, System.Diagnostics.Eventing.Reader.PathType pathType, string query, string targetFilePath) { }
+        public void ExportLog(string path, System.Diagnostics.Eventing.Reader.PathType pathType, string query, string targetFilePath, bool tolerateQueryErrors) { }
+        public void ExportLogAndMessages(string path, System.Diagnostics.Eventing.Reader.PathType pathType, string query, string targetFilePath) { }
+        public void ExportLogAndMessages(string path, System.Diagnostics.Eventing.Reader.PathType pathType, string query, string targetFilePath, bool tolerateQueryErrors, System.Globalization.CultureInfo targetCultureInfo) { }
+        public System.Diagnostics.Eventing.Reader.EventLogInformation GetLogInformation(string logName, System.Diagnostics.Eventing.Reader.PathType pathType) { throw null; }
+        public System.Collections.Generic.IEnumerable<string> GetLogNames() { throw null; }
+        public System.Collections.Generic.IEnumerable<string> GetProviderNames() { throw null; }
+    }
+    public sealed partial class EventLogStatus
+    {
+        internal EventLogStatus() { }
+        public string LogName { get { throw null; } }
+        public int StatusCode { get { throw null; } }
+    }
+    public enum EventLogType
+    {
+        Administrative = 0,
+        Analytical = 2,
+        Debug = 3,
+        Operational = 1,
+    }
+    public partial class EventLogWatcher : System.IDisposable
+    {
+        public EventLogWatcher(System.Diagnostics.Eventing.Reader.EventLogQuery eventQuery) { }
+        public EventLogWatcher(System.Diagnostics.Eventing.Reader.EventLogQuery eventQuery, System.Diagnostics.Eventing.Reader.EventBookmark bookmark) { }
+        public EventLogWatcher(System.Diagnostics.Eventing.Reader.EventLogQuery eventQuery, System.Diagnostics.Eventing.Reader.EventBookmark bookmark, bool readExistingEvents) { }
+        public EventLogWatcher(string path) { }
+        public bool Enabled { get { throw null; } set { } }
+        public event System.EventHandler<System.Diagnostics.Eventing.Reader.EventRecordWrittenEventArgs> EventRecordWritten { add { } remove { } }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+    }
+    public sealed partial class EventMetadata
+    {
+        internal EventMetadata() { }
+        public string Description { get { throw null; } }
+        public long Id { get { throw null; } }
+        public System.Collections.Generic.IEnumerable<System.Diagnostics.Eventing.Reader.EventKeyword> Keywords { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventLevel Level { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventLogLink LogLink { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventOpcode Opcode { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventTask Task { get { throw null; } }
+        public string Template { get { throw null; } }
+        public byte Version { get { throw null; } }
+    }
+    public sealed partial class EventOpcode
+    {
+        internal EventOpcode() { }
+        public string DisplayName { get { throw null; } }
+        public string Name { get { throw null; } }
+        public int Value { get { throw null; } }
+    }
+    public sealed partial class EventProperty
+    {
+        internal EventProperty() { }
+        public object Value { get { throw null; } }
+    }
+    public abstract partial class EventRecord : System.IDisposable
+    {
+        protected EventRecord() { }
+        public abstract System.Nullable<System.Guid> ActivityId { get; }
+        public abstract System.Diagnostics.Eventing.Reader.EventBookmark Bookmark { get; }
+        public abstract int Id { get; }
+        public abstract System.Nullable<long> Keywords { get; }
+        public abstract System.Collections.Generic.IEnumerable<string> KeywordsDisplayNames { get; }
+        public abstract System.Nullable<byte> Level { get; }
+        public abstract string LevelDisplayName { get; }
+        public abstract string LogName { get; }
+        public abstract string MachineName { get; }
+        public abstract System.Nullable<short> Opcode { get; }
+        public abstract string OpcodeDisplayName { get; }
+        public abstract System.Nullable<int> ProcessId { get; }
+        public abstract System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventProperty> Properties { get; }
+        public abstract System.Nullable<System.Guid> ProviderId { get; }
+        public abstract string ProviderName { get; }
+        public abstract System.Nullable<int> Qualifiers { get; }
+        public abstract System.Nullable<long> RecordId { get; }
+        public abstract System.Nullable<System.Guid> RelatedActivityId { get; }
+        public abstract System.Nullable<int> Task { get; }
+        public abstract string TaskDisplayName { get; }
+        public abstract System.Nullable<int> ThreadId { get; }
+        public abstract System.Nullable<System.DateTime> TimeCreated { get; }
+        public abstract System.Security.Principal.SecurityIdentifier UserId { get; }
+        public abstract System.Nullable<byte> Version { get; }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        public abstract string FormatDescription();
+        public abstract string FormatDescription(System.Collections.Generic.IEnumerable<object> values);
+        public abstract string ToXml();
+    }
+    public sealed partial class EventRecordWrittenEventArgs : System.EventArgs
+    {
+        internal EventRecordWrittenEventArgs() { }
+        public System.Exception EventException { get { throw null; } }
+        public System.Diagnostics.Eventing.Reader.EventRecord EventRecord { get { throw null; } }
+    }
+    public sealed partial class EventTask
+    {
+        internal EventTask() { }
+        public string DisplayName { get { throw null; } }
+        public System.Guid EventGuid { get { throw null; } }
+        public string Name { get { throw null; } }
+        public int Value { get { throw null; } }
+    }
+    public enum PathType
+    {
+        FilePath = 2,
+        LogName = 1,
+    }
+    public partial class ProviderMetadata : System.IDisposable
+    {
+        public ProviderMetadata(string providerName) { }
+        public ProviderMetadata(string providerName, System.Diagnostics.Eventing.Reader.EventLogSession session, System.Globalization.CultureInfo targetCultureInfo) { }
+        public string DisplayName { get { throw null; } }
+        public System.Collections.Generic.IEnumerable<System.Diagnostics.Eventing.Reader.EventMetadata> Events { get { throw null; } }
+        public System.Uri HelpLink { get { throw null; } }
+        public System.Guid Id { get { throw null; } }
+        public System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventKeyword> Keywords { get { throw null; } }
+        public System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventLevel> Levels { get { throw null; } }
+        public System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventLogLink> LogLinks { get { throw null; } }
+        public string MessageFilePath { get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventOpcode> Opcodes { get { throw null; } }
+        public string ParameterFilePath { get { throw null; } }
+        public string ResourceFilePath { get { throw null; } }
+        public System.Collections.Generic.IList<System.Diagnostics.Eventing.Reader.EventTask> Tasks { get { throw null; } }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+    }
+    public enum SessionAuthentication
+    {
+        Default = 0,
+        Kerberos = 2,
+        Negotiate = 1,
+        Ntlm = 3,
+    }
+    public enum StandardEventKeywords : long
+    {
+        AuditFailure = (long)4503599627370496,
+        AuditSuccess = (long)9007199254740992,
+        CorrelationHint = (long)4503599627370496,
+        CorrelationHint2 = (long)18014398509481984,
+        EventLogClassic = (long)36028797018963968,
+        None = (long)0,
+        ResponseTime = (long)281474976710656,
+        Sqm = (long)2251799813685248,
+        WdiContext = (long)562949953421312,
+        WdiDiagnostic = (long)1125899906842624,
+    }
+    public enum StandardEventLevel
+    {
+        Critical = 1,
+        Error = 2,
+        Informational = 4,
+        LogAlways = 0,
+        Verbose = 5,
+        Warning = 3,
+    }
+    public enum StandardEventOpcode
+    {
+        DataCollectionStart = 3,
+        DataCollectionStop = 4,
+        Extension = 5,
+        Info = 0,
+        Receive = 240,
+        Reply = 6,
+        Resume = 7,
+        Send = 9,
+        Start = 1,
+        Stop = 2,
+        Suspend = 8,
+    }
+    public enum StandardEventTask
+    {
+        None = 0,
+    }
+}
+namespace System.Diagnostics.PerformanceData
+{
+    public sealed partial class CounterData
+    {
+        internal CounterData() { }
+        public long RawValue { get { throw null; } set { } }
+        public long Value { get { throw null; } set { } }
+        public void Decrement() { }
+        public void Increment() { }
+        public void IncrementBy(long value) { }
+    }
+    public partial class CounterSet : System.IDisposable
+    {
+        public CounterSet(System.Guid providerGuid, System.Guid counterSetGuid, System.Diagnostics.PerformanceData.CounterSetInstanceType instanceType) { }
+        public void AddCounter(int counterId, System.Diagnostics.PerformanceData.CounterType counterType) { }
+        public void AddCounter(int counterId, System.Diagnostics.PerformanceData.CounterType counterType, string counterName) { }
+        public System.Diagnostics.PerformanceData.CounterSetInstance CreateCounterSetInstance(string instanceName) { throw null; }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        ~CounterSet() { }
+    }
+    public sealed partial class CounterSetInstance : System.IDisposable
+    {
+        internal CounterSetInstance() { }
+        public System.Diagnostics.PerformanceData.CounterSetInstanceCounterDataSet Counters { get { throw null; } }
+        public void Dispose() { }
+        ~CounterSetInstance() { }
+    }
+    public sealed partial class CounterSetInstanceCounterDataSet : System.IDisposable
+    {
+        internal CounterSetInstanceCounterDataSet() { }
+        public System.Diagnostics.PerformanceData.CounterData this[int counterId] { get { throw null; } }
+        public System.Diagnostics.PerformanceData.CounterData this[string counterName] { get { throw null; } }
+        public void Dispose() { }
+        ~CounterSetInstanceCounterDataSet() { }
+    }
+    public enum CounterSetInstanceType
+    {
+        GlobalAggregate = 4,
+        GlobalAggregateWithHistory = 11,
+        InstanceAggregate = 22,
+        Multiple = 2,
+        MultipleAggregate = 6,
+        Single = 0,
+    }
+    public enum CounterType
+    {
+        AverageBase = 1073939458,
+        AverageCount64 = 1073874176,
+        AverageTimer32 = 805438464,
+        Delta32 = 4195328,
+        Delta64 = 4195584,
+        ElapsedTime = 807666944,
+        LargeQueueLength = 4523264,
+        MultiTimerBase = 1107494144,
+        MultiTimerPercentageActive = 574686464,
+        MultiTimerPercentageActive100Ns = 575735040,
+        MultiTimerPercentageNotActive = 591463680,
+        MultiTimerPercentageNotActive100Ns = 592512256,
+        ObjectSpecificTimer = 543229184,
+        PercentageActive = 541132032,
+        PercentageActive100Ns = 542180608,
+        PercentageNotActive = 557909248,
+        PercentageNotActive100Ns = 558957824,
+        PrecisionObjectSpecificTimer = 543622400,
+        PrecisionSystemTimer = 541525248,
+        PrecisionTimer100Ns = 542573824,
+        QueueLength = 4523008,
+        QueueLength100Ns = 5571840,
+        QueueLengthObjectTime = 6620416,
+        RateOfCountPerSecond32 = 272696320,
+        RateOfCountPerSecond64 = 272696576,
+        RawBase32 = 1073939459,
+        RawBase64 = 1073939712,
+        RawData32 = 65536,
+        RawData64 = 65792,
+        RawDataHex32 = 0,
+        RawDataHex64 = 256,
+        RawFraction32 = 537003008,
+        RawFraction64 = 537003264,
+        SampleBase = 1073939457,
+        SampleCounter = 4260864,
+        SampleFraction = 549585920,
+    }
+}
 namespace System.Dynamic
 {
     public abstract partial class BinaryOperationBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected BinaryOperationBinder(System.Linq.Expressions.ExpressionType operation) { }
-        public System.Linq.Expressions.ExpressionType Operation { get { throw null; } }
+        public System.Linq.Expressions.ExpressionType Operation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackBinaryOperation(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject arg) { throw null; }
@@ -165,17 +773,17 @@ namespace System.Dynamic
     {
         public CallInfo(int argCount, System.Collections.Generic.IEnumerable<string> argNames) { }
         public CallInfo(int argCount, params string[] argNames) { }
-        public int ArgumentCount { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<string> ArgumentNames { get { throw null; } }
+        public int ArgumentCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<string> ArgumentNames { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
     }
     public abstract partial class ConvertBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected ConvertBinder(System.Type type, bool @explicit) { }
-        public bool Explicit { get { throw null; } }
+        public bool Explicit { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
-        public System.Type Type { get { throw null; } }
+        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackConvert(System.Dynamic.DynamicMetaObject target) { throw null; }
         public abstract System.Dynamic.DynamicMetaObject FallbackConvert(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject errorSuggestion);
@@ -183,7 +791,7 @@ namespace System.Dynamic
     public abstract partial class CreateInstanceBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected CreateInstanceBinder(System.Dynamic.CallInfo callInfo) { }
-        public System.Dynamic.CallInfo CallInfo { get { throw null; } }
+        public System.Dynamic.CallInfo CallInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackCreateInstance(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
@@ -192,7 +800,7 @@ namespace System.Dynamic
     public abstract partial class DeleteIndexBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected DeleteIndexBinder(System.Dynamic.CallInfo callInfo) { }
-        public System.Dynamic.CallInfo CallInfo { get { throw null; } }
+        public System.Dynamic.CallInfo CallInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackDeleteIndex(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] indexes) { throw null; }
@@ -201,8 +809,8 @@ namespace System.Dynamic
     public abstract partial class DeleteMemberBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected DeleteMemberBinder(string name, bool ignoreCase) { }
-        public bool IgnoreCase { get { throw null; } }
-        public string Name { get { throw null; } }
+        public bool IgnoreCase { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackDeleteMember(System.Dynamic.DynamicMetaObject target) { throw null; }
@@ -213,12 +821,12 @@ namespace System.Dynamic
         public static readonly System.Dynamic.DynamicMetaObject[] EmptyMetaObjects;
         public DynamicMetaObject(System.Linq.Expressions.Expression expression, System.Dynamic.BindingRestrictions restrictions) { }
         public DynamicMetaObject(System.Linq.Expressions.Expression expression, System.Dynamic.BindingRestrictions restrictions, object value) { }
-        public System.Linq.Expressions.Expression Expression { get { throw null; } }
-        public bool HasValue { get { throw null; } }
+        public System.Linq.Expressions.Expression Expression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool HasValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Type LimitType { get { throw null; } }
-        public System.Dynamic.BindingRestrictions Restrictions { get { throw null; } }
+        public System.Dynamic.BindingRestrictions Restrictions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Type RuntimeType { get { throw null; } }
-        public object Value { get { throw null; } }
+        public object Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public virtual System.Dynamic.DynamicMetaObject BindBinaryOperation(System.Dynamic.BinaryOperationBinder binder, System.Dynamic.DynamicMetaObject arg) { throw null; }
         public virtual System.Dynamic.DynamicMetaObject BindConvert(System.Dynamic.ConvertBinder binder) { throw null; }
         public virtual System.Dynamic.DynamicMetaObject BindCreateInstance(System.Dynamic.CreateInstanceBinder binder, System.Dynamic.DynamicMetaObject[] args) { throw null; }
@@ -266,29 +874,29 @@ namespace System.Dynamic
     public sealed partial class ExpandoObject : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string, object>>, System.Collections.Generic.IDictionary<string, object>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>, System.Collections.IEnumerable, System.ComponentModel.INotifyPropertyChanged, System.Dynamic.IDynamicMetaObjectProvider
     {
         public ExpandoObject() { }
-        int System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Count { get { throw null; } }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.IsReadOnly { get { throw null; } }
-        object System.Collections.Generic.IDictionary<string,object>.this[string key] { get { throw null; } set { } }
-        System.Collections.Generic.ICollection<string> System.Collections.Generic.IDictionary<string,object>.Keys { get { throw null; } }
-        System.Collections.Generic.ICollection<object> System.Collections.Generic.IDictionary<string,object>.Values { get { throw null; } }
+        int System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Count { get { throw null; } }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.IsReadOnly { get { throw null; } }
+        object System.Collections.Generic.IDictionary<System.String,System.Object>.this[string key] { get { throw null; } set { } }
+        System.Collections.Generic.ICollection<string> System.Collections.Generic.IDictionary<System.String,System.Object>.Keys { get { throw null; } }
+        System.Collections.Generic.ICollection<object> System.Collections.Generic.IDictionary<System.String,System.Object>.Values { get { throw null; } }
         event System.ComponentModel.PropertyChangedEventHandler System.ComponentModel.INotifyPropertyChanged.PropertyChanged { add { } remove { } }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Add(System.Collections.Generic.KeyValuePair<string, object> item) { }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Clear() { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Contains(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.CopyTo(System.Collections.Generic.KeyValuePair<string, object>[] array, int arrayIndex) { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Remove(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
-        void System.Collections.Generic.IDictionary<string,object>.Add(string key, object value) { }
-        bool System.Collections.Generic.IDictionary<string,object>.ContainsKey(string key) { throw null; }
-        bool System.Collections.Generic.IDictionary<string,object>.Remove(string key) { throw null; }
-        bool System.Collections.Generic.IDictionary<string,object>.TryGetValue(string key, out object value) { value = default(object); throw null; }
-        System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,object>>.GetEnumerator() { throw null; }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Add(System.Collections.Generic.KeyValuePair<string, object> item) { }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Clear() { }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Contains(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.CopyTo(System.Collections.Generic.KeyValuePair<string, object>[] array, int arrayIndex) { }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Remove(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
+        void System.Collections.Generic.IDictionary<System.String,System.Object>.Add(string key, object value) { }
+        bool System.Collections.Generic.IDictionary<System.String,System.Object>.ContainsKey(string key) { throw null; }
+        bool System.Collections.Generic.IDictionary<System.String,System.Object>.Remove(string key) { throw null; }
+        bool System.Collections.Generic.IDictionary<System.String,System.Object>.TryGetValue(string key, out object value) { value = default(object); throw null; }
+        System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         System.Dynamic.DynamicMetaObject System.Dynamic.IDynamicMetaObjectProvider.GetMetaObject(System.Linq.Expressions.Expression parameter) { throw null; }
     }
     public abstract partial class GetIndexBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected GetIndexBinder(System.Dynamic.CallInfo callInfo) { }
-        public System.Dynamic.CallInfo CallInfo { get { throw null; } }
+        public System.Dynamic.CallInfo CallInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackGetIndex(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] indexes) { throw null; }
@@ -297,10 +905,10 @@ namespace System.Dynamic
     public abstract partial class GetMemberBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected GetMemberBinder(string name, bool ignoreCase) { }
-        public bool IgnoreCase { get { throw null; } }
-        public string Name { get { throw null; } }
+        public bool IgnoreCase { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
-        public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, params System.Dynamic.DynamicMetaObject[] args) { throw null; }
+        public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackGetMember(System.Dynamic.DynamicMetaObject target) { throw null; }
         public abstract System.Dynamic.DynamicMetaObject FallbackGetMember(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject errorSuggestion);
     }
@@ -315,7 +923,7 @@ namespace System.Dynamic
     public abstract partial class InvokeBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected InvokeBinder(System.Dynamic.CallInfo callInfo) { }
-        public System.Dynamic.CallInfo CallInfo { get { throw null; } }
+        public System.Dynamic.CallInfo CallInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackInvoke(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
@@ -324,9 +932,9 @@ namespace System.Dynamic
     public abstract partial class InvokeMemberBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected InvokeMemberBinder(string name, bool ignoreCase, System.Dynamic.CallInfo callInfo) { }
-        public System.Dynamic.CallInfo CallInfo { get { throw null; } }
-        public bool IgnoreCase { get { throw null; } }
-        public string Name { get { throw null; } }
+        public System.Dynamic.CallInfo CallInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IgnoreCase { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public abstract System.Dynamic.DynamicMetaObject FallbackInvoke(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args, System.Dynamic.DynamicMetaObject errorSuggestion);
@@ -336,7 +944,7 @@ namespace System.Dynamic
     public abstract partial class SetIndexBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected SetIndexBinder(System.Dynamic.CallInfo callInfo) { }
-        public System.Dynamic.CallInfo CallInfo { get { throw null; } }
+        public System.Dynamic.CallInfo CallInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackSetIndex(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] indexes, System.Dynamic.DynamicMetaObject value) { throw null; }
@@ -345,8 +953,8 @@ namespace System.Dynamic
     public abstract partial class SetMemberBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected SetMemberBinder(string name, bool ignoreCase) { }
-        public bool IgnoreCase { get { throw null; } }
-        public string Name { get { throw null; } }
+        public bool IgnoreCase { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackSetMember(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject value) { throw null; }
@@ -355,7 +963,7 @@ namespace System.Dynamic
     public abstract partial class UnaryOperationBinder : System.Dynamic.DynamicMetaObjectBinder
     {
         protected UnaryOperationBinder(System.Linq.Expressions.ExpressionType operation) { }
-        public System.Linq.Expressions.ExpressionType Operation { get { throw null; } }
+        public System.Linq.Expressions.ExpressionType Operation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type ReturnType { get { throw null; } }
         public sealed override System.Dynamic.DynamicMetaObject Bind(System.Dynamic.DynamicMetaObject target, System.Dynamic.DynamicMetaObject[] args) { throw null; }
         public System.Dynamic.DynamicMetaObject FallbackUnaryOperation(System.Dynamic.DynamicMetaObject target) { throw null; }
@@ -457,7 +1065,6 @@ namespace System.IO.MemoryMappedFiles
     public sealed partial class MemoryMappedViewAccessor : System.IO.UnmanagedMemoryAccessor
     {
         internal MemoryMappedViewAccessor() { }
-        public long PointerOffset { get { throw null; } }
         public Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle SafeMemoryMappedViewHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
@@ -467,7 +1074,6 @@ namespace System.IO.MemoryMappedFiles
     public sealed partial class MemoryMappedViewStream : System.IO.UnmanagedMemoryStream
     {
         internal MemoryMappedViewStream() { }
-        public long PointerOffset { get { throw null; } }
         public Microsoft.Win32.SafeHandles.SafeMemoryMappedViewHandle SafeMemoryMappedViewHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
@@ -504,8 +1110,10 @@ namespace System.IO.Pipes
         public Microsoft.Win32.SafeHandles.SafePipeHandle ClientSafePipeHandle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override System.IO.Pipes.PipeTransmissionMode ReadMode { set { } }
         public override System.IO.Pipes.PipeTransmissionMode TransmissionMode { get { throw null; } }
+        protected override void Dispose(bool disposing) { }
         [System.MonoTODOAttribute]
         public void DisposeLocalCopyOfClientHandle() { }
+        ~AnonymousPipeServerStream() { }
         public string GetClientHandleAsString() { throw null; }
     }
     [System.MonoTODOAttribute("working only on win32 right now")]
@@ -521,8 +1129,10 @@ namespace System.IO.Pipes
         public NamedPipeClientStream(string serverName, string pipeName, System.IO.Pipes.PipeDirection direction, System.IO.Pipes.PipeOptions options, System.Security.Principal.TokenImpersonationLevel impersonationLevel) : base (default(System.IO.Pipes.PipeDirection), default(int)) { }
         public NamedPipeClientStream(string serverName, string pipeName, System.IO.Pipes.PipeDirection direction, System.IO.Pipes.PipeOptions options, System.Security.Principal.TokenImpersonationLevel impersonationLevel, System.IO.HandleInheritability inheritability) : base (default(System.IO.Pipes.PipeDirection), default(int)) { }
         public int NumberOfServerInstances { get { throw null; } }
+        protected internal override void CheckPipePropertyOperations() { }
         public void Connect() { }
         public void Connect(int timeout) { }
+        ~NamedPipeClientStream() { }
     }
     [System.MonoTODOAttribute("working only on win32 right now")]
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
@@ -544,6 +1154,7 @@ namespace System.IO.Pipes
         public System.IAsyncResult BeginWaitForConnection(System.AsyncCallback callback, object state) { throw null; }
         public void Disconnect() { }
         public void EndWaitForConnection(System.IAsyncResult asyncResult) { }
+        ~NamedPipeServerStream() { }
         [System.MonoTODOAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public string GetImpersonationUserName() { throw null; }
@@ -665,7 +1276,7 @@ namespace System.IO.Pipes
         public System.IO.Pipes.PipeSecurity GetAccessControl() { throw null; }
         protected void InitializeHandle(Microsoft.Win32.SafeHandles.SafePipeHandle handle, bool isExposed, bool isAsync) { }
         [System.MonoTODOAttribute]
-        public override int Read([System.Runtime.InteropServices.In]byte[] buffer, int offset, int count) { throw null; }
+        public override int Read([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out]byte[] buffer, int offset, int count) { buffer = default(byte[]); throw null; }
         [System.MonoTODOAttribute]
         public override int ReadByte() { throw null; }
         public override long Seek(long offset, System.IO.SeekOrigin origin) { throw null; }
@@ -928,15 +1539,15 @@ namespace System.Linq
         object Execute(System.Linq.Expressions.Expression expression);
         TResult Execute<TResult>(System.Linq.Expressions.Expression expression);
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Count = {Count}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Linq.SystemLinq_LookupDebugView<TKey, TElement>")]
     public partial class Lookup<TKey, TElement> : System.Collections.Generic.IEnumerable<System.Linq.IGrouping<TKey, TElement>>, System.Collections.IEnumerable, System.Linq.ILookup<TKey, TElement>
     {
         internal Lookup() { }
         public int Count { get { throw null; } }
         public System.Collections.Generic.IEnumerable<TElement> this[TKey key] { get { throw null; } }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<TResult> ApplyResultSelector<TResult>(System.Func<TKey, System.Collections.Generic.IEnumerable<TElement>, TResult> resultSelector) { throw null; }
         public bool Contains(TKey key) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerator<System.Linq.IGrouping<TKey, TElement>> GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
@@ -1324,9 +1935,9 @@ namespace System.Linq.Expressions
         public System.Linq.Expressions.LambdaExpression Conversion { get { throw null; } }
         public bool IsLifted { get { throw null; } }
         public bool IsLiftedToNull { get { throw null; } }
-        public System.Linq.Expressions.Expression Left { get { throw null; } }
+        public System.Linq.Expressions.Expression Left { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Reflection.MethodInfo Method { get { throw null; } }
-        public System.Linq.Expressions.Expression Right { get { throw null; } }
+        public System.Linq.Expressions.Expression Right { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public override System.Linq.Expressions.Expression Reduce() { throw null; }
         public System.Linq.Expressions.BinaryExpression Update(System.Linq.Expressions.Expression left, System.Linq.Expressions.LambdaExpression conversion, System.Linq.Expressions.Expression right) { throw null; }
@@ -1347,10 +1958,10 @@ namespace System.Linq.Expressions
     public sealed partial class CatchBlock
     {
         internal CatchBlock() { }
-        public System.Linq.Expressions.Expression Body { get { throw null; } }
-        public System.Linq.Expressions.Expression Filter { get { throw null; } }
-        public System.Type Test { get { throw null; } }
-        public System.Linq.Expressions.ParameterExpression Variable { get { throw null; } }
+        public System.Linq.Expressions.Expression Body { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression Filter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type Test { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.ParameterExpression Variable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string ToString() { throw null; }
         public System.Linq.Expressions.CatchBlock Update(System.Linq.Expressions.ParameterExpression variable, System.Linq.Expressions.Expression filter, System.Linq.Expressions.Expression body) { throw null; }
     }
@@ -1359,9 +1970,9 @@ namespace System.Linq.Expressions
     {
         internal ConditionalExpression() { }
         public System.Linq.Expressions.Expression IfFalse { get { throw null; } }
-        public System.Linq.Expressions.Expression IfTrue { get { throw null; } }
+        public System.Linq.Expressions.Expression IfTrue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public System.Linq.Expressions.Expression Test { get { throw null; } }
+        public System.Linq.Expressions.Expression Test { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.ConditionalExpression Update(System.Linq.Expressions.Expression test, System.Linq.Expressions.Expression ifTrue, System.Linq.Expressions.Expression ifFalse) { throw null; }
@@ -1372,19 +1983,24 @@ namespace System.Linq.Expressions
         internal ConstantExpression() { }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public override System.Type Type { get { throw null; } }
-        public object Value { get { throw null; } }
+        public object Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
     }
     [System.Diagnostics.DebuggerTypeProxyAttribute("System.Linq.Expressions.Expression.DebugInfoExpressionProxy")]
     public partial class DebugInfoExpression : System.Linq.Expressions.Expression
     {
         internal DebugInfoExpression() { }
-        public System.Linq.Expressions.SymbolDocumentInfo Document { get { throw null; } }
+        public System.Linq.Expressions.SymbolDocumentInfo Document { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
         public virtual int EndColumn { get { throw null; } }
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
         public virtual int EndLine { get { throw null; } }
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
         public virtual bool IsClear { get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
         public virtual int StartColumn { get { throw null; } }
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute]
         public virtual int StartLine { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -1394,16 +2010,15 @@ namespace System.Linq.Expressions
     {
         internal DefaultExpression() { }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
     }
-    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Linq.Expressions.Expression.DynamicExpressionProxy")]
     public partial class DynamicExpression : System.Linq.Expressions.Expression
     {
         internal DynamicExpression() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Arguments { get { throw null; } }
-        public System.Runtime.CompilerServices.CallSiteBinder Binder { get { throw null; } }
-        public System.Type DelegateType { get { throw null; } }
+        public System.Runtime.CompilerServices.CallSiteBinder Binder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type DelegateType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -1429,7 +2044,7 @@ namespace System.Linq.Expressions
     public sealed partial class ElementInit
     {
         internal ElementInit() { }
-        public System.Reflection.MethodInfo AddMethod { get { throw null; } }
+        public System.Reflection.MethodInfo AddMethod { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Arguments { get { throw null; } }
         public override string ToString() { throw null; }
         public System.Linq.Expressions.ElementInit Update(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments) { throw null; }
@@ -1901,11 +2516,11 @@ namespace System.Linq.Expressions
     public sealed partial class GotoExpression : System.Linq.Expressions.Expression
     {
         internal GotoExpression() { }
-        public System.Linq.Expressions.GotoExpressionKind Kind { get { throw null; } }
+        public System.Linq.Expressions.GotoExpressionKind Kind { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public System.Linq.Expressions.LabelTarget Target { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
-        public System.Linq.Expressions.Expression Value { get { throw null; } }
+        public System.Linq.Expressions.LabelTarget Target { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.GotoExpression Update(System.Linq.Expressions.LabelTarget target, System.Linq.Expressions.Expression value) { throw null; }
     }
@@ -1921,9 +2536,9 @@ namespace System.Linq.Expressions
     {
         internal IndexExpression() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Arguments { get { throw null; } }
-        public System.Reflection.PropertyInfo Indexer { get { throw null; } }
+        public System.Reflection.PropertyInfo Indexer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public System.Linq.Expressions.Expression Object { get { throw null; } }
+        public System.Linq.Expressions.Expression Object { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.IndexExpression Update(System.Linq.Expressions.Expression @object, System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments) { throw null; }
@@ -1933,9 +2548,9 @@ namespace System.Linq.Expressions
     {
         internal InvocationExpression() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Arguments { get { throw null; } }
-        public System.Linq.Expressions.Expression Expression { get { throw null; } }
+        public System.Linq.Expressions.Expression Expression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.InvocationExpression Update(System.Linq.Expressions.Expression expression, System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments) { throw null; }
     }
@@ -1943,9 +2558,9 @@ namespace System.Linq.Expressions
     public sealed partial class LabelExpression : System.Linq.Expressions.Expression
     {
         internal LabelExpression() { }
-        public System.Linq.Expressions.Expression DefaultValue { get { throw null; } }
+        public System.Linq.Expressions.Expression DefaultValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public System.Linq.Expressions.LabelTarget Target { get { throw null; } }
+        public System.Linq.Expressions.LabelTarget Target { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.LabelExpression Update(System.Linq.Expressions.LabelTarget target, System.Linq.Expressions.Expression defaultValue) { throw null; }
@@ -1953,8 +2568,8 @@ namespace System.Linq.Expressions
     public sealed partial class LabelTarget
     {
         internal LabelTarget() { }
-        public string Name { get { throw null; } }
-        public System.Type Type { get { throw null; } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string ToString() { throw null; }
     }
     [System.Diagnostics.DebuggerTypeProxyAttribute("System.Linq.Expressions.Expression.LambdaExpressionProxy")]
@@ -1978,8 +2593,8 @@ namespace System.Linq.Expressions
     {
         internal ListInitExpression() { }
         public override bool CanReduce { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ElementInit> Initializers { get { throw null; } }
-        public System.Linq.Expressions.NewExpression NewExpression { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ElementInit> Initializers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.NewExpression NewExpression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -1990,9 +2605,9 @@ namespace System.Linq.Expressions
     public sealed partial class LoopExpression : System.Linq.Expressions.Expression
     {
         internal LoopExpression() { }
-        public System.Linq.Expressions.Expression Body { get { throw null; } }
-        public System.Linq.Expressions.LabelTarget BreakLabel { get { throw null; } }
-        public System.Linq.Expressions.LabelTarget ContinueLabel { get { throw null; } }
+        public System.Linq.Expressions.Expression Body { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.LabelTarget BreakLabel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.LabelTarget ContinueLabel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -2008,8 +2623,8 @@ namespace System.Linq.Expressions
     {
         [System.ObsoleteAttribute("Do not use this constructor. It will be removed in future releases.")]
         protected MemberBinding(System.Linq.Expressions.MemberBindingType type, System.Reflection.MemberInfo member) { }
-        public System.Linq.Expressions.MemberBindingType BindingType { get { throw null; } }
-        public System.Reflection.MemberInfo Member { get { throw null; } }
+        public System.Linq.Expressions.MemberBindingType BindingType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Reflection.MemberInfo Member { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string ToString() { throw null; }
     }
     public enum MemberBindingType
@@ -2022,7 +2637,7 @@ namespace System.Linq.Expressions
     public partial class MemberExpression : System.Linq.Expressions.Expression
     {
         internal MemberExpression() { }
-        public System.Linq.Expressions.Expression Expression { get { throw null; } }
+        public System.Linq.Expressions.Expression Expression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Reflection.MemberInfo Member { get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -2032,9 +2647,9 @@ namespace System.Linq.Expressions
     public sealed partial class MemberInitExpression : System.Linq.Expressions.Expression
     {
         internal MemberInitExpression() { }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.MemberBinding> Bindings { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.MemberBinding> Bindings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override bool CanReduce { get { throw null; } }
-        public System.Linq.Expressions.NewExpression NewExpression { get { throw null; } }
+        public System.Linq.Expressions.NewExpression NewExpression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -2044,13 +2659,13 @@ namespace System.Linq.Expressions
     public sealed partial class MemberListBinding : System.Linq.Expressions.MemberBinding
     {
         internal MemberListBinding() : base (default(System.Linq.Expressions.MemberBindingType), default(System.Reflection.MemberInfo)) { }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ElementInit> Initializers { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ElementInit> Initializers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Linq.Expressions.MemberListBinding Update(System.Collections.Generic.IEnumerable<System.Linq.Expressions.ElementInit> initializers) { throw null; }
     }
     public sealed partial class MemberMemberBinding : System.Linq.Expressions.MemberBinding
     {
         internal MemberMemberBinding() : base (default(System.Linq.Expressions.MemberBindingType), default(System.Reflection.MemberInfo)) { }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.MemberBinding> Bindings { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.MemberBinding> Bindings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Linq.Expressions.MemberMemberBinding Update(System.Collections.Generic.IEnumerable<System.Linq.Expressions.MemberBinding> bindings) { throw null; }
     }
     [System.Diagnostics.DebuggerTypeProxyAttribute("System.Linq.Expressions.Expression.MethodCallExpressionProxy")]
@@ -2058,7 +2673,7 @@ namespace System.Linq.Expressions
     {
         internal MethodCallExpression() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Arguments { get { throw null; } }
-        public System.Reflection.MethodInfo Method { get { throw null; } }
+        public System.Reflection.MethodInfo Method { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public System.Linq.Expressions.Expression Object { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
@@ -2069,8 +2684,8 @@ namespace System.Linq.Expressions
     public partial class NewArrayExpression : System.Linq.Expressions.Expression
     {
         internal NewArrayExpression() { }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Expressions { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Expressions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.NewArrayExpression Update(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> expressions) { throw null; }
     }
@@ -2079,8 +2694,8 @@ namespace System.Linq.Expressions
     {
         internal NewExpression() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> Arguments { get { throw null; } }
-        public System.Reflection.ConstructorInfo Constructor { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Reflection.MemberInfo> Members { get { throw null; } }
+        public System.Reflection.ConstructorInfo Constructor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Reflection.MemberInfo> Members { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -2091,7 +2706,7 @@ namespace System.Linq.Expressions
     {
         internal ParameterExpression() { }
         public bool IsByRef { get { throw null; } }
-        public string Name { get { throw null; } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public override System.Type Type { get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
@@ -2102,7 +2717,7 @@ namespace System.Linq.Expressions
         internal RuntimeVariablesExpression() { }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ParameterExpression> Variables { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ParameterExpression> Variables { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.RuntimeVariablesExpression Update(System.Collections.Generic.IEnumerable<System.Linq.Expressions.ParameterExpression> variables) { throw null; }
     }
@@ -2110,8 +2725,8 @@ namespace System.Linq.Expressions
     public sealed partial class SwitchCase
     {
         internal SwitchCase() { }
-        public System.Linq.Expressions.Expression Body { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> TestValues { get { throw null; } }
+        public System.Linq.Expressions.Expression Body { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.Expression> TestValues { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string ToString() { throw null; }
         public System.Linq.Expressions.SwitchCase Update(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> testValues, System.Linq.Expressions.Expression body) { throw null; }
     }
@@ -2119,12 +2734,12 @@ namespace System.Linq.Expressions
     public sealed partial class SwitchExpression : System.Linq.Expressions.Expression
     {
         internal SwitchExpression() { }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.SwitchCase> Cases { get { throw null; } }
-        public System.Reflection.MethodInfo Comparison { get { throw null; } }
-        public System.Linq.Expressions.Expression DefaultBody { get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.SwitchCase> Cases { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Reflection.MethodInfo Comparison { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression DefaultBody { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public System.Linq.Expressions.Expression SwitchValue { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
+        public System.Linq.Expressions.Expression SwitchValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.SwitchExpression Update(System.Linq.Expressions.Expression switchValue, System.Collections.Generic.IEnumerable<System.Linq.Expressions.SwitchCase> cases, System.Linq.Expressions.Expression defaultBody) { throw null; }
     }
@@ -2132,7 +2747,7 @@ namespace System.Linq.Expressions
     {
         internal SymbolDocumentInfo() { }
         public virtual System.Guid DocumentType { get { throw null; } }
-        public string FileName { get { throw null; } }
+        public string FileName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public virtual System.Guid Language { get { throw null; } }
         public virtual System.Guid LanguageVendor { get { throw null; } }
     }
@@ -2140,12 +2755,12 @@ namespace System.Linq.Expressions
     public sealed partial class TryExpression : System.Linq.Expressions.Expression
     {
         internal TryExpression() { }
-        public System.Linq.Expressions.Expression Body { get { throw null; } }
-        public System.Linq.Expressions.Expression Fault { get { throw null; } }
-        public System.Linq.Expressions.Expression Finally { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.CatchBlock> Handlers { get { throw null; } }
+        public System.Linq.Expressions.Expression Body { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression Fault { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression Finally { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.CatchBlock> Handlers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.TryExpression Update(System.Linq.Expressions.Expression body, System.Collections.Generic.IEnumerable<System.Linq.Expressions.CatchBlock> handlers, System.Linq.Expressions.Expression @finally, System.Linq.Expressions.Expression fault) { throw null; }
     }
@@ -2153,10 +2768,10 @@ namespace System.Linq.Expressions
     public sealed partial class TypeBinaryExpression : System.Linq.Expressions.Expression
     {
         internal TypeBinaryExpression() { }
-        public System.Linq.Expressions.Expression Expression { get { throw null; } }
-        public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
+        public System.Linq.Expressions.Expression Expression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public sealed override System.Linq.Expressions.ExpressionType NodeType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
-        public System.Type TypeOperand { get { throw null; } }
+        public System.Type TypeOperand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public System.Linq.Expressions.TypeBinaryExpression Update(System.Linq.Expressions.Expression expression) { throw null; }
     }
@@ -2167,13 +2782,129 @@ namespace System.Linq.Expressions
         public override bool CanReduce { get { throw null; } }
         public bool IsLifted { get { throw null; } }
         public bool IsLiftedToNull { get { throw null; } }
-        public System.Reflection.MethodInfo Method { get { throw null; } }
-        public sealed override System.Linq.Expressions.ExpressionType NodeType { get { throw null; } }
-        public System.Linq.Expressions.Expression Operand { get { throw null; } }
-        public sealed override System.Type Type { get { throw null; } }
+        public System.Reflection.MethodInfo Method { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public sealed override System.Linq.Expressions.ExpressionType NodeType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression Operand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public sealed override System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public override System.Linq.Expressions.Expression Reduce() { throw null; }
         public System.Linq.Expressions.UnaryExpression Update(System.Linq.Expressions.Expression operand) { throw null; }
+    }
+}
+namespace System.Management.Instrumentation
+{
+    public partial class InstanceNotFoundException : System.Management.Instrumentation.InstrumentationException
+    {
+        public InstanceNotFoundException() { }
+        protected InstanceNotFoundException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        public InstanceNotFoundException(string message) { }
+        public InstanceNotFoundException(string message, System.Exception innerException) { }
+    }
+    public partial class InstrumentationBaseException : System.Exception
+    {
+        public InstrumentationBaseException() { }
+        protected InstrumentationBaseException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        public InstrumentationBaseException(string message) { }
+        public InstrumentationBaseException(string message, System.Exception innerException) { }
+    }
+    public partial class InstrumentationException : System.Management.Instrumentation.InstrumentationBaseException
+    {
+        public InstrumentationException() { }
+        public InstrumentationException(System.Exception innerException) { }
+        protected InstrumentationException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        public InstrumentationException(string message) { }
+        public InstrumentationException(string message, System.Exception innerException) { }
+    }
+    public sealed partial class ManagementBindAttribute : System.Management.Instrumentation.ManagementNewInstanceAttribute
+    {
+        public ManagementBindAttribute() { }
+        public System.Type Schema { get { throw null; } set { } }
+    }
+    public sealed partial class ManagementCommitAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        public ManagementCommitAttribute() { }
+    }
+    public sealed partial class ManagementConfigurationAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        public ManagementConfigurationAttribute() { }
+        public System.Management.Instrumentation.ManagementConfigurationType Mode { get { throw null; } set { } }
+        public System.Type Schema { get { throw null; } set { } }
+    }
+    public enum ManagementConfigurationType
+    {
+        Apply = 0,
+        OnCommit = 1,
+    }
+    public sealed partial class ManagementCreateAttribute : System.Management.Instrumentation.ManagementNewInstanceAttribute
+    {
+        public ManagementCreateAttribute() { }
+    }
+    public sealed partial class ManagementEntityAttribute : System.Attribute
+    {
+        public ManagementEntityAttribute() { }
+        public bool External { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
+        public bool Singleton { get { throw null; } set { } }
+    }
+    public sealed partial class ManagementEnumeratorAttribute : System.Management.Instrumentation.ManagementNewInstanceAttribute
+    {
+        public ManagementEnumeratorAttribute() { }
+        public System.Type Schema { get { throw null; } set { } }
+    }
+    public enum ManagementHostingModel
+    {
+        Decoupled = 0,
+        LocalService = 2,
+        LocalSystem = 3,
+        NetworkService = 1,
+    }
+    public sealed partial class ManagementKeyAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        public ManagementKeyAttribute() { }
+    }
+    public abstract partial class ManagementMemberAttribute : System.Attribute
+    {
+        protected ManagementMemberAttribute() { }
+        public string Name { get { throw null; } set { } }
+    }
+    public sealed partial class ManagementNameAttribute : System.Attribute
+    {
+        public ManagementNameAttribute(string name) { }
+        public string Name { get { throw null; } }
+    }
+    public abstract partial class ManagementNewInstanceAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        protected ManagementNewInstanceAttribute() { }
+    }
+    public sealed partial class ManagementProbeAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        public ManagementProbeAttribute() { }
+        public System.Type Schema { get { throw null; } set { } }
+    }
+    public sealed partial class ManagementReferenceAttribute : System.Attribute
+    {
+        public ManagementReferenceAttribute() { }
+        public string Type { get { throw null; } set { } }
+    }
+    public sealed partial class ManagementRemoveAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        public ManagementRemoveAttribute() { }
+        public System.Type Schema { get { throw null; } set { } }
+    }
+    public sealed partial class ManagementTaskAttribute : System.Management.Instrumentation.ManagementMemberAttribute
+    {
+        public ManagementTaskAttribute() { }
+        public System.Type Schema { get { throw null; } set { } }
+    }
+    public sealed partial class WmiConfigurationAttribute : System.Attribute
+    {
+        public WmiConfigurationAttribute(string scope) { }
+        public string HostingGroup { get { throw null; } set { } }
+        public System.Management.Instrumentation.ManagementHostingModel HostingModel { get { throw null; } set { } }
+        public bool IdentifyLevel { get { throw null; } set { } }
+        public string NamespaceSecurity { get { throw null; } set { } }
+        public string Scope { get { throw null; } }
+        public string SecurityRestriction { get { throw null; } set { } }
     }
 }
 namespace System.Runtime.CompilerServices
@@ -2187,7 +2918,7 @@ namespace System.Runtime.CompilerServices
     public abstract partial class CallSiteBinder
     {
         protected CallSiteBinder() { }
-        public static System.Linq.Expressions.LabelTarget UpdateLabel { get { throw null; } }
+        public static System.Linq.Expressions.LabelTarget UpdateLabel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public abstract System.Linq.Expressions.Expression Bind(object[] args, System.Collections.ObjectModel.ReadOnlyCollection<System.Linq.Expressions.ParameterExpression> parameters, System.Linq.Expressions.LabelTarget returnLabel);
         public virtual T BindDelegate<T>(System.Runtime.CompilerServices.CallSite<T> site, object[] args) where T : class { throw null; }
         protected void CacheTarget<T>(T target) where T : class { }
@@ -2364,22 +3095,60 @@ namespace System.Runtime.CompilerServices
         object System.Runtime.CompilerServices.IStrongBox.Value { get { throw null; } set { } }
     }
 }
+namespace System.Runtime.InteropServices
+{
+    public partial class ComAwareEventInfo : System.Reflection.EventInfo
+    {
+        [System.MonoTODOAttribute]
+        public ComAwareEventInfo(System.Type type, string eventName) { }
+        [System.MonoTODOAttribute]
+        public override System.Reflection.EventAttributes Attributes { get { throw null; } }
+        [System.MonoTODOAttribute]
+        public override System.Type DeclaringType { get { throw null; } }
+        [System.MonoTODOAttribute]
+        public override string Name { get { throw null; } }
+        [System.MonoTODOAttribute]
+        public override System.Type ReflectedType { get { throw null; } }
+        [System.MonoTODOAttribute]
+        public override void AddEventHandler(object target, System.Delegate handler) { }
+        [System.MonoTODOAttribute]
+        public override System.Reflection.MethodInfo GetAddMethod(bool nonPublic) { throw null; }
+        [System.MonoTODOAttribute]
+        public override object[] GetCustomAttributes(bool inherit) { throw null; }
+        [System.MonoTODOAttribute]
+        public override object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
+        [System.MonoTODOAttribute]
+        public override System.Reflection.MethodInfo GetRaiseMethod(bool nonPublic) { throw null; }
+        [System.MonoTODOAttribute]
+        public override System.Reflection.MethodInfo GetRemoveMethod(bool nonPublic) { throw null; }
+        [System.MonoTODOAttribute]
+        public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
+        [System.MonoTODOAttribute]
+        public override void RemoveEventHandler(object target, System.Delegate handler) { }
+    }
+}
+namespace System.Security
+{
+    public enum ManifestKinds
+    {
+        Application = 2,
+        ApplicationAndDeployment = 3,
+        Deployment = 1,
+        None = 0,
+    }
+}
 namespace System.Security.Cryptography
 {
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class AesCryptoServiceProvider : System.Security.Cryptography.Aes
     {
         public AesCryptoServiceProvider() { }
-        public override int FeedbackSize { get { throw null; } set { } }
-        public override byte[] IV { get { throw null; } set { } }
         public override byte[] Key { get { throw null; } set { } }
         public override int KeySize { get { throw null; } set { } }
-        public override System.Security.Cryptography.CipherMode Mode { get { throw null; } set { } }
-        public override System.Security.Cryptography.PaddingMode Padding { get { throw null; } set { } }
         public override System.Security.Cryptography.ICryptoTransform CreateDecryptor() { throw null; }
-        public override System.Security.Cryptography.ICryptoTransform CreateDecryptor(byte[] rgbKey, byte[] rgbIV) { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateDecryptor(byte[] key, byte[] iv) { throw null; }
         public override System.Security.Cryptography.ICryptoTransform CreateEncryptor() { throw null; }
-        public override System.Security.Cryptography.ICryptoTransform CreateEncryptor(byte[] rgbKey, byte[] rgbIV) { throw null; }
+        public override System.Security.Cryptography.ICryptoTransform CreateEncryptor(byte[] key, byte[] iv) { throw null; }
         protected override void Dispose(bool disposing) { }
         public override void GenerateIV() { }
         public override void GenerateKey() { }
@@ -2401,6 +3170,7 @@ namespace System.Security.Cryptography
         public override void GenerateIV() { }
         public override void GenerateKey() { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     [System.SerializableAttribute]
     public sealed partial class CngAlgorithm : System.IEquatable<System.Security.Cryptography.CngAlgorithm>
     {
@@ -2424,6 +3194,7 @@ namespace System.Security.Cryptography
         public static bool operator !=(System.Security.Cryptography.CngAlgorithm left, System.Security.Cryptography.CngAlgorithm right) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     [System.SerializableAttribute]
     public sealed partial class CngAlgorithmGroup : System.IEquatable<System.Security.Cryptography.CngAlgorithmGroup>
     {
@@ -2440,6 +3211,304 @@ namespace System.Security.Cryptography
         public static bool operator ==(System.Security.Cryptography.CngAlgorithmGroup left, System.Security.Cryptography.CngAlgorithmGroup right) { throw null; }
         public static bool operator !=(System.Security.Cryptography.CngAlgorithmGroup left, System.Security.Cryptography.CngAlgorithmGroup right) { throw null; }
         public override string ToString() { throw null; }
+    }
+    [System.FlagsAttribute]
+    public enum CngExportPolicies
+    {
+        AllowArchiving = 4,
+        AllowExport = 1,
+        AllowPlaintextArchiving = 8,
+        AllowPlaintextExport = 2,
+        None = 0,
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public sealed partial class CngKey : System.IDisposable
+    {
+        internal CngKey() { }
+        public System.Security.Cryptography.CngAlgorithm Algorithm { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CngAlgorithmGroup AlgorithmGroup { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CngExportPolicies ExportPolicy { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle Handle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]get { throw null; } }
+        public bool IsEphemeral { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool IsMachineKey { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string KeyName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public int KeySize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CngKeyUsages KeyUsage { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.IntPtr ParentWindowHandle { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]set { } }
+        public System.Security.Cryptography.CngProvider Provider { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public Microsoft.Win32.SafeHandles.SafeNCryptProviderHandle ProviderHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]get { throw null; } }
+        public System.Security.Cryptography.CngUIPolicy UIPolicy { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string UniqueName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static System.Security.Cryptography.CngKey Create(System.Security.Cryptography.CngAlgorithm algorithm) { throw null; }
+        public static System.Security.Cryptography.CngKey Create(System.Security.Cryptography.CngAlgorithm algorithm, string keyName) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Security.Cryptography.CngKey Create(System.Security.Cryptography.CngAlgorithm algorithm, string keyName, System.Security.Cryptography.CngKeyCreationParameters creationParameters) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public void Delete() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public void Dispose() { }
+        public static bool Exists(string keyName) { throw null; }
+        public static bool Exists(string keyName, System.Security.Cryptography.CngProvider provider) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static bool Exists(string keyName, System.Security.Cryptography.CngProvider provider, System.Security.Cryptography.CngKeyOpenOptions options) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public byte[] Export(System.Security.Cryptography.CngKeyBlobFormat format) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        public System.Security.Cryptography.CngProperty GetProperty(string name, System.Security.Cryptography.CngPropertyOptions options) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        public bool HasProperty(string name, System.Security.Cryptography.CngPropertyOptions options) { throw null; }
+        public static System.Security.Cryptography.CngKey Import(byte[] keyBlob, System.Security.Cryptography.CngKeyBlobFormat format) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Security.Cryptography.CngKey Import(byte[] keyBlob, System.Security.Cryptography.CngKeyBlobFormat format, System.Security.Cryptography.CngProvider provider) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        public static System.Security.Cryptography.CngKey Open(Microsoft.Win32.SafeHandles.SafeNCryptKeyHandle keyHandle, System.Security.Cryptography.CngKeyHandleOpenOptions keyHandleOpenOptions) { throw null; }
+        public static System.Security.Cryptography.CngKey Open(string keyName) { throw null; }
+        public static System.Security.Cryptography.CngKey Open(string keyName, System.Security.Cryptography.CngProvider provider) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Security.Cryptography.CngKey Open(string keyName, System.Security.Cryptography.CngProvider provider, System.Security.Cryptography.CngKeyOpenOptions openOptions) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        public void SetProperty(System.Security.Cryptography.CngProperty property) { }
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    [System.SerializableAttribute]
+    public sealed partial class CngKeyBlobFormat : System.IEquatable<System.Security.Cryptography.CngKeyBlobFormat>
+    {
+        public CngKeyBlobFormat(string format) { }
+        public static System.Security.Cryptography.CngKeyBlobFormat EccPrivateBlob { get { throw null; } }
+        public static System.Security.Cryptography.CngKeyBlobFormat EccPublicBlob { get { throw null; } }
+        public string Format { get { throw null; } }
+        public static System.Security.Cryptography.CngKeyBlobFormat GenericPrivateBlob { get { throw null; } }
+        public static System.Security.Cryptography.CngKeyBlobFormat GenericPublicBlob { get { throw null; } }
+        public static System.Security.Cryptography.CngKeyBlobFormat OpaqueTransportBlob { get { throw null; } }
+        public static System.Security.Cryptography.CngKeyBlobFormat Pkcs8PrivateBlob { get { throw null; } }
+        public override bool Equals(object obj) { throw null; }
+        public bool Equals(System.Security.Cryptography.CngKeyBlobFormat other) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public static bool operator ==(System.Security.Cryptography.CngKeyBlobFormat left, System.Security.Cryptography.CngKeyBlobFormat right) { throw null; }
+        public static bool operator !=(System.Security.Cryptography.CngKeyBlobFormat left, System.Security.Cryptography.CngKeyBlobFormat right) { throw null; }
+        public override string ToString() { throw null; }
+    }
+    [System.FlagsAttribute]
+    public enum CngKeyCreationOptions
+    {
+        MachineKey = 32,
+        None = 0,
+        OverwriteExistingKey = 128,
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public sealed partial class CngKeyCreationParameters
+    {
+        public CngKeyCreationParameters() { }
+        public System.Nullable<System.Security.Cryptography.CngExportPolicies> ExportPolicy { get { throw null; } set { } }
+        public System.Security.Cryptography.CngKeyCreationOptions KeyCreationOptions { get { throw null; } set { } }
+        public System.Nullable<System.Security.Cryptography.CngKeyUsages> KeyUsage { get { throw null; } set { } }
+        public System.Security.Cryptography.CngPropertyCollection Parameters { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]get { throw null; } }
+        public System.IntPtr ParentWindowHandle { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]set { } }
+        public System.Security.Cryptography.CngProvider Provider { get { throw null; } set { } }
+        public System.Security.Cryptography.CngUIPolicy UIPolicy { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(1)), System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]set { } }
+    }
+    [System.FlagsAttribute]
+    public enum CngKeyHandleOpenOptions
+    {
+        EphemeralKey = 1,
+        None = 0,
+    }
+    [System.FlagsAttribute]
+    public enum CngKeyOpenOptions
+    {
+        MachineKey = 32,
+        None = 0,
+        Silent = 64,
+        UserKey = 0,
+    }
+    [System.FlagsAttribute]
+    public enum CngKeyUsages
+    {
+        AllUsages = 16777215,
+        Decryption = 1,
+        KeyAgreement = 4,
+        None = 0,
+        Signing = 2,
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct CngProperty : System.IEquatable<System.Security.Cryptography.CngProperty>
+    {
+        public CngProperty(string name, byte[] value, System.Security.Cryptography.CngPropertyOptions options) { throw null;}
+        public string Name { get { throw null; } }
+        public System.Security.Cryptography.CngPropertyOptions Options { get { throw null; } }
+        public override bool Equals(object obj) { throw null; }
+        public bool Equals(System.Security.Cryptography.CngProperty other) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public byte[] GetValue() { throw null; }
+        public static bool operator ==(System.Security.Cryptography.CngProperty left, System.Security.Cryptography.CngProperty right) { throw null; }
+        public static bool operator !=(System.Security.Cryptography.CngProperty left, System.Security.Cryptography.CngProperty right) { throw null; }
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public sealed partial class CngPropertyCollection : System.Collections.ObjectModel.Collection<System.Security.Cryptography.CngProperty>
+    {
+        public CngPropertyCollection() { }
+    }
+    [System.FlagsAttribute]
+    public enum CngPropertyOptions
+    {
+        CustomProperty = 1073741824,
+        None = 0,
+        Persist = -2147483648,
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    [System.SerializableAttribute]
+    public sealed partial class CngProvider : System.IEquatable<System.Security.Cryptography.CngProvider>
+    {
+        public CngProvider(string provider) { }
+        public static System.Security.Cryptography.CngProvider MicrosoftSmartCardKeyStorageProvider { get { throw null; } }
+        public static System.Security.Cryptography.CngProvider MicrosoftSoftwareKeyStorageProvider { get { throw null; } }
+        public string Provider { get { throw null; } }
+        public override bool Equals(object obj) { throw null; }
+        public bool Equals(System.Security.Cryptography.CngProvider other) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public static bool operator ==(System.Security.Cryptography.CngProvider left, System.Security.Cryptography.CngProvider right) { throw null; }
+        public static bool operator !=(System.Security.Cryptography.CngProvider left, System.Security.Cryptography.CngProvider right) { throw null; }
+        public override string ToString() { throw null; }
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public sealed partial class CngUIPolicy
+    {
+        public CngUIPolicy(System.Security.Cryptography.CngUIProtectionLevels protectionLevel) { }
+        public CngUIPolicy(System.Security.Cryptography.CngUIProtectionLevels protectionLevel, string friendlyName) { }
+        public CngUIPolicy(System.Security.Cryptography.CngUIProtectionLevels protectionLevel, string friendlyName, string description) { }
+        public CngUIPolicy(System.Security.Cryptography.CngUIProtectionLevels protectionLevel, string friendlyName, string description, string useContext) { }
+        public CngUIPolicy(System.Security.Cryptography.CngUIProtectionLevels protectionLevel, string friendlyName, string description, string useContext, string creationTitle) { }
+        public string CreationTitle { get { throw null; } }
+        public string Description { get { throw null; } }
+        public string FriendlyName { get { throw null; } }
+        public System.Security.Cryptography.CngUIProtectionLevels ProtectionLevel { get { throw null; } }
+        public string UseContext { get { throw null; } }
+    }
+    [System.FlagsAttribute]
+    public enum CngUIProtectionLevels
+    {
+        ForceHighProtection = 2,
+        None = 0,
+        ProtectKey = 1,
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public abstract partial class ECDiffieHellman : System.Security.Cryptography.AsymmetricAlgorithm
+    {
+        protected ECDiffieHellman() { }
+        public override string KeyExchangeAlgorithm { get { throw null; } }
+        public abstract System.Security.Cryptography.ECDiffieHellmanPublicKey PublicKey { get; }
+        public override string SignatureAlgorithm { get { throw null; } }
+        public static new System.Security.Cryptography.ECDiffieHellman Create() { throw null; }
+        public static new System.Security.Cryptography.ECDiffieHellman Create(string algorithm) { throw null; }
+        public abstract byte[] DeriveKeyMaterial(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey);
+    }
+    public sealed partial class ECDiffieHellmanCng : System.Security.Cryptography.ECDiffieHellman
+    {
+        public ECDiffieHellmanCng() { }
+        public ECDiffieHellmanCng(int keySize) { }
+        public ECDiffieHellmanCng(System.Security.Cryptography.CngKey key) { }
+        public System.Security.Cryptography.CngAlgorithm HashAlgorithm { get { throw null; } set { } }
+        public byte[] HmacKey { get { throw null; } set { } }
+        public System.Security.Cryptography.CngKey Key { get { throw null; } }
+        public System.Security.Cryptography.ECDiffieHellmanKeyDerivationFunction KeyDerivationFunction { get { throw null; } set { } }
+        public byte[] Label { get { throw null; } set { } }
+        public override System.Security.Cryptography.ECDiffieHellmanPublicKey PublicKey { get { throw null; } }
+        public byte[] SecretAppend { get { throw null; } set { } }
+        public byte[] SecretPrepend { get { throw null; } set { } }
+        public byte[] Seed { get { throw null; } set { } }
+        public bool UseSecretAgreementAsHmacKey { get { throw null; } }
+        public byte[] DeriveKeyMaterial(System.Security.Cryptography.CngKey otherPartyPublicKey) { throw null; }
+        public override byte[] DeriveKeyMaterial(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
+        public Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle DeriveSecretAgreementHandle(System.Security.Cryptography.CngKey otherPartyPublicKey) { throw null; }
+        public Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle DeriveSecretAgreementHandle(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
+        protected override void Dispose(bool disposing) { }
+        public override void FromXmlString(string xmlString) { }
+        public void FromXmlString(string xml, System.Security.Cryptography.ECKeyXmlFormat format) { }
+        public override string ToXmlString(bool includePrivateParameters) { throw null; }
+        public string ToXmlString(System.Security.Cryptography.ECKeyXmlFormat format) { throw null; }
+    }
+    public sealed partial class ECDiffieHellmanCngPublicKey : System.Security.Cryptography.ECDiffieHellmanPublicKey
+    {
+        internal ECDiffieHellmanCngPublicKey() : base (default(byte[])) { }
+        public System.Security.Cryptography.CngKeyBlobFormat BlobFormat { get { throw null; } }
+        protected override void Dispose(bool disposing) { }
+        public static System.Security.Cryptography.ECDiffieHellmanPublicKey FromByteArray(byte[] publicKeyBlob, System.Security.Cryptography.CngKeyBlobFormat format) { throw null; }
+        public static System.Security.Cryptography.ECDiffieHellmanCngPublicKey FromXmlString(string xml) { throw null; }
+        public System.Security.Cryptography.CngKey Import() { throw null; }
+        public override string ToXmlString() { throw null; }
+    }
+    public enum ECDiffieHellmanKeyDerivationFunction
+    {
+        Hash = 0,
+        Hmac = 1,
+        Tls = 2,
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    [System.SerializableAttribute]
+    public abstract partial class ECDiffieHellmanPublicKey : System.IDisposable
+    {
+        protected ECDiffieHellmanPublicKey(byte[] keyBlob) { }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        public virtual byte[] ToByteArray() { throw null; }
+        public abstract string ToXmlString();
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public abstract partial class ECDsa : System.Security.Cryptography.AsymmetricAlgorithm
+    {
+        protected ECDsa() { }
+        public override string KeyExchangeAlgorithm { get { throw null; } }
+        public override string SignatureAlgorithm { get { throw null; } }
+        public static new System.Security.Cryptography.ECDsa Create() { throw null; }
+        public static new System.Security.Cryptography.ECDsa Create(string algorithm) { throw null; }
+        public abstract byte[] SignHash(byte[] hash);
+        public abstract bool VerifyHash(byte[] hash, byte[] signature);
+    }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
+    public sealed partial class ECDsaCng : System.Security.Cryptography.ECDsa
+    {
+        public ECDsaCng() { }
+        public ECDsaCng(int keySize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public ECDsaCng(System.Security.Cryptography.CngKey key) { }
+        public System.Security.Cryptography.CngAlgorithm HashAlgorithm { get { throw null; } set { } }
+        public System.Security.Cryptography.CngKey Key { get { throw null; } }
+        protected override void Dispose(bool disposing) { }
+        public override void FromXmlString(string xmlString) { }
+        public void FromXmlString(string xml, System.Security.Cryptography.ECKeyXmlFormat format) { }
+        public byte[] SignData(byte[] data) { throw null; }
+        public byte[] SignData(byte[] data, int offset, int count) { throw null; }
+        public byte[] SignData(System.IO.Stream data) { throw null; }
+        public override byte[] SignHash(byte[] hash) { throw null; }
+        public override string ToXmlString(bool includePrivateParameters) { throw null; }
+        public string ToXmlString(System.Security.Cryptography.ECKeyXmlFormat format) { throw null; }
+        public bool VerifyData(byte[] data, byte[] signature) { throw null; }
+        public bool VerifyData(byte[] data, int offset, int count, byte[] signature) { throw null; }
+        public bool VerifyData(System.IO.Stream data, byte[] signature) { throw null; }
+        public override bool VerifyHash(byte[] hash, byte[] signature) { throw null; }
+    }
+    public enum ECKeyXmlFormat
+    {
+        Rfc4050 = 0,
+    }
+    public sealed partial class ManifestSignatureInformation
+    {
+        internal ManifestSignatureInformation() { }
+        public System.Security.Cryptography.X509Certificates.AuthenticodeSignatureInformation AuthenticodeSignature { get { throw null; } }
+        public System.Security.ManifestKinds Manifest { get { throw null; } }
+        public System.Security.Cryptography.StrongNameSignatureInformation StrongNameSignature { get { throw null; } }
+        public static System.Security.Cryptography.ManifestSignatureInformationCollection VerifySignature(System.ActivationContext application) { throw null; }
+        public static System.Security.Cryptography.ManifestSignatureInformationCollection VerifySignature(System.ActivationContext application, System.Security.ManifestKinds manifests) { throw null; }
+        public static System.Security.Cryptography.ManifestSignatureInformationCollection VerifySignature(System.ActivationContext application, System.Security.ManifestKinds manifests, System.Security.Cryptography.X509Certificates.X509RevocationFlag revocationFlag, System.Security.Cryptography.X509Certificates.X509RevocationMode revocationMode) { throw null; }
+    }
+    public sealed partial class ManifestSignatureInformationCollection : System.Collections.ObjectModel.ReadOnlyCollection<System.Security.Cryptography.ManifestSignatureInformation>
+    {
+        internal ManifestSignatureInformationCollection() : base (default(System.Collections.Generic.IList<System.Security.Cryptography.ManifestSignatureInformation>)) { }
     }
     public sealed partial class MD5Cng : System.Security.Cryptography.MD5
     {
@@ -2544,6 +3613,88 @@ namespace System.Security.Cryptography
         protected override byte[] HashFinal() { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public override void Initialize() { }
+    }
+    public enum SignatureVerificationResult
+    {
+        AssemblyIdentityMismatch = 1,
+        BadDigest = -2146869232,
+        BadSignatureFormat = -2146762749,
+        BasicConstraintsNotObserved = -2146869223,
+        CertificateExpired = -2146762495,
+        CertificateExplicitlyDistrusted = -2146762479,
+        CertificateMalformed = -2146762488,
+        CertificateNotExplicitlyTrusted = -2146762748,
+        CertificateRevoked = -2146762484,
+        CertificateUsageNotAllowed = -2146762490,
+        ContainingSignatureInvalid = 2,
+        CouldNotBuildChain = -2146762486,
+        GenericTrustFailure = -2146762485,
+        InvalidCertificateName = -2146762476,
+        InvalidCertificatePolicy = -2146762477,
+        InvalidCertificateRole = -2146762493,
+        InvalidCertificateSignature = -2146869244,
+        InvalidCertificateUsage = -2146762480,
+        InvalidCountersignature = -2146869245,
+        InvalidSignerCertificate = -2146869246,
+        InvalidTimePeriodNesting = -2146762494,
+        InvalidTimestamp = -2146869243,
+        IssuerChainingError = -2146762489,
+        MissingSignature = -2146762496,
+        PathLengthConstraintViolated = -2146762492,
+        PublicKeyTokenMismatch = 3,
+        PublisherMismatch = 4,
+        RevocationCheckFailure = -2146762482,
+        SystemError = -2146869247,
+        UnknownCriticalExtension = -2146762491,
+        UnknownTrustProvider = -2146762751,
+        UnknownVerificationAction = -2146762750,
+        UntrustedCertificationAuthority = -2146762478,
+        UntrustedRootCertificate = -2146762487,
+        UntrustedTestRootCertificate = -2146762483,
+        Valid = 0,
+    }
+    public sealed partial class StrongNameSignatureInformation
+    {
+        internal StrongNameSignatureInformation() { }
+        public string HashAlgorithm { get { throw null; } }
+        public int HResult { get { throw null; } }
+        public bool IsValid { get { throw null; } }
+        public System.Security.Cryptography.AsymmetricAlgorithm PublicKey { get { throw null; } }
+        public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
+    }
+}
+namespace System.Security.Cryptography.X509Certificates
+{
+    public sealed partial class AuthenticodeSignatureInformation
+    {
+        internal AuthenticodeSignatureInformation() { }
+        public string Description { get { throw null; } }
+        public System.Uri DescriptionUrl { get { throw null; } }
+        public string HashAlgorithm { get { throw null; } }
+        public int HResult { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Chain SignatureChain { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2 SigningCertificate { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.TimestampInformation Timestamp { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.TrustStatus TrustStatus { get { throw null; } }
+        public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
+    }
+    public sealed partial class TimestampInformation
+    {
+        internal TimestampInformation() { }
+        public string HashAlgorithm { get { throw null; } }
+        public int HResult { get { throw null; } }
+        public bool IsValid { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Chain SignatureChain { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2 SigningCertificate { get { throw null; } }
+        public System.DateTime Timestamp { get { throw null; } }
+        public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
+    }
+    public enum TrustStatus
+    {
+        KnownIdentity = 2,
+        Trusted = 3,
+        UnknownIdentity = 1,
+        Untrusted = 0,
     }
 }
 namespace System.Threading

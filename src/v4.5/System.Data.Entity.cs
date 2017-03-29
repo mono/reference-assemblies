@@ -2854,8 +2854,8 @@ namespace System.Data.EntityClient
         public System.Data.Metadata.Edm.EdmType EdmType { get { throw null; } set { } }
         public override bool IsNullable { get { throw null; } set { } }
         public override string ParameterName { get { throw null; } set { } }
-        public new byte Precision { get { throw null; } set { } }
-        public new byte Scale { get { throw null; } set { } }
+        public byte Precision { get { throw null; } set { } }
+        public byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
         public override bool SourceColumnNullMapping { get { throw null; } set { } }
@@ -4291,7 +4291,6 @@ namespace System.Data.Objects.DataClasses
     {
         internal RelationshipManager() { }
         public static System.Data.Objects.DataClasses.RelationshipManager Create(System.Data.Objects.DataClasses.IEntityWithRelationships owner) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Data.Objects.DataClasses.IRelatedEnd> GetAllRelatedEnds() { throw null; }
         public System.Data.Objects.DataClasses.EntityCollection<TTargetEntity> GetRelatedCollection<TTargetEntity>(string relationshipName, string targetRoleName) where TTargetEntity : class { throw null; }
         public System.Data.Objects.DataClasses.IRelatedEnd GetRelatedEnd(string relationshipName, string targetRoleName) { throw null; }

@@ -55,6 +55,8 @@ namespace System
 }
 namespace System.Threading.Tasks.Dataflow
 {
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.ActionBlock<TInput>.DebugView")]
     public sealed partial class ActionBlock<TInput> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.ITargetBlock<TInput>
     {
         public ActionBlock(System.Action<TInput> action) { }
@@ -64,11 +66,13 @@ namespace System.Threading.Tasks.Dataflow
         public System.Threading.Tasks.Task Completion { get { throw null; } }
         public int InputCount { get { throw null; } }
         public void Complete() { }
-        public bool Post(TInput item) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public bool Post(TInput item) { throw null; }
         void System.Threading.Tasks.Dataflow.IDataflowBlock.Fault(System.Exception exception) { }
         System.Threading.Tasks.Dataflow.DataflowMessageStatus System.Threading.Tasks.Dataflow.ITargetBlock<TInput>.OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader messageHeader, TInput messageValue, System.Threading.Tasks.Dataflow.ISourceBlock<TInput> source, bool consumeToAccept) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.BatchBlock<T>.DebugView")]
     public sealed partial class BatchBlock<T> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IPropagatorBlock<T, T[]>, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<T[]>, System.Threading.Tasks.Dataflow.ISourceBlock<T[]>, System.Threading.Tasks.Dataflow.ITargetBlock<T>
     {
         public BatchBlock(int batchSize) { }
@@ -88,11 +92,13 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<T[]> filter, out T[] item) { item = default(T[]); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<T[]> items) { items = default(System.Collections.Generic.IList<T[]>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.BatchedJoinBlock<T1, T2>.DebugView")]
     public sealed partial class BatchedJoinBlock<T1, T2> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>>>, System.Threading.Tasks.Dataflow.ISourceBlock<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>>>
     {
         public BatchedJoinBlock(int batchSize) { }
         public BatchedJoinBlock(int batchSize, System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions dataflowBlockOptions) { }
-        public int BatchSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int BatchSize { get { throw null; } }
         public System.Threading.Tasks.Task Completion { get { throw null; } }
         public int OutputCount { get { throw null; } }
         public System.Threading.Tasks.Dataflow.ITargetBlock<T1> Target1 { get { throw null; } }
@@ -107,11 +113,13 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>>> filter, out System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>> item) { item = default(System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>>); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>>> items) { items = default(System.Collections.Generic.IList<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>>>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.BatchedJoinBlock<T1, T2, T3>.DebugView")]
     public sealed partial class BatchedJoinBlock<T1, T2, T3> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>>>, System.Threading.Tasks.Dataflow.ISourceBlock<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>>>
     {
         public BatchedJoinBlock(int batchSize) { }
         public BatchedJoinBlock(int batchSize, System.Threading.Tasks.Dataflow.GroupingDataflowBlockOptions dataflowBlockOptions) { }
-        public int BatchSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int BatchSize { get { throw null; } }
         public System.Threading.Tasks.Task Completion { get { throw null; } }
         public int OutputCount { get { throw null; } }
         public System.Threading.Tasks.Dataflow.ITargetBlock<T1> Target1 { get { throw null; } }
@@ -127,6 +135,8 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>>> filter, out System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>> item) { item = default(System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>>); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>>> items) { items = default(System.Collections.Generic.IList<System.Tuple<System.Collections.Generic.IList<T1>, System.Collections.Generic.IList<T2>, System.Collections.Generic.IList<T3>>>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.BroadcastBlock<T>.DebugView")]
     public sealed partial class BroadcastBlock<T> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IPropagatorBlock<T, T>, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<T>, System.Threading.Tasks.Dataflow.ISourceBlock<T>, System.Threading.Tasks.Dataflow.ITargetBlock<T>
     {
         public BroadcastBlock(System.Func<T, T> cloningFunction) { }
@@ -143,6 +153,8 @@ namespace System.Threading.Tasks.Dataflow
         public override string ToString() { throw null; }
         public bool TryReceive(System.Predicate<T> filter, out T item) { item = default(T); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.BufferBlock<T>.DebugView")]
     public sealed partial class BufferBlock<T> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IPropagatorBlock<T, T>, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<T>, System.Threading.Tasks.Dataflow.ISourceBlock<T>, System.Threading.Tasks.Dataflow.ITargetBlock<T>
     {
         public BufferBlock() { }
@@ -188,23 +200,26 @@ namespace System.Threading.Tasks.Dataflow
         public static System.Threading.Tasks.Task<bool> SendAsync<TInput>(this System.Threading.Tasks.Dataflow.ITargetBlock<TInput> target, TInput item, System.Threading.CancellationToken cancellationToken) { throw null; }
         public static bool TryReceive<TOutput>(this System.Threading.Tasks.Dataflow.IReceivableSourceBlock<TOutput> source, out TOutput item) { item = default(TOutput); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("TaskScheduler = {TaskScheduler}, MaxMessagesPerTask = {MaxMessagesPerTask}, BoundedCapacity = {BoundedCapacity}")]
     public partial class DataflowBlockOptions
     {
         public const int Unbounded = -1;
         public DataflowBlockOptions() { }
         public int BoundedCapacity { get { throw null; } set { } }
-        public System.Threading.CancellationToken CancellationToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Threading.CancellationToken CancellationToken { get { throw null; } set { } }
         public int MaxMessagesPerTask { get { throw null; } set { } }
         public string NameFormat { get { throw null; } set { } }
         public System.Threading.Tasks.TaskScheduler TaskScheduler { get { throw null; } set { } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("PropagateCompletion = {PropagateCompletion}, MaxMessages = {MaxMessages}, Append = {Append}")]
     public partial class DataflowLinkOptions
     {
         public DataflowLinkOptions() { }
-        public bool Append { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Append { get { throw null; } set { } }
         public int MaxMessages { get { throw null; } set { } }
-        public bool PropagateCompletion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool PropagateCompletion { get { throw null; } set { } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Id = {Id}")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct DataflowMessageHeader : System.IEquatable<System.Threading.Tasks.Dataflow.DataflowMessageHeader>
     {
@@ -225,16 +240,18 @@ namespace System.Threading.Tasks.Dataflow
         NotAvailable = 3,
         Postponed = 2,
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("TaskScheduler = {TaskScheduler}, MaxMessagesPerTask = {MaxMessagesPerTask}, BoundedCapacity = {BoundedCapacity}, MaxDegreeOfParallelism = {MaxDegreeOfParallelism}")]
     public partial class ExecutionDataflowBlockOptions : System.Threading.Tasks.Dataflow.DataflowBlockOptions
     {
         public ExecutionDataflowBlockOptions() { }
         public int MaxDegreeOfParallelism { get { throw null; } set { } }
-        public bool SingleProducerConstrained { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SingleProducerConstrained { get { throw null; } set { } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("TaskScheduler = {TaskScheduler}, MaxMessagesPerTask = {MaxMessagesPerTask}, BoundedCapacity = {BoundedCapacity}, Greedy = {Greedy}, MaxNumberOfGroups = {MaxNumberOfGroups}")]
     public partial class GroupingDataflowBlockOptions : System.Threading.Tasks.Dataflow.DataflowBlockOptions
     {
         public GroupingDataflowBlockOptions() { }
-        public bool Greedy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Greedy { get { throw null; } set { } }
         public long MaxNumberOfGroups { get { throw null; } set { } }
     }
     public partial interface IDataflowBlock
@@ -262,6 +279,8 @@ namespace System.Threading.Tasks.Dataflow
     {
         System.Threading.Tasks.Dataflow.DataflowMessageStatus OfferMessage(System.Threading.Tasks.Dataflow.DataflowMessageHeader messageHeader, TInput messageValue, System.Threading.Tasks.Dataflow.ISourceBlock<TInput> source, bool consumeToAccept);
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.JoinBlock<T1, T2>.DebugView")]
     public sealed partial class JoinBlock<T1, T2> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<System.Tuple<T1, T2>>, System.Threading.Tasks.Dataflow.ISourceBlock<System.Tuple<T1, T2>>
     {
         public JoinBlock() { }
@@ -280,6 +299,8 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<System.Tuple<T1, T2>> filter, out System.Tuple<T1, T2> item) { item = default(System.Tuple<T1, T2>); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<System.Tuple<T1, T2>> items) { items = default(System.Collections.Generic.IList<System.Tuple<T1, T2>>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.JoinBlock<T1, T2, T3>.DebugView")]
     public sealed partial class JoinBlock<T1, T2, T3> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<System.Tuple<T1, T2, T3>>, System.Threading.Tasks.Dataflow.ISourceBlock<System.Tuple<T1, T2, T3>>
     {
         public JoinBlock() { }
@@ -299,6 +320,8 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<System.Tuple<T1, T2, T3>> filter, out System.Tuple<T1, T2, T3> item) { item = default(System.Tuple<T1, T2, T3>); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<System.Tuple<T1, T2, T3>> items) { items = default(System.Collections.Generic.IList<System.Tuple<T1, T2, T3>>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.TransformBlock<TInput, TOutput>.DebugView")]
     public sealed partial class TransformBlock<TInput, TOutput> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IPropagatorBlock<TInput, TOutput>, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<TOutput>, System.Threading.Tasks.Dataflow.ISourceBlock<TOutput>, System.Threading.Tasks.Dataflow.ITargetBlock<TInput>
     {
         public TransformBlock(System.Func<TInput, System.Threading.Tasks.Task<TOutput>> transform) { }
@@ -319,6 +342,8 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<TOutput> filter, out TOutput item) { item = default(TOutput); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<TOutput> items) { items = default(System.Collections.Generic.IList<TOutput>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.TransformManyBlock<TInput, TOutput>.DebugView")]
     public sealed partial class TransformManyBlock<TInput, TOutput> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IPropagatorBlock<TInput, TOutput>, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<TOutput>, System.Threading.Tasks.Dataflow.ISourceBlock<TOutput>, System.Threading.Tasks.Dataflow.ITargetBlock<TInput>
     {
         public TransformManyBlock(System.Func<TInput, System.Collections.Generic.IEnumerable<TOutput>> transform) { }
@@ -339,6 +364,8 @@ namespace System.Threading.Tasks.Dataflow
         public bool TryReceive(System.Predicate<TOutput> filter, out TOutput item) { item = default(TOutput); throw null; }
         public bool TryReceiveAll(out System.Collections.Generic.IList<TOutput> items) { items = default(System.Collections.Generic.IList<TOutput>); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebuggerDisplayContent,nq}")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Threading.Tasks.Dataflow.WriteOnceBlock<T>.DebugView")]
     public sealed partial class WriteOnceBlock<T> : System.Threading.Tasks.Dataflow.IDataflowBlock, System.Threading.Tasks.Dataflow.IPropagatorBlock<T, T>, System.Threading.Tasks.Dataflow.IReceivableSourceBlock<T>, System.Threading.Tasks.Dataflow.ISourceBlock<T>, System.Threading.Tasks.Dataflow.ITargetBlock<T>
     {
         public WriteOnceBlock(System.Func<T, T> cloningFunction) { }

@@ -210,7 +210,7 @@ namespace System.Runtime.Caching
         public abstract void Set(System.Runtime.Caching.CacheItem item, System.Runtime.Caching.CacheItemPolicy policy);
         public abstract void Set(string key, object value, System.DateTimeOffset absoluteExpiration, string regionName=null);
         public abstract void Set(string key, object value, System.Runtime.Caching.CacheItemPolicy policy, string regionName=null);
-        System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,object>>.GetEnumerator() { throw null; }
+        System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
     public delegate void OnChangedCallback(object state);

@@ -226,7 +226,7 @@ namespace System.EnterpriseServices
         [System.MonoTODOAttribute]
         public static void SetComplete() { }
         [System.MonoTODOAttribute]
-        public static void SetNamedProperty(string name, object property) { }
+        public static void SetNamedProperty(string name, object value) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1093))]
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -473,7 +473,7 @@ namespace System.EnterpriseServices
         public RegistrationException() { }
         [System.MonoTODOAttribute]
         public RegistrationException(string msg) { }
-        public RegistrationException(string msg, System.Exception innerException) { }
+        public RegistrationException(string msg, System.Exception inner) { }
         public System.EnterpriseServices.RegistrationErrorInfo[] ErrorInfo { get { throw null; } }
         [System.MonoTODOAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext ctx) { }

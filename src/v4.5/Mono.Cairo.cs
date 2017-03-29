@@ -68,12 +68,12 @@ namespace Cairo
         public Cairo.Matrix Matrix { get { throw null; } set { } }
         public double MiterLimit { get { throw null; } set { } }
         public Cairo.Operator Operator { get { throw null; } set { } }
-        [System.ObsoleteAttribute("Use GetSource/GetSource")]
+        [System.ObsoleteAttribute("Use GetSource/SetSource")]
         public Cairo.Pattern Pattern { get { throw null; } set { } }
         public uint ReferenceCount { get { throw null; } }
         [System.ObsoleteAttribute("Use GetScaledFont/SetScaledFont")]
         public Cairo.ScaledFont ScaledFont { get { throw null; } set { } }
-        [System.ObsoleteAttribute("Use GetSource/GetSource")]
+        [System.ObsoleteAttribute("Use GetSource/SetSource")]
         public Cairo.Pattern Source { get { throw null; } set { } }
         public Cairo.Status Status { get { throw null; } }
         [System.ObsoleteAttribute("Use GetTarget/SetTarget")]

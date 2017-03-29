@@ -340,7 +340,7 @@ namespace System.Web.Razor.Generator
         InjectCode = 1,
         WriteToOutput = 0,
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct GeneratedClassContext
     {
         public static readonly System.Web.Razor.Generator.GeneratedClassContext Default;
@@ -375,7 +375,7 @@ namespace System.Web.Razor.Generator
         public static bool operator ==(System.Web.Razor.Generator.GeneratedClassContext left, System.Web.Razor.Generator.GeneratedClassContext right) { throw null; }
         public static bool operator !=(System.Web.Razor.Generator.GeneratedClassContext left, System.Web.Razor.Generator.GeneratedClassContext right) { throw null; }
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct GeneratedCodeMapping
     {
         public GeneratedCodeMapping(int startLine, int startColumn, int startGeneratedColumn, int codeLength) { throw null;}
@@ -677,7 +677,6 @@ namespace System.Web.Razor.Parser
         public virtual bool KnowsSymbolType(System.Web.Razor.Tokenizer.Symbols.KnownSymbolType type) { throw null; }
         public virtual System.Tuple<TSymbol, TSymbol> SplitSymbol(TSymbol symbol, int splitAt, TSymbolType leftType) { throw null; }
         public virtual System.Collections.Generic.IEnumerable<TSymbol> TokenizeString(string content) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public virtual System.Collections.Generic.IEnumerable<TSymbol> TokenizeString(System.Web.Razor.Text.SourceLocation start, string input) { throw null; }
     }
     public abstract partial class ParserBase
@@ -967,7 +966,6 @@ namespace System.Web.Razor.Parser.SyntaxTree
         public override bool EquivalentTo(System.Web.Razor.Parser.SyntaxTree.SyntaxTreeNode node) { throw null; }
         public System.Web.Razor.Parser.SyntaxTree.Span FindFirstDescendentSpan() { throw null; }
         public System.Web.Razor.Parser.SyntaxTree.Span FindLastDescendentSpan() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Web.Razor.Parser.SyntaxTree.Span> Flatten() { throw null; }
         public override int GetHashCode() { throw null; }
         public System.Web.Razor.Parser.SyntaxTree.Span LocateOwner(System.Web.Razor.Text.TextChange change) { throw null; }

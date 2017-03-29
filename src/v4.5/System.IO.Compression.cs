@@ -73,7 +73,7 @@ namespace System.IO.Compression
     public partial class ZipArchiveEntry
     {
         internal ZipArchiveEntry() { }
-        public System.IO.Compression.ZipArchive Archive { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IO.Compression.ZipArchive Archive { get { throw null; } }
         public long CompressedLength { get { throw null; } }
         public string FullName { get { throw null; } }
         public System.DateTimeOffset LastWriteTime { get { throw null; } set { } }
@@ -81,6 +81,7 @@ namespace System.IO.Compression
         public string Name { get { throw null; } }
         public void Delete() { }
         public System.IO.Stream Open() { throw null; }
+        public override string ToString() { throw null; }
     }
     public enum ZipArchiveMode
     {

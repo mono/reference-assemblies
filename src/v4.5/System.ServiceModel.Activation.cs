@@ -60,11 +60,34 @@ namespace System.ServiceModel
     public static partial class ServiceHostingEnvironment
     {
         public static bool AspNetCompatibilityEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static bool MultipleSiteBindingsEnabled { get { throw null; } }
+        public static void EnsureInitialized() { }
         public static void EnsureServiceAvailable(string virtualPath) { }
     }
 }
 namespace System.ServiceModel.Activation
 {
+    public abstract partial class HostedTransportConfiguration
+    {
+        protected HostedTransportConfiguration() { }
+        public abstract System.Uri[] GetBaseAddresses(string virtualPath);
+    }
+    public sealed partial class ServiceActivationBuildProviderAttribute : System.Attribute
+    {
+        public ServiceActivationBuildProviderAttribute() { }
+    }
+#if WEB_DEP
+    public sealed partial class ServiceBuildProvider : System.Web.Compilation.BuildProvider
+    {
+        public ServiceBuildProvider() { }
+        public override System.Web.Compilation.CompilerType CodeCompilerType { get { throw null; } }
+        public override System.Collections.ICollection VirtualPathDependencies { get { throw null; } }
+        public override void GenerateCode(System.Web.Compilation.AssemblyBuilder assemblyBuilder) { }
+        protected override System.CodeDom.CodeCompileUnit GetCodeCompileUnit(out System.Collections.IDictionary linePragmasTable) { linePragmasTable = default(System.Collections.IDictionary); throw null; }
+        public override string GetCustomString(System.CodeDom.Compiler.CompilerResults results) { throw null; }
+        public override System.Web.Compilation.BuildProviderResultFlags GetResultFlags(System.CodeDom.Compiler.CompilerResults results) { throw null; }
+    }
+#endif
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
 #if SERVICEMODEL_DEP
     public partial class ServiceHostFactory : System.ServiceModel.Activation.ServiceHostFactoryBase
@@ -80,4 +103,22 @@ namespace System.ServiceModel.Activation
         protected virtual System.ServiceModel.ServiceHost CreateServiceHost(System.Type serviceType, System.Uri[] baseAddresses) { throw null; }
 #endif
     }
+#if SERVICEMODEL_DEP
+    public partial class ServiceRoute : System.Web.Routing.Route
+    {
+        public ServiceRoute(string routePrefix, System.ServiceModel.Activation.ServiceHostFactoryBase serviceHostFactory, System.Type serviceType) : base (default(string), default(System.Web.Routing.IRouteHandler)) { }
+    }
+#endif
+}
+namespace System.ServiceModel.Activities.Activation
+{
+#if WORKFLOW_DEP
+    public partial class WorkflowServiceHostFactory : System.ServiceModel.Activation.ServiceHostFactoryBase
+    {
+        public WorkflowServiceHostFactory() { }
+        public override System.ServiceModel.ServiceHostBase CreateServiceHost(string constructorString, System.Uri[] baseAddresses) { throw null; }
+        protected virtual System.ServiceModel.Activities.WorkflowServiceHost CreateWorkflowServiceHost(System.Activities.Activity activity, System.Uri[] baseAddresses) { throw null; }
+        protected virtual System.ServiceModel.Activities.WorkflowServiceHost CreateWorkflowServiceHost(System.ServiceModel.Activities.WorkflowService service, System.Uri[] baseAddresses) { throw null; }
+    }
+#endif
 }

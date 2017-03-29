@@ -92,21 +92,43 @@ namespace System.Security.Cryptography
         CurrentUser = 0,
         LocalMachine = 1,
     }
+    public abstract partial class DataProtector
+    {
+        protected DataProtector(string applicationName, string primaryPurpose, string[] specificPurposes) { }
+        protected string ApplicationName { get { throw null; } }
+        protected virtual bool PrependHashedPurposeToPlaintext { get { throw null; } }
+        protected string PrimaryPurpose { get { throw null; } }
+        protected System.Collections.Generic.IEnumerable<string> SpecificPurposes { get { throw null; } }
+        public static System.Security.Cryptography.DataProtector Create(string providerClass, string applicationName, string primaryPurpose, params string[] specificPurposes) { throw null; }
+        protected virtual byte[] GetHashedPurpose() { throw null; }
+        public abstract bool IsReprotectRequired(byte[] encryptedData);
+        public byte[] Protect(byte[] userData) { throw null; }
+        protected abstract byte[] ProviderProtect(byte[] userData);
+        protected abstract byte[] ProviderUnprotect(byte[] encryptedData);
+        public byte[] Unprotect(byte[] encryptedData) { throw null; }
+    }
+    public sealed partial class DpapiDataProtector : System.Security.Cryptography.DataProtector
+    {
+        public DpapiDataProtector(string appName, string primaryPurpose, params string[] specificPurpose) : base (default(string), default(string), default(string[])) { }
+        protected override bool PrependHashedPurposeToPlaintext { get { throw null; } }
+        public System.Security.Cryptography.DataProtectionScope Scope { get { throw null; } set { } }
+        public override bool IsReprotectRequired(byte[] encryptedData) { throw null; }
+        protected override byte[] ProviderProtect(byte[] userData) { throw null; }
+        protected override byte[] ProviderUnprotect(byte[] encryptedData) { throw null; }
+    }
     public enum MemoryProtectionScope
     {
         CrossProcess = 1,
         SameLogon = 2,
         SameProcess = 0,
     }
-    public sealed partial class ProtectedData
+    public static partial class ProtectedData
     {
-        internal ProtectedData() { }
         public static byte[] Protect(byte[] userData, byte[] optionalEntropy, System.Security.Cryptography.DataProtectionScope scope) { throw null; }
         public static byte[] Unprotect(byte[] encryptedData, byte[] optionalEntropy, System.Security.Cryptography.DataProtectionScope scope) { throw null; }
     }
-    public sealed partial class ProtectedMemory
+    public static partial class ProtectedMemory
     {
-        internal ProtectedMemory() { }
         [System.MonoTODOAttribute("only supported on Windows 2000 SP3 and later")]
         public static void Protect(byte[] userData, System.Security.Cryptography.MemoryProtectionScope scope) { }
         [System.MonoTODOAttribute("only supported on Windows 2000 SP3 and later")]
@@ -118,8 +140,8 @@ namespace System.Security.Cryptography.Pkcs
     public sealed partial class AlgorithmIdentifier
     {
         public AlgorithmIdentifier() { }
-        public AlgorithmIdentifier(System.Security.Cryptography.Oid algorithm) { }
-        public AlgorithmIdentifier(System.Security.Cryptography.Oid algorithm, int keyLength) { }
+        public AlgorithmIdentifier(System.Security.Cryptography.Oid oid) { }
+        public AlgorithmIdentifier(System.Security.Cryptography.Oid oid, int keyLength) { }
         public int KeyLength { get { throw null; } set { } }
         public System.Security.Cryptography.Oid Oid { get { throw null; } set { } }
         public byte[] Parameters { get { throw null; } set { } }
@@ -174,7 +196,7 @@ namespace System.Security.Cryptography.Pkcs
     public sealed partial class ContentInfo
     {
         public ContentInfo(byte[] content) { }
-        public ContentInfo(System.Security.Cryptography.Oid oid, byte[] content) { }
+        public ContentInfo(System.Security.Cryptography.Oid contentType, byte[] content) { }
         public byte[] Content { get { throw null; } }
         public System.Security.Cryptography.Oid ContentType { get { throw null; } }
         ~ContentInfo() { }
@@ -184,7 +206,7 @@ namespace System.Security.Cryptography.Pkcs
     public sealed partial class EnvelopedCms
     {
         public EnvelopedCms() { }
-        public EnvelopedCms(System.Security.Cryptography.Pkcs.ContentInfo content) { }
+        public EnvelopedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
         public EnvelopedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo, System.Security.Cryptography.Pkcs.AlgorithmIdentifier encryptionAlgorithm) { }
         public EnvelopedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType recipientIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
         public EnvelopedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType recipientIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo, System.Security.Cryptography.Pkcs.AlgorithmIdentifier encryptionAlgorithm) { }
@@ -328,11 +350,11 @@ namespace System.Security.Cryptography.Pkcs
     public sealed partial class SignedCms
     {
         public SignedCms() { }
-        public SignedCms(System.Security.Cryptography.Pkcs.ContentInfo content) { }
-        public SignedCms(System.Security.Cryptography.Pkcs.ContentInfo content, bool detached) { }
+        public SignedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
+        public SignedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo, bool detached) { }
         public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType) { }
-        public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo content) { }
-        public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo content, bool detached) { }
+        public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
+        public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo, bool detached) { }
         public System.Security.Cryptography.X509Certificates.X509Certificate2Collection Certificates { get { throw null; } }
         public System.Security.Cryptography.Pkcs.ContentInfo ContentInfo { get { throw null; } }
         public bool Detached { get { throw null; } }
@@ -470,7 +492,7 @@ namespace System.Security.Cryptography.Xml
     {
         public CipherReference() { }
         public CipherReference(string uri) { }
-        public CipherReference(string uri, System.Security.Cryptography.Xml.TransformChain tc) { }
+        public CipherReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
@@ -489,7 +511,7 @@ namespace System.Security.Cryptography.Xml
     {
         public DataReference() { }
         public DataReference(string uri) { }
-        public DataReference(string uri, System.Security.Cryptography.Xml.TransformChain tc) { }
+        public DataReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
     }
     public partial class DSAKeyValue : System.Security.Cryptography.Xml.KeyInfoClause
     {
@@ -520,7 +542,7 @@ namespace System.Security.Cryptography.Xml
     {
         protected EncryptedReference() { }
         protected EncryptedReference(string uri) { }
-        protected EncryptedReference(string uri, System.Security.Cryptography.Xml.TransformChain tc) { }
+        protected EncryptedReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
         [System.MonoTODOAttribute("Always returns false")]
         protected internal bool CacheValid { get { throw null; } }
         protected string ReferenceType { get { throw null; } set { } }
@@ -579,22 +601,22 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlResolver Resolver { get { throw null; } set { } }
         public void AddKeyNameMapping(string keyName, object keyObject) { }
         public void ClearKeyNameMappings() { }
-        public byte[] DecryptData(System.Security.Cryptography.Xml.EncryptedData encryptedData, System.Security.Cryptography.SymmetricAlgorithm symAlg) { throw null; }
+        public byte[] DecryptData(System.Security.Cryptography.Xml.EncryptedData encryptedData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
         public void DecryptDocument() { }
         public virtual byte[] DecryptEncryptedKey(System.Security.Cryptography.Xml.EncryptedKey encryptedKey) { throw null; }
         [System.MonoTODOAttribute("Test this.")]
-        public static byte[] DecryptKey(byte[] keyData, System.Security.Cryptography.RSA rsa, bool fOAEP) { throw null; }
-        public static byte[] DecryptKey(byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symAlg) { throw null; }
+        public static byte[] DecryptKey(byte[] keyData, System.Security.Cryptography.RSA rsa, bool useOAEP) { throw null; }
+        public static byte[] DecryptKey(byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
         [System.MonoTODOAttribute]
         public System.Security.Cryptography.Xml.EncryptedData Encrypt(System.Xml.XmlElement inputElement, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
         public System.Security.Cryptography.Xml.EncryptedData Encrypt(System.Xml.XmlElement inputElement, string keyName) { throw null; }
-        public byte[] EncryptData(byte[] plainText, System.Security.Cryptography.SymmetricAlgorithm symAlg) { throw null; }
-        public byte[] EncryptData(System.Xml.XmlElement inputElement, System.Security.Cryptography.SymmetricAlgorithm symAlg, bool content) { throw null; }
+        public byte[] EncryptData(byte[] plaintext, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
+        public byte[] EncryptData(System.Xml.XmlElement inputElement, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm, bool content) { throw null; }
         [System.MonoTODOAttribute("Test this.")]
-        public static byte[] EncryptKey(byte[] keyData, System.Security.Cryptography.RSA rsa, bool fOAEP) { throw null; }
-        public static byte[] EncryptKey(byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symAlg) { throw null; }
-        public virtual byte[] GetDecryptionIV(System.Security.Cryptography.Xml.EncryptedData encryptedData, string symAlgUri) { throw null; }
-        public virtual System.Security.Cryptography.SymmetricAlgorithm GetDecryptionKey(System.Security.Cryptography.Xml.EncryptedData encryptedData, string symAlgUri) { throw null; }
+        public static byte[] EncryptKey(byte[] keyData, System.Security.Cryptography.RSA rsa, bool useOAEP) { throw null; }
+        public static byte[] EncryptKey(byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
+        public virtual byte[] GetDecryptionIV(System.Security.Cryptography.Xml.EncryptedData encryptedData, string symmetricAlgorithmUri) { throw null; }
+        public virtual System.Security.Cryptography.SymmetricAlgorithm GetDecryptionKey(System.Security.Cryptography.Xml.EncryptedData encryptedData, string symmetricAlgorithmUri) { throw null; }
         public virtual System.Xml.XmlElement GetIdElement(System.Xml.XmlDocument document, string idValue) { throw null; }
         public void ReplaceData(System.Xml.XmlElement inputElement, byte[] decryptedData) { }
         public static void ReplaceElement(System.Xml.XmlElement inputElement, System.Security.Cryptography.Xml.EncryptedData encryptedData, bool content) { }
@@ -602,7 +624,7 @@ namespace System.Security.Cryptography.Xml
     public partial class EncryptionMethod
     {
         public EncryptionMethod() { }
-        public EncryptionMethod(string strAlgorithm) { }
+        public EncryptionMethod(string algorithm) { }
         public string KeyAlgorithm { get { throw null; } set { } }
         public int KeySize { get { throw null; } set { } }
         public System.Xml.XmlElement GetXml() { throw null; }
@@ -611,7 +633,7 @@ namespace System.Security.Cryptography.Xml
     public sealed partial class EncryptionProperty
     {
         public EncryptionProperty() { }
-        public EncryptionProperty(System.Xml.XmlElement elemProp) { }
+        public EncryptionProperty(System.Xml.XmlElement elementProperty) { }
         public string Id { get { throw null; } }
         [System.MonoTODOAttribute("Always returns null")]
         public System.Xml.XmlElement PropertyElement { get { throw null; } set { } }
@@ -671,7 +693,7 @@ namespace System.Security.Cryptography.Xml
     public partial class KeyInfoEncryptedKey : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public KeyInfoEncryptedKey() { }
-        public KeyInfoEncryptedKey(System.Security.Cryptography.Xml.EncryptedKey ek) { }
+        public KeyInfoEncryptedKey(System.Security.Cryptography.Xml.EncryptedKey encryptedKey) { }
         public System.Security.Cryptography.Xml.EncryptedKey EncryptedKey { get { throw null; } set { } }
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
@@ -696,7 +718,7 @@ namespace System.Security.Cryptography.Xml
     {
         public KeyInfoRetrievalMethod() { }
         public KeyInfoRetrievalMethod(string strUri) { }
-        public KeyInfoRetrievalMethod(string strUri, string strType) { }
+        public KeyInfoRetrievalMethod(string strUri, string typeName) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string Type { get { throw null; } set { } }
         public string Uri { get { throw null; } set { } }
@@ -727,7 +749,7 @@ namespace System.Security.Cryptography.Xml
     {
         public KeyReference() { }
         public KeyReference(string uri) { }
-        public KeyReference(string uri, System.Security.Cryptography.Xml.TransformChain tc) { }
+        public KeyReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
     }
     public partial class Reference
     {
@@ -839,6 +861,7 @@ namespace System.Security.Cryptography.Xml
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Xml.XmlResolver Resolver { set { } }
         public System.Security.Cryptography.Xml.Signature Signature { get { throw null; } }
+        public System.Func<System.Security.Cryptography.Xml.SignedXml, bool> SignatureFormatValidator { get { throw null; } set { } }
         public string SignatureLength { get { throw null; } }
         public string SignatureMethod { get { throw null; } }
         public byte[] SignatureValue { get { throw null; } }
@@ -1022,11 +1045,11 @@ namespace System.Security.Permissions
     [System.SerializableAttribute]
     public sealed partial class DataProtectionPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
-        public DataProtectionPermission(System.Security.Permissions.DataProtectionPermissionFlags flags) { }
+        public DataProtectionPermission(System.Security.Permissions.DataProtectionPermissionFlags flag) { }
         public DataProtectionPermission(System.Security.Permissions.PermissionState state) { }
         public System.Security.Permissions.DataProtectionPermissionFlags Flags { get { throw null; } set { } }
         public override System.Security.IPermission Copy() { throw null; }
-        public override void FromXml(System.Security.SecurityElement e) { }
+        public override void FromXml(System.Security.SecurityElement securityElement) { }
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
         public bool IsUnrestricted() { throw null; }

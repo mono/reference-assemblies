@@ -63,6 +63,7 @@ namespace Mono.Debugger.Soft
     public partial class AssemblyMirror : Mono.Debugger.Soft.Mirror
     {
         internal AssemblyMirror() { }
+        public Mono.Debugger.Soft.AppDomainMirror Domain { get { throw null; } }
         public Mono.Debugger.Soft.MethodMirror EntryPoint { get { throw null; } }
         public string Location { get { throw null; } }
         public Mono.Debugger.Soft.ModuleMirror ManifestModule { get { throw null; } }
@@ -144,6 +145,7 @@ namespace Mono.Debugger.Soft
         INVALID_FIELDID = 25,
         INVALID_FRAMEID = 30,
         INVALID_OBJECT = 20,
+        INVOKE_ABORTED = 107,
         NONE = 0,
         NOT_IMPLEMENTED = 100,
         NOT_SUSPENDED = 101,
@@ -339,6 +341,13 @@ namespace Mono.Debugger.Soft
         public delegate System.Diagnostics.Process ProcessLauncher(System.Diagnostics.ProcessStartInfo info);
         public delegate Mono.Debugger.Soft.ITargetProcess TargetProcessLauncher(System.Diagnostics.ProcessStartInfo info);
     }
+    public partial class LocalScope : Mono.Debugger.Soft.Mirror
+    {
+        internal LocalScope() { }
+        public int LiveRangeEnd { get { throw null; } }
+        public int LiveRangeStart { get { throw null; } }
+        public Mono.Debugger.Soft.MethodMirror Method { get { throw null; } }
+    }
     public partial class LocalVariable : Mono.Debugger.Soft.Mirror
     {
         internal LocalVariable() { }
@@ -427,6 +436,7 @@ namespace Mono.Debugger.Soft
         public Mono.Debugger.Soft.MethodBodyMirror GetMethodBody() { throw null; }
         public System.Reflection.MethodImplAttributes GetMethodImplementationFlags() { throw null; }
         public Mono.Debugger.Soft.ParameterInfoMirror[] GetParameters() { throw null; }
+        public Mono.Debugger.Soft.LocalScope[] GetScopes() { throw null; }
         public Mono.Debugger.Soft.Location LocationAtILOffset(int il_offset) { throw null; }
         public Mono.Debugger.Soft.MethodMirror MakeGenericMethod(Mono.Debugger.Soft.TypeMirror[] args) { throw null; }
     }
@@ -545,6 +555,7 @@ namespace Mono.Debugger.Soft
         public Mono.Debugger.Soft.Value[] GetValues(Mono.Debugger.Soft.LocalVariable[] vars) { throw null; }
         public Mono.Debugger.Soft.LocalVariable GetVisibleVariableByName(string name) { throw null; }
         public System.Collections.Generic.IList<Mono.Debugger.Soft.LocalVariable> GetVisibleVariables() { throw null; }
+        public void SetThis(Mono.Debugger.Soft.Value value) { }
         public void SetValue(Mono.Debugger.Soft.LocalVariable var, Mono.Debugger.Soft.Value value) { }
         public void SetValue(Mono.Debugger.Soft.ParameterInfoMirror param, Mono.Debugger.Soft.Value value) { }
     }

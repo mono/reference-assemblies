@@ -276,7 +276,6 @@ namespace System.Web.Mvc
         public string OtherProperty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string FormatErrorMessage(string name) { throw null; }
         public static string FormatPropertyForClientValidation(string property) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Web.Mvc.ModelClientValidationRule> GetClientValidationRules(System.Web.Mvc.ModelMetadata metadata, System.Web.Mvc.ControllerContext context) { throw null; }
         protected override System.ComponentModel.DataAnnotations.ValidationResult IsValid(object value, System.ComponentModel.DataAnnotations.ValidationContext validationContext) { throw null; }
     }
@@ -470,7 +469,6 @@ namespace System.Web.Mvc
     public partial class ControllerInstanceFilterProvider : System.Web.Mvc.IFilterProvider
     {
         public ControllerInstanceFilterProvider() { }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Web.Mvc.Filter> GetFilters(System.Web.Mvc.ControllerContext controllerContext, System.Web.Mvc.ActionDescriptor actionDescriptor) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(3100), AllowMultiple=false, Inherited=false)]
@@ -497,7 +495,6 @@ namespace System.Web.Mvc
         protected internal string ErrorMessage { get { throw null; } }
         public override bool IsRequired { get { throw null; } }
         public override System.Collections.Generic.IEnumerable<System.Web.Mvc.ModelClientValidationRule> GetClientValidationRules() { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public override System.Collections.Generic.IEnumerable<System.Web.Mvc.ModelValidationResult> Validate(object container) { throw null; }
     }
     public partial class DataAnnotationsModelValidatorProvider : System.Web.Mvc.AssociatedValidatorProvider
@@ -1513,7 +1510,6 @@ namespace System.Web.Mvc
         public string FormatAdditionalFieldsForClientValidation(string property) { throw null; }
         public override string FormatErrorMessage(string name) { throw null; }
         public static string FormatPropertyForClientValidation(string property) { throw null; }
-        [System.Diagnostics.DebuggerHiddenAttribute]
         public System.Collections.Generic.IEnumerable<System.Web.Mvc.ModelClientValidationRule> GetClientValidationRules(System.Web.Mvc.ModelMetadata metadata, System.Web.Mvc.ControllerContext context) { throw null; }
         protected virtual string GetUrl(System.Web.Mvc.ControllerContext controllerContext) { throw null; }
         public override bool IsValid(object value) { throw null; }
@@ -1606,7 +1602,7 @@ namespace System.Web.Mvc
         public int Count { get { throw null; } }
         public object this[string key] { get { throw null; } set { } }
         public System.Collections.Generic.ICollection<string> Keys { get { throw null; } }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.IsReadOnly { get { throw null; } }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.IsReadOnly { get { throw null; } }
         public System.Collections.Generic.ICollection<object> Values { get { throw null; } }
         public void Add(string key, object value) { }
         public void Clear() { }
@@ -1619,10 +1615,10 @@ namespace System.Web.Mvc
         public object Peek(string key) { throw null; }
         public bool Remove(string key) { throw null; }
         public void Save(System.Web.Mvc.ControllerContext controllerContext, System.Web.Mvc.ITempDataProvider tempDataProvider) { }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Add(System.Collections.Generic.KeyValuePair<string, object> keyValuePair) { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Contains(System.Collections.Generic.KeyValuePair<string, object> keyValuePair) { throw null; }
-        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.CopyTo(System.Collections.Generic.KeyValuePair<string, object>[] array, int index) { }
-        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string,object>>.Remove(System.Collections.Generic.KeyValuePair<string, object> keyValuePair) { throw null; }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Add(System.Collections.Generic.KeyValuePair<string, object> keyValuePair) { }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Contains(System.Collections.Generic.KeyValuePair<string, object> keyValuePair) { throw null; }
+        void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.CopyTo(System.Collections.Generic.KeyValuePair<string, object>[] array, int index) { }
+        bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.String,System.Object>>.Remove(System.Collections.Generic.KeyValuePair<string, object> keyValuePair) { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public bool TryGetValue(string key, out object value) { value = default(object); throw null; }
     }
