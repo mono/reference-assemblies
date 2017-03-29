@@ -25,6 +25,7 @@
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
+[assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Threading.SemaphoreFullException))]
 namespace Microsoft.CSharp
 {
     public partial class CSharpCodeProvider : System.CodeDom.Compiler.CodeDomProvider

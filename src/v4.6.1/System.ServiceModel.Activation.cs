@@ -79,16 +79,20 @@ namespace System.ServiceModel.Activation
     }
 #if WEB_DEP
     public sealed partial class ServiceBuildProvider : System.Web.Compilation.BuildProvider
+#else
+    public sealed partial class ServiceBuildProvider
+#endif
     {
         public ServiceBuildProvider() { }
+#if WEB_DEP
         public override System.Web.Compilation.CompilerType CodeCompilerType { get { throw null; } }
         public override System.Collections.ICollection VirtualPathDependencies { get { throw null; } }
         public override void GenerateCode(System.Web.Compilation.AssemblyBuilder assemblyBuilder) { }
         protected override System.CodeDom.CodeCompileUnit GetCodeCompileUnit(out System.Collections.IDictionary linePragmasTable) { linePragmasTable = default(System.Collections.IDictionary); throw null; }
         public override string GetCustomString(System.CodeDom.Compiler.CompilerResults results) { throw null; }
         public override System.Web.Compilation.BuildProviderResultFlags GetResultFlags(System.CodeDom.Compiler.CompilerResults results) { throw null; }
-    }
 #endif
+    }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
 #if SERVICEMODEL_DEP
     public partial class ServiceHostFactory : System.ServiceModel.Activation.ServiceHostFactoryBase
@@ -106,20 +110,28 @@ namespace System.ServiceModel.Activation
     }
 #if SERVICEMODEL_DEP
     public partial class ServiceRoute : System.Web.Routing.Route
-    {
-        public ServiceRoute(string routePrefix, System.ServiceModel.Activation.ServiceHostFactoryBase serviceHostFactory, System.Type serviceType) : base (default(string), default(System.Web.Routing.IRouteHandler)) { }
-    }
+#else
+    public partial class ServiceRoute
 #endif
+    {
+#if SERVICEMODEL_DEP
+        public ServiceRoute(string routePrefix, System.ServiceModel.Activation.ServiceHostFactoryBase serviceHostFactory, System.Type serviceType) : base (default(string), default(System.Web.Routing.IRouteHandler)) { }
+#endif
+    }
 }
 namespace System.ServiceModel.Activities.Activation
 {
 #if WORKFLOW_DEP
     public partial class WorkflowServiceHostFactory : System.ServiceModel.Activation.ServiceHostFactoryBase
+#else
+    public partial class WorkflowServiceHostFactory
+#endif
     {
         public WorkflowServiceHostFactory() { }
+#if WORKFLOW_DEP
         public override System.ServiceModel.ServiceHostBase CreateServiceHost(string constructorString, System.Uri[] baseAddresses) { throw null; }
         protected virtual System.ServiceModel.Activities.WorkflowServiceHost CreateWorkflowServiceHost(System.Activities.Activity activity, System.Uri[] baseAddresses) { throw null; }
         protected virtual System.ServiceModel.Activities.WorkflowServiceHost CreateWorkflowServiceHost(System.ServiceModel.Activities.WorkflowService service, System.Uri[] baseAddresses) { throw null; }
-    }
 #endif
+    }
 }
