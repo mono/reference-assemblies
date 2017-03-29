@@ -31,7 +31,7 @@ $(1)_KEYFILE := $(2)
 endef
 
 define ASSEMBLY_TEMPLATE
-$(1).dll: $(addprefix $(SOURCEDIR),$(1).cs) $(addsuffix .dll, $($(1)_REFS)) $($(1)_KEYFILE) Makefile
+$(1).dll: $(addprefix $(SOURCEDIR),$(1).cs) $(addsuffix .dll, $($(1)_REFS)) $($(1)_KEYFILE)
 	$(Q_CSC) $(CSC) -out:$(1).dll $(CSC_COMMON_ARGS) -keyfile:$($(1)_KEYFILE) $(addprefix -r:, $(addsuffix .dll, $($(1)_REFS))) $$<
 endef
 

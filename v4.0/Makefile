@@ -183,17 +183,14 @@ all: $(addsuffix .dll, $(ASSEMBLIES))
 clean:
 	rm -f *.dll
 	rm -f bare/*.dll
-	rm -f bare/.stamp
-
-bare/.stamp:
-	@mkdir -p bare/ && touch $@
 
 define KEYFILE_TEMPLATE
 $(1)_KEYFILE := $(2)
 endef
 
 define ASSEMBLY_TEMPLATE
-$(1).dll: $(addprefix $(SOURCEDIR),$(subst bare/,,$(1)).cs) $(wildcard $(SOURCEDIR)$(1).extra.cs) $(addsuffix .dll, $($(1)_REFS)) $($(1)_KEYFILE) Makefile bare/.stamp
+$(1).dll: $(addprefix $(SOURCEDIR),$(subst bare/,,$(1)).cs) $(wildcard $(SOURCEDIR)$(1).extra.cs) $(addsuffix .dll, $($(1)_REFS)) $($(1)_KEYFILE)
+	@mkdir -p bare/
 	$(Q_CSC) $(CSC) -out:$(1).dll $(CSC_COMMON_ARGS) -keyfile:$($(1)_KEYFILE) $($(1)_CSC_ARGS) $(addprefix -r:, $(addsuffix .dll, $($(1)_REFS))) $(wildcard $(SOURCEDIR)$(1).extra.cs) $$<
 endef
 
