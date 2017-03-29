@@ -216,6 +216,7 @@ namespace System.Transactions
         public override int GetHashCode() { throw null; }
         public static bool operator ==(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
         public static bool operator !=(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
+        public System.Transactions.Enlistment PromoteAndEnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Transactions.ISinglePhaseNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public void Rollback() { }
         public void Rollback(System.Exception e) { }
         [System.MonoTODOAttribute]

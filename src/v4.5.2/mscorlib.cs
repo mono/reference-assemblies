@@ -9285,6 +9285,7 @@ namespace System.IO
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
         public override void Flush() { }
+        public override System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken) { throw null; }
         [System.CLSCompliantAttribute(false)]
         [System.Security.SecurityCriticalAttribute]
         protected unsafe void Initialize(byte* pointer, long length, long capacity, System.IO.FileAccess access) { }
@@ -9292,6 +9293,7 @@ namespace System.IO
         protected void Initialize(System.Runtime.InteropServices.SafeBuffer buffer, long offset, long length, System.IO.FileAccess access) { }
         [System.Security.SecuritySafeCriticalAttribute]
         public override int Read([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out]byte[] buffer, int offset, int count) { buffer = default(byte[]); throw null; }
+        public override System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public override int ReadByte() { throw null; }
         public override long Seek(long offset, System.IO.SeekOrigin loc) { throw null; }
@@ -9299,6 +9301,7 @@ namespace System.IO
         public override void SetLength(long value) { }
         [System.Security.SecuritySafeCriticalAttribute]
         public override void Write(byte[] buffer, int offset, int count) { }
+        public override System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public override void WriteByte(byte value) { }
     }
@@ -18132,9 +18135,8 @@ namespace System.Runtime.Serialization
         public ulong ToUInt64(object value) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    public sealed partial class FormatterServices
+    public static partial class FormatterServices
     {
-        internal FormatterServices() { }
         public static void CheckTypeSecurity(System.Type t, System.Runtime.Serialization.Formatters.TypeFilterLevel securityLevel) { }
         [System.Security.SecurityCriticalAttribute]
         public static object[] GetObjectData(object obj, System.Reflection.MemberInfo[] members) { throw null; }

@@ -17127,6 +17127,8 @@ namespace System.Windows.Forms
     }
     public abstract partial class ToolStripRenderer
     {
+        protected static int Offset2X;
+        protected static int Offset2Y;
         protected ToolStripRenderer() { }
         public event System.Windows.Forms.ToolStripArrowRenderEventHandler RenderArrow { add { } remove { } }
         public event System.Windows.Forms.ToolStripItemRenderEventHandler RenderButtonBackground { add { } remove { } }
@@ -17193,6 +17195,7 @@ namespace System.Windows.Forms
         protected virtual void OnRenderToolStripContentPanelBackground(System.Windows.Forms.ToolStripContentPanelRenderEventArgs e) { }
         protected virtual void OnRenderToolStripPanelBackground(System.Windows.Forms.ToolStripPanelRenderEventArgs e) { }
         protected virtual void OnRenderToolStripStatusLabelBackground(System.Windows.Forms.ToolStripItemRenderEventArgs e) { }
+        protected static void ScaleArrowOffsetsIfNeeded() { }
     }
     public partial class ToolStripRenderEventArgs : System.EventArgs
     {
