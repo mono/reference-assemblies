@@ -381,7 +381,7 @@ MONO_KEY_ASSEMBLIES := Commons.Xml.Relaxng I18N.CJK I18N.MidEast I18N.Other I18N
 ECMA_KEY_ASSEMBLIES := SMDiagnostics System.ComponentModel.Composition System.Core System.Data.DataSetExtensions	\
 	System.Data.Entity System.Data.Linq System.Data.OracleClient System.Data.Services.Client System.Data.Services	\
 	System.Data System.IO.Compression.FileSystem System.IO.Compression System.IdentityModel.Selectors System.IdentityModel	\
-	System.Dynamic System.Numerics System.Runtime.Remoting System.Runtime.Serialization System.ServiceModel.Internals	\
+	System.Numerics System.Reflection.Context System.Runtime.Remoting System.Runtime.Serialization System.ServiceModel.Internals	\
 	System.ServiceModel System.Threading.Tasks.Dataflow System.Transactions System.Windows.Forms System.Xaml	\
 	System.Xml.Linq System.Xml.Serialization System.Xml System mscorlib bare/System bare/System.Xml
 
@@ -399,8 +399,8 @@ WINFX_KEY_ASSEMBLIES := System.ComponentModel.DataAnnotations Microsoft.Web.Infr
 MSFINAL_KEY_ASSEMBLIES := Accessibility CustomMarshalers Microsoft.Build.Engine Microsoft.Build.Framework	\
 	Microsoft.Build.Tasks.v4.0 Microsoft.Build.Utilities.v4.0 Microsoft.Build Microsoft.CSharp Microsoft.VisualBasic Microsoft.VisualC	\
 	RabbitMQ.Client System.Configuration.Install System.Configuration System.Deployment System.Design System.DirectoryServices.Protocols	\
-	System.DirectoryServices System.Drawing.Design System.Drawing System.EnterpriseServices System.Management	\
-	System.Messaging System.Net.Http.WebRequest System.Net.Http System.Net System.Numerics.Vectors System.Reflection.Context System.Runtime.Caching	\
+	System.DirectoryServices System.Drawing.Design System.Drawing System.Dynamic System.EnterpriseServices System.Management	\
+	System.Messaging System.Net.Http.WebRequest System.Net.Http System.Net System.Numerics.Vectors System.Runtime.Caching	\
 	System.Runtime.InteropServices.RuntimeInformation System.Runtime.Serialization.Formatters.Soap System.Security System.ServiceProcess System.Web.Services	\
 	System.Web System.Web.Mobile System.Web.RegularExpressions System.Windows cscompmgd bare/System.Configuration bare/System.Web
 
