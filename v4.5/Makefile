@@ -45,7 +45,7 @@ FACADE_ASSEMBLIES := Facades/System.Collections.Concurrent Facades/System.Net.Pr
 	Facades/System.Dynamic.Runtime Facades/System.Resources.ResourceManager Facades/System.Text.RegularExpressions	\
 	Facades/System.Globalization Facades/System.Runtime.Extensions Facades/System.Threading.Tasks.Parallel	\
 	Facades/System.IO Facades/System.Runtime.InteropServices.WindowsRuntime Facades/System.Threading.Tasks	\
-	Facades/System.Linq.Expressions Facades/System.Runtime.InteropServices Facades/System.Threading.Timer	\
+	Facades/System.Linq.Expressions Facades/System.Runtime.InteropServices	\
 	Facades/System.Linq.Parallel Facades/System.Runtime.Numerics Facades/System.Threading	\
 	Facades/System.Linq.Queryable Facades/System.Runtime.Serialization.Json Facades/System.Xml.ReaderWriter	\
 	Facades/System.Linq Facades/System.Runtime.Serialization.Primitives Facades/System.Xml.XDocument	\
@@ -241,7 +241,6 @@ Facades/System.Text.Encoding_REFS := mscorlib
 Facades/System.Text.RegularExpressions_REFS := mscorlib System
 Facades/System.Threading.Tasks.Parallel_REFS := mscorlib
 Facades/System.Threading.Tasks_REFS := mscorlib System.Core
-Facades/System.Threading.Timer_REFS := mscorlib
 Facades/System.Threading_REFS := mscorlib System System.Core
 Facades/System.Xml.ReaderWriter_REFS := mscorlib System.Xml
 Facades/System.Xml.XDocument_REFS := mscorlib System.Xml.Linq
