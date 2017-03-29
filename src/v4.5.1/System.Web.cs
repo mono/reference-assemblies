@@ -3311,6 +3311,8 @@ namespace System.Web.Configuration
         protected virtual void IemobileProcessGateways(System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
         protected virtual void IeProcessBrowsers(bool ignoreApplicationBrowsers, System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
         protected virtual void IeProcessGateways(System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
+        protected virtual void InternetexplorerProcessBrowsers(bool ignoreApplicationBrowsers, System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
+        protected virtual void InternetexplorerProcessGateways(System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
         protected virtual void IpadProcessBrowsers(bool ignoreApplicationBrowsers, System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
         protected virtual void IpadProcessGateways(System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
         protected virtual void IphoneProcessBrowsers(bool ignoreApplicationBrowsers, System.Collections.Specialized.NameValueCollection headers, System.Web.HttpBrowserCapabilities browserCaps) { }
@@ -5735,6 +5737,7 @@ namespace System.Web.Hosting
         public static System.Web.ApplicationShutdownReason ShutdownReason { get { throw null; } }
         public static string SiteName { get { throw null; } }
         public static System.Web.Hosting.VirtualPathProvider VirtualPathProvider { get { throw null; } }
+        public static event System.EventHandler StopListening { add { } remove { } }
         public static void DecrementBusyCount() { }
         [System.MonoTODOAttribute("Not implemented")]
         public static System.IDisposable Impersonate() { throw null; }
@@ -5947,6 +5950,14 @@ namespace System.Web.Hosting
         public void StopProcessing() { }
         [System.MonoTODOAttribute("Not implemented")]
         void System.Web.Hosting.IRegisteredObject.Stop(bool immediate) { }
+    }
+    public partial interface IStopListeningRegisteredObject : System.Web.Hosting.IRegisteredObject
+    {
+        void StopListening();
+    }
+    public partial interface ISuspendibleRegisteredObject : System.Web.Hosting.IRegisteredObject
+    {
+        System.Action Suspend();
     }
     public sealed partial class ProcessHost : System.MarshalByRefObject, System.Web.Hosting.IAdphManager, System.Web.Hosting.IApplicationPreloadManager, System.Web.Hosting.IPphManager, System.Web.Hosting.IProcessHost, System.Web.Hosting.IProcessHostIdleAndHealthCheck
     {

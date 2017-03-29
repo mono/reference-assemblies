@@ -7090,6 +7090,8 @@ namespace System.Diagnostics.Tracing
     {
         protected EventSource() { }
         protected EventSource(bool throwOnEventWriteErrors) { }
+        public System.Exception ConstructionException { get { throw null; } }
+        public static System.Guid CurrentThreadActivityId { get { throw null; } }
         public System.Guid Guid { get { throw null; } }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public void Dispose() { }
@@ -7108,6 +7110,8 @@ namespace System.Diagnostics.Tracing
         protected virtual void OnEventCommand(System.Diagnostics.Tracing.EventCommandEventArgs command) { }
         [System.MonoTODOAttribute]
         public static void SendCommand(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventCommand command, System.Collections.Generic.IDictionary<string, string> commandArguments) { }
+        public static void SetCurrentThreadActivityId(System.Guid activityId) { }
+        public static void SetCurrentThreadActivityId(System.Guid activityId, out System.Guid oldActivityThatWillContinue) { oldActivityThatWillContinue = default(System.Guid); }
         public override string ToString() { throw null; }
         protected void WriteEvent(int eventId) { }
         protected void WriteEvent(int eventId, int arg1) { }
@@ -7125,6 +7129,8 @@ namespace System.Diagnostics.Tracing
         protected void WriteEvent(int eventId, string arg1, string arg2, string arg3) { }
         [System.CLSCompliantAttribute(false)]
         protected unsafe void WriteEventCore(int eventId, int eventDataCount, System.Diagnostics.Tracing.EventSource.EventData* data) { }
+        protected void WriteEventWithRelatedActivityId(int eventId, System.Guid childActivityID, params object[] args) { }
+        protected unsafe void WriteEventWithRelatedActivityIdCore(int eventId, System.Guid* childActivityID, int eventDataCount, System.Diagnostics.Tracing.EventSource.EventData* data) { }
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         protected internal partial struct EventData
         {
@@ -7155,6 +7161,7 @@ namespace System.Diagnostics.Tracing
     public partial class EventWrittenEventArgs : System.EventArgs
     {
         internal EventWrittenEventArgs() { }
+        public System.Guid ActivityId { get { throw null; } }
         public int EventId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventSource EventSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventKeywords Keywords { get { throw null; } }
@@ -7162,6 +7169,7 @@ namespace System.Diagnostics.Tracing
         public string Message { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventOpcode Opcode { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<object> Payload { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Guid RelatedActivityId { get { throw null; } }
         public System.Diagnostics.Tracing.EventTask Task { get { throw null; } }
         public byte Version { get { throw null; } }
     }
@@ -12505,6 +12513,11 @@ namespace System.Runtime
         public AssemblyTargetedPatchBandAttribute(string targetedPatchBand) { }
         public string TargetedPatchBand { get { throw null; } }
     }
+    public enum GCLargeObjectHeapCompactionMode
+    {
+        CompactOnce = 2,
+        Default = 1,
+    }
     [System.SerializableAttribute]
     public enum GCLatencyMode
     {
@@ -12517,6 +12530,7 @@ namespace System.Runtime
     {
         [System.MonoTODOAttribute("Always returns false")]
         public static bool IsServerGC { get { throw null; } }
+        public static System.Runtime.GCLargeObjectHeapCompactionMode LargeObjectHeapCompactionMode { get { throw null; } set { } }
         [System.MonoTODOAttribute("Always returns GCLatencyMode.Interactive and ignores set")]
         public static System.Runtime.GCLatencyMode LatencyMode { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]set { } }
     }
@@ -13977,9 +13991,12 @@ namespace System.Runtime.InteropServices
         public static void Copy(System.IntPtr[] source, int startIndex, System.IntPtr destination, int length) { }
         public static void Copy(float[] source, int startIndex, System.IntPtr destination, int length) { }
         public static System.IntPtr CreateAggregatedObject(System.IntPtr pOuter, object o) { throw null; }
+        public static System.IntPtr CreateAggregatedObject<T>(System.IntPtr pOuter, T o) { throw null; }
         public static object CreateWrapperOfType(object o, System.Type t) { throw null; }
+        public static TWrapper CreateWrapperOfType<T, TWrapper>(T o) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static void DestroyStructure(System.IntPtr ptr, System.Type structuretype) { }
+        public static void DestroyStructure<T>(System.IntPtr ptr) { }
         public static int FinalReleaseComObject(object o) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void FreeBSTR(System.IntPtr ptr) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void FreeCoTaskMem(System.IntPtr ptr) { }
@@ -13994,10 +14011,12 @@ namespace System.Runtime.InteropServices
         public static System.IntPtr GetComInterfaceForObject(object o, System.Type T, System.Runtime.InteropServices.CustomQueryInterfaceMode mode) { throw null; }
         [System.MonoTODOAttribute]
         public static System.IntPtr GetComInterfaceForObjectInContext(object o, System.Type t) { throw null; }
+        public static System.IntPtr GetComInterfaceForObject<T, TInterface>(T o) { throw null; }
         [System.MonoNotSupportedAttribute("MSDN states user code should never need to call this method.")]
         public static object GetComObjectData(object obj, object key) { throw null; }
         public static int GetComSlotForMethodInfo(System.Reflection.MemberInfo m) { throw null; }
         public static System.Delegate GetDelegateForFunctionPointer(System.IntPtr ptr, System.Type t) { throw null; }
+        public static TDelegate GetDelegateForFunctionPointer<TDelegate>(System.IntPtr ptr) { throw null; }
         [System.MonoTODOAttribute]
         public static int GetEndComSlot(System.Type t) { throw null; }
         public static int GetExceptionCode() { throw null; }
@@ -14007,6 +14026,7 @@ namespace System.Runtime.InteropServices
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static System.IntPtr GetExceptionPointers() { throw null; }
         public static System.IntPtr GetFunctionPointerForDelegate(System.Delegate d) { throw null; }
+        public static System.IntPtr GetFunctionPointerForDelegate<TDelegate>(TDelegate d) { throw null; }
         public static System.IntPtr GetHINSTANCE(System.Reflection.Module m) { throw null; }
         public static int GetHRForException(System.Exception e) { throw null; }
         [System.MonoTODOAttribute]
@@ -14028,9 +14048,12 @@ namespace System.Runtime.InteropServices
         [System.MonoTODOAttribute]
         public static System.Reflection.MemberInfo GetMethodInfoForComSlot(System.Type t, int slot, ref System.Runtime.InteropServices.ComMemberType memberType) { throw null; }
         public static void GetNativeVariantForObject(object obj, System.IntPtr pDstNativeVariant) { }
+        public static void GetNativeVariantForObject<T>(T obj, System.IntPtr pDstNativeVariant) { }
         public static object GetObjectForIUnknown(System.IntPtr pUnk) { throw null; }
         public static object GetObjectForNativeVariant(System.IntPtr pSrcNativeVariant) { throw null; }
+        public static T GetObjectForNativeVariant<T>(System.IntPtr pSrcNativeVariant) { throw null; }
         public static object[] GetObjectsForNativeVariants(System.IntPtr aSrcNativeVariant, int cVars) { throw null; }
+        public static T[] GetObjectsForNativeVariants<T>(System.IntPtr aSrcNativeVariant, int cVars) { throw null; }
         [System.MonoTODOAttribute]
         public static int GetStartComSlot(System.Type t) { throw null; }
         [System.MonoTODOAttribute]
@@ -14073,6 +14096,7 @@ namespace System.Runtime.InteropServices
         [System.MonoTODOAttribute]
         public static int NumParamBytes(System.Reflection.MethodInfo m) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr OffsetOf(System.Type t, string fieldName) { throw null; }
+        public static System.IntPtr OffsetOf<T>(string fieldName) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void Prelink(System.Reflection.MethodInfo m) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void PrelinkAll(System.Type c) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringAnsi(System.IntPtr ptr) { throw null; }
@@ -14086,6 +14110,8 @@ namespace System.Runtime.InteropServices
         public static void PtrToStructure(System.IntPtr ptr, object structure) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static object PtrToStructure(System.IntPtr ptr, System.Type structureType) { throw null; }
+        public static T PtrToStructure<T>(System.IntPtr ptr) { throw null; }
+        public static void PtrToStructure<T>(System.IntPtr ptr, T structure) { }
         public static int QueryInterface(System.IntPtr pUnk, ref System.Guid iid, out System.IntPtr ppv) { ppv = default(System.IntPtr); throw null; }
         public static byte ReadByte(System.IntPtr ptr) { throw null; }
         public static byte ReadByte(System.IntPtr ptr, int ofs) { throw null; }
@@ -14137,6 +14163,8 @@ namespace System.Runtime.InteropServices
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static int SizeOf(object structure) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static int SizeOf(System.Type t) { throw null; }
+        public static int SizeOf<T>() { throw null; }
+        public static int SizeOf<T>(T structure) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr StringToBSTR(string s) { throw null; }
         public static System.IntPtr StringToCoTaskMemAnsi(string s) { throw null; }
         public static System.IntPtr StringToCoTaskMemAuto(string s) { throw null; }
@@ -14147,9 +14175,11 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static void StructureToPtr(object structure, System.IntPtr ptr, bool fDeleteOld) { }
+        public static void StructureToPtr<T>(T structure, System.IntPtr ptr, bool fDeleteOld) { }
         public static void ThrowExceptionForHR(int errorCode) { }
         public static void ThrowExceptionForHR(int errorCode, System.IntPtr errorInfo) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr UnsafeAddrOfPinnedArrayElement(System.Array arr, int index) { throw null; }
+        public static System.IntPtr UnsafeAddrOfPinnedArrayElement<T>(T[] arr, int index) { throw null; }
         public static void WriteByte(System.IntPtr ptr, byte val) { }
         public static void WriteByte(System.IntPtr ptr, int ofs, byte val) { }
         [System.MonoTODOAttribute]

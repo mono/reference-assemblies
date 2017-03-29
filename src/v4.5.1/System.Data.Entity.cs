@@ -2854,8 +2854,8 @@ namespace System.Data.EntityClient
         public System.Data.Metadata.Edm.EdmType EdmType { get { throw null; } set { } }
         public override bool IsNullable { get { throw null; } set { } }
         public override string ParameterName { get { throw null; } set { } }
-        public byte Precision { get { throw null; } set { } }
-        public byte Scale { get { throw null; } set { } }
+        public new byte Precision { get { throw null; } set { } }
+        public new byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
         public override bool SourceColumnNullMapping { get { throw null; } set { } }

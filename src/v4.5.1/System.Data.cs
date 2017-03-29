@@ -2454,7 +2454,7 @@ namespace System.Data.Common
         public abstract object this[string name] { get; }
         public abstract int RecordsAffected { get; }
         public virtual int VisibleFieldCount { get { throw null; } }
-        public abstract void Close();
+        public virtual void Close() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
@@ -2489,7 +2489,7 @@ namespace System.Data.Common
         public virtual object GetProviderSpecificValue(int ordinal) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual int GetProviderSpecificValues(object[] values) { throw null; }
-        public abstract System.Data.DataTable GetSchemaTable();
+        public virtual System.Data.DataTable GetSchemaTable() { throw null; }
         public virtual System.IO.Stream GetStream(int ordinal) { throw null; }
         public abstract string GetString(int ordinal);
         public virtual System.IO.TextReader GetTextReader(int ordinal) { throw null; }
@@ -2641,6 +2641,8 @@ namespace System.Data.Common
         public abstract bool IsNullable { get; set; }
         [System.ComponentModel.DefaultValueAttribute("")]
         public abstract string ParameterName { get; set; }
+        public virtual byte Precision { get { throw null; } set { } }
+        public virtual byte Scale { get { throw null; } set { } }
         public abstract int Size { get; set; }
         [System.ComponentModel.DefaultValueAttribute("")]
         public abstract string SourceColumn { get; set; }
@@ -2649,7 +2651,7 @@ namespace System.Data.Common
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public abstract bool SourceColumnNullMapping { get; set; }
         [System.ComponentModel.DefaultValueAttribute((System.Data.DataRowVersion)(512))]
-        public abstract System.Data.DataRowVersion SourceVersion { get; set; }
+        public virtual System.Data.DataRowVersion SourceVersion { get { throw null; } set { } }
         byte System.Data.IDbDataParameter.Precision { get { throw null; } set { } }
         byte System.Data.IDbDataParameter.Scale { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
@@ -2667,15 +2669,15 @@ namespace System.Data.Common
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public abstract bool IsFixedSize { get; }
+        public virtual bool IsFixedSize { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public abstract bool IsReadOnly { get; }
+        public virtual bool IsReadOnly { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public abstract bool IsSynchronized { get; }
+        public virtual bool IsSynchronized { get { throw null; } }
         public System.Data.Common.DbParameter this[int index] { get { throw null; } set { } }
         public System.Data.Common.DbParameter this[string parameterName] { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -3138,9 +3140,9 @@ namespace System.Data.Odbc
         public System.Data.Odbc.OdbcType OdbcType { get { throw null; } set { } }
         public override string ParameterName { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((byte)0)]
-        public byte Precision { get { throw null; } set { } }
+        public new byte Precision { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((byte)0)]
-        public byte Scale { get { throw null; } set { } }
+        public new byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
         public override bool SourceColumnNullMapping { get { throw null; } set { } }
@@ -3640,9 +3642,9 @@ namespace System.Data.OleDb
         public System.Data.OleDb.OleDbType OleDbType { get { throw null; } set { } }
         public override string ParameterName { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((byte)0)]
-        public byte Precision { get { throw null; } set { } }
+        public new byte Precision { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((byte)0)]
-        public byte Scale { get { throw null; } set { } }
+        public new byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
         public override bool SourceColumnNullMapping { get { throw null; } set { } }
@@ -4195,6 +4197,8 @@ namespace System.Data.SqlClient
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         [System.ObsoleteAttribute("ConnectionReset has been deprecated.  SqlConnection will ignore the 'connection reset' keyword and always reset the connection")]
         public bool ConnectionReset { get { throw null; } set { } }
+        public int ConnectRetryCount { get { throw null; } set { } }
+        public int ConnectRetryInterval { get { throw null; } set { } }
         [System.ComponentModel.DisplayNameAttribute("Connect Timeout")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public int ConnectTimeout { get { throw null; } set { } }
@@ -4583,9 +4587,9 @@ namespace System.Data.SqlClient
         public int Offset { get { throw null; } set { } }
         public override string ParameterName { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public byte Precision { get { throw null; } set { } }
+        public new byte Precision { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public byte Scale { get { throw null; } set { } }
+        public new byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
         public override bool SourceColumnNullMapping { get { throw null; } set { } }

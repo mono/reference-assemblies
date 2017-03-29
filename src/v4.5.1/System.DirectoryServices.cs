@@ -1498,6 +1498,7 @@ namespace System.DirectoryServices.ActiveDirectory
         Windows2003InterimDomain = 2,
         Windows2008Domain = 4,
         Windows2008R2Domain = 5,
+        Windows2012R2Domain = 7,
         Windows8Domain = 6,
     }
     [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
@@ -1552,6 +1553,7 @@ namespace System.DirectoryServices.ActiveDirectory
         Windows2003InterimForest = 1,
         Windows2008Forest = 3,
         Windows2008R2Forest = 4,
+        Windows2012R2Forest = 6,
         Windows8Forest = 5,
     }
     [System.SerializableAttribute]
