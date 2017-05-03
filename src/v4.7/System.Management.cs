@@ -9,51 +9,19 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Management.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Management.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Management.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.Management
 {
     public enum AuthenticationLevel
@@ -109,57 +77,43 @@ namespace System.Management
     public partial class CompletedEventArgs : System.Management.ManagementEventArgs
     {
         internal CompletedEventArgs() { }
-        public System.Management.ManagementStatus Status { [System.MonoTODOAttribute]get { throw null; } }
-        public System.Management.ManagementBaseObject StatusObject { [System.MonoTODOAttribute]get { throw null; } }
+        public System.Management.ManagementStatus Status { get { throw null; } }
+        public System.Management.ManagementBaseObject StatusObject { get { throw null; } }
     }
     public delegate void CompletedEventHandler(object sender, System.Management.CompletedEventArgs e);
     public partial class ConnectionOptions : System.Management.ManagementOptions
     {
-        [System.MonoTODOAttribute]
         public ConnectionOptions() { }
         public ConnectionOptions(string locale, string username, System.Security.SecureString password, string authority, System.Management.ImpersonationLevel impersonation, System.Management.AuthenticationLevel authentication, bool enablePrivileges, System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout) { }
-        [System.MonoTODOAttribute]
         public ConnectionOptions(string locale, string username, string password, string authority, System.Management.ImpersonationLevel impersonation, System.Management.AuthenticationLevel authentication, bool enablePrivileges, System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout) { }
-        [System.MonoTODOAttribute]
         public System.Management.AuthenticationLevel Authentication { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string Authority { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool EnablePrivileges { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Management.ImpersonationLevel Impersonation { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string Locale { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string Password { set { } }
         public System.Security.SecureString SecurePassword { set { } }
-        [System.MonoTODOAttribute]
         public string Username { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
     public partial class DeleteOptions : System.Management.ManagementOptions
     {
-        [System.MonoTODOAttribute]
         public DeleteOptions() { }
-        [System.MonoTODOAttribute]
         public DeleteOptions(System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout) { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
     public partial class EnumerationOptions : System.Management.ManagementOptions
     {
         public EnumerationOptions() { }
         public EnumerationOptions(System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout, int blockSize, bool rewindable, bool returnImmediatley, bool useAmendedQualifiers, bool ensureLocatable, bool prototypeOnly, bool directRead, bool enumerateDeep) { }
-        public int BlockSize { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool DirectRead { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool EnsureLocatable { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool EnumerateDeep { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool PrototypeOnly { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool ReturnImmediately { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool Rewindable { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool UseAmendedQualifiers { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public int BlockSize { get { throw null; } set { } }
+        public bool DirectRead { get { throw null; } set { } }
+        public bool EnsureLocatable { get { throw null; } set { } }
+        public bool EnumerateDeep { get { throw null; } set { } }
+        public bool PrototypeOnly { get { throw null; } set { } }
+        public bool ReturnImmediately { get { throw null; } set { } }
+        public bool Rewindable { get { throw null; } set { } }
+        public bool UseAmendedQualifiers { get { throw null; } set { } }
         public override object Clone() { throw null; }
     }
     public partial class EventArrivedEventArgs : System.Management.ManagementEventArgs
@@ -170,24 +124,16 @@ namespace System.Management
     public delegate void EventArrivedEventHandler(object sender, System.Management.EventArrivedEventArgs e);
     public partial class EventQuery : System.Management.ManagementQuery
     {
-        [System.MonoTODOAttribute]
         public EventQuery() { }
-        [System.MonoTODOAttribute]
         public EventQuery(string query) { }
-        [System.MonoTODOAttribute]
         public EventQuery(string language, string query) { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
     public partial class EventWatcherOptions : System.Management.ManagementOptions
     {
-        [System.MonoTODOAttribute]
         public EventWatcherOptions() { }
-        [System.MonoTODOAttribute]
         public EventWatcherOptions(System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout, int blockSize) { }
-        [System.MonoTODOAttribute]
         public int BlockSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
     public enum ImpersonationLevel
@@ -200,55 +146,37 @@ namespace System.Management
     }
     public partial class InvokeMethodOptions : System.Management.ManagementOptions
     {
-        [System.MonoTODOAttribute]
         public InvokeMethodOptions() { }
-        [System.MonoTODOAttribute]
         public InvokeMethodOptions(System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout) { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
-    [System.ComponentModel.ToolboxItemAttribute(true)]
+    [System.ComponentModel.ToolboxItemAttribute(false)]
     [System.SerializableAttribute]
     public partial class ManagementBaseObject : System.ComponentModel.Component, System.ICloneable, System.Runtime.Serialization.ISerializable
     {
-        [System.MonoTODOAttribute]
         protected ManagementBaseObject(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        public virtual System.Management.ManagementPath ClassPath { [System.MonoTODOAttribute]get { throw null; } }
-        public object this[string propertyName] { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public virtual System.Management.PropertyDataCollection Properties { [System.MonoTODOAttribute]get { throw null; } }
-        public virtual System.Management.QualifierDataCollection Qualifiers { [System.MonoTODOAttribute]get { throw null; } }
-        public virtual System.Management.PropertyDataCollection SystemProperties { [System.MonoTODOAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public virtual System.Management.ManagementPath ClassPath { get { throw null; } }
+        public object this[string propertyName] { get { throw null; } set { } }
+        public virtual System.Management.PropertyDataCollection Properties { get { throw null; } }
+        public virtual System.Management.QualifierDataCollection Qualifiers { get { throw null; } }
+        public virtual System.Management.PropertyDataCollection SystemProperties { get { throw null; } }
         public virtual object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public bool CompareTo(System.Management.ManagementBaseObject otherObject, System.Management.ComparisonSettings settings) { throw null; }
         public new void Dispose() { }
-        [System.MonoTODOAttribute]
         public override bool Equals(object obj) { throw null; }
-        [System.MonoTODOAttribute]
         public override int GetHashCode() { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public object GetPropertyQualifierValue(string propertyName, string qualifierName) { throw null; }
-        [System.MonoTODOAttribute]
         public object GetPropertyValue(string propertyName) { throw null; }
-        [System.MonoTODOAttribute]
         public object GetQualifierValue(string qualifierName) { throw null; }
-        [System.MonoTODOAttribute]
         public string GetText(System.Management.TextFormat format) { throw null; }
-        [System.MonoTODOAttribute]
         public static explicit operator System.IntPtr (System.Management.ManagementBaseObject managementObject) { throw null; }
-        [System.MonoTODOAttribute]
         public void SetPropertyQualifierValue(string propertyName, string qualifierName, object qualifierValue) { }
-        [System.MonoTODOAttribute]
         public void SetPropertyValue(string propertyName, object propertyValue) { }
-        [System.MonoTODOAttribute]
         public void SetQualifierValue(string qualifierName, object qualifierValue) { }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
-    [System.MonoTODOAttribute("System.Management is not implemented")]
     [System.SerializableAttribute]
     public partial class ManagementClass : System.Management.ManagementObject
     {
@@ -256,7 +184,6 @@ namespace System.Management
         public ManagementClass(System.Management.ManagementPath path) { }
         public ManagementClass(System.Management.ManagementPath path, System.Management.ObjectGetOptions options) { }
         public ManagementClass(System.Management.ManagementScope scope, System.Management.ManagementPath path, System.Management.ObjectGetOptions options) { }
-        [System.MonoTODOAttribute]
         protected ManagementClass(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public ManagementClass(string path) { }
         public ManagementClass(string path, System.Management.ObjectGetOptions options) { }
@@ -271,7 +198,6 @@ namespace System.Management
         public System.Management.ManagementObjectCollection GetInstances(System.Management.EnumerationOptions options) { throw null; }
         public void GetInstances(System.Management.ManagementOperationObserver watcher) { }
         public void GetInstances(System.Management.ManagementOperationObserver watcher, System.Management.EnumerationOptions options) { }
-        [System.MonoTODOAttribute]
         protected override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public System.Management.ManagementObjectCollection GetRelatedClasses() { throw null; }
         public void GetRelatedClasses(System.Management.ManagementOperationObserver watcher) { }
@@ -295,13 +221,9 @@ namespace System.Management
     public sealed partial class ManagementDateTimeConverter
     {
         internal ManagementDateTimeConverter() { }
-        [System.MonoTODOAttribute]
         public static System.DateTime ToDateTime(string dmtfDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static string ToDmtfDateTime(System.DateTime date) { throw null; }
-        [System.MonoTODOAttribute]
         public static string ToDmtfTimeInterval(System.TimeSpan timespan) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.TimeSpan ToTimeSpan(string dmtfTimespan) { throw null; }
     }
     public abstract partial class ManagementEventArgs : System.EventArgs
@@ -309,38 +231,24 @@ namespace System.Management
         internal ManagementEventArgs() { }
         public object Context { get { throw null; } }
     }
-    [System.ComponentModel.ToolboxItemAttribute(true)]
+    [System.ComponentModel.ToolboxItemAttribute(false)]
     public partial class ManagementEventWatcher : System.ComponentModel.Component
     {
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher() { }
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher(System.Management.EventQuery query) { }
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher(System.Management.ManagementScope scope, System.Management.EventQuery query) { }
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher(System.Management.ManagementScope scope, System.Management.EventQuery query, System.Management.EventWatcherOptions options) { }
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher(string query) { }
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher(string scope, string query) { }
-        [System.MonoTODOAttribute]
         public ManagementEventWatcher(string scope, string query, System.Management.EventWatcherOptions options) { }
-        [System.MonoTODOAttribute]
         public System.Management.EventWatcherOptions Options { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Management.EventQuery Query { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementScope Scope { get { throw null; } set { } }
         public event System.Management.EventArrivedEventHandler EventArrived { add { } remove { } }
         public event System.Management.StoppedEventHandler Stopped { add { } remove { } }
-        [System.MonoTODOAttribute]
         ~ManagementEventWatcher() { }
-        [System.MonoTODOAttribute]
         public void Start() { }
-        [System.MonoTODOAttribute]
         public void Stop() { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementBaseObject WaitForNextEvent() { throw null; }
     }
     [System.SerializableAttribute]
@@ -350,10 +258,9 @@ namespace System.Management
         protected ManagementException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public ManagementException(string message) { }
         public ManagementException(string message, System.Exception innerException) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementStatus ErrorCode { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementBaseObject ErrorInformation { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class ManagementNamedValueCollection : System.Collections.Specialized.NameObjectCollectionBase
@@ -369,133 +276,78 @@ namespace System.Management
     [System.SerializableAttribute]
     public partial class ManagementObject : System.Management.ManagementBaseObject, System.ICloneable
     {
-        [System.MonoTODOAttribute]
         public ManagementObject() : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         public ManagementObject(System.Management.ManagementPath path) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         public ManagementObject(System.Management.ManagementPath path, System.Management.ObjectGetOptions options) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         public ManagementObject(System.Management.ManagementScope scope, System.Management.ManagementPath path, System.Management.ObjectGetOptions options) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         protected ManagementObject(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         public ManagementObject(string path) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         public ManagementObject(string path, System.Management.ObjectGetOptions options) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        [System.MonoTODOAttribute]
         public ManagementObject(string scopeString, string pathString, System.Management.ObjectGetOptions options) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
-        public override System.Management.ManagementPath ClassPath { [System.MonoTODOAttribute]get { throw null; } }
-        public System.Management.ObjectGetOptions Options { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public virtual System.Management.ManagementPath Path { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public System.Management.ManagementScope Scope { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public override System.Management.ManagementPath ClassPath { get { throw null; } }
+        public System.Management.ObjectGetOptions Options { get { throw null; } set { } }
+        public virtual System.Management.ManagementPath Path { get { throw null; } set { } }
+        public System.Management.ManagementScope Scope { get { throw null; } set { } }
         public override object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.ManagementOperationObserver watcher, System.Management.ManagementPath path) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.ManagementOperationObserver watcher, System.Management.ManagementPath path, System.Management.PutOptions options) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.ManagementOperationObserver watcher, string path) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.ManagementOperationObserver watcher, string path, System.Management.PutOptions options) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath CopyTo(System.Management.ManagementPath path) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath CopyTo(System.Management.ManagementPath path, System.Management.PutOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath CopyTo(string path) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath CopyTo(string path, System.Management.PutOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public void Delete() { }
-        [System.MonoTODOAttribute]
         public void Delete(System.Management.DeleteOptions options) { }
-        [System.MonoTODOAttribute]
         public void Delete(System.Management.ManagementOperationObserver watcher) { }
-        [System.MonoTODOAttribute]
         public void Delete(System.Management.ManagementOperationObserver watcher, System.Management.DeleteOptions options) { }
-        [System.MonoTODOAttribute]
         public new void Dispose() { }
-        [System.MonoTODOAttribute]
         public void Get() { }
-        [System.MonoTODOAttribute]
         public void Get(System.Management.ManagementOperationObserver watcher) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementBaseObject GetMethodParameters(string methodName) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection GetRelated() { throw null; }
-        [System.MonoTODOAttribute]
         public void GetRelated(System.Management.ManagementOperationObserver watcher) { }
-        [System.MonoTODOAttribute]
         public void GetRelated(System.Management.ManagementOperationObserver watcher, string relatedClass) { }
-        [System.MonoTODOAttribute]
         public void GetRelated(System.Management.ManagementOperationObserver watcher, string relatedClass, string relationshipClass, string relationshipQualifier, string relatedQualifier, string relatedRole, string thisRole, bool classDefinitionsOnly, System.Management.EnumerationOptions options) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection GetRelated(string relatedClass) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection GetRelated(string relatedClass, string relationshipClass, string relationshipQualifier, string relatedQualifier, string relatedRole, string thisRole, bool classDefinitionsOnly, System.Management.EnumerationOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection GetRelationships() { throw null; }
-        [System.MonoTODOAttribute]
         public void GetRelationships(System.Management.ManagementOperationObserver watcher) { }
-        [System.MonoTODOAttribute]
         public void GetRelationships(System.Management.ManagementOperationObserver watcher, string relationshipClass) { }
-        [System.MonoTODOAttribute]
         public void GetRelationships(System.Management.ManagementOperationObserver watcher, string relationshipClass, string relationshipQualifier, string thisRole, bool classDefinitionsOnly, System.Management.EnumerationOptions options) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection GetRelationships(string relationshipClass) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection GetRelationships(string relationshipClass, string relationshipQualifier, string thisRole, bool classDefinitionsOnly, System.Management.EnumerationOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public void InvokeMethod(System.Management.ManagementOperationObserver watcher, string methodName, System.Management.ManagementBaseObject inParameters, System.Management.InvokeMethodOptions options) { }
-        [System.MonoTODOAttribute]
         public void InvokeMethod(System.Management.ManagementOperationObserver watcher, string methodName, object[] args) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementBaseObject InvokeMethod(string methodName, System.Management.ManagementBaseObject inParameters, System.Management.InvokeMethodOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public object InvokeMethod(string methodName, object[] args) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath Put() { throw null; }
-        [System.MonoTODOAttribute]
         public void Put(System.Management.ManagementOperationObserver watcher) { }
-        [System.MonoTODOAttribute]
         public void Put(System.Management.ManagementOperationObserver watcher, System.Management.PutOptions options) { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath Put(System.Management.PutOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class ManagementObjectCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.IDisposable
     {
         internal ManagementObjectCollection() { }
-        public int Count { [System.MonoTODOAttribute]get { throw null; } }
-        public bool IsSynchronized { [System.MonoTODOAttribute]get { throw null; } }
-        public object SyncRoot { [System.MonoTODOAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public int Count { get { throw null; } }
+        public bool IsSynchronized { get { throw null; } }
+        public object SyncRoot { get { throw null; } }
         public void CopyTo(System.Array array, int index) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.ManagementBaseObject[] objectCollection, int index) { }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
         ~ManagementObjectCollection() { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementObjectCollection.ManagementObjectEnumerator GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public partial class ManagementObjectEnumerator : System.Collections.IEnumerator, System.IDisposable
         {
             internal ManagementObjectEnumerator() { }
-            public System.Management.ManagementBaseObject Current { [System.MonoTODOAttribute]get { throw null; } }
-            object System.Collections.IEnumerator.Current { [System.MonoTODOAttribute]get { throw null; } }
-            [System.MonoTODOAttribute]
+            public System.Management.ManagementBaseObject Current { get { throw null; } }
+            object System.Collections.IEnumerator.Current { get { throw null; } }
             public void Dispose() { }
-            [System.MonoTODOAttribute]
             ~ManagementObjectEnumerator() { }
-            [System.MonoTODOAttribute]
             public bool MoveNext() { throw null; }
-            [System.MonoTODOAttribute]
             public void Reset() { }
         }
     }
@@ -517,13 +369,11 @@ namespace System.Management
     }
     public partial class ManagementOperationObserver
     {
-        [System.MonoTODOAttribute]
         public ManagementOperationObserver() { }
         public event System.Management.CompletedEventHandler Completed { add { } remove { } }
         public event System.Management.ObjectPutEventHandler ObjectPut { add { } remove { } }
         public event System.Management.ObjectReadyEventHandler ObjectReady { add { } remove { } }
         public event System.Management.ProgressEventHandler Progress { add { } remove { } }
-        [System.MonoTODOAttribute]
         public void Cancel() { }
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
@@ -533,70 +383,55 @@ namespace System.Management
         public static readonly System.TimeSpan InfiniteTimeout;
         public System.Management.ManagementNamedValueCollection Context { get { throw null; } set { } }
         public System.TimeSpan Timeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public abstract object Clone();
     }
+    [System.ComponentModel.TypeConverterAttribute("System.Management.ManagementPathConverter")]
     public partial class ManagementPath : System.ICloneable
     {
-        [System.MonoTODOAttribute]
         public ManagementPath() { }
-        [System.MonoTODOAttribute]
         public ManagementPath(string path) { }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
-        public string ClassName { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public static System.Management.ManagementPath DefaultPath { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool IsClass { [System.MonoTODOAttribute]get { throw null; } }
-        public bool IsInstance { [System.MonoTODOAttribute]get { throw null; } }
-        public bool IsSingleton { [System.MonoTODOAttribute]get { throw null; } }
+        public string ClassName { get { throw null; } set { } }
+        public static System.Management.ManagementPath DefaultPath { get { throw null; } set { } }
+        public bool IsClass { get { throw null; } }
+        public bool IsInstance { get { throw null; } }
+        public bool IsSingleton { get { throw null; } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
-        public string NamespacePath { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string NamespacePath { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
-        public string Path { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string Path { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
-        public string RelativePath { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string RelativePath { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
-        public string Server { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public string Server { get { throw null; } set { } }
         public System.Management.ManagementPath Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public void SetAsClass() { }
-        [System.MonoTODOAttribute]
         public void SetAsSingleton() { }
-        [System.MonoTODOAttribute]
         object System.ICloneable.Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
-    [System.MonoTODOAttribute("System.Management is not implemented")]
+    [System.ComponentModel.TypeConverterAttribute("System.Management.ManagementQueryConverter")]
     public abstract partial class ManagementQuery : System.ICloneable
     {
         internal ManagementQuery() { }
         public virtual string QueryLanguage { get { throw null; } set { } }
         public virtual string QueryString { get { throw null; } set { } }
         public abstract object Clone();
-        [System.MonoTODOAttribute]
         protected internal virtual void ParseQuery(string query) { }
     }
+    [System.ComponentModel.TypeConverterAttribute("System.Management.ManagementScopeConverter")]
     public partial class ManagementScope : System.ICloneable
     {
-        [System.MonoTODOAttribute]
         public ManagementScope() { }
-        [System.MonoTODOAttribute]
         public ManagementScope(System.Management.ManagementPath path) { }
-        [System.MonoTODOAttribute]
         public ManagementScope(System.Management.ManagementPath path, System.Management.ConnectionOptions options) { }
-        [System.MonoTODOAttribute]
         public ManagementScope(string path) { }
-        [System.MonoTODOAttribute]
         public ManagementScope(string path, System.Management.ConnectionOptions options) { }
-        public bool IsConnected { [System.MonoTODOAttribute]get { throw null; } }
-        public System.Management.ConnectionOptions Options { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public System.Management.ManagementPath Path { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public bool IsConnected { get { throw null; } }
+        public System.Management.ConnectionOptions Options { get { throw null; } set { } }
+        public System.Management.ManagementPath Path { get { throw null; } set { } }
         public System.Management.ManagementScope Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public void Connect() { }
-        [System.MonoTODOAttribute]
         object System.ICloneable.Clone() { throw null; }
     }
     public enum ManagementStatus
@@ -719,7 +554,6 @@ namespace System.Management
         public System.Management.ManagementBaseObject OutParameters { get { throw null; } }
         public System.Management.QualifierDataCollection Qualifiers { get { throw null; } }
     }
-    [System.MonoTODOAttribute("System.Management is not implemented")]
     public partial class MethodDataCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal MethodDataCollection() { }
@@ -745,21 +579,15 @@ namespace System.Management
     }
     public partial class ObjectGetOptions : System.Management.ManagementOptions
     {
-        [System.MonoTODOAttribute]
         public ObjectGetOptions() { }
-        [System.MonoTODOAttribute]
         public ObjectGetOptions(System.Management.ManagementNamedValueCollection context) { }
-        [System.MonoTODOAttribute]
         public ObjectGetOptions(System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout, bool useAmendedQualifiers) { }
-        [System.MonoTODOAttribute]
         public bool UseAmendedQualifiers { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
     public partial class ObjectPutEventArgs : System.Management.ManagementEventArgs
     {
         internal ObjectPutEventArgs() { }
-        [System.MonoTODOAttribute]
         public System.Management.ManagementPath Path { get { throw null; } }
     }
     public delegate void ObjectPutEventHandler(object sender, System.Management.ObjectPutEventArgs e);
@@ -773,63 +601,49 @@ namespace System.Management
     public partial class ObjectReadyEventArgs : System.Management.ManagementEventArgs
     {
         internal ObjectReadyEventArgs() { }
-        public System.Management.ManagementBaseObject NewObject { [System.MonoTODOAttribute]get { throw null; } }
+        public System.Management.ManagementBaseObject NewObject { get { throw null; } }
     }
     public delegate void ObjectReadyEventHandler(object sender, System.Management.ObjectReadyEventArgs e);
     public partial class ProgressEventArgs : System.Management.ManagementEventArgs
     {
         internal ProgressEventArgs() { }
-        public int Current { [System.MonoTODOAttribute]get { throw null; } }
-        public string Message { [System.MonoTODOAttribute]get { throw null; } }
-        public int UpperBound { [System.MonoTODOAttribute]get { throw null; } }
+        public int Current { get { throw null; } }
+        public string Message { get { throw null; } }
+        public int UpperBound { get { throw null; } }
     }
     public delegate void ProgressEventHandler(object sender, System.Management.ProgressEventArgs e);
     public partial class PropertyData
     {
         internal PropertyData() { }
-        public bool IsArray { [System.MonoTODOAttribute]get { throw null; } }
-        public bool IsLocal { [System.MonoTODOAttribute]get { throw null; } }
-        public string Name { [System.MonoTODOAttribute]get { throw null; } }
-        public string Origin { [System.MonoTODOAttribute]get { throw null; } }
-        public System.Management.QualifierDataCollection Qualifiers { [System.MonoTODOAttribute]get { throw null; } }
-        public System.Management.CimType Type { [System.MonoTODOAttribute]get { throw null; } }
-        public object Value { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool IsArray { get { throw null; } }
+        public bool IsLocal { get { throw null; } }
+        public string Name { get { throw null; } }
+        public string Origin { get { throw null; } }
+        public System.Management.QualifierDataCollection Qualifiers { get { throw null; } }
+        public System.Management.CimType Type { get { throw null; } }
+        public object Value { get { throw null; } set { } }
     }
     public partial class PropertyDataCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal PropertyDataCollection() { }
-        [System.MonoTODOAttribute]
         public int Count { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsSynchronized { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Management.PropertyData this[string propertyName] { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object SyncRoot { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Add(string propertyName, System.Management.CimType propertyType, bool isArray) { }
-        [System.MonoTODOAttribute]
         public virtual void Add(string propertyName, object propertyValue) { }
-        [System.MonoTODOAttribute]
         public void Add(string propertyName, object propertyValue, System.Management.CimType propertyType) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Array array, int index) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.PropertyData[] propertyArray, int index) { }
-        [System.MonoTODOAttribute]
         public System.Management.PropertyDataCollection.PropertyDataEnumerator GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void Remove(string propertyName) { }
-        [System.MonoTODOAttribute]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public partial class PropertyDataEnumerator : System.Collections.IEnumerator
         {
             internal PropertyDataEnumerator() { }
-            public System.Management.PropertyData Current { [System.MonoTODOAttribute]get { throw null; } }
-            object System.Collections.IEnumerator.Current { [System.MonoTODOAttribute]get { throw null; } }
-            [System.MonoTODOAttribute]
+            public System.Management.PropertyData Current { get { throw null; } }
+            object System.Collections.IEnumerator.Current { get { throw null; } }
             public bool MoveNext() { throw null; }
-            [System.MonoTODOAttribute]
             public void Reset() { }
         }
     }
@@ -838,9 +652,8 @@ namespace System.Management
         public PutOptions() { }
         public PutOptions(System.Management.ManagementNamedValueCollection context) { }
         public PutOptions(System.Management.ManagementNamedValueCollection context, System.TimeSpan timeout, bool useAmendedQualifiers, System.Management.PutType putType) { }
-        public System.Management.PutType Type { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool UseAmendedQualifiers { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public System.Management.PutType Type { get { throw null; } set { } }
+        public bool UseAmendedQualifiers { get { throw null; } set { } }
         public override object Clone() { throw null; }
     }
     public enum PutType
@@ -853,140 +666,88 @@ namespace System.Management
     public partial class QualifierData
     {
         internal QualifierData() { }
-        public bool IsAmended { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool IsLocal { [System.MonoTODOAttribute]get { throw null; } }
-        public bool IsOverridable { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public string Name { [System.MonoTODOAttribute]get { throw null; } }
-        public bool PropagatesToInstance { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public bool PropagatesToSubclass { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public object Value { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool IsAmended { get { throw null; } set { } }
+        public bool IsLocal { get { throw null; } }
+        public bool IsOverridable { get { throw null; } set { } }
+        public string Name { get { throw null; } }
+        public bool PropagatesToInstance { get { throw null; } set { } }
+        public bool PropagatesToSubclass { get { throw null; } set { } }
+        public object Value { get { throw null; } set { } }
     }
     public partial class QualifierDataCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal QualifierDataCollection() { }
-        public int Count { [System.MonoTODOAttribute]get { throw null; } }
-        public bool IsSynchronized { [System.MonoTODOAttribute]get { throw null; } }
-        public virtual System.Management.QualifierData this[string qualifierName] { [System.MonoTODOAttribute]get { throw null; } }
-        public object SyncRoot { [System.MonoTODOAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public int Count { get { throw null; } }
+        public bool IsSynchronized { get { throw null; } }
+        public virtual System.Management.QualifierData this[string qualifierName] { get { throw null; } }
+        public object SyncRoot { get { throw null; } }
         public virtual void Add(string qualifierName, object qualifierValue) { }
-        [System.MonoTODOAttribute]
         public virtual void Add(string qualifierName, object qualifierValue, bool isAmended, bool propagatesToInstance, bool propagatesToSubclass, bool isOverridable) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Array array, int index) { }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Management.QualifierData[] qualifierArray, int index) { }
-        [System.MonoTODOAttribute]
         public System.Management.QualifierDataCollection.QualifierDataEnumerator GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void Remove(string qualifierName) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public partial class QualifierDataEnumerator : System.Collections.IEnumerator
         {
             internal QualifierDataEnumerator() { }
-            public System.Management.QualifierData Current { [System.MonoTODOAttribute]get { throw null; } }
-            object System.Collections.IEnumerator.Current { [System.MonoTODOAttribute]get { throw null; } }
-            [System.MonoTODOAttribute]
+            public System.Management.QualifierData Current { get { throw null; } }
+            object System.Collections.IEnumerator.Current { get { throw null; } }
             public bool MoveNext() { throw null; }
-            [System.MonoTODOAttribute]
             public void Reset() { }
         }
     }
     public partial class RelatedObjectQuery : System.Management.WqlObjectQuery
     {
-        [System.MonoTODOAttribute]
         public RelatedObjectQuery() { }
-        [System.MonoTODOAttribute]
         public RelatedObjectQuery(bool isSchemaQuery, string sourceObject, string relatedClass, string relationshipClass, string relatedQualifier, string relationshipQualifier, string relatedRole, string thisRole) { }
-        [System.MonoTODOAttribute]
         public RelatedObjectQuery(string queryOrSourceObject) { }
-        [System.MonoTODOAttribute]
         public RelatedObjectQuery(string sourceObject, string relatedClass) { }
-        [System.MonoTODOAttribute]
         public RelatedObjectQuery(string sourceObject, string relatedClass, string relationshipClass, string relatedQualifier, string relationshipQualifier, string relatedRole, string thisRole, bool classDefinitionsOnly) { }
-        [System.MonoTODOAttribute]
         public bool ClassDefinitionsOnly { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IsSchemaQuery { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelatedClass { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelatedQualifier { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelatedRole { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelationshipClass { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelationshipQualifier { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string SourceObject { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string ThisRole { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected internal void BuildQuery() { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void ParseQuery(string query) { }
     }
     public partial class RelationshipQuery : System.Management.WqlObjectQuery
     {
-        [System.MonoTODOAttribute]
         public RelationshipQuery() { }
-        [System.MonoTODOAttribute]
         public RelationshipQuery(bool isSchemaQuery, string sourceObject, string relationshipClass, string relationshipQualifier, string thisRole) { }
-        [System.MonoTODOAttribute]
         public RelationshipQuery(string queryOrSourceObject) { }
-        [System.MonoTODOAttribute]
         public RelationshipQuery(string sourceObject, string relationshipClass) { }
-        [System.MonoTODOAttribute]
         public RelationshipQuery(string sourceObject, string relationshipClass, string relationshipQualifier, string thisRole, bool classDefinitionsOnly) { }
-        [System.MonoTODOAttribute]
         public bool ClassDefinitionsOnly { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IsSchemaQuery { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelationshipClass { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string RelationshipQualifier { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string SourceObject { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string ThisRole { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected internal void BuildQuery() { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void ParseQuery(string query) { }
     }
     public partial class SelectQuery : System.Management.WqlObjectQuery
     {
-        [System.MonoTODOAttribute]
         public SelectQuery() { }
-        [System.MonoTODOAttribute]
         public SelectQuery(bool isSchemaQuery, string condition) { }
-        [System.MonoTODOAttribute]
         public SelectQuery(string queryOrClassName) { }
-        [System.MonoTODOAttribute]
         public SelectQuery(string className, string condition) { }
-        [System.MonoTODOAttribute]
         public SelectQuery(string className, string condition, string[] selectedProperties) { }
-        [System.MonoTODOAttribute]
         public string ClassName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string Condition { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IsSchemaQuery { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override string QueryString { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Collections.Specialized.StringCollection SelectedProperties { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected internal void BuildQuery() { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void ParseQuery(string query) { }
     }
     public partial class StoppedEventArgs : System.Management.ManagementEventArgs
@@ -1003,54 +764,31 @@ namespace System.Management
     }
     public partial class WqlEventQuery : System.Management.EventQuery
     {
-        [System.MonoTODOAttribute]
         public WqlEventQuery() { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string queryOrEventClassName) { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string eventClassName, string condition) { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string eventClassName, string condition, System.TimeSpan groupWithinInterval) { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string eventClassName, string condition, System.TimeSpan groupWithinInterval, string[] groupByPropertyList) { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string eventClassName, System.TimeSpan withinInterval) { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string eventClassName, System.TimeSpan withinInterval, string condition) { }
-        [System.MonoTODOAttribute]
         public WqlEventQuery(string eventClassName, System.TimeSpan withinInterval, string condition, System.TimeSpan groupWithinInterval, string[] groupByPropertyList, string havingCondition) { }
-        [System.MonoTODOAttribute]
         public string Condition { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string EventClassName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Collections.Specialized.StringCollection GroupByPropertyList { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.TimeSpan GroupWithinInterval { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string HavingCondition { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override string QueryLanguage { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override string QueryString { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.TimeSpan WithinInterval { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected internal void BuildQuery() { }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void ParseQuery(string query) { }
     }
     public partial class WqlObjectQuery : System.Management.ObjectQuery
     {
-        [System.MonoTODOAttribute]
         public WqlObjectQuery() { }
-        [System.MonoTODOAttribute]
         public WqlObjectQuery(string query) { }
-        [System.MonoTODOAttribute]
         public override string QueryLanguage { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override object Clone() { throw null; }
     }
 }
@@ -1059,14 +797,11 @@ namespace System.Management.Instrumentation
     [System.Management.Instrumentation.InstrumentationClassAttribute((System.Management.Instrumentation.InstrumentationType)(1))]
     public abstract partial class BaseEvent : System.Management.Instrumentation.IEvent
     {
-        [System.MonoTODOAttribute]
         protected BaseEvent() { }
-        [System.MonoTODOAttribute]
         public void Fire() { }
     }
     public partial class DefaultManagementProjectInstaller : System.Configuration.Install.Installer
     {
-        [System.MonoTODOAttribute]
         public DefaultManagementProjectInstaller() { }
     }
     public partial interface IEvent
@@ -1076,7 +811,6 @@ namespace System.Management.Instrumentation
     [System.AttributeUsageAttribute((System.AttributeTargets)(448))]
     public partial class IgnoreMemberAttribute : System.Attribute
     {
-        [System.MonoTODOAttribute]
         public IgnoreMemberAttribute() { }
     }
     public partial interface IInstance
@@ -1086,26 +820,18 @@ namespace System.Management.Instrumentation
     [System.Management.Instrumentation.InstrumentationClassAttribute((System.Management.Instrumentation.InstrumentationType)(0))]
     public abstract partial class Instance : System.Management.Instrumentation.IInstance
     {
-        [System.MonoTODOAttribute]
         protected Instance() { }
         [System.Management.Instrumentation.IgnoreMemberAttribute]
         public bool Published { get { throw null; } set { } }
     }
     public partial class Instrumentation
     {
-        [System.MonoTODOAttribute]
         public Instrumentation() { }
-        [System.MonoTODOAttribute]
         public static void Fire(object eventData) { }
-        [System.MonoTODOAttribute]
         public static bool IsAssemblyRegistered(System.Reflection.Assembly assemblyToRegister) { throw null; }
-        [System.MonoTODOAttribute]
         public static void Publish(object instanceData) { }
-        [System.MonoTODOAttribute]
         public static void RegisterAssembly(System.Reflection.Assembly assemblyToRegister) { }
-        [System.MonoTODOAttribute]
         public static void Revoke(object instanceData) { }
-        [System.MonoTODOAttribute]
         public static void SetBatchSize(System.Type instrumentationClass, int batchSize) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(12))]
@@ -1125,14 +851,11 @@ namespace System.Management.Instrumentation
     [System.AttributeUsageAttribute((System.AttributeTargets)(1))]
     public partial class InstrumentedAttribute : System.Attribute
     {
-        [System.MonoTODOAttribute]
         public InstrumentedAttribute() { }
-        [System.MonoTODOAttribute]
         public InstrumentedAttribute(string namespaceName) { }
-        [System.MonoTODOAttribute]
         public InstrumentedAttribute(string namespaceName, string securityDescriptor) { }
-        public string NamespaceName { [System.MonoTODOAttribute]get { throw null; } }
-        public string SecurityDescriptor { [System.MonoTODOAttribute]get { throw null; } }
+        public string NamespaceName { get { throw null; } }
+        public string SecurityDescriptor { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(460))]
     public partial class ManagedNameAttribute : System.Attribute
@@ -1142,17 +865,11 @@ namespace System.Management.Instrumentation
     }
     public partial class ManagementInstaller : System.Configuration.Install.Installer
     {
-        [System.MonoTODOAttribute]
         public ManagementInstaller() { }
-        [System.MonoTODOAttribute]
         public override string HelpText { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override void Commit(System.Collections.IDictionary savedState) { }
-        [System.MonoTODOAttribute]
         public override void Install(System.Collections.IDictionary savedState) { }
-        [System.MonoTODOAttribute]
         public override void Rollback(System.Collections.IDictionary savedState) { }
-        [System.MonoTODOAttribute]
         public override void Uninstall(System.Collections.IDictionary savedState) { }
     }
 }

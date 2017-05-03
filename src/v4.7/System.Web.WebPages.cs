@@ -11,7 +11,7 @@
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Web.WebPages.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("")]
 [assembly:System.Reflection.AssemblyFileVersionAttribute("2.0.0.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Microsoft ASP.NET Web Pages")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Web.WebPages")]
 [assembly:System.Reflection.AssemblyTrademarkAttribute("")]

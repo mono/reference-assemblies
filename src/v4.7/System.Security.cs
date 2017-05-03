@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Security.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Security.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Security.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,44 +19,13 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(2), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.Security.Cryptography
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CryptographicAttributeObject
     {
         public CryptographicAttributeObject(System.Security.Cryptography.Oid oid) { }
@@ -64,6 +33,7 @@ namespace System.Security.Cryptography
         public System.Security.Cryptography.Oid Oid { get { throw null; } }
         public System.Security.Cryptography.AsnEncodedDataCollection Values { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CryptographicAttributeObjectCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         public CryptographicAttributeObjectCollection() { }
@@ -80,6 +50,7 @@ namespace System.Security.Cryptography
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CryptographicAttributeObjectEnumerator : System.Collections.IEnumerator
     {
         internal CryptographicAttributeObjectEnumerator() { }
@@ -106,15 +77,21 @@ namespace System.Security.Cryptography
         public byte[] Protect(byte[] userData) { throw null; }
         protected abstract byte[] ProviderProtect(byte[] userData);
         protected abstract byte[] ProviderUnprotect(byte[] encryptedData);
-        public byte[] Unprotect(byte[] encryptedData) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining | System.Runtime.CompilerServices.MethodImplOptions.NoOptimization)]public byte[] Unprotect(byte[] encryptedData) { throw null; }
     }
     public sealed partial class DpapiDataProtector : System.Security.Cryptography.DataProtector
     {
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.DataProtectionPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DpapiDataProtector(string appName, string primaryPurpose, params string[] specificPurpose) : base (default(string), default(string), default(string[])) { }
         protected override bool PrependHashedPurposeToPlaintext { get { throw null; } }
-        public System.Security.Cryptography.DataProtectionScope Scope { get { throw null; } set { } }
+        public System.Security.Cryptography.DataProtectionScope Scope { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override bool IsReprotectRequired(byte[] encryptedData) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.DataProtectionPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, ProtectData=true)]
         protected override byte[] ProviderProtect(byte[] userData) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.DataProtectionPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnprotectData=true)]
         protected override byte[] ProviderUnprotect(byte[] encryptedData) { throw null; }
     }
     public enum MemoryProtectionScope
@@ -123,21 +100,26 @@ namespace System.Security.Cryptography
         SameLogon = 2,
         SameProcess = 0,
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public static partial class ProtectedData
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public static byte[] Protect(byte[] userData, byte[] optionalEntropy, System.Security.Cryptography.DataProtectionScope scope) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static byte[] Unprotect(byte[] encryptedData, byte[] optionalEntropy, System.Security.Cryptography.DataProtectionScope scope) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public static partial class ProtectedMemory
     {
-        [System.MonoTODOAttribute("only supported on Windows 2000 SP3 and later")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Protect(byte[] userData, System.Security.Cryptography.MemoryProtectionScope scope) { }
-        [System.MonoTODOAttribute("only supported on Windows 2000 SP3 and later")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Unprotect(byte[] encryptedData, System.Security.Cryptography.MemoryProtectionScope scope) { }
     }
 }
 namespace System.Security.Cryptography.Pkcs
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class AlgorithmIdentifier
     {
         public AlgorithmIdentifier() { }
@@ -147,6 +129,7 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.Oid Oid { get { throw null; } set { } }
         public byte[] Parameters { get { throw null; } set { } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CmsRecipient
     {
         public CmsRecipient(System.Security.Cryptography.Pkcs.SubjectIdentifierType recipientIdentifierType, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { }
@@ -154,6 +137,7 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.X509Certificates.X509Certificate2 Certificate { get { throw null; } }
         public System.Security.Cryptography.Pkcs.SubjectIdentifierType RecipientIdentifierType { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CmsRecipientCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         public CmsRecipientCollection() { }
@@ -170,6 +154,7 @@ namespace System.Security.Cryptography.Pkcs
         public void Remove(System.Security.Cryptography.Pkcs.CmsRecipient recipient) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CmsRecipientEnumerator : System.Collections.IEnumerator
     {
         internal CmsRecipientEnumerator() { }
@@ -178,10 +163,11 @@ namespace System.Security.Cryptography.Pkcs
         public bool MoveNext() { throw null; }
         public void Reset() { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CmsSigner
     {
         public CmsSigner() { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public CmsSigner(System.Security.Cryptography.CspParameters parameters) { }
         public CmsSigner(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType) { }
         public CmsSigner(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { }
@@ -194,46 +180,43 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.Pkcs.SubjectIdentifierType SignerIdentifierType { get { throw null; } set { } }
         public System.Security.Cryptography.CryptographicAttributeObjectCollection UnsignedAttributes { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class ContentInfo
     {
         public ContentInfo(byte[] content) { }
         public ContentInfo(System.Security.Cryptography.Oid contentType, byte[] content) { }
         public byte[] Content { get { throw null; } }
         public System.Security.Cryptography.Oid ContentType { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~ContentInfo() { }
-        [System.MonoTODOAttribute("MS is stricter than us about the content structure")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Cryptography.Oid GetContentType(byte[] encodedMessage) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EnvelopedCms
     {
         public EnvelopedCms() { }
         public EnvelopedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
         public EnvelopedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo, System.Security.Cryptography.Pkcs.AlgorithmIdentifier encryptionAlgorithm) { }
         public EnvelopedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType recipientIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public EnvelopedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType recipientIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo, System.Security.Cryptography.Pkcs.AlgorithmIdentifier encryptionAlgorithm) { }
         public System.Security.Cryptography.X509Certificates.X509Certificate2Collection Certificates { get { throw null; } }
         public System.Security.Cryptography.Pkcs.AlgorithmIdentifier ContentEncryptionAlgorithm { get { throw null; } }
         public System.Security.Cryptography.Pkcs.ContentInfo ContentInfo { get { throw null; } }
-        public System.Security.Cryptography.Pkcs.RecipientInfoCollection RecipientInfos { get { throw null; } }
+        public System.Security.Cryptography.Pkcs.RecipientInfoCollection RecipientInfos { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Security.Cryptography.CryptographicAttributeObjectCollection UnprotectedAttributes { get { throw null; } }
         public int Version { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Decode(byte[] encodedMessage) { }
-        [System.MonoTODOAttribute]
         public void Decrypt() { }
-        [System.MonoTODOAttribute]
         public void Decrypt(System.Security.Cryptography.Pkcs.RecipientInfo recipientInfo) { }
-        [System.MonoTODOAttribute]
         public void Decrypt(System.Security.Cryptography.Pkcs.RecipientInfo recipientInfo, System.Security.Cryptography.X509Certificates.X509Certificate2Collection extraStore) { }
-        [System.MonoTODOAttribute]
         public void Decrypt(System.Security.Cryptography.X509Certificates.X509Certificate2Collection extraStore) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] Encode() { throw null; }
-        [System.MonoTODOAttribute]
         public void Encrypt() { }
-        [System.MonoTODOAttribute]
         public void Encrypt(System.Security.Cryptography.Pkcs.CmsRecipient recipient) { }
-        [System.MonoTODOAttribute]
         public void Encrypt(System.Security.Cryptography.Pkcs.CmsRecipientCollection recipients) { }
     }
     public enum KeyAgreeKeyChoice
@@ -242,26 +225,28 @@ namespace System.Security.Cryptography.Pkcs
         StaticKey = 2,
         Unknown = 0,
     }
-    [System.MonoTODOAttribute]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class KeyAgreeRecipientInfo : System.Security.Cryptography.Pkcs.RecipientInfo
     {
         internal KeyAgreeRecipientInfo() { }
         public System.DateTime Date { get { throw null; } }
-        public override byte[] EncryptedKey { get { throw null; } }
-        public override System.Security.Cryptography.Pkcs.AlgorithmIdentifier KeyEncryptionAlgorithm { get { throw null; } }
-        public System.Security.Cryptography.Pkcs.SubjectIdentifierOrKey OriginatorIdentifierOrKey { get { throw null; } }
-        public System.Security.Cryptography.CryptographicAttributeObject OtherKeyAttribute { get { throw null; } }
-        public override System.Security.Cryptography.Pkcs.SubjectIdentifier RecipientIdentifier { get { throw null; } }
+        public override byte[] EncryptedKey { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override System.Security.Cryptography.Pkcs.AlgorithmIdentifier KeyEncryptionAlgorithm { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.Pkcs.SubjectIdentifierOrKey OriginatorIdentifierOrKey { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CryptographicAttributeObject OtherKeyAttribute { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override System.Security.Cryptography.Pkcs.SubjectIdentifier RecipientIdentifier { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override int Version { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class KeyTransRecipientInfo : System.Security.Cryptography.Pkcs.RecipientInfo
     {
         internal KeyTransRecipientInfo() { }
-        public override byte[] EncryptedKey { get { throw null; } }
-        public override System.Security.Cryptography.Pkcs.AlgorithmIdentifier KeyEncryptionAlgorithm { get { throw null; } }
-        public override System.Security.Cryptography.Pkcs.SubjectIdentifier RecipientIdentifier { get { throw null; } }
+        public override byte[] EncryptedKey { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override System.Security.Cryptography.Pkcs.AlgorithmIdentifier KeyEncryptionAlgorithm { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override System.Security.Cryptography.Pkcs.SubjectIdentifier RecipientIdentifier { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override int Version { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class Pkcs9AttributeObject : System.Security.Cryptography.AsnEncodedData
     {
         public Pkcs9AttributeObject() { }
@@ -271,12 +256,14 @@ namespace System.Security.Cryptography.Pkcs
         public new System.Security.Cryptography.Oid Oid { get { throw null; } }
         public override void CopyFrom(System.Security.Cryptography.AsnEncodedData asnEncodedData) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class Pkcs9ContentType : System.Security.Cryptography.Pkcs.Pkcs9AttributeObject
     {
         public Pkcs9ContentType() { }
         public System.Security.Cryptography.Oid ContentType { get { throw null; } }
         public override void CopyFrom(System.Security.Cryptography.AsnEncodedData asnEncodedData) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class Pkcs9DocumentDescription : System.Security.Cryptography.Pkcs.Pkcs9AttributeObject
     {
         public Pkcs9DocumentDescription() { }
@@ -285,6 +272,7 @@ namespace System.Security.Cryptography.Pkcs
         public string DocumentDescription { get { throw null; } }
         public override void CopyFrom(System.Security.Cryptography.AsnEncodedData asnEncodedData) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class Pkcs9DocumentName : System.Security.Cryptography.Pkcs.Pkcs9AttributeObject
     {
         public Pkcs9DocumentName() { }
@@ -293,12 +281,14 @@ namespace System.Security.Cryptography.Pkcs
         public string DocumentName { get { throw null; } }
         public override void CopyFrom(System.Security.Cryptography.AsnEncodedData asnEncodedData) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class Pkcs9MessageDigest : System.Security.Cryptography.Pkcs.Pkcs9AttributeObject
     {
         public Pkcs9MessageDigest() { }
         public byte[] MessageDigest { get { throw null; } }
         public override void CopyFrom(System.Security.Cryptography.AsnEncodedData asnEncodedData) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class Pkcs9SigningTime : System.Security.Cryptography.Pkcs.Pkcs9AttributeObject
     {
         public Pkcs9SigningTime() { }
@@ -307,12 +297,14 @@ namespace System.Security.Cryptography.Pkcs
         public System.DateTime SigningTime { get { throw null; } }
         public override void CopyFrom(System.Security.Cryptography.AsnEncodedData asnEncodedData) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class PublicKeyInfo
     {
         internal PublicKeyInfo() { }
         public System.Security.Cryptography.Pkcs.AlgorithmIdentifier Algorithm { get { throw null; } }
         public byte[] KeyValue { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class RecipientInfo
     {
         internal RecipientInfo() { }
@@ -322,6 +314,7 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.Pkcs.RecipientInfoType Type { get { throw null; } }
         public abstract int Version { get; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class RecipientInfoCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal RecipientInfoCollection() { }
@@ -334,6 +327,7 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.Pkcs.RecipientInfoEnumerator GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class RecipientInfoEnumerator : System.Collections.IEnumerator
     {
         internal RecipientInfoEnumerator() { }
@@ -348,6 +342,7 @@ namespace System.Security.Cryptography.Pkcs
         KeyTransport = 1,
         Unknown = 0,
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class SignedCms
     {
         public SignedCms() { }
@@ -355,58 +350,54 @@ namespace System.Security.Cryptography.Pkcs
         public SignedCms(System.Security.Cryptography.Pkcs.ContentInfo contentInfo, bool detached) { }
         public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType) { }
         public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SignedCms(System.Security.Cryptography.Pkcs.SubjectIdentifierType signerIdentifierType, System.Security.Cryptography.Pkcs.ContentInfo contentInfo, bool detached) { }
-        public System.Security.Cryptography.X509Certificates.X509Certificate2Collection Certificates { get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2Collection Certificates { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Security.Cryptography.Pkcs.ContentInfo ContentInfo { get { throw null; } }
         public bool Detached { get { throw null; } }
-        public System.Security.Cryptography.Pkcs.SignerInfoCollection SignerInfos { get { throw null; } }
-        public int Version { get { throw null; } }
-        [System.MonoTODOAttribute]
+        public System.Security.Cryptography.Pkcs.SignerInfoCollection SignerInfos { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public int Version { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void CheckHash() { }
-        [System.MonoTODOAttribute]
         public void CheckSignature(bool verifySignatureOnly) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2Collection extraStore, bool verifySignatureOnly) { }
-        [System.MonoTODOAttribute]
         public void ComputeSignature() { }
-        [System.MonoTODOAttribute]
         public void ComputeSignature(System.Security.Cryptography.Pkcs.CmsSigner signer) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void ComputeSignature(System.Security.Cryptography.Pkcs.CmsSigner signer, bool silent) { }
-        [System.MonoTODOAttribute("incomplete - missing attributes")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Decode(byte[] encodedMessage) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] Encode() { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveSignature(int index) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveSignature(System.Security.Cryptography.Pkcs.SignerInfo signerInfo) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class SignerInfo
     {
         internal SignerInfo() { }
         public System.Security.Cryptography.X509Certificates.X509Certificate2 Certificate { get { throw null; } }
         public System.Security.Cryptography.Pkcs.SignerInfoCollection CounterSignerInfos { get { throw null; } }
         public System.Security.Cryptography.Oid DigestAlgorithm { get { throw null; } }
-        public System.Security.Cryptography.CryptographicAttributeObjectCollection SignedAttributes { get { throw null; } }
-        public System.Security.Cryptography.Pkcs.SubjectIdentifier SignerIdentifier { get { throw null; } }
-        public System.Security.Cryptography.CryptographicAttributeObjectCollection UnsignedAttributes { get { throw null; } }
+        public System.Security.Cryptography.CryptographicAttributeObjectCollection SignedAttributes { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.Pkcs.SubjectIdentifier SignerIdentifier { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CryptographicAttributeObjectCollection UnsignedAttributes { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public int Version { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void CheckHash() { }
-        [System.MonoTODOAttribute]
         public void CheckSignature(bool verifySignatureOnly) { }
-        [System.MonoTODOAttribute]
         public void CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2Collection extraStore, bool verifySignatureOnly) { }
-        [System.MonoTODOAttribute]
         public void ComputeCounterSignature() { }
-        [System.MonoTODOAttribute]
         public void ComputeCounterSignature(System.Security.Cryptography.Pkcs.CmsSigner signer) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveCounterSignature(int index) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveCounterSignature(System.Security.Cryptography.Pkcs.SignerInfo counterSignerInfo) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class SignerInfoCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal SignerInfoCollection() { }
@@ -419,6 +410,7 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.Pkcs.SignerInfoEnumerator GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class SignerInfoEnumerator : System.Collections.IEnumerator
     {
         internal SignerInfoEnumerator() { }
@@ -427,12 +419,14 @@ namespace System.Security.Cryptography.Pkcs
         public bool MoveNext() { throw null; }
         public void Reset() { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class SubjectIdentifier
     {
         internal SubjectIdentifier() { }
         public System.Security.Cryptography.Pkcs.SubjectIdentifierType Type { get { throw null; } }
         public object Value { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class SubjectIdentifierOrKey
     {
         internal SubjectIdentifierOrKey() { }
@@ -456,19 +450,15 @@ namespace System.Security.Cryptography.Pkcs
 }
 namespace System.Security.Cryptography.X509Certificates
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public static partial class X509Certificate2UI
     {
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void DisplayCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { }
-        [System.MonoTODOAttribute]
-        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
+        [System.Security.SecurityCriticalAttribute]
         public static void DisplayCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.IntPtr hwndParent) { }
-        [System.MonoTODOAttribute]
         public static System.Security.Cryptography.X509Certificates.X509Certificate2Collection SelectFromCollection(System.Security.Cryptography.X509Certificates.X509Certificate2Collection certificates, string title, string message, System.Security.Cryptography.X509Certificates.X509SelectionFlag selectionFlag) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(2))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Security.Cryptography.X509Certificates.X509Certificate2Collection SelectFromCollection(System.Security.Cryptography.X509Certificates.X509Certificate2Collection certificates, string title, string message, System.Security.Cryptography.X509Certificates.X509SelectionFlag selectionFlag, System.IntPtr hwndParent) { throw null; }
     }
     public enum X509SelectionFlag
@@ -479,6 +469,7 @@ namespace System.Security.Cryptography.X509Certificates
 }
 namespace System.Security.Cryptography.Xml
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CipherData
     {
         public CipherData() { }
@@ -489,6 +480,7 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class CipherReference : System.Security.Cryptography.Xml.EncryptedReference
     {
         public CipherReference() { }
@@ -497,6 +489,7 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class DataObject
     {
         public DataObject() { }
@@ -508,12 +501,14 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class DataReference : System.Security.Cryptography.Xml.EncryptedReference
     {
         public DataReference() { }
         public DataReference(string uri) { }
         public DataReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class DSAKeyValue : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public DSAKeyValue() { }
@@ -522,12 +517,14 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EncryptedData : System.Security.Cryptography.Xml.EncryptedType
     {
         public EncryptedData() { }
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EncryptedKey : System.Security.Cryptography.Xml.EncryptedType
     {
         public EncryptedKey() { }
@@ -539,21 +536,21 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class EncryptedReference
     {
         protected EncryptedReference() { }
         protected EncryptedReference(string uri) { }
         protected EncryptedReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
-        [System.MonoTODOAttribute("Always returns false")]
         protected internal bool CacheValid { get { throw null; } }
         protected string ReferenceType { get { throw null; } set { } }
         public System.Security.Cryptography.Xml.TransformChain TransformChain { get { throw null; } set { } }
         public string Uri { get { throw null; } set { } }
         public void AddTransform(System.Security.Cryptography.Xml.Transform transform) { }
         public virtual System.Xml.XmlElement GetXml() { throw null; }
-        [System.MonoTODOAttribute("Make compliant.")]
         public virtual void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class EncryptedType
     {
         protected EncryptedType() { }
@@ -569,6 +566,7 @@ namespace System.Security.Cryptography.Xml
         public abstract System.Xml.XmlElement GetXml();
         public abstract void LoadXml(System.Xml.XmlElement value);
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class EncryptedXml
     {
         public const string XmlEncAES128KeyWrapUrl = "http://www.w3.org/2001/04/xmlenc#kw-aes128";
@@ -588,11 +586,8 @@ namespace System.Security.Cryptography.Xml
         public const string XmlEncSHA512Url = "http://www.w3.org/2001/04/xmlenc#sha512";
         public const string XmlEncTripleDESKeyWrapUrl = "http://www.w3.org/2001/04/xmlenc#kw-tripledes";
         public const string XmlEncTripleDESUrl = "http://www.w3.org/2001/04/xmlenc#tripledes-cbc";
-        [System.MonoTODOAttribute]
         public EncryptedXml() { }
-        [System.MonoTODOAttribute]
         public EncryptedXml(System.Xml.XmlDocument document) { }
-        [System.MonoTODOAttribute]
         public EncryptedXml(System.Xml.XmlDocument document, System.Security.Policy.Evidence evidence) { }
         public System.Security.Policy.Evidence DocumentEvidence { get { throw null; } set { } }
         public System.Text.Encoding Encoding { get { throw null; } set { } }
@@ -606,15 +601,12 @@ namespace System.Security.Cryptography.Xml
         public byte[] DecryptData(System.Security.Cryptography.Xml.EncryptedData encryptedData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
         public void DecryptDocument() { }
         public virtual byte[] DecryptEncryptedKey(System.Security.Cryptography.Xml.EncryptedKey encryptedKey) { throw null; }
-        [System.MonoTODOAttribute("Test this.")]
         public static byte[] DecryptKey(byte[] keyData, System.Security.Cryptography.RSA rsa, bool useOAEP) { throw null; }
         public static byte[] DecryptKey(byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Security.Cryptography.Xml.EncryptedData Encrypt(System.Xml.XmlElement inputElement, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
         public System.Security.Cryptography.Xml.EncryptedData Encrypt(System.Xml.XmlElement inputElement, string keyName) { throw null; }
         public byte[] EncryptData(byte[] plaintext, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
         public byte[] EncryptData(System.Xml.XmlElement inputElement, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm, bool content) { throw null; }
-        [System.MonoTODOAttribute("Test this.")]
         public static byte[] EncryptKey(byte[] keyData, System.Security.Cryptography.RSA rsa, bool useOAEP) { throw null; }
         public static byte[] EncryptKey(byte[] keyData, System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm) { throw null; }
         public virtual byte[] GetDecryptionIV(System.Security.Cryptography.Xml.EncryptedData encryptedData, string symmetricAlgorithmUri) { throw null; }
@@ -623,6 +615,7 @@ namespace System.Security.Cryptography.Xml
         public void ReplaceData(System.Xml.XmlElement inputElement, byte[] decryptedData) { }
         public static void ReplaceElement(System.Xml.XmlElement inputElement, System.Security.Cryptography.Xml.EncryptedData encryptedData, bool content) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class EncryptionMethod
     {
         public EncryptionMethod() { }
@@ -632,17 +625,18 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EncryptionProperty
     {
         public EncryptionProperty() { }
         public EncryptionProperty(System.Xml.XmlElement elementProperty) { }
         public string Id { get { throw null; } }
-        [System.MonoTODOAttribute("Always returns null")]
         public System.Xml.XmlElement PropertyElement { get { throw null; } set { } }
         public string Target { get { throw null; } }
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EncryptionPropertyCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
         public EncryptionPropertyCollection() { }
@@ -675,6 +669,7 @@ namespace System.Security.Cryptography.Xml
     {
         System.IO.Stream Decrypt(System.Security.Cryptography.Xml.EncryptionMethod encryptionMethod, System.Security.Cryptography.Xml.KeyInfo keyInfo, System.IO.Stream toDecrypt);
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class KeyInfo : System.Collections.IEnumerable
     {
         public KeyInfo() { }
@@ -686,12 +681,14 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class KeyInfoClause
     {
         protected KeyInfoClause() { }
         public abstract System.Xml.XmlElement GetXml();
         public abstract void LoadXml(System.Xml.XmlElement element);
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class KeyInfoEncryptedKey : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public KeyInfoEncryptedKey() { }
@@ -700,6 +697,7 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class KeyInfoName : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public KeyInfoName() { }
@@ -708,6 +706,7 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class KeyInfoNode : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public KeyInfoNode() { }
@@ -716,6 +715,7 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class KeyInfoRetrievalMethod : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public KeyInfoRetrievalMethod() { }
@@ -727,11 +727,13 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class KeyInfoX509Data : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public KeyInfoX509Data() { }
         public KeyInfoX509Data(byte[] rgbCert) { }
         public KeyInfoX509Data(System.Security.Cryptography.X509Certificates.X509Certificate cert) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public KeyInfoX509Data(System.Security.Cryptography.X509Certificates.X509Certificate cert, System.Security.Cryptography.X509Certificates.X509IncludeOption includeOption) { }
         public System.Collections.ArrayList Certificates { get { throw null; } }
         public byte[] CRL { get { throw null; } set { } }
@@ -747,16 +749,17 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement element) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class KeyReference : System.Security.Cryptography.Xml.EncryptedReference
     {
         public KeyReference() { }
         public KeyReference(string uri) { }
         public KeyReference(string uri, System.Security.Cryptography.Xml.TransformChain transformChain) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class Reference
     {
         public Reference() { }
-        [System.MonoTODOAttribute("There is no description about how it is used.")]
         public Reference(System.IO.Stream stream) { }
         public Reference(string uri) { }
         public string DigestMethod { get { throw null; } set { } }
@@ -769,6 +772,7 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class ReferenceList : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
         public ReferenceList() { }
@@ -791,6 +795,7 @@ namespace System.Security.Cryptography.Xml
         public void Remove(object value) { }
         public void RemoveAt(int index) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class RSAKeyValue : System.Security.Cryptography.Xml.KeyInfoClause
     {
         public RSAKeyValue() { }
@@ -799,6 +804,7 @@ namespace System.Security.Cryptography.Xml
         public override System.Xml.XmlElement GetXml() { throw null; }
         public override void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class Signature
     {
         public Signature() { }
@@ -811,11 +817,11 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class SignedInfo : System.Collections.ICollection, System.Collections.IEnumerable
     {
         public SignedInfo() { }
         public string CanonicalizationMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Security.Cryptography.Xml.Transform CanonicalizationMethodObject { get { throw null; } }
         public int Count { get { throw null; } }
@@ -832,6 +838,7 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class SignedXml
     {
         protected System.Security.Cryptography.Xml.Signature m_signature;
@@ -882,8 +889,8 @@ namespace System.Security.Cryptography.Xml
         public bool CheckSignature() { throw null; }
         public bool CheckSignature(System.Security.Cryptography.AsymmetricAlgorithm key) { throw null; }
         public bool CheckSignature(System.Security.Cryptography.KeyedHashAlgorithm macAlg) { throw null; }
-        [System.MonoTODOAttribute]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, bool verifySignatureOnly) { throw null; }
         public bool CheckSignatureReturningKey(out System.Security.Cryptography.AsymmetricAlgorithm signingKey) { signingKey = default(System.Security.Cryptography.AsymmetricAlgorithm); throw null; }
         public void ComputeSignature() { }
@@ -893,11 +900,11 @@ namespace System.Security.Cryptography.Xml
         public System.Xml.XmlElement GetXml() { throw null; }
         public void LoadXml(System.Xml.XmlElement value) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class Transform
     {
         protected Transform() { }
         public string Algorithm { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Xml.XmlElement Context { get { throw null; } set { } }
         public abstract System.Type[] InputTypes { get; }
@@ -915,6 +922,7 @@ namespace System.Security.Cryptography.Xml
         public abstract void LoadInnerXml(System.Xml.XmlNodeList nodeList);
         public abstract void LoadInput(object obj);
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class TransformChain
     {
         public TransformChain() { }
@@ -923,12 +931,14 @@ namespace System.Security.Cryptography.Xml
         public void Add(System.Security.Cryptography.Xml.Transform transform) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct X509IssuerSerial
     {
         public string IssuerName { get { throw null; } set { } }
         public string SerialNumber { get { throw null; } set { } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDecryptionTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDecryptionTransform() { }
@@ -936,17 +946,14 @@ namespace System.Security.Cryptography.Xml
         public override System.Type[] InputTypes { get { throw null; } }
         public override System.Type[] OutputTypes { get { throw null; } }
         public void AddExceptUri(string uri) { }
-        [System.MonoTODOAttribute("Verify")]
         protected override System.Xml.XmlNodeList GetInnerXml() { throw null; }
-        [System.MonoTODOAttribute("Verify processing of ExceptURIs")]
         public override object GetOutput() { throw null; }
         public override object GetOutput(System.Type type) { throw null; }
-        [System.MonoTODOAttribute("verify")]
         protected virtual bool IsTargetElement(System.Xml.XmlElement inputElement, string idValue) { throw null; }
-        [System.MonoTODOAttribute("This doesn't seem to work in .NET")]
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigBase64Transform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDsigBase64Transform() { }
@@ -958,6 +965,7 @@ namespace System.Security.Cryptography.Xml
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigC14NTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDsigC14NTransform() { }
@@ -972,10 +980,12 @@ namespace System.Security.Cryptography.Xml
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigC14NWithCommentsTransform : System.Security.Cryptography.Xml.XmlDsigC14NTransform
     {
         public XmlDsigC14NWithCommentsTransform() { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigEnvelopedSignatureTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDsigEnvelopedSignatureTransform() { }
@@ -988,6 +998,7 @@ namespace System.Security.Cryptography.Xml
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigExcC14NTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDsigExcC14NTransform() { }
@@ -1004,23 +1015,25 @@ namespace System.Security.Cryptography.Xml
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigExcC14NWithCommentsTransform : System.Security.Cryptography.Xml.XmlDsigExcC14NTransform
     {
         public XmlDsigExcC14NWithCommentsTransform() { }
         public XmlDsigExcC14NWithCommentsTransform(string inclusiveNamespacesPrefixList) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigXPathTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDsigXPathTransform() { }
         public override System.Type[] InputTypes { get { throw null; } }
         public override System.Type[] OutputTypes { get { throw null; } }
         protected override System.Xml.XmlNodeList GetInnerXml() { throw null; }
-        [System.MonoTODOAttribute("Evaluation of extension function here() results in different from MS.NET (is MS.NET really correct??).")]
         public override object GetOutput() { throw null; }
         public override object GetOutput(System.Type type) { throw null; }
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlDsigXsltTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlDsigXsltTransform() { }
@@ -1033,19 +1046,17 @@ namespace System.Security.Cryptography.Xml
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
         public override void LoadInput(object obj) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class XmlLicenseTransform : System.Security.Cryptography.Xml.Transform
     {
         public XmlLicenseTransform() { }
         public System.Security.Cryptography.Xml.IRelDecryptor Decryptor { get { throw null; } set { } }
         public override System.Type[] InputTypes { get { throw null; } }
         public override System.Type[] OutputTypes { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override System.Xml.XmlNodeList GetInnerXml() { throw null; }
-        [System.MonoTODOAttribute]
         public override object GetOutput() { throw null; }
         public override object GetOutput(System.Type type) { throw null; }
         public override void LoadInnerXml(System.Xml.XmlNodeList nodeList) { }
-        [System.MonoTODOAttribute]
         public override void LoadInput(object obj) { }
     }
 }
@@ -1066,6 +1077,7 @@ namespace System.Security.Permissions
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     [System.SerializableAttribute]
     public sealed partial class DataProtectionPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {

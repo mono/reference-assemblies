@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Net.Http.WebRequest.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Net.Http.WebRequest.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Net.Http.WebRequest.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,41 +19,10 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(2), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.Net.Http
 {
     public partial class WebRequestHandler : System.Net.Http.HttpClientHandler
@@ -63,12 +32,11 @@ namespace System.Net.Http
         public System.Net.Security.AuthenticationLevel AuthenticationLevel { get { throw null; } set { } }
         public System.Net.Cache.RequestCachePolicy CachePolicy { get { throw null; } set { } }
         public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.TimeSpan ContinueTimeout { get { throw null; } set { } }
         public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get { throw null; } set { } }
         public int MaxResponseHeadersLength { get { throw null; } set { } }
         public int ReadWriteTimeout { get { throw null; } set { } }
         public System.Net.Security.RemoteCertificateValidationCallback ServerCertificateValidationCallback { get { throw null; } set { } }
-        public bool UnsafeAuthenticatedConnectionSharing { get { throw null; } set { } }
+        public bool UnsafeAuthenticatedConnectionSharing { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
     }
 }

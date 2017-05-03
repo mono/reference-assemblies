@@ -5,65 +5,34 @@
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
+[assembly:System.Drawing.BitmapSuffixInSatelliteAssemblyAttribute]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Windows.Forms.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Windows.Forms.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Windows.Forms.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.DependencyAttribute("System,", (System.Runtime.CompilerServices.LoadHint)(1))]
+[assembly:System.Runtime.CompilerServices.DependencyAttribute("System.Core", (System.Runtime.CompilerServices.LoadHint)(2))]
 [assembly:System.Runtime.CompilerServices.DependencyAttribute("System.Drawing,", (System.Runtime.CompilerServices.LoadHint)(1))]
-[assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("Mono.WinformsSupport, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
-[assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("UIAutomationWinforms, PublicKey=00240000048000009400000006020000002400005253413100040000110000004bb98b1af6c1df0df8c02c380e116b7a7f0c8c827aecfccddc6e29b7c754cd608b49dfcef4df9699ad182e50f66afa4e68dabc7b6aeeec0aa4719a5f8e0aae8c193080a706adc3443a8356b1f254142034995532ac176398e12a30f6a74a119a89ac47672c9ae24d7e90de686557166e3b873cd707884431a0451d9d6f7fe795")]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.CompilerServices.StringFreezingAttribute]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Runtime.InteropServices.TypeLibVersionAttribute(2, 4)]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
 namespace System.Resources
 {
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     [System.SerializableAttribute]
     public sealed partial class ResXDataNode : System.Runtime.Serialization.ISerializable
     {
@@ -82,6 +51,8 @@ namespace System.Resources
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Resources.ResXFileRef.Converter))]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     [System.SerializableAttribute]
     public partial class ResXFileRef
     {
@@ -91,6 +62,8 @@ namespace System.Resources
         public System.Text.Encoding TextFileEncoding { get { throw null; } }
         public string TypeName { get { throw null; } }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public partial class Converter : System.ComponentModel.TypeConverter
         {
             public Converter() { }
@@ -100,6 +73,8 @@ namespace System.Resources
             public override object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, System.Type destinationType) { throw null; }
         }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ResXResourceReader : System.Collections.IEnumerable, System.IDisposable, System.Resources.IResourceReader
     {
         public ResXResourceReader(System.IO.Stream stream) { }
@@ -124,6 +99,8 @@ namespace System.Resources
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         void System.IDisposable.Dispose() { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ResXResourceSet : System.Resources.ResourceSet
     {
         public ResXResourceSet(System.IO.Stream stream) { }
@@ -131,6 +108,8 @@ namespace System.Resources
         public override System.Type GetDefaultReader() { throw null; }
         public override System.Type GetDefaultWriter() { throw null; }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ResXResourceWriter : System.IDisposable, System.Resources.IResourceWriter
     {
         public static readonly string BinSerializedObjectMimeType;
@@ -147,7 +126,6 @@ namespace System.Resources
         public ResXResourceWriter(string fileName) { }
         public ResXResourceWriter(string fileName, System.Func<System.Type, string> typeNameConverter) { }
         public string BasePath { get { throw null; } set { } }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         public virtual void AddAlias(string aliasName, System.Reflection.AssemblyName assemblyName) { }
         public void AddMetadata(string name, byte[] value) { }
         public void AddMetadata(string name, object value) { }
@@ -235,11 +213,11 @@ namespace System.Windows.Forms
         public virtual string Help { get { throw null; } }
         public virtual string KeyboardShortcut { get { throw null; } }
         public virtual string Name { get { throw null; } set { } }
-        public virtual System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+        public virtual System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public virtual System.Windows.Forms.AccessibleRole Role { get { throw null; } }
         public virtual System.Windows.Forms.AccessibleStates State { get { throw null; } }
         System.Type System.Reflection.IReflect.UnderlyingSystemType { get { throw null; } }
-        public virtual string Value { get { throw null; } set { } }
+        public virtual string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]set { } }
         void Accessibility.IAccessible.accDoDefaultAction(object childID) { }
         object Accessibility.IAccessible.accHitTest(int xLeft, int yTop) { throw null; }
         void Accessibility.IAccessible.accLocation(out int pxLeft, out int pyTop, out int pcxWidth, out int pcyHeight, object childID) { pxLeft = default(int); pyTop = default(int); pcxWidth = default(int); pcyHeight = default(int); }
@@ -257,6 +235,7 @@ namespace System.Windows.Forms
         string Accessibility.IAccessible.get_accValue(object childID) { throw null; }
         void Accessibility.IAccessible.set_accName(object childID, string newName) { }
         void Accessibility.IAccessible.set_accValue(object childID, string newValue) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public virtual void DoDefaultAction() { }
         public virtual System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
         public virtual int GetChildCount() { throw null; }
@@ -264,7 +243,9 @@ namespace System.Windows.Forms
         public virtual int GetHelpTopic(out string fileName) { fileName = default(string); throw null; }
         public virtual System.Windows.Forms.AccessibleObject GetSelected() { throw null; }
         public virtual System.Windows.Forms.AccessibleObject HitTest(int x, int y) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public virtual System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navdir) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public virtual void Select(System.Windows.Forms.AccessibleSelection flags) { }
         System.Reflection.FieldInfo System.Reflection.IReflect.GetField(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
         System.Reflection.FieldInfo[] System.Reflection.IReflect.GetFields(System.Reflection.BindingFlags bindingAttr) { throw null; }
@@ -277,7 +258,9 @@ namespace System.Windows.Forms
         System.Reflection.PropertyInfo System.Reflection.IReflect.GetProperty(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
         System.Reflection.PropertyInfo System.Reflection.IReflect.GetProperty(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
         object System.Reflection.IReflect.InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] namedParameters) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected void UseStdAccessibleObjects(System.IntPtr handle) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected void UseStdAccessibleObjects(System.IntPtr handle, int objid) { }
     }
     public enum AccessibleRole
@@ -395,7 +378,7 @@ namespace System.Windows.Forms
         Sizeable = 131072,
         Traversed = 8388608,
         Unavailable = 1,
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This enumeration value has been deprecated. There is no replacement. http://go.microsoft.com/fwlink/?linkid=14202")]
         Valid = 1073741823,
     }
     public sealed partial class AmbientProperties
@@ -434,7 +417,7 @@ namespace System.Windows.Forms
         public static string ExecutablePath { get { throw null; } }
         public static string LocalUserAppDataPath { get { throw null; } }
         public static bool MessageLoop { get { throw null; } }
-        public static System.Windows.Forms.FormCollection OpenForms { get { throw null; } }
+        public static System.Windows.Forms.FormCollection OpenForms { [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]get { throw null; } }
         public static string ProductName { get { throw null; } }
         public static string ProductVersion { get { throw null; } }
         public static bool RenderWithVisualStyles { get { throw null; } }
@@ -446,11 +429,9 @@ namespace System.Windows.Forms
         public static System.Windows.Forms.VisualStyles.VisualStyleState VisualStyleState { get { throw null; } set { } }
         public static event System.EventHandler ApplicationExit { add { } remove { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute]
         public static event System.EventHandler EnterThreadModal { add { } remove { } }
         public static event System.EventHandler Idle { add { } remove { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute]
         public static event System.EventHandler LeaveThreadModal { add { } remove { } }
         public static event System.Threading.ThreadExceptionEventHandler ThreadException { add { } remove { } }
         public static event System.EventHandler ThreadExit { add { } remove { } }
@@ -462,28 +443,29 @@ namespace System.Windows.Forms
         public static void Exit(System.ComponentModel.CancelEventArgs e) { }
         public static void ExitThread() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static bool FilterMessage(ref System.Windows.Forms.Message message) { throw null; }
         public static System.Threading.ApartmentState OleRequired() { throw null; }
         public static void OnThreadException(System.Exception t) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void RaiseIdle(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoNotSupportedAttribute("Only applies when Winforms is being hosted by an unmanaged app.")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void RegisterMessageLoop(System.Windows.Forms.Application.MessageLoopCallback callback) { }
         public static void RemoveMessageFilter(System.Windows.Forms.IMessageFilter value) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void Restart() { }
         public static void Run() { }
         public static void Run(System.Windows.Forms.ApplicationContext context) { }
         public static void Run(System.Windows.Forms.Form mainForm) { }
         public static void SetCompatibleTextRenderingDefault(bool defaultValue) { }
-        [System.MonoNotSupportedAttribute("Empty stub.")]
         public static bool SetSuspendState(System.Windows.Forms.PowerState state, bool force, bool disableWakeEvent) { throw null; }
-        [System.MonoNotSupportedAttribute("Empty stub.")]
         public static void SetUnhandledExceptionMode(System.Windows.Forms.UnhandledExceptionMode mode) { }
-        [System.MonoNotSupportedAttribute("Empty stub.")]
         public static void SetUnhandledExceptionMode(System.Windows.Forms.UnhandledExceptionMode mode, bool threadScope) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoNotSupportedAttribute("Only applies when Winforms is being hosted by an unmanaged app.")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void UnregisterMessageLoop() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public delegate bool MessageLoopCallback();
@@ -557,7 +539,7 @@ namespace System.Windows.Forms
         public bool IsReadOnly { get { throw null; } }
         public bool IsSynchronized { get { throw null; } }
         public string this[int index] { get { throw null; } set { } }
-        public object SyncRoot { get { throw null; } }
+        public object SyncRoot { [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
         bool System.Collections.IList.IsReadOnly { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
@@ -600,15 +582,17 @@ namespace System.Windows.Forms
         Inherit = -1,
     }
     [System.ComponentModel.DefaultEventAttribute("Enter")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.AxHostDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.AxHostDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
     [System.ComponentModel.ToolboxItemAttribute(false)]
-    [System.MonoTODOAttribute("Possibly implement this for Win32; find a way for Linux and Mac")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public abstract partial class AxHost : System.Windows.Forms.Control, System.ComponentModel.ICustomTypeDescriptor, System.ComponentModel.ISupportInitialize
     {
         protected AxHost(string clsid) { }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
         protected AxHost(string clsid, int flags) { }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -783,7 +767,6 @@ namespace System.Windows.Forms
         public new event System.EventHandler TextChanged { add { } remove { } }
         protected virtual void AttachInterfaces() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute]
         public void BeginInit() { }
         protected override void CreateHandle() { }
         protected virtual object CreateInstanceCore(System.Guid clsid) { throw null; }
@@ -797,7 +780,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new void DrawToBitmap(System.Drawing.Bitmap bitmap, System.Drawing.Rectangle targetBounds) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute]
         public void EndInit() { }
         [System.CLSCompliantAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -834,6 +816,7 @@ namespace System.Windows.Forms
         public bool HasPropertyPages() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public void InvokeEditMode() { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool IsInputChar(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public void MakeDirty() { }
@@ -845,7 +828,9 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnLostFocus(System.EventArgs e) { }
         public override bool PreProcessMessage(ref System.Windows.Forms.Message msg) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected bool PropsValid() { throw null; }
@@ -906,6 +891,8 @@ namespace System.Windows.Forms
             PropertySet = 2,
         }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public partial class AxComponentEditor : System.Windows.Forms.Design.WindowsFormsComponentEditor
         {
             public AxComponentEditor() { }
@@ -917,19 +904,25 @@ namespace System.Windows.Forms
             public ClsidAttribute(string clsid) { }
             public string Value { get { throw null; } }
         }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public partial class ConnectionPointCookie
         {
             public ConnectionPointCookie(object source, object sink, System.Type eventInterface) { }
             public void Disconnect() { }
             ~ConnectionPointCookie() { }
         }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public partial class InvalidActiveXStateException : System.Exception
         {
             public InvalidActiveXStateException() { }
             public InvalidActiveXStateException(string name, System.Windows.Forms.AxHost.ActiveXInvokeKind kind) { }
             public override string ToString() { throw null; }
         }
-        [System.ComponentModel.TypeConverterAttribute("System.ComponentModel.TypeConverter, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TypeConverter))]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         [System.SerializableAttribute]
         public partial class State : System.Runtime.Serialization.ISerializable
         {
@@ -937,6 +930,8 @@ namespace System.Windows.Forms
             protected State(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
             void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public partial class StateConverter : System.ComponentModel.TypeConverter
         {
             public StateConverter() { }
@@ -991,11 +986,11 @@ namespace System.Windows.Forms
         public Binding(string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue, string formatString) { }
         public Binding(string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue, string formatString, System.IFormatProvider formatInfo) { }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        public System.Windows.Forms.IBindableComponent BindableComponent { get { throw null; } }
+        public System.Windows.Forms.IBindableComponent BindableComponent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public System.Windows.Forms.BindingManagerBase BindingManagerBase { get { throw null; } }
         public System.Windows.Forms.BindingMemberInfo BindingMemberInfo { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        public System.Windows.Forms.Control Control { get { throw null; } }
+        public System.Windows.Forms.Control Control { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.ControlUpdateMode)(0))]
         public System.Windows.Forms.ControlUpdateMode ControlUpdateMode { get { throw null; } set { } }
         public object DataSource { get { throw null; } }
@@ -1067,9 +1062,7 @@ namespace System.Windows.Forms
         protected internal void Remove(object dataSource) { }
         protected virtual void RemoveCore(object dataSource) { }
         void System.Collections.ICollection.CopyTo(System.Array ar, int index) { }
-        [System.MonoInternalNoteAttribute("our enumerator is slightly different.  in MS's implementation the Values are WeakReferences to the managers.")]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public static void UpdateBinding(System.Windows.Forms.BindingContext newBindingContext, System.Windows.Forms.Binding binding) { }
     }
     public abstract partial class BindingManagerBase
@@ -1091,9 +1084,7 @@ namespace System.Windows.Forms
         public abstract void CancelCurrentEdit();
         public abstract void EndCurrentEdit();
         public virtual System.ComponentModel.PropertyDescriptorCollection GetItemProperties() { throw null; }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         protected internal virtual System.ComponentModel.PropertyDescriptorCollection GetItemProperties(System.Collections.ArrayList dataSources, System.Collections.ArrayList listAccessors) { throw null; }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         protected virtual System.ComponentModel.PropertyDescriptorCollection GetItemProperties(System.Type listType, int offset, System.Collections.ArrayList dataSources, System.Collections.ArrayList listAccessors) { throw null; }
         protected internal abstract string GetListName(System.Collections.ArrayList listAccessors);
         protected internal void OnBindingComplete(System.Windows.Forms.BindingCompleteEventArgs args) { }
@@ -1127,7 +1118,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("RefreshItems")]
     [System.ComponentModel.DefaultPropertyAttribute("BindingSource")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.BindingNavigatorDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.BindingNavigatorDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class BindingNavigator : System.Windows.Forms.ToolStrip, System.ComponentModel.ISupportInitialize
@@ -1166,7 +1157,6 @@ namespace System.Windows.Forms
         protected virtual void OnRefreshItems() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void RefreshItemsCore() { }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         public bool Validate() { throw null; }
     }
     [System.ComponentModel.DefaultEventAttribute("CollectionChanged")]
@@ -1192,7 +1182,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.ComplexBindingPropertiesAttribute("DataSource", "DataMember")]
     [System.ComponentModel.DefaultEventAttribute("CurrentChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("DataSource")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.BindingSourceDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.BindingSourceDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class BindingSource : System.ComponentModel.Component, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList, System.ComponentModel.IBindingList, System.ComponentModel.IBindingListView, System.ComponentModel.ICancelAddNew, System.ComponentModel.ISupportInitialize, System.ComponentModel.ISupportInitializeNotification, System.ComponentModel.ITypedList, System.Windows.Forms.ICurrencyManagerProvider
     {
         public BindingSource() { }
@@ -1375,7 +1365,7 @@ namespace System.Windows.Forms
         X = 1,
         Y = 2,
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ButtonBaseDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ButtonBaseDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class Button : System.Windows.Forms.ButtonBase, System.Windows.Forms.IButtonControl
@@ -1385,7 +1375,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoSizeMode)(1))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Windows.Forms.AutoSizeMode AutoSizeMode { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.DialogResult)(0))]
         public virtual System.Windows.Forms.DialogResult DialogResult { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -1402,11 +1392,13 @@ namespace System.Windows.Forms
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         public void PerformClick() { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ButtonBaseDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ButtonBaseDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public abstract partial class ButtonBase : System.Windows.Forms.Control
@@ -1421,7 +1413,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public override bool AutoSize { get { throw null; } set { } }
         public override System.Drawing.Color BackColor { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(true)]
@@ -1454,7 +1446,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Windows.Forms.ImeMode ImeMode { get { throw null; } set { } }
         protected internal bool IsDefault { get { throw null; } set { } }
-        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.SettingsBindableAttribute(true)]
         public override string Text { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Drawing.ContentAlignment)(32))]
@@ -1492,12 +1484,14 @@ namespace System.Windows.Forms
         protected override void OnTextChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
         protected void ResetFlagsandPaint() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ButtonBaseAccessibleObject : System.Windows.Forms.Control.ControlAccessibleObject
         {
             public ButtonBaseAccessibleObject(System.Windows.Forms.Control owner) : base (default(System.Windows.Forms.Control)) { }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
         }
     }
@@ -1582,7 +1576,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.CheckState)(0))]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public System.Windows.Forms.CheckState CheckState { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute((System.Drawing.ContentAlignment)(16))]
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -1606,6 +1600,7 @@ namespace System.Windows.Forms
         protected override void OnHandleCreated(System.EventArgs e) { }
         protected override void OnKeyDown(System.Windows.Forms.KeyEventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         public override string ToString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -1615,6 +1610,7 @@ namespace System.Windows.Forms
             public override string DefaultAction { get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
         }
     }
@@ -1645,7 +1641,7 @@ namespace System.Windows.Forms
         public System.Windows.Forms.CheckedListBox.CheckedItemCollection CheckedItems { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool CheckOnClick { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new object DataSource { get { throw null; } set { } }
@@ -1714,7 +1710,9 @@ namespace System.Windows.Forms
         protected override void RefreshItems() { }
         public void SetItemChecked(int index, bool value) { }
         public void SetItemCheckState(int index, System.Windows.Forms.CheckState value) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WmReflectCommand(ref System.Windows.Forms.Message m) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         public partial class CheckedIndexCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
         {
@@ -1796,8 +1794,8 @@ namespace System.Windows.Forms
         public static void SetData(string format, object data) { }
         public static void SetDataObject(object data) { }
         public static void SetDataObject(object data, bool copy) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Clipboard=(System.Security.Permissions.UIPermissionClipboard)(1))]
         public static void SetDataObject(object data, bool copy, int retryTimes, int retryDelay) { }
-        [System.MonoInternalNoteAttribute("Needs additional checks for valid paths, see MSDN")]
         public static void SetFileDropList(System.Collections.Specialized.StringCollection filePaths) { }
         public static void SetImage(System.Drawing.Image image) { }
         public static void SetText(string text) { }
@@ -1835,7 +1833,7 @@ namespace System.Windows.Forms
         public int[] CustomColors { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public virtual bool FullOpen { get { throw null; } set { } }
-        protected virtual System.IntPtr Instance { get { throw null; } }
+        protected virtual System.IntPtr Instance { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2)), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected virtual int Options { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public virtual bool ShowHelp { get { throw null; } set { } }
@@ -1865,13 +1863,13 @@ namespace System.Windows.Forms
         public int DisplayIndex { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(-1)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ImageIndexEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ImageIndexEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.ImageIndexConverter))]
         public int ImageIndex { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ImageIndexEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ImageIndexEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.ImageKeyConverter))]
         public string ImageKey { get { throw null; } set { } }
@@ -1951,7 +1949,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultBindingPropertyAttribute("Text")]
     [System.ComponentModel.DefaultEventAttribute("SelectedIndexChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("Items")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ComboBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ComboBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ComboBox : System.Windows.Forms.ListControl
@@ -1959,20 +1957,17 @@ namespace System.Windows.Forms
         public ComboBox() { }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteStringCollection AutoCompleteCustomSource { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoCompleteMode)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteMode AutoCompleteMode { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoCompleteSource)(128))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteSource AutoCompleteSource { get { throw null; } set { } }
         public override System.Drawing.Color BackColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -1981,7 +1976,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.AttributeProviderAttribute(typeof(System.ComponentModel.IListSource))]
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
@@ -2075,7 +2070,7 @@ namespace System.Windows.Forms
         public event System.EventHandler SelectedIndexChanged { add { } remove { } }
         public event System.EventHandler SelectionChangeCommitted { add { } remove { } }
         public event System.EventHandler TextUpdate { add { } remove { } }
-        [System.ObsoleteAttribute("This method has been deprecated")]
+        [System.ObsoleteAttribute("This method has been deprecated.  There is no replacement.  http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual void AddItemsCore(object[] value) { }
         public void BeginUpdate() { }
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
@@ -2120,6 +2115,7 @@ namespace System.Windows.Forms
         protected virtual void OnTextUpdate(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnValidating(System.ComponentModel.CancelEventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyEventArgs(ref System.Windows.Forms.Message m) { throw null; }
         protected override void RefreshItem(int index) { }
         protected override void RefreshItems() { }
@@ -2131,10 +2127,12 @@ namespace System.Windows.Forms
         protected override void SetItemCore(int index, object value) { }
         protected override void SetItemsCore(System.Collections.IList value) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ChildAccessibleObject : System.Windows.Forms.AccessibleObject
         {
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public ChildAccessibleObject(System.Windows.Forms.ComboBox owner, System.IntPtr handle) { }
             public override string Name { get { throw null; } }
         }
@@ -2191,10 +2189,16 @@ namespace System.Windows.Forms
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public object Tag { get { throw null; } set { } }
         public event System.EventHandler HelpRequest { add { } remove { } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual System.IntPtr HookProc(System.IntPtr hWnd, int msg, System.IntPtr wparam, System.IntPtr lparam) { throw null; }
         protected virtual void OnHelpRequest(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual System.IntPtr OwnerWndProc(System.IntPtr hWnd, int msg, System.IntPtr wparam, System.IntPtr lparam) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public abstract void Reset();
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected abstract bool RunDialog(System.IntPtr hwndOwner);
         public System.Windows.Forms.DialogResult ShowDialog() { throw null; }
         public System.Windows.Forms.DialogResult ShowDialog(System.Windows.Forms.IWin32Window owner) { throw null; }
@@ -2220,11 +2224,11 @@ namespace System.Windows.Forms
         [System.ComponentModel.AmbientValueAttribute((System.Windows.Forms.AutoValidate)(-1))]
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public virtual System.Windows.Forms.AutoValidate AutoValidate { get { throw null; } [System.MonoTODOAttribute("Currently does nothing with the setting")]set { } }
+        public virtual System.Windows.Forms.AutoValidate AutoValidate { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public override System.Windows.Forms.BindingContext BindingContext { get { throw null; } set { } }
         protected override bool CanEnableIme { get { throw null; } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Drawing.SizeF CurrentAutoScaleDimensions { get { throw null; } }
@@ -2244,11 +2248,16 @@ namespace System.Windows.Forms
         protected override void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
         protected override void OnParentChanged(System.EventArgs e) { }
         public void PerformAutoScale() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogChar(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual bool ProcessTabKey(bool forward) { throw null; }
         protected override void Select(bool directed, bool forward) { }
         bool System.Windows.Forms.IContainerControl.ActivateControl(System.Windows.Forms.Control control) { throw null; }
@@ -2262,6 +2271,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual bool ValidateChildren(System.Windows.Forms.ValidationConstraints validationConstraints) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class ContentsResizedEventArgs : System.EventArgs
@@ -2280,11 +2290,13 @@ namespace System.Windows.Forms
         public virtual System.Windows.Forms.RightToLeft RightToLeft { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public System.Windows.Forms.Control SourceControl { get { throw null; } }
+        public System.Windows.Forms.Control SourceControl { [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]get { throw null; } }
         public event System.EventHandler Collapse { add { } remove { } }
         public event System.EventHandler Popup { add { } remove { } }
         protected internal virtual void OnCollapse(System.EventArgs e) { }
         protected internal virtual void OnPopup(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal virtual bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData, System.Windows.Forms.Control control) { throw null; }
         public void Show(System.Windows.Forms.Control control, System.Drawing.Point pos) { }
         public void Show(System.Windows.Forms.Control control, System.Drawing.Point pos, System.Windows.Forms.LeftRightAlignment alignment) { }
@@ -2298,14 +2310,14 @@ namespace System.Windows.Forms
         public ContextMenuStrip(System.ComponentModel.IContainer container) { }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public System.Windows.Forms.Control SourceControl { get { throw null; } }
+        public System.Windows.Forms.Control SourceControl { [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]get { throw null; } }
         protected override void Dispose(bool disposing) { }
         protected override void SetVisibleCore(bool visible) { }
     }
     [System.ComponentModel.DefaultEventAttribute("Click")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
     [System.ComponentModel.Design.Serialization.DesignerSerializerAttribute("System.Windows.Forms.Design.ControlCodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.Serialization.CodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -2388,7 +2400,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Stub, value is not used")]
         public static bool CheckForIllegalCrossThreadCalls { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -2419,7 +2430,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public bool Created { get { throw null; } }
-        protected virtual System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected virtual System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2)), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.AmbientValueAttribute(null)]
         public virtual System.Windows.Forms.Cursor Cursor { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
@@ -2436,6 +2447,9 @@ namespace System.Windows.Forms
         protected virtual System.Drawing.Size DefaultMinimumSize { get { throw null; } }
         protected virtual System.Windows.Forms.Padding DefaultPadding { get { throw null; } }
         protected virtual System.Drawing.Size DefaultSize { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public int DeviceDpi { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -2460,7 +2474,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.AmbientValueAttribute(null)]
         [System.ComponentModel.LocalizableAttribute(true)]
         [System.Runtime.InteropServices.DispIdAttribute(-512)]
-        public virtual System.Drawing.Font Font { [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "System.Drawing.Font")]get { throw null; } [param: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "System.Drawing.Font")]set { } }
+        public virtual System.Drawing.Font Font { [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "System.Windows.Forms.Control.ActiveXFontMarshaler")]get { throw null; } [param: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.CustomMarshaler, MarshalType = "System.Windows.Forms.Control.ActiveXFontMarshaler")]set { } }
         protected int FontHeight { get { throw null; } set { } }
         [System.Runtime.InteropServices.DispIdAttribute(-513)]
         public virtual System.Drawing.Color ForeColor { get { throw null; } set { } }
@@ -2499,7 +2513,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoNotSupportedAttribute("RTL is not supported")]
         public bool IsMirrored { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2512,8 +2525,10 @@ namespace System.Windows.Forms
         public System.Drawing.Point Location { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Windows.Forms.Padding Margin { get { throw null; } set { } }
-        [System.ComponentModel.AmbientValueAttribute("{Width=0, Height=0}")]
+        [System.ComponentModel.AmbientValueAttribute(typeof(System.Drawing.Size), "0, 0")]
+        [System.ComponentModel.LocalizableAttribute(true)]
         public virtual System.Drawing.Size MaximumSize { get { throw null; } set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
         public virtual System.Drawing.Size MinimumSize { get { throw null; } set { } }
         public static System.Windows.Forms.Keys ModifierKeys { get { throw null; } }
         public static System.Windows.Forms.MouseButtons MouseButtons { get { throw null; } }
@@ -2544,7 +2559,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Drawing.Region Region { get { throw null; } set { } }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This property has been deprecated. Please use RightToLeft instead. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected internal bool RenderRightToLeft { get { throw null; } }
         protected bool ResizeRedraw { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -2604,7 +2619,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        public System.Windows.Forms.IWindowTarget WindowTarget { get { throw null; } set { } }
+        public System.Windows.Forms.IWindowTarget WindowTarget { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public event System.EventHandler AutoSizeChanged { add { } remove { } }
@@ -2712,16 +2727,24 @@ namespace System.Windows.Forms
         protected virtual System.Windows.Forms.Control.ControlCollection CreateControlsInstance() { throw null; }
         public System.Drawing.Graphics CreateGraphics() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual void CreateHandle() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual void DefWndProc(ref System.Windows.Forms.Message m) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual void DestroyHandle() { }
         protected override void Dispose(bool disposing) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Clipboard=(System.Security.Permissions.UIPermissionClipboard)(1))]
         public System.Windows.Forms.DragDropEffects DoDragDrop(object data, System.Windows.Forms.DragDropEffects allowedEffects) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public void DrawToBitmap(System.Drawing.Bitmap bitmap, System.Drawing.Rectangle targetBounds) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public object EndInvoke(System.IAsyncResult asyncResult) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public System.Windows.Forms.Form FindForm() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public bool Focus() { throw null; }
@@ -2760,9 +2783,10 @@ namespace System.Windows.Forms
         protected void InvokeOnClick(System.Windows.Forms.Control toInvoke, System.EventArgs e) { }
         protected void InvokePaint(System.Windows.Forms.Control c, System.Windows.Forms.PaintEventArgs e) { }
         protected void InvokePaintBackground(System.Windows.Forms.Control c, System.Windows.Forms.PaintEventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual bool IsInputChar(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual bool IsInputKey(System.Windows.Forms.Keys keyData) { throw null; }
-        [System.MonoTODOAttribute("Only implemented for Win32, others always return false")]
         public static bool IsKeyLocked(System.Windows.Forms.Keys keyVal) { throw null; }
         public static bool IsMnemonic(char charCode, string text) { throw null; }
         public int LogicalToDeviceUnits(int value) { throw null; }
@@ -2801,9 +2825,11 @@ namespace System.Windows.Forms
         protected virtual void OnDockChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnDoubleClick(System.EventArgs e) { }
-        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         protected virtual void OnDpiChangedAfterParent(System.EventArgs e) { }
-        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         protected virtual void OnDpiChangedBeforeParent(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnDragDrop(System.Windows.Forms.DragEventArgs drgevent) { }
@@ -2899,6 +2925,8 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnParentVisibleChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual void OnPreviewKeyDown(System.Windows.Forms.PreviewKeyDownEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnPrint(System.Windows.Forms.PaintEventArgs e) { }
@@ -2935,14 +2963,31 @@ namespace System.Windows.Forms
         public System.Drawing.Point PointToClient(System.Drawing.Point p) { throw null; }
         public System.Drawing.Point PointToScreen(System.Drawing.Point p) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.Windows.Forms.PreProcessControlState PreProcessControlMessage(ref System.Windows.Forms.Message msg) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public virtual bool PreProcessMessage(ref System.Windows.Forms.Message msg) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual bool ProcessDialogChar(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected virtual bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual bool ProcessKeyEventArgs(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal virtual bool ProcessKeyMessage(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal virtual bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected void RaiseDragEvent(object key, System.Windows.Forms.DragEventArgs e) { }
@@ -2959,6 +3004,8 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected static bool ReflectMessage(System.IntPtr hWnd, ref System.Windows.Forms.Message m) { throw null; }
         public virtual void Refresh() { }
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual void ResetBackColor() { }
@@ -2994,10 +3041,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public void Scale(System.Drawing.SizeF factor) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method has been deprecated. Use the Scale(SizeF ratio) method instead. http://go.microsoft.com/fwlink/?linkid=14202")]
         public void Scale(float ratio) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method has been deprecated. Use the Scale(SizeF ratio) method instead. http://go.microsoft.com/fwlink/?linkid=14202")]
         public void Scale(float dx, float dy) { }
         public void ScaleBitmapLogicalToDevice(ref System.Drawing.Bitmap logicalBitmap) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -3038,6 +3085,8 @@ namespace System.Windows.Forms
         protected void UpdateStyles() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected void UpdateZOrder() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ControlAccessibleObject : System.Windows.Forms.AccessibleObject
@@ -3050,14 +3099,11 @@ namespace System.Windows.Forms
             public override string KeyboardShortcut { get { throw null; } }
             public override string Name { get { throw null; } set { } }
             public System.Windows.Forms.Control Owner { get { throw null; } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2)), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override int GetHelpTopic(out string fileName) { fileName = default(string); throw null; }
-            [System.MonoTODOAttribute("Stub, does nothing")]
             public void NotifyClients(System.Windows.Forms.AccessibleEvents accEvent) { }
-            [System.MonoTODOAttribute("Stub, does nothing")]
             public void NotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int childID) { }
-            [System.MonoTODOAttribute("Stub, does nothing")]
             public void NotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int objectID, int childID) { }
             public override string ToString() { throw null; }
         }
@@ -3124,11 +3170,11 @@ namespace System.Windows.Forms
     {
         internal ControlPaint() { }
         public static System.Drawing.Color ContrastControlDark { get { throw null; } }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static System.IntPtr CreateHBitmap16Bit(System.Drawing.Bitmap bitmap, System.Drawing.Color background) { throw null; }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static System.IntPtr CreateHBitmapColorMask(System.Drawing.Bitmap bitmap, System.IntPtr monochromeMask) { throw null; }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static System.IntPtr CreateHBitmapTransparencyMask(System.Drawing.Bitmap bitmap) { throw null; }
         public static System.Drawing.Color Dark(System.Drawing.Color baseColor) { throw null; }
         public static System.Drawing.Color Dark(System.Drawing.Color baseColor, float percOfDarkDark) { throw null; }
@@ -3164,7 +3210,9 @@ namespace System.Windows.Forms
         public static void DrawMixedCheckBox(System.Drawing.Graphics graphics, int x, int y, int width, int height, System.Windows.Forms.ButtonState state) { }
         public static void DrawRadioButton(System.Drawing.Graphics graphics, System.Drawing.Rectangle rectangle, System.Windows.Forms.ButtonState state) { }
         public static void DrawRadioButton(System.Drawing.Graphics graphics, int x, int y, int width, int height, System.Windows.Forms.ButtonState state) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public static void DrawReversibleFrame(System.Drawing.Rectangle rectangle, System.Drawing.Color backColor, System.Windows.Forms.FrameStyle style) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public static void DrawReversibleLine(System.Drawing.Point start, System.Drawing.Point end, System.Drawing.Color backColor) { }
         public static void DrawScrollButton(System.Drawing.Graphics graphics, System.Drawing.Rectangle rectangle, System.Windows.Forms.ScrollButton button, System.Windows.Forms.ButtonState state) { }
         public static void DrawScrollButton(System.Drawing.Graphics graphics, int x, int y, int width, int height, System.Windows.Forms.ScrollButton button, System.Windows.Forms.ButtonState state) { }
@@ -3174,6 +3222,7 @@ namespace System.Windows.Forms
         public static void DrawStringDisabled(System.Drawing.Graphics graphics, string s, System.Drawing.Font font, System.Drawing.Color color, System.Drawing.RectangleF layoutRectangle, System.Drawing.StringFormat format) { }
         public static void DrawStringDisabled(System.Drawing.IDeviceContext dc, string s, System.Drawing.Font font, System.Drawing.Color color, System.Drawing.Rectangle layoutRectangle, System.Windows.Forms.TextFormatFlags format) { }
         public static void DrawVisualStyleBorder(System.Drawing.Graphics graphics, System.Drawing.Rectangle bounds) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public static void FillReversibleRectangle(System.Drawing.Rectangle rectangle, System.Drawing.Color backColor) { }
         public static System.Drawing.Color Light(System.Drawing.Color baseColor) { throw null; }
         public static System.Drawing.Color Light(System.Drawing.Color baseColor, float percOfLightLight) { throw null; }
@@ -3267,10 +3316,9 @@ namespace System.Windows.Forms
         public Cursor(System.IO.Stream stream) { }
         public Cursor(string fileName) { }
         public Cursor(System.Type type, string resource) { }
-        public static System.Drawing.Rectangle Clip { get { throw null; } [System.MonoInternalNoteAttribute("First need to add ability to set cursor clip rectangle to XplatUI drivers to implement this property"), System.MonoTODOAttribute("Stub, does nothing")]set { } }
+        public static System.Drawing.Rectangle Clip { get { throw null; } set { } }
         public static System.Windows.Forms.Cursor Current { get { throw null; } set { } }
         public System.IntPtr Handle { get { throw null; } }
-        [System.MonoTODOAttribute("Implemented for Win32, X11 always returns 0,0")]
         public System.Drawing.Point HotSpot { get { throw null; } }
         public static System.Drawing.Point Position { get { throw null; } set { } }
         public System.Drawing.Size Size { get { throw null; } }
@@ -3290,6 +3338,7 @@ namespace System.Windows.Forms
         public static bool operator ==(System.Windows.Forms.Cursor left, System.Windows.Forms.Cursor right) { throw null; }
         public static bool operator !=(System.Windows.Forms.Cursor left, System.Windows.Forms.Cursor right) { throw null; }
         public static void Show() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -3371,7 +3420,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.ComplexBindingPropertiesAttribute("DataSource", "DataMember")]
     [System.ComponentModel.DefaultEventAttribute("Navigate")]
     [System.ComponentModel.DefaultPropertyAttribute("DataSource")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class DataGrid : System.Windows.Forms.Control, System.ComponentModel.ISupportInitialize, System.Windows.Forms.IDataGridEditingService
@@ -3415,7 +3464,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.Cursor Cursor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberListEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberListEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         public string DataMember { get { throw null; } set { } }
         [System.ComponentModel.AttributeProviderAttribute(typeof(System.ComponentModel.IListSource))]
         [System.ComponentModel.DefaultValueAttribute(null)]
@@ -3513,7 +3562,6 @@ namespace System.Windows.Forms
         protected internal virtual void ColumnStartedEditing(System.Windows.Forms.Control editingControl) { }
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn(System.ComponentModel.PropertyDescriptor prop) { throw null; }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         protected virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn(System.ComponentModel.PropertyDescriptor prop, bool isDefault) { throw null; }
         protected override void Dispose(bool disposing) { }
         public bool EndEdit(System.Windows.Forms.DataGridColumnStyle gridColumn, int rowNumber, bool shouldAbort) { throw null; }
@@ -3565,9 +3613,13 @@ namespace System.Windows.Forms
         protected void OnRowHeaderClick(System.EventArgs e) { }
         protected void OnScroll(System.EventArgs e) { }
         protected void OnShowParentDetailsButtonClicked(object sender, System.EventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessGridKey(System.Windows.Forms.KeyEventArgs ke) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected bool ProcessTabKey(System.Windows.Forms.Keys keyData) { throw null; }
         public void ResetAlternatingBackColor() { }
         public override void ResetBackColor() { }
@@ -3643,10 +3695,8 @@ namespace System.Windows.Forms
         public event System.EventHandler TrueValueChanged { add { } remove { } }
         protected internal override void Abort(int rowNum) { }
         protected internal override bool Commit(System.Windows.Forms.CurrencyManager dataSource, int rowNum) { throw null; }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         protected internal override void ConcedeFocus() { }
         protected internal override void Edit(System.Windows.Forms.CurrencyManager source, int rowNum, System.Drawing.Rectangle bounds, bool readOnly, string displayText, bool cellIsVisible) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         protected internal override void EnterNullValue() { }
         protected internal override object GetColumnValueAtRow(System.Windows.Forms.CurrencyManager lm, int row) { throw null; }
         protected internal override int GetMinimumHeight() { throw null; }
@@ -3710,7 +3760,6 @@ namespace System.Windows.Forms
         public event System.EventHandler ReadOnlyChanged { add { } remove { } }
         public event System.EventHandler WidthChanged { add { } remove { } }
         protected internal abstract void Abort(int rowNum);
-        [System.MonoTODOAttribute("Will not suspend updates")]
         protected void BeginUpdate() { }
         protected void CheckValidDataSource(System.Windows.Forms.CurrencyManager value) { }
         protected internal virtual void ColumnStartedEditing(System.Windows.Forms.Control editingControl) { }
@@ -3740,7 +3789,6 @@ namespace System.Windows.Forms
         protected partial class CompModSwitches
         {
             public CompModSwitches() { }
-            [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
             public static System.Diagnostics.TraceSwitch DGEditColumnEditing { get { throw null; } }
         }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -3748,13 +3796,12 @@ namespace System.Windows.Forms
         {
             public DataGridColumnHeaderAccessibleObject() { }
             public DataGridColumnHeaderAccessibleObject(System.Windows.Forms.DataGridColumnStyle owner) { }
-            [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
             public override System.Drawing.Rectangle Bounds { get { throw null; } }
             public override string Name { get { throw null; } }
             protected System.Windows.Forms.DataGridColumnStyle Owner { get { throw null; } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
-            [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navdir) { throw null; }
         }
     }
@@ -3848,12 +3895,10 @@ namespace System.Windows.Forms
         public event System.EventHandler RowHeaderWidthChanged { add { } remove { } }
         public event System.EventHandler SelectionBackColorChanged { add { } remove { } }
         public event System.EventHandler SelectionForeColorChanged { add { } remove { } }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         public bool BeginEdit(System.Windows.Forms.DataGridColumnStyle gridColumn, int rowNumber) { throw null; }
         protected internal virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn(System.ComponentModel.PropertyDescriptor prop) { throw null; }
         protected internal virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn(System.ComponentModel.PropertyDescriptor prop, bool isDefault) { throw null; }
         protected override void Dispose(bool disposing) { }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         public bool EndEdit(System.Windows.Forms.DataGridColumnStyle gridColumn, int rowNumber, bool shouldAbort) { throw null; }
         protected virtual void OnAllowSortingChanged(System.EventArgs e) { }
         protected virtual void OnAlternatingBackColorChanged(System.EventArgs e) { }
@@ -3909,8 +3954,10 @@ namespace System.Windows.Forms
         public bool IsInEditOrNavigateMode { get { throw null; } set { } }
         protected override void OnKeyPress(System.Windows.Forms.KeyPressEventArgs e) { }
         protected override void OnMouseWheel(System.Windows.Forms.MouseEventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal override bool ProcessKeyMessage(ref System.Windows.Forms.Message m) { throw null; }
         public void SetDataGrid(System.Windows.Forms.DataGrid parentGrid) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class DataGridTextBoxColumn : System.Windows.Forms.DataGridColumnStyle
@@ -3952,7 +3999,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.ComplexBindingPropertiesAttribute("DataSource", "DataMember")]
     [System.ComponentModel.DefaultEventAttribute("CellContentClick")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataGridViewComponentEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.ComponentModel.ComponentEditor))]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -4177,7 +4224,6 @@ namespace System.Windows.Forms
         public int VerticalScrollingOffset { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("VirtualMode is not supported.")]
         public bool VirtualMode { get { throw null; } set { } }
         public event System.EventHandler AllowUserToAddRowsChanged { add { } remove { } }
         public event System.EventHandler AllowUserToDeleteRowsChanged { add { } remove { } }
@@ -4345,34 +4391,24 @@ namespace System.Windows.Forms
         public bool AreAllCellsSelected(bool includeInvisibleCells) { throw null; }
         public void AutoResizeColumn(int columnIndex) { }
         public void AutoResizeColumn(int columnIndex, System.Windows.Forms.DataGridViewAutoSizeColumnMode autoSizeColumnMode) { }
-        [System.MonoTODOAttribute("Does not use fixedHeight parameter")]
         protected void AutoResizeColumn(int columnIndex, System.Windows.Forms.DataGridViewAutoSizeColumnMode autoSizeColumnMode, bool fixedHeight) { }
         public void AutoResizeColumnHeadersHeight() { }
-        [System.MonoTODOAttribute("Does not use fixedRowHeadersWidth or fixedColumnsWidth parameters")]
         protected void AutoResizeColumnHeadersHeight(bool fixedRowHeadersWidth, bool fixedColumnsWidth) { }
-        [System.MonoTODOAttribute("columnIndex parameter is not used")]
         public void AutoResizeColumnHeadersHeight(int columnIndex) { }
-        [System.MonoTODOAttribute("Does not use columnIndex or fixedRowHeadersWidth or fixedColumnsWidth parameters")]
         protected void AutoResizeColumnHeadersHeight(int columnIndex, bool fixedRowHeadersWidth, bool fixedColumnWidth) { }
         public void AutoResizeColumns() { }
         public void AutoResizeColumns(System.Windows.Forms.DataGridViewAutoSizeColumnsMode autoSizeColumnsMode) { }
         protected void AutoResizeColumns(System.Windows.Forms.DataGridViewAutoSizeColumnsMode autoSizeColumnsMode, bool fixedHeight) { }
         public void AutoResizeRow(int rowIndex) { }
         public void AutoResizeRow(int rowIndex, System.Windows.Forms.DataGridViewAutoSizeRowMode autoSizeRowMode) { }
-        [System.MonoTODOAttribute("Does not use fixedWidth parameter")]
         protected void AutoResizeRow(int rowIndex, System.Windows.Forms.DataGridViewAutoSizeRowMode autoSizeRowMode, bool fixedWidth) { }
-        [System.MonoTODOAttribute("Does not use rowIndex parameter.")]
         public void AutoResizeRowHeadersWidth(int rowIndex, System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode rowHeadersWidthSizeMode) { }
-        [System.MonoTODOAttribute("Does not use rowIndex or fixedColumnHeadersHeight or fixedRowsHeight parameter")]
         protected void AutoResizeRowHeadersWidth(int rowIndex, System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode rowHeadersWidthSizeMode, bool fixedColumnHeadersHeight, bool fixedRowHeight) { }
         public void AutoResizeRowHeadersWidth(System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode rowHeadersWidthSizeMode) { }
-        [System.MonoTODOAttribute("Does not use fixedColumnHeadersHeight or fixedRowsHeight parameter")]
         protected void AutoResizeRowHeadersWidth(System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode rowHeadersWidthSizeMode, bool fixedColumnHeadersHeight, bool fixedRowsHeight) { }
         public void AutoResizeRows() { }
-        [System.MonoTODOAttribute("Does not use fixedMode parameter")]
         protected void AutoResizeRows(int rowIndexStart, int rowsCount, System.Windows.Forms.DataGridViewAutoSizeRowMode autoSizeRowMode, bool fixedWidth) { }
         public void AutoResizeRows(System.Windows.Forms.DataGridViewAutoSizeRowsMode autoSizeRowsMode) { }
-        [System.MonoTODOAttribute("Does not use fixedWidth parameter")]
         protected void AutoResizeRows(System.Windows.Forms.DataGridViewAutoSizeRowsMode autoSizeRowsMode, bool fixedWidth) { }
         public virtual bool BeginEdit(bool selectAll) { throw null; }
         public bool CancelEdit() { throw null; }
@@ -4389,15 +4425,12 @@ namespace System.Windows.Forms
         public int DisplayedRowCount(bool includePartialRow) { throw null; }
         protected override void Dispose(bool disposing) { }
         public bool EndEdit() { throw null; }
-        [System.MonoTODOAttribute("Does not use context parameter")]
         public bool EndEdit(System.Windows.Forms.DataGridViewDataErrorContexts context) { throw null; }
         protected override System.Windows.Forms.AccessibleObject GetAccessibilityObjectById(int objectId) { throw null; }
         public int GetCellCount(System.Windows.Forms.DataGridViewElementStates includeFilter) { throw null; }
         public System.Drawing.Rectangle GetCellDisplayRectangle(int columnIndex, int rowIndex, bool cutOverflow) { throw null; }
         public virtual System.Windows.Forms.DataObject GetClipboardContent() { throw null; }
-        [System.MonoTODOAttribute("Does not use cutOverflow parameter")]
         public System.Drawing.Rectangle GetColumnDisplayRectangle(int columnIndex, bool cutOverflow) { throw null; }
-        [System.MonoTODOAttribute("Does not use cutOverflow parameter")]
         public System.Drawing.Rectangle GetRowDisplayRectangle(int rowIndex, bool cutOverflow) { throw null; }
         public System.Windows.Forms.DataGridView.HitTestInfo HitTest(int x, int y) { throw null; }
         public void InvalidateCell(int columnIndex, int rowIndex) { }
@@ -4558,34 +4591,53 @@ namespace System.Windows.Forms
         protected override void OnValidating(System.ComponentModel.CancelEventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
         protected virtual void PaintBackground(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle gridBounds) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessAKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual bool ProcessDataGridViewKey(System.Windows.Forms.KeyEventArgs e) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessDeleteKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessDownKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessEndKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessEnterKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessEscapeKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessF2Key(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessHomeKey(System.Windows.Forms.Keys keyData) { throw null; }
-        [System.MonoInternalNoteAttribute("What does insert do?")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessInsertKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyEventArgs(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessLeftKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessNextKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessPriorKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessRightKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessSpaceKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected bool ProcessTabKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessUpKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessZeroKey(System.Windows.Forms.Keys keyData) { throw null; }
         public bool RefreshEdit() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override void ResetText() { }
         public void SelectAll() { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
-        [System.MonoTODOAttribute("Does not use validateCurrentCell")]
         protected virtual bool SetCurrentCellAddressCore(int columnIndex, int rowIndex, bool setAnchorCellAddress, bool validateCurrentCell, bool throughMouseClick) { throw null; }
         protected virtual void SetSelectedCellCore(int columnIndex, int rowIndex, bool selected) { }
         protected virtual void SetSelectedColumnCore(int columnIndex, bool selected) { }
@@ -4599,6 +4651,7 @@ namespace System.Windows.Forms
         public void UpdateRowErrorText(int rowIndex) { }
         public void UpdateRowErrorText(int rowIndexStart, int rowIndexEnd) { }
         public void UpdateRowHeightInfo(int rowIndex, bool updateToEnd) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         protected partial class DataGridViewAccessibleObject : System.Windows.Forms.Control.ControlAccessibleObject
@@ -4611,6 +4664,7 @@ namespace System.Windows.Forms
             public override System.Windows.Forms.AccessibleObject GetFocused() { throw null; }
             public override System.Windows.Forms.AccessibleObject GetSelected() { throw null; }
             public override System.Windows.Forms.AccessibleObject HitTest(int x, int y) { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
         }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -4630,11 +4684,12 @@ namespace System.Windows.Forms
             public override System.Drawing.Rectangle Bounds { get { throw null; } }
             public override string Name { get { throw null; } }
             public System.Windows.Forms.DataGridView Owner { get { throw null; } set { } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
             public override int GetChildCount() { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
         }
         public sealed partial class HitTestInfo
@@ -4815,11 +4870,12 @@ namespace System.Windows.Forms
         {
             public DataGridViewButtonCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
             public override string DefaultAction { get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
             public override int GetChildCount() { throw null; }
         }
     }
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewButtonColumn), "DataGridViewButtonColumn.bmp")]
     public partial class DataGridViewButtonColumn : System.Windows.Forms.DataGridViewColumn
     {
         public DataGridViewButtonColumn() { }
@@ -4899,10 +4955,10 @@ namespace System.Windows.Forms
         public System.Drawing.Size Size { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(true)]
         public System.Windows.Forms.DataGridViewCellStyle Style { get { throw null; } set { } }
-        [System.ComponentModel.BindableAttribute(true, (System.ComponentModel.BindingDirection)(0))]
+        [System.ComponentModel.BindableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.ComponentModel.LocalizableAttribute(false)]
-        [System.ComponentModel.TypeConverterAttribute("System.ComponentModel.StringConverter, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public object Tag { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -4951,7 +5007,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public static int MeasureTextHeight(System.Drawing.Graphics graphics, string text, System.Drawing.Font font, int maxWidth, System.Windows.Forms.TextFormatFlags flags) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("does not use widthTruncated parameter")]
         public static int MeasureTextHeight(System.Drawing.Graphics graphics, string text, System.Drawing.Font font, int maxWidth, System.Windows.Forms.TextFormatFlags flags, out bool widthTruncated) { widthTruncated = default(bool); throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public static System.Drawing.Size MeasureTextPreferredSize(System.Drawing.Graphics graphics, string text, System.Drawing.Font font, float maxRatio, System.Windows.Forms.TextFormatFlags flags) { throw null; }
@@ -5003,16 +5058,19 @@ namespace System.Windows.Forms
             public override string Help { get { throw null; } }
             public override string Name { get { throw null; } }
             public System.Windows.Forms.DataGridViewCell Owner { get { throw null; } set { } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } set { } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]set { } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
             public override System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
             public override int GetChildCount() { throw null; }
             public override System.Windows.Forms.AccessibleObject GetFocused() { throw null; }
             public override System.Windows.Forms.AccessibleObject GetSelected() { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void Select(System.Windows.Forms.AccessibleSelection flags) { }
         }
     }
@@ -5124,7 +5182,6 @@ namespace System.Windows.Forms
         public object Value { get { throw null; } }
         public void Paint(System.Drawing.Rectangle clipBounds, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
         public void PaintBackground(System.Drawing.Rectangle clipBounds, bool cellsPaintSelectionBackground) { }
-        [System.MonoInternalNoteAttribute("Needs row header cell edit pencil glyph")]
         public void PaintContent(System.Drawing.Rectangle clipBounds) { }
     }
     public delegate void DataGridViewCellPaintingEventHandler(object sender, System.Windows.Forms.DataGridViewCellPaintingEventArgs e);
@@ -5144,7 +5201,7 @@ namespace System.Windows.Forms
         public System.Windows.Forms.DataGridViewElementStates StateChanged { get { throw null; } }
     }
     public delegate void DataGridViewCellStateChangedEventHandler(object sender, System.Windows.Forms.DataGridViewCellStateChangedEventArgs e);
-    [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataGridViewCellStyleEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataGridViewCellStyleEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.DataGridViewCellStyleConverter))]
     public partial class DataGridViewCellStyle : System.ICloneable
     {
@@ -5160,7 +5217,7 @@ namespace System.Windows.Forms
         public System.Drawing.Font Font { get { throw null; } set { } }
         public System.Drawing.Color ForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.FormatStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.FormatStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public string Format { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -5293,11 +5350,12 @@ namespace System.Windows.Forms
             public DataGridViewCheckBoxCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
             public override string DefaultAction { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
             public override int GetChildCount() { throw null; }
         }
     }
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewCheckBoxColumn), "DataGridViewCheckBoxColumn.bmp")]
     public partial class DataGridViewCheckBoxColumn : System.Windows.Forms.DataGridViewColumn
     {
         public DataGridViewCheckBoxColumn() { }
@@ -5329,9 +5387,9 @@ namespace System.Windows.Forms
         EnableWithAutoHeaderText = 1,
         EnableWithoutHeaderText = 2,
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewColumnDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewColumnDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
-    [System.ComponentModel.ToolboxItemAttribute("")]
+    [System.ComponentModel.ToolboxItemAttribute(false)]
     [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.DataGridViewColumnConverter")]
     public partial class DataGridViewColumn : System.Windows.Forms.DataGridViewBand, System.ComponentModel.IComponent, System.IDisposable
     {
@@ -5361,7 +5419,7 @@ namespace System.Windows.Forms
         public int DisplayIndex { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int DividerWidth { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute(100)]
+        [System.ComponentModel.DefaultValueAttribute(100f)]
         public float FillWeight { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
@@ -5411,7 +5469,6 @@ namespace System.Windows.Forms
         public event System.EventHandler Disposed { add { } remove { } }
         public override object Clone() { throw null; }
         protected override void Dispose(bool disposing) { }
-        [System.MonoTODOAttribute("Actually calculate width")]
         public virtual int GetPreferredWidth(System.Windows.Forms.DataGridViewAutoSizeColumnMode autoSizeColumnMode, bool fixedHeight) { throw null; }
         public override string ToString() { throw null; }
     }
@@ -5461,7 +5518,7 @@ namespace System.Windows.Forms
         void System.Collections.IList.Remove(object value) { }
         void System.Collections.IList.RemoveAt(int index) { }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     public sealed partial class DataGridViewColumnDesignTimeVisibleAttribute : System.Attribute
     {
         public static readonly System.Windows.Forms.DataGridViewColumnDesignTimeVisibleAttribute Default;
@@ -5508,12 +5565,15 @@ namespace System.Windows.Forms
             public override System.Drawing.Rectangle Bounds { get { throw null; } }
             public override string DefaultAction { get { throw null; } }
             public override string Name { get { throw null; } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void Select(System.Windows.Forms.AccessibleSelection flags) { }
         }
     }
@@ -5606,8 +5666,8 @@ namespace System.Windows.Forms
             int System.Collections.IList.Add(object item) { throw null; }
         }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewComboBoxColumnDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DataGridViewComboBoxColumnDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewComboBoxColumn), "DataGridViewComboBoxColumn.bmp")]
     public partial class DataGridViewComboBoxColumn : System.Windows.Forms.DataGridViewColumn
     {
         public DataGridViewComboBoxColumn() { }
@@ -5622,7 +5682,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public object DataSource { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.Design.DataMemberFieldConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public string DisplayMember { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.DataGridViewComboBoxDisplayStyle)(1))]
@@ -5634,14 +5694,14 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.FlatStyle)(2))]
         public System.Windows.Forms.FlatStyle FlatStyle { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         public System.Windows.Forms.DataGridViewComboBoxCell.ObjectCollection Items { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(8)]
         public int MaxDropDownItems { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool Sorted { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberFieldEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.Design.DataMemberFieldConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public string ValueMember { get { throw null; } set { } }
         public override object Clone() { throw null; }
@@ -5834,7 +5894,8 @@ namespace System.Windows.Forms
             public DataGridViewImageCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
             public override string DefaultAction { get { throw null; } }
             public override string Description { get { throw null; } }
-            public override string Value { get { throw null; } set { } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]set { } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
             public override int GetChildCount() { throw null; }
         }
@@ -5846,7 +5907,7 @@ namespace System.Windows.Forms
         Stretch = 2,
         Zoom = 3,
     }
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewImageColumn), "DataGridViewImageColumn.bmp")]
     public partial class DataGridViewImageColumn : System.Windows.Forms.DataGridViewColumn
     {
         public DataGridViewImageColumn() { }
@@ -5910,13 +5971,12 @@ namespace System.Windows.Forms
         {
             public DataGridViewLinkCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
             public override string DefaultAction { get { throw null; } }
-            [System.MonoTODOAttribute("Stub, does nothing")]
             [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
             public override int GetChildCount() { throw null; }
         }
     }
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewLinkColumn), "DataGridViewLinkColumn.bmp")]
     public partial class DataGridViewLinkColumn : System.Windows.Forms.DataGridViewColumn
     {
         public DataGridViewLinkColumn() { }
@@ -5928,7 +5988,6 @@ namespace System.Windows.Forms
         public System.Windows.Forms.LinkBehavior LinkBehavior { get { throw null; } set { } }
         public System.Drawing.Color LinkColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.MonoInternalNoteAttribute("")]
         public string Text { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool TrackVisitedState { get { throw null; } set { } }
@@ -6032,15 +6091,17 @@ namespace System.Windows.Forms
             public override System.Drawing.Rectangle Bounds { get { throw null; } }
             public override string Name { get { throw null; } }
             public System.Windows.Forms.DataGridViewRow Owner { get { throw null; } set { } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
             public override int GetChildCount() { throw null; }
             public override System.Windows.Forms.AccessibleObject GetFocused() { throw null; }
             public override System.Windows.Forms.AccessibleObject GetSelected() { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void Select(System.Windows.Forms.AccessibleSelection flags) { }
         }
     }
@@ -6150,7 +6211,6 @@ namespace System.Windows.Forms
         public override System.Windows.Forms.DataGridViewCellStyle GetInheritedStyle(System.Windows.Forms.DataGridViewCellStyle inheritedCellStyle, int rowIndex, bool includeColors) { throw null; }
         protected override System.Drawing.Size GetPreferredSize(System.Drawing.Graphics graphics, System.Windows.Forms.DataGridViewCellStyle cellStyle, int rowIndex, System.Drawing.Size constraintSize) { throw null; }
         protected override object GetValue(int rowIndex) { throw null; }
-        [System.MonoInternalNoteAttribute("Needs row header cell selected/edit pencil glyphs")]
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates cellState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
         protected override bool SetValue(int rowIndex, object value) { throw null; }
         public override string ToString() { throw null; }
@@ -6160,12 +6220,15 @@ namespace System.Windows.Forms
             public override System.Drawing.Rectangle Bounds { get { throw null; } }
             public override string DefaultAction { get { throw null; } }
             public override string Name { get { throw null; } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void Select(System.Windows.Forms.AccessibleSelection flags) { }
         }
     }
@@ -6380,7 +6443,7 @@ namespace System.Windows.Forms
         public override void PositionEditingControl(bool setLocation, bool setSize, System.Drawing.Rectangle cellBounds, System.Drawing.Rectangle cellClip, System.Windows.Forms.DataGridViewCellStyle cellStyle, bool singleVerticalBorderAdded, bool singleHorizontalBorderAdded, bool isFirstDisplayedColumn, bool isFirstDisplayedRow) { }
         public override string ToString() { throw null; }
     }
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewTextBoxColumn), "DataGridViewTextBoxColumn.bmp")]
     public partial class DataGridViewTextBoxColumn : System.Windows.Forms.DataGridViewColumn
     {
         public DataGridViewTextBoxColumn() { }
@@ -6410,6 +6473,7 @@ namespace System.Windows.Forms
         protected override void OnMouseWheel(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         public virtual void PrepareEditingControlForEdit(bool selectAll) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyEventArgs(ref System.Windows.Forms.Message m) { throw null; }
     }
     public partial class DataGridViewTopLeftHeaderCell : System.Windows.Forms.DataGridViewColumnHeaderCell
@@ -6429,9 +6493,12 @@ namespace System.Windows.Forms
             public override string DefaultAction { get { throw null; } }
             public override string Name { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void Select(System.Windows.Forms.AccessibleSelection flags) { }
         }
     }
@@ -6471,19 +6538,27 @@ namespace System.Windows.Forms
         public virtual void SetData(string format, bool autoConvert, object data) { }
         public virtual void SetData(string format, object data) { }
         public virtual void SetData(System.Type format, object data) { }
-        [System.MonoInternalNoteAttribute("Needs additional checks for valid paths, see MSDN")]
         public virtual void SetFileDropList(System.Collections.Specialized.StringCollection filePaths) { }
         public virtual void SetImage(System.Drawing.Image image) { }
         public virtual void SetText(string textData) { }
         public virtual void SetText(string textData, System.Windows.Forms.TextDataFormat format) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         int System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise(ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetc, System.Runtime.InteropServices.ComTypes.ADVF advf, System.Runtime.InteropServices.ComTypes.IAdviseSink pAdvSink, out int pdwConnection) { pdwConnection = default(int); throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         void System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise(int dwConnection) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         int System.Runtime.InteropServices.ComTypes.IDataObject.EnumDAdvise(out System.Runtime.InteropServices.ComTypes.IEnumSTATDATA enumAdvise) { enumAdvise = default(System.Runtime.InteropServices.ComTypes.IEnumSTATDATA); throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         System.Runtime.InteropServices.ComTypes.IEnumFORMATETC System.Runtime.InteropServices.ComTypes.IDataObject.EnumFormatEtc(System.Runtime.InteropServices.ComTypes.DATADIR dwDirection) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         int System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc(ref System.Runtime.InteropServices.ComTypes.FORMATETC pformatetcIn, out System.Runtime.InteropServices.ComTypes.FORMATETC pformatetcOut) { pformatetcOut = default(System.Runtime.InteropServices.ComTypes.FORMATETC); throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         void System.Runtime.InteropServices.ComTypes.IDataObject.GetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc, out System.Runtime.InteropServices.ComTypes.STGMEDIUM medium) { medium = default(System.Runtime.InteropServices.ComTypes.STGMEDIUM); }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         void System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM medium) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         int System.Runtime.InteropServices.ComTypes.IDataObject.QueryGetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         void System.Runtime.InteropServices.ComTypes.IDataObject.SetData(ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetcIn, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM pmedium, bool fRelease) { }
     }
     public enum DataSourceUpdateMode
@@ -6510,7 +6585,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultBindingPropertyAttribute("Value")]
     [System.ComponentModel.DefaultEventAttribute("ValueChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("Value")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DateTimePickerDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.DateTimePickerDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class DateTimePicker : System.Windows.Forms.Control
@@ -6546,7 +6621,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BindableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool Checked { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.ComponentModel.LocalizableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
@@ -6627,6 +6702,7 @@ namespace System.Windows.Forms
         public event System.EventHandler ValueChanged { add { } remove { } }
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void CreateHandle() { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override void DestroyHandle() { }
         protected override bool IsInputKey(System.Windows.Forms.Keys keyData) { throw null; }
         protected virtual void OnCloseUp(System.EventArgs eventargs) { }
@@ -6640,6 +6716,7 @@ namespace System.Windows.Forms
         protected override void OnSystemColorsChanged(System.EventArgs e) { }
         protected virtual void OnValueChanged(System.EventArgs eventargs) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class DateTimePickerAccessibleObject : System.Windows.Forms.Control.ControlAccessibleObject
@@ -6648,7 +6725,7 @@ namespace System.Windows.Forms
             public override string KeyboardShortcut { get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         }
     }
     public enum DateTimePickerFormat
@@ -6752,10 +6829,10 @@ namespace System.Windows.Forms
         {
             public DomainItemAccessibleObject(string name, System.Windows.Forms.AccessibleObject parent) { }
             public override string Name { get { throw null; } set { } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            public override string Value { get { throw null; } }
+            public override string Value { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class DomainUpDownAccessibleObject : System.Windows.Forms.Control.ControlAccessibleObject
@@ -6780,9 +6857,9 @@ namespace System.Windows.Forms
     public sealed partial class DpiChangedEventArgs : System.ComponentModel.CancelEventArgs
     {
         internal DpiChangedEventArgs() { }
-        public int DeviceDpiNew { get { throw null; } }
-        public int DeviceDpiOld { get { throw null; } }
-        public System.Drawing.Rectangle SuggestedRectangle { get { throw null; } }
+        public int DeviceDpiNew { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int DeviceDpiOld { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Drawing.Rectangle SuggestedRectangle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override string ToString() { throw null; }
     }
     public delegate void DpiChangedEventHandler(object sender, System.Windows.Forms.DpiChangedEventArgs e);
@@ -6943,9 +7020,9 @@ namespace System.Windows.Forms
         TopRight = 1,
     }
     [System.ComponentModel.ComplexBindingPropertiesAttribute("DataSource", "DataMember")]
-    [System.ComponentModel.ProvidePropertyAttribute("Error", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    [System.ComponentModel.ProvidePropertyAttribute("IconAlignment", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    [System.ComponentModel.ProvidePropertyAttribute("IconPadding", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+    [System.ComponentModel.ProvidePropertyAttribute("Error", typeof(System.Windows.Forms.Control))]
+    [System.ComponentModel.ProvidePropertyAttribute("IconAlignment", typeof(System.Windows.Forms.Control))]
+    [System.ComponentModel.ProvidePropertyAttribute("IconPadding", typeof(System.Windows.Forms.Control))]
     [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     public partial class ErrorProvider : System.ComponentModel.Component, System.ComponentModel.IExtenderProvider, System.ComponentModel.ISupportInitialize
     {
@@ -6958,20 +7035,17 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.ErrorBlinkStyle)(0))]
         public System.Windows.Forms.ErrorBlinkStyle BlinkStyle { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        public System.Windows.Forms.ContainerControl ContainerControl { get { throw null; } set { } }
+        public System.Windows.Forms.ContainerControl ContainerControl { [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3)), System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberListEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        [System.MonoTODOAttribute("Stub, does nothing")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.DataMemberListEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         public string DataMember { get { throw null; } set { } }
         [System.ComponentModel.AttributeProviderAttribute(typeof(System.ComponentModel.IListSource))]
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public object DataSource { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Drawing.Icon Icon { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("RTL not supported")]
         public virtual bool RightToLeft { get { throw null; } set { } }
         public override System.ComponentModel.ISite Site { set { } }
         [System.ComponentModel.BindableAttribute(true)]
@@ -6980,7 +7054,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public object Tag { get { throw null; } set { } }
         public event System.EventHandler RightToLeftChanged { add { } remove { } }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public void BindToDataAndErrors(object newDataSource, string newDataMember) { }
         public bool CanExtend(object extendee) { throw null; }
         public void Clear() { }
@@ -7001,7 +7074,6 @@ namespace System.Windows.Forms
         public void SetIconPadding(System.Windows.Forms.Control control, int padding) { }
         void System.ComponentModel.ISupportInitialize.BeginInit() { }
         void System.ComponentModel.ISupportInitialize.EndInit() { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public void UpdateBinding() { }
     }
     public abstract partial class FeatureSupport : System.Windows.Forms.IFeatureSupport
@@ -7023,7 +7095,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool AddExtension { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
-        [System.MonoTODOAttribute("Stub, value not respected")]
         public bool AutoUpgradeEnabled { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public virtual bool CheckFileExists { get { throw null; } set { } }
@@ -7031,7 +7102,6 @@ namespace System.Windows.Forms
         public bool CheckPathExists { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, collection not used")]
         public System.Windows.Forms.FileDialogCustomPlacesCollection CustomPlaces { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute("")]
         public string DefaultExt { get { throw null; } set { } }
@@ -7049,7 +7119,7 @@ namespace System.Windows.Forms
         public int FilterIndex { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         public string InitialDirectory { get { throw null; } set { } }
-        protected virtual System.IntPtr Instance { get { throw null; } }
+        protected virtual System.IntPtr Instance { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2)), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected int Options { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool RestoreDirectory { get { throw null; } set { } }
@@ -7063,7 +7133,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ValidateNames { get { throw null; } set { } }
         public event System.ComponentModel.CancelEventHandler FileOk { add { } remove { } }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override System.IntPtr HookProc(System.IntPtr hWnd, int msg, System.IntPtr wparam, System.IntPtr lparam) { throw null; }
         protected void OnFileOk(System.ComponentModel.CancelEventArgs e) { }
         public override void Reset() { }
@@ -7135,7 +7205,7 @@ namespace System.Windows.Forms
         TopDown = 1,
     }
     [System.ComponentModel.DefaultPropertyAttribute("FlowDirection")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.FlowLayoutPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.FlowLayoutPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ProvidePropertyAttribute("FlowBreak", typeof(System.Windows.Forms.Control))]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -7171,7 +7241,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("HelpRequest")]
     [System.ComponentModel.DefaultPropertyAttribute("SelectedPath")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.FolderBrowserDialogDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.FolderBrowserDialogDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class FolderBrowserDialog : System.Windows.Forms.CommonDialog
     {
         public FolderBrowserDialog() { }
@@ -7213,6 +7283,7 @@ namespace System.Windows.Forms
         public bool AllowVectorFonts { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool AllowVerticalFonts { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Black")]
         public System.Drawing.Color Color { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool FixedPitchOnly { get { throw null; } set { } }
@@ -7235,6 +7306,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool ShowHelp { get { throw null; } set { } }
         public event System.EventHandler Apply { add { } remove { } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override System.IntPtr HookProc(System.IntPtr hWnd, int msg, System.IntPtr wparam, System.IntPtr lparam) { throw null; }
         protected virtual void OnApply(System.EventArgs e) { }
         public override void Reset() { }
@@ -7265,13 +7337,13 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute("This property has been deprecated in favor of AutoScaleMode.")]
+        [System.ObsoleteAttribute("This property has been deprecated. Use the AutoScaleMode property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public bool AutoScale { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         [System.ComponentModel.LocalizableAttribute(true)]
-        public virtual System.Drawing.Size AutoScaleBaseSize { get { throw null; } [System.MonoTODOAttribute("Setting this is probably unintentional and can cause Forms to be improperly sized.  See http://www.mono-project.com/FAQ:_Winforms#My_forms_are_sized_improperly for details.")]set { } }
+        public virtual System.Drawing.Size AutoScaleBaseSize { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
         public override bool AutoScroll { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
@@ -7293,7 +7365,7 @@ namespace System.Windows.Forms
         public new System.Drawing.Size ClientSize { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ControlBox { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -7351,7 +7423,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        public System.Windows.Forms.MainMenu MergedMenu { get { throw null; } }
+        public System.Windows.Forms.MainMenu MergedMenu { [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool MinimizeBox { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -7380,7 +7452,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ShowInTaskbar { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
-        [System.MonoTODOAttribute("Implemented for Win32, needs X11 implementation")]
         protected virtual bool ShowWithoutActivation { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.LocalizableAttribute(false)]
@@ -7460,7 +7531,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void AdjustFormScrollbars(bool displayScrollbars) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute("This method has been deprecated")]
+        [System.ObsoleteAttribute("This method has been deprecated. Use the ApplyAutoScaling method instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         protected void ApplyAutoScaling() { }
         protected void CenterToParent() { }
         protected void CenterToScreen() { }
@@ -7470,10 +7541,11 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void CreateHandle() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void DefWndProc(ref System.Windows.Forms.Message m) { }
         protected override void Dispose(bool disposing) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute("This method has been deprecated.  Use AutoScaleDimensions instead")]
+        [System.ObsoleteAttribute("This method has been deprecated. Use the AutoScaleDimensions property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public static System.Drawing.SizeF GetAutoScaleSize(System.Drawing.Font font) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override System.Drawing.Rectangle GetScaledBounds(System.Drawing.Rectangle bounds, System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { throw null; }
@@ -7490,7 +7562,9 @@ namespace System.Windows.Forms
         protected override void OnCreateControl() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnDeactivate(System.EventArgs e) { }
-        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(1))]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         protected virtual void OnDpiChanged(System.Windows.Forms.DpiChangedEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnEnabledChanged(System.EventArgs e) { }
@@ -7502,6 +7576,7 @@ namespace System.Windows.Forms
         protected virtual void OnFormClosed(System.Windows.Forms.FormClosedEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e) { }
+        [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual bool OnGetDpiScaledSize(int deviceDpiOld, int deviceDpiNew, ref System.Drawing.Size desiredSize) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -7509,7 +7584,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnHandleDestroyed(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Will never be called")]
         protected virtual void OnHelpButtonClicked(System.ComponentModel.CancelEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnInputLanguageChanged(System.Windows.Forms.InputLanguageChangedEventArgs e) { }
@@ -7548,12 +7622,18 @@ namespace System.Windows.Forms
         protected override void OnTextChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnVisibleChanged(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogChar(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessTabKey(bool forward) { throw null; }
         public void RemoveOwnedForm(System.Windows.Forms.Form ownedForm) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -7581,6 +7661,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public override bool ValidateChildren(System.Windows.Forms.ValidationConstraints validationConstraints) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public partial class ControlCollection : System.Windows.Forms.Control.ControlCollection
@@ -7769,7 +7850,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("Enter")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.GroupBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.GroupBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class GroupBox : System.Windows.Forms.Control
@@ -7786,7 +7867,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoSizeMode)(1))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Windows.Forms.AutoSizeMode AutoSizeMode { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.Padding DefaultPadding { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         public override System.Drawing.Rectangle DisplayRectangle { get { throw null; } }
@@ -7844,9 +7925,11 @@ namespace System.Windows.Forms
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void OnFontChanged(System.EventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public sealed partial class GroupBoxRenderer
@@ -7873,10 +7956,8 @@ namespace System.Windows.Forms
         public static void ShowHelp(System.Windows.Forms.Control parent, string url) { }
         public static void ShowHelp(System.Windows.Forms.Control parent, string url, string keyword) { }
         public static void ShowHelp(System.Windows.Forms.Control parent, string url, System.Windows.Forms.HelpNavigator navigator) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public static void ShowHelp(System.Windows.Forms.Control parent, string url, System.Windows.Forms.HelpNavigator command, object parameter) { }
         public static void ShowHelpIndex(System.Windows.Forms.Control parent, string url) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public static void ShowPopup(System.Windows.Forms.Control parent, string caption, System.Drawing.Point location) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -7897,16 +7978,16 @@ namespace System.Windows.Forms
         Topic = -2147483647,
         TopicId = -2147483641,
     }
-    [System.ComponentModel.ProvidePropertyAttribute("HelpKeyword", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    [System.ComponentModel.ProvidePropertyAttribute("HelpNavigator", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    [System.ComponentModel.ProvidePropertyAttribute("HelpString", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
-    [System.ComponentModel.ProvidePropertyAttribute("ShowHelp", "System.Windows.Forms.Control, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+    [System.ComponentModel.ProvidePropertyAttribute("HelpKeyword", typeof(System.Windows.Forms.Control))]
+    [System.ComponentModel.ProvidePropertyAttribute("HelpNavigator", typeof(System.Windows.Forms.Control))]
+    [System.ComponentModel.ProvidePropertyAttribute("HelpString", typeof(System.Windows.Forms.Control))]
+    [System.ComponentModel.ProvidePropertyAttribute("ShowHelp", typeof(System.Windows.Forms.Control))]
     [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     public partial class HelpProvider : System.ComponentModel.Component, System.ComponentModel.IExtenderProvider
     {
         public HelpProvider() { }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.HelpNamespaceEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.HelpNamespaceEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public virtual string HelpNamespace { get { throw null; } set { } }
         [System.ComponentModel.BindableAttribute(true)]
@@ -7945,13 +8026,14 @@ namespace System.Windows.Forms
     public partial class HScrollBar : System.Windows.Forms.ScrollBar
     {
         public HScrollBar() { }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
     }
     public partial class HScrollProperties : System.Windows.Forms.ScrollProperties
     {
         public HScrollProperties(System.Windows.Forms.ScrollableControl container) : base (default(System.Windows.Forms.ScrollableControl)) { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class HtmlDocument
     {
         internal HtmlDocument() { }
@@ -8004,6 +8086,7 @@ namespace System.Windows.Forms
         public static bool operator !=(System.Windows.Forms.HtmlDocument left, System.Windows.Forms.HtmlDocument right) { throw null; }
         public void Write(string text) { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class HtmlElement
     {
         internal HtmlElement() { }
@@ -8118,10 +8201,10 @@ namespace System.Windows.Forms
         BeforeBegin = 0,
         BeforeEnd = 2,
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class HtmlHistory : System.IDisposable
     {
         internal HtmlHistory() { }
-        [System.MonoTODOAttribute("Not supported, will throw NotSupportedException")]
         public object DomHistory { get { throw null; } }
         public int Length { get { throw null; } }
         public void Back(int numberBack) { }
@@ -8131,6 +8214,7 @@ namespace System.Windows.Forms
         public void Go(string urlString) { }
         public void Go(System.Uri url) { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class HtmlWindow
     {
         internal HtmlWindow() { }
@@ -8138,10 +8222,8 @@ namespace System.Windows.Forms
         public object DomWindow { get { throw null; } }
         public System.Windows.Forms.HtmlWindowCollection Frames { get { throw null; } }
         public System.Windows.Forms.HtmlHistory History { get { throw null; } }
-        [System.MonoTODOAttribute("Windows are always open")]
         public bool IsClosed { get { throw null; } }
         public string Name { get { throw null; } set { } }
-        [System.MonoTODOAttribute("Separate windows are not supported yet")]
         public System.Windows.Forms.HtmlWindow Opener { get { throw null; } }
         public System.Windows.Forms.HtmlWindow Parent { get { throw null; } }
         public System.Drawing.Point Position { get { throw null; } }
@@ -8168,13 +8250,9 @@ namespace System.Windows.Forms
         public void MoveTo(int x, int y) { }
         public void Navigate(string urlString) { }
         public void Navigate(System.Uri url) { }
-        [System.MonoTODOAttribute("Blank opens in current window at the moment. Missing media and search implementations. No options implemented")]
         public System.Windows.Forms.HtmlWindow Open(string urlString, string target, string windowOptions, bool replaceEntry) { throw null; }
-        [System.MonoTODOAttribute("Blank opens in current window at the moment. Missing media and search implementations. No options implemented")]
         public System.Windows.Forms.HtmlWindow Open(System.Uri url, string target, string windowOptions, bool replaceEntry) { throw null; }
-        [System.MonoTODOAttribute("Opens in current window at the moment.")]
         public System.Windows.Forms.HtmlWindow OpenNew(string urlString, string windowOptions) { throw null; }
-        [System.MonoTODOAttribute("Opens in current window at the moment.")]
         public System.Windows.Forms.HtmlWindow OpenNew(System.Uri url, string windowOptions) { throw null; }
         public static bool operator ==(System.Windows.Forms.HtmlWindow left, System.Windows.Forms.HtmlWindow right) { throw null; }
         public static bool operator !=(System.Windows.Forms.HtmlWindow left, System.Windows.Forms.HtmlWindow right) { throw null; }
@@ -8409,6 +8487,7 @@ namespace System.Windows.Forms
     {
         internal ImageListStreamer() { }
         public void Dispose() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
     }
     public static partial class ImeContext
@@ -8438,6 +8517,7 @@ namespace System.Windows.Forms
         On = 1,
         OnHalf = 12,
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ImeModeConversion
     {
         public static System.Collections.Generic.Dictionary<System.Windows.Forms.ImeMode, System.Windows.Forms.ImeModeConversion> ImeModeConversionBits { get { throw null; } }
@@ -8445,6 +8525,7 @@ namespace System.Windows.Forms
     }
     public partial interface IMessageFilter
     {
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         bool PreFilterMessage(ref System.Windows.Forms.Message m);
     }
     public sealed partial class InputLanguage
@@ -8576,7 +8657,7 @@ namespace System.Windows.Forms
         public char KeyChar { get { throw null; } set { } }
     }
     public delegate void KeyPressEventHandler(object sender, System.Windows.Forms.KeyPressEventArgs e);
-    [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ShortcutKeysEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ShortcutKeysEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.KeysConverter))]
     [System.FlagsAttribute]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -8791,7 +8872,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultBindingPropertyAttribute("Text")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.LabelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.LabelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemAttribute("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -8819,7 +8900,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.BorderStyle)(0))]
         [System.Runtime.InteropServices.DispIdAttribute(-504)]
         public virtual System.Windows.Forms.BorderStyle BorderStyle { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Windows.Forms.Padding DefaultMargin { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
@@ -8856,7 +8937,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public virtual int PreferredWidth { get { throw null; } }
-        [System.ObsoleteAttribute("This property has been deprecated.  Use BackColor instead.")]
+        [System.ObsoleteAttribute("This property has been deprecated. Use BackColor instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual bool RenderTransparent { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(false)]
@@ -8914,9 +8995,11 @@ namespace System.Windows.Forms
         protected virtual void OnTextAlignChanged(System.EventArgs e) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class LabelEditEventArgs : System.EventArgs
@@ -9027,6 +9110,8 @@ namespace System.Windows.Forms
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public new System.Windows.Forms.Padding Padding { get { throw null; } set { } }
         System.Windows.Forms.DialogResult System.Windows.Forms.IButtonControl.DialogResult { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public new bool TabStop { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public override string Text { get { throw null; } set { } }
@@ -9056,11 +9141,13 @@ namespace System.Windows.Forms
         protected override void OnTextAlignChanged(System.EventArgs e) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         protected System.Windows.Forms.LinkLabel.Link PointInLink(int x, int y) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         protected override void Select(bool directed, bool forward) { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         void System.Windows.Forms.IButtonControl.NotifyDefault(bool value) { }
         void System.Windows.Forms.IButtonControl.PerformClick() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message msg) { }
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.LinkConverter))]
         public partial class Link
@@ -9156,7 +9243,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultBindingPropertyAttribute("SelectedValue")]
     [System.ComponentModel.DefaultEventAttribute("SelectedIndexChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("Items")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ListBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ListBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ListBox : System.Windows.Forms.ListControl
@@ -9178,7 +9265,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.LocalizableAttribute(true)]
         public int ColumnWidth { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         public System.Windows.Forms.ListBox.IntegerCollection CustomTabOffsets { get { throw null; } }
@@ -9276,7 +9363,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public new event System.EventHandler TextChanged { add { } remove { } }
-        [System.ObsoleteAttribute("this method has been deprecated")]
+        [System.ObsoleteAttribute("This method has been deprecated.  There is no replacement.  http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual void AddItemsCore(object[] value) { }
         public void BeginUpdate() { }
         public void ClearSelected() { }
@@ -9318,7 +9405,10 @@ namespace System.Windows.Forms
         public void SetSelected(int index, bool value) { }
         protected virtual void Sort() { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual void WmReflectCommand(ref System.Windows.Forms.Message m) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         public partial class IntegerCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
         {
@@ -9500,7 +9590,7 @@ namespace System.Windows.Forms
     public delegate void ListControlConvertEventHandler(object sender, System.Windows.Forms.ListControlConvertEventArgs e);
     [System.ComponentModel.DefaultEventAttribute("SelectedIndexChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("Items")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ListViewDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ListViewDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(1))]
@@ -9538,7 +9628,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.LocalizableAttribute(true)]
         [System.ComponentModel.MergablePropertyAttribute(false)]
         public System.Windows.Forms.ListView.ColumnHeaderCollection Columns { get { throw null; } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         protected override bool DoubleBuffered { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -9590,7 +9680,6 @@ namespace System.Windows.Forms
         public new System.Windows.Forms.Padding Padding { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("RTL not supported")]
         public virtual bool RightToLeftLayout { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool Scrollable { get { throw null; } set { } }
@@ -9622,7 +9711,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoInternalNoteAttribute("Stub, not implemented")]
         public bool UseCompatibleStateImageBehavior { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.View)(0))]
         public System.Windows.Forms.View View { get { throw null; } set { } }
@@ -9723,6 +9811,7 @@ namespace System.Windows.Forms
         public void Sort() { }
         public override string ToString() { throw null; }
         protected void UpdateExtendedStyles() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.ComponentModel.ListBindableAttribute(false)]
         public partial class CheckedIndexCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
@@ -9954,6 +10043,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.LocalizableAttribute(false)]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public object Tag { get { throw null; } set { } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -10125,7 +10215,10 @@ namespace System.Windows.Forms
         public System.Drawing.Rectangle GetBounds(System.Windows.Forms.ItemBoundsPortion portion) { throw null; }
         public System.Windows.Forms.ListViewItem.ListViewSubItem GetSubItemAt(int x, int y) { throw null; }
         public virtual void Remove() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected virtual void Serialize(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
         [System.ComponentModel.DefaultPropertyAttribute("Text")]
@@ -10234,7 +10327,7 @@ namespace System.Windows.Forms
         public int StartIndex { get { throw null; } }
     }
     public delegate void ListViewVirtualItemsSelectionRangeChangedEventHandler(object sender, System.Windows.Forms.ListViewVirtualItemsSelectionRangeChangedEventArgs e);
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms.MainMenu", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms.MainMenu")]
     public partial class MainMenu : System.Windows.Forms.Menu
     {
         public MainMenu() : base (default(System.Windows.Forms.MenuItem[])) { }
@@ -10247,6 +10340,7 @@ namespace System.Windows.Forms
         public virtual System.Windows.Forms.MainMenu CloneMenu() { throw null; }
         protected override System.IntPtr CreateMenuHandle() { throw null; }
         protected override void Dispose(bool disposing) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public System.Windows.Forms.Form GetForm() { throw null; }
         protected internal virtual void OnCollapse(System.EventArgs e) { }
         public override string ToString() { throw null; }
@@ -10277,7 +10371,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new bool CanUndo { get { throw null; } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public System.Globalization.CultureInfo Culture { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.MaskFormat)(2))]
@@ -10402,7 +10496,9 @@ namespace System.Windows.Forms
         protected override void OnTextChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnValidating(System.ComponentModel.CancelEventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal override bool ProcessKeyMessage(ref System.Windows.Forms.Message m) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new void ScrollToCaret() { }
@@ -10410,6 +10506,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new void Undo() { }
         public object ValidateText() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public enum MaskFormat
@@ -10438,7 +10535,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public System.Windows.Forms.Form[] MdiChildren { get { throw null; } }
         protected override System.Windows.Forms.Control.ControlCollection CreateControlsInstance() { throw null; }
         public void LayoutMdi(System.Windows.Forms.MdiLayout value) { }
@@ -10447,6 +10544,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         protected override void ScaleCore(float dx, float dy) { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public partial class ControlCollection : System.Windows.Forms.Control.ControlCollection
@@ -10474,7 +10572,7 @@ namespace System.Windows.Forms
     }
     public delegate void MeasureItemEventHandler(object sender, System.Windows.Forms.MeasureItemEventArgs e);
     [System.ComponentModel.ListBindableAttribute(false)]
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     public abstract partial class Menu : System.ComponentModel.Component
     {
         public const int FindHandle = 0;
@@ -10486,7 +10584,7 @@ namespace System.Windows.Forms
         public System.IntPtr Handle { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public virtual bool IsParent { get { throw null; } }
+        public virtual bool IsParent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Windows.Forms.MenuItem MdiListItem { get { throw null; } }
@@ -10503,6 +10601,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public object Tag { get { throw null; } set { } }
         protected internal void CloneMenu(System.Windows.Forms.Menu menuSrc) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual System.IntPtr CreateMenuHandle() { throw null; }
         protected override void Dispose(bool disposing) { }
         public System.Windows.Forms.MenuItem FindMenuItem(int type, System.IntPtr value) { throw null; }
@@ -10510,6 +10609,8 @@ namespace System.Windows.Forms
         public System.Windows.Forms.ContextMenu GetContextMenu() { throw null; }
         public System.Windows.Forms.MainMenu GetMainMenu() { throw null; }
         public virtual void MergeMenu(System.Windows.Forms.Menu menuSrc) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal virtual bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) { throw null; }
         public override string ToString() { throw null; }
         [System.ComponentModel.ListBindableAttribute(false)]
@@ -10666,7 +10767,9 @@ namespace System.Windows.Forms
         protected internal override System.Windows.Forms.ToolStripItem CreateDefaultItem(string text, System.Drawing.Image image, System.EventHandler onClick) { throw null; }
         protected virtual void OnMenuActivate(System.EventArgs e) { }
         protected virtual void OnMenuDeactivate(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public enum MergeAction
@@ -10677,6 +10780,7 @@ namespace System.Windows.Forms
         Remove = 3,
         Replace = 2,
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Message
     {
@@ -10703,13 +10807,9 @@ namespace System.Windows.Forms
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton) { throw null; }
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options) { throw null; }
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, bool displayHelpButton) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath, string keyword) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath, System.Windows.Forms.HelpNavigator navigator) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath, System.Windows.Forms.HelpNavigator navigator, object param) { throw null; }
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text) { throw null; }
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption) { throw null; }
@@ -10717,13 +10817,9 @@ namespace System.Windows.Forms
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon) { throw null; }
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton) { throw null; }
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath, string keyword) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath, System.Windows.Forms.HelpNavigator navigator) { throw null; }
-        [System.MonoTODOAttribute("Help is not implemented")]
         public static System.Windows.Forms.DialogResult Show(System.Windows.Forms.IWin32Window owner, string text, string caption, System.Windows.Forms.MessageBoxButtons buttons, System.Windows.Forms.MessageBoxIcon icon, System.Windows.Forms.MessageBoxDefaultButton defaultButton, System.Windows.Forms.MessageBoxOptions options, string helpFilePath, System.Windows.Forms.HelpNavigator navigator, object param) { throw null; }
     }
     public enum MessageBoxButtons
@@ -10765,7 +10861,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultBindingPropertyAttribute("SelectionRange")]
     [System.ComponentModel.DefaultEventAttribute("DateChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("SelectionRange")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.MonthCalendarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.MonthCalendarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class MonthCalendar : System.Windows.Forms.Control
@@ -10784,7 +10880,7 @@ namespace System.Windows.Forms
         public System.DateTime[] BoldedDates { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Drawing.Size CalendarDimensions { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Windows.Forms.Padding DefaultMargin { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
@@ -10882,6 +10978,8 @@ namespace System.Windows.Forms
         public void AddBoldedDate(System.DateTime date) { }
         public void AddMonthlyBoldedDate(System.DateTime date) { }
         protected override void CreateHandle() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void DefWndProc(ref System.Windows.Forms.Message m) { }
         protected override void Dispose(bool disposing) { }
         public System.Windows.Forms.SelectionRange GetDisplayRange(bool visible) { throw null; }
@@ -10910,6 +11008,7 @@ namespace System.Windows.Forms
         public void SetSelectionRange(System.DateTime date1, System.DateTime date2) { }
         public override string ToString() { throw null; }
         public void UpdateBoldedDates() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         public enum HitArea
         {
@@ -10958,6 +11057,8 @@ namespace System.Windows.Forms
         public int Y { get { throw null; } }
     }
     public delegate void MouseEventHandler(object sender, System.Windows.Forms.MouseEventArgs e);
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class NativeWindow : System.MarshalByRefObject, System.Windows.Forms.IWin32Window
     {
         public NativeWindow() { }
@@ -10991,16 +11092,16 @@ namespace System.Windows.Forms
     public delegate void NodeLabelEditEventHandler(object sender, System.Windows.Forms.NodeLabelEditEventArgs e);
     [System.ComponentModel.DefaultEventAttribute("MouseDoubleClick")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.NotifyIconDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.NotifyIconDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     public sealed partial class NotifyIcon : System.ComponentModel.Component
     {
         public NotifyIcon() { }
         public NotifyIcon(System.ComponentModel.IContainer container) { }
-        [System.ComponentModel.DefaultValueAttribute("None")]
+        [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.ToolTipIcon)(0))]
         public System.Windows.Forms.ToolTipIcon BalloonTipIcon { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public string BalloonTipText { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
@@ -11168,6 +11269,7 @@ namespace System.Windows.Forms
         public System.Drawing.Color ForeColor { get { throw null; } set { } }
         public static System.Windows.Forms.OwnerDrawPropertyBag Copy(System.Windows.Forms.OwnerDrawPropertyBag value) { throw null; }
         public virtual bool IsEmpty() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.PaddingConverter))]
@@ -11233,7 +11335,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
-        [System.MonoTODOAttribute("Stubbed, not implemented")]
         public bool EnableMetric { get { throw null; } set { } }
         public System.Drawing.Printing.Margins MinMargins { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -11263,7 +11364,7 @@ namespace System.Windows.Forms
     public delegate void PaintEventHandler(object sender, System.Windows.Forms.PaintEventArgs e);
     [System.ComponentModel.DefaultEventAttribute("Paint")]
     [System.ComponentModel.DefaultPropertyAttribute("BorderStyle")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(1))]
@@ -11281,7 +11382,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.BorderStyle)(0))]
         [System.Runtime.InteropServices.DispIdAttribute(-504)]
         public System.Windows.Forms.BorderStyle BorderStyle { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public new bool TabStop { get { throw null; } set { } }
@@ -11309,7 +11410,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultBindingPropertyAttribute("Image")]
     [System.ComponentModel.DefaultPropertyAttribute("Image")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PictureBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PictureBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(1))]
@@ -11325,7 +11426,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new bool CausesValidation { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -11501,7 +11602,7 @@ namespace System.Windows.Forms
         public override void OnStartPrint(System.Drawing.Printing.PrintDocument document, System.Drawing.Printing.PrintEventArgs e) { }
     }
     [System.ComponentModel.DefaultPropertyAttribute("Document")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PrintDialogDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PrintDialogDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class PrintDialog : System.Windows.Forms.CommonDialog
     {
         public PrintDialog() { }
@@ -11526,7 +11627,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ShowNetwork { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.MonoTODOAttribute("Stub, not implemented, will always use default dialog")]
         public bool UseEXDialog { get { throw null; } set { } }
         public override void Reset() { }
         protected override bool RunDialog(System.IntPtr hwndOwner) { throw null; }
@@ -11541,7 +11641,7 @@ namespace System.Windows.Forms
         public bool AutoZoom { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(1)]
         public int Columns { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Drawing.Printing.PrintDocument Document { get { throw null; } set { } }
         [System.ComponentModel.AmbientValueAttribute((System.Windows.Forms.RightToLeft)(2))]
@@ -11572,13 +11672,14 @@ namespace System.Windows.Forms
         public override void ResetBackColor() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override void ResetForeColor() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     [System.ComponentModel.DefaultPropertyAttribute("Document")]
     [System.ComponentModel.DesignerAttribute("System.ComponentModel.Design.ComponentDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignTimeVisibleAttribute(true)]
     [System.ComponentModel.ToolboxItemAttribute(true)]
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms.Control.TopLevel", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms.Control.TopLevel")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class PrintPreviewDialog : System.Windows.Forms.Form
@@ -11607,7 +11708,7 @@ namespace System.Windows.Forms
         public new bool AutoScale { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute("This property has been deprecated.  Use AutoScaleDimensions instead.")]
+        [System.ObsoleteAttribute("This property has been deprecated. Use the AutoScaleDimensions property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public override System.Drawing.Size AutoScaleBaseSize { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -11844,10 +11945,11 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new event System.EventHandler VisibleChanged { add { } remove { } }
-        [System.MonoInternalNoteAttribute("Throw InvalidPrinterException")]
         protected override void CreateHandle() { }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessTabKey(bool forward) { throw null; }
     }
     public sealed partial class ProfessionalColors
@@ -11990,7 +12092,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new bool CausesValidation { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -12015,7 +12117,6 @@ namespace System.Windows.Forms
         public new System.Windows.Forms.Padding Padding { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("RTL is not supported")]
         public virtual bool RightToLeftLayout { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(10)]
         public int Step { get { throw null; } set { } }
@@ -12112,9 +12213,11 @@ namespace System.Windows.Forms
         Continuous = 1,
         Marquee = 2,
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PropertyGridDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.PropertyGridDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class PropertyGrid : System.Windows.Forms.ContainerControl, System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser
     {
         public PropertyGrid() { }
@@ -12135,19 +12238,21 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public virtual bool CanShowCommands { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool CanShowVisualStyleGlyphs { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "ControlText")]
         public System.Drawing.Color CategoryForeColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Control")]
         public System.Drawing.Color CategorySplitterColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsActiveLinkColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsBackColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "ControlDark")]
         public System.Drawing.Color CommandsBorderColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsDisabledLinkColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsForeColor { get { throw null; } set { } }
         public System.Drawing.Color CommandsLinkColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Commands are not implemented yet.")]
         public virtual bool CommandsVisible { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public virtual bool CommandsVisibleIfAvailable { get { throw null; } set { } }
@@ -12164,19 +12269,24 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual System.Type DefaultTabType { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "GrayText")]
         public System.Drawing.Color DisabledItemForeColor { get { throw null; } set { } }
         protected bool DrawFlatToolbar { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Drawing.Color ForeColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Control")]
         public System.Drawing.Color HelpBackColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "ControlDark")]
         public System.Drawing.Color HelpBorderColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "ControlText")]
         public System.Drawing.Color HelpForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.ComponentModel.LocalizableAttribute(true)]
         public virtual bool HelpVisible { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool LargeButtons { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "InactiveBorder")]
         public System.Drawing.Color LineColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12192,10 +12302,12 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Forms.GridItem SelectedGridItem { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Highlight")]
         public System.Drawing.Color SelectedItemWithFocusBackColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "HighlightText")]
         public System.Drawing.Color SelectedItemWithFocusForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.PropertyGrid+SelectedObjectConverter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+        [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.PropertyGrid.SelectedObjectConverter")]
         public object SelectedObject { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12205,11 +12317,19 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Forms.Design.PropertyTab SelectedTab { get { throw null; } }
         protected internal override bool ShowFocusCues { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual System.Drawing.Bitmap ShowPropertyPageImage { get { throw null; } }
         public override System.ComponentModel.ISite Site { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual System.Drawing.Bitmap SortByCategoryImage { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual System.Drawing.Bitmap SortByPropertyImage { get { throw null; } }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         bool System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.InPropertySet { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12219,8 +12339,11 @@ namespace System.Windows.Forms
         protected System.Windows.Forms.ToolStripRenderer ToolStripRenderer { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool UseCompatibleTextRendering { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Window")]
         public System.Drawing.Color ViewBackColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "ControlDark")]
         public System.Drawing.Color ViewBorderColor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "WindowText")]
         public System.Drawing.Color ViewForeColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -12270,7 +12393,6 @@ namespace System.Windows.Forms
         protected virtual System.Windows.Forms.Design.PropertyTab CreatePropertyTab(System.Type tabType) { throw null; }
         protected override void Dispose(bool disposing) { }
         public void ExpandAllGridItems() { }
-        [System.MonoTODOAttribute("Never called")]
         protected void OnComComponentNameChanged(System.ComponentModel.Design.ComponentRenameEventArgs e) { }
         protected override void OnEnabledChanged(System.EventArgs e) { }
         protected override void OnFontChanged(System.EventArgs e) { }
@@ -12290,6 +12412,9 @@ namespace System.Windows.Forms
         protected virtual void OnSelectedObjectsChanged(System.EventArgs e) { }
         protected override void OnSystemColorsChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         public override void Refresh() { }
         public void RefreshTabs(System.ComponentModel.PropertyTabScope tabScope) { }
@@ -12297,17 +12422,15 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         protected override void ScaleCore(float dx, float dy) { }
         protected void ShowEventsButton(bool value) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         void System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.DropDownDone() { }
-        [System.MonoTODOAttribute("Not implemented, will throw NotImplementedException")]
         bool System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.EnsurePendingChangesCommitted() { throw null; }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         void System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.HandleF4() { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         void System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.LoadState(Microsoft.Win32.RegistryKey optRoot) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         void System.Windows.Forms.ComponentModel.Com2Interop.IComPropertyBrowser.SaveState(Microsoft.Win32.RegistryKey optRoot) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public partial class PropertyTabCollection : System.Collections.ICollection, System.Collections.IEnumerable
         {
             internal PropertyTabCollection() { }
@@ -12338,7 +12461,6 @@ namespace System.Windows.Forms
         public override void RemoveAt(int index) { }
         public override void ResumeBinding() { }
         public override void SuspendBinding() { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         protected override void UpdateIsBinding() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -12409,11 +12531,11 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Drawing.ContentAlignment)(16))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Drawing.ContentAlignment CheckAlign { get { throw null; } set { } }
-        [System.ComponentModel.BindableAttribute(true, (System.ComponentModel.BindingDirection)(0))]
+        [System.ComponentModel.BindableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.SettingsBindableAttribute(true)]
         public bool Checked { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public new bool TabStop { get { throw null; } set { } }
@@ -12435,6 +12557,7 @@ namespace System.Windows.Forms
         protected override void OnHandleCreated(System.EventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
         public void PerformClick() { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         public override string ToString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -12444,6 +12567,7 @@ namespace System.Windows.Forms
             public override string DefaultAction { get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
         }
     }
@@ -12473,7 +12597,7 @@ namespace System.Windows.Forms
         public int ItemIndex { get { throw null; } }
     }
     public delegate void RetrieveVirtualItemEventHandler(object sender, System.Windows.Forms.RetrieveVirtualItemEventArgs e);
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.RichTextBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.RichTextBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(1))]
@@ -12489,7 +12613,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         public override bool AutoSize { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.MonoTODOAttribute("Value not respected, always true")]
         public bool AutoWordSelection { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -12503,18 +12626,16 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public bool CanRedo { get { throw null; } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool DetectUrls { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public bool EnableAutoDragDrop { get { throw null; } set { } }
         public override System.Drawing.Font Font { get { throw null; } set { } }
         public override System.Drawing.Color ForeColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public System.Windows.Forms.RichTextBoxLanguageOptions LanguageOption { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(2147483647)]
         public override int MaxLength { get { throw null; } set { } }
@@ -12526,12 +12647,9 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public bool RichTextShortcutsEnabled { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoInternalNoteAttribute("Teach TextControl.RecalculateLine to consider the right margin as well")]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public int RightMargin { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12554,17 +12672,14 @@ namespace System.Windows.Forms
         public System.Windows.Forms.HorizontalAlignment SelectionAlignment { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public System.Drawing.Color SelectionBackColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public bool SelectionBullet { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public int SelectionCharOffset { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12575,12 +12690,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public int SelectionHangingIndent { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public int SelectionIndent { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12588,22 +12701,18 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public bool SelectionProtected { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public int SelectionRightIndent { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public int[] SelectionTabs { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Windows.Forms.RichTextBoxSelectionTypes SelectionType { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public bool ShowSelectionMargin { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
@@ -12613,7 +12722,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public string UndoActionName { get { throw null; } }
-        [System.ComponentModel.DefaultValueAttribute(1)]
+        [System.ComponentModel.DefaultValueAttribute(1f)]
         [System.ComponentModel.LocalizableAttribute(true)]
         public float ZoomFactor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -12643,10 +12752,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new event System.Windows.Forms.QueryContinueDragEventHandler QueryContinueDrag { add { } remove { } }
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.EventHandler SelectionChanged { add { } remove { } }
         public event System.EventHandler VScroll { add { } remove { } }
         public bool CanPaste(System.Windows.Forms.DataFormats.Format clipFormat) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected virtual object CreateRichEditOleCallback() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new void DrawToBitmap(System.Drawing.Bitmap bitmap, System.Drawing.Rectangle targetBounds) { }
@@ -12669,7 +12778,6 @@ namespace System.Windows.Forms
         protected override void OnHandleCreated(System.EventArgs e) { }
         protected override void OnHandleDestroyed(System.EventArgs e) { }
         protected virtual void OnHScroll(System.EventArgs e) { }
-        [System.MonoTODOAttribute("Stub, never called")]
         protected virtual void OnImeChange(System.EventArgs e) { }
         protected virtual void OnLinkClicked(System.Windows.Forms.LinkClickedEventArgs e) { }
         protected virtual void OnProtected(System.EventArgs e) { }
@@ -12677,11 +12785,13 @@ namespace System.Windows.Forms
         protected virtual void OnSelectionChanged(System.EventArgs e) { }
         protected virtual void OnVScroll(System.EventArgs e) { }
         public void Paste(System.Windows.Forms.DataFormats.Format clipFormat) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
         public void Redo() { }
         public void SaveFile(System.IO.Stream data, System.Windows.Forms.RichTextBoxStreamType fileType) { }
         public void SaveFile(string path) { }
         public void SaveFile(string path, System.Windows.Forms.RichTextBoxStreamType fileType) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     [System.FlagsAttribute]
@@ -12757,7 +12867,7 @@ namespace System.Windows.Forms
         public RowStyle(System.Windows.Forms.SizeType sizeType, float height) { }
         public float Height { get { throw null; } set { } }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.SaveFileDialogDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.SaveFileDialogDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class SaveFileDialog : System.Windows.Forms.FileDialog
     {
         public SaveFileDialog() { }
@@ -12772,7 +12882,6 @@ namespace System.Windows.Forms
     {
         internal Screen() { }
         public static System.Windows.Forms.Screen[] AllScreens { get { throw null; } }
-        [System.MonoTODOAttribute("Stub, always returns 32")]
         public int BitsPerPixel { get { throw null; } }
         public System.Drawing.Rectangle Bounds { get { throw null; } }
         public string DeviceName { get { throw null; } }
@@ -12800,7 +12909,7 @@ namespace System.Windows.Forms
         Angle270 = 3,
         Angle90 = 1,
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ScrollableControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ScrollableControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ScrollableControl : System.Windows.Forms.Control, System.ComponentModel.IComponent, System.IDisposable
@@ -12821,7 +12930,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Drawing.Point AutoScrollPosition { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public override System.Drawing.Rectangle DisplayRectangle { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12860,6 +12969,7 @@ namespace System.Windows.Forms
         protected void SetDisplayRectLocation(int x, int y) { }
         protected void SetScrollState(int bit, bool value) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.ScrollableControl.DockPaddingEdgesConverter))]
         public partial class DockPaddingEdges : System.ICloneable
@@ -12907,7 +13017,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Windows.Forms.Padding DefaultMargin { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -12998,6 +13108,7 @@ namespace System.Windows.Forms
         protected virtual void OnValueChanged(System.EventArgs e) { }
         public override string ToString() { throw null; }
         protected void UpdateScrollInfo() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public sealed partial class ScrollBarRenderer
@@ -13361,7 +13472,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Drawing.Size AutoScrollMinSize { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
-        [System.ComponentModel.DefaultValueAttribute("{X=0,Y=0}")]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Point), "0, 0")]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Drawing.Point AutoScrollOffset { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -13424,7 +13535,6 @@ namespace System.Windows.Forms
         public int SplitterDistance { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(1)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("Stub, never called")]
         public int SplitterIncrement { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public System.Drawing.Rectangle SplitterRectangle { get { throw null; } }
@@ -13432,7 +13542,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.LocalizableAttribute(true)]
         public int SplitterWidth { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
-        [System.MonoTODOAttribute("Stub, never called")]
         [System.Runtime.InteropServices.DispIdAttribute(-516)]
         public new bool TabStop { get { throw null; } set { } }
         [System.ComponentModel.BindableAttribute(false)]
@@ -13462,11 +13571,9 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new event System.EventHandler TextChanged { add { } remove { } }
-        [System.MonoTODOAttribute]
         public void BeginInit() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override System.Windows.Forms.Control.ControlCollection CreateControlsInstance() { throw null; }
-        [System.MonoTODOAttribute]
         public void EndInit() { }
         protected override void OnGotFocus(System.EventArgs e) { }
         protected override void OnKeyDown(System.Windows.Forms.KeyEventArgs e) { }
@@ -13485,17 +13592,20 @@ namespace System.Windows.Forms
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
         public void OnSplitterMoved(System.Windows.Forms.SplitterEventArgs e) { }
         public void OnSplitterMoving(System.Windows.Forms.SplitterCancelEventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessTabKey(bool forward) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
         protected override void Select(bool directed, bool forward) { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message msg) { }
     }
     [System.ComponentModel.DefaultEventAttribute("SplitterMoved")]
     [System.ComponentModel.DefaultPropertyAttribute("Dock")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.SplitterDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.SplitterDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class Splitter : System.Windows.Forms.Control
@@ -13517,7 +13627,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.BorderStyle)(0))]
         [System.Runtime.InteropServices.DispIdAttribute(-504)]
         public System.Windows.Forms.BorderStyle BorderStyle { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.Cursor DefaultCursor { get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
@@ -13720,7 +13830,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("PanelClick")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.StatusBarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.StatusBarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class StatusBar : System.Windows.Forms.Control
@@ -13735,7 +13845,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.DockStyle)(2))]
@@ -13793,6 +13903,7 @@ namespace System.Windows.Forms
         protected virtual void OnPanelClick(System.Windows.Forms.StatusBarPanelClickEventArgs e) { }
         protected override void OnResize(System.EventArgs e) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.ComponentModel.ListBindableAttribute(false)]
         public partial class StatusBarPanelCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
@@ -13943,6 +14054,7 @@ namespace System.Windows.Forms
         protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs e) { }
         protected virtual void OnSpringTableLayoutCore() { }
         protected override void SetDisplayedItems() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public enum StructFormat
@@ -13954,20 +14066,16 @@ namespace System.Windows.Forms
     public partial class SystemInformation
     {
         internal SystemInformation() { }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int ActiveWindowTrackingDelay { get { throw null; } }
         public static System.Windows.Forms.ArrangeDirection ArrangeDirection { get { throw null; } }
         public static System.Windows.Forms.ArrangeStartingPosition ArrangeStartingPosition { get { throw null; } }
         public static System.Windows.Forms.BootMode BootMode { get { throw null; } }
         public static System.Drawing.Size Border3DSize { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int BorderMultiplierFactor { get { throw null; } }
         public static System.Drawing.Size BorderSize { get { throw null; } }
         public static System.Drawing.Size CaptionButtonSize { get { throw null; } }
         public static int CaptionHeight { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int CaretBlinkTime { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int CaretWidth { get { throw null; } }
         public static string ComputerName { get { throw null; } }
         public static System.Drawing.Size CursorSize { get { throw null; } }
@@ -13978,15 +14086,11 @@ namespace System.Windows.Forms
         public static bool DragFullWindows { get { throw null; } }
         public static System.Drawing.Size DragSize { get { throw null; } }
         public static System.Drawing.Size FixedFrameBorderSize { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int FontSmoothingContrast { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int FontSmoothingType { get { throw null; } }
         public static System.Drawing.Size FrameBorderSize { get { throw null; } }
         public static bool HighContrast { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int HorizontalFocusThickness { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int HorizontalResizeBorderThickness { get { throw null; } }
         public static int HorizontalScrollBarArrowWidth { get { throw null; } }
         public static int HorizontalScrollBarHeight { get { throw null; } }
@@ -13995,49 +14099,32 @@ namespace System.Windows.Forms
         public static System.Drawing.Size IconSize { get { throw null; } }
         public static System.Drawing.Size IconSpacingSize { get { throw null; } }
         public static int IconVerticalSpacing { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsActiveWindowTrackingEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsComboBoxAnimationEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsDropShadowEnabled { get { throw null; } }
         public static bool IsFlatMenuEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsFontSmoothingEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsHotTrackingEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsIconTitleWrappingEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsKeyboardPreferred { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsListBoxSmoothScrollingEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsMenuAnimationEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsMenuFadeEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsMinimizeRestoreAnimationEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsSelectionFadeEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsSnapToDefaultEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsTitleBarGradientEnabled { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool IsToolTipAnimationEnabled { get { throw null; } }
         public static int KanjiWindowHeight { get { throw null; } }
         public static int KeyboardDelay { get { throw null; } }
         public static int KeyboardSpeed { get { throw null; } }
         public static System.Drawing.Size MaxWindowTrackSize { get { throw null; } }
         public static bool MenuAccessKeysUnderlined { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static System.Drawing.Size MenuBarButtonSize { get { throw null; } }
         public static System.Drawing.Size MenuButtonSize { get { throw null; } }
         public static System.Drawing.Size MenuCheckSize { get { throw null; } }
         public static System.Drawing.Font MenuFont { get { throw null; } }
         public static int MenuHeight { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int MenuShowDelay { get { throw null; } }
         public static bool MidEastEnabled { get { throw null; } }
         public static System.Drawing.Size MinimizedWindowSize { get { throw null; } }
@@ -14052,7 +14139,6 @@ namespace System.Windows.Forms
         public static int MouseHoverTime { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public static bool MousePresent { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int MouseSpeed { get { throw null; } }
         public static bool MouseWheelPresent { get { throw null; } }
         public static int MouseWheelScrollDelta { get { throw null; } }
@@ -14060,9 +14146,7 @@ namespace System.Windows.Forms
         public static bool NativeMouseWheelSupport { get { throw null; } }
         public static bool Network { get { throw null; } }
         public static bool PenWindows { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static System.Windows.Forms.LeftRightAlignment PopupMenuAlignment { get { throw null; } }
-        [System.MonoTODOAttribute("Only implemented for Win32.")]
         public static System.Windows.Forms.PowerStatus PowerStatus { get { throw null; } }
         public static System.Drawing.Size PrimaryMonitorMaximizedWindowSize { get { throw null; } }
         public static System.Drawing.Size PrimaryMonitorSize { get { throw null; } }
@@ -14070,22 +14154,17 @@ namespace System.Windows.Forms
         public static System.Windows.Forms.ScreenOrientation ScreenOrientation { get { throw null; } }
         public static bool Secure { get { throw null; } }
         public static bool ShowSounds { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int SizingBorderWidth { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static System.Drawing.Size SmallCaptionButtonSize { get { throw null; } }
         public static System.Drawing.Size SmallIconSize { get { throw null; } }
         public static bool TerminalServerSession { get { throw null; } }
         public static System.Drawing.Size ToolWindowCaptionButtonSize { get { throw null; } }
         public static int ToolWindowCaptionHeight { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static bool UIEffectsEnabled { get { throw null; } }
         public static string UserDomainName { get { throw null; } }
         public static bool UserInteractive { get { throw null; } }
         public static string UserName { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int VerticalFocusThickness { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Determine if we need an X11 implementation or if defaults are good.")]
         public static int VerticalResizeBorderThickness { get { throw null; } }
         public static int VerticalScrollBarArrowHeight { get { throw null; } }
         public static int VerticalScrollBarThumbHeight { get { throw null; } }
@@ -14127,7 +14206,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("SelectedIndexChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("TabPages")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TabControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TabControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class TabControl : System.Windows.Forms.Control
@@ -14149,7 +14228,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         public override System.Drawing.Rectangle DisplayRectangle { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -14172,7 +14251,6 @@ namespace System.Windows.Forms
         public new System.Drawing.Point Padding { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("RTL not supported")]
         public virtual bool RightToLeftLayout { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -14253,6 +14331,7 @@ namespace System.Windows.Forms
         protected virtual void OnSelectedIndexChanged(System.EventArgs e) { }
         protected virtual void OnSelecting(System.Windows.Forms.TabControlCancelEventArgs e) { }
         protected override void OnStyleChanged(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessKeyPreview(ref System.Windows.Forms.Message m) { throw null; }
         protected void RemoveAll() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -14262,6 +14341,7 @@ namespace System.Windows.Forms
         public void SelectTab(System.Windows.Forms.TabPage tabPage) { }
         public override string ToString() { throw null; }
         protected void UpdateTabSelection(bool updateFocus) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public partial class ControlCollection : System.Windows.Forms.Control.ControlCollection
@@ -14366,7 +14446,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultPropertyAttribute("ColumnCount")]
     [System.ComponentModel.Design.Serialization.DesignerSerializerAttribute("System.Windows.Forms.Design.TableLayoutPanelCodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.Serialization.CodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TableLayoutPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TableLayoutPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ProvidePropertyAttribute("CellPosition", typeof(System.Windows.Forms.Control))]
     [System.ComponentModel.ProvidePropertyAttribute("Column", typeof(System.Windows.Forms.Control))]
     [System.ComponentModel.ProvidePropertyAttribute("ColumnSpan", typeof(System.Windows.Forms.Control))]
@@ -14414,7 +14494,7 @@ namespace System.Windows.Forms
         public event System.Windows.Forms.TableLayoutCellPaintEventHandler CellPaint { add { } remove { } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override System.Windows.Forms.Control.ControlCollection CreateControlsInstance() { throw null; }
-        [System.ComponentModel.DefaultValueAttribute(-1)]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Windows.Forms.TableLayoutPanelCellPosition), "-1,-1")]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.DisplayNameAttribute("Cell")]
         public System.Windows.Forms.TableLayoutPanelCellPosition GetCellPosition(System.Windows.Forms.Control control) { throw null; }
@@ -14430,7 +14510,7 @@ namespace System.Windows.Forms
         public int[] GetColumnWidths() { throw null; }
         public System.Windows.Forms.Control GetControlFromPosition(int column, int row) { throw null; }
         public System.Windows.Forms.TableLayoutPanelCellPosition GetPositionFromControl(System.Windows.Forms.Control control) { throw null; }
-        [System.ComponentModel.DefaultValueAttribute("-1")]
+        [System.ComponentModel.DefaultValueAttribute(-1)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.DisplayNameAttribute("Row")]
         public int GetRow(System.Windows.Forms.Control control) { throw null; }
@@ -14523,6 +14603,7 @@ namespace System.Windows.Forms
         public void SetColumnSpan(object control, int value) { }
         public void SetRow(object control, int row) { }
         public void SetRowSpan(object control, int value) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.TableLayoutSettings.StyleConverter")]
@@ -14556,7 +14637,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("Click")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TabPageDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TabPageDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
@@ -14591,7 +14672,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.ImageIndexConverter))]
         public int ImageIndex { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ImageIndexEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ImageIndexEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(2))]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Windows.Forms.ImageKeyConverter))]
@@ -14600,7 +14681,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Drawing.Point Location { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
-        [System.ComponentModel.DefaultValueAttribute("{Width=0, Height=0}")]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Size), "0, 0")]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Drawing.Size MaximumSize { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -14685,7 +14766,7 @@ namespace System.Windows.Forms
         Fixed = 2,
         Normal = 0,
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TextBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TextBoxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class TextBox : System.Windows.Forms.TextBoxBase
@@ -14695,25 +14776,22 @@ namespace System.Windows.Forms
         public bool AcceptsReturn { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteStringCollection AutoCompleteCustomSource { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoCompleteMode)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteMode AutoCompleteMode { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoCompleteSource)(128))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         [System.ComponentModel.TypeConverterAttribute("System.Windows.Forms.TextBoxAutoCompleteSourceConverter")]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteSource AutoCompleteSource { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.CharacterCasing)(0))]
         public System.Windows.Forms.CharacterCasing CharacterCasing { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public override bool Multiline { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute('\0')]
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -14739,7 +14817,9 @@ namespace System.Windows.Forms
         protected override void OnHandleDestroyed(System.EventArgs e) { }
         protected virtual void OnTextAlignChanged(System.EventArgs e) { }
         public void Paste(string text) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     [System.ComponentModel.DefaultBindingPropertyAttribute("Text")]
@@ -14773,7 +14853,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public bool CanUndo { get { throw null; } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.Cursor DefaultCursor { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -14820,7 +14900,7 @@ namespace System.Windows.Forms
         public int SelectionStart { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public virtual bool ShortcutsEnabled { get { throw null; } set { } }
-        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public override string Text { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -14854,12 +14934,12 @@ namespace System.Windows.Forms
         public new event System.EventHandler PaddingChanged { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.MonoTODOAttribute]
         public new event System.Windows.Forms.PaintEventHandler Paint { add { } remove { } }
         public event System.EventHandler ReadOnlyChanged { add { } remove { } }
         public void AppendText(string text) { }
         public void Clear() { }
         public void ClearUndo() { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Clipboard=(System.Security.Permissions.UIPermissionClipboard)(1))]
         public void Copy() { }
         protected override void CreateHandle() { }
         public void Cut() { }
@@ -14883,16 +14963,19 @@ namespace System.Windows.Forms
         protected override void OnPaddingChanged(System.EventArgs e) { }
         protected virtual void OnReadOnlyChanged(System.EventArgs e) { }
         protected override void OnTextChanged(System.EventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Clipboard=(System.Security.Permissions.UIPermissionClipboard)(1))]
         public void Paste() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         public void ScrollToCaret() { }
         public void Select(int start, int length) { }
         public void SelectAll() { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
-        [System.MonoInternalNoteAttribute("Deleting is classed as Typing, instead of its own Undo event")]
         public void Undo() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public sealed partial class TextBoxRenderer
@@ -14973,6 +15056,9 @@ namespace System.Windows.Forms
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ThreadExceptionDialog : System.Windows.Forms.Form
     {
         public ThreadExceptionDialog(System.Exception t) { }
@@ -14993,7 +15079,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("Tick")]
     [System.ComponentModel.DefaultPropertyAttribute("Interval")]
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     public partial class Timer : System.ComponentModel.Component
     {
         public Timer() { }
@@ -15016,7 +15102,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("ButtonClick")]
     [System.ComponentModel.DefaultPropertyAttribute("Buttons")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolBarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolBarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolBar : System.Windows.Forms.Control
@@ -15050,7 +15136,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.LocalizableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public System.Drawing.Size ButtonSize { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
@@ -15135,6 +15221,7 @@ namespace System.Windows.Forms
         protected override void ScaleCore(float dx, float dy) { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         public partial class ToolBarButtonCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
         {
@@ -15175,7 +15262,7 @@ namespace System.Windows.Forms
         Normal = 0,
     }
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolBarButtonDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolBarButtonDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     public partial class ToolBarButton : System.ComponentModel.Component
@@ -15250,17 +15337,15 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultEventAttribute("ItemClicked")]
     [System.ComponentModel.DefaultPropertyAttribute("Items")]
     [System.ComponentModel.Design.Serialization.DesignerSerializerAttribute("System.Windows.Forms.Design.ToolStripCodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.Serialization.CodeDomSerializer, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolStrip : System.Windows.Forms.ScrollableControl, System.ComponentModel.IComponent, System.IDisposable
     {
         public ToolStrip() { }
         public ToolStrip(params System.Windows.Forms.ToolStripItem[] items) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public override bool AllowDrop { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public bool AllowItemReorder { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool AllowMerge { get { throw null; } set { } }
@@ -15331,11 +15416,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Windows.Forms.ImageList ImageList { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("{Width=16, Height=16}")]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Size), "16,16")]
         public System.Drawing.Size ImageScalingSize { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Always returns false, dragging not implemented yet.")]
         public bool IsCurrentlyDragging { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public bool IsDropDown { get { throw null; } }
@@ -15374,7 +15458,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public new event System.EventHandler AutoSizeChanged { add { } remove { } }
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.EventHandler BeginDrag { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public new event System.EventHandler CausesValidationChanged { add { } remove { } }
@@ -15386,7 +15469,6 @@ namespace System.Windows.Forms
         public new event System.Windows.Forms.ControlEventHandler ControlRemoved { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public new event System.EventHandler CursorChanged { add { } remove { } }
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.EventHandler EndDrag { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public new event System.EventHandler ForeColorChanged { add { } remove { } }
@@ -15411,11 +15493,9 @@ namespace System.Windows.Forms
         public virtual System.Windows.Forms.ToolStripItem GetNextItem(System.Windows.Forms.ToolStripItem start, System.Windows.Forms.ArrowDirection direction) { throw null; }
         protected override bool IsInputChar(char charCode) { throw null; }
         protected override bool IsInputKey(System.Windows.Forms.Keys keyData) { throw null; }
-        [System.MonoTODOAttribute("Stub, never called")]
         protected virtual void OnBeginDrag(System.EventArgs e) { }
         protected override void OnDockChanged(System.EventArgs e) { }
         protected override void OnEnabledChanged(System.EventArgs e) { }
-        [System.MonoTODOAttribute("Stub, never called")]
         protected virtual void OnEndDrag(System.EventArgs e) { }
         protected override void OnFontChanged(System.EventArgs e) { }
         protected override void OnHandleCreated(System.EventArgs e) { }
@@ -15444,13 +15524,15 @@ namespace System.Windows.Forms
         protected override void OnScroll(System.Windows.Forms.ScrollEventArgs se) { }
         protected override void OnTabStopChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public void ResetMinimumSize() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         protected virtual void RestoreFocus() { }
         protected override void Select(bool directed, bool forward) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -15461,6 +15543,7 @@ namespace System.Windows.Forms
         protected static void SetItemParent(System.Windows.Forms.ToolStripItem item, System.Windows.Forms.ToolStrip parent) { }
         protected override void SetVisibleCore(bool visible) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ToolStripAccessibleObject : System.Windows.Forms.Control.ControlAccessibleObject
@@ -15521,7 +15604,7 @@ namespace System.Windows.Forms
         public ToolStripComboBox(System.Windows.Forms.Control c) : base (default(System.Windows.Forms.Control)) { }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
-        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Windows.Forms.AutoCompleteStringCollection AutoCompleteCustomSource { get { throw null; } set { } }
@@ -15619,7 +15702,7 @@ namespace System.Windows.Forms
         public void SelectAll() { }
         public override string ToString() { throw null; }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripContainerDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripContainerDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolStripContainer : System.Windows.Forms.ContainerControl
@@ -15724,7 +15807,7 @@ namespace System.Windows.Forms
         protected override void OnSizeChanged(System.EventArgs e) { }
     }
     [System.ComponentModel.DefaultEventAttribute("Load")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripContentPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripContentPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.InitializationEventAttribute("Load")]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
@@ -15942,8 +16025,12 @@ namespace System.Windows.Forms
         protected virtual void OnUnsubscribeControlEvents(System.Windows.Forms.Control control) { }
         protected virtual void OnValidated(System.EventArgs e) { }
         protected virtual void OnValidating(System.ComponentModel.CancelEventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override void ResetBackColor() { }
@@ -15951,7 +16038,7 @@ namespace System.Windows.Forms
         public override void ResetForeColor() { }
         protected override void SetVisibleCore(bool visible) { }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripDropDownDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripDropDownDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolStripDropDown : System.Windows.Forms.ToolStrip
@@ -15980,7 +16067,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Windows.Forms.ContextMenuStrip ContextMenuStrip { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.DockStyle DefaultDock { get { throw null; } }
         public override System.Windows.Forms.ToolStripDropDownDirection DefaultDropDownDirection { get { throw null; } set { } }
         protected override System.Windows.Forms.Padding DefaultPadding { get { throw null; } }
@@ -16142,8 +16229,11 @@ namespace System.Windows.Forms
         protected override void OnParentChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogChar(char charCode) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected override void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -16159,6 +16249,7 @@ namespace System.Windows.Forms
         public void Show(System.Windows.Forms.Control control, System.Drawing.Point position) { }
         public void Show(System.Windows.Forms.Control control, System.Drawing.Point position, System.Windows.Forms.ToolStripDropDownDirection direction) { }
         public void Show(System.Windows.Forms.Control control, int x, int y) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ToolStripDropDownAccessibleObject : System.Windows.Forms.ToolStrip.ToolStripAccessibleObject
@@ -16188,6 +16279,7 @@ namespace System.Windows.Forms
         protected override void OnMouseLeave(System.EventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
     }
     public partial class ToolStripDropDownClosedEventArgs : System.EventArgs
@@ -16221,7 +16313,7 @@ namespace System.Windows.Forms
         Right = 5,
     }
     [System.ComponentModel.DefaultPropertyAttribute("DropDownItems")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripMenuItemDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripMenuItemDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public abstract partial class ToolStripDropDownItem : System.Windows.Forms.ToolStripItem
     {
         protected ToolStripDropDownItem() { }
@@ -16235,6 +16327,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         public System.Windows.Forms.ToolStripItemCollection DropDownItems { get { throw null; } }
         protected internal virtual System.Drawing.Point DropDownLocation { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
         public bool HasDropDown { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public virtual bool HasDropDownItems { get { throw null; } }
@@ -16257,7 +16350,9 @@ namespace System.Windows.Forms
         protected virtual void OnDropDownShow(System.EventArgs e) { }
         protected override void OnFontChanged(System.EventArgs e) { }
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         public void ShowDropDown() { }
     }
@@ -16265,11 +16360,12 @@ namespace System.Windows.Forms
     {
         public ToolStripDropDownItemAccessibleObject(System.Windows.Forms.ToolStripDropDownItem item) : base (default(System.Windows.Forms.ToolStripItem)) { }
         public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public override void DoDefaultAction() { }
         public override System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
         public override int GetChildCount() { throw null; }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripDropDownDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripDropDownDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolStripDropDownMenu : System.Windows.Forms.ToolStripDropDown
@@ -16311,7 +16407,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("Click")]
     [System.ComponentModel.DefaultPropertyAttribute("Text")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripItemDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripItemDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     public abstract partial class ToolStripItem : System.ComponentModel.Component, System.ComponentModel.IComponent, System.IDisposable, System.Windows.Forms.IDropTarget
@@ -16340,7 +16436,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public virtual bool AllowDrop { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AnchorStyles)(5))]
@@ -16447,7 +16542,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public virtual bool Pressed { get { throw null; } }
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("RTL not implemented")]
         public virtual System.Windows.Forms.RightToLeft RightToLeft { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -16473,7 +16567,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.TextImageRelation)(4))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public System.Windows.Forms.TextImageRelation TextImageRelation { get { throw null; } set { } }
-        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public string ToolTipText { get { throw null; } set { } }
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -16490,25 +16584,20 @@ namespace System.Windows.Forms
         public event System.EventHandler DoubleClick { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.Windows.Forms.DragEventHandler DragDrop { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.Windows.Forms.DragEventHandler DragEnter { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.EventHandler DragLeave { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.Windows.Forms.DragEventHandler DragOver { add { } remove { } }
         public event System.EventHandler EnabledChanged { add { } remove { } }
         public event System.EventHandler ForeColorChanged { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.Windows.Forms.GiveFeedbackEventHandler GiveFeedback { add { } remove { } }
         public event System.EventHandler LocationChanged { add { } remove { } }
         public event System.Windows.Forms.MouseEventHandler MouseDown { add { } remove { } }
@@ -16519,11 +16608,9 @@ namespace System.Windows.Forms
         public event System.Windows.Forms.MouseEventHandler MouseUp { add { } remove { } }
         public event System.EventHandler OwnerChanged { add { } remove { } }
         public event System.Windows.Forms.PaintEventHandler Paint { add { } remove { } }
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.Windows.Forms.QueryAccessibilityHelpEventHandler QueryAccessibilityHelp { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Event never raised")]
         public event System.Windows.Forms.QueryContinueDragEventHandler QueryContinueDrag { add { } remove { } }
         public event System.EventHandler RightToLeftChanged { add { } remove { } }
         public event System.EventHandler TextChanged { add { } remove { } }
@@ -16532,7 +16619,7 @@ namespace System.Windows.Forms
         protected virtual System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void Dispose(bool disposing) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute("Stub, does nothing")]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Clipboard=(System.Security.Permissions.UIPermissionClipboard)(1))]
         public System.Windows.Forms.DragDropEffects DoDragDrop(object data, System.Windows.Forms.DragDropEffects allowedEffects) { throw null; }
         public System.Windows.Forms.ToolStrip GetCurrentParent() { throw null; }
         public virtual System.Drawing.Size GetPreferredSize(System.Drawing.Size constrainingSize) { throw null; }
@@ -16590,8 +16677,14 @@ namespace System.Windows.Forms
         protected virtual void OnTextChanged(System.EventArgs e) { }
         protected virtual void OnVisibleChanged(System.EventArgs e) { }
         public void PerformClick() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal virtual bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal virtual bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal virtual bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual void ResetBackColor() { }
@@ -16629,12 +16722,14 @@ namespace System.Windows.Forms
             public override string Help { get { throw null; } }
             public override string KeyboardShortcut { get { throw null; } }
             public override string Name { get { throw null; } set { } }
-            public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
+            public override System.Windows.Forms.AccessibleObject Parent { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2)), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
             public void AddState(System.Windows.Forms.AccessibleStates state) { }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
             public override int GetHelpTopic(out string fileName) { fileName = default(string); throw null; }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navigationDirection) { throw null; }
             public override string ToString() { throw null; }
         }
@@ -16652,6 +16747,7 @@ namespace System.Windows.Forms
     public delegate void ToolStripItemClickedEventHandler(object sender, System.Windows.Forms.ToolStripItemClickedEventArgs e);
     [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ToolStripCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
     [System.ComponentModel.ListBindableAttribute(false)]
+    [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
     public partial class ToolStripItemCollection : System.Windows.Forms.Layout.ArrangedElementCollection, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
         public ToolStripItemCollection(System.Windows.Forms.ToolStrip owner, System.Windows.Forms.ToolStripItem[] value) { }
@@ -16671,7 +16767,6 @@ namespace System.Windows.Forms
         public bool Contains(System.Windows.Forms.ToolStripItem value) { throw null; }
         public virtual bool ContainsKey(string key) { throw null; }
         public void CopyTo(System.Windows.Forms.ToolStripItem[] array, int index) { }
-        [System.MonoTODOAttribute("searchAllChildren parameter isn't used")]
         public System.Windows.Forms.ToolStripItem[] Find(string key, bool searchAllChildren) { throw null; }
         public int IndexOf(System.Windows.Forms.ToolStripItem value) { throw null; }
         public virtual int IndexOfKey(string key) { throw null; }
@@ -16771,6 +16866,7 @@ namespace System.Windows.Forms
         protected override void OnMouseEnter(System.EventArgs e) { }
         protected override void OnMouseLeave(System.EventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
     }
     public enum ToolStripLayoutStyle
@@ -16784,20 +16880,17 @@ namespace System.Windows.Forms
     public sealed partial class ToolStripManager
     {
         internal ToolStripManager() { }
-        public static System.Windows.Forms.ToolStripRenderer Renderer { get { throw null; } set { } }
-        public static System.Windows.Forms.ToolStripManagerRenderMode RenderMode { get { throw null; } set { } }
-        public static bool VisualStylesEnabled { get { throw null; } set { } }
+        public static System.Windows.Forms.ToolStripRenderer Renderer { get { throw null; } [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]set { } }
+        public static System.Windows.Forms.ToolStripManagerRenderMode RenderMode { get { throw null; } [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]set { } }
+        public static bool VisualStylesEnabled { get { throw null; } [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]set { } }
         public static event System.EventHandler RendererChanged { add { } remove { } }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         public static System.Windows.Forms.ToolStrip FindToolStrip(string toolStripName) { throw null; }
         public static bool IsShortcutDefined(System.Windows.Forms.Keys shortcut) { throw null; }
         public static bool IsValidShortcut(System.Windows.Forms.Keys shortcut) { throw null; }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public static void LoadSettings(System.Windows.Forms.Form targetForm) { }
-        [System.MonoTODOAttribute("Stub, does nothing")]
         public static void LoadSettings(System.Windows.Forms.Form targetForm, string key) { }
-        [System.MonoLimitationAttribute("Only supports one level of merging, cannot merge the same ToolStrip multiple times")]
         public static bool Merge(System.Windows.Forms.ToolStrip sourceToolStrip, string targetName) { throw null; }
-        [System.MonoLimitationAttribute("Only supports one level of merging, cannot merge the same ToolStrip multiple times")]
         public static bool Merge(System.Windows.Forms.ToolStrip sourceToolStrip, System.Windows.Forms.ToolStrip targetToolStrip) { throw null; }
         public static bool RevertMerge(string targetName) { throw null; }
         public static bool RevertMerge(System.Windows.Forms.ToolStrip targetToolStrip) { throw null; }
@@ -16869,7 +16962,9 @@ namespace System.Windows.Forms
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnOwnerChanged(System.EventArgs e) { }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected internal override bool ProcessCmdKey(ref System.Windows.Forms.Message m, System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         protected internal override void SetBounds(System.Drawing.Rectangle rect) { }
     }
@@ -16883,7 +16978,6 @@ namespace System.Windows.Forms
         public override System.Windows.Forms.Layout.LayoutEngine LayoutEngine { get { throw null; } }
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public override System.Drawing.Size GetPreferredSize(System.Drawing.Size constrainingSize) { throw null; }
-        [System.MonoInternalNoteAttribute("This should stack in rows of ~3, but for now 1 column will work.")]
         protected override void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
         protected override void SetDisplayedItems() { }
     }
@@ -16904,8 +16998,8 @@ namespace System.Windows.Forms
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
         protected internal override void SetBounds(System.Drawing.Rectangle bounds) { }
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
-    [System.Drawing.ToolboxBitmapAttribute("")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ToolStripPanelDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.ToolStripPanel), "ToolStripPanel_standalone.bmp")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolStripPanel : System.Windows.Forms.ContainerControl, System.ComponentModel.IComponent, System.IDisposable
@@ -16976,13 +17070,9 @@ namespace System.Windows.Forms
         protected override System.Windows.Forms.Control.ControlCollection CreateControlsInstance() { throw null; }
         protected override void Dispose(bool disposing) { }
         public void EndInit() { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void Join(System.Windows.Forms.ToolStrip toolStripToDrag) { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void Join(System.Windows.Forms.ToolStrip toolStripToDrag, System.Drawing.Point location) { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void Join(System.Windows.Forms.ToolStrip toolStripToDrag, int row) { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void Join(System.Windows.Forms.ToolStrip toolStripToDrag, int x, int y) { }
         protected override void OnControlAdded(System.Windows.Forms.ControlEventArgs e) { }
         protected override void OnControlRemoved(System.Windows.Forms.ControlEventArgs e) { }
@@ -17003,7 +17093,7 @@ namespace System.Windows.Forms
             public virtual System.Windows.Forms.ToolStripPanelRow this[int index] { get { throw null; } }
             bool System.Collections.IList.IsFixedSize { get { throw null; } }
             bool System.Collections.IList.IsReadOnly { get { throw null; } }
-            object System.Collections.IList.this[int index] { get { throw null; } [System.MonoTODOAttribute("Stub, does nothing")]set { } }
+            object System.Collections.IList.this[int index] { get { throw null; } set { } }
             public int Add(System.Windows.Forms.ToolStripPanelRow value) { throw null; }
             public void AddRange(System.Windows.Forms.ToolStripPanel.ToolStripPanelRowCollection value) { }
             public void AddRange(System.Windows.Forms.ToolStripPanelRow[] value) { }
@@ -17397,13 +17487,16 @@ namespace System.Windows.Forms
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
         public void PerformButtonClick() { }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual void ResetDropDownButtonWidth() { }
         public partial class ToolStripSplitButtonAccessibleObject : System.Windows.Forms.ToolStripItem.ToolStripItemAccessibleObject
         {
             public ToolStripSplitButtonAccessibleObject(System.Windows.Forms.ToolStripSplitButton item) : base (default(System.Windows.Forms.ToolStripItem)) { }
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public override void DoDefaultAction() { }
         }
     }
@@ -17429,7 +17522,7 @@ namespace System.Windows.Forms
         public override System.Drawing.Size GetPreferredSize(System.Drawing.Size constrainingSize) { throw null; }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
     }
-    [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.BorderSidesEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.BorderSidesEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
     [System.FlagsAttribute]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum ToolStripStatusLabelBorderSides
@@ -17474,17 +17567,14 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteStringCollection AutoCompleteCustomSource { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoCompleteMode)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteMode AutoCompleteMode { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(true)]
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.AutoCompleteSource)(128))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
-        [System.MonoTODOAttribute("AutoCompletion algorithm is currently not implemented.")]
         public System.Windows.Forms.AutoCompleteSource AutoCompleteSource { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -17593,7 +17683,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("Popup")]
     [System.ComponentModel.ProvidePropertyAttribute("ToolTip", typeof(System.Windows.Forms.Control))]
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Windows.Forms")]
     public partial class ToolTip : System.ComponentModel.Component, System.ComponentModel.IExtenderProvider
     {
         public ToolTip() { }
@@ -17605,15 +17695,17 @@ namespace System.Windows.Forms
         public int AutomaticDelay { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public int AutoPopDelay { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Info")]
         public System.Drawing.Color BackColor { get { throw null; } set { } }
-        protected virtual System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected virtual System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2)), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "InfoText")]
         public System.Drawing.Color ForeColor { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public int InitialDelay { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool IsBalloon { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool OwnerDraw { get { throw null; } set { } }
+        public bool OwnerDraw { get { throw null; } [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public int ReshowDelay { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
@@ -17642,7 +17734,7 @@ namespace System.Windows.Forms
         protected override void Dispose(bool disposing) { }
         ~ToolTip() { }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
         [System.ComponentModel.LocalizableAttribute(true)]
         public string GetToolTip(System.Windows.Forms.Control control) { throw null; }
         public void Hide(System.Windows.Forms.IWin32Window win) { }
@@ -17667,7 +17759,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.DefaultBindingPropertyAttribute("Value")]
     [System.ComponentModel.DefaultEventAttribute("Scroll")]
     [System.ComponentModel.DefaultPropertyAttribute("Value")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TrackBarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TrackBarDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class TrackBar : System.Windows.Forms.Control, System.ComponentModel.ISupportInitialize
@@ -17684,7 +17776,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Windows.Forms.ImeMode DefaultImeMode { get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -17787,6 +17879,7 @@ namespace System.Windows.Forms
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public void SetRange(int minValue, int maxValue) { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public sealed partial class TrackBarRenderer
@@ -17931,7 +18024,10 @@ namespace System.Windows.Forms
         public static System.Windows.Forms.TreeNode FromHandle(System.Windows.Forms.TreeView tree, System.IntPtr handle) { throw null; }
         public int GetNodeCount(bool includeSubTrees) { throw null; }
         public void Remove() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected virtual void Serialize(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public void Toggle() { }
         public override string ToString() { throw null; }
@@ -18015,7 +18111,7 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("AfterSelect")]
     [System.ComponentModel.DefaultPropertyAttribute("Nodes")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TreeViewDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.TreeViewDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(1))]
@@ -18034,7 +18130,7 @@ namespace System.Windows.Forms
         public System.Windows.Forms.BorderStyle BorderStyle { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool CheckBoxes { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         protected override bool DoubleBuffered { get { throw null; } set { } }
@@ -18069,6 +18165,7 @@ namespace System.Windows.Forms
         public int ItemHeight { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool LabelEdit { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.Drawing.Color), "Black")]
         public System.Drawing.Color LineColor { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -18198,6 +18295,7 @@ namespace System.Windows.Forms
         protected virtual void OnRightToLeftLayoutChanged(System.EventArgs e) { }
         public void Sort() { }
         public override string ToString() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public enum TreeViewAction
@@ -18301,7 +18399,7 @@ namespace System.Windows.Forms
         CatchException = 2,
         ThrowException = 1,
     }
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.UpDownBaseDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.UpDownBaseDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public abstract partial class UpDownBase : System.Windows.Forms.ContainerControl
@@ -18338,7 +18436,7 @@ namespace System.Windows.Forms
         protected bool ChangingText { get { throw null; } set { } }
         public override System.Windows.Forms.ContextMenu ContextMenu { get { throw null; } set { } }
         public override System.Windows.Forms.ContextMenuStrip ContextMenuStrip { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -18409,6 +18507,7 @@ namespace System.Windows.Forms
         protected abstract void UpdateEditText();
         protected virtual void ValidateEditText() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class UpDownEventArgs : System.EventArgs
@@ -18418,7 +18517,7 @@ namespace System.Windows.Forms
     }
     public delegate void UpDownEventHandler(object source, System.Windows.Forms.UpDownEventArgs e);
     [System.ComponentModel.DefaultEventAttribute("Load")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.ControlDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.UserControlDocumentDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.ComponentModel.Design.IRootDesigner))]
     [System.ComponentModel.DesignerCategoryAttribute("UserControl")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
@@ -18441,7 +18540,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute((System.Windows.Forms.BorderStyle)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public System.Windows.Forms.BorderStyle BorderStyle { get { throw null; } set { } }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.BindableAttribute(false)]
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -18472,6 +18571,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(0))]
         public override bool ValidateChildren(System.Windows.Forms.ValidationConstraints validationConstraints) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     [System.FlagsAttribute]
@@ -18497,7 +18597,7 @@ namespace System.Windows.Forms
     public partial class VScrollBar : System.Windows.Forms.ScrollBar
     {
         public VScrollBar() { }
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected override System.Drawing.Size DefaultSize { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -18512,13 +18612,15 @@ namespace System.Windows.Forms
     }
     [System.ComponentModel.DefaultEventAttribute("DocumentCompleted")]
     [System.ComponentModel.DefaultPropertyAttribute("Url")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.WebBrowserDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Windows.Forms.DockingAttribute((System.Windows.Forms.DockingBehavior)(2))]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class WebBrowser : System.Windows.Forms.WebBrowserBase
     {
-        [System.MonoTODOAttribute("WebBrowser control is only supported on Linux/Windows. No support for OSX.")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
         public WebBrowser() { }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool AllowNavigation { get { throw null; } set { } }
@@ -18557,11 +18659,9 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public bool IsOffline { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
-        [System.MonoTODOAttribute("Stub, not implemented")]
         public bool IsWebBrowserContextMenuEnabled { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.MonoTODOAttribute("Stub, not implemented")]
         public object ObjectForScripting { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -18585,7 +18685,6 @@ namespace System.Windows.Forms
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Version Version { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
-        [System.MonoTODOAttribute("Stub, not implemented")]
         public bool WebBrowserShortcutsEnabled { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public event System.EventHandler CanGoBackChanged { add { } remove { } }
@@ -18603,20 +18702,14 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.MonoTODOAttribute]
         public new event System.EventHandler PaddingChanged { add { } remove { } }
         public event System.Windows.Forms.WebBrowserProgressChangedEventHandler ProgressChanged { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public event System.EventHandler StatusTextChanged { add { } remove { } }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         protected override void AttachInterfaces(object nativeActiveXObject) { }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         protected override void CreateSink() { }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         protected override System.Windows.Forms.WebBrowserSiteBase CreateWebBrowserSiteBase() { throw null; }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         protected override void DetachInterfaces() { }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         protected override void DetachSink() { }
         protected override void Dispose(bool disposing) { }
         public bool GoBack() { throw null; }
@@ -18652,19 +18745,21 @@ namespace System.Windows.Forms
         public void ShowSaveAsDialog() { }
         public void Stop() { }
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
-        [System.MonoTODOAttribute("Stub, not implemented")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected partial class WebBrowserSite : System.Windows.Forms.WebBrowserSiteBase
         {
-            [System.MonoTODOAttribute("Stub, not implemented")]
+            [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
             public WebBrowserSite(System.Windows.Forms.WebBrowser host) { }
         }
     }
     [System.ComponentModel.DefaultEventAttribute("Enter")]
     [System.ComponentModel.DefaultPropertyAttribute("Name")]
-    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.AxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
+    [System.ComponentModel.DesignerAttribute("System.Windows.Forms.Design.AxDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class WebBrowserBase : System.Windows.Forms.Control
     {
         internal WebBrowserBase() { }
@@ -18862,8 +18957,13 @@ namespace System.Windows.Forms
         protected override void OnRightToLeftChanged(System.EventArgs e) { }
         protected override void OnVisibleChanged(System.EventArgs e) { }
         public override bool PreProcessMessage(ref System.Windows.Forms.Message msg) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class WebBrowserDocumentCompletedEventArgs : System.EventArgs
@@ -18917,8 +19017,6 @@ namespace System.Windows.Forms
         IfExpired = 1,
         Normal = 0,
     }
-    [System.MonoTODOAttribute("Needs Implementation")]
-    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class WebBrowserSiteBase : System.IDisposable
     {
         internal WebBrowserSiteBase() { }
@@ -18928,7 +19026,7 @@ namespace System.Windows.Forms
     public sealed partial class WindowsFormsSection : System.Configuration.ConfigurationSection
     {
         public WindowsFormsSection() { }
-        [System.Configuration.ConfigurationPropertyAttribute("jitDebugging", DefaultValue="False")]
+        [System.Configuration.ConfigurationPropertyAttribute("jitDebugging", DefaultValue=false)]
         public bool JitDebugging { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -18946,6 +19044,8 @@ namespace System.Windows.Forms
 }
 namespace System.Windows.Forms.ComponentModel.Com2Interop
 {
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class Com2Variant
     {
         public Com2Variant() { }
@@ -18970,9 +19070,10 @@ namespace System.Windows.Forms.Design
     [System.ComponentModel.ToolboxItemAttribute(false)]
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ComponentEditorForm : System.Windows.Forms.Form
     {
-        [System.MonoTODOAttribute]
         public ComponentEditorForm(object component, System.Type[] pageTypes) { }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -18981,25 +19082,19 @@ namespace System.Windows.Forms.Design
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new event System.EventHandler AutoSizeChanged { add { } remove { } }
-        [System.MonoTODOAttribute]
         protected override void OnActivated(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnHelpRequested(System.Windows.Forms.HelpEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected virtual void OnSelChangeSelector(object source, System.Windows.Forms.TreeViewEventArgs e) { }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public override bool PreProcessMessage(ref System.Windows.Forms.Message msg) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.DialogResult ShowForm() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.DialogResult ShowForm(int page) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.DialogResult ShowForm(System.Windows.Forms.IWin32Window owner) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.DialogResult ShowForm(System.Windows.Forms.IWin32Window owner, int page) { throw null; }
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(1))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class ComponentEditorPage : System.Windows.Forms.Panel
     {
         public ComponentEditorPage() { }
@@ -19009,8 +19104,7 @@ namespace System.Windows.Forms.Design
         public override bool AutoSize { get { throw null; } set { } }
         public bool CommitOnDeactivate { get { throw null; } set { } }
         protected System.ComponentModel.IComponent Component { get { throw null; } set { } }
-        [System.MonoTODOAttribute("Find out what this does.")]
-        protected override System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
+        protected override System.Windows.Forms.CreateParams CreateParams { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         protected bool FirstActivate { get { throw null; } set { } }
         public System.Drawing.Icon Icon { get { throw null; } set { } }
         protected int Loading { get { throw null; } set { } }
@@ -19031,17 +19125,17 @@ namespace System.Windows.Forms.Design
         protected bool IsLoading() { throw null; }
         public virtual bool IsPageMessage(ref System.Windows.Forms.Message msg) { throw null; }
         protected abstract void LoadComponent();
-        [System.MonoTODOAttribute("Find out what this does.")]
         public virtual void OnApplyComplete() { }
         protected virtual void ReloadComponent() { }
         protected abstract void SaveComponent();
         public virtual void SetComponent(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute("Find out what this does.")]
         protected virtual void SetDirty() { }
         public virtual void SetSite(System.Windows.Forms.IComponentEditorPageSite site) { }
         public virtual void ShowHelp() { }
         public virtual bool SupportsHelp() { throw null; }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class EventsTab : System.Windows.Forms.Design.PropertyTab
     {
         public EventsTab(System.IServiceProvider sp) { }
@@ -19052,7 +19146,7 @@ namespace System.Windows.Forms.Design
         public override System.ComponentModel.PropertyDescriptorCollection GetProperties(System.ComponentModel.ITypeDescriptorContext context, object component, System.Attribute[] attributes) { throw null; }
         public override System.ComponentModel.PropertyDescriptorCollection GetProperties(object component, System.Attribute[] attributes) { throw null; }
     }
-    [System.Runtime.InteropServices.GuidAttribute("06a9c74b-5e32-4561-be73-381b37869f4f")]
+    [System.Runtime.InteropServices.GuidAttribute("06A9C74B-5E32-4561-BE73-381B37869F4F")]
     public partial interface IUIService
     {
         System.Collections.IDictionary Styles { get; }
@@ -19075,6 +19169,7 @@ namespace System.Windows.Forms.Design
         void DropDownControl(System.Windows.Forms.Control control);
         System.Windows.Forms.DialogResult ShowDialog(System.Windows.Forms.Form dialog);
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class PropertyTab : System.ComponentModel.IExtenderProvider
     {
         protected PropertyTab() { }
@@ -19112,6 +19207,7 @@ namespace System.Windows.Forms.Design
         public override int GetHashCode() { throw null; }
         public override bool IsDefaultAttribute() { throw null; }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class WindowsFormsComponentEditor : System.ComponentModel.ComponentEditor
     {
         protected WindowsFormsComponentEditor() { }
@@ -19168,6 +19264,8 @@ namespace System.Windows.Forms.PropertyGridInternal
         void ResetBrowsableAttributes();
         void ShowCategories(bool showCategories);
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class PropertiesTab : System.Windows.Forms.Design.PropertyTab
     {
         public PropertiesTab() { }
@@ -19177,6 +19275,8 @@ namespace System.Windows.Forms.PropertyGridInternal
         public override System.ComponentModel.PropertyDescriptorCollection GetProperties(System.ComponentModel.ITypeDescriptorContext context, object component, System.Attribute[] attributes) { throw null; }
         public override System.ComponentModel.PropertyDescriptorCollection GetProperties(object component, System.Attribute[] attributes) { throw null; }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class PropertyGridCommands
     {
         public static readonly System.ComponentModel.Design.CommandID Commands;
@@ -20652,7 +20752,6 @@ namespace System.Windows.Forms.VisualStyles
         public static string Author { get { throw null; } }
         public static string ColorScheme { get { throw null; } }
         public static string Company { get { throw null; } }
-        [System.MonoTODOAttribute("Cannot get this to return the same as MS's...")]
         public static System.Drawing.Color ControlHighlightHot { get { throw null; } }
         public static string Copyright { get { throw null; } }
         public static string Description { get { throw null; } }
@@ -20662,7 +20761,6 @@ namespace System.Windows.Forms.VisualStyles
         public static int MinimumColorDepth { get { throw null; } }
         public static string Size { get { throw null; } }
         public static bool SupportsFlatMenus { get { throw null; } }
-        [System.MonoTODOAttribute("Cannot get this to return the same as MS's...")]
         public static System.Drawing.Color TextControlBorder { get { throw null; } }
         public static string Url { get { throw null; } }
         public static string Version { get { throw null; } }
@@ -20694,15 +20792,12 @@ namespace System.Windows.Forms.VisualStyles
         public System.Drawing.Color GetColor(System.Windows.Forms.VisualStyles.ColorProperty prop) { throw null; }
         public int GetEnumValue(System.Windows.Forms.VisualStyles.EnumProperty prop) { throw null; }
         public string GetFilename(System.Windows.Forms.VisualStyles.FilenameProperty prop) { throw null; }
-        [System.MonoTODOAttribute("I can't get MS's to return anything but null, so I can't really get this one right")]
         public System.Drawing.Font GetFont(System.Drawing.IDeviceContext dc, System.Windows.Forms.VisualStyles.FontProperty prop) { throw null; }
         public int GetInteger(System.Windows.Forms.VisualStyles.IntegerProperty prop) { throw null; }
-        [System.MonoTODOAttribute("MS's causes a PInvokeStackUnbalance on me, so this is not verified against MS.")]
         public System.Windows.Forms.Padding GetMargins(System.Drawing.IDeviceContext dc, System.Windows.Forms.VisualStyles.MarginProperty prop) { throw null; }
         public System.Drawing.Size GetPartSize(System.Drawing.IDeviceContext dc, System.Drawing.Rectangle bounds, System.Windows.Forms.VisualStyles.ThemeSizeType type) { throw null; }
         public System.Drawing.Size GetPartSize(System.Drawing.IDeviceContext dc, System.Windows.Forms.VisualStyles.ThemeSizeType type) { throw null; }
         public System.Drawing.Point GetPoint(System.Windows.Forms.VisualStyles.PointProperty prop) { throw null; }
-        [System.MonoTODOAttribute("Can't find any values that return anything on MS to test against")]
         public string GetString(System.Windows.Forms.VisualStyles.StringProperty prop) { throw null; }
         public System.Drawing.Rectangle GetTextExtent(System.Drawing.IDeviceContext dc, System.Drawing.Rectangle bounds, string textToDraw, System.Windows.Forms.TextFormatFlags flags) { throw null; }
         public System.Drawing.Rectangle GetTextExtent(System.Drawing.IDeviceContext dc, string textToDraw, System.Windows.Forms.TextFormatFlags flags) { throw null; }

@@ -6,11 +6,11 @@
 [assembly:System.CLSCompliantAttribute(true)]
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
-[assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Microsoft Corporation. All rights reserved.")]
+[assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.ComponentModel.Composition.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.ComponentModel.Composition.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.ComponentModel.Composition.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,8 +19,8 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-[assembly:System.Security.SecurityCriticalAttribute]
 namespace System
 {
     [System.SerializableAttribute]
@@ -622,6 +622,7 @@ namespace System.ComponentModel.Composition.Primitives
     public partial class ExportedDelegate
     {
         protected ExportedDelegate() { }
+        [System.Security.SecurityCriticalAttribute]
         public ExportedDelegate(object instance, System.Reflection.MethodInfo method) { }
         public virtual System.Delegate CreateDelegate(System.Type delegateType) { throw null; }
     }
@@ -666,6 +667,7 @@ namespace System.ComponentModel.Composition.ReflectionModel
         public static bool operator ==(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo left, System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo right) { throw null; }
         public static bool operator !=(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo left, System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo right) { throw null; }
     }
+    [System.Security.SecurityCriticalAttribute]
     public static partial class ReflectionModelServices
     {
         public static System.ComponentModel.Composition.Primitives.ExportDefinition CreateExportDefinition(System.ComponentModel.Composition.ReflectionModel.LazyMemberInfo exportingMember, string contractName, System.Lazy<System.Collections.Generic.IDictionary<string, object>> metadata, System.ComponentModel.Composition.Primitives.ICompositionElement origin) { throw null; }

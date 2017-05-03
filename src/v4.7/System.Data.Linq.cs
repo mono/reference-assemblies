@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Data.Linq.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Data.Linq.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Data.Linq.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -22,78 +22,10 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-namespace DbLinq.Util
-{
-    public abstract partial class BaseLock : System.IDisposable
-    {
-        protected System.Threading.ReaderWriterLockSlim _Locks;
-        public BaseLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public abstract void Dispose();
-    }
-    public static partial class Locks
-    {
-        public static System.Threading.ReaderWriterLockSlim GetLockInstance() { throw null; }
-        public static System.Threading.ReaderWriterLockSlim GetLockInstance(System.Threading.LockRecursionPolicy recursionPolicy) { throw null; }
-        public static void GetReadLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public static void GetReadOnlyLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public static void GetWriteLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public static void ReleaseLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public static void ReleaseReadLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public static void ReleaseReadOnlyLock(System.Threading.ReaderWriterLockSlim locks) { }
-        public static void ReleaseWriteLock(System.Threading.ReaderWriterLockSlim locks) { }
-    }
-    public partial class ReadLock : DbLinq.Util.BaseLock
-    {
-        public ReadLock(System.Threading.ReaderWriterLockSlim locks) : base (default(System.Threading.ReaderWriterLockSlim)) { }
-        public override void Dispose() { }
-    }
-    public partial class ReadOnlyLock : DbLinq.Util.BaseLock
-    {
-        public ReadOnlyLock(System.Threading.ReaderWriterLockSlim locks) : base (default(System.Threading.ReaderWriterLockSlim)) { }
-        public override void Dispose() { }
-    }
-    public partial class WriteLock : DbLinq.Util.BaseLock
-    {
-        public WriteLock(System.Threading.ReaderWriterLockSlim locks) : base (default(System.Threading.ReaderWriterLockSlim)) { }
-        public override void Dispose() { }
-    }
-}
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.SecurityTransparentAttribute]
 namespace System.Data.Linq
 {
     [System.Runtime.Serialization.DataContractAttribute]
@@ -121,35 +53,20 @@ namespace System.Data.Linq
     public sealed partial class ChangeConflictCollection : System.Collections.Generic.ICollection<System.Data.Linq.ObjectChangeConflict>, System.Collections.Generic.IEnumerable<System.Data.Linq.ObjectChangeConflict>, System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal ChangeConflictCollection() { }
-        [System.MonoTODOAttribute]
         public int Count { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Data.Linq.ObjectChangeConflict this[int index] { get { throw null; } }
-        [System.MonoTODOAttribute]
         bool System.Collections.Generic.ICollection<System.Data.Linq.ObjectChangeConflict>.IsReadOnly { get { throw null; } }
-        [System.MonoTODOAttribute]
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
-        [System.MonoTODOAttribute]
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Clear() { }
-        [System.MonoTODOAttribute]
         public bool Contains(System.Data.Linq.ObjectChangeConflict item) { throw null; }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Data.Linq.ObjectChangeConflict[] array, int arrayIndex) { }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.IEnumerator<System.Data.Linq.ObjectChangeConflict> GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public bool Remove(System.Data.Linq.ObjectChangeConflict item) { throw null; }
-        [System.MonoTODOAttribute]
         public void ResolveAll(System.Data.Linq.RefreshMode mode) { }
-        [System.MonoTODOAttribute]
         public void ResolveAll(System.Data.Linq.RefreshMode mode, bool autoResolveDeletes) { }
-        [System.MonoTODOAttribute]
         void System.Collections.Generic.ICollection<System.Data.Linq.ObjectChangeConflict>.Add(System.Data.Linq.ObjectChangeConflict item) { }
-        [System.MonoTODOAttribute]
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
-        [System.MonoTODOAttribute]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
     public partial class ChangeConflictException : System.Exception
@@ -161,15 +78,14 @@ namespace System.Data.Linq
     public sealed partial class ChangeSet
     {
         internal ChangeSet() { }
-        public System.Collections.Generic.IList<object> Deletes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<object> Inserts { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<object> Updates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<object> Deletes { get { throw null; } }
+        public System.Collections.Generic.IList<object> Inserts { get { throw null; } }
+        public System.Collections.Generic.IList<object> Updates { get { throw null; } }
         public override string ToString() { throw null; }
     }
     public sealed partial class CompiledQuery
     {
         internal CompiledQuery() { }
-        [System.MonoTODOAttribute]
         public System.Linq.Expressions.LambdaExpression Expression { get { throw null; } }
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
@@ -179,13 +95,9 @@ namespace System.Data.Linq
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TArg6, TArg7, TArg8, TArg9, TArg10, TArg11, TArg12, TArg13, TArg14, TArg15, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Func<TArg0, TResult> Compile<TArg0, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Func<TArg0, TArg1, TResult> Compile<TArg0, TArg1, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Func<TArg0, TArg1, TArg2, TResult> Compile<TArg0, TArg1, TArg2, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
         public static System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TResult> Compile<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TResult>(System.Linq.Expressions.Expression<System.Func<TArg0, TArg1, TArg2, TArg3, TArg4, TArg5, TResult>> query) where TArg0 : System.Data.Linq.DataContext { throw null; }
@@ -208,8 +120,8 @@ namespace System.Data.Linq
         public System.Data.Common.DbConnection Connection { get { throw null; } }
         public bool DeferredLoadingEnabled { get { throw null; } set { } }
         public System.Data.Linq.DataLoadOptions LoadOptions { get { throw null; } set { } }
-        public System.IO.TextWriter Log { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Data.Linq.Mapping.MetaModel Mapping { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IO.TextWriter Log { get { throw null; } set { } }
+        public System.Data.Linq.Mapping.MetaModel Mapping { get { throw null; } }
         public bool ObjectTrackingEnabled { get { throw null; } set { } }
         public System.Data.Common.DbTransaction Transaction { get { throw null; } set { } }
         public void CreateDatabase() { }
@@ -248,9 +160,7 @@ namespace System.Data.Linq
     }
     public static partial class DBConvert
     {
-        [System.MonoTODOAttribute]
         public static object ChangeType(object value, System.Type type) { throw null; }
-        [System.MonoTODOAttribute]
         public static T ChangeType<T>(object value) { throw null; }
     }
     public partial class DuplicateKeyException : System.InvalidOperationException
@@ -352,68 +262,44 @@ namespace System.Data.Linq
         void DeleteOnSubmit(TEntity entity);
         void InsertOnSubmit(TEntity entity);
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Link<T>
     {
-        [System.MonoTODOAttribute]
         public Link(System.Collections.Generic.IEnumerable<T> source) { throw null;}
-        [System.MonoTODOAttribute]
         public Link(System.Data.Linq.Link<T> link) { throw null;}
-        [System.MonoTODOAttribute]
         public Link(T value) { throw null;}
-        [System.MonoTODOAttribute]
         public bool HasLoadedOrAssignedValue { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool HasValue { get { throw null; } }
-        [System.MonoTODOAttribute]
         public T Value { get { throw null; } set { } }
     }
     public sealed partial class MemberChangeConflict
     {
         internal MemberChangeConflict() { }
-        [System.MonoTODOAttribute]
         public object CurrentValue { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object DatabaseValue { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsModified { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsResolved { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Reflection.MemberInfo Member { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object OriginalValue { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Resolve(System.Data.Linq.RefreshMode refreshMode) { }
-        [System.MonoTODOAttribute]
         public void Resolve(object value) { }
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ModifiedMemberInfo
     {
-        [System.MonoTODOAttribute]
         public object CurrentValue { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Reflection.MemberInfo Member { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object OriginalValue { get { throw null; } }
     }
     public sealed partial class ObjectChangeConflict
     {
         internal ObjectChangeConflict() { }
-        [System.MonoTODOAttribute]
         public bool IsDeleted { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsResolved { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Data.Linq.MemberChangeConflict> MemberConflicts { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object Object { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Resolve() { }
-        [System.MonoTODOAttribute]
         public void Resolve(System.Data.Linq.RefreshMode refreshMode) { }
-        [System.MonoTODOAttribute]
         public void Resolve(System.Data.Linq.RefreshMode refreshMode, bool autoResolveDeletes) { }
     }
     public enum RefreshMode
@@ -425,7 +311,7 @@ namespace System.Data.Linq
     public sealed partial class Table<TEntity> : System.Collections.Generic.IEnumerable<TEntity>, System.Collections.IEnumerable, System.ComponentModel.IListSource, System.Data.Linq.ITable, System.Data.Linq.ITable<TEntity>, System.Linq.IQueryable, System.Linq.IQueryable<TEntity>, System.Linq.IQueryProvider where TEntity : class
     {
         internal Table() { }
-        public System.Data.Linq.DataContext Context { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Data.Linq.DataContext Context { get { throw null; } }
         public bool IsReadOnly { get { throw null; } }
         bool System.ComponentModel.IListSource.ContainsListCollection { get { throw null; } }
         System.Type System.Linq.IQueryable.ElementType { get { throw null; } }
@@ -454,13 +340,11 @@ namespace System.Data.Linq
         void System.Data.Linq.ITable.AttachAll(System.Collections.IEnumerable entities, bool asModified) { }
         void System.Data.Linq.ITable.DeleteAllOnSubmit(System.Collections.IEnumerable entities) { }
         void System.Data.Linq.ITable.DeleteOnSubmit(object entity) { }
-        [System.ObsoleteAttribute("NOT IMPLEMENTED YET")]
         System.Data.Linq.ModifiedMemberInfo[] System.Data.Linq.ITable.GetModifiedMembers(object entity) { throw null; }
-        [System.ObsoleteAttribute("NOT IMPLEMENTED YET")]
         object System.Data.Linq.ITable.GetOriginalEntityState(object entity) { throw null; }
         void System.Data.Linq.ITable.InsertAllOnSubmit(System.Collections.IEnumerable entities) { }
         void System.Data.Linq.ITable.InsertOnSubmit(object entity) { }
-        System.Linq.IQueryable System.Linq.IQueryProvider.CreateQuery(System.Linq.Expressions.Expression expression) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining | System.Runtime.CompilerServices.MethodImplOptions.NoOptimization)]System.Linq.IQueryable System.Linq.IQueryProvider.CreateQuery(System.Linq.Expressions.Expression expression) { throw null; }
         System.Linq.IQueryable<TResult> System.Linq.IQueryProvider.CreateQuery<TResult>(System.Linq.Expressions.Expression expression) { throw null; }
         object System.Linq.IQueryProvider.Execute(System.Linq.Expressions.Expression expression) { throw null; }
         TResult System.Linq.IQueryProvider.Execute<TResult>(System.Linq.Expressions.Expression expression) { throw null; }
@@ -473,12 +357,12 @@ namespace System.Data.Linq.Mapping
     public sealed partial class AssociationAttribute : System.Data.Linq.Mapping.DataAttribute
     {
         public AssociationAttribute() { }
-        public bool DeleteOnNull { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string DeleteRule { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsForeignKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsUnique { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string OtherKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string ThisKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool DeleteOnNull { get { throw null; } set { } }
+        public string DeleteRule { get { throw null; } set { } }
+        public bool IsForeignKey { get { throw null; } set { } }
+        public bool IsUnique { get { throw null; } set { } }
+        public string OtherKey { get { throw null; } set { } }
+        public string ThisKey { get { throw null; } set { } }
     }
     public sealed partial class AttributeMappingSource : System.Data.Linq.Mapping.MappingSource
     {
@@ -497,42 +381,42 @@ namespace System.Data.Linq.Mapping
     public sealed partial class ColumnAttribute : System.Data.Linq.Mapping.DataAttribute
     {
         public ColumnAttribute() { }
-        public System.Data.Linq.Mapping.AutoSync AutoSync { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool CanBeNull { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string DbType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Expression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsDbGenerated { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsDiscriminator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsPrimaryKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Data.Linq.Mapping.UpdateCheck UpdateCheck { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Data.Linq.Mapping.AutoSync AutoSync { get { throw null; } set { } }
+        public bool CanBeNull { get { throw null; } set { } }
+        public string DbType { get { throw null; } set { } }
+        public string Expression { get { throw null; } set { } }
+        public bool IsDbGenerated { get { throw null; } set { } }
+        public bool IsDiscriminator { get { throw null; } set { } }
+        public bool IsPrimaryKey { get { throw null; } set { } }
+        public bool IsVersion { get { throw null; } set { } }
+        public System.Data.Linq.Mapping.UpdateCheck UpdateCheck { get { throw null; } set { } }
     }
     public abstract partial class DataAttribute : System.Attribute
     {
         protected DataAttribute() { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Storage { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
+        public string Storage { get { throw null; } set { } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false)]
     public sealed partial class DatabaseAttribute : System.Attribute
     {
         public DatabaseAttribute() { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64), AllowMultiple=false)]
     public sealed partial class FunctionAttribute : System.Attribute
     {
         public FunctionAttribute() { }
-        public bool IsComposable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IsComposable { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=true, Inherited=false)]
     public sealed partial class InheritanceMappingAttribute : System.Attribute
     {
         public InheritanceMappingAttribute() { }
-        public object Code { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsDefault { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public object Code { get { throw null; } set { } }
+        public bool IsDefault { get { throw null; } set { } }
+        public System.Type Type { get { throw null; } set { } }
     }
     public abstract partial class MappingSource
     {
@@ -545,11 +429,8 @@ namespace System.Data.Linq.Mapping
         protected MetaAccessor() { }
         public abstract System.Type Type { get; }
         public abstract object GetBoxedValue(object instance);
-        [System.MonoTODOAttribute]
         public virtual bool HasAssignedValue(object instance) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool HasLoadedValue(object instance) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool HasValue(object instance) { throw null; }
         public abstract void SetBoxedValue(ref object instance, object value);
     }
@@ -692,8 +573,8 @@ namespace System.Data.Linq.Mapping
     public sealed partial class ParameterAttribute : System.Attribute
     {
         public ParameterAttribute() { }
-        public string DbType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string DbType { get { throw null; } set { } }
+        public string Name { get { throw null; } set { } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false)]
     public sealed partial class ProviderAttribute : System.Attribute
@@ -712,7 +593,7 @@ namespace System.Data.Linq.Mapping
     public sealed partial class TableAttribute : System.Attribute
     {
         public TableAttribute() { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { get { throw null; } set { } }
     }
     public enum UpdateCheck
     {
@@ -746,95 +627,52 @@ namespace System.Data.Linq.SqlClient
     }
     public static partial class SqlHelpers
     {
-        [System.MonoTODOAttribute]
         public static string GetStringContainsPattern(string text, char escape) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetStringEndsWithPattern(string text, char escape) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetStringStartsWithPattern(string text, char escape) { throw null; }
-        [System.MonoTODOAttribute]
         public static string TranslateVBLikePattern(string pattern, char escape) { throw null; }
     }
     public static partial class SqlMethods
     {
-        [System.MonoTODOAttribute]
         public static int DateDiffDay(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffDay(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffDay(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffDay(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffHour(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffHour(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffHour(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffHour(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMicrosecond(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMicrosecond(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMicrosecond(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMicrosecond(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMillisecond(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMillisecond(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMillisecond(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMillisecond(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMinute(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMinute(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMinute(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMinute(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMonth(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffMonth(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMonth(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffMonth(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffNanosecond(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffNanosecond(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffNanosecond(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffNanosecond(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffSecond(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffSecond(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffSecond(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffSecond(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffYear(System.DateTime startDate, System.DateTime endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static int DateDiffYear(System.DateTimeOffset startDate, System.DateTimeOffset endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffYear(System.Nullable<System.DateTimeOffset> startDate, System.Nullable<System.DateTimeOffset> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Nullable<int> DateDiffYear(System.Nullable<System.DateTime> startDate, System.Nullable<System.DateTime> endDate) { throw null; }
-        [System.MonoTODOAttribute]
         public static bool Like(string matchExpression, string pattern) { throw null; }
-        [System.MonoTODOAttribute]
         public static bool Like(string matchExpression, string pattern, char escapeCharacter) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class SqlProvider : System.IDisposable
     {
         public SqlProvider() { }
@@ -846,29 +684,17 @@ namespace System.Data.Linq.SqlClient.Implementation
 {
     public abstract partial class ObjectMaterializer<TDataReader> where TDataReader : System.Data.Common.DbDataReader
     {
-        [System.MonoTODOAttribute]
         public object[] Arguments;
-        [System.MonoTODOAttribute]
         public System.Data.Common.DbDataReader BufferReader;
-        [System.MonoTODOAttribute]
         public TDataReader DataReader;
-        [System.MonoTODOAttribute]
         public object[] Globals;
-        [System.MonoTODOAttribute]
         public object[] Locals;
-        [System.MonoTODOAttribute]
         public int[] Ordinals;
-        [System.MonoTODOAttribute]
         public ObjectMaterializer() { }
-        [System.MonoTODOAttribute]
         public abstract bool CanDeferLoad { get; }
-        [System.MonoTODOAttribute]
         public static System.Collections.Generic.IEnumerable<TOutput> Convert<TOutput>(System.Collections.IEnumerable source) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Linq.IGrouping<TKey, TElement> CreateGroup<TKey, TElement>(TKey key, System.Collections.Generic.IEnumerable<TElement> items) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Linq.IOrderedEnumerable<TElement> CreateOrderedEnumerable<TElement>(System.Collections.Generic.IEnumerable<TElement> items) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Exception ErrorAssignmentToNull(System.Type type) { throw null; }
         public abstract System.Collections.IEnumerable ExecuteSubQuery(int iSubQuery, object[] args);
         public abstract System.Collections.Generic.IEnumerable<T> GetLinkSource<T>(int globalLink, int localFactory, object[] keyValues);

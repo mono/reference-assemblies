@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.Build.Framework.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.Build.Framework.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.Build.Framework.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,7 +19,9 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(4096))]
 [assembly:System.Runtime.InteropServices.GuidAttribute("D8A9BA71-4724-481d-9CA7-0DA23A1D615C")]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Flags=(System.Security.Permissions.SecurityPermissionFlag)(8))]
 namespace Microsoft.Build.Framework
 {
     public delegate void AnyEventHandler(object sender, Microsoft.Build.Framework.BuildEventArgs e);
@@ -75,12 +77,12 @@ namespace Microsoft.Build.Framework
         public BuildEventContext(int submissionId, int nodeId, int projectInstanceId, int projectContextId, int targetId, int taskId) { }
         public long BuildRequestId { get { throw null; } }
         public static Microsoft.Build.Framework.BuildEventContext Invalid { get { throw null; } }
-        public int NodeId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int ProjectContextId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int ProjectInstanceId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int SubmissionId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int TargetId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int TaskId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int NodeId { get { throw null; } }
+        public int ProjectContextId { get { throw null; } }
+        public int ProjectInstanceId { get { throw null; } }
+        public int SubmissionId { get { throw null; } }
+        public int TargetId { get { throw null; } }
+        public int TaskId { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         public static bool operator ==(Microsoft.Build.Framework.BuildEventContext left, Microsoft.Build.Framework.BuildEventContext right) { throw null; }
@@ -154,6 +156,7 @@ namespace Microsoft.Build.Framework
         public string Subcategory { get { throw null; } }
     }
     public delegate void BuildWarningEventHandler(object sender, Microsoft.Build.Framework.BuildWarningEventArgs e);
+    [System.SerializableAttribute]
     public partial class CriticalBuildMessageEventArgs : Microsoft.Build.Framework.BuildMessageEventArgs
     {
         protected CriticalBuildMessageEventArgs() { }
@@ -206,21 +209,18 @@ namespace Microsoft.Build.Framework
         bool BuildProjectFile(string projectFileName, string[] targetNames, System.Collections.IDictionary globalProperties, System.Collections.IDictionary targetOutputs, string toolsVersion);
         bool BuildProjectFilesInParallel(string[] projectFileNames, string[] targetNames, System.Collections.IDictionary[] globalProperties, System.Collections.IDictionary[] targetOutputsPerProject, string[] toolsVersion, bool useResultsCache, bool unloadProjectsOnCompletion);
     }
-    [System.MonoTODOAttribute]
     public partial interface IBuildEngine3 : Microsoft.Build.Framework.IBuildEngine, Microsoft.Build.Framework.IBuildEngine2
     {
         Microsoft.Build.Framework.BuildEngineResult BuildProjectFilesInParallel(string[] projectFileNames, string[] targetNames, System.Collections.IDictionary[] globalProperties, System.Collections.Generic.IList<string>[] removeGlobalProperties, string[] toolsVersion, bool returnTargetOutputs);
         void Reacquire();
         void Yield();
     }
-    [System.MonoTODOAttribute]
     public partial interface IBuildEngine4 : Microsoft.Build.Framework.IBuildEngine, Microsoft.Build.Framework.IBuildEngine2, Microsoft.Build.Framework.IBuildEngine3
     {
         object GetRegisteredTaskObject(object key, Microsoft.Build.Framework.RegisteredTaskObjectLifetime lifetime);
         void RegisterTaskObject(object key, object obj, Microsoft.Build.Framework.RegisteredTaskObjectLifetime lifetime, bool allowEarlyCollection);
         object UnregisterTaskObject(object key, Microsoft.Build.Framework.RegisteredTaskObjectLifetime lifetime);
     }
-    [System.MonoTODOAttribute("This needs to be taken into consideration in the build engine")]
     public partial interface ICancelableTask : Microsoft.Build.Framework.ITask
     {
         void Cancel();
@@ -340,7 +340,7 @@ namespace Microsoft.Build.Framework
         public LoggerException(string message, System.Exception innerException, string errorCode, string helpKeyword) { }
         public string ErrorCode { get { throw null; } }
         public string HelpKeyword { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -404,15 +404,18 @@ namespace Microsoft.Build.Framework
     {
         public RequiredAttribute() { }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=false)]
     public sealed partial class RequiredRuntimeAttribute : System.Attribute
     {
         public RequiredRuntimeAttribute(string runtimeVersion) { }
         public string RuntimeVersion { get { throw null; } }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=false)]
     public sealed partial class RunInMTAAttribute : System.Attribute
     {
         public RunInMTAAttribute() { }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=false)]
     public sealed partial class RunInSTAAttribute : System.Attribute
     {
         public RunInSTAAttribute() { }
@@ -490,54 +493,66 @@ namespace Microsoft.Build.Framework.XamlTypes
     public sealed partial class Argument : System.ComponentModel.ISupportInitialize
     {
         public Argument() { }
-        public bool IsRequired { get { throw null; } set { } }
-        public string Property { get { throw null; } set { } }
-        public string Separator { get { throw null; } set { } }
+        public bool IsRequired { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Property { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Separator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Arguments")]
+#endif
     public abstract partial class BaseProperty : System.ComponentModel.ISupportInitialize
     {
         protected BaseProperty() { }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Argument> Arguments { get { throw null; } set { } }
-        public string Category { get { throw null; } set { } }
-        public Microsoft.Build.Framework.XamlTypes.Rule ContainingRule { get { throw null; } }
-        public Microsoft.Build.Framework.XamlTypes.DataSource DataSource { get { throw null; } set { } }
-        public string Default { get { throw null; } set { } }
-        public string Description { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Argument> Arguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Category { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Framework.XamlTypes.Rule ContainingRule { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.Framework.XamlTypes.DataSource DataSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string Default { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string Description { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
         public string DisplayName { get { throw null; } set { } }
-        public string F1Keyword { get { throw null; } set { } }
-        public int HelpContext { get { throw null; } set { } }
-        public string HelpFile { get { throw null; } set { } }
-        public string HelpUrl { get { throw null; } set { } }
-        public bool IncludeInCommandLine { get { throw null; } set { } }
-        public bool IsRequired { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
-        public bool MultipleValuesAllowed { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
-        public bool ReadOnly { get { throw null; } set { } }
-        public string Separator { get { throw null; } set { } }
-        public string Subcategory { get { throw null; } set { } }
-        public string Switch { get { throw null; } set { } }
-        public string SwitchPrefix { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.ValueEditor> ValueEditors { get { throw null; } set { } }
-        public bool Visible { get { throw null; } set { } }
+        [System.ComponentModel.LocalizableAttribute(false)]
+        public string F1Keyword { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int HelpContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(false)]
+        public string HelpFile { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(false)]
+        public string HelpUrl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IncludeInCommandLine { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IsRequired { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool MultipleValuesAllowed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool ReadOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Separator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Subcategory { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Switch { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string SwitchPrefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.ValueEditor> ValueEditors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Visible { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual void BeginInit() { }
         public virtual void EndInit() { }
     }
     public sealed partial class BoolProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
     {
         public BoolProperty() { }
-        public string ReverseSwitch { get { throw null; } set { } }
+        public string ReverseSwitch { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public sealed partial class Category : Microsoft.Build.Framework.XamlTypes.CategorySchema, System.ComponentModel.ISupportInitialize
     {
         public Category() { }
-        public string Description { get { throw null; } set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string Description { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
         public string DisplayName { get { throw null; } set { } }
-        public string HelpString { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
-        public string Subtype { get { throw null; } set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string HelpString { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Subtype { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
     }
@@ -545,15 +560,20 @@ namespace Microsoft.Build.Framework.XamlTypes
     {
         protected CategorySchema() { }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Metadata")]
+#endif
     public sealed partial class ContentType : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
     {
         public ContentType() { }
-        public bool DefaultContentTypeForItemType { get { throw null; } set { } }
-        public string DisplayName { get { throw null; } set { } }
-        public string ItemGroupName { get { throw null; } set { } }
-        public string ItemType { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
+        public bool DefaultContentTypeForItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ObsoleteAttribute("Unused.  Use ItemType property instead.", true)]
+        public string ItemGroupName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string ItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
         public string GetMetadata(string metadataName) { throw null; }
@@ -563,14 +583,14 @@ namespace Microsoft.Build.Framework.XamlTypes
     public sealed partial class DataSource : System.ComponentModel.ISupportInitialize
     {
         public DataSource() { }
-        public bool HasConfigurationCondition { get { throw null; } set { } }
-        public string ItemType { get { throw null; } set { } }
-        public string Label { get { throw null; } set { } }
-        public string MSBuildTarget { get { throw null; } set { } }
-        public string PersistedName { get { throw null; } set { } }
-        public string Persistence { get { throw null; } set { } }
-        public Microsoft.Build.Framework.XamlTypes.DefaultValueSourceLocation SourceOfDefaultValue { get { throw null; } set { } }
-        public string SourceType { get { throw null; } set { } }
+        public bool HasConfigurationCondition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string ItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Label { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string MSBuildTarget { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string PersistedName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Persistence { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Framework.XamlTypes.DefaultValueSourceLocation SourceOfDefaultValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string SourceType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
     }
@@ -582,41 +602,50 @@ namespace Microsoft.Build.Framework.XamlTypes
     public sealed partial class DynamicEnumProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
     {
         public DynamicEnumProperty() { }
-        public string EnumProvider { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> ProviderSettings { get { throw null; } set { } }
+        public string EnumProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> ProviderSettings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("AdmissibleValues")]
+#endif
     public sealed partial class EnumProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
     {
         public EnumProperty() { }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.EnumValue> AdmissibleValues { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.EnumValue> AdmissibleValues { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void EndInit() { }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Arguments")]
+#endif
     public sealed partial class EnumValue
     {
         public EnumValue() { }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Argument> Arguments { get { throw null; } set { } }
-        public string Description { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Argument> Arguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string Description { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
         public string DisplayName { get { throw null; } set { } }
-        public string HelpString { get { throw null; } set { } }
-        public bool IsDefault { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
-        public string Switch { get { throw null; } set { } }
-        public string SwitchPrefix { get { throw null; } set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string HelpString { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IsDefault { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Switch { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string SwitchPrefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public sealed partial class FileExtension : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode
     {
         public FileExtension() { }
-        public string ContentType { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
+        public string ContentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
         public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
     }
     public sealed partial class IntProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
     {
         public IntProperty() { }
-        public System.Nullable<int> MaxValue { get { throw null; } set { } }
-        public System.Nullable<int> MinValue { get { throw null; } set { } }
+        public System.Nullable<int> MaxValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Nullable<int> MinValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void EndInit() { }
     }
     public partial interface IProjectSchemaNode
@@ -627,10 +656,11 @@ namespace Microsoft.Build.Framework.XamlTypes
     public sealed partial class ItemType : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
     {
         public ItemType() { }
-        public string DefaultContentType { get { throw null; } set { } }
-        public string DisplayName { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
-        public bool UpToDateCheckInput { get { throw null; } set { } }
+        public string DefaultContentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool UpToDateCheckInput { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
         public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
@@ -639,42 +669,53 @@ namespace Microsoft.Build.Framework.XamlTypes
     public partial class NameValuePair
     {
         public NameValuePair() { }
-        public string Name { get { throw null; } set { } }
-        public string Value { get { throw null; } set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Nodes")]
+#endif
     public sealed partial class ProjectSchemaDefinitions : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode
     {
         public ProjectSchemaDefinitions() { }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode> Nodes { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode> Nodes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
         public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Rule: {Name}")]
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Properties")]
+#endif
     public sealed partial class Rule : Microsoft.Build.Framework.XamlTypes.RuleSchema, Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
     {
         public Rule() { }
-        public string AdditionalInputs { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Category> Categories { get { throw null; } set { } }
-        public string CommandLine { get { throw null; } set { } }
-        public Microsoft.Build.Framework.XamlTypes.DataSource DataSource { get { throw null; } set { } }
-        public string Description { get { throw null; } set { } }
+        public string AdditionalInputs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Category> Categories { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string CommandLine { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Framework.XamlTypes.DataSource DataSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string Description { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
         public string DisplayName { get { throw null; } set { } }
         public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Category> EvaluatedCategories { get { throw null; } }
-        public string ExecutionDescription { get { throw null; } set { } }
-        public string FileExtension { get { throw null; } set { } }
-        public string HelpString { get { throw null; } set { } }
-        public System.Collections.Generic.Dictionary<string, object> Metadata { get { throw null; } set { } }
-        public string Name { get { throw null; } set { } }
-        public int Order { get { throw null; } set { } }
-        public string Outputs { get { throw null; } set { } }
-        public Microsoft.Build.Framework.XamlTypes.RuleOverrideMode OverrideMode { get { throw null; } set { } }
-        public string PageTemplate { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.BaseProperty> Properties { get { throw null; } set { } }
-        public bool PropertyPagesHidden { get { throw null; } set { } }
-        public string Separator { get { throw null; } set { } }
-        public bool ShowOnlyRuleProperties { get { throw null; } set { } }
-        public bool SupportsFileBatching { get { throw null; } set { } }
-        public string SwitchPrefix { get { throw null; } set { } }
-        public string ToolName { get { throw null; } set { } }
+        public string ExecutionDescription { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string FileExtension { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.LocalizableAttribute(true)]
+        public string HelpString { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.Dictionary<string, object> Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int Order { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Outputs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Framework.XamlTypes.RuleOverrideMode OverrideMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string PageTemplate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.BaseProperty> Properties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool PropertyPagesHidden { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Separator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool ShowOnlyRuleProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SupportsFileBatching { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string SwitchPrefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string ToolName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
         public System.Collections.Specialized.OrderedDictionary GetPropertiesByCategory() { throw null; }
@@ -683,10 +724,13 @@ namespace Microsoft.Build.Framework.XamlTypes
         public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
         public System.Collections.Generic.IEnumerable<System.Type> GetSchemaObjectTypes() { throw null; }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Rules")]
+#endif
     public sealed partial class RuleBag : Microsoft.Build.Framework.XamlTypes.IProjectSchemaNode, System.ComponentModel.ISupportInitialize
     {
         public RuleBag() { }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Rule> Rules { get { throw null; } set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.Rule> Rules { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
         public System.Collections.Generic.IEnumerable<object> GetSchemaObjects(System.Type type) { throw null; }
@@ -704,57 +748,26 @@ namespace Microsoft.Build.Framework.XamlTypes
     public sealed partial class StringListProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
     {
         public StringListProperty() { }
-        public string CommandLineValueSeparator { get { throw null; } set { } }
-        public string RendererValueSeparator { get { throw null; } set { } }
-        public string Subtype { get { throw null; } set { } }
+        public string CommandLineValueSeparator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string RendererValueSeparator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Subtype { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public sealed partial class StringProperty : Microsoft.Build.Framework.XamlTypes.BaseProperty
     {
         public StringProperty() { }
-        public string Subtype { get { throw null; } set { } }
+        public string Subtype { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
+#if false
+    [System.Windows.Markup.ContentPropertyAttribute("Metadata")]
+#endif
     public sealed partial class ValueEditor : System.ComponentModel.ISupportInitialize
     {
         public ValueEditor() { }
+        [System.ComponentModel.LocalizableAttribute(true)]
         public string DisplayName { get { throw null; } set { } }
-        public string EditorType { get { throw null; } set { } }
-        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { get { throw null; } set { } }
+        public string EditorType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.List<Microsoft.Build.Framework.XamlTypes.NameValuePair> Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void BeginInit() { }
         public void EndInit() { }
-    }
-}
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
     }
 }

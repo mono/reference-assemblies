@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.IdentityModel.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.IdentityModel.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.IdentityModel.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -21,45 +21,14 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-[assembly:System.Security.SecurityCriticalAttribute((System.Security.SecurityCriticalScope)(0))]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityCriticalAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.IdentityModel
 {
+    [System.SerializableAttribute]
     public partial class AsynchronousOperationException : System.Exception
     {
         public AsynchronousOperationException() { }
@@ -84,6 +53,7 @@ namespace System.IdentityModel
         public static void End(System.IAsyncResult result) { }
         ~AsyncResult() { }
     }
+    [System.SerializableAttribute]
     public partial class BadRequestException : System.IdentityModel.RequestException
     {
         public BadRequestException() { }
@@ -206,6 +176,7 @@ namespace System.IdentityModel
         public void WriteSignature() { }
         public override void WriteStartElement(string prefix, string localName, string ns) { }
     }
+    [System.SerializableAttribute]
     public partial class LimitExceededException : System.SystemException
     {
         public LimitExceededException() { }
@@ -224,6 +195,7 @@ namespace System.IdentityModel
         public override byte[] Decode(byte[] encoded) { throw null; }
         public override byte[] Encode(byte[] value) { throw null; }
     }
+    [System.SerializableAttribute]
     public abstract partial class RequestException : System.Exception
     {
         protected RequestException() { }
@@ -231,6 +203,7 @@ namespace System.IdentityModel
         protected RequestException(string message) { }
         protected RequestException(string message, System.Exception innerException) { }
     }
+    [System.SerializableAttribute]
     public partial class RequestFailedException : System.IdentityModel.RequestException
     {
         public RequestFailedException() { }
@@ -273,6 +246,7 @@ namespace System.IdentityModel
         public virtual bool SymmetricKeyEncryptionRequired { get { throw null; } set { } }
         public virtual bool TokenEncryptionRequired { get { throw null; } set { } }
     }
+    [System.SerializableAttribute]
     public partial class SecurityMessageSerializationException : System.SystemException
     {
         public SecurityMessageSerializationException() { }
@@ -285,7 +259,7 @@ namespace System.IdentityModel
         protected SecurityTokenService(System.IdentityModel.Configuration.SecurityTokenServiceConfiguration securityTokenServiceConfiguration) { }
         public System.Security.Claims.ClaimsPrincipal Principal { get { throw null; } set { } }
         public System.IdentityModel.Protocols.WSTrust.RequestSecurityToken Request { get { throw null; } set { } }
-        public System.IdentityModel.Scope Scope { get { throw null; } set { } }
+        public System.IdentityModel.Scope Scope { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected System.IdentityModel.Tokens.SecurityTokenDescriptor SecurityTokenDescriptor { get { throw null; } set { } }
         public System.IdentityModel.Configuration.SecurityTokenServiceConfiguration SecurityTokenServiceConfiguration { get { throw null; } }
         public virtual System.IAsyncResult BeginCancel(System.Security.Claims.ClaimsPrincipal principal, System.IdentityModel.Protocols.WSTrust.RequestSecurityToken request, System.AsyncCallback callback, object state) { throw null; }
@@ -324,6 +298,7 @@ namespace System.IdentityModel
             public System.IdentityModel.Tokens.SecurityTokenHandler SecurityTokenHandler { get { throw null; } set { } }
         }
     }
+    [System.SerializableAttribute]
     public partial class SignatureVerificationFailedException : System.IdentityModel.Tokens.SecurityTokenException
     {
         public SignatureVerificationFailedException() { }
@@ -340,6 +315,7 @@ namespace System.IdentityModel
         public void Complete(T result, bool completedSynchronously, System.Exception exception) { }
         public static new T End(System.IAsyncResult result) { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class UnsupportedTokenTypeBadRequestException : System.IdentityModel.BadRequestException
     {
         public UnsupportedTokenTypeBadRequestException() { }
@@ -347,6 +323,7 @@ namespace System.IdentityModel
         public UnsupportedTokenTypeBadRequestException(string tokenType) { }
         public UnsupportedTokenTypeBadRequestException(string message, System.Exception exception) { }
         public string TokenType { get { throw null; } set { } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
 }
@@ -361,7 +338,6 @@ namespace System.IdentityModel.Claims
         public object Resource { get { throw null; } }
         public string Right { get { throw null; } }
         public static System.IdentityModel.Claims.Claim System { get { throw null; } }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Claims.Claim CreateDenyOnlyWindowsSidClaim(System.Security.Principal.SecurityIdentifier sid) { throw null; }
         public static System.IdentityModel.Claims.Claim CreateDnsClaim(string dns) { throw null; }
         public static System.IdentityModel.Claims.Claim CreateHashClaim(byte[] hash) { throw null; }
@@ -386,7 +362,6 @@ namespace System.IdentityModel.Claims
         public abstract System.IdentityModel.Claims.ClaimSet Issuer { get; }
         public abstract System.IdentityModel.Claims.Claim this[int index] { get; }
         public static System.IdentityModel.Claims.ClaimSet System { get { throw null; } }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Claims.ClaimSet Windows { get { throw null; } }
         public virtual bool ContainsClaim(System.IdentityModel.Claims.Claim claim) { throw null; }
         public virtual bool ContainsClaim(System.IdentityModel.Claims.Claim claim, System.Collections.Generic.IEqualityComparer<System.IdentityModel.Claims.Claim> comparer) { throw null; }
@@ -442,7 +417,6 @@ namespace System.IdentityModel.Claims
         public override System.Collections.Generic.IEnumerable<System.IdentityModel.Claims.Claim> FindClaims(string claimType, string right) { throw null; }
         public override System.Collections.Generic.IEnumerator<System.IdentityModel.Claims.Claim> GetEnumerator() { throw null; }
         protected void Initialize(System.IdentityModel.Claims.ClaimSet issuer, System.Collections.Generic.IList<System.IdentityModel.Claims.Claim> claims) { }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public static partial class Rights
@@ -452,13 +426,9 @@ namespace System.IdentityModel.Claims
     }
     public partial class WindowsClaimSet : System.IdentityModel.Claims.ClaimSet, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public WindowsClaimSet(System.Security.Principal.WindowsIdentity windowsIdentity) { }
-        [System.MonoTODOAttribute]
         public WindowsClaimSet(System.Security.Principal.WindowsIdentity windowsIdentity, bool includeWindowsGroups) { }
-        [System.MonoTODOAttribute]
         public WindowsClaimSet(System.Security.Principal.WindowsIdentity windowsIdentity, bool includeWindowsGroups, System.DateTime expirationTime) { }
-        [System.MonoTODOAttribute]
         public WindowsClaimSet(System.Security.Principal.WindowsIdentity windowsIdentity, System.DateTime expirationTime) { }
         public WindowsClaimSet(System.Security.Principal.WindowsIdentity windowsIdentity, string authenticationType, bool includeWindowsGroups, System.DateTime expirationTime) { }
         public override int Count { get { throw null; } }
@@ -466,11 +436,8 @@ namespace System.IdentityModel.Claims
         public override System.IdentityModel.Claims.ClaimSet Issuer { get { throw null; } }
         public override System.IdentityModel.Claims.Claim this[int index] { get { throw null; } }
         public System.Security.Principal.WindowsIdentity WindowsIdentity { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         public override System.Collections.Generic.IEnumerable<System.IdentityModel.Claims.Claim> FindClaims(string claimType, string right) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Collections.Generic.IEnumerator<System.IdentityModel.Claims.Claim> GetEnumerator() { throw null; }
         public override string ToString() { throw null; }
     }
@@ -478,17 +445,13 @@ namespace System.IdentityModel.Claims
     {
         public X509CertificateClaimSet(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { }
         public override int Count { get { throw null; } }
-        [System.MonoTODOAttribute("use ParseExact")]
         public System.DateTime ExpirationTime { get { throw null; } }
         public override System.IdentityModel.Claims.ClaimSet Issuer { get { throw null; } }
         public override System.IdentityModel.Claims.Claim this[int index] { get { throw null; } }
         public System.Security.Cryptography.X509Certificates.X509Certificate2 X509Certificate { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         public override System.Collections.Generic.IEnumerable<System.IdentityModel.Claims.Claim> FindClaims(string claimType, string right) { throw null; }
         public override System.Collections.Generic.IEnumerator<System.IdentityModel.Claims.Claim> GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
 }
@@ -498,11 +461,15 @@ namespace System.IdentityModel.Configuration
     {
         public AudienceUriElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("value", IsRequired=true, DefaultValue=" ", IsKey=true)]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Value { get { throw null; } set { } }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.IdentityModel.Configuration.AudienceUriElement), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
     public sealed partial class AudienceUriElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public AudienceUriElementCollection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("mode", IsRequired=false, DefaultValue=(System.IdentityModel.Selectors.AudienceUriMode)(1))]
         public System.IdentityModel.Selectors.AudienceUriMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected override System.Configuration.ConfigurationElement CreateNewElement() { throw null; }
@@ -524,6 +491,8 @@ namespace System.IdentityModel.Configuration
         public CustomTypeElement() { }
         public bool IsConfigured { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.Configuration.TypeNameConverter))]
+        [System.Configuration.ConfigurationPropertyAttribute("type", IsRequired=true, IsKey=true)]
         public System.Type Type { get { throw null; } set { } }
         public static T Resolve<T>(System.IdentityModel.Configuration.CustomTypeElement customTypeElement) where T : class { throw null; }
     }
@@ -574,20 +543,36 @@ namespace System.IdentityModel.Configuration
     public sealed partial class IdentityConfigurationElement : System.Configuration.ConfigurationElement
     {
         public IdentityConfigurationElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("audienceUris", IsRequired=false)]
         public System.IdentityModel.Configuration.AudienceUriElementCollection AudienceUris { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("caches", IsRequired=false)]
         public System.IdentityModel.Configuration.IdentityModelCachesElement Caches { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidation", IsRequired=false)]
         public System.IdentityModel.Configuration.X509CertificateValidationElement CertificateValidation { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("claimsAuthenticationManager", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement ClaimsAuthenticationManager { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("claimsAuthorizationManager", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement ClaimsAuthorizationManager { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("issuerNameRegistry", IsRequired=false)]
         public System.IdentityModel.Configuration.IssuerNameRegistryElement IssuerNameRegistry { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("issuerTokenResolver", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement IssuerTokenResolver { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.IdentityModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maximumClockSkew", IsRequired=false, DefaultValue="00:05:00")]
         public System.TimeSpan MaximumClockSkew { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("saveBootstrapContext", IsRequired=false, DefaultValue=false)]
         public bool SaveBootstrapContext { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.IdentityModel.Configuration.SecurityTokenHandlerSetElementCollection SecurityTokenHandlerSets { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("serviceTokenResolver", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement ServiceTokenResolver { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("tokenReplayDetection", IsRequired=false)]
         public System.IdentityModel.Configuration.TokenReplayDetectionElement TokenReplayDetection { get { throw null; } set { } }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.IdentityModel.Configuration.IdentityConfigurationElement), AddItemName="identityConfiguration", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public sealed partial class IdentityConfigurationElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public IdentityConfigurationElementCollection() { }
@@ -600,49 +585,70 @@ namespace System.IdentityModel.Configuration
     public sealed partial class IdentityModelCaches
     {
         public IdentityModelCaches() { }
-        public System.IdentityModel.Tokens.SessionSecurityTokenCache SessionSecurityTokenCache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.TokenReplayCache TokenReplayCache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.IdentityModel.Tokens.SessionSecurityTokenCache SessionSecurityTokenCache { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.TokenReplayCache TokenReplayCache { get { throw null; } set { } }
     }
     public sealed partial class IdentityModelCachesElement : System.Configuration.ConfigurationElement
     {
         public IdentityModelCachesElement() { }
         public bool IsConfigured { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("sessionSecurityTokenCache", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement SessionSecurityTokenCache { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("tokenReplayCache", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement TokenReplayCache { get { throw null; } set { } }
     }
     public sealed partial class IssuerNameRegistryElement : System.IdentityModel.Configuration.ConfigurationElementInterceptor
     {
         public IssuerNameRegistryElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("type", IsRequired=false, IsKey=false)]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Type { get { throw null; } set { } }
     }
     public sealed partial class SecurityTokenHandlerConfigurationElement : System.Configuration.ConfigurationElement
     {
         public SecurityTokenHandlerConfigurationElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("audienceUris", IsRequired=false)]
         public System.IdentityModel.Configuration.AudienceUriElementCollection AudienceUris { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("caches", IsRequired=false)]
         public System.IdentityModel.Configuration.IdentityModelCachesElement Caches { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidation", IsRequired=false)]
         public System.IdentityModel.Configuration.X509CertificateValidationElement CertificateValidation { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("issuerNameRegistry", IsRequired=false)]
         public System.IdentityModel.Configuration.IssuerNameRegistryElement IssuerNameRegistry { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("issuerTokenResolver", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement IssuerTokenResolver { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.IdentityModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maximumClockSkew", IsRequired=false, DefaultValue="00:05:00")]
         public System.TimeSpan MaximumClockSkew { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("name", IsRequired=false, Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("saveBootstrapContext", IsRequired=false, DefaultValue=false)]
         public bool SaveBootstrapContext { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("serviceTokenResolver", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement ServiceTokenResolver { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("tokenReplayDetection", IsRequired=false)]
         public System.IdentityModel.Configuration.TokenReplayDetectionElement TokenReplayDetection { get { throw null; } set { } }
         protected override void Init() { }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.IdentityModel.Configuration.CustomTypeElement), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public sealed partial class SecurityTokenHandlerElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public SecurityTokenHandlerElementCollection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("securityTokenHandlerConfiguration", IsRequired=false)]
         public System.IdentityModel.Configuration.SecurityTokenHandlerConfigurationElement SecurityTokenHandlerConfiguration { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationElement CreateNewElement() { throw null; }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
         protected override void Init() { }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.IdentityModel.Configuration.SecurityTokenHandlerElementCollection), AddItemName="securityTokenHandlers", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public sealed partial class SecurityTokenHandlerSetElementCollection : System.Configuration.ConfigurationElementCollection
     {
         public SecurityTokenHandlerSetElementCollection() { }
@@ -682,22 +688,30 @@ namespace System.IdentityModel.Configuration
         public SystemIdentityModelSection() { }
         public static System.IdentityModel.Configuration.SystemIdentityModelSection Current { get { throw null; } }
         public static System.IdentityModel.Configuration.IdentityConfigurationElement DefaultIdentityConfigurationElement { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.IdentityModel.Configuration.IdentityConfigurationElementCollection IdentityConfigurationElements { get { throw null; } }
     }
     public sealed partial class TokenReplayDetectionElement : System.Configuration.ConfigurationElement
     {
         public TokenReplayDetectionElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("enabled", IsRequired=false, DefaultValue=false)]
         public bool Enabled { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.IdentityModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("expirationPeriod", IsRequired=false, DefaultValue="10675199.02:48:05.4775807")]
         public System.TimeSpan ExpirationPeriod { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
     public sealed partial class X509CertificateValidationElement : System.Configuration.ConfigurationElement
     {
         public X509CertificateValidationElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", IsRequired=false, DefaultValue=(System.ServiceModel.Security.X509CertificateValidationMode)(3))]
         public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidator", IsRequired=false)]
         public System.IdentityModel.Configuration.CustomTypeElement CertificateValidator { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", IsRequired=false, DefaultValue=(System.Security.Cryptography.X509Certificates.X509RevocationMode)(1))]
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", IsRequired=false, DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2))]
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
     }
 }
@@ -740,7 +754,7 @@ namespace System.IdentityModel.Metadata
         public string DisplayTag { get { throw null; } set { } }
         public string DisplayValue { get { throw null; } set { } }
         public bool Optional { get { throw null; } set { } }
-        public bool WriteOptionalAttribute { get { throw null; } set { } }
+        public bool WriteOptionalAttribute { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public static System.IdentityModel.Metadata.DisplayClaim CreateDisplayClaimFromClaimType(string claimType) { throw null; }
     }
     public partial class EncryptionMethod
@@ -835,6 +849,7 @@ namespace System.IdentityModel.Metadata
         protected MetadataBase() { }
         public System.IdentityModel.Tokens.SigningCredentials SigningCredentials { get { throw null; } set { } }
     }
+    [System.SerializableAttribute]
     public partial class MetadataSerializationException : System.Exception
     {
         public MetadataSerializationException() { }
@@ -850,12 +865,12 @@ namespace System.IdentityModel.Metadata
         public const string LanguagePrefix = "xml";
         public MetadataSerializer() { }
         public MetadataSerializer(System.IdentityModel.Selectors.SecurityTokenSerializer tokenSerializer) { }
-        public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
-        public System.IdentityModel.Selectors.X509CertificateValidator CertificateValidator { get { throw null; } set { } }
-        public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
+        public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.IdentityModel.Selectors.X509CertificateValidator CertificateValidator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.IdentityModel.Selectors.SecurityTokenSerializer SecurityTokenSerializer { get { throw null; } }
         public System.Collections.Generic.List<string> TrustedIssuers { get { throw null; } }
-        public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
+        public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected virtual System.IdentityModel.Metadata.ApplicationServiceDescriptor CreateApplicationServiceInstance() { throw null; }
         protected virtual System.IdentityModel.Metadata.ContactPerson CreateContactPersonInstance() { throw null; }
         protected virtual System.IdentityModel.Metadata.EntitiesDescriptor CreateEntitiesDescriptorInstance() { throw null; }
@@ -995,7 +1010,6 @@ namespace System.IdentityModel.Policy
         public abstract System.DateTime ExpirationTime { get; }
         public abstract string Id { get; }
         public abstract System.Collections.Generic.IDictionary<string, object> Properties { get; }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Policy.AuthorizationContext CreateDefaultAuthorizationContext(System.Collections.Generic.IList<System.IdentityModel.Policy.IAuthorizationPolicy> authorizationPolicies) { throw null; }
     }
     public abstract partial class EvaluationContext
@@ -1029,9 +1043,9 @@ namespace System.IdentityModel.Protocols.WSTrust
     {
         public BinaryExchange(byte[] binaryData, System.Uri valueType) { }
         public BinaryExchange(byte[] binaryData, System.Uri valueType, System.Uri encodingType) { }
-        public byte[] BinaryData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri EncodingType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri ValueType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public byte[] BinaryData { get { throw null; } }
+        public System.Uri EncodingType { get { throw null; } }
+        public System.Uri ValueType { get { throw null; } }
     }
     public partial class ContextItem
     {
@@ -1047,11 +1061,8 @@ namespace System.IdentityModel.Protocols.WSTrust
         public EndpointReference(string uri) { }
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> Details { get { throw null; } }
         public System.Uri Uri { get { throw null; } }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Protocols.WSTrust.EndpointReference ReadFrom(System.Xml.XmlDictionaryReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Protocols.WSTrust.EndpointReference ReadFrom(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public void WriteTo(System.Xml.XmlWriter writer) { }
     }
     public partial class Entropy : System.IdentityModel.Protocols.WSTrust.ProtectedKey
@@ -1061,6 +1072,7 @@ namespace System.IdentityModel.Protocols.WSTrust
         public Entropy(System.IdentityModel.Protocols.WSTrust.ProtectedKey protectedKey) : base (default(byte[])) { }
         public Entropy(int entropySizeInBits) : base (default(byte[])) { }
     }
+    [System.SerializableAttribute]
     public partial class InvalidRequestException : System.IdentityModel.RequestException
     {
         public InvalidRequestException() { }
@@ -1078,8 +1090,8 @@ namespace System.IdentityModel.Protocols.WSTrust
     {
         public Lifetime(System.DateTime created, System.DateTime expires) { }
         public Lifetime(System.Nullable<System.DateTime> created, System.Nullable<System.DateTime> expires) { }
-        public System.Nullable<System.DateTime> Created { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<System.DateTime> Expires { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Nullable<System.DateTime> Created { get { throw null; } set { } }
+        public System.Nullable<System.DateTime> Expires { get { throw null; } set { } }
     }
     public partial class Participants
     {
@@ -1091,7 +1103,7 @@ namespace System.IdentityModel.Protocols.WSTrust
     {
         public ProtectedKey(byte[] secret) { }
         public ProtectedKey(byte[] secret, System.IdentityModel.Tokens.EncryptingCredentials wrappingCredentials) { }
-        public System.IdentityModel.Tokens.EncryptingCredentials WrappingCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IdentityModel.Tokens.EncryptingCredentials WrappingCredentials { get { throw null; } }
         public byte[] GetKeyBytes() { throw null; }
     }
     public partial class Renewing
@@ -1121,15 +1133,15 @@ namespace System.IdentityModel.Protocols.WSTrust
         public RequestedProofToken(byte[] secret, System.IdentityModel.Tokens.EncryptingCredentials wrappingCredentials) { }
         public RequestedProofToken(System.IdentityModel.Protocols.WSTrust.ProtectedKey protectedKey) { }
         public RequestedProofToken(string computedKeyAlgorithm) { }
-        public string ComputedKeyAlgorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.IdentityModel.Protocols.WSTrust.ProtectedKey ProtectedKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ComputedKeyAlgorithm { get { throw null; } }
+        public System.IdentityModel.Protocols.WSTrust.ProtectedKey ProtectedKey { get { throw null; } }
     }
     public partial class RequestedSecurityToken
     {
         public RequestedSecurityToken(System.IdentityModel.Tokens.SecurityToken token) { }
         public RequestedSecurityToken(System.Xml.XmlElement tokenAsXml) { }
-        public System.IdentityModel.Tokens.SecurityToken SecurityToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public virtual System.Xml.XmlElement SecurityTokenXml { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IdentityModel.Tokens.SecurityToken SecurityToken { get { throw null; } }
+        public virtual System.Xml.XmlElement SecurityTokenXml { get { throw null; } }
     }
     public partial class RequestSecurityToken : System.IdentityModel.Protocols.WSTrust.WSTrustMessage
     {
@@ -1158,13 +1170,13 @@ namespace System.IdentityModel.Protocols.WSTrust
     {
         public RequestSecurityTokenResponse() { }
         public RequestSecurityTokenResponse(System.IdentityModel.Protocols.WSTrust.WSTrustMessage message) { }
-        public bool IsFinal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause RequestedAttachedReference { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.RequestedProofToken RequestedProofToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.RequestedSecurityToken RequestedSecurityToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool RequestedTokenCancelled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause RequestedUnattachedReference { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.Status Status { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IsFinal { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause RequestedAttachedReference { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.RequestedProofToken RequestedProofToken { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.RequestedSecurityToken RequestedSecurityToken { get { throw null; } set { } }
+        public bool RequestedTokenCancelled { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause RequestedUnattachedReference { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.Status Status { get { throw null; } set { } }
     }
     public static partial class RequestTypes
     {
@@ -1178,8 +1190,8 @@ namespace System.IdentityModel.Protocols.WSTrust
     public partial class Status
     {
         public Status(string code, string reason) { }
-        public string Code { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Reason { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Code { get { throw null; } set { } }
+        public string Reason { get { throw null; } set { } }
     }
     public partial class UseKey
     {
@@ -1187,8 +1199,8 @@ namespace System.IdentityModel.Protocols.WSTrust
         public UseKey(System.IdentityModel.Tokens.SecurityKeyIdentifier ski) { }
         public UseKey(System.IdentityModel.Tokens.SecurityKeyIdentifier ski, System.IdentityModel.Tokens.SecurityToken token) { }
         public UseKey(System.IdentityModel.Tokens.SecurityToken token) { }
-        public System.IdentityModel.Tokens.SecurityKeyIdentifier SecurityKeyIdentifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.IdentityModel.Tokens.SecurityToken Token { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IdentityModel.Tokens.SecurityKeyIdentifier SecurityKeyIdentifier { get { throw null; } }
+        public System.IdentityModel.Tokens.SecurityToken Token { get { throw null; } }
     }
     public partial class WSTrust13RequestSerializer : System.IdentityModel.Protocols.WSTrust.WSTrustRequestSerializer
     {
@@ -1234,25 +1246,25 @@ namespace System.IdentityModel.Protocols.WSTrust
     public abstract partial class WSTrustMessage : System.IdentityModel.OpenObject
     {
         protected WSTrustMessage() { }
-        public bool AllowPostdating { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.EndpointReference AppliesTo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string AuthenticationType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.BinaryExchange BinaryExchange { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string CanonicalizationAlgorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Context { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string EncryptionAlgorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string EncryptWith { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.Entropy Entropy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<int> KeySizeInBits { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string KeyType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string KeyWrapAlgorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.Lifetime Lifetime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string ReplyTo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string RequestType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string SignatureAlgorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string SignWith { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string TokenType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.UseKey UseKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool AllowPostdating { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.EndpointReference AppliesTo { get { throw null; } set { } }
+        public string AuthenticationType { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.BinaryExchange BinaryExchange { get { throw null; } set { } }
+        public string CanonicalizationAlgorithm { get { throw null; } set { } }
+        public string Context { get { throw null; } set { } }
+        public string EncryptionAlgorithm { get { throw null; } set { } }
+        public string EncryptWith { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.Entropy Entropy { get { throw null; } set { } }
+        public System.Nullable<int> KeySizeInBits { get { throw null; } set { } }
+        public string KeyType { get { throw null; } set { } }
+        public string KeyWrapAlgorithm { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.Lifetime Lifetime { get { throw null; } set { } }
+        public string ReplyTo { get { throw null; } set { } }
+        public string RequestType { get { throw null; } set { } }
+        public string SignatureAlgorithm { get { throw null; } set { } }
+        public string SignWith { get { throw null; } set { } }
+        public string TokenType { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.UseKey UseKey { get { throw null; } set { } }
     }
     public abstract partial class WSTrustRequestSerializer
     {
@@ -1289,6 +1301,7 @@ namespace System.IdentityModel.Protocols.WSTrust
         public System.IdentityModel.Selectors.SecurityTokenResolver TokenResolver { get { throw null; } set { } }
         public System.IdentityModel.Selectors.SecurityTokenResolver UseKeyTokenResolver { get { throw null; } set { } }
     }
+    [System.SerializableAttribute]
     public partial class WSTrustSerializationException : System.Exception, System.Runtime.Serialization.ISerializable
     {
         public WSTrustSerializationException() { }
@@ -1316,31 +1329,24 @@ namespace System.IdentityModel.Selectors
     }
     public partial class KerberosSecurityTokenAuthenticator : System.IdentityModel.Selectors.WindowsSecurityTokenAuthenticator
     {
-        [System.MonoTODOAttribute]
         public KerberosSecurityTokenAuthenticator() { }
-        [System.MonoTODOAttribute]
         public KerberosSecurityTokenAuthenticator(bool includeWindowsGroups) { }
-        [System.MonoTODOAttribute]
         protected override bool CanValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
     }
     public partial class KerberosSecurityTokenProvider : System.IdentityModel.Selectors.SecurityTokenProvider
     {
         public KerberosSecurityTokenProvider(string servicePrincipalName) { }
-        [System.MonoTODOAttribute]
         public KerberosSecurityTokenProvider(string servicePrincipalName, System.Security.Principal.TokenImpersonationLevel tokenImpersonationLevel) { }
-        [System.MonoTODOAttribute]
         public KerberosSecurityTokenProvider(string servicePrincipalName, System.Security.Principal.TokenImpersonationLevel tokenImpersonationLevel, System.Net.NetworkCredential networkCredential) { }
         public System.Net.NetworkCredential NetworkCredential { get { throw null; } }
         public string ServicePrincipalName { get { throw null; } }
         public System.Security.Principal.TokenImpersonationLevel TokenImpersonationLevel { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityToken GetTokenCore(System.TimeSpan timeout) { throw null; }
     }
     public partial class RsaSecurityTokenAuthenticator : System.IdentityModel.Selectors.SecurityTokenAuthenticator
     {
         public RsaSecurityTokenAuthenticator() { }
         protected override bool CanValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute("hmm, what to validate?")]
         protected override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
     }
     public partial class SamlSecurityTokenAuthenticator : System.IdentityModel.Selectors.SecurityTokenAuthenticator
@@ -1350,14 +1356,11 @@ namespace System.IdentityModel.Selectors
         public System.Collections.Generic.IList<string> AllowedAudienceUris { get { throw null; } }
         public System.IdentityModel.Selectors.AudienceUriMode AudienceUriMode { get { throw null; } set { } }
         protected override bool CanValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Claims.ClaimSet ResolveClaimSet(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier) { throw null; }
         public virtual System.IdentityModel.Claims.ClaimSet ResolveClaimSet(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Security.Principal.IIdentity ResolveIdentity(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier) { throw null; }
         public virtual System.Security.Principal.IIdentity ResolveIdentity(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
         protected virtual bool ValidateAudienceRestriction(System.IdentityModel.Tokens.SamlAudienceRestrictionCondition audienceRestrictionCondition) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
     }
     public abstract partial class SecurityTokenAuthenticator
@@ -1383,7 +1386,6 @@ namespace System.IdentityModel.Selectors
         public System.IAsyncResult BeginCancelToken(System.TimeSpan timeout, System.IdentityModel.Tokens.SecurityToken token, System.AsyncCallback callback, object state) { throw null; }
         protected virtual System.IAsyncResult BeginCancelTokenCore(System.TimeSpan timeout, System.IdentityModel.Tokens.SecurityToken token, System.AsyncCallback callback, object state) { throw null; }
         public System.IAsyncResult BeginGetToken(System.TimeSpan timeout, System.AsyncCallback callback, object state) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual System.IAsyncResult BeginGetTokenCore(System.TimeSpan timeout, System.AsyncCallback callback, object state) { throw null; }
         public System.IAsyncResult BeginRenewToken(System.TimeSpan timeout, System.IdentityModel.Tokens.SecurityToken tokenToBeRenewed, System.AsyncCallback callback, object state) { throw null; }
         protected virtual System.IAsyncResult BeginRenewTokenCore(System.TimeSpan timeout, System.IdentityModel.Tokens.SecurityToken tokenToBeRenewed, System.AsyncCallback callback, object state) { throw null; }
@@ -1392,7 +1394,6 @@ namespace System.IdentityModel.Selectors
         public void EndCancelToken(System.IAsyncResult result) { }
         protected virtual void EndCancelTokenCore(System.IAsyncResult result) { }
         public System.IdentityModel.Tokens.SecurityToken EndGetToken(System.IAsyncResult result) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual System.IdentityModel.Tokens.SecurityToken EndGetTokenCore(System.IAsyncResult result) { throw null; }
         public System.IdentityModel.Tokens.SecurityToken EndRenewToken(System.IAsyncResult result) { throw null; }
         protected virtual System.IdentityModel.Tokens.SecurityToken EndRenewTokenCore(System.IAsyncResult result) { throw null; }
@@ -1447,40 +1448,28 @@ namespace System.IdentityModel.Selectors
     public abstract partial class SecurityTokenSerializer
     {
         protected SecurityTokenSerializer() { }
-        [System.MonoTODOAttribute]
         public bool CanReadKeyIdentifier(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public bool CanReadKeyIdentifierClause(System.Xml.XmlReader reader) { throw null; }
         protected abstract bool CanReadKeyIdentifierClauseCore(System.Xml.XmlReader reader);
         protected abstract bool CanReadKeyIdentifierCore(System.Xml.XmlReader reader);
-        [System.MonoTODOAttribute]
         public bool CanReadToken(System.Xml.XmlReader reader) { throw null; }
         protected abstract bool CanReadTokenCore(System.Xml.XmlReader reader);
-        [System.MonoTODOAttribute]
         public bool CanWriteKeyIdentifier(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier) { throw null; }
-        [System.MonoTODOAttribute]
         public bool CanWriteKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         protected abstract bool CanWriteKeyIdentifierClauseCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause);
         protected abstract bool CanWriteKeyIdentifierCore(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier);
-        [System.MonoTODOAttribute]
         public bool CanWriteToken(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
         protected abstract bool CanWriteTokenCore(System.IdentityModel.Tokens.SecurityToken token);
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityKeyIdentifier ReadKeyIdentifier(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityKeyIdentifierClause ReadKeyIdentifierClause(System.Xml.XmlReader reader) { throw null; }
         protected abstract System.IdentityModel.Tokens.SecurityKeyIdentifierClause ReadKeyIdentifierClauseCore(System.Xml.XmlReader reader);
         protected abstract System.IdentityModel.Tokens.SecurityKeyIdentifier ReadKeyIdentifierCore(System.Xml.XmlReader reader);
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityToken ReadToken(System.Xml.XmlReader reader, System.IdentityModel.Selectors.SecurityTokenResolver tokenResolver) { throw null; }
         protected abstract System.IdentityModel.Tokens.SecurityToken ReadTokenCore(System.Xml.XmlReader reader, System.IdentityModel.Selectors.SecurityTokenResolver tokenResolver);
-        [System.MonoTODOAttribute]
         public void WriteKeyIdentifier(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier) { }
-        [System.MonoTODOAttribute]
         public void WriteKeyIdentifierClause(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { }
         protected abstract void WriteKeyIdentifierClauseCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause);
         protected abstract void WriteKeyIdentifierCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier);
-        [System.MonoTODOAttribute]
         public void WriteToken(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token) { }
         protected abstract void WriteTokenCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token);
     }
@@ -1510,20 +1499,15 @@ namespace System.IdentityModel.Selectors
     }
     public partial class WindowsSecurityTokenAuthenticator : System.IdentityModel.Selectors.SecurityTokenAuthenticator
     {
-        [System.MonoTODOAttribute]
         public WindowsSecurityTokenAuthenticator() { }
-        [System.MonoTODOAttribute]
         public WindowsSecurityTokenAuthenticator(bool includeWindowsGroups) { }
-        [System.MonoTODOAttribute]
         protected override bool CanValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
     }
     public partial class WindowsUserNameSecurityTokenAuthenticator : System.IdentityModel.Selectors.UserNameSecurityTokenAuthenticator
     {
         public WindowsUserNameSecurityTokenAuthenticator() { }
         public WindowsUserNameSecurityTokenAuthenticator(bool includeWindowsGroups) { }
-        [System.MonoTODOAttribute]
         protected override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ValidateUserNamePasswordCore(string userName, string password) { throw null; }
     }
     public abstract partial class X509CertificateValidator : System.IdentityModel.Configuration.ICustomIdentityConfiguration
@@ -1588,9 +1572,10 @@ namespace System.IdentityModel.Tokens
     {
         public AudienceRestriction() { }
         public AudienceRestriction(System.IdentityModel.Selectors.AudienceUriMode audienceMode) { }
-        public System.Collections.ObjectModel.Collection<System.Uri> AllowedAudienceUris { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.IdentityModel.Selectors.AudienceUriMode AudienceMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.ObjectModel.Collection<System.Uri> AllowedAudienceUris { get { throw null; } }
+        public System.IdentityModel.Selectors.AudienceUriMode AudienceMode { get { throw null; } set { } }
     }
+    [System.SerializableAttribute]
     public partial class AudienceUriValidationFailedException : System.IdentityModel.Tokens.SecurityTokenValidationException
     {
         public AudienceUriValidationFailedException() { }
@@ -1601,9 +1586,9 @@ namespace System.IdentityModel.Tokens
     public partial class AuthenticationContext
     {
         public AuthenticationContext() { }
-        public System.Collections.ObjectModel.Collection<string> Authorities { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ContextClass { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string ContextDeclaration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.ObjectModel.Collection<string> Authorities { get { throw null; } }
+        public string ContextClass { get { throw null; } set { } }
+        public string ContextDeclaration { get { throw null; } set { } }
     }
     public static partial class AuthenticationMethods
     {
@@ -1640,10 +1625,10 @@ namespace System.IdentityModel.Tokens
         public BootstrapContext(System.IdentityModel.Tokens.SecurityToken token, System.IdentityModel.Tokens.SecurityTokenHandler tokenHandler) { }
         protected BootstrapContext(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public BootstrapContext(string token) { }
-        public System.IdentityModel.Tokens.SecurityToken SecurityToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.IdentityModel.Tokens.SecurityTokenHandler SecurityTokenHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Token { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public byte[] TokenBytes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IdentityModel.Tokens.SecurityToken SecurityToken { get { throw null; } }
+        public System.IdentityModel.Tokens.SecurityTokenHandler SecurityTokenHandler { get { throw null; } }
+        public string Token { get { throw null; } }
+        public byte[] TokenBytes { get { throw null; } }
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public static partial class ComputedKeyAlgorithms
@@ -1683,7 +1668,6 @@ namespace System.IdentityModel.Tokens
         public byte[] GetEncryptedKey() { throw null; }
         public bool Matches(byte[] encryptedKey, string encryptionMethod, string carriedKeyName) { throw null; }
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class EncryptedSecurityToken : System.IdentityModel.Tokens.SecurityToken
@@ -1713,6 +1697,7 @@ namespace System.IdentityModel.Tokens
         public override System.IdentityModel.Tokens.SecurityToken ReadToken(System.Xml.XmlReader reader) { throw null; }
         public override void WriteToken(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token) { }
     }
+    [System.SerializableAttribute]
     public partial class EncryptedTokenDecryptionFailedException : System.IdentityModel.Tokens.SecurityTokenException
     {
         public EncryptedTokenDecryptionFailedException() { }
@@ -1724,9 +1709,9 @@ namespace System.IdentityModel.Tokens
     {
         public EncryptingCredentials() { }
         public EncryptingCredentials(System.IdentityModel.Tokens.SecurityKey key, System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier, string algorithm) { }
-        public string Algorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityKey SecurityKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityKeyIdentifier SecurityKeyIdentifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Algorithm { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityKey SecurityKey { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityKeyIdentifier SecurityKeyIdentifier { get { throw null; } set { } }
     }
     public partial class GenericXmlSecurityKeyIdentifierClause : System.IdentityModel.Tokens.SecurityKeyIdentifierClause
     {
@@ -1740,20 +1725,15 @@ namespace System.IdentityModel.Tokens
         public GenericXmlSecurityToken(System.Xml.XmlElement tokenXml, System.IdentityModel.Tokens.SecurityToken proofToken, System.DateTime effectiveTime, System.DateTime expirationTime, System.IdentityModel.Tokens.SecurityKeyIdentifierClause internalTokenReference, System.IdentityModel.Tokens.SecurityKeyIdentifierClause externalTokenReference, System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> authorizationPolicies) { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> AuthorizationPolicies { get { throw null; } }
         public System.IdentityModel.Tokens.SecurityKeyIdentifierClause ExternalTokenReference { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override string Id { get { throw null; } }
         public System.IdentityModel.Tokens.SecurityKeyIdentifierClause InternalTokenReference { get { throw null; } }
         public System.IdentityModel.Tokens.SecurityToken ProofToken { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
         public System.Xml.XmlElement TokenXml { get { throw null; } }
         public override System.DateTime ValidFrom { get { throw null; } }
         public override System.DateTime ValidTo { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override T CreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         public override string ToString() { throw null; }
     }
@@ -1767,7 +1747,6 @@ namespace System.IdentityModel.Tokens
         public override byte[] GenerateDerivedKey(string algorithm, byte[] label, byte[] nonce, int derivedKeyLength, int offset) { throw null; }
         public override System.Security.Cryptography.ICryptoTransform GetDecryptionTransform(string algorithm, byte[] iv) { throw null; }
         public override System.Security.Cryptography.ICryptoTransform GetEncryptionTransform(string algorithm, byte[] iv) { throw null; }
-        [System.MonoTODOAttribute]
         public override int GetIVSize(string algorithm) { throw null; }
         public override System.Security.Cryptography.KeyedHashAlgorithm GetKeyedHashAlgorithm(string algorithm) { throw null; }
         public override System.Security.Cryptography.SymmetricAlgorithm GetSymmetricAlgorithm(string algorithm) { throw null; }
@@ -1780,11 +1759,8 @@ namespace System.IdentityModel.Tokens
     {
         protected IssuerNameRegistry() { }
         public abstract string GetIssuerName(System.IdentityModel.Tokens.SecurityToken securityToken);
-        [System.MonoTODOAttribute]
         public virtual string GetIssuerName(System.IdentityModel.Tokens.SecurityToken securityToken, string requestedIssuerName) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual string GetWindowsIssuerName() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void LoadCustomConfiguration(System.Xml.XmlNodeList nodelist) { }
     }
     public partial class IssuerTokenResolver : System.IdentityModel.Selectors.SecurityTokenResolver
@@ -1800,51 +1776,33 @@ namespace System.IdentityModel.Tokens
     }
     public partial class KerberosReceiverSecurityToken : System.IdentityModel.Tokens.WindowsSecurityToken
     {
-        [System.MonoTODOAttribute]
         public KerberosReceiverSecurityToken(byte[] request) { }
-        [System.MonoTODOAttribute]
         public KerberosReceiverSecurityToken(byte[] request, string id) { }
         public KerberosReceiverSecurityToken(byte[] request, string id, string valueTypeUri) { }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SymmetricSecurityKey SecurityKey { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
         public override System.DateTime ValidFrom { get { throw null; } }
         public override System.DateTime ValidTo { get { throw null; } }
         public string ValueTypeUri { get { throw null; } }
         public override System.Security.Principal.WindowsIdentity WindowsIdentity { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override T CreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public byte[] GetRequest() { throw null; }
-        [System.MonoTODOAttribute]
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
     public partial class KerberosRequestorSecurityToken : System.IdentityModel.Tokens.SecurityToken
     {
-        [System.MonoTODOAttribute]
         public KerberosRequestorSecurityToken(string servicePrincipalName) { }
-        [System.MonoTODOAttribute]
         public KerberosRequestorSecurityToken(string servicePrincipalName, System.Security.Principal.TokenImpersonationLevel tokenImpersonationLevel, System.Net.NetworkCredential networkCredential, string id) { }
         public override string Id { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SymmetricSecurityKey SecurityKey { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
         public string ServicePrincipalName { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidFrom { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidTo { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override T CreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public byte[] GetRequest() { throw null; }
-        [System.MonoTODOAttribute]
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
     public partial class KerberosSecurityTokenHandler : System.IdentityModel.Tokens.SecurityTokenHandler
@@ -1871,7 +1829,6 @@ namespace System.IdentityModel.Tokens
         public System.Type OwnerType { get { throw null; } }
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         public bool Matches(string localId, System.Type ownerType) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public abstract partial class ProofDescriptor
@@ -1890,35 +1847,23 @@ namespace System.IdentityModel.Tokens
         public byte[] GetModulus() { throw null; }
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         public bool Matches(System.Security.Cryptography.RSA rsa) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
-        [System.MonoTODOAttribute]
         public void WriteExponentAsBase64(System.Xml.XmlWriter writer) { }
-        [System.MonoTODOAttribute]
         public void WriteModulusAsBase64(System.Xml.XmlWriter writer) { }
     }
     public sealed partial class RsaSecurityKey : System.IdentityModel.Tokens.AsymmetricSecurityKey
     {
         public RsaSecurityKey(System.Security.Cryptography.RSA rsa) { }
         public override int KeySize { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override byte[] DecryptKey(string algorithm, byte[] keyData) { throw null; }
-        [System.MonoTODOAttribute]
         public override byte[] EncryptKey(string algorithm, byte[] keyData) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Security.Cryptography.AsymmetricAlgorithm GetAsymmetricAlgorithm(string algorithm, bool requiresPrivateKey) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Security.Cryptography.HashAlgorithm GetHashAlgorithmForSignature(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Security.Cryptography.AsymmetricSignatureDeformatter GetSignatureDeformatter(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Security.Cryptography.AsymmetricSignatureFormatter GetSignatureFormatter(string algorithm) { throw null; }
         public override bool HasPrivateKey() { throw null; }
-        [System.MonoTODOAttribute]
         public override bool IsAsymmetricAlgorithm(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool IsSupportedAlgorithm(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool IsSymmetricAlgorithm(string algorithm) { throw null; }
     }
     public partial class RsaSecurityToken : System.IdentityModel.Tokens.SecurityToken
@@ -1927,16 +1872,12 @@ namespace System.IdentityModel.Tokens
         public RsaSecurityToken(System.Security.Cryptography.RSA rsa, string id) { }
         public override string Id { get { throw null; } }
         public System.Security.Cryptography.RSA Rsa { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
         public override System.DateTime ValidFrom { get { throw null; } }
         public override System.DateTime ValidTo { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override T CreateKeyIdentifierClause<T>() { throw null; }
         ~RsaSecurityToken() { }
-        [System.MonoTODOAttribute]
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
     public partial class RsaSecurityTokenHandler : System.IdentityModel.Tokens.SecurityTokenHandler
@@ -2298,27 +2239,21 @@ namespace System.IdentityModel.Tokens
         public int MajorVersion { get { throw null; } }
         public int MinorVersion { get { throw null; } }
         public System.IdentityModel.Tokens.SigningCredentials SigningCredentials { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityToken SigningToken { get { throw null; } set { } }
         public System.Collections.Generic.IList<System.IdentityModel.Tokens.SamlStatement> Statements { get { throw null; } }
         public void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         protected void ReadSignature(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver, System.IdentityModel.Tokens.SamlSerializer samlSerializer) { }
-        [System.MonoTODOAttribute]
         public virtual void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public virtual void WriteSourceData(System.Xml.XmlWriter writer) { }
         public virtual void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
     public partial class SamlAssertionKeyIdentifierClause : System.IdentityModel.Tokens.SecurityKeyIdentifierClause
     {
-        [System.MonoTODOAttribute]
         public SamlAssertionKeyIdentifierClause(string assertionId) : base (default(string)) { }
         public SamlAssertionKeyIdentifierClause(string assertionId, byte[] derivationNonce, int derivationLength) : base (default(string)) { }
         public string AssertionId { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         public bool Matches(string assertionId) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class SamlAttribute
@@ -2332,10 +2267,8 @@ namespace System.IdentityModel.Tokens
         public string Name { get { throw null; } set { } }
         public string Namespace { get { throw null; } set { } }
         public string OriginalIssuer { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Claims.Claim> ExtractClaims() { throw null; }
         public void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public virtual void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public virtual void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2345,10 +2278,8 @@ namespace System.IdentityModel.Tokens
         public SamlAttributeStatement(System.IdentityModel.Tokens.SamlSubject samlSubject, System.Collections.Generic.IEnumerable<System.IdentityModel.Tokens.SamlAttribute> attributes) { }
         public System.Collections.Generic.IList<System.IdentityModel.Tokens.SamlAttribute> Attributes { get { throw null; } }
         public override bool IsReadOnly { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override void AddClaimsToList(System.Collections.Generic.IList<System.IdentityModel.Claims.Claim> claims) { }
         public override void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public override void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public override void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2359,7 +2290,6 @@ namespace System.IdentityModel.Tokens
         public System.Collections.Generic.IList<System.Uri> Audiences { get { throw null; } }
         public override bool IsReadOnly { get { throw null; } }
         public override void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public override void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public override void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2388,10 +2318,8 @@ namespace System.IdentityModel.Tokens
         public string DnsAddress { get { throw null; } set { } }
         public string IPAddress { get { throw null; } set { } }
         public override bool IsReadOnly { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override void AddClaimsToList(System.Collections.Generic.IList<System.IdentityModel.Claims.Claim> claims) { }
         public override void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public override void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public override void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2408,7 +2336,6 @@ namespace System.IdentityModel.Tokens
         [System.Runtime.Serialization.DataMemberAttribute]
         public string Location { get { throw null; } set { } }
         public void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public virtual void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public virtual void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2434,7 +2361,6 @@ namespace System.IdentityModel.Tokens
         public override bool IsReadOnly { get { throw null; } }
         public string Resource { get { throw null; } set { } }
         public System.Collections.Generic.IList<System.IdentityModel.Tokens.SamlAction> SamlActions { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override void AddClaimsToList(System.Collections.Generic.IList<System.IdentityModel.Claims.Claim> claims) { }
         public override void MakeReadOnly() { }
         public override void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
@@ -2458,7 +2384,6 @@ namespace System.IdentityModel.Tokens
         public System.DateTime NotBefore { get { throw null; } set { } }
         public System.DateTime NotOnOrAfter { get { throw null; } set { } }
         public void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public virtual void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public virtual void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2480,7 +2405,6 @@ namespace System.IdentityModel.Tokens
         public SamlDoNotCacheCondition() { }
         public override bool IsReadOnly { get { throw null; } }
         public override void MakeReadOnly() { }
-        [System.MonoTODOAttribute]
         public override void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
         public override void WriteXml(System.Xml.XmlDictionaryWriter writer, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
@@ -2514,25 +2438,16 @@ namespace System.IdentityModel.Tokens
     }
     public partial class SamlSecurityToken : System.IdentityModel.Tokens.SecurityToken
     {
-        [System.MonoTODOAttribute]
         protected SamlSecurityToken() { }
         public SamlSecurityToken(System.IdentityModel.Tokens.SamlAssertion assertion) { }
         public System.IdentityModel.Tokens.SamlAssertion Assertion { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override string Id { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidFrom { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidTo { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override T CreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         protected void Initialize(System.IdentityModel.Tokens.SamlAssertion assertion) { }
-        [System.MonoTODOAttribute]
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
     public partial class SamlSecurityTokenHandler : System.IdentityModel.Tokens.SecurityTokenHandler
@@ -2637,25 +2552,15 @@ namespace System.IdentityModel.Tokens
     }
     public partial class SamlSerializer
     {
-        [System.MonoTODOAttribute]
         public SamlSerializer() { }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlAdvice LoadAdvice(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlAssertion LoadAssertion(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlAttribute LoadAttribute(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlCondition LoadCondition(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlConditions LoadConditions(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlStatement LoadStatement(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public void PopulateDictionary(System.Xml.IXmlDictionary dictionary) { }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SamlSecurityToken ReadToken(System.Xml.XmlReader reader, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void WriteToken(System.IdentityModel.Tokens.SamlSecurityToken token, System.Xml.XmlWriter writer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer) { }
     }
     public abstract partial class SamlStatement
@@ -2681,9 +2586,7 @@ namespace System.IdentityModel.Tokens
         public string NameFormat { get { throw null; } set { } }
         public string NameQualifier { get { throw null; } set { } }
         public string SubjectConfirmationData { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Claims.Claim> ExtractClaims() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Claims.ClaimSet ExtractSubjectKeyClaimSet(System.IdentityModel.Selectors.SamlSecurityTokenAuthenticator samlAuthenticator) { throw null; }
         public void MakeReadOnly() { }
         public virtual void ReadXml(System.Xml.XmlDictionaryReader reader, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.IdentityModel.Selectors.SecurityTokenSerializer keyInfoSerializer, System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { }
@@ -2696,7 +2599,6 @@ namespace System.IdentityModel.Tokens
         public override bool IsReadOnly { get { throw null; } }
         public System.IdentityModel.Tokens.SamlSubject SamlSubject { get { throw null; } set { } }
         protected abstract void AddClaimsToList(System.Collections.Generic.IList<System.IdentityModel.Claims.Claim> claims);
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Policy.IAuthorizationPolicy CreatePolicy(System.IdentityModel.Claims.ClaimSet issuer, System.IdentityModel.Selectors.SamlSecurityTokenAuthenticator samlAuthenticator) { throw null; }
         public override void MakeReadOnly() { }
         protected void SetSubject(System.IdentityModel.Tokens.SamlSubject samlSubject) { }
@@ -2733,7 +2635,6 @@ namespace System.IdentityModel.Tokens
     }
     public abstract partial class SecurityKey
     {
-        [System.MonoTODOAttribute]
         protected SecurityKey() { }
         public abstract int KeySize { get; }
         public abstract byte[] DecryptKey(string algorithm, byte[] keyData);
@@ -2777,10 +2678,9 @@ namespace System.IdentityModel.Tokens
         public virtual bool CanCreateKey { get { throw null; } }
         public string ClauseType { get { throw null; } }
         public int DerivationLength { get { throw null; } }
-        public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Id { get { throw null; } set { } }
         public virtual System.IdentityModel.Tokens.SecurityKey CreateKey() { throw null; }
         public byte[] GetDerivationNonce() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
     public abstract partial class SecurityKeyIdentifierClauseSerializer
@@ -2807,40 +2707,32 @@ namespace System.IdentityModel.Tokens
         protected SecurityToken() { }
         public abstract string Id { get; }
         public abstract System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get; }
-        [System.MonoTODOAttribute]
         public abstract System.DateTime ValidFrom { get; }
-        [System.MonoTODOAttribute]
         public abstract System.DateTime ValidTo { get; }
-        [System.MonoTODOAttribute]
         public virtual bool CanCreateKeyIdentifierClause<T>() where T : System.IdentityModel.Tokens.SecurityKeyIdentifierClause { throw null; }
-        [System.MonoTODOAttribute]
         public virtual T CreateKeyIdentifierClause<T>() where T : System.IdentityModel.Tokens.SecurityKeyIdentifierClause { throw null; }
         public virtual bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SecurityKey ResolveKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
     public partial class SecurityTokenDescriptor
     {
         public SecurityTokenDescriptor() { }
-        public string AppliesToAddress { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause AttachedReference { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Security.Claims.AuthenticationInformation AuthenticationInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.EncryptingCredentials EncryptingCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Protocols.WSTrust.Lifetime Lifetime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.ProofDescriptor Proof { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string AppliesToAddress { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause AttachedReference { get { throw null; } set { } }
+        public System.Security.Claims.AuthenticationInformation AuthenticationInfo { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.EncryptingCredentials EncryptingCredentials { get { throw null; } set { } }
+        public System.IdentityModel.Protocols.WSTrust.Lifetime Lifetime { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.ProofDescriptor Proof { get { throw null; } set { } }
         public System.Collections.Generic.Dictionary<string, object> Properties { get { throw null; } }
-        public string ReplyToAddress { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SigningCredentials SigningCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Security.Claims.ClaimsIdentity Subject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityToken Token { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string TokenIssuerName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string TokenType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause UnattachedReference { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public string ReplyToAddress { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SigningCredentials SigningCredentials { get { throw null; } set { } }
+        public System.Security.Claims.ClaimsIdentity Subject { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityToken Token { get { throw null; } set { } }
+        public string TokenIssuerName { get { throw null; } set { } }
+        public string TokenType { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityKeyIdentifierClause UnattachedReference { get { throw null; } set { } }
         public void AddAuthenticationClaims(string authType) { }
-        [System.MonoTODOAttribute]
         public void AddAuthenticationClaims(string authType, System.DateTime time) { }
-        [System.MonoTODOAttribute]
         public virtual void ApplyTo(System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse response) { }
     }
     public partial class SecurityTokenElement
@@ -2861,6 +2753,7 @@ namespace System.IdentityModel.Tokens
         public SecurityTokenException(string message) { }
         public SecurityTokenException(string message, System.Exception innerException) { }
     }
+    [System.SerializableAttribute]
     public partial class SecurityTokenExpiredException : System.IdentityModel.Tokens.SecurityTokenValidationException
     {
         public SecurityTokenExpiredException() { }
@@ -2873,8 +2766,8 @@ namespace System.IdentityModel.Tokens
         protected SecurityTokenHandler() { }
         public virtual bool CanValidateToken { get { throw null; } }
         public virtual bool CanWriteToken { get { throw null; } }
-        public System.IdentityModel.Tokens.SecurityTokenHandlerConfiguration Configuration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.SecurityTokenHandlerCollection ContainingCollection { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IdentityModel.Tokens.SecurityTokenHandlerConfiguration Configuration { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.SecurityTokenHandlerCollection ContainingCollection { get { throw null; } }
         public abstract System.Type TokenType { get; }
         public virtual bool CanReadKeyIdentifierClause(System.Xml.XmlReader reader) { throw null; }
         public virtual bool CanReadToken(string tokenString) { throw null; }
@@ -2904,55 +2797,31 @@ namespace System.IdentityModel.Tokens
         public SecurityTokenHandlerCollection(System.IdentityModel.Tokens.SecurityTokenHandlerConfiguration configuration) { }
         public System.IdentityModel.Tokens.SecurityTokenHandlerConfiguration Configuration { get { throw null; } }
         public System.IdentityModel.Tokens.SecurityTokenHandler this[System.IdentityModel.Tokens.SecurityToken token] { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityTokenHandler this[string tokenTypeIdentifier] { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityTokenHandler this[System.Type tokenType] { get { throw null; } }
         public System.Collections.Generic.IEnumerable<string> TokenTypeIdentifiers { get { throw null; } }
         public System.Collections.Generic.IEnumerable<System.Type> TokenTypes { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void AddOrReplace(System.IdentityModel.Tokens.SecurityTokenHandler handler) { }
-        [System.MonoTODOAttribute]
         public bool CanReadKeyIdentifierClause(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual bool CanReadKeyIdentifierClauseCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public bool CanReadToken(string tokenString) { throw null; }
-        [System.MonoTODOAttribute]
         public bool CanReadToken(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public bool CanWriteToken(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void ClearItems() { }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Tokens.SecurityTokenHandlerCollection CreateDefaultSecurityTokenHandlerCollection() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.IdentityModel.Tokens.SecurityTokenHandlerCollection CreateDefaultSecurityTokenHandlerCollection(System.IdentityModel.Tokens.SecurityTokenHandlerConfiguration configuration) { throw null; }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityToken CreateToken(System.IdentityModel.Tokens.SecurityTokenDescriptor tokenDescriptor) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void InsertItem(int index, System.IdentityModel.Tokens.SecurityTokenHandler item) { }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityKeyIdentifierClause ReadKeyIdentifierClause(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual System.IdentityModel.Tokens.SecurityKeyIdentifierClause ReadKeyIdentifierClauseCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityToken ReadToken(string tokenString) { throw null; }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SecurityToken ReadToken(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void RemoveItem(int index) { }
-        [System.MonoTODOAttribute]
         protected override void SetItem(int index, System.IdentityModel.Tokens.SecurityTokenHandler item) { }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Security.Claims.ClaimsIdentity> ValidateToken(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         public void WriteKeyIdentifierClause(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { }
-        [System.MonoTODOAttribute]
         protected virtual void WriteKeyIdentifierClauseCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { }
-        [System.MonoTODOAttribute]
         public string WriteToken(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         public void WriteToken(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token) { }
     }
     public partial class SecurityTokenHandlerCollectionManager
@@ -2985,20 +2854,21 @@ namespace System.IdentityModel.Tokens
         public static readonly System.TimeSpan DefaultTokenReplayCacheExpirationPeriod;
         public static readonly System.Security.Cryptography.X509Certificates.StoreLocation DefaultTrustedStoreLocation;
         public SecurityTokenHandlerConfiguration() { }
-        public System.IdentityModel.Tokens.AudienceRestriction AudienceRestriction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Configuration.IdentityModelCaches Caches { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Selectors.X509CertificateValidator CertificateValidator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool DetectReplayedTokens { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Tokens.IssuerNameRegistry IssuerNameRegistry { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Selectors.SecurityTokenResolver IssuerTokenResolver { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan MaxClockSkew { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool SaveBootstrapContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.IdentityModel.Selectors.SecurityTokenResolver ServiceTokenResolver { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan TokenReplayCacheExpirationPeriod { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.IdentityModel.Tokens.AudienceRestriction AudienceRestriction { get { throw null; } set { } }
+        public System.IdentityModel.Configuration.IdentityModelCaches Caches { get { throw null; } set { } }
+        public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
+        public System.IdentityModel.Selectors.X509CertificateValidator CertificateValidator { get { throw null; } set { } }
+        public bool DetectReplayedTokens { get { throw null; } set { } }
+        public System.IdentityModel.Tokens.IssuerNameRegistry IssuerNameRegistry { get { throw null; } set { } }
+        public System.IdentityModel.Selectors.SecurityTokenResolver IssuerTokenResolver { get { throw null; } set { } }
+        public System.TimeSpan MaxClockSkew { get { throw null; } set { } }
+        public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
+        public bool SaveBootstrapContext { get { throw null; } set { } }
+        public System.IdentityModel.Selectors.SecurityTokenResolver ServiceTokenResolver { get { throw null; } set { } }
+        public System.TimeSpan TokenReplayCacheExpirationPeriod { get { throw null; } set { } }
+        public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
     }
+    [System.SerializableAttribute]
     public partial class SecurityTokenNotYetValidException : System.IdentityModel.Tokens.SecurityTokenValidationException
     {
         public SecurityTokenNotYetValidException() { }
@@ -3006,6 +2876,7 @@ namespace System.IdentityModel.Tokens
         public SecurityTokenNotYetValidException(string message) { }
         public SecurityTokenNotYetValidException(string message, System.Exception inner) { }
     }
+    [System.SerializableAttribute]
     public partial class SecurityTokenReplayDetectedException : System.IdentityModel.Tokens.SecurityTokenValidationException
     {
         public SecurityTokenReplayDetectedException() { }
@@ -3041,22 +2912,20 @@ namespace System.IdentityModel.Tokens
         public SessionSecurityToken(System.Security.Claims.ClaimsPrincipal claimsPrincipal, System.Xml.UniqueId contextId, string context, string endpointId, System.DateTime validFrom, System.TimeSpan lifetime, System.IdentityModel.Tokens.SymmetricSecurityKey key) { }
         public SessionSecurityToken(System.Security.Claims.ClaimsPrincipal claimsPrincipal, System.Xml.UniqueId contextId, string context, string endpointId, System.Nullable<System.DateTime> validFrom, System.Nullable<System.DateTime> validTo, System.IdentityModel.Tokens.SymmetricSecurityKey key) { }
         public SessionSecurityToken(System.Security.Claims.ClaimsPrincipal claimsPrincipal, System.Xml.UniqueId contextId, string context, string endpointId, System.TimeSpan lifetime, System.IdentityModel.Tokens.SymmetricSecurityKey key) { }
-        public System.Security.Claims.ClaimsPrincipal ClaimsPrincipal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Context { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xml.UniqueId ContextId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string EndpointId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public System.Security.Claims.ClaimsPrincipal ClaimsPrincipal { get { throw null; } }
+        public string Context { get { throw null; } }
+        public System.Xml.UniqueId ContextId { get { throw null; } }
+        public string EndpointId { get { throw null; } }
         public override string Id { get { throw null; } }
-        public bool IsPersistent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsReferenceMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.DateTime KeyEffectiveTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.DateTime KeyExpirationTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xml.UniqueId KeyGeneration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri SecureConversationVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsPersistent { get { throw null; } set { } }
+        public bool IsReferenceMode { get { throw null; } set { } }
+        public System.DateTime KeyEffectiveTime { get { throw null; } }
+        public System.DateTime KeyExpirationTime { get { throw null; } }
+        public System.Xml.UniqueId KeyGeneration { get { throw null; } }
+        public System.Uri SecureConversationVersion { get { throw null; } }
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
         public override System.DateTime ValidFrom { get { throw null; } }
         public override System.DateTime ValidTo { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public abstract partial class SessionSecurityTokenCache : System.IdentityModel.Configuration.ICustomIdentityConfiguration
@@ -3065,7 +2934,6 @@ namespace System.IdentityModel.Tokens
         public abstract void AddOrUpdate(System.IdentityModel.Tokens.SessionSecurityTokenCacheKey key, System.IdentityModel.Tokens.SessionSecurityToken value, System.DateTime expiryTime);
         public abstract System.IdentityModel.Tokens.SessionSecurityToken Get(System.IdentityModel.Tokens.SessionSecurityTokenCacheKey key);
         public abstract System.Collections.Generic.IEnumerable<System.IdentityModel.Tokens.SessionSecurityToken> GetAll(string endpointId, System.Xml.UniqueId contextId);
-        [System.MonoTODOAttribute]
         public virtual void LoadCustomConfiguration(System.Xml.XmlNodeList nodelist) { }
         public abstract void Remove(System.IdentityModel.Tokens.SessionSecurityTokenCacheKey key);
         public abstract void RemoveAll(string endpointId);
@@ -3074,19 +2942,14 @@ namespace System.IdentityModel.Tokens
     public partial class SessionSecurityTokenCacheKey
     {
         public SessionSecurityTokenCacheKey(string endpointId, System.Xml.UniqueId contextId, System.Xml.UniqueId keyGeneration) { }
-        public System.Xml.UniqueId ContextId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string EndpointId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IgnoreKeyGeneration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Xml.UniqueId KeyGeneration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public System.Xml.UniqueId ContextId { get { throw null; } }
+        public string EndpointId { get { throw null; } }
+        public bool IgnoreKeyGeneration { get { throw null; } set { } }
+        public System.Xml.UniqueId KeyGeneration { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
-        [System.MonoTODOAttribute]
         public override int GetHashCode() { throw null; }
-        [System.MonoTODOAttribute]
         public static bool operator ==(System.IdentityModel.Tokens.SessionSecurityTokenCacheKey first, System.IdentityModel.Tokens.SessionSecurityTokenCacheKey second) { throw null; }
-        [System.MonoTODOAttribute]
         public static bool operator !=(System.IdentityModel.Tokens.SessionSecurityTokenCacheKey first, System.IdentityModel.Tokens.SessionSecurityTokenCacheKey second) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class SessionSecurityTokenHandler : System.IdentityModel.Tokens.SecurityTokenHandler
@@ -3101,38 +2964,23 @@ namespace System.IdentityModel.Tokens
         public virtual string CookieElementName { get { throw null; } }
         public virtual string CookieNamespace { get { throw null; } }
         public static System.TimeSpan DefaultTokenLifetime { get { throw null; } }
-        public virtual System.TimeSpan TokenLifetime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public virtual System.TimeSpan TokenLifetime { get { throw null; } set { } }
         public override System.Type TokenType { get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.CookieTransform> Transforms { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.CookieTransform> Transforms { get { throw null; } }
         protected virtual byte[] ApplyTransforms(byte[] cookie, bool outbound) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanReadToken(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SessionSecurityToken CreateSessionSecurityToken(System.Security.Claims.ClaimsPrincipal principal, string context, string endpointId, System.DateTime validFrom, System.DateTime validTo) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Tokens.SecurityToken CreateToken(System.IdentityModel.Tokens.SecurityTokenDescriptor tokenDescriptor) { throw null; }
-        [System.MonoTODOAttribute]
         public override string[] GetTokenTypeIdentifiers() { throw null; }
-        [System.MonoTODOAttribute]
         public override void LoadCustomConfiguration(System.Xml.XmlNodeList customConfigElements) { }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SecurityToken ReadToken(byte[] token, System.IdentityModel.Selectors.SecurityTokenResolver tokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Tokens.SecurityToken ReadToken(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Tokens.SecurityToken ReadToken(System.Xml.XmlReader reader, System.IdentityModel.Selectors.SecurityTokenResolver tokenResolver) { throw null; }
-        [System.MonoTODOAttribute]
         protected void SetTransforms(System.Collections.Generic.IEnumerable<System.IdentityModel.CookieTransform> transforms) { }
-        [System.MonoTODOAttribute]
         protected virtual void ValidateSession(System.IdentityModel.Tokens.SessionSecurityToken securityToken) { }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.Security.Claims.ClaimsIdentity> ValidateToken(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Collections.ObjectModel.ReadOnlyCollection<System.Security.Claims.ClaimsIdentity> ValidateToken(System.IdentityModel.Tokens.SessionSecurityToken token, string endpointId) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual byte[] WriteToken(System.IdentityModel.Tokens.SessionSecurityToken sessionToken) { throw null; }
-        [System.MonoTODOAttribute]
         public override void WriteToken(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token) { }
     }
     public partial class SigningCredentials
@@ -3163,7 +3011,6 @@ namespace System.IdentityModel.Tokens
     }
     public abstract partial class SymmetricSecurityKey : System.IdentityModel.Tokens.SecurityKey
     {
-        [System.MonoTODOAttribute]
         protected SymmetricSecurityKey() { }
         public abstract byte[] GenerateDerivedKey(string algorithm, byte[] label, byte[] nonce, int derivedKeyLength, int offset);
         public abstract System.Security.Cryptography.ICryptoTransform GetDecryptionTransform(string algorithm, byte[] iv);
@@ -3179,7 +3026,6 @@ namespace System.IdentityModel.Tokens
         public abstract void AddOrUpdate(string key, System.IdentityModel.Tokens.SecurityToken securityToken, System.DateTime expirationTime);
         public abstract bool Contains(string key);
         public abstract System.IdentityModel.Tokens.SecurityToken Get(string key);
-        [System.MonoTODOAttribute]
         public virtual void LoadCustomConfiguration(System.Xml.XmlNodeList nodelist) { }
         public abstract void Remove(string key);
     }
@@ -3207,19 +3053,14 @@ namespace System.IdentityModel.Tokens
     }
     public partial class WindowsSecurityToken : System.IdentityModel.Tokens.SecurityToken, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         protected WindowsSecurityToken() { }
-        [System.MonoTODOAttribute]
         public WindowsSecurityToken(System.Security.Principal.WindowsIdentity windowsIdentity) { }
         public WindowsSecurityToken(System.Security.Principal.WindowsIdentity windowsIdentity, string id) { }
         public WindowsSecurityToken(System.Security.Principal.WindowsIdentity windowsIdentity, string id, string authenticationType) { }
         public string AuthenticationType { get { throw null; } }
         public override string Id { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidFrom { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidTo { get { throw null; } }
         public virtual System.Security.Principal.WindowsIdentity WindowsIdentity { get { throw null; } }
         public virtual void Dispose() { }
@@ -3284,7 +3125,6 @@ namespace System.IdentityModel.Tokens
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         public bool Matches(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
         public bool Matches(string issuerName, string issuerSerialNumber) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class X509NTAuthChainTrustValidator : System.IdentityModel.Selectors.X509CertificateValidator
@@ -3299,11 +3139,8 @@ namespace System.IdentityModel.Tokens
         public X509RawDataKeyIdentifierClause(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) : base (default(string), default(byte[]), default(bool)) { }
         public override bool CanCreateKey { get { throw null; } }
         public override System.IdentityModel.Tokens.SecurityKey CreateKey() { throw null; }
-        [System.MonoTODOAttribute("Not sure what should be returned when there are public/private pair key and public-only key")]
         public byte[] GetX509RawData() { throw null; }
-        [System.MonoTODOAttribute("Not sure what should be returned when there are public/private pair key and public-only key")]
         public bool Matches(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class X509SecurityToken : System.IdentityModel.Tokens.SecurityToken, System.IDisposable
@@ -3318,7 +3155,6 @@ namespace System.IdentityModel.Tokens
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
         public override T CreateKeyIdentifierClause<T>() { throw null; }
         public virtual void Dispose() { }
-        [System.MonoTODOAttribute]
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         protected void ThrowIfDisposed() { }
     }
@@ -3352,21 +3188,15 @@ namespace System.IdentityModel.Tokens
         public X509SigningCredentials(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.IdentityModel.Tokens.SecurityKeyIdentifier ski) : base (default(System.IdentityModel.Tokens.SecurityKey), default(string), default(string)) { }
         public X509SigningCredentials(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.IdentityModel.Tokens.SecurityKeyIdentifier ski, string signatureAlgorithm, string digestAlgorithm) : base (default(System.IdentityModel.Tokens.SecurityKey), default(string), default(string)) { }
         public X509SigningCredentials(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, string signatureAlgorithm, string digestAlgorithm) : base (default(System.IdentityModel.Tokens.SecurityKey), default(string), default(string)) { }
-        public System.Security.Cryptography.X509Certificates.X509Certificate2 Certificate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2 Certificate { get { throw null; } }
     }
     public partial class X509SubjectKeyIdentifierClause : System.IdentityModel.Tokens.BinaryKeyIdentifierClause
     {
-        [System.MonoTODOAttribute]
         public X509SubjectKeyIdentifierClause(byte[] ski) : base (default(string), default(byte[]), default(bool)) { }
-        [System.MonoTODOAttribute]
         public static bool CanCreateFrom(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
-        [System.MonoTODOAttribute]
         public byte[] GetX509SubjectKeyIdentifier() { throw null; }
-        [System.MonoTODOAttribute]
         public bool Matches(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
-        [System.MonoTODOAttribute]
         public static bool TryCreateFrom(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, out System.IdentityModel.Tokens.X509SubjectKeyIdentifierClause keyIdentifierClause) { keyIdentifierClause = default(System.IdentityModel.Tokens.X509SubjectKeyIdentifierClause); throw null; }
     }
     public partial class X509ThumbprintKeyIdentifierClause : System.IdentityModel.Tokens.BinaryKeyIdentifierClause
@@ -3375,12 +3205,10 @@ namespace System.IdentityModel.Tokens
         public X509ThumbprintKeyIdentifierClause(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) : base (default(string), default(byte[]), default(bool)) { }
         public byte[] GetX509Thumbprint() { throw null; }
         public bool Matches(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class X509WindowsSecurityToken : System.IdentityModel.Tokens.X509SecurityToken
     {
-        [System.MonoTODOAttribute]
         public X509WindowsSecurityToken(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Security.Principal.WindowsIdentity windowsIdentity) : base (default(System.Security.Cryptography.X509Certificates.X509Certificate2)) { }
         public X509WindowsSecurityToken(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Security.Principal.WindowsIdentity windowsIdentity, string id) : base (default(System.Security.Cryptography.X509Certificates.X509Certificate2)) { }
         public X509WindowsSecurityToken(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Security.Principal.WindowsIdentity windowsIdentity, string authenticationType, string id) : base (default(System.Security.Cryptography.X509Certificates.X509Certificate2)) { }
@@ -3394,11 +3222,11 @@ namespace System.Security.Claims
     public partial class AuthenticationInformation
     {
         public AuthenticationInformation() { }
-        public string Address { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Address { get { throw null; } set { } }
         public System.Collections.ObjectModel.Collection<System.IdentityModel.Tokens.AuthenticationContext> AuthorizationContexts { get { throw null; } }
-        public string DnsName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<System.DateTime> NotOnOrAfter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Session { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string DnsName { get { throw null; } set { } }
+        public System.Nullable<System.DateTime> NotOnOrAfter { get { throw null; } set { } }
+        public string Session { get { throw null; } set { } }
     }
     public static partial class AuthenticationTypes
     {
@@ -3444,18 +3272,18 @@ namespace System.Security.Claims
 }
 namespace System.ServiceModel.Security
 {
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public partial class BinarySecretKeyIdentifierClause : System.IdentityModel.Tokens.BinaryKeyIdentifierClause
     {
         public BinarySecretKeyIdentifierClause(byte[] key) : base (default(string), default(byte[]), default(bool)) { }
-        [System.MonoTODOAttribute("ClauseType")]
         public BinarySecretKeyIdentifierClause(byte[] key, bool cloneBuffer) : base (default(string), default(byte[]), default(bool)) { }
-        [System.MonoTODOAttribute("ClauseType")]
         public BinarySecretKeyIdentifierClause(byte[] key, bool cloneBuffer, byte[] derivationNonce, int derivationLength) : base (default(string), default(byte[]), default(bool)) { }
         public override bool CanCreateKey { get { throw null; } }
         public override System.IdentityModel.Tokens.SecurityKey CreateKey() { throw null; }
         public byte[] GetKeyBytes() { throw null; }
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public partial class KeyNameIdentifierClause : System.IdentityModel.Tokens.SecurityKeyIdentifierClause
     {
         public KeyNameIdentifierClause(string keyName) : base (default(string)) { }
@@ -3464,6 +3292,7 @@ namespace System.ServiceModel.Security
         public bool Matches(string keyName) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public partial class SecurityContextKeyIdentifierClause : System.IdentityModel.Tokens.SecurityKeyIdentifierClause
     {
         public SecurityContextKeyIdentifierClause(System.Xml.UniqueId contextId) : base (default(string)) { }
@@ -3473,9 +3302,9 @@ namespace System.ServiceModel.Security
         public System.Xml.UniqueId Generation { get { throw null; } }
         public override bool Matches(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
         public bool Matches(System.Xml.UniqueId contextId, System.Xml.UniqueId generation) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public enum X509CertificateValidationMode
     {
         ChainTrust = 2,
@@ -3487,6 +3316,7 @@ namespace System.ServiceModel.Security
 }
 namespace System.ServiceModel.Security.Tokens
 {
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public partial class BinarySecretSecurityToken : System.IdentityModel.Tokens.SecurityToken
     {
         public BinarySecretSecurityToken(byte[] key) { }
@@ -3502,6 +3332,7 @@ namespace System.ServiceModel.Security.Tokens
         public override System.DateTime ValidTo { get { throw null; } }
         public byte[] GetKeyBytes() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public partial class WrappedKeySecurityToken : System.IdentityModel.Tokens.SecurityToken
     {
         public WrappedKeySecurityToken(string id, byte[] keyToWrap, string wrappingAlgorithm, System.IdentityModel.Tokens.SecurityToken wrappingToken, System.IdentityModel.Tokens.SecurityKeyIdentifier wrappingTokenReference) { }
@@ -3512,9 +3343,7 @@ namespace System.ServiceModel.Security.Tokens
         public string WrappingAlgorithm { get { throw null; } }
         public System.IdentityModel.Tokens.SecurityToken WrappingToken { get { throw null; } }
         public System.IdentityModel.Tokens.SecurityKeyIdentifier WrappingTokenReference { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool CanCreateKeyIdentifierClause<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public override T CreateKeyIdentifierClause<T>() { throw null; }
         public byte[] GetWrappedKey() { throw null; }
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }

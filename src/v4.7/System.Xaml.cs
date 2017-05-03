@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Xaml.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Xaml.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Xaml.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -18,53 +18,22 @@
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
-[assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-[assembly:System.Security.SecurityCriticalAttribute((System.Security.SecurityCriticalScope)(0))]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(2), SkipVerificationInFullTrust=true)]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/winfx/2006/xaml", "System.Windows.Markup")]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Execution=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Windows.Markup.ValueSerializerAttribute))]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
 namespace System.Windows.Markup
 {
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=true, Inherited=true)]
+    [System.ObsoleteAttribute("This is not used by the XAML parser. Please look at XamlSetMarkupExtensionAttribute.")]
     public partial class AcceptedMarkupExtensionExpressionTypeAttribute : System.Attribute
     {
         public AcceptedMarkupExtensionExpressionTypeAttribute(System.Type type) { }
-        public System.Type Type { get { throw null; } set { } }
+        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(196), Inherited=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
@@ -82,8 +51,8 @@ namespace System.Windows.Markup
         public ArrayExtension(System.Type arrayType) { }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         public System.Collections.IList Items { get { throw null; } }
-        [System.Windows.Markup.ConstructorArgumentAttribute("arrayType")]
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.Windows.Markup.ConstructorArgumentAttribute("type")]
+        public System.Type Type { get { throw null; } set { } }
         public void AddChild(object value) { }
         public void AddText(string text) { }
         public override object ProvideValue(System.IServiceProvider serviceProvider) { throw null; }
@@ -93,7 +62,7 @@ namespace System.Windows.Markup
     public sealed partial class ConstructorArgumentAttribute : System.Attribute
     {
         public ConstructorArgumentAttribute(string argumentName) { }
-        public string ArgumentName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ArgumentName { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
@@ -101,14 +70,14 @@ namespace System.Windows.Markup
     {
         public ContentPropertyAttribute() { }
         public ContentPropertyAttribute(string name) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=true, Inherited=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class ContentWrapperAttribute : System.Attribute
     {
         public ContentWrapperAttribute(System.Type contentWrapper) { }
-        public System.Type ContentWrapper { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type ContentWrapper { get { throw null; } }
         public override object TypeId { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -127,7 +96,7 @@ namespace System.Windows.Markup
     public sealed partial class DependsOnAttribute : System.Attribute
     {
         public DependsOnAttribute(string name) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
         public override object TypeId { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
@@ -135,7 +104,7 @@ namespace System.Windows.Markup
     public sealed partial class DictionaryKeyPropertyAttribute : System.Attribute
     {
         public DictionaryKeyPropertyAttribute(string name) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial interface IComponentConnector
@@ -185,22 +154,23 @@ namespace System.Windows.Markup
         protected MarkupExtension() { }
         public abstract object ProvideValue(System.IServiceProvider serviceProvider);
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(128), AllowMultiple=true, Inherited=false)]
     public sealed partial class MarkupExtensionBracketCharactersAttribute : System.Attribute
     {
         public MarkupExtensionBracketCharactersAttribute(char openingBracket, char closingBracket) { }
-        public char ClosingBracket { get { throw null; } }
-        public char OpeningBracket { get { throw null; } }
+        public char ClosingBracket { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public char OpeningBracket { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
     public sealed partial class MarkupExtensionReturnTypeAttribute : System.Attribute
     {
         public MarkupExtensionReturnTypeAttribute() { }
         public MarkupExtensionReturnTypeAttribute(System.Type returnType) { }
-        [System.ObsoleteAttribute("Unused. Use MarkupExtensionReturnTypeAttribute(Type) or XamlSetMarkupExtensionAttribute.")]
+        [System.ObsoleteAttribute("The expressionType argument is not used by the XAML parser. To specify the expected return type, use MarkupExtensionReturnTypeAttribute(Type). To specify custom handling for expression types, use XamlSetMarkupExtensionAttribute.")]
         public MarkupExtensionReturnTypeAttribute(System.Type returnType, System.Type expressionType) { }
-        [System.ObsoleteAttribute("Unused. Use XamlSetMarkupExtensionAttribute functionality instead.")]
-        public System.Type ExpressionType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type ReturnType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.ObsoleteAttribute("This is not used by the XAML parser. Please look at XamlSetMarkupExtensionAttribute.")]
+        public System.Type ExpressionType { get { throw null; } }
+        public System.Type ReturnType { get { throw null; } }
     }
     public abstract partial class MemberDefinition
     {
@@ -221,8 +191,8 @@ namespace System.Windows.Markup
     {
         public NameScopePropertyAttribute(string name) { }
         public NameScopePropertyAttribute(string name, System.Type type) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Type Type { get { throw null; } }
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("PresentationFramework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     [System.Windows.Markup.MarkupExtensionReturnTypeAttribute(typeof(object))]
@@ -235,9 +205,9 @@ namespace System.Windows.Markup
     {
         public PropertyDefinition() { }
         public System.Collections.Generic.IList<System.Attribute> Attributes { get { throw null; } }
-        [System.ComponentModel.DefaultValueAttribute("public")]
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public string Modifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public override string Name { get { throw null; } set { } }
+        public override string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.ComponentModel.TypeConverterAttribute(typeof(System.Xaml.Schema.XamlTypeTypeConverter))]
         public System.Xaml.XamlType Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
@@ -255,14 +225,14 @@ namespace System.Windows.Markup
     public sealed partial class RootNamespaceAttribute : System.Attribute
     {
         public RootNamespaceAttribute(string nameSpace) { }
-        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Namespace { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class RuntimeNamePropertyAttribute : System.Attribute
     {
         public RuntimeNamePropertyAttribute(string name) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
     }
     [System.ComponentModel.TypeConverterAttribute("System.Windows.Markup.StaticExtensionConverter")]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("PresentationFramework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
@@ -272,9 +242,9 @@ namespace System.Windows.Markup
         public StaticExtension() { }
         public StaticExtension(string member) { }
         [System.Windows.Markup.ConstructorArgumentAttribute("member")]
-        public string Member { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Member { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        public System.Type MemberType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Type MemberType { get { throw null; } set { } }
         public override object ProvideValue(System.IServiceProvider serviceProvider) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
@@ -293,9 +263,9 @@ namespace System.Windows.Markup
         public TypeExtension(System.Type type) { }
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.Windows.Markup.ConstructorArgumentAttribute("type")]
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Type Type { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public string TypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string TypeName { get { throw null; } set { } }
         public override object ProvideValue(System.IServiceProvider serviceProvider) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false)]
@@ -303,13 +273,13 @@ namespace System.Windows.Markup
     public sealed partial class UidPropertyAttribute : System.Attribute
     {
         public UidPropertyAttribute(string name) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
     public sealed partial class UsableDuringInitializationAttribute : System.Attribute
     {
         public UsableDuringInitializationAttribute(bool usable) { }
-        public bool Usable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool Usable { get { throw null; } }
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public abstract partial class ValueSerializer
@@ -339,9 +309,9 @@ namespace System.Windows.Markup
         public XamlDeferLoadAttribute(string loaderType, string contentType) { }
         public XamlDeferLoadAttribute(System.Type loaderType, System.Type contentType) { }
         public System.Type ContentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ContentTypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ContentTypeName { get { throw null; } }
         public System.Type LoaderType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string LoaderTypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string LoaderTypeName { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), Inherited=true, AllowMultiple=false)]
     public sealed partial class XamlSetMarkupExtensionAttribute : System.Attribute
@@ -352,7 +322,7 @@ namespace System.Windows.Markup
     public partial class XamlSetMarkupExtensionEventArgs : System.Windows.Markup.XamlSetValueEventArgs
     {
         public XamlSetMarkupExtensionEventArgs(System.Xaml.XamlMember member, System.Windows.Markup.MarkupExtension value, System.IServiceProvider serviceProvider) : base (default(System.Xaml.XamlMember), default(object)) { }
-        public System.Windows.Markup.MarkupExtension MarkupExtension { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Windows.Markup.MarkupExtension MarkupExtension { get { throw null; } }
         public System.IServiceProvider ServiceProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public override void CallBase() { }
     }
@@ -390,32 +360,32 @@ namespace System.Windows.Markup
     public sealed partial class XmlLangPropertyAttribute : System.Attribute
     {
         public XmlLangPropertyAttribute(string name) { }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), AllowMultiple=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class XmlnsCompatibleWithAttribute : System.Attribute
     {
         public XmlnsCompatibleWithAttribute(string oldNamespace, string newNamespace) { }
-        public string NewNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string OldNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string NewNamespace { get { throw null; } }
+        public string OldNamespace { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), AllowMultiple=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class XmlnsDefinitionAttribute : System.Attribute
     {
         public XmlnsDefinitionAttribute(string xmlNamespace, string clrNamespace) { }
-        public string AssemblyName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string ClrNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string XmlNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string AssemblyName { get { throw null; } set { } }
+        public string ClrNamespace { get { throw null; } }
+        public string XmlNamespace { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), AllowMultiple=true)]
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class XmlnsPrefixAttribute : System.Attribute
     {
         public XmlnsPrefixAttribute(string xmlNamespace, string prefix) { }
-        public string Prefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string XmlNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Prefix { get { throw null; } }
+        public string XmlNamespace { get { throw null; } }
     }
 }
 namespace System.Xaml
@@ -423,14 +393,14 @@ namespace System.Xaml
     public partial class AmbientPropertyValue
     {
         public AmbientPropertyValue(System.Xaml.XamlMember property, object value) { }
-        public System.Xaml.XamlMember RetrievedProperty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public object Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Xaml.XamlMember RetrievedProperty { get { throw null; } }
+        public object Value { get { throw null; } }
     }
     public partial class AttachableMemberIdentifier : System.IEquatable<System.Xaml.AttachableMemberIdentifier>
     {
         public AttachableMemberIdentifier(System.Type declaringType, string memberName) { }
-        public System.Type DeclaringType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MemberName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type DeclaringType { get { throw null; } }
+        public string MemberName { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.Xaml.AttachableMemberIdentifier other) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -519,11 +489,12 @@ namespace System.Xaml
     {
         System.Xaml.XamlSchemaContext SchemaContext { get; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Prefix={Prefix} Namespace={Namespace}")]
     public partial class NamespaceDeclaration
     {
         public NamespaceDeclaration(string ns, string prefix) { }
-        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Prefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Namespace { get { throw null; } }
+        public string Prefix { get { throw null; } }
     }
     public partial class XamlBackgroundReader : System.Xaml.XamlReader, System.Xaml.IXamlLineInfo
     {
@@ -531,7 +502,6 @@ namespace System.Xaml
         public bool HasLineInfo { get { throw null; } }
         public override bool IsEof { get { throw null; } }
         public int LineNumber { get { throw null; } }
-        [System.MonoTODOAttribute("always returns 0")]
         public int LinePosition { get { throw null; } }
         public override System.Xaml.XamlMember Member { get { throw null; } }
         public override System.Xaml.NamespaceDeclaration Namespace { get { throw null; } }
@@ -554,7 +524,7 @@ namespace System.Xaml
     {
         public XamlDirective(System.Collections.Generic.IEnumerable<string> xamlNamespaces, string name, System.Xaml.XamlType xamlType, System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> typeConverter, System.Xaml.Schema.AllowedMemberLocations allowedLocation) : base (default(string), default(System.Xaml.XamlType), default(bool)) { }
         public XamlDirective(string xamlNamespace, string name) : base (default(string), default(System.Xaml.XamlType), default(bool)) { }
-        public System.Xaml.Schema.AllowedMemberLocations AllowedLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Xaml.Schema.AllowedMemberLocations AllowedLocation { get { throw null; } }
         public override int GetHashCode() { throw null; }
         public override System.Collections.Generic.IList<string> GetXamlNamespaces() { throw null; }
         protected sealed override System.Reflection.ICustomAttributeProvider LookupCustomAttributeProvider() { throw null; }
@@ -586,6 +556,7 @@ namespace System.Xaml
         public XamlDuplicateMemberException(System.Xaml.XamlMember member, System.Xaml.XamlType type) { }
         public System.Xaml.XamlMember DuplicateMember { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Xaml.XamlType ParentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
@@ -599,6 +570,7 @@ namespace System.Xaml
         public int LineNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
         public int LinePosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
         public override string Message { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
@@ -613,54 +585,54 @@ namespace System.Xaml
     {
         public const string Xaml2006Namespace = "http://schemas.microsoft.com/winfx/2006/xaml";
         public const string Xml1998Namespace = "http://www.w3.org/XML/1998/namespace";
-        public static System.Collections.ObjectModel.ReadOnlyCollection<System.Xaml.XamlDirective> AllDirectives { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Collections.ObjectModel.ReadOnlyCollection<System.Xaml.XamlType> AllTypes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Arguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Array { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective AsyncRecords { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Base { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Boolean { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Byte { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Char { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Class { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective ClassAttributes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective ClassModifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Code { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective ConnectionId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Decimal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Double { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective FactoryMethod { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective FieldModifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Initialization { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Int16 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Int32 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Int64 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Items { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Lang { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Member { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Members { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Null { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Object { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective PositionalParameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Property { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Reference { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Shared { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Single { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Space { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Static { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType String { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Subclass { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective SynchronousMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType TimeSpan { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective TypeArguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective Uid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlDirective UnknownContent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.Xaml.XamlType Uri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.Collections.ObjectModel.ReadOnlyCollection<System.Xaml.XamlDirective> AllDirectives { get { throw null; } }
+        public static System.Collections.ObjectModel.ReadOnlyCollection<System.Xaml.XamlType> AllTypes { get { throw null; } }
+        public static System.Xaml.XamlDirective Arguments { get { throw null; } }
+        public static System.Xaml.XamlType Array { get { throw null; } }
+        public static System.Xaml.XamlDirective AsyncRecords { get { throw null; } }
+        public static System.Xaml.XamlDirective Base { get { throw null; } }
+        public static System.Xaml.XamlType Boolean { get { throw null; } }
+        public static System.Xaml.XamlType Byte { get { throw null; } }
+        public static System.Xaml.XamlType Char { get { throw null; } }
+        public static System.Xaml.XamlDirective Class { get { throw null; } }
+        public static System.Xaml.XamlDirective ClassAttributes { get { throw null; } }
+        public static System.Xaml.XamlDirective ClassModifier { get { throw null; } }
+        public static System.Xaml.XamlDirective Code { get { throw null; } }
+        public static System.Xaml.XamlDirective ConnectionId { get { throw null; } }
+        public static System.Xaml.XamlType Decimal { get { throw null; } }
+        public static System.Xaml.XamlType Double { get { throw null; } }
+        public static System.Xaml.XamlDirective FactoryMethod { get { throw null; } }
+        public static System.Xaml.XamlDirective FieldModifier { get { throw null; } }
+        public static System.Xaml.XamlDirective Initialization { get { throw null; } }
+        public static System.Xaml.XamlType Int16 { get { throw null; } }
+        public static System.Xaml.XamlType Int32 { get { throw null; } }
+        public static System.Xaml.XamlType Int64 { get { throw null; } }
+        public static System.Xaml.XamlDirective Items { get { throw null; } }
+        public static System.Xaml.XamlDirective Key { get { throw null; } }
+        public static System.Xaml.XamlDirective Lang { get { throw null; } }
+        public static System.Xaml.XamlType Member { get { throw null; } }
+        public static System.Xaml.XamlDirective Members { get { throw null; } }
+        public static System.Xaml.XamlDirective Name { get { throw null; } }
+        public static System.Xaml.XamlType Null { get { throw null; } }
+        public static System.Xaml.XamlType Object { get { throw null; } }
+        public static System.Xaml.XamlDirective PositionalParameters { get { throw null; } }
+        public static System.Xaml.XamlType Property { get { throw null; } }
+        public static System.Xaml.XamlType Reference { get { throw null; } }
+        public static System.Xaml.XamlDirective Shared { get { throw null; } }
+        public static System.Xaml.XamlType Single { get { throw null; } }
+        public static System.Xaml.XamlDirective Space { get { throw null; } }
+        public static System.Xaml.XamlType Static { get { throw null; } }
+        public static System.Xaml.XamlType String { get { throw null; } }
+        public static System.Xaml.XamlDirective Subclass { get { throw null; } }
+        public static System.Xaml.XamlDirective SynchronousMode { get { throw null; } }
+        public static System.Xaml.XamlType TimeSpan { get { throw null; } }
+        public static System.Xaml.XamlType Type { get { throw null; } }
+        public static System.Xaml.XamlDirective TypeArguments { get { throw null; } }
+        public static System.Xaml.XamlDirective Uid { get { throw null; } }
+        public static System.Xaml.XamlDirective UnknownContent { get { throw null; } }
+        public static System.Xaml.XamlType Uri { get { throw null; } }
         public static System.Collections.Generic.IList<string> XamlNamespaces { get { throw null; } }
-        public static System.Xaml.XamlType XData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.Xaml.XamlType XData { get { throw null; } }
         public static System.Collections.Generic.IList<string> XmlNamespaces { get { throw null; } }
     }
     public partial class XamlMember : System.IEquatable<System.Xaml.XamlMember>
@@ -674,7 +646,7 @@ namespace System.Xaml
         public XamlMember(string attachableEventName, System.Reflection.MethodInfo adder, System.Xaml.XamlSchemaContext schemaContext) { }
         public XamlMember(string attachableEventName, System.Reflection.MethodInfo adder, System.Xaml.XamlSchemaContext schemaContext, System.Xaml.Schema.XamlMemberInvoker invoker) { }
         public XamlMember(string name, System.Xaml.XamlType declaringType, bool isAttachable) { }
-        public System.Xaml.XamlType DeclaringType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Xaml.XamlType DeclaringType { get { throw null; } }
         public System.Xaml.Schema.XamlValueConverter<System.Xaml.XamlDeferringLoader> DeferringLoader { get { throw null; } }
         public System.Collections.Generic.IList<System.Xaml.XamlMember> DependsOn { get { throw null; } }
         public System.Xaml.Schema.XamlMemberInvoker Invoker { get { throw null; } }
@@ -689,13 +661,13 @@ namespace System.Xaml
         public bool IsWriteOnly { get { throw null; } }
         public bool IsWritePublic { get { throw null; } }
         public System.Collections.Generic.IReadOnlyDictionary<char, char> MarkupExtensionBracketCharacters { get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
         public string PreferredXamlNamespace { get { throw null; } }
         public System.ComponentModel.DesignerSerializationVisibility SerializationVisibility { get { throw null; } }
         public System.Xaml.XamlType TargetType { get { throw null; } }
         public System.Xaml.XamlType Type { get { throw null; } }
         public System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> TypeConverter { get { throw null; } }
-        public System.Reflection.MemberInfo UnderlyingMember { get { throw null; } }
+        public System.Reflection.MemberInfo UnderlyingMember { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Xaml.Schema.XamlValueConverter<System.Windows.Markup.ValueSerializer> ValueSerializer { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.Xaml.XamlMember other) { throw null; }
@@ -722,7 +694,6 @@ namespace System.Xaml
         protected virtual System.Xaml.Schema.XamlValueConverter<System.Windows.Markup.ValueSerializer> LookupValueSerializer() { throw null; }
         public static bool operator ==(System.Xaml.XamlMember xamlMember1, System.Xaml.XamlMember xamlMember2) { throw null; }
         public static bool operator !=(System.Xaml.XamlMember xamlMember1, System.Xaml.XamlMember xamlMember2) { throw null; }
-        [System.MonoTODOAttribute("there are some patterns that return different kind of value: e.g. List<int>.Capacity")]
         public override string ToString() { throw null; }
     }
     public partial class XamlNodeList
@@ -756,10 +727,10 @@ namespace System.Xaml
     public partial class XamlObjectEventArgs : System.EventArgs
     {
         public XamlObjectEventArgs(object instance) { }
-        public int ElementLineNumber { get { throw null; } }
-        public int ElementLinePosition { get { throw null; } }
+        public int ElementLineNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int ElementLinePosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public object Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri SourceBamlUri { get { throw null; } }
+        public System.Uri SourceBamlUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     public partial class XamlObjectReader : System.Xaml.XamlReader
     {
@@ -826,24 +797,19 @@ namespace System.Xaml
     {
         public XamlObjectWriterSettings() { }
         public XamlObjectWriterSettings(System.Xaml.XamlObjectWriterSettings settings) { }
-        [System.MonoTODOAttribute("Ignored")]
         public System.Xaml.Permissions.XamlAccessLevel AccessLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.EventHandler<System.Xaml.XamlObjectEventArgs> AfterBeginInitHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.EventHandler<System.Xaml.XamlObjectEventArgs> AfterEndInitHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.EventHandler<System.Xaml.XamlObjectEventArgs> AfterPropertiesHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.EventHandler<System.Xaml.XamlObjectEventArgs> BeforePropertiesHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Windows.Markup.INameScope ExternalNameScope { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute("Ignored")]
         public bool IgnoreCanConvert { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute("Ignored")]
         public bool PreferUnconvertedDictionaryKeys { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool RegisterNamesOnExternalNamescope { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public object RootObjectInstance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute("Ignored")]
         public bool SkipDuplicatePropertyCheck { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute("Ignored")]
         public bool SkipProvideValueOnRoot { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri SourceBamlUri { get { throw null; } set { } }
+        public System.Uri SourceBamlUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.EventHandler<System.Windows.Markup.XamlSetValueEventArgs> XamlSetValueHandler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     [System.SerializableAttribute]
@@ -889,9 +855,9 @@ namespace System.Xaml
         public XamlSchemaContext(System.Collections.Generic.IEnumerable<System.Reflection.Assembly> referenceAssemblies) { }
         public XamlSchemaContext(System.Collections.Generic.IEnumerable<System.Reflection.Assembly> referenceAssemblies, System.Xaml.XamlSchemaContextSettings settings) { }
         public XamlSchemaContext(System.Xaml.XamlSchemaContextSettings settings) { }
-        public bool FullyQualifyAssemblyNamesInClrNamespaces { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool FullyQualifyAssemblyNamesInClrNamespaces { get { throw null; } }
         public System.Collections.Generic.IList<System.Reflection.Assembly> ReferenceAssemblies { get { throw null; } }
-        public bool SupportMarkupExtensionsWithDuplicateArity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool SupportMarkupExtensionsWithDuplicateArity { get { throw null; } }
         ~XamlSchemaContext() { }
         public virtual System.Collections.Generic.IEnumerable<string> GetAllXamlNamespaces() { throw null; }
         public virtual System.Collections.Generic.ICollection<System.Xaml.XamlType> GetAllXamlTypes(string xamlNamespace) { throw null; }
@@ -967,13 +933,13 @@ namespace System.Xaml
         public System.Xaml.XamlType ItemType { get { throw null; } }
         public System.Xaml.XamlType KeyType { get { throw null; } }
         public System.Xaml.XamlType MarkupExtensionReturnType { get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string PreferredXamlNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xaml.XamlSchemaContext SchemaContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
+        public string PreferredXamlNamespace { get { throw null; } }
+        public System.Xaml.XamlSchemaContext SchemaContext { get { throw null; } }
         public bool TrimSurroundingWhitespace { get { throw null; } }
-        public System.Collections.Generic.IList<System.Xaml.XamlType> TypeArguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<System.Xaml.XamlType> TypeArguments { get { throw null; } }
         public System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> TypeConverter { get { throw null; } }
-        public System.Type UnderlyingType { get { throw null; } }
+        public System.Type UnderlyingType { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Xaml.Schema.XamlValueConverter<System.Windows.Markup.ValueSerializer> ValueSerializer { get { throw null; } }
         public virtual bool CanAssignTo(System.Xaml.XamlType xamlType) { throw null; }
         public override bool Equals(object obj) { throw null; }
@@ -1127,7 +1093,7 @@ namespace System.Xaml.Permissions
     public partial class XamlAccessLevel
     {
         internal XamlAccessLevel() { }
-        public System.Reflection.AssemblyName AssemblyAccessToAssemblyName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Reflection.AssemblyName AssemblyAccessToAssemblyName { get { throw null; } }
         public string PrivateAccessToTypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.Xaml.Permissions.XamlAccessLevel AssemblyAccessTo(System.Reflection.Assembly assembly) { throw null; }
         public static System.Xaml.Permissions.XamlAccessLevel AssemblyAccessTo(System.Reflection.AssemblyName assemblyName) { throw null; }
@@ -1199,6 +1165,7 @@ namespace System.Xaml.Schema
         public virtual System.Reflection.MethodInfo GetEnumeratorMethod() { throw null; }
         public virtual System.Collections.IEnumerator GetItems(object instance) { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{{{Namespace}}}{Name}{TypeArgStringForDebugger}")]
     public partial class XamlTypeName
     {
         public XamlTypeName() { }
@@ -1207,7 +1174,7 @@ namespace System.Xaml.Schema
         public XamlTypeName(System.Xaml.XamlType xamlType) { }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IList<System.Xaml.Schema.XamlTypeName> TypeArguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<System.Xaml.Schema.XamlTypeName> TypeArguments { get { throw null; } }
         public static System.Xaml.Schema.XamlTypeName Parse(string typeName, System.Xaml.IXamlNamespaceResolver namespaceResolver) { throw null; }
         public static System.Collections.Generic.IList<System.Xaml.Schema.XamlTypeName> ParseList(string typeNameList, System.Xaml.IXamlNamespaceResolver namespaceResolver) { throw null; }
         public override string ToString() { throw null; }

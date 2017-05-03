@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Runtime.DurableInstancing.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Runtime.DurableInstancing.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Runtime.DurableInstancing.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -33,10 +33,13 @@
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.ServiceModel.Routing, PublicKey=0024000004800000940000000602000000240000525341310004000001000100b5fc90e7027f67871e773a8fde8938c81dd402ba65b9201d60593e96c492651e889cc13f1415ebb53fac1131ae0bd333c5ee6021672d9718ea31a8aebd0da0072f25d87dba6fc90ffd598ed4da35e44c398c454307e8e33b8426143daec9f596836f97c8f74750e5975c64e2189f45def46b2a2b1247adc3652bf5c308055da9")]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
-[assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Runtime.InteropServices.GuidAttribute("a9b8c4b5-b4a9-4800-8268-e8ec3b93d9ac")]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(2), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Execution=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.ActionItem))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.AsyncResult))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.BufferedOutputStream))]
@@ -54,94 +57,6 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.TraceEventLevel))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.TracePayload))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.TypeHelper))]
-public static partial class SRCore
-{
-    public const string AsyncTransactionException = "AsyncTransactionException";
-    public const string BindLockRequiresCommandFlag = "BindLockRequiresCommandFlag";
-    public const string BindReclaimedLockException = "BindReclaimedLockException";
-    public const string BindReclaimSucceeded = "BindReclaimSucceeded";
-    public const string CannotAcquireLockDefault = "CannotAcquireLockDefault";
-    public const string CannotCompleteWithKeys = "CannotCompleteWithKeys";
-    public const string CannotCreateContextWithNullId = "CannotCreateContextWithNullId";
-    public const string CannotInvokeBindingFromNonBinding = "CannotInvokeBindingFromNonBinding";
-    public const string CannotInvokeTransactionalFromNonTransactional = "CannotInvokeTransactionalFromNonTransactional";
-    public const string CannotReplaceTransaction = "CannotReplaceTransaction";
-    public const string CommandExecutionCannotOverlap = "CommandExecutionCannotOverlap";
-    public const string CompletedMustNotHaveAssociatedKeys = "CompletedMustNotHaveAssociatedKeys";
-    public const string ContextAlreadyBoundToInstance = "ContextAlreadyBoundToInstance";
-    public const string ContextAlreadyBoundToLock = "ContextAlreadyBoundToLock";
-    public const string ContextAlreadyBoundToOwner = "ContextAlreadyBoundToOwner";
-    public const string ContextMustBeBoundToInstance = "ContextMustBeBoundToInstance";
-    public const string ContextMustBeBoundToOwner = "ContextMustBeBoundToOwner";
-    public const string ContextNotFromThisStore = "ContextNotFromThisStore";
-    public const string DoNotCompleteTryCommandWithPendingReclaim = "DoNotCompleteTryCommandWithPendingReclaim";
-    public const string ExecuteMustBeNested = "ExecuteMustBeNested";
-    public const string GenericInstanceCommandNull = "GenericInstanceCommandNull";
-    public const string GuidCannotBeEmpty = "GuidCannotBeEmpty";
-    public const string HandleFreed = "HandleFreed";
-    public const string HandleFreedBeforeInitialized = "HandleFreedBeforeInitialized";
-    public const string InstanceCollisionDefault = "InstanceCollisionDefault";
-    public const string InstanceCompleteDefault = "InstanceCompleteDefault";
-    public const string InstanceHandleConflictDefault = "InstanceHandleConflictDefault";
-    public const string InstanceKeyRequiresValidGuid = "InstanceKeyRequiresValidGuid";
-    public const string InstanceLockLostDefault = "InstanceLockLostDefault";
-    public const string InstanceNotReadyDefault = "InstanceNotReadyDefault";
-    public const string InstanceOperationRequiresInstance = "InstanceOperationRequiresInstance";
-    public const string InstanceOperationRequiresLock = "InstanceOperationRequiresLock";
-    public const string InstanceOperationRequiresNotCompleted = "InstanceOperationRequiresNotCompleted";
-    public const string InstanceOperationRequiresNotUninitialized = "InstanceOperationRequiresNotUninitialized";
-    public const string InstanceOperationRequiresOwner = "InstanceOperationRequiresOwner";
-    public const string InstanceOwnerDefault = "InstanceOwnerDefault";
-    public const string InstanceStoreBoundSameVersionTwice = "InstanceStoreBoundSameVersionTwice";
-    public const string InvalidInstanceState = "InvalidInstanceState";
-    public const string InvalidKeyArgument = "InvalidKeyArgument";
-    public const string InvalidLockToken = "InvalidLockToken";
-    public const string KeyAlreadyAssociated = "KeyAlreadyAssociated";
-    public const string KeyAlreadyCompleted = "KeyAlreadyCompleted";
-    public const string KeyAlreadyUnassociated = "KeyAlreadyUnassociated";
-    public const string KeyCollisionDefault = "KeyCollisionDefault";
-    public const string KeyCompleteDefault = "KeyCompleteDefault";
-    public const string KeyNotAssociated = "KeyNotAssociated";
-    public const string KeyNotCompleted = "KeyNotCompleted";
-    public const string KeyNotReadyDefault = "KeyNotReadyDefault";
-    public const string LoadedWriteOnlyValue = "LoadedWriteOnlyValue";
-    public const string MayBindLockCommandShouldValidateOwner = "MayBindLockCommandShouldValidateOwner";
-    public const string MetadataCannotContainNullKey = "MetadataCannotContainNullKey";
-    public const string MustSetTransactionOnFirstCall = "MustSetTransactionOnFirstCall";
-    public const string OnCancelRequestedThrew = "OnCancelRequestedThrew";
-    public const string OnFreeInstanceHandleThrew = "OnFreeInstanceHandleThrew";
-    public const string OwnerBelongsToWrongStore = "OwnerBelongsToWrongStore";
-    public const string StoreReportedConflictingLockTokens = "StoreReportedConflictingLockTokens";
-    public const string TimedOutWaitingForLockResolution = "TimedOutWaitingForLockResolution";
-    public const string TransactionInDoubtNonHost = "TransactionInDoubtNonHost";
-    public const string TransactionRolledBackNonHost = "TransactionRolledBackNonHost";
-    public const string TryCommandCannotExecuteSubCommandsAndReduce = "TryCommandCannotExecuteSubCommandsAndReduce";
-    public const string UninitializedCannotHaveData = "UninitializedCannotHaveData";
-    public const string WaitAlreadyInProgress = "WaitAlreadyInProgress";
-    public static string CannotAcquireLockSpecific(object arg1) { throw null; }
-    public static string CannotAcquireLockSpecificWithOwner(object arg1, object arg2) { throw null; }
-    public static string GenericInstanceCommand(object arg1) { throw null; }
-    public static string InitialMetadataCannotBeDeleted(object arg1) { throw null; }
-    public static string InstanceCollisionSpecific(System.Guid arg1) { throw null; }
-    public static string InstanceCompleteSpecific(System.Guid arg1) { throw null; }
-    public static string InstanceHandleConflictSpecific(System.Guid arg1) { throw null; }
-    public static string InstanceLockLostSpecific(System.Guid arg1) { throw null; }
-    public static string InstanceNotReadySpecific(System.Guid arg1) { throw null; }
-    public static string InstanceOwnerSpecific(System.Guid arg1) { throw null; }
-    public static string KeyCollisionSpecific(object arg1) { throw null; }
-    public static string KeyCollisionSpecific(object arg1, object arg2, object arg3) { throw null; }
-    public static string KeyCollisionSpecificKeyOnly(object arg1) { throw null; }
-    public static string KeyCompleteSpecific(object arg1) { throw null; }
-    public static string KeyNotReadySpecific(object arg1) { throw null; }
-    public static string MetadataCannotContainNullValue(object arg1) { throw null; }
-    public static string NameCollisionOnCollect(System.Xml.Linq.XName arg1, object arg2) { throw null; }
-    public static string NameCollisionOnMap(System.Xml.Linq.XName arg1, object arg2) { throw null; }
-    public static string OutsideInstanceExecutionScope(object arg1) { throw null; }
-    public static string OutsideTransactionalCommand(object arg1) { throw null; }
-    public static string PersistencePipelineAbortThrew(object arg1) { throw null; }
-    public static string ProviderDoesNotSupportCommand(object arg1) { throw null; }
-    public static string WaitForEventsTimedOut(System.TimeSpan arg1) { throw null; }
-}
 namespace System.Runtime.DurableInstancing
 {
     [System.SerializableAttribute]

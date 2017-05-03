@@ -7,19 +7,30 @@
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyDefaultAliasAttribute("WindowsBase.dll")]
+[assembly:System.Reflection.AssemblyDescriptionAttribute("WindowsBase.dll")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
-[assembly:System.Resources.NeutralResourcesLanguageAttribute("en")]
+[assembly:System.Reflection.AssemblyTitleAttribute("WindowsBase.dll")]
+[assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
+[assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
 [assembly:System.Security.SecurityCriticalAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2007/xaml/presentation", "System.Diagnostics")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2007/xaml/presentation", "System.Windows")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2007/xaml/presentation", "System.Windows.Input")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2007/xaml/presentation", "System.Windows.Media")]
+[assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2009/xaml/presentation", "System.Diagnostics")]
+[assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2009/xaml/presentation", "System.Windows")]
+[assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2009/xaml/presentation", "System.Windows.Input")]
+[assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/netfx/2009/xaml/presentation", "System.Windows.Media")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/winfx/2006/xaml", "System.Windows.Markup")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/winfx/2006/xaml/composite-font", "System.Windows.Media")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "System.Diagnostics")]
@@ -30,6 +41,7 @@
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/xps/2005/06", "System.Windows.Input")]
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/xps/2005/06", "System.Windows.Media")]
 [assembly:System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.microsoft.com/netfx/2007/xaml/presentation", "wpf")]
+[assembly:System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.microsoft.com/netfx/2009/xaml/presentation", "wpf")]
 [assembly:System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.microsoft.com/winfx/2006/xaml/presentation", "av")]
 [assembly:System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.microsoft.com/xps/2005/06", "metro")]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
@@ -71,41 +83,6 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Windows.Markup.XmlnsCompatibleWithAttribute))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Windows.Markup.XmlnsDefinitionAttribute))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Windows.Markup.XmlnsPrefixAttribute))]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
 namespace System.Collections.Specialized
 {
     public partial class CollectionChangedEventManager : System.Windows.WeakEventManager
@@ -210,6 +187,7 @@ namespace System.ComponentModel
         protected virtual void OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeGroupNames() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSortDescriptions() { throw null; }
     }
     public partial interface ICollectionView : System.Collections.IEnumerable, System.Collections.Specialized.INotifyCollectionChanged
@@ -287,9 +265,9 @@ namespace System.ComponentModel
     public partial class ItemPropertyInfo
     {
         public ItemPropertyInfo(string name, System.Type type, object descriptor) { }
-        public object Descriptor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type PropertyType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public object Descriptor { get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Type PropertyType { get { throw null; } }
     }
     public enum NewItemPlaceholderPosition
     {
@@ -394,8 +372,9 @@ namespace System.IO
         public FileFormatException(System.Uri sourceUri, System.Exception innerException) { }
         public FileFormatException(System.Uri sourceUri, string message) { }
         public FileFormatException(System.Uri sourceUri, string message, System.Exception innerException) { }
-        public System.Uri SourceUri { get { throw null; } }
+        public System.Uri SourceUri { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
 }
@@ -448,7 +427,7 @@ namespace System.IO.Packaging
     {
         protected Package(System.IO.FileAccess openFileAccess) { }
         protected Package(System.IO.FileAccess openFileAccess, bool streaming) { }
-        public System.IO.FileAccess FileOpenAccess { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IO.FileAccess FileOpenAccess { get { throw null; } }
         public System.IO.Packaging.PackageProperties PackageProperties { get { throw null; } }
         public void Close() { }
         public System.IO.Packaging.PackagePart CreatePart(System.Uri partUri, string contentType) { throw null; }
@@ -523,8 +502,10 @@ namespace System.IO.Packaging
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate) { throw null; }
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationshipSelector> relationshipSelectors) { throw null; }
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationshipSelector> relationshipSelectors, string signatureId) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.IO.Packaging.PackageDigitalSignature Sign(System.Collections.Generic.IEnumerable<System.Uri> parts, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationshipSelector> relationshipSelectors, string signatureId, System.Collections.Generic.IEnumerable<System.Security.Cryptography.Xml.DataObject> signatureObjects, System.Collections.Generic.IEnumerable<System.Security.Cryptography.Xml.Reference> objectReferences) { throw null; }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public static System.Security.Cryptography.X509Certificates.X509ChainStatusFlags VerifyCertificate(System.Security.Cryptography.X509Certificates.X509Certificate certificate) { throw null; }
         public System.IO.Packaging.VerifyResult VerifySignatures(bool exitOnFailure) { throw null; }
     }
@@ -533,10 +514,10 @@ namespace System.IO.Packaging
         protected PackagePart(System.IO.Packaging.Package package, System.Uri partUri) { }
         protected PackagePart(System.IO.Packaging.Package package, System.Uri partUri, string contentType) { }
         protected PackagePart(System.IO.Packaging.Package package, System.Uri partUri, string contentType, System.IO.Packaging.CompressionOption compressionOption) { }
-        public System.IO.Packaging.CompressionOption CompressionOption { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IO.Packaging.CompressionOption CompressionOption { get { throw null; } }
         public string ContentType { get { throw null; } }
-        public System.IO.Packaging.Package Package { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri Uri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.IO.Packaging.Package Package { get { throw null; } }
+        public System.Uri Uri { get { throw null; } }
         public System.IO.Packaging.PackageRelationship CreateRelationship(System.Uri targetUri, System.IO.Packaging.TargetMode targetMode, string relationshipType) { throw null; }
         public System.IO.Packaging.PackageRelationship CreateRelationship(System.Uri targetUri, System.IO.Packaging.TargetMode targetMode, string relationshipType, string id) { throw null; }
         public void DeleteRelationship(string id) { }
@@ -582,12 +563,12 @@ namespace System.IO.Packaging
     public partial class PackageRelationship
     {
         internal PackageRelationship() { }
-        public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.IO.Packaging.Package Package { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string RelationshipType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri SourceUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.IO.Packaging.TargetMode TargetMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri TargetUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Id { get { throw null; } }
+        public System.IO.Packaging.Package Package { get { throw null; } }
+        public string RelationshipType { get { throw null; } }
+        public System.Uri SourceUri { get { throw null; } }
+        public System.IO.Packaging.TargetMode TargetMode { get { throw null; } }
+        public System.Uri TargetUri { get { throw null; } }
     }
     public partial class PackageRelationshipCollection : System.Collections.Generic.IEnumerable<System.IO.Packaging.PackageRelationship>, System.Collections.IEnumerable
     {
@@ -701,6 +682,7 @@ namespace System.IO.Packaging
 }
 namespace System.Security.Permissions
 {
+    [System.SerializableAttribute]
     public sealed partial class MediaPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
         public MediaPermission() { }
@@ -720,7 +702,7 @@ namespace System.Security.Permissions
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(109))]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
     public sealed partial class MediaPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public MediaPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
@@ -750,6 +732,7 @@ namespace System.Security.Permissions
         SafeVideo = 2,
         SiteOfOriginVideo = 1,
     }
+    [System.SerializableAttribute]
     public sealed partial class WebBrowserPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
         public WebBrowserPermission() { }
@@ -764,7 +747,7 @@ namespace System.Security.Permissions
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(109))]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
     public sealed partial class WebBrowserPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public WebBrowserPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
@@ -875,6 +858,7 @@ namespace System.Security.RightsManagement
         public RightsManagementException(string message, System.Exception innerException) { }
         public System.Security.RightsManagement.RightsManagementFailureCode FailureCode { get { throw null; } }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public enum RightsManagementFailureCode
@@ -1050,21 +1034,20 @@ namespace System.Windows
         public static bool ReuseDispatcherSynchronizationContextInstance { get { throw null; } set { } }
     }
     public delegate object CoerceValueCallback(System.Windows.DependencyObject d, object baseValue);
+    [System.ComponentModel.TypeDescriptionProviderAttribute("MS.Internal.ComponentModel.DependencyObjectProvider")]
+    [System.Windows.Markup.NameScopePropertyAttribute("NameScope", typeof(System.Windows.NameScope))]
     public partial class DependencyObject : System.Windows.Threading.DispatcherObject
     {
         public DependencyObject() { }
         public System.Windows.DependencyObjectType DependencyObjectType { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsSealed { get { throw null; } }
         public void ClearValue(System.Windows.DependencyProperty dp) { }
         public void ClearValue(System.Windows.DependencyPropertyKey key) { }
         public void CoerceValue(System.Windows.DependencyProperty dp) { }
         public sealed override bool Equals(object obj) { throw null; }
         public sealed override int GetHashCode() { throw null; }
-        [System.MonoTODOAttribute]
         public System.Windows.LocalValueEnumerator GetLocalValueEnumerator() { throw null; }
         public object GetValue(System.Windows.DependencyProperty dp) { throw null; }
-        [System.MonoTODOAttribute]
         public void InvalidateProperty(System.Windows.DependencyProperty dp) { }
         protected virtual void OnPropertyChanged(System.Windows.DependencyPropertyChangedEventArgs e) { }
         public object ReadLocalValue(System.Windows.DependencyProperty dp) { throw null; }
@@ -1085,17 +1068,18 @@ namespace System.Windows
         public bool IsInstanceOfType(System.Windows.DependencyObject dependencyObject) { throw null; }
         public bool IsSubclassOf(System.Windows.DependencyObjectType dependencyObjectType) { throw null; }
     }
+    [System.ComponentModel.TypeConverterAttribute("System.Windows.Markup.DependencyPropertyConverter, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Custom=null")]
     public sealed partial class DependencyProperty
     {
         internal DependencyProperty() { }
         public static readonly object UnsetValue;
-        public System.Windows.PropertyMetadata DefaultMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Windows.PropertyMetadata DefaultMetadata { get { throw null; } }
         public int GlobalIndex { get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type OwnerType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type PropertyType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool ReadOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Windows.ValidateValueCallback ValidateValueCallback { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Type OwnerType { get { throw null; } }
+        public System.Type PropertyType { get { throw null; } }
+        public bool ReadOnly { get { throw null; } }
+        public System.Windows.ValidateValueCallback ValidateValueCallback { get { throw null; } }
         public System.Windows.DependencyProperty AddOwner(System.Type ownerType) { throw null; }
         public System.Windows.DependencyProperty AddOwner(System.Type ownerType, System.Windows.PropertyMetadata typeMetadata) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -1122,9 +1106,9 @@ namespace System.Windows
     public partial struct DependencyPropertyChangedEventArgs
     {
         public DependencyPropertyChangedEventArgs(System.Windows.DependencyProperty property, object oldValue, object newValue) { throw null;}
-        public object NewValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public object OldValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Windows.DependencyProperty Property { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public object NewValue { get { throw null; } }
+        public object OldValue { get { throw null; } }
+        public System.Windows.DependencyProperty Property { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.Windows.DependencyPropertyChangedEventArgs args) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -1238,6 +1222,7 @@ namespace System.Windows
         public static bool operator !=(System.Windows.LocalValueEnumerator obj1, System.Windows.LocalValueEnumerator obj2) { throw null; }
         public void Reset() { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("PresentationFramework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class NameScope : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string, object>>, System.Collections.Generic.IDictionary<string, object>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>, System.Collections.IEnumerable, System.Windows.Markup.INameScope, System.Windows.Markup.INameScopeDictionary
     {
         public static readonly System.Windows.DependencyProperty NameScopeProperty;
@@ -1254,6 +1239,7 @@ namespace System.Windows
         public bool ContainsKey(string key) { throw null; }
         public void CopyTo(System.Collections.Generic.KeyValuePair<string, object>[] array, int arrayIndex) { }
         public object FindName(string name) { throw null; }
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public static System.Windows.Markup.INameScope GetNameScope(System.Windows.DependencyObject dependencyObject) { throw null; }
         public void RegisterName(string name, object scopedElement) { }
         public bool Remove(System.Collections.Generic.KeyValuePair<string, object> item) { throw null; }
@@ -1417,15 +1403,19 @@ namespace System.Windows
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
         public override object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, System.Type destinationType) { throw null; }
     }
+    [System.Security.SecurityCriticalAttribute((System.Security.SecurityCriticalScope)(1))]
+    [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]
     public partial class SplashScreen
     {
         [System.Security.SecurityCriticalAttribute]
         public SplashScreen(System.Reflection.Assembly resourceAssembly, string resourceName) { }
+        [System.Security.SecurityCriticalAttribute]
         public SplashScreen(string resourceName) { }
         [System.Security.SecurityCriticalAttribute]
         public void Close(System.TimeSpan fadeoutDuration) { }
         [System.Security.SecurityCriticalAttribute]
         public void Show(bool autoClose) { }
+        [System.Security.SecurityCriticalAttribute]
         public void Show(bool autoClose, bool topMost) { }
     }
     public delegate bool ValidateValueCallback(object value);
@@ -1881,6 +1871,7 @@ namespace System.Windows.Input
         public override object ConvertFromString(string value, System.Windows.Markup.IValueSerializerContext context) { throw null; }
         public override string ConvertToString(object value, System.Windows.Markup.IValueSerializerContext context) { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class TraversalRequest
     {
         public TraversalRequest(System.Windows.Input.FocusNavigationDirection focusNavigationDirection) { }
@@ -1904,22 +1895,28 @@ namespace System.Windows.Interop
         [System.Security.SecurityCriticalAttribute]
         public static void PushModal() { }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public static void RaiseIdle() { }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public static bool RaiseThreadMessage(ref System.Windows.Interop.MSG msg) { throw null; }
     }
     public partial interface IKeyboardInputSink
     {
-        System.Windows.Interop.IKeyboardInputSite KeyboardInputSite { get; [System.Security.SecurityCriticalAttribute]set; }
+        System.Windows.Interop.IKeyboardInputSite KeyboardInputSite { get; [System.Security.SecurityCriticalAttribute][System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]set; }
         bool HasFocusWithin();
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         bool OnMnemonic(ref System.Windows.Interop.MSG msg, System.Windows.Input.ModifierKeys modifiers);
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         System.Windows.Interop.IKeyboardInputSite RegisterKeyboardInputSink(System.Windows.Interop.IKeyboardInputSink sink);
         bool TabInto(System.Windows.Input.TraversalRequest request);
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         bool TranslateAccelerator(ref System.Windows.Interop.MSG msg, System.Windows.Input.ModifierKeys modifiers);
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         bool TranslateChar(ref System.Windows.Interop.MSG msg, System.Windows.Input.ModifierKeys modifiers);
     }
     public partial interface IKeyboardInputSite
@@ -1927,10 +1924,11 @@ namespace System.Windows.Interop
         System.Windows.Interop.IKeyboardInputSink Sink { get; }
         bool OnNoMoreTabStops(System.Windows.Input.TraversalRequest request);
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         void Unregister();
     }
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct MSG
     {
         public System.IntPtr hwnd { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
@@ -1966,6 +1964,7 @@ namespace System.Windows.Markup
         protected internal abstract object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture);
         protected internal abstract void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture);
     }
+    [System.ObsoleteAttribute("IReceiveMarkupExtension has been deprecated. This interface is no longer in use.")]
     public partial interface IReceiveMarkupExtension
     {
         void ReceiveMarkupExtension(string property, System.Windows.Markup.MarkupExtension markupExtension, System.IServiceProvider serviceProvider);
@@ -2096,7 +2095,7 @@ namespace System.Windows.Threading
         public bool HasShutdownFinished { get { throw null; } }
         public bool HasShutdownStarted { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        public System.Windows.Threading.DispatcherHooks Hooks { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Windows.Threading.DispatcherHooks Hooks { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]get { throw null; } }
         public System.Threading.Thread Thread { get { throw null; } }
         public event System.EventHandler ShutdownFinished { add { } remove { } }
         public event System.EventHandler ShutdownStarted { add { } remove { } }
@@ -2124,6 +2123,7 @@ namespace System.Windows.Threading
         public void Invoke(System.Action callback) { }
         public void Invoke(System.Action callback, System.Windows.Threading.DispatcherPriority priority) { }
         public void Invoke(System.Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Invoke(System.Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken, System.TimeSpan timeout) { }
         public object Invoke(System.Delegate method, params object[] args) { throw null; }
         public object Invoke(System.Delegate method, System.TimeSpan timeout, params object[] args) { throw null; }
@@ -2149,19 +2149,24 @@ namespace System.Windows.Threading
         public object Invoke(System.Windows.Threading.DispatcherPriority priority, System.TimeSpan timeout, System.Delegate method, object arg, params object[] args) { throw null; }
         public System.Windows.Threading.DispatcherOperation InvokeAsync(System.Action callback) { throw null; }
         public System.Windows.Threading.DispatcherOperation InvokeAsync(System.Action callback, System.Windows.Threading.DispatcherPriority priority) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Windows.Threading.DispatcherOperation InvokeAsync(System.Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { throw null; }
         public System.Windows.Threading.DispatcherOperation<TResult> InvokeAsync<TResult>(System.Func<TResult> callback) { throw null; }
         public System.Windows.Threading.DispatcherOperation<TResult> InvokeAsync<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Windows.Threading.DispatcherOperation<TResult> InvokeAsync<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public void InvokeShutdown() { }
         public TResult Invoke<TResult>(System.Func<TResult> callback) { throw null; }
         public TResult Invoke<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority) { throw null; }
         public TResult Invoke<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public TResult Invoke<TResult>(System.Func<TResult> callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken, System.TimeSpan timeout) { throw null; }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public static void PushFrame(System.Windows.Threading.DispatcherFrame frame) { }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public static void Run() { }
         public static void ValidatePriority(System.Windows.Threading.DispatcherPriority priority, string parameterName) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -2200,7 +2205,7 @@ namespace System.Windows.Threading
     public abstract partial class DispatcherObject
     {
         protected DispatcherObject() { }
-        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Threading.Dispatcher Dispatcher { get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool CheckAccess() { throw null; }
@@ -2218,6 +2223,8 @@ namespace System.Windows.Threading
         public event System.EventHandler Aborted { add { } remove { } }
         public event System.EventHandler Completed { add { } remove { } }
         public bool Abort() { throw null; }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public System.Runtime.CompilerServices.TaskAwaiter GetAwaiter() { throw null; }
         protected virtual object InvokeDelegateCore() { throw null; }
         public System.Windows.Threading.DispatcherOperationStatus Wait() { throw null; }
@@ -2237,6 +2244,8 @@ namespace System.Windows.Threading
         internal DispatcherOperation() { }
         public new TResult Result { get { throw null; } }
         public new System.Threading.Tasks.Task<TResult> Task { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Runtime.CompilerServices.TaskAwaiter<TResult> GetAwaiter() { throw null; }
         protected override object InvokeDelegateCore() { throw null; }
     }
@@ -2255,17 +2264,19 @@ namespace System.Windows.Threading
         Send = 10,
         SystemIdle = 1,
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct DispatcherPriorityAwaitable
     {
         public System.Windows.Threading.DispatcherPriorityAwaiter GetAwaiter() { throw null; }
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct DispatcherPriorityAwaiter : System.Runtime.CompilerServices.INotifyCompletion
     {
         public bool IsCompleted { get { throw null; } }
         public void GetResult() { }
         public void OnCompleted(System.Action continuation) { }
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct DispatcherProcessingDisabled : System.IDisposable
     {
         public void Dispose() { }
@@ -2282,7 +2293,9 @@ namespace System.Windows.Threading
         public override System.Threading.SynchronizationContext CreateCopy() { throw null; }
         public override void Post(System.Threading.SendOrPostCallback d, object state) { }
         public override void Send(System.Threading.SendOrPostCallback d, object state) { }
+        [System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute]
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]
         public override int Wait(System.IntPtr[] waitHandles, bool waitAll, int millisecondsTimeout) { throw null; }
     }
     public partial class DispatcherTimer

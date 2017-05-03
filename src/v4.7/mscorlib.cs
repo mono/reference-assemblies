@@ -9,13 +9,13 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("mscorlib.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("mscorlib.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("mscorlib.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.DefaultDependencyAttribute((System.Runtime.CompilerServices.LoadHint)(1))]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System, PublicKey=00000000000000000400000000000000")]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.Core, PublicKey=00000000000000000400000000000000")]
@@ -26,8 +26,11 @@
 [assembly:System.Runtime.CompilerServices.StringFreezingAttribute]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
-[assembly:System.Runtime.InteropServices.GuidAttribute("BED7F4EA-1A96-11D2-8F08-00A0C9A6186D")]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Runtime.InteropServices.GuidAttribute("BED7F4EA-1A96-11d2-8F08-00A0C9A6186D")]
+[assembly:System.Runtime.InteropServices.TypeLibVersionAttribute(2, 4)]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(2), SkipVerificationInFullTrust=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace Microsoft.Win32
 {
@@ -37,13 +40,15 @@ namespace Microsoft.Win32
         public static readonly Microsoft.Win32.RegistryKey ClassesRoot;
         public static readonly Microsoft.Win32.RegistryKey CurrentConfig;
         public static readonly Microsoft.Win32.RegistryKey CurrentUser;
-        [System.ObsoleteAttribute("Use PerformanceData instead")]
+        [System.ObsoleteAttribute("The DynData registry key only works on Win9x, which is no longer supported by the CLR.  On NT-based operating systems, use the PerformanceData registry key instead.")]
         public static readonly Microsoft.Win32.RegistryKey DynData;
         public static readonly Microsoft.Win32.RegistryKey LocalMachine;
         public static readonly Microsoft.Win32.RegistryKey PerformanceData;
         public static readonly Microsoft.Win32.RegistryKey Users;
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object GetValue(string keyName, string valueName, object defaultValue) { throw null; }
         public static void SetValue(string keyName, string valueName, object value) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetValue(string keyName, string valueName, object value, Microsoft.Win32.RegistryValueKind valueKind) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -62,27 +67,21 @@ namespace Microsoft.Win32
     public sealed partial class RegistryKey : System.MarshalByRefObject, System.IDisposable
     {
         internal RegistryKey() { }
-        [System.MonoTODOAttribute("Not implemented in Unix")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public Microsoft.Win32.SafeHandles.SafeRegistryHandle Handle { get { throw null; } }
-        public string Name { get { throw null; } }
-        public int SubKeyCount { get { throw null; } }
-        public int ValueCount { get { throw null; } }
-        [System.MonoLimitationAttribute("View is ignored in Mono.")]
+        public Microsoft.Win32.SafeHandles.SafeRegistryHandle Handle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+        public string Name { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public int SubKeyCount { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public int ValueCount { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public Microsoft.Win32.RegistryView View { get { throw null; } }
+        public Microsoft.Win32.RegistryView View { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public void Close() { }
         public Microsoft.Win32.RegistryKey CreateSubKey(string subkey) { throw null; }
-        [System.MonoLimitationAttribute("permissionCheck is ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public Microsoft.Win32.RegistryKey CreateSubKey(string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck) { throw null; }
-        [System.MonoLimitationAttribute("permissionCheck is ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public Microsoft.Win32.RegistryKey CreateSubKey(string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, Microsoft.Win32.RegistryOptions options) { throw null; }
-        [System.MonoLimitationAttribute("permissionCheck and registrySecurity are ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public Microsoft.Win32.RegistryKey CreateSubKey(string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, Microsoft.Win32.RegistryOptions registryOptions, System.Security.AccessControl.RegistrySecurity registrySecurity) { throw null; }
-        [System.MonoLimitationAttribute("permissionCheck and registrySecurity are ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public Microsoft.Win32.RegistryKey CreateSubKey(string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, System.Security.AccessControl.RegistrySecurity registrySecurity) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -90,53 +89,69 @@ namespace Microsoft.Win32
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public Microsoft.Win32.RegistryKey CreateSubKey(string subkey, bool writable, Microsoft.Win32.RegistryOptions options) { throw null; }
         public void DeleteSubKey(string subkey) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DeleteSubKey(string subkey, bool throwOnMissingSubKey) { }
         public void DeleteSubKeyTree(string subkey) { }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DeleteSubKeyTree(string subkey, bool throwOnMissingSubKey) { }
         public void DeleteValue(string name) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DeleteValue(string name, bool throwOnMissingValue) { }
         public void Dispose() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Flush() { }
-        [System.MonoTODOAttribute("Not implemented on unix")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static Microsoft.Win32.RegistryKey FromHandle(Microsoft.Win32.SafeHandles.SafeRegistryHandle handle) { throw null; }
-        [System.MonoTODOAttribute("Not implemented on unix")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static Microsoft.Win32.RegistryKey FromHandle(Microsoft.Win32.SafeHandles.SafeRegistryHandle handle, Microsoft.Win32.RegistryView view) { throw null; }
         public System.Security.AccessControl.RegistrySecurity GetAccessControl() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.AccessControl.RegistrySecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string[] GetSubKeyNames() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetValue(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetValue(string name, object defaultValue) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetValue(string name, object defaultValue, Microsoft.Win32.RegistryValueOptions options) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Microsoft.Win32.RegistryValueKind GetValueKind(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string[] GetValueNames() { throw null; }
-        [System.MonoLimitationAttribute("View is ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static Microsoft.Win32.RegistryKey OpenBaseKey(Microsoft.Win32.RegistryHive hKey, Microsoft.Win32.RegistryView view) { throw null; }
-        [System.MonoTODOAttribute("Not implemented on unix")]
         public static Microsoft.Win32.RegistryKey OpenRemoteBaseKey(Microsoft.Win32.RegistryHive hKey, string machineName) { throw null; }
-        [System.MonoTODOAttribute("Not implemented on unix")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static Microsoft.Win32.RegistryKey OpenRemoteBaseKey(Microsoft.Win32.RegistryHive hKey, string machineName, Microsoft.Win32.RegistryView view) { throw null; }
         public Microsoft.Win32.RegistryKey OpenSubKey(string name) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Microsoft.Win32.RegistryKey OpenSubKey(string name, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck) { throw null; }
-        [System.MonoLimitationAttribute("rights are ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Microsoft.Win32.RegistryKey OpenSubKey(string name, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, System.Security.AccessControl.RegistryRights rights) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public Microsoft.Win32.RegistryKey OpenSubKey(string name, bool writable) { throw null; }
-        [System.MonoLimitationAttribute("rights are ignored in Mono")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Microsoft.Win32.RegistryKey OpenSubKey(string name, System.Security.AccessControl.RegistryRights rights) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetAccessControl(System.Security.AccessControl.RegistrySecurity registrySecurity) { }
         public void SetValue(string name, object value) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetValue(string name, object value, Microsoft.Win32.RegistryValueKind valueKind) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
     }
     public enum RegistryKeyPermissionCheck
@@ -146,7 +161,6 @@ namespace Microsoft.Win32
         ReadWriteSubTree = 2,
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum RegistryOptions
     {
         None = 0,
@@ -159,6 +173,7 @@ namespace Microsoft.Win32
         DWord = 4,
         ExpandString = 2,
         MultiString = 7,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         None = -1,
         QWord = 11,
         String = 1,
@@ -170,7 +185,6 @@ namespace Microsoft.Win32
         DoNotExpandEnvironmentNames = 1,
         None = 0,
     }
-    [System.SerializableAttribute]
     public enum RegistryView
     {
         Default = 0,
@@ -278,13 +292,11 @@ namespace System
         public byte[] DeploymentManifestBytes { get { throw null; } }
         public System.ActivationContext.ContextForm Form { get { throw null; } }
         public System.ApplicationIdentity Identity { get { throw null; } }
-        [System.MonoTODOAttribute("Missing validation")]
         public static System.ActivationContext CreatePartialActivationContext(System.ApplicationIdentity identity) { throw null; }
-        [System.MonoTODOAttribute("Missing validation")]
         public static System.ActivationContext CreatePartialActivationContext(System.ApplicationIdentity identity, string[] manifestPaths) { throw null; }
         public void Dispose() { }
         ~ActivationContext() { }
-        [System.MonoTODOAttribute("Missing serialization support")]
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public enum ContextForm
         {
@@ -300,7 +312,9 @@ namespace System
         internal Activator() { }
         public static System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName) { throw null; }
         public static System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Runtime.Remoting.ObjectHandle CreateInstance(System.ActivationContext activationContext) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Runtime.Remoting.ObjectHandle CreateInstance(System.ActivationContext activationContext, string[] activationCustomData) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.ObjectHandle CreateInstance(System.AppDomain domain, string assemblyName, string typeName) { throw null; }
@@ -379,36 +393,27 @@ namespace System
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System._AppDomain))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class AppDomain : System.MarshalByRefObject, System.Security.IEvidenceFactory, System._AppDomain
     {
         internal AppDomain() { }
-        public System.ActivationContext ActivationContext { get { throw null; } }
-        public System.ApplicationIdentity ApplicationIdentity { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.Security.Policy.ApplicationTrust ApplicationTrust { get { throw null; } }
+        public System.ActivationContext ActivationContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.ApplicationIdentity ApplicationIdentity { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Security.Policy.ApplicationTrust ApplicationTrust { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public string BaseDirectory { get { throw null; } }
         public static System.AppDomain CurrentDomain { get { throw null; } }
-        public System.AppDomainManager DomainManager { get { throw null; } }
-        public string DynamicDirectory { get { throw null; } }
-        public System.Security.Policy.Evidence Evidence { get { throw null; } }
-        public string FriendlyName { get { throw null; } }
+        public System.AppDomainManager DomainManager { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string DynamicDirectory { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Policy.Evidence Evidence { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true)]get { throw null; } }
+        public string FriendlyName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public int Id { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
-        [System.MonoTODOAttribute]
-        public bool IsFullyTrusted { get { throw null; } }
-        [System.MonoTODOAttribute]
+        public bool IsFullyTrusted { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public bool IsHomogenous { get { throw null; } }
-        [System.MonoTODOAttribute("Currently always returns false")]
-        public static bool MonitoringIsEnabled { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public long MonitoringSurvivedMemorySize { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public static long MonitoringSurvivedProcessMemorySize { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public long MonitoringTotalAllocatedMemorySize { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.TimeSpan MonitoringTotalProcessorTime { get { throw null; } }
-        public System.Security.PermissionSet PermissionSet { get { throw null; } }
+        public static bool MonitoringIsEnabled { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        public long MonitoringSurvivedMemorySize { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public static long MonitoringSurvivedProcessMemorySize { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public long MonitoringTotalAllocatedMemorySize { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.TimeSpan MonitoringTotalProcessorTime { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Security.PermissionSet PermissionSet { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public string RelativeSearchPath { get { throw null; } }
         public System.AppDomainSetup SetupInformation { get { throw null; } }
         public bool ShadowCopyFiles { get { throw null; } }
@@ -421,23 +426,22 @@ namespace System
         public event System.ResolveEventHandler ResourceResolve { add { } remove { } }
         public event System.ResolveEventHandler TypeResolve { add { } remove { } }
         public event System.UnhandledExceptionEventHandler UnhandledException { add { } remove { } }
-        [System.ObsoleteAttribute("AppDomain.AppendPrivatePath has been deprecated. Please investigate the use of AppDomainSetup.PrivateBinPath instead.")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.AppendPrivatePath has been deprecated. Please investigate the use of AppDomainSetup.PrivateBinPath instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void AppendPrivatePath(string path) { }
-        [System.MonoTODOAttribute("This routine only returns the parameter currently")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string ApplyPolicy(string assemblyName) { throw null; }
-        [System.ObsoleteAttribute("AppDomain.ClearPrivatePath has been deprecated. Please investigate the use of AppDomainSetup.PrivateBinPath instead.")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.ClearPrivatePath has been deprecated. Please investigate the use of AppDomainSetup.PrivateBinPath instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void ClearPrivatePath() { }
-        [System.ObsoleteAttribute("Use AppDomainSetup.ShadowCopyDirectories")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.ClearShadowCopyPath has been deprecated. Please investigate the use of AppDomainSetup.ShadowCopyDirectories instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void ClearShadowCopyPath() { }
         public System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyFile, string typeName, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
         public static System.AppDomain CreateDomain(string friendlyName) { throw null; }
         public static System.AppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo) { throw null; }
-        [System.MonoLimitationAttribute("Currently it does not allow the setup in the other domain")]
+        [System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlAppDomain=true)]
         public static System.AppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, System.AppDomainSetup info) { throw null; }
         public static System.AppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, System.AppDomainSetup info, System.Security.PermissionSet grantSet, params System.Security.Policy.StrongName[] fullTrustAssemblies) { throw null; }
@@ -445,114 +449,141 @@ namespace System
         public static System.AppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, string appBasePath, string appRelativeSearchPath, bool shadowCopyFiles, System.AppDomainInitializer adInit, string[] adInitArgs) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of CreateInstance which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes, System.Security.Policy.Evidence securityAttributes) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, object[] activationAttributes) { throw null; }
         public object CreateInstanceAndUnwrap(string assemblyName, string typeName) { throw null; }
         public object CreateInstanceAndUnwrap(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of CreateInstanceAndUnwrap which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public object CreateInstanceAndUnwrap(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes, System.Security.Policy.Evidence securityAttributes) { throw null; }
         public object CreateInstanceAndUnwrap(string assemblyName, string typeName, object[] activationAttributes) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of CreateInstanceFrom which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes, System.Security.Policy.Evidence securityAttributes) { throw null; }
         public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, object[] activationAttributes) { throw null; }
         public object CreateInstanceFromAndUnwrap(string assemblyName, string typeName) { throw null; }
         public object CreateInstanceFromAndUnwrap(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of CreateInstanceFromAndUnwrap which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public object CreateInstanceFromAndUnwrap(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes, System.Security.Policy.Evidence securityAttributes) { throw null; }
         public object CreateInstanceFromAndUnwrap(string assemblyName, string typeName, object[] activationAttributes) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes) { throw null; }
-        [System.MonoLimitationAttribute("The argument securityContextSource is ignored")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes, System.Security.SecurityContextSource securityContextSource) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default.  See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Security.PermissionSet requiredPermissions, System.Security.PermissionSet optionalPermissions, System.Security.PermissionSet refusedPermissions) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default.  See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Security.Policy.Evidence evidence) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Security.Policy.Evidence evidence, System.Security.PermissionSet requiredPermissions, System.Security.PermissionSet optionalPermissions, System.Security.PermissionSet refusedPermissions) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, System.Security.PermissionSet requiredPermissions, System.Security.PermissionSet optionalPermissions, System.Security.PermissionSet refusedPermissions) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of DefineDynamicAssembly which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkId=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, System.Security.Policy.Evidence evidence) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default.  Please see http://go.microsoft.com/fwlink/?LinkId=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, System.Security.Policy.Evidence evidence, System.Security.PermissionSet requiredPermissions, System.Security.PermissionSet optionalPermissions, System.Security.PermissionSet refusedPermissions) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, System.Security.Policy.Evidence evidence, System.Security.PermissionSet requiredPermissions, System.Security.PermissionSet optionalPermissions, System.Security.PermissionSet refusedPermissions, bool isSynchronized) { throw null; }
-        [System.ObsoleteAttribute("Declarative security for assembly level is no longer enforced")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, System.Security.Policy.Evidence evidence, System.Security.PermissionSet requiredPermissions, System.Security.PermissionSet optionalPermissions, System.Security.PermissionSet refusedPermissions, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes) { throw null; }
         public void DoCallBack(System.CrossAppDomainDelegate callBackDelegate) { }
         public int ExecuteAssembly(string assemblyFile) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of ExecuteAssembly which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public int ExecuteAssembly(string assemblyFile, System.Security.Policy.Evidence assemblySecurity) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of ExecuteAssembly which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public int ExecuteAssembly(string assemblyFile, System.Security.Policy.Evidence assemblySecurity, string[] args) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of ExecuteAssembly which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public int ExecuteAssembly(string assemblyFile, System.Security.Policy.Evidence assemblySecurity, string[] args, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
         public int ExecuteAssembly(string assemblyFile, string[] args) { throw null; }
         public int ExecuteAssembly(string assemblyFile, string[] args, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of ExecuteAssemblyByName which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public int ExecuteAssemblyByName(System.Reflection.AssemblyName assemblyName, System.Security.Policy.Evidence assemblySecurity, params string[] args) { throw null; }
         public int ExecuteAssemblyByName(System.Reflection.AssemblyName assemblyName, params string[] args) { throw null; }
         public int ExecuteAssemblyByName(string assemblyName) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of ExecuteAssemblyByName which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public int ExecuteAssemblyByName(string assemblyName, System.Security.Policy.Evidence assemblySecurity) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of ExecuteAssemblyByName which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public int ExecuteAssemblyByName(string assemblyName, System.Security.Policy.Evidence assemblySecurity, params string[] args) { throw null; }
         public int ExecuteAssemblyByName(string assemblyName, params string[] args) { throw null; }
         public System.Reflection.Assembly[] GetAssemblies() { throw null; }
-        [System.ObsoleteAttribute("AppDomain.GetCurrentThreadId has been deprecated because it does not provide a stable Id when managed threads are running on fibers (aka lightweight threads). To get a stable identifier for a managed thread, use the ManagedThreadId property on Thread.'")]
-        public static int GetCurrentThreadId() { throw null; }
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.ObsoleteAttribute("AppDomain.GetCurrentThreadId has been deprecated because it does not provide a stable Id when managed threads are running on fibers (aka lightweight threads). To get a stable identifier for a managed thread, use the ManagedThreadId property on Thread.  http://go.microsoft.com/fwlink/?linkid=14202", false)]
+        public static extern int GetCurrentThreadId();
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetData(string name) { throw null; }
         public new System.Type GetType() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override object InitializeLifetimeService() { throw null; }
         public System.Nullable<bool> IsCompatibilitySwitchSet(string value) { throw null; }
         public bool IsDefaultAppDomain() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public bool IsFinalizingForUnload() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Assembly Load(byte[] rawAssembly) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Assembly Load(byte[] rawAssembly, byte[] rawSymbolStore) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of Load which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkId=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true)]
         public System.Reflection.Assembly Load(byte[] rawAssembly, byte[] rawSymbolStore, System.Security.Policy.Evidence securityEvidence) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyRef) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of Load which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyRef, System.Security.Policy.Evidence assemblySecurity) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Assembly Load(string assemblyString) { throw null; }
-        [System.ObsoleteAttribute("Use an overload that does not take an Evidence parameter")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Methods which use evidence to sandbox are obsolete and will be removed in a future release of the .NET Framework. Please use an overload of Load which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Assembly Load(string assemblyString, System.Security.Policy.Evidence assemblySecurity) { throw null; }
         public System.Reflection.Assembly[] ReflectionOnlyGetAssemblies() { throw null; }
-        [System.ObsoleteAttribute("AppDomain policy levels are obsolete")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]
+        [System.ObsoleteAttribute("AppDomain policy levels are obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecurityCriticalAttribute]
         public void SetAppDomainPolicy(System.Security.Policy.PolicyLevel domainPolicy) { }
-        [System.ObsoleteAttribute("Use AppDomainSetup.SetCachePath")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.SetCachePath has been deprecated. Please investigate the use of AppDomainSetup.CachePath instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void SetCachePath(string path) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.Security.SecurityCriticalAttribute]
         public void SetData(string name, object data) { }
-        [System.MonoLimitationAttribute("The permission field is ignored")]
+        [System.Security.SecurityCriticalAttribute]
         public void SetData(string name, object data, System.Security.IPermission permission) { }
-        [System.ObsoleteAttribute("Use AppDomainSetup.DynamicBase")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.SetDynamicBase has been deprecated. Please investigate the use of AppDomainSetup.DynamicBase instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void SetDynamicBase(string path) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public void SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy policy) { }
-        [System.ObsoleteAttribute("Use AppDomainSetup.ShadowCopyFiles")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.SetShadowCopyFiles has been deprecated. Please investigate the use of AppDomainSetup.ShadowCopyFiles instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void SetShadowCopyFiles() { }
-        [System.ObsoleteAttribute("Use AppDomainSetup.ShadowCopyDirectories")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ControlAppDomain=true)]
+        [System.ObsoleteAttribute("AppDomain.SetShadowCopyPath has been deprecated. Please investigate the use of AppDomainSetup.ShadowCopyDirectories instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public void SetShadowCopyPath(string path) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public void SetThreadPrincipal(System.Security.Principal.IPrincipal principal) { }
         void System._AppDomain.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System._AppDomain.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
         void System._AppDomain.GetTypeInfoCount(out uint pcTInfo) { pcTInfo = default(uint); }
         void System._AppDomain.Invoke(uint dispIdMember, [System.Runtime.InteropServices.In]ref System.Guid riid, uint lcid, short wFlags, System.IntPtr pDispParams, System.IntPtr pVarResult, System.IntPtr pExcepInfo, System.IntPtr puArgErr) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(1), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlAppDomain=true)]
         public static void Unload(System.AppDomain domain) { }
     }
@@ -560,20 +591,23 @@ namespace System
     [System.SerializableAttribute]
     public delegate void AppDomainInitializer(string[] args);
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Infrastructure=true)]
-    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class AppDomainManager : System.MarshalByRefObject
     {
         public AppDomainManager() { }
         public virtual System.Runtime.Hosting.ApplicationActivator ApplicationActivator { get { throw null; } }
-        public virtual System.Reflection.Assembly EntryAssembly { get { throw null; } }
-        [System.MonoTODOAttribute]
+        public virtual System.Reflection.Assembly EntryAssembly { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public virtual System.Threading.HostExecutionContextManager HostExecutionContextManager { get { throw null; } }
         public virtual System.Security.HostSecurityManager HostSecurityManager { get { throw null; } }
         public System.AppDomainManagerInitializationOptions InitializationFlags { get { throw null; } set { } }
         public virtual bool CheckSecuritySettings(System.Security.SecurityState state) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.AppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, System.AppDomainSetup appDomainInfo) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlAppDomain=true)]
         protected static System.AppDomain CreateDomainHelper(string friendlyName, System.Security.Policy.Evidence securityInfo, System.AppDomainSetup appDomainInfo) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void InitializeNewDomain(System.AppDomainSetup appDomainInfo) { }
     }
     [System.FlagsAttribute]
@@ -586,47 +620,40 @@ namespace System
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class AppDomainSetup : System.IAppDomainSetup
     {
         public AppDomainSetup() { }
         public AppDomainSetup(System.ActivationContext activationContext) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public AppDomainSetup(System.Runtime.Hosting.ActivationArguments activationArguments) { }
         public System.Runtime.Hosting.ActivationArguments ActivationArguments { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("it needs to be invoked within the created domain")]
         public System.AppDomainInitializer AppDomainInitializer { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("it needs to be used to invoke the initializer within the created domain")]
         public string[] AppDomainInitializerArguments { get { throw null; } set { } }
         public string AppDomainManagerAssembly { get { throw null; } set { } }
         public string AppDomainManagerType { get { throw null; } set { } }
-        public string ApplicationBase { get { throw null; } set { } }
+        public string ApplicationBase { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public string ApplicationName { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("This property exists but not considered.")]
         public System.Security.Policy.ApplicationTrust ApplicationTrust { get { throw null; } set { } }
-        public string CachePath { get { throw null; } set { } }
-        public string ConfigurationFile { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("This property exists but not considered.")]
+        public string CachePath { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public string ConfigurationFile { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public bool DisallowApplicationBaseProbing { get { throw null; } set { } }
         public bool DisallowBindingRedirects { get { throw null; } set { } }
         public bool DisallowCodeDownload { get { throw null; } set { } }
         public bool DisallowPublisherPolicy { get { throw null; } set { } }
-        public string DynamicBase { get { throw null; } set { } }
-        public string LicenseFile { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("In Mono this is controlled by the --share-code flag")]
+        public string DynamicBase { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public string LicenseFile { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public System.LoaderOptimization LoaderOptimization { get { throw null; } set { } }
         public string[] PartialTrustVisibleAssemblies { get { throw null; } set { } }
-        public string PrivateBinPath { get { throw null; } set { } }
+        public string PrivateBinPath { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public string PrivateBinPathProbe { get { throw null; } set { } }
         public bool SandboxInterop { get { throw null; } set { } }
-        public string ShadowCopyDirectories { get { throw null; } set { } }
+        public string ShadowCopyDirectories { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public string ShadowCopyFiles { get { throw null; } set { } }
-        public string TargetFrameworkName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoNotSupportedAttribute("This method exists but not considered.")]
+        public string TargetFrameworkName { get { throw null; } set { } }
         public byte[] GetConfigurationBytes() { throw null; }
-        [System.MonoTODOAttribute("not implemented, does not throw because it's used in testing moonlight")]
         public void SetCompatibilitySwitches(System.Collections.Generic.IEnumerable<string> switches) { }
-        [System.MonoNotSupportedAttribute("This method exists but not considered.")]
         public void SetConfigurationBytes(byte[] value) { }
+        [System.Security.SecurityCriticalAttribute]
         public void SetNativeFunction(string functionName, int functionVersion, System.IntPtr functionPointer) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -666,26 +693,34 @@ namespace System
     [System.SerializableAttribute]
     public sealed partial class ApplicationIdentity : System.Runtime.Serialization.ISerializable
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public ApplicationIdentity(string applicationIdentityFullName) { }
-        public string CodeBase { get { throw null; } }
-        public string FullName { get { throw null; } }
-        [System.MonoTODOAttribute("Missing serialization")]
+        public string CodeBase { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string FullName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ArgIterator
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public ArgIterator(System.RuntimeArgumentHandle arglist) { throw null;}
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe ArgIterator(System.RuntimeArgumentHandle arglist, void* ptr) { throw null;}
         public void End() { }
         public override bool Equals(object o) { throw null; }
         public override int GetHashCode() { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.TypedReference GetNextArg() { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.TypedReference GetNextArg(System.RuntimeTypeHandle rth) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.RuntimeTypeHandle GetNextArgType() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public int GetRemainingCount() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -746,10 +781,10 @@ namespace System
         public bool IsFixedSize { get { throw null; } }
         public bool IsReadOnly { get { throw null; } }
         public bool IsSynchronized { get { throw null; } }
-        public int Length { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
+        public int Length { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public long LongLength { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
-        public int Rank { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
+        public long LongLength { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public int Rank { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
         public object SyncRoot { get { throw null; } }
         int System.Collections.ICollection.Count { get { throw null; } }
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
@@ -757,6 +792,7 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static int BinarySearch(System.Array array, int index, int length, object value) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int BinarySearch(System.Array array, int index, int length, object value, System.Collections.IComparer comparer) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static int BinarySearch(System.Array array, object value) { throw null; }
@@ -770,27 +806,36 @@ namespace System
         public static int BinarySearch<T>(T[] array, T value) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static int BinarySearch<T>(T[] array, T value, System.Collections.Generic.IComparer<T> comparer) { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Clear(System.Array array, int index, int length) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public object Clone() { throw null; }
+        public object Clone() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void ConstrainedCopy(System.Array sourceArray, int sourceIndex, System.Array destinationArray, int destinationIndex, int length) { }
         public static TOutput[] ConvertAll<TInput, TOutput>(TInput[] array, System.Converter<TInput, TOutput> converter) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Copy(System.Array sourceArray, System.Array destinationArray, int length) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Copy(System.Array sourceArray, System.Array destinationArray, long length) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Copy(System.Array sourceArray, int sourceIndex, System.Array destinationArray, int destinationIndex, int length) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Copy(System.Array sourceArray, long sourceIndex, System.Array destinationArray, long destinationIndex, long length) { }
         public void CopyTo(System.Array array, int index) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void CopyTo(System.Array array, long index) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Array CreateInstance(System.Type elementType, int length) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Array CreateInstance(System.Type elementType, int length1, int length2) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Array CreateInstance(System.Type elementType, int length1, int length2, int length3) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Array CreateInstance(System.Type elementType, params int[] lengths) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Array CreateInstance(System.Type elementType, int[] lengths, int[] lowerBounds) { throw null; }
         public static System.Array CreateInstance(System.Type elementType, params long[] lengths) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
@@ -807,17 +852,24 @@ namespace System
         public static T Find<T>(T[] array, System.Predicate<T> match) { throw null; }
         public static void ForEach<T>(T[] array, System.Action<T> action) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public int GetLength(int dimension) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public int GetLength(int dimension) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public long GetLongLength(int dimension) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public int GetLowerBound(int dimension) { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public int GetUpperBound(int dimension) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetValue(int index) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetValue(int index1, int index2) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public object GetValue(int index1, int index2, int index3) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public object GetValue(params int[] indices) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public object GetValue(params int[] indices) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public object GetValue(long index) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -831,16 +883,19 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static int IndexOf(System.Array array, object value, int startIndex) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int IndexOf(System.Array array, object value, int startIndex, int count) { throw null; }
         public static int IndexOf<T>(T[] array, T value) { throw null; }
         public static int IndexOf<T>(T[] array, T value, int startIndex) { throw null; }
         public static int IndexOf<T>(T[] array, T value, int startIndex, int count) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public void Initialize() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static int LastIndexOf(System.Array array, object value) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static int LastIndexOf(System.Array array, object value, int startIndex) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int LastIndexOf(System.Array array, object value, int startIndex, int count) { throw null; }
         public static int LastIndexOf<T>(T[] array, T value) { throw null; }
         public static int LastIndexOf<T>(T[] array, T value, int startIndex) { throw null; }
@@ -850,11 +905,16 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Reverse(System.Array array) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Reverse(System.Array array, int index, int length) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetValue(object value, int index) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetValue(object value, int index1, int index2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetValue(object value, int index1, int index2, int index3) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public void SetValue(object value, params int[] indices) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public void SetValue(object value, params int[] indices) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void SetValue(object value, long index) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -872,6 +932,7 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Sort(System.Array keys, System.Array items, int index, int length) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Sort(System.Array keys, System.Array items, int index, int length, System.Collections.IComparer comparer) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Sort(System.Array array, System.Collections.IComparer comparer) { }
@@ -887,6 +948,7 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Sort<T>(T[] array, int index, int length) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Sort<T>(T[] array, int index, int length, System.Collections.Generic.IComparer<T> comparer) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Sort<TKey, TValue>(TKey[] keys, TValue[] items) { }
@@ -895,11 +957,11 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static void Sort<TKey, TValue>(TKey[] keys, TValue[] items, int index, int length) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Sort<TKey, TValue>(TKey[] keys, TValue[] items, int index, int length, System.Collections.Generic.IComparer<TKey> comparer) { }
         int System.Collections.IList.Add(object value) { throw null; }
         void System.Collections.IList.Clear() { }
         bool System.Collections.IList.Contains(object value) { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         int System.Collections.IList.IndexOf(object value) { throw null; }
         void System.Collections.IList.Insert(int index, object value) { }
         void System.Collections.IList.Remove(object value) { }
@@ -1148,13 +1210,19 @@ namespace System
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class Buffer
     {
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static void BlockCopy(System.Array src, int srcOffset, System.Array dst, int dstOffset, int count) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int ByteLength(System.Array array) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static byte GetByte(System.Array array, int index) { throw null; }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static void MemoryCopy(void* source, void* destination, long destinationSizeInBytes, long sourceBytesToCopy) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static void MemoryCopy(void* source, void* destination, ulong destinationSizeInBytes, ulong sourceBytesToCopy) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetByte(System.Array array, int index, byte value) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -1309,114 +1377,163 @@ namespace System
     public delegate int Comparison<in T>(T x, T y);
     public static partial class Console
     {
-        public static System.ConsoleColor BackgroundColor { get { throw null; } set { } }
-        public static int BufferHeight { get { throw null; } [System.MonoLimitationAttribute("Implemented only on Windows")]set { } }
-        public static int BufferWidth { get { throw null; } [System.MonoLimitationAttribute("Implemented only on Windows")]set { } }
-        [System.MonoLimitationAttribute("Implemented only on Windows")]
-        public static bool CapsLock { get { throw null; } }
-        public static int CursorLeft { get { throw null; } set { } }
-        public static int CursorSize { get { throw null; } set { } }
-        public static int CursorTop { get { throw null; } set { } }
-        public static bool CursorVisible { get { throw null; } set { } }
-        public static System.IO.TextWriter Error { get { throw null; } }
-        public static System.ConsoleColor ForegroundColor { get { throw null; } set { } }
-        public static System.IO.TextReader In { get { throw null; } }
-        public static System.Text.Encoding InputEncoding { get { throw null; } set { } }
-        public static bool IsErrorRedirected { get { throw null; } }
-        public static bool IsInputRedirected { get { throw null; } }
-        public static bool IsOutputRedirected { get { throw null; } }
-        public static bool KeyAvailable { get { throw null; } }
-        public static int LargestWindowHeight { get { throw null; } }
-        public static int LargestWindowWidth { get { throw null; } }
-        [System.MonoLimitationAttribute("Only works on windows")]
-        public static bool NumberLock { get { throw null; } }
-        public static System.IO.TextWriter Out { get { throw null; } }
-        public static System.Text.Encoding OutputEncoding { get { throw null; } set { } }
-        public static string Title { get { throw null; } set { } }
-        public static bool TreatControlCAsInput { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("Only works on windows")]
-        public static int WindowHeight { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("Only works on windows")]
-        public static int WindowLeft { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("Only works on windows")]
-        public static int WindowTop { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("Only works on windows")]
-        public static int WindowWidth { get { throw null; } set { } }
+        public static System.ConsoleColor BackgroundColor { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static int BufferHeight { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static int BufferWidth { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static bool CapsLock { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static int CursorLeft { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static int CursorSize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static int CursorTop { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static bool CursorVisible { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static System.IO.TextWriter Error { [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]get { throw null; } }
+        public static System.ConsoleColor ForegroundColor { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static System.IO.TextReader In { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]get { throw null; } }
+        public static System.Text.Encoding InputEncoding { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static bool IsErrorRedirected { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static bool IsInputRedirected { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static bool IsOutputRedirected { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static bool KeyAvailable { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]get { throw null; } }
+        public static int LargestWindowHeight { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static int LargestWindowWidth { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static bool NumberLock { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static System.IO.TextWriter Out { [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]get { throw null; } }
+        public static System.Text.Encoding OutputEncoding { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static string Title { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static bool TreatControlCAsInput { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public static int WindowHeight { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static int WindowLeft { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static int WindowTop { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public static int WindowWidth { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public static event System.ConsoleCancelEventHandler CancelKeyPress { add { } remove { } }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Beep() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Beep(int frequency, int duration) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Clear() { }
-        [System.MonoLimitationAttribute("Implemented only on Windows")]
         public static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop) { }
-        [System.MonoLimitationAttribute("Implemented only on Windows")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop, char sourceChar, System.ConsoleColor sourceForeColor, System.ConsoleColor sourceBackColor) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.IO.Stream OpenStandardError() { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.IO.Stream OpenStandardError(int bufferSize) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.IO.Stream OpenStandardInput() { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.IO.Stream OpenStandardInput(int bufferSize) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.IO.Stream OpenStandardOutput() { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.IO.Stream OpenStandardOutput(int bufferSize) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static int Read() { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.ConsoleKeyInfo ReadKey() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static System.ConsoleKeyInfo ReadKey(bool intercept) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static string ReadLine() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void ResetColor() { }
-        [System.MonoLimitationAttribute("Only works on windows")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetBufferSize(int width, int height) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetCursorPosition(int left, int top) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void SetError(System.IO.TextWriter newError) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void SetIn(System.IO.TextReader newIn) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void SetOut(System.IO.TextWriter newOut) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetWindowPosition(int left, int top) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetWindowSize(int width, int height) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(bool value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(char value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(char[] buffer) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(char[] buffer, int index, int count) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(decimal value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(double value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(int value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(long value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(object value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(float value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(string value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(string format, object arg0) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(string format, object arg0, object arg1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(string format, object arg0, object arg1, object arg2) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(string format, object arg0, object arg1, object arg2, object arg3, __arglist) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(string format, params object[] arg) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(uint value) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void Write(ulong value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(bool value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(char value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(char[] buffer) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(char[] buffer, int index, int count) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(decimal value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(double value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(int value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(long value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(object value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(float value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(string value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(string format, object arg0) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(string format, object arg0, object arg1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(string format, object arg0, object arg1, object arg2) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(string format, object arg0, object arg1, object arg2, object arg3, __arglist) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(string format, params object[] arg) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(uint value) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UI=true)]
         public static void WriteLine(ulong value) { }
     }
     [System.SerializableAttribute]
@@ -2529,10 +2646,11 @@ namespace System
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(2))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class Delegate : System.ICloneable, System.Runtime.Serialization.ISerializable
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         protected Delegate(object target, string method) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected Delegate(System.Type target, string method) { }
         public System.Reflection.MethodInfo Method { get { throw null; } }
         public object Target { get { throw null; } }
@@ -2542,24 +2660,33 @@ namespace System
         public static System.Delegate Combine(params System.Delegate[] delegates) { throw null; }
         protected virtual System.Delegate CombineImpl(System.Delegate d) { throw null; }
         public static System.Delegate CreateDelegate(System.Type type, object firstArgument, System.Reflection.MethodInfo method) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Delegate CreateDelegate(System.Type type, object firstArgument, System.Reflection.MethodInfo method, bool throwOnBindFailure) { throw null; }
         public static System.Delegate CreateDelegate(System.Type type, object target, string method) { throw null; }
         public static System.Delegate CreateDelegate(System.Type type, object target, string method, bool ignoreCase) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Delegate CreateDelegate(System.Type type, object target, string method, bool ignoreCase, bool throwOnBindFailure) { throw null; }
         public static System.Delegate CreateDelegate(System.Type type, System.Reflection.MethodInfo method) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Delegate CreateDelegate(System.Type type, System.Reflection.MethodInfo method, bool throwOnBindFailure) { throw null; }
         public static System.Delegate CreateDelegate(System.Type type, System.Type target, string method) { throw null; }
         public static System.Delegate CreateDelegate(System.Type type, System.Type target, string method, bool ignoreCase) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Delegate CreateDelegate(System.Type type, System.Type target, string method, bool ignoreCase, bool throwOnBindFailure) { throw null; }
         public object DynamicInvoke(params object[] args) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual object DynamicInvokeImpl(object[] args) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         public virtual System.Delegate[] GetInvocationList() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual System.Reflection.MethodInfo GetMethodImpl() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public static bool operator ==(System.Delegate d1, System.Delegate d2) { throw null; }
         public static bool operator !=(System.Delegate d1, System.Delegate d2) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Delegate Remove(System.Delegate source, System.Delegate value) { throw null; }
         public static System.Delegate RemoveAll(System.Delegate source, System.Delegate value) { throw null; }
         protected virtual System.Delegate RemoveImpl(System.Delegate d) { throw null; }
@@ -2669,6 +2796,7 @@ namespace System
         protected Enum() { }
         [System.Security.SecuritySafeCriticalAttribute]
         public int CompareTo(object target) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static string Format(System.Type enumType, object value, string format) { throw null; }
@@ -2748,48 +2876,54 @@ namespace System
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class Environment
     {
-        public static string CommandLine { get { throw null; } }
+        public static string CommandLine { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public static string CurrentDirectory { get { throw null; } set { } }
-        public static int CurrentManagedThreadId { get { throw null; } }
-        public static int ExitCode { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]set { } }
-        public static bool HasShutdownStarted { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
-        public static bool Is64BitOperatingSystem { get { throw null; } }
+        public static int CurrentManagedThreadId { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
+        public static int ExitCode { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]set { } }
+        public static bool HasShutdownStarted { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public static bool Is64BitOperatingSystem { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public static bool Is64BitProcess { get { throw null; } }
-        public static string MachineName { [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Read="COMPUTERNAME"), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public static string MachineName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public static string NewLine { get { throw null; } }
-        public static System.OperatingSystem OSVersion { get { throw null; } }
-        public static int ProcessorCount { [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Read="NUMBER_OF_PROCESSORS")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
-        public static string StackTrace { [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]get { throw null; } }
-        public static string SystemDirectory { get { throw null; } }
-        public static int SystemPageSize { get { throw null; } }
-        public static int TickCount { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
-        public static string UserDomainName { [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Read="USERDOMAINNAME")]get { throw null; } }
-        [System.MonoTODOAttribute("Currently always returns false, regardless of interactive state")]
-        public static bool UserInteractive { get { throw null; } }
-        public static string UserName { [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Read="USERNAME;USER")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public static System.OperatingSystem OSVersion { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static int ProcessorCount { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static string StackTrace { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static string SystemDirectory { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static int SystemPageSize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static int TickCount { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public static string UserDomainName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static bool UserInteractive { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static string UserName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public static System.Version Version { get { throw null; } }
-        [System.MonoTODOAttribute("Currently always returns zero")]
-        public static long WorkingSet { [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]get { throw null; } }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        public static long WorkingSet { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void Exit(int exitCode) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string ExpandEnvironmentVariables(string name) { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void FailFast(string message) { }
-        [System.Security.SecurityCriticalAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void FailFast(string message, System.Exception exception) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Read="PATH")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string[] GetCommandLineArgs() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetEnvironmentVariable(string variable) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetEnvironmentVariable(string variable, System.EnvironmentVariableTarget target) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Collections.IDictionary GetEnvironmentVariables() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Collections.IDictionary GetEnvironmentVariables(System.EnvironmentVariableTarget target) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetFolderPath(System.Environment.SpecialFolder folder) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetFolderPath(System.Environment.SpecialFolder folder, System.Environment.SpecialFolderOption option) { throw null; }
-        [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string[] GetLogicalDrives() { throw null; }
-        [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetEnvironmentVariable(string variable, string value) { }
-        [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetEnvironmentVariable(string variable, string value, System.EnvironmentVariableTarget target) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public enum SpecialFolder
@@ -2872,7 +3006,6 @@ namespace System
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._Exception))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class Exception : System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable
     {
         public Exception() { }
@@ -2980,7 +3113,8 @@ namespace System
         public static int GetGeneration(object obj) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public static int GetGeneration(System.WeakReference wo) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static long GetTotalMemory(bool forceFullCollection) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static long GetTotalMemory(bool forceFullCollection) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void KeepAlive(object obj) { }
         [System.Security.SecurityCriticalAttribute]
@@ -3008,7 +3142,8 @@ namespace System
         public static System.GCNotificationStatus WaitForFullGCComplete() { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static System.GCNotificationStatus WaitForFullGCComplete(int millisecondsTimeout) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void WaitForPendingFinalizers() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static void WaitForPendingFinalizers() { }
     }
     [System.SerializableAttribute]
     public enum GCCollectionMode
@@ -3043,6 +3178,7 @@ namespace System
         public bool Equals(System.Guid g) { throw null; }
         public override bool Equals(object o) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Guid NewGuid() { throw null; }
         public static bool operator ==(System.Guid a, System.Guid b) { throw null; }
         public static bool operator !=(System.Guid a, System.Guid b) { throw null; }
@@ -3296,47 +3432,64 @@ namespace System
     {
         public static readonly System.IntPtr Zero;
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public IntPtr(int value) { throw null;}
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public IntPtr(long value) { throw null;}
         [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe IntPtr(void* value) { throw null;}
         public static int Size { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static System.IntPtr Add(System.IntPtr pointer, int offset) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static System.IntPtr operator +(System.IntPtr pointer, int offset) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool operator ==(System.IntPtr value1, System.IntPtr value2) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static explicit operator System.IntPtr (int value) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static explicit operator System.IntPtr (long value) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static explicit operator int (System.IntPtr value) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static explicit operator long (System.IntPtr value) { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public unsafe static explicit operator void* (System.IntPtr value) { throw null; }
         [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static explicit operator System.IntPtr (void* value) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool operator !=(System.IntPtr value1, System.IntPtr value2) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static System.IntPtr operator -(System.IntPtr pointer, int offset) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(2), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public static System.IntPtr Subtract(System.IntPtr pointer, int offset) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public int ToInt32() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public long ToInt64() { throw null; }
         [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public unsafe void* ToPointer() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string ToString(string format) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -3441,15 +3594,14 @@ namespace System
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class MarshalByRefObject
     {
         protected MarshalByRefObject() { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType) { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+        [System.Security.SecurityCriticalAttribute]
         public object GetLifetimeService() { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+        [System.Security.SecurityCriticalAttribute]
         public virtual object InitializeLifetimeService() { throw null; }
         protected System.MarshalByRefObject MemberwiseClone(bool cloneIdentity) { throw null; }
     }
@@ -3648,7 +3800,7 @@ namespace System
     public partial struct ModuleHandle
     {
         public static readonly System.ModuleHandle EmptyHandle;
-        public int MDStreamVersion { get { throw null; } }
+        public int MDStreamVersion { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public bool Equals(System.ModuleHandle handle) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
@@ -3666,38 +3818,6 @@ namespace System
         public System.RuntimeTypeHandle ResolveTypeHandle(int typeToken) { throw null; }
         public System.RuntimeTypeHandle ResolveTypeHandle(int typeToken, System.RuntimeTypeHandle[] typeInstantiationContext, System.RuntimeTypeHandle[] methodInstantiationContext) { throw null; }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class MTAThreadAttribute : System.Attribute
@@ -3706,19 +3826,25 @@ namespace System
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class MulticastDelegate : System.Delegate
     {
         protected MulticastDelegate(object target, string method) : base (default(object), default(string)) { }
         protected MulticastDelegate(System.Type target, string method) : base (default(object), default(string)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected sealed override System.Delegate CombineImpl(System.Delegate follow) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public sealed override bool Equals(object obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public sealed override int GetHashCode() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public sealed override System.Delegate[] GetInvocationList() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override System.Reflection.MethodInfo GetMethodImpl() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public static bool operator ==(System.MulticastDelegate d1, System.MulticastDelegate d2) { throw null; }
         public static bool operator !=(System.MulticastDelegate d1, System.MulticastDelegate d2) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected sealed override System.Delegate RemoveImpl(System.Delegate value) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -3771,11 +3897,12 @@ namespace System
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class Nullable
     {
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static int Compare<T>(System.Nullable<T> n1, System.Nullable<T> n2) where T : struct { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static bool Equals<T>(System.Nullable<T> n1, System.Nullable<T> n2) where T : struct { throw null; }
         public static System.Type GetUnderlyingType(System.Type nullableType) { throw null; }
     }
-    [System.Diagnostics.DebuggerStepThroughAttribute]
     [System.SerializableAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Nullable<T> where T : struct
@@ -3812,8 +3939,10 @@ namespace System
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         ~Object() { }
         public virtual int GetHashCode() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public System.Type GetType() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]protected System.Object MemberwiseClone() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public System.Type GetType() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        protected System.Object MemberwiseClone() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static bool ReferenceEquals(System.Object objA, System.Object objB) { throw null; }
         public virtual string ToString() { throw null; }
@@ -3852,6 +3981,7 @@ namespace System
         public System.Version Version { get { throw null; } }
         public string VersionString { get { throw null; } }
         public object Clone() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -3965,12 +4095,16 @@ namespace System
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct RuntimeFieldHandle : System.Runtime.Serialization.ISerializable
     {
-        public System.IntPtr Value { get { throw null; } }
+        public System.IntPtr Value { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool Equals(System.RuntimeFieldHandle handle) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public static bool operator ==(System.RuntimeFieldHandle left, System.RuntimeFieldHandle right) { throw null; }
         public static bool operator !=(System.RuntimeFieldHandle left, System.RuntimeFieldHandle right) { throw null; }
@@ -3980,14 +4114,18 @@ namespace System
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct RuntimeMethodHandle : System.Runtime.Serialization.ISerializable
     {
-        public System.IntPtr Value { get { throw null; } }
+        public System.IntPtr Value { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool Equals(System.RuntimeMethodHandle handle) { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecurityCriticalAttribute]
         public System.IntPtr GetFunctionPointer() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public static bool operator ==(System.RuntimeMethodHandle left, System.RuntimeMethodHandle right) { throw null; }
         public static bool operator !=(System.RuntimeMethodHandle left, System.RuntimeMethodHandle right) { throw null; }
@@ -3997,7 +4135,7 @@ namespace System
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct RuntimeTypeHandle : System.Runtime.Serialization.ISerializable
     {
-        public System.IntPtr Value { get { throw null; } }
+        public System.IntPtr Value { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
@@ -4006,6 +4144,7 @@ namespace System
         [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public System.ModuleHandle GetModuleHandle() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public static bool operator ==(object left, System.RuntimeTypeHandle right) { throw null; }
         public static bool operator ==(System.RuntimeTypeHandle left, object right) { throw null; }
@@ -4170,8 +4309,8 @@ namespace System
         [System.Security.SecurityCriticalAttribute]
         public unsafe String(sbyte* value, int startIndex, int length, System.Text.Encoding enc) { }
         [System.Runtime.CompilerServices.IndexerName("Chars")]
-        public char this[int index] { get { throw null; } }
-        public int Length { get { throw null; } }
+        public char this[int index] { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public int Length { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
         public object Clone() { throw null; }
         public static int Compare(System.String strA, int indexA, System.String strB, int indexB, int length) { throw null; }
         public static int Compare(System.String strA, int indexA, System.String strB, int indexB, int length, bool ignoreCase) { throw null; }
@@ -4241,6 +4380,7 @@ namespace System
         public System.TypeCode GetTypeCode() { throw null; }
         public int IndexOf(char value) { throw null; }
         public int IndexOf(char value, int startIndex) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public int IndexOf(char value, int startIndex, int count) { throw null; }
         public int IndexOf(System.String value) { throw null; }
         public int IndexOf(System.String value, int startIndex) { throw null; }
@@ -4251,6 +4391,7 @@ namespace System
         public int IndexOf(System.String value, System.StringComparison comparisonType) { throw null; }
         public int IndexOfAny(char[] anyOf) { throw null; }
         public int IndexOfAny(char[] anyOf, int startIndex) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public int IndexOfAny(char[] anyOf, int startIndex, int count) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public System.String Insert(int startIndex, System.String value) { throw null; }
@@ -4274,6 +4415,7 @@ namespace System
         public static System.String Join<T>(System.String separator, System.Collections.Generic.IEnumerable<T> values) { throw null; }
         public int LastIndexOf(char value) { throw null; }
         public int LastIndexOf(char value, int startIndex) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public int LastIndexOf(char value, int startIndex, int count) { throw null; }
         public int LastIndexOf(System.String value) { throw null; }
         public int LastIndexOf(System.String value, int startIndex) { throw null; }
@@ -4284,6 +4426,7 @@ namespace System
         public int LastIndexOf(System.String value, System.StringComparison comparisonType) { throw null; }
         public int LastIndexOfAny(char[] anyOf) { throw null; }
         public int LastIndexOfAny(char[] anyOf, int startIndex) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public int LastIndexOfAny(char[] anyOf, int startIndex, int count) { throw null; }
         public System.String Normalize() { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -4534,6 +4677,7 @@ namespace System
         public System.TimeSpan[] GetAmbiguousTimeOffsets(System.DateTime dateTime) { throw null; }
         public System.TimeSpan[] GetAmbiguousTimeOffsets(System.DateTimeOffset dateTimeOffset) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Collections.ObjectModel.ReadOnlyCollection<System.TimeZoneInfo> GetSystemTimeZones() { throw null; }
         public System.TimeSpan GetUtcOffset(System.DateTime dateTime) { throw null; }
         public System.TimeSpan GetUtcOffset(System.DateTimeOffset dateTimeOffset) { throw null; }
@@ -4544,6 +4688,7 @@ namespace System
         public bool IsDaylightSavingTime(System.DateTimeOffset dateTimeOffset) { throw null; }
         public bool IsInvalidTime(System.DateTime dateTime) { throw null; }
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public string ToSerializedString() { throw null; }
         public override string ToString() { throw null; }
@@ -4952,9 +5097,9 @@ namespace System
         public System.Reflection.PropertyInfo GetProperty(string name, System.Type[] types) { throw null; }
         protected abstract System.Reflection.PropertyInfo GetPropertyImpl(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers);
         public new System.Type GetType() { throw null; }
-        public static System.Type GetType(string typeName) { throw null; }
-        public static System.Type GetType(string typeName, bool throwOnError) { throw null; }
-        public static System.Type GetType(string typeName, bool throwOnError, bool ignoreCase) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type GetType(string typeName) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type GetType(string typeName, bool throwOnError) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type GetType(string typeName, bool throwOnError, bool ignoreCase) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type GetType(string typeName, System.Func<System.Reflection.AssemblyName, System.Reflection.Assembly> assemblyResolver, System.Func<System.Reflection.Assembly, string, bool, System.Type> typeResolver) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type GetType(string typeName, System.Func<System.Reflection.AssemblyName, System.Reflection.Assembly> assemblyResolver, System.Func<System.Reflection.Assembly, string, bool, System.Type> typeResolver, bool throwOnError) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type GetType(string typeName, System.Func<System.Reflection.AssemblyName, System.Reflection.Assembly> assemblyResolver, System.Func<System.Reflection.Assembly, string, bool, System.Type> typeResolver, bool throwOnError, bool ignoreCase) { throw null; }
@@ -4969,6 +5114,7 @@ namespace System
         public static System.Type GetTypeFromCLSID(System.Guid clsid, string server) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public static System.Type GetTypeFromCLSID(System.Guid clsid, string server, bool throwOnError) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Type GetTypeFromHandle(System.RuntimeTypeHandle handle) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static System.Type GetTypeFromProgID(string progID) { throw null; }
@@ -5006,9 +5152,11 @@ namespace System
         public virtual System.Type MakeByRefType() { throw null; }
         public virtual System.Type MakeGenericType(params System.Type[] typeArguments) { throw null; }
         public virtual System.Type MakePointerType() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static bool operator ==(System.Type left, System.Type right) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static bool operator !=(System.Type left, System.Type right) { throw null; }
-        public static System.Type ReflectionOnlyGetType(string typeName, bool throwIfNotFound, bool ignoreCase) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Type ReflectionOnlyGetType(string typeName, bool throwIfNotFound, bool ignoreCase) { throw null; }
         void System.Runtime.InteropServices._Type.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System.Runtime.InteropServices._Type.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
         void System.Runtime.InteropServices._Type.GetTypeInfoCount(out uint pcTInfo) { pcTInfo = default(uint); }
@@ -5252,32 +5400,48 @@ namespace System
     public partial struct UIntPtr : System.Runtime.Serialization.ISerializable
     {
         public static readonly System.UIntPtr Zero;
+        [System.Security.SecuritySafeCriticalAttribute]
         public UIntPtr(uint value) { throw null;}
+        [System.Security.SecuritySafeCriticalAttribute]
         public UIntPtr(ulong value) { throw null;}
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe UIntPtr(void* value) { throw null;}
         public static int Size { get { throw null; } }
         public static System.UIntPtr Add(System.UIntPtr pointer, int offset) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
         public static System.UIntPtr operator +(System.UIntPtr pointer, int offset) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool operator ==(System.UIntPtr value1, System.UIntPtr value2) { throw null; }
         public static explicit operator System.UIntPtr (uint value) { throw null; }
         public static explicit operator System.UIntPtr (ulong value) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static explicit operator uint (System.UIntPtr value) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static explicit operator ulong (System.UIntPtr value) { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static explicit operator void* (System.UIntPtr value) { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static explicit operator System.UIntPtr (void* value) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool operator !=(System.UIntPtr value1, System.UIntPtr value2) { throw null; }
         public static System.UIntPtr operator -(System.UIntPtr pointer, int offset) { throw null; }
         public static System.UIntPtr Subtract(System.UIntPtr pointer, int offset) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public unsafe void* ToPointer() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public uint ToUInt32() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public ulong ToUInt64() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -5300,6 +5464,7 @@ namespace System
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public delegate void UnhandledExceptionEventHandler(object sender, System.UnhandledExceptionEventArgs e);
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
     public partial struct ValueTuple : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple>, System.IEquatable<System.ValueTuple>
     {
         public int CompareTo(System.ValueTuple other) { throw null; }
@@ -5321,6 +5486,7 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ValueTuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1>>, System.IEquatable<System.ValueTuple<T1>>
     {
         public T1 Item1;
@@ -5466,7 +5632,9 @@ namespace System
     public abstract partial class ValueType
     {
         protected ValueType() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
         public override string ToString() { throw null; }
     }
@@ -5509,16 +5677,19 @@ namespace System
     {
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     [System.SerializableAttribute]
     public partial class WeakReference : System.Runtime.Serialization.ISerializable
     {
         public WeakReference(object target) { }
         public WeakReference(object target, bool trackResurrection) { }
         protected WeakReference(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        public virtual bool IsAlive { get { throw null; } }
-        public virtual object Target { get { throw null; } set { } }
+        public virtual bool IsAlive { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public virtual object Target { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]set { } }
         public virtual bool TrackResurrection { get { throw null; } }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         ~WeakReference() { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
@@ -5526,10 +5697,12 @@ namespace System
     {
         public WeakReference(T target) { }
         public WeakReference(T target, bool trackResurrection) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         ~WeakReference() { }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public void SetTarget(T target) { }
-        public bool TryGetTarget(out T target) { target = default(T); throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]public bool TryGetTarget(out T target) { target = default(T); throw null; }
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -5595,6 +5768,7 @@ namespace System
         System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyRef, System.Security.Policy.Evidence assemblySecurity);
         System.Reflection.Assembly Load(string assemblyString);
         System.Reflection.Assembly Load(string assemblyString, System.Security.Policy.Evidence assemblySecurity);
+        [System.Security.SecurityCriticalAttribute]
         void SetAppDomainPolicy(System.Security.Policy.PolicyLevel domainPolicy);
         [System.Security.SecurityCriticalAttribute]
         void SetCachePath(string s);
@@ -6065,7 +6239,9 @@ namespace System.Collections
 namespace System.Collections.Concurrent
 {
     [System.Diagnostics.DebuggerDisplayAttribute("Count = {Count}")]
-    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Concurrent.IDictionaryDebugView<K, V>")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Generic.Mscorlib_DictionaryDebugView<K, V>")]
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     [System.SerializableAttribute]
     public partial class ConcurrentDictionary<TKey, TValue> : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey, TValue>>, System.Collections.Generic.IDictionary<TKey, TValue>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<TKey, TValue>>, System.Collections.Generic.IReadOnlyCollection<System.Collections.Generic.KeyValuePair<TKey, TValue>>, System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>, System.Collections.ICollection, System.Collections.IDictionary, System.Collections.IEnumerable
     {
@@ -6117,7 +6293,9 @@ namespace System.Collections.Concurrent
         public bool TryUpdate(TKey key, TValue newValue, TValue comparisonValue) { throw null; }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("Count = {Count}")]
-    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Concurrent.IProducerConsumerCollectionDebugView<T>")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Concurrent.SystemCollectionsConcurrent_ProducerConsumerCollectionDebugView<T>")]
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     [System.SerializableAttribute]
     public partial class ConcurrentQueue<T> : System.Collections.Concurrent.IProducerConsumerCollection<T>, System.Collections.Generic.IEnumerable<T>, System.Collections.Generic.IReadOnlyCollection<T>, System.Collections.ICollection, System.Collections.IEnumerable
     {
@@ -6139,7 +6317,8 @@ namespace System.Collections.Concurrent
         public bool TryPeek(out T result) { result = default(T); throw null; }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("Count = {Count}")]
-    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Concurrent.IProducerConsumerCollectionDebugView<T>")]
+    [System.Diagnostics.DebuggerTypeProxyAttribute("System.Collections.Concurrent.SystemCollectionsConcurrent_ProducerConsumerCollectionDebugView<T>")]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     [System.SerializableAttribute]
     public partial class ConcurrentStack<T> : System.Collections.Concurrent.IProducerConsumerCollection<T>, System.Collections.Generic.IEnumerable<T>, System.Collections.Generic.IReadOnlyCollection<T>, System.Collections.ICollection, System.Collections.IEnumerable
     {
@@ -6179,6 +6358,7 @@ namespace System.Collections.Concurrent
         bool TryAdd(T item);
         bool TryTake(out T item);
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public abstract partial class OrderablePartitioner<TSource> : System.Collections.Concurrent.Partitioner<TSource>
     {
         protected OrderablePartitioner(bool keysOrderedInEachPartition, bool keysOrderedAcrossPartitions, bool keysNormalized) { }
@@ -6190,6 +6370,7 @@ namespace System.Collections.Concurrent
         public abstract System.Collections.Generic.IList<System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<long, TSource>>> GetOrderablePartitions(int partitionCount);
         public override System.Collections.Generic.IList<System.Collections.Generic.IEnumerator<TSource>> GetPartitions(int partitionCount) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public static partial class Partitioner
     {
         public static System.Collections.Concurrent.OrderablePartitioner<System.Tuple<int, int>> Create(int fromInclusive, int toExclusive) { throw null; }
@@ -6201,6 +6382,7 @@ namespace System.Collections.Concurrent
         public static System.Collections.Concurrent.OrderablePartitioner<TSource> Create<TSource>(System.Collections.Generic.IList<TSource> list, bool loadBalance) { throw null; }
         public static System.Collections.Concurrent.OrderablePartitioner<TSource> Create<TSource>(TSource[] array, bool loadBalance) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public abstract partial class Partitioner<TSource>
     {
         protected Partitioner() { }
@@ -6443,7 +6625,7 @@ namespace System.Collections.Generic
         public List(int capacity) { }
         public int Capacity { get { throw null; } set { } }
         public int Count { get { throw null; } }
-        public T this[int index] { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]get { throw null; } set { } }
+        public T this[int index] { get { throw null; } set { } }
         bool System.Collections.Generic.ICollection<T>.IsReadOnly { get { throw null; } }
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
@@ -6696,25 +6878,25 @@ namespace System.Collections.ObjectModel
 }
 namespace System.Configuration.Assemblies
 {
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct AssemblyHash : System.ICloneable
     {
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public static readonly System.Configuration.Assemblies.AssemblyHash Empty;
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public AssemblyHash(byte[] value) { throw null;}
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public AssemblyHash(System.Configuration.Assemblies.AssemblyHashAlgorithm algorithm, byte[] value) { throw null;}
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public System.Configuration.Assemblies.AssemblyHashAlgorithm Algorithm { get { throw null; } set { } }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public object Clone() { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public byte[] GetValue() { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("The AssemblyHash class has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public void SetValue(byte[] value) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -6724,8 +6906,11 @@ namespace System.Configuration.Assemblies
         MD5 = 32771,
         None = 0,
         SHA1 = 32772,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         SHA256 = 32780,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         SHA384 = 32781,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         SHA512 = 32782,
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -6742,25 +6927,21 @@ namespace System.Deployment.Internal
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public static partial class InternalActivationContextHelper
     {
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object GetActivationContextData(System.ActivationContext appInfo) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object GetApplicationComponentManifest(System.ActivationContext appInfo) { throw null; }
-        [System.MonoTODOAttribute("2.0 SP1 member")]
         public static byte[] GetApplicationManifestBytes(System.ActivationContext appInfo) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object GetDeploymentComponentManifest(System.ActivationContext appInfo) { throw null; }
-        [System.MonoTODOAttribute("2.0 SP1 member")]
         public static byte[] GetDeploymentManifestBytes(System.ActivationContext appInfo) { throw null; }
-        [System.MonoTODOAttribute]
         public static bool IsFirstRun(System.ActivationContext appInfo) { throw null; }
-        [System.MonoTODOAttribute]
         public static void PrepareForExecution(System.ActivationContext appInfo) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public static partial class InternalApplicationIdentityHelper
     {
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static object GetInternalAppId(System.ApplicationIdentity id) { throw null; }
     }
 }
@@ -6794,19 +6975,22 @@ namespace System.Diagnostics
             None = 0,
         }
     }
-    [System.MonoTODOAttribute("The Debugger class is not functional")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class Debugger
     {
         public static readonly string DefaultCategory;
-        [System.ObsoleteAttribute("Call the static methods directly on this type", true)]
+        [System.ObsoleteAttribute("Do not create instances of the Debugger class.  Call the static methods directly on this type instead", true)]
         public Debugger() { }
-        public static bool IsAttached { get { throw null; } }
+        public static bool IsAttached { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Break() { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static bool IsLogging() { throw null; }
-        [System.MonoTODOAttribute("Not implemented")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static bool IsLogging() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool Launch() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void Log(int level, string category, string message) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static void Log(int level, string category, string message) { }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public static void NotifyOfCrossThreadDependency() { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(384), AllowMultiple=false)]
@@ -6888,44 +7072,44 @@ namespace System.Diagnostics
         public string VisualizerObjectSourceTypeName { get { throw null; } }
         public string VisualizerTypeName { get { throw null; } }
     }
-    [System.MonoTODOAttribute("Serialized objects are not compatible with MS.NET")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, UnmanagedCode=true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class StackFrame
     {
         public const int OFFSET_UNKNOWN = -1;
         public StackFrame() { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackFrame(bool fNeedFileInfo) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackFrame(int skipFrames) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackFrame(int skipFrames, bool fNeedFileInfo) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackFrame(string fileName, int lineNumber) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackFrame(string fileName, int lineNumber, int colNumber) { }
+        public StackFrame(bool fNeedFileInfo) { }
+        public StackFrame(int skipFrames) { }
+        public StackFrame(int skipFrames, bool fNeedFileInfo) { }
+        public StackFrame(string fileName, int lineNumber) { }
+        public StackFrame(string fileName, int lineNumber, int colNumber) { }
         public virtual int GetFileColumnNumber() { throw null; }
         public virtual int GetFileLineNumber() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual string GetFileName() { throw null; }
         public virtual int GetILOffset() { throw null; }
         public virtual System.Reflection.MethodBase GetMethod() { throw null; }
         public virtual int GetNativeOffset() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
     }
-    [System.MonoTODOAttribute("Serialized objects are not compatible with .NET")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, UnmanagedCode=true)]
     [System.SerializableAttribute]
     public partial class StackTrace
     {
         public const int METHODS_TO_SKIP = 0;
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackTrace() { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackTrace(bool fNeedFileInfo) { }
+        public StackTrace() { }
+        public StackTrace(bool fNeedFileInfo) { }
         public StackTrace(System.Diagnostics.StackFrame frame) { }
         public StackTrace(System.Exception e) { }
         public StackTrace(System.Exception e, bool fNeedFileInfo) { }
         public StackTrace(System.Exception e, int skipFrames) { }
         public StackTrace(System.Exception e, int skipFrames, bool fNeedFileInfo) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackTrace(int skipFrames) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public StackTrace(int skipFrames, bool fNeedFileInfo) { }
-        [System.MonoLimitationAttribute("Not possible to create StackTraces from other threads")]
-        [System.ObsoleteAttribute]
+        public StackTrace(int skipFrames) { }
+        public StackTrace(int skipFrames, bool fNeedFileInfo) { }
+        [System.ObsoleteAttribute("This constructor has been deprecated.  Please use a constructor that does not require a Thread parameter.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public StackTrace(System.Threading.Thread targetThread, bool needFileInfo) { }
         public virtual int FrameCount { get { throw null; } }
         public virtual System.Diagnostics.StackFrame GetFrame(int index) { throw null; }
@@ -7134,7 +7318,7 @@ namespace System.Diagnostics.SymbolStore
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface ISymbolBinder
     {
-        [System.ObsoleteAttribute("This interface is not 64-bit clean.  Use ISymbolBinder1 instead")]
+        [System.ObsoleteAttribute("The recommended alternative is ISymbolBinder1.GetReader. ISymbolBinder1.GetReader takes the importer interface pointer as an IntPtr instead of an Int32, and thus works on both 32-bit and 64-bit architectures. http://go.microsoft.com/fwlink/?linkid=14202=14202")]
         System.Diagnostics.SymbolStore.ISymbolReader GetReader(int importer, string filename, string searchPath);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -7321,7 +7505,7 @@ namespace System.Diagnostics.Tracing
         public System.Diagnostics.Tracing.EventKeywords Keywords { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Diagnostics.Tracing.EventLevel Level { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string Message { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Diagnostics.Tracing.EventOpcode Opcode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Diagnostics.Tracing.EventOpcode Opcode { get { throw null; } set { } }
         public System.Diagnostics.Tracing.EventTags Tags { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Diagnostics.Tracing.EventTask Task { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public byte Version { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -7344,8 +7528,8 @@ namespace System.Diagnostics.Tracing
     public partial class EventCommandEventArgs : System.EventArgs
     {
         internal EventCommandEventArgs() { }
-        public System.Collections.Generic.IDictionary<string, string> Arguments { get { throw null; } }
-        public System.Diagnostics.Tracing.EventCommand Command { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> Arguments { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Diagnostics.Tracing.EventCommand Command { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public bool DisableEvent(int eventId) { throw null; }
         public bool EnableEvent(int eventId) { throw null; }
     }
@@ -7353,17 +7537,14 @@ namespace System.Diagnostics.Tracing
     public partial class EventDataAttribute : System.Attribute
     {
         public EventDataAttribute() { }
-        [System.MonoTODOAttribute]
-        public string Name { get { throw null; } set { } }
+        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(128))]
     public partial class EventFieldAttribute : System.Attribute
     {
         public EventFieldAttribute() { }
-        [System.MonoTODOAttribute]
-        public System.Diagnostics.Tracing.EventFieldFormat Format { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.Diagnostics.Tracing.EventFieldTags Tags { get { throw null; } set { } }
+        public System.Diagnostics.Tracing.EventFieldFormat Format { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Diagnostics.Tracing.EventFieldTags Tags { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public enum EventFieldFormat
     {
@@ -7455,71 +7636,91 @@ namespace System.Diagnostics.Tracing
         public EventSource(string eventSourceName, System.Diagnostics.Tracing.EventSourceSettings config) { }
         public EventSource(string eventSourceName, System.Diagnostics.Tracing.EventSourceSettings config, params string[] traits) { }
         public System.Exception ConstructionException { get { throw null; } }
-        public static System.Guid CurrentThreadActivityId { get { throw null; } }
+        public static System.Guid CurrentThreadActivityId { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Guid Guid { get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Diagnostics.Tracing.EventSourceSettings Settings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Diagnostics.Tracing.EventSourceSettings Settings { get { throw null; } }
         public event System.EventHandler<System.Diagnostics.Tracing.EventCommandEventArgs> EventCommandExecuted { add { } remove { } }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         ~EventSource() { }
-        [System.MonoTODOAttribute]
         public static string GenerateManifest(System.Type eventSourceType, string assemblyPathToIncludeInManifest) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GenerateManifest(System.Type eventSourceType, string assemblyPathToIncludeInManifest, System.Diagnostics.Tracing.EventManifestOptions flags) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Guid GetGuid(System.Type eventSourceType) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetName(System.Type eventSourceType) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Collections.Generic.IEnumerable<System.Diagnostics.Tracing.EventSource> GetSources() { throw null; }
         public string GetTrait(string key) { throw null; }
         public bool IsEnabled() { throw null; }
         public bool IsEnabled(System.Diagnostics.Tracing.EventLevel level, System.Diagnostics.Tracing.EventKeywords keywords) { throw null; }
         public bool IsEnabled(System.Diagnostics.Tracing.EventLevel level, System.Diagnostics.Tracing.EventKeywords keywords, System.Diagnostics.Tracing.EventChannel channel) { throw null; }
         protected virtual void OnEventCommand(System.Diagnostics.Tracing.EventCommandEventArgs command) { }
-        [System.MonoTODOAttribute]
         public static void SendCommand(System.Diagnostics.Tracing.EventSource eventSource, System.Diagnostics.Tracing.EventCommand command, System.Collections.Generic.IDictionary<string, string> commandArguments) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetCurrentThreadActivityId(System.Guid activityId) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetCurrentThreadActivityId(System.Guid activityId, out System.Guid oldActivityThatWillContinue) { oldActivityThatWillContinue = default(System.Guid); }
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Write(string eventName) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Write(string eventName, System.Diagnostics.Tracing.EventSourceOptions options) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, byte[] arg1) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, int arg1) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, int arg1, int arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, int arg1, int arg2, int arg3) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, int arg1, string arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, long arg1) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, long arg1, byte[] arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, long arg1, long arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, long arg1, long arg2, long arg3) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, long arg1, string arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, params object[] args) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, string arg1) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, string arg1, int arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, string arg1, int arg2, int arg3) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, string arg1, long arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, string arg1, string arg2) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEvent(int eventId, string arg1, string arg2, string arg3) { }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         protected unsafe void WriteEventCore(int eventId, int eventDataCount, System.Diagnostics.Tracing.EventSource.EventData* data) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void WriteEventWithRelatedActivityId(int eventId, System.Guid relatedActivityId, params object[] args) { }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         protected unsafe void WriteEventWithRelatedActivityIdCore(int eventId, System.Guid* relatedActivityId, int eventDataCount, System.Diagnostics.Tracing.EventSource.EventData* data) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Write<T>(string eventName, System.Diagnostics.Tracing.EventSourceOptions options, T data) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Write<T>(string eventName, ref System.Diagnostics.Tracing.EventSourceOptions options, ref System.Guid activityId, ref System.Guid relatedActivityId, ref T data) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Write<T>(string eventName, ref System.Diagnostics.Tracing.EventSourceOptions options, ref T data) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Write<T>(string eventName, T data) { }
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         protected internal partial struct EventData
         {
-            public System.IntPtr DataPointer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-            public int Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+            public System.IntPtr DataPointer { get { throw null; } set { } }
+            public int Size { get { throw null; } set { } }
         }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
@@ -7533,7 +7734,7 @@ namespace System.Diagnostics.Tracing
     public partial class EventSourceCreatedEventArgs : System.EventArgs
     {
         public EventSourceCreatedEventArgs() { }
-        public System.Diagnostics.Tracing.EventSource EventSource { get { throw null; } }
+        public System.Diagnostics.Tracing.EventSource EventSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     [System.SerializableAttribute]
     public partial class EventSourceException : System.Exception
@@ -7572,18 +7773,18 @@ namespace System.Diagnostics.Tracing
     public partial class EventWrittenEventArgs : System.EventArgs
     {
         internal EventWrittenEventArgs() { }
-        public System.Guid ActivityId { get { throw null; } }
+        public System.Guid ActivityId { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventChannel Channel { get { throw null; } }
         public int EventId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string EventName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Diagnostics.Tracing.EventSource EventSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string EventName { get { throw null; } }
+        public System.Diagnostics.Tracing.EventSource EventSource { get { throw null; } }
         public System.Diagnostics.Tracing.EventKeywords Keywords { get { throw null; } }
         public System.Diagnostics.Tracing.EventLevel Level { get { throw null; } }
-        public string Message { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Message { get { throw null; } }
         public System.Diagnostics.Tracing.EventOpcode Opcode { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<object> Payload { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<string> PayloadNames { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Guid RelatedActivityId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<string> PayloadNames { get { throw null; } }
+        public System.Guid RelatedActivityId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute, System.Security.SecurityCriticalAttribute]get { throw null; } }
         public System.Diagnostics.Tracing.EventTags Tags { get { throw null; } }
         public System.Diagnostics.Tracing.EventTask Task { get { throw null; } }
         public byte Version { get { throw null; } }
@@ -7783,7 +7984,6 @@ namespace System.Globalization
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class CultureInfo : System.ICloneable, System.IFormatProvider
     {
         public CultureInfo(int culture) { }
@@ -7797,10 +7997,10 @@ namespace System.Globalization
         public static System.Globalization.CultureInfo CurrentCulture { get { throw null; } set { } }
         public static System.Globalization.CultureInfo CurrentUICulture { get { throw null; } set { } }
         public virtual System.Globalization.DateTimeFormatInfo DateTimeFormat { get { throw null; } set { } }
-        public static System.Globalization.CultureInfo DefaultThreadCurrentCulture { get { throw null; } set { } }
-        public static System.Globalization.CultureInfo DefaultThreadCurrentUICulture { get { throw null; } set { } }
-        public virtual string DisplayName { get { throw null; } }
-        public virtual string EnglishName { get { throw null; } }
+        public static System.Globalization.CultureInfo DefaultThreadCurrentCulture { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlThread=true)]set { } }
+        public static System.Globalization.CultureInfo DefaultThreadCurrentUICulture { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlThread=true)]set { } }
+        public virtual string DisplayName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string EnglishName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string IetfLanguageTag { get { throw null; } }
         public static System.Globalization.CultureInfo InstalledUICulture { get { throw null; } }
@@ -7811,25 +8011,24 @@ namespace System.Globalization
         public virtual int KeyboardLayoutId { get { throw null; } }
         public virtual int LCID { get { throw null; } }
         public virtual string Name { get { throw null; } }
-        public virtual string NativeName { get { throw null; } }
+        public virtual string NativeName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public virtual System.Globalization.NumberFormatInfo NumberFormat { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("Optional calendars are not supported only default calendar is returned")]
         public virtual System.Globalization.Calendar[] OptionalCalendars { get { throw null; } }
-        public virtual System.Globalization.CultureInfo Parent { get { throw null; } }
+        public virtual System.Globalization.CultureInfo Parent { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public virtual System.Globalization.TextInfo TextInfo { get { throw null; } }
-        public virtual string ThreeLetterISOLanguageName { get { throw null; } }
-        public virtual string ThreeLetterWindowsLanguageName { get { throw null; } }
-        public virtual string TwoLetterISOLanguageName { get { throw null; } }
+        public virtual string ThreeLetterISOLanguageName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string ThreeLetterWindowsLanguageName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string TwoLetterISOLanguageName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public bool UseUserOverride { get { throw null; } }
         public void ClearCachedData() { }
         public virtual object Clone() { throw null; }
         public static System.Globalization.CultureInfo CreateSpecificCulture(string name) { throw null; }
         public override bool Equals(object value) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Globalization.CultureInfo GetConsoleFallbackUICulture() { throw null; }
         public static System.Globalization.CultureInfo GetCultureInfo(int culture) { throw null; }
         public static System.Globalization.CultureInfo GetCultureInfo(string name) { throw null; }
-        [System.MonoTODOAttribute("Currently it ignores the altName parameter")]
         public static System.Globalization.CultureInfo GetCultureInfo(string name, string altName) { throw null; }
         public static System.Globalization.CultureInfo GetCultureInfoByIetfLanguageTag(string name) { throw null; }
         public static System.Globalization.CultureInfo[] GetCultures(System.Globalization.CultureTypes types) { throw null; }
@@ -8331,37 +8530,36 @@ namespace System.Globalization
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class RegionInfo
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public RegionInfo(int culture) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public RegionInfo(string name) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public virtual string CurrencyEnglishName { get { throw null; } }
+        public virtual string CurrencyEnglishName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public virtual string CurrencyNativeName { get { throw null; } }
-        public virtual string CurrencySymbol { get { throw null; } }
-        public static System.Globalization.RegionInfo CurrentRegion { get { throw null; } }
-        [System.MonoTODOAttribute("DisplayName currently only returns the EnglishName")]
-        public virtual string DisplayName { get { throw null; } }
-        public virtual string EnglishName { get { throw null; } }
+        public virtual string CurrencyNativeName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string CurrencySymbol { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static System.Globalization.RegionInfo CurrentRegion { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string DisplayName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string EnglishName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual int GeoId { get { throw null; } }
         public virtual bool IsMetric { get { throw null; } }
-        public virtual string ISOCurrencySymbol { get { throw null; } }
+        public virtual string ISOCurrencySymbol { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public virtual string Name { get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public virtual string NativeName { get { throw null; } }
-        public virtual string ThreeLetterISORegionName { get { throw null; } }
-        public virtual string ThreeLetterWindowsRegionName { get { throw null; } }
-        public virtual string TwoLetterISORegionName { get { throw null; } }
+        public virtual string NativeName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string ThreeLetterISORegionName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string ThreeLetterWindowsRegionName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual string TwoLetterISORegionName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override bool Equals(object value) { throw null; }
         public override int GetHashCode() { throw null; }
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class SortKey
     {
         internal SortKey() { }
@@ -8717,10 +8915,13 @@ namespace System.IO
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class Directory
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.DirectoryInfo CreateDirectory(string path) { throw null; }
-        [System.MonoLimitationAttribute("DirectorySecurity not implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.DirectoryInfo CreateDirectory(string path, System.Security.AccessControl.DirectorySecurity directorySecurity) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Delete(string path) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Delete(string path, bool recursive) { }
         public static System.Collections.Generic.IEnumerable<string> EnumerateDirectories(string path) { throw null; }
         public static System.Collections.Generic.IEnumerable<string> EnumerateDirectories(string path, string searchPattern) { throw null; }
@@ -8731,15 +8932,18 @@ namespace System.IO
         public static System.Collections.Generic.IEnumerable<string> EnumerateFileSystemEntries(string path) { throw null; }
         public static System.Collections.Generic.IEnumerable<string> EnumerateFileSystemEntries(string path, string searchPattern) { throw null; }
         public static System.Collections.Generic.IEnumerable<string> EnumerateFileSystemEntries(string path, string searchPattern, System.IO.SearchOption searchOption) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool Exists(string path) { throw null; }
         public static System.Security.AccessControl.DirectorySecurity GetAccessControl(string path) { throw null; }
         public static System.Security.AccessControl.DirectorySecurity GetAccessControl(string path, System.Security.AccessControl.AccessControlSections includeSections) { throw null; }
         public static System.DateTime GetCreationTime(string path) { throw null; }
         public static System.DateTime GetCreationTimeUtc(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetCurrentDirectory() { throw null; }
         public static string[] GetDirectories(string path) { throw null; }
         public static string[] GetDirectories(string path, string searchPattern) { throw null; }
         public static string[] GetDirectories(string path, string searchPattern, System.IO.SearchOption searchOption) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetDirectoryRoot(string path) { throw null; }
         public static string[] GetFiles(string path) { throw null; }
         public static string[] GetFiles(string path, string searchPattern) { throw null; }
@@ -8751,36 +8955,44 @@ namespace System.IO
         public static System.DateTime GetLastAccessTimeUtc(string path) { throw null; }
         public static System.DateTime GetLastWriteTime(string path) { throw null; }
         public static System.DateTime GetLastWriteTimeUtc(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string[] GetLogicalDrives() { throw null; }
         public static System.IO.DirectoryInfo GetParent(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Move(string sourceDirName, string destDirName) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetAccessControl(string path, System.Security.AccessControl.DirectorySecurity directorySecurity) { }
         public static void SetCreationTime(string path, System.DateTime creationTime) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetCreationTimeUtc(string path, System.DateTime creationTimeUtc) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetCurrentDirectory(string path) { }
         public static void SetLastAccessTime(string path, System.DateTime lastAccessTime) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetLastAccessTimeUtc(string path, System.DateTime lastAccessTimeUtc) { }
         public static void SetLastWriteTime(string path, System.DateTime lastWriteTime) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetLastWriteTimeUtc(string path, System.DateTime lastWriteTimeUtc) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public sealed partial class DirectoryInfo : System.IO.FileSystemInfo
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public DirectoryInfo(string path) { }
-        public override bool Exists { get { throw null; } }
-        public override string FullName { get { throw null; } }
+        public override bool Exists { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override string FullName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override string Name { get { throw null; } }
-        public System.IO.DirectoryInfo Parent { get { throw null; } }
-        public System.IO.DirectoryInfo Root { get { throw null; } }
+        public System.IO.DirectoryInfo Parent { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.IO.DirectoryInfo Root { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public void Create() { }
-        [System.MonoLimitationAttribute("DirectorySecurity isn't implemented")]
         public void Create(System.Security.AccessControl.DirectorySecurity directorySecurity) { }
         public System.IO.DirectoryInfo CreateSubdirectory(string path) { throw null; }
-        [System.MonoLimitationAttribute("DirectorySecurity isn't implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.IO.DirectoryInfo CreateSubdirectory(string path, System.Security.AccessControl.DirectorySecurity directorySecurity) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void Delete() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Delete(bool recursive) { }
         public System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> EnumerateDirectories() { throw null; }
         public System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> EnumerateDirectories(string searchPattern) { throw null; }
@@ -8802,6 +9014,7 @@ namespace System.IO
         public System.IO.FileSystemInfo[] GetFileSystemInfos() { throw null; }
         public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern) { throw null; }
         public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern, System.IO.SearchOption searchOption) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void MoveTo(string destDirName) { }
         public void SetAccessControl(System.Security.AccessControl.DirectorySecurity directorySecurity) { }
         public override string ToString() { throw null; }
@@ -8819,20 +9032,19 @@ namespace System.IO
     [System.SerializableAttribute]
     public sealed partial class DriveInfo : System.Runtime.Serialization.ISerializable
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public DriveInfo(string driveName) { }
-        public long AvailableFreeSpace { get { throw null; } }
-        public string DriveFormat { get { throw null; } }
-        public System.IO.DriveType DriveType { get { throw null; } }
-        [System.MonoTODOAttribute("It always returns true")]
-        public bool IsReady { get { throw null; } }
+        public long AvailableFreeSpace { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string DriveFormat { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.IO.DriveType DriveType { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool IsReady { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public string Name { get { throw null; } }
         public System.IO.DirectoryInfo RootDirectory { get { throw null; } }
-        public long TotalFreeSpace { get { throw null; } }
-        public long TotalSize { get { throw null; } }
-        [System.MonoTODOAttribute("Currently get only works on Mono/Unix; set not implemented")]
-        public string VolumeLabel { get { throw null; } set { } }
-        [System.MonoTODOAttribute("In windows, alldrives are 'Fixed'")]
+        public long TotalFreeSpace { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public long TotalSize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string VolumeLabel { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         public static System.IO.DriveInfo[] GetDrives() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -8878,26 +9090,34 @@ namespace System.IO
         public static void Copy(string sourceFileName, string destFileName, bool overwrite) { }
         public static System.IO.FileStream Create(string path) { throw null; }
         public static System.IO.FileStream Create(string path, int bufferSize) { throw null; }
-        [System.MonoLimitationAttribute("FileOptions are ignored")]
         public static System.IO.FileStream Create(string path, int bufferSize, System.IO.FileOptions options) { throw null; }
-        [System.MonoLimitationAttribute("FileOptions and FileSecurity are ignored")]
         public static System.IO.FileStream Create(string path, int bufferSize, System.IO.FileOptions options, System.Security.AccessControl.FileSecurity fileSecurity) { throw null; }
         public static System.IO.StreamWriter CreateText(string path) { throw null; }
-        [System.MonoLimitationAttribute("File encryption isn't supported (even on NTFS).")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Decrypt(string path) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Delete(string path) { }
-        [System.MonoLimitationAttribute("File encryption isn't supported (even on NTFS).")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Encrypt(string path) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool Exists(string path) { throw null; }
         public static System.Security.AccessControl.FileSecurity GetAccessControl(string path) { throw null; }
         public static System.Security.AccessControl.FileSecurity GetAccessControl(string path, System.Security.AccessControl.AccessControlSections includeSections) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.FileAttributes GetAttributes(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.DateTime GetCreationTime(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.DateTime GetCreationTimeUtc(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.DateTime GetLastAccessTime(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.DateTime GetLastAccessTimeUtc(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.DateTime GetLastWriteTime(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.DateTime GetLastWriteTimeUtc(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Move(string sourceFileName, string destFileName) { }
         public static System.IO.FileStream Open(string path, System.IO.FileMode mode) { throw null; }
         public static System.IO.FileStream Open(string path, System.IO.FileMode mode, System.IO.FileAccess access) { throw null; }
@@ -8905,29 +9125,40 @@ namespace System.IO
         public static System.IO.FileStream OpenRead(string path) { throw null; }
         public static System.IO.StreamReader OpenText(string path) { throw null; }
         public static System.IO.FileStream OpenWrite(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static byte[] ReadAllBytes(string path) { throw null; }
         public static string[] ReadAllLines(string path) { throw null; }
         public static string[] ReadAllLines(string path, System.Text.Encoding encoding) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string ReadAllText(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string ReadAllText(string path, System.Text.Encoding encoding) { throw null; }
         public static System.Collections.Generic.IEnumerable<string> ReadLines(string path) { throw null; }
         public static System.Collections.Generic.IEnumerable<string> ReadLines(string path, System.Text.Encoding encoding) { throw null; }
         public static void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName) { }
         public static void Replace(string sourceFileName, string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetAccessControl(string path, System.Security.AccessControl.FileSecurity fileSecurity) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetAttributes(string path, System.IO.FileAttributes fileAttributes) { }
         public static void SetCreationTime(string path, System.DateTime creationTime) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetCreationTimeUtc(string path, System.DateTime creationTimeUtc) { }
         public static void SetLastAccessTime(string path, System.DateTime lastAccessTime) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetLastAccessTimeUtc(string path, System.DateTime lastAccessTimeUtc) { }
         public static void SetLastWriteTime(string path, System.DateTime lastWriteTime) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetLastWriteTimeUtc(string path, System.DateTime lastWriteTimeUtc) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void WriteAllBytes(string path, byte[] bytes) { }
         public static void WriteAllLines(string path, System.Collections.Generic.IEnumerable<string> contents) { }
         public static void WriteAllLines(string path, System.Collections.Generic.IEnumerable<string> contents, System.Text.Encoding encoding) { }
         public static void WriteAllLines(string path, string[] contents) { }
         public static void WriteAllLines(string path, string[] contents, System.Text.Encoding encoding) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void WriteAllText(string path, string contents) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void WriteAllText(string path, string contents, System.Text.Encoding encoding) { }
     }
     [System.FlagsAttribute]
@@ -8950,8 +9181,10 @@ namespace System.IO
         Directory = 16,
         Encrypted = 16384,
         Hidden = 2,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         IntegrityStream = 32768,
         Normal = 128,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         NoScrubData = 131072,
         NotContentIndexed = 8192,
         Offline = 4096,
@@ -9075,60 +9308,101 @@ namespace System.IO
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class FileStream : System.IO.Stream
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(Microsoft.Win32.SafeHandles.SafeFileHandle handle, System.IO.FileAccess access) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(Microsoft.Win32.SafeHandles.SafeFileHandle handle, System.IO.FileAccess access, int bufferSize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public FileStream(Microsoft.Win32.SafeHandles.SafeFileHandle handle, System.IO.FileAccess access, int bufferSize, bool isAsync) { }
-        [System.ObsoleteAttribute("Use FileStream(SafeFileHandle handle, FileAccess access) instead")]
+        [System.ObsoleteAttribute("This constructor has been deprecated.  Please use new FileStream(SafeFileHandle handle, FileAccess access) instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public FileStream(System.IntPtr handle, System.IO.FileAccess access) { }
-        [System.ObsoleteAttribute("Use FileStream(SafeFileHandle handle, FileAccess access) instead")]
+        [System.ObsoleteAttribute("This constructor has been deprecated.  Please use new FileStream(SafeFileHandle handle, FileAccess access) instead, and optionally make a new SafeFileHandle with ownsHandle=false if needed.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public FileStream(System.IntPtr handle, System.IO.FileAccess access, bool ownsHandle) { }
-        [System.ObsoleteAttribute("Use FileStream(SafeFileHandle handle, FileAccess access, int bufferSize) instead")]
+        [System.ObsoleteAttribute("This constructor has been deprecated.  Please use new FileStream(SafeFileHandle handle, FileAccess access, int bufferSize) instead, and optionally make a new SafeFileHandle with ownsHandle=false if needed.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public FileStream(System.IntPtr handle, System.IO.FileAccess access, bool ownsHandle, int bufferSize) { }
-        [System.ObsoleteAttribute("Use FileStream(SafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync) instead")]
+        [System.ObsoleteAttribute("This constructor has been deprecated.  Please use new FileStream(SafeFileHandle handle, FileAccess access, int bufferSize, bool isAsync) instead, and optionally make a new SafeFileHandle with ownsHandle=false if needed.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public FileStream(System.IntPtr handle, System.IO.FileAccess access, bool ownsHandle, int bufferSize, bool isAsync) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize, bool useAsync) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize, System.IO.FileOptions options) { }
-        [System.MonoLimitationAttribute("This ignores the rights parameter")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.Security.AccessControl.FileSystemRights rights, System.IO.FileShare share, int bufferSize, System.IO.FileOptions options) { }
-        [System.MonoLimitationAttribute("This ignores the rights and fileSecurity parameters")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileStream(string path, System.IO.FileMode mode, System.Security.AccessControl.FileSystemRights rights, System.IO.FileShare share, int bufferSize, System.IO.FileOptions options, System.Security.AccessControl.FileSecurity fileSecurity) { }
         public override bool CanRead { get { throw null; } }
         public override bool CanSeek { get { throw null; } }
         public override bool CanWrite { get { throw null; } }
-        [System.ObsoleteAttribute("Use SafeFileHandle instead")]
-        public virtual System.IntPtr Handle { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, UnmanagedCode=true), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]get { throw null; } }
+        [System.ObsoleteAttribute("This property has been deprecated.  Please use FileStream's SafeFileHandle property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        public virtual System.IntPtr Handle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public virtual bool IsAsync { get { throw null; } }
-        public override long Length { get { throw null; } }
-        public string Name { get { throw null; } }
-        public override long Position { get { throw null; } set { } }
-        public virtual Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, UnmanagedCode=true), System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]get { throw null; } }
+        public override long Length { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string Name { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override long Position { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
+        public virtual Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.IAsyncResult BeginRead(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.IAsyncResult BeginWrite(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int EndRead(System.IAsyncResult asyncResult) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void EndWrite(System.IAsyncResult asyncResult) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~FileStream() { }
         public override void Flush() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Flush(bool flushToDisk) { }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.AccessControl.FileSecurity GetAccessControl() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Lock(long position, long length) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int Read([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out]byte[] array, int offset, int count) { array = default(byte[]); throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int ReadByte() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override long Seek(long offset, System.IO.SeekOrigin origin) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetAccessControl(System.Security.AccessControl.FileSecurity fileSecurity) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void SetLength(long value) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Unlock(long position, long length) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void Write(byte[] array, int offset, int count) { }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void WriteByte(byte value) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.FileIOPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
     [System.SerializableAttribute]
     public abstract partial class FileSystemInfo : System.MarshalByRefObject, System.Runtime.Serialization.ISerializable
     {
@@ -9212,7 +9486,7 @@ namespace System.IO
     {
         public static readonly char AltDirectorySeparatorChar;
         public static readonly char DirectorySeparatorChar;
-        [System.ObsoleteAttribute("see GetInvalidPathChars and GetInvalidFileNameChars methods.")]
+        [System.ObsoleteAttribute("Please use GetInvalidPathChars or GetInvalidFileNameChars instead.")]
         public static readonly char[] InvalidPathChars;
         public static readonly char PathSeparator;
         public static readonly char VolumeSeparatorChar;
@@ -9225,14 +9499,15 @@ namespace System.IO
         public static string GetExtension(string path) { throw null; }
         public static string GetFileName(string path) { throw null; }
         public static string GetFileNameWithoutExtension(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetFullPath(string path) { throw null; }
         public static char[] GetInvalidFileNameChars() { throw null; }
         public static char[] GetInvalidPathChars() { throw null; }
         public static string GetPathRoot(string path) { throw null; }
         public static string GetRandomFileName() { throw null; }
-        [System.Security.Permissions.FileIOPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetTempFileName() { throw null; }
-        [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string GetTempPath() { throw null; }
         public static bool HasExtension(string path) { throw null; }
         public static bool IsPathRooted(string path) { throw null; }
@@ -9741,18 +10016,17 @@ namespace System.IO.IsolatedStorage
     public abstract partial class IsolatedStorage : System.MarshalByRefObject
     {
         protected IsolatedStorage() { }
-        [System.MonoTODOAttribute("Does not currently use the manifest support")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public object ApplicationIdentity { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]get { throw null; } }
-        public object AssemblyIdentity { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]get { throw null; } }
+        public object ApplicationIdentity { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]get { throw null; } }
+        public object AssemblyIdentity { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual long AvailableFreeSpace { get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("IsolatedStorage.CurrentSize has been deprecated because it is not CLS Compliant.  To get the current size use IsolatedStorage.UsedSize")]
         public virtual ulong CurrentSize { get { throw null; } }
-        public object DomainIdentity { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]get { throw null; } }
+        public object DomainIdentity { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("IsolatedStorage.MaximumSize has been deprecated because it is not CLS Compliant.  To get the maximum size use IsolatedStorage.Quota")]
         public virtual ulong MaximumSize { get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual long Quota { get { throw null; } }
@@ -9764,8 +10038,9 @@ namespace System.IO.IsolatedStorage
         protected abstract System.Security.Permissions.IsolatedStoragePermission GetPermission(System.Security.PermissionSet ps);
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual bool IncreaseQuotaTo(long newQuotaSize) { throw null; }
-        [System.MonoTODOAttribute("requires manifest support")]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void InitStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, System.Type appEvidenceType) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void InitStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, System.Type domainEvidenceType, System.Type assemblyEvidenceType) { }
         public abstract void Remove();
     }
@@ -9779,78 +10054,91 @@ namespace System.IO.IsolatedStorage
         public IsolatedStorageException(string message, System.Exception inner) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Security.Permissions.FileIOPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
     public sealed partial class IsolatedStorageFile : System.IO.IsolatedStorage.IsolatedStorage, System.IDisposable
     {
         internal IsolatedStorageFile() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public override long AvailableFreeSpace { get { throw null; } }
+        public override long AvailableFreeSpace { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        [System.ObsoleteAttribute]
-        public override ulong CurrentSize { get { throw null; } }
+        [System.ObsoleteAttribute("IsolatedStorageFile.CurrentSize has been deprecated because it is not CLS Compliant.  To get the current size use IsolatedStorageFile.UsedSize")]
+        public override ulong CurrentSize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public static bool IsEnabled { get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("IsolatedStorageFile.MaximumSize has been deprecated because it is not CLS Compliant.  To get the maximum size use IsolatedStorageFile.Quota")]
         public override ulong MaximumSize { get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override long Quota { get { throw null; } }
-        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public override long UsedSize { get { throw null; } }
+        public override long UsedSize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Close() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void CopyFile(string sourceFileName, string destinationFileName) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void CopyFile(string sourceFileName, string destinationFileName, bool overwrite) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void CreateDirectory(string dir) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.IO.IsolatedStorage.IsolatedStorageFileStream CreateFile(string path) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DeleteDirectory(string dir) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DeleteFile(string file) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool DirectoryExists(string path) { throw null; }
         public void Dispose() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool FileExists(string path) { throw null; }
         ~IsolatedStorageFile() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.DateTimeOffset GetCreationTime(string path) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string[] GetDirectoryNames() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string[] GetDirectoryNames(string searchPattern) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Collections.IEnumerator GetEnumerator(System.IO.IsolatedStorage.IsolatedStorageScope scope) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string[] GetFileNames() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string[] GetFileNames(string searchPattern) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.DateTimeOffset GetLastAccessTime(string path) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.DateTimeOffset GetLastWriteTime(string path) { throw null; }
-        [System.Security.Permissions.IsolatedStorageFilePermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UsageAllowed=(System.Security.Permissions.IsolatedStorageContainment)(69))]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetMachineStoreForApplication() { throw null; }
-        [System.Security.Permissions.IsolatedStorageFilePermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UsageAllowed=(System.Security.Permissions.IsolatedStorageContainment)(64))]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetMachineStoreForAssembly() { throw null; }
-        [System.Security.Permissions.IsolatedStorageFilePermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UsageAllowed=(System.Security.Permissions.IsolatedStorageContainment)(48))]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetMachineStoreForDomain() { throw null; }
         protected override System.Security.Permissions.IsolatedStoragePermission GetPermission(System.Security.PermissionSet ps) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, object applicationIdentity) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, object domainIdentity, object assemblyIdentity) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, System.Security.Policy.Evidence domainEvidence, System.Type domainEvidenceType, System.Security.Policy.Evidence assemblyEvidence, System.Type assemblyEvidenceType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, System.Type applicationEvidenceType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetStore(System.IO.IsolatedStorage.IsolatedStorageScope scope, System.Type domainEvidenceType, System.Type assemblyEvidenceType) { throw null; }
-        [System.Security.Permissions.IsolatedStorageFilePermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UsageAllowed=(System.Security.Permissions.IsolatedStorageContainment)(21))]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetUserStoreForApplication() { throw null; }
-        [System.Security.Permissions.IsolatedStorageFilePermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UsageAllowed=(System.Security.Permissions.IsolatedStorageContainment)(32))]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetUserStoreForAssembly() { throw null; }
-        [System.Security.Permissions.IsolatedStorageFilePermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UsageAllowed=(System.Security.Permissions.IsolatedStorageContainment)(16))]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetUserStoreForDomain() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public static System.IO.IsolatedStorage.IsolatedStorageFile GetUserStoreForSite() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool IncreaseQuotaTo(long newQuotaSize) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void MoveDirectory(string sourceDirectoryName, string destinationDirectoryName) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void MoveFile(string sourceFileName, string destinationFileName) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.IO.IsolatedStorage.IsolatedStorageFileStream OpenFile(string path, System.IO.FileMode mode) { throw null; }
@@ -9858,7 +10146,9 @@ namespace System.IO.IsolatedStorage
         public System.IO.IsolatedStorage.IsolatedStorageFileStream OpenFile(string path, System.IO.FileMode mode, System.IO.FileAccess access) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.IO.IsolatedStorage.IsolatedStorageFileStream OpenFile(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void Remove() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Remove(System.IO.IsolatedStorage.IsolatedStorageScope scope) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -9868,7 +10158,7 @@ namespace System.IO.IsolatedStorage
         public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access) : base (default(string), default(System.IO.FileMode)) { }
         public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) : base (default(string), default(System.IO.FileMode)) { }
         public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize) : base (default(string), default(System.IO.FileMode)) { }
-        [System.Security.Permissions.FileIOPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, int bufferSize, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
         public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
         public IsolatedStorageFileStream(string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.IsolatedStorage.IsolatedStorageFile isf) : base (default(string), default(System.IO.FileMode)) { }
@@ -9876,13 +10166,16 @@ namespace System.IO.IsolatedStorage
         public override bool CanRead { get { throw null; } }
         public override bool CanSeek { get { throw null; } }
         public override bool CanWrite { get { throw null; } }
-        [System.ObsoleteAttribute("Use SafeFileHandle - once available")]
-        public override System.IntPtr Handle { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]get { throw null; } }
+        [System.ObsoleteAttribute("This property has been deprecated.  Please use IsolatedStorageFileStream's SafeFileHandle property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        public override System.IntPtr Handle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public override bool IsAsync { get { throw null; } }
         public override long Length { get { throw null; } }
         public override long Position { get { throw null; } set { } }
-        public override Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]get { throw null; } }
+        public override Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.IAsyncResult BeginRead(byte[] buffer, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.IAsyncResult BeginWrite(byte[] buffer, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject) { throw null; }
         protected override void Dispose(bool disposing) { }
         public override int EndRead(System.IAsyncResult asyncResult) { throw null; }
@@ -9892,10 +10185,14 @@ namespace System.IO.IsolatedStorage
         public override void Lock(long position, long length) { }
         public override int Read(byte[] buffer, int offset, int count) { throw null; }
         public override int ReadByte() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override long Seek(long offset, System.IO.SeekOrigin origin) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void SetLength(long value) { }
         public override void Unlock(long position, long length) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void Write(byte[] buffer, int offset, int count) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void WriteByte(byte value) { }
     }
     [System.FlagsAttribute]
@@ -9915,12 +10212,14 @@ namespace System.IO.IsolatedStorage
     {
         IncreaseQuotaForApplication = 4,
     }
+    [System.Security.SecurityCriticalAttribute]
     public partial class IsolatedStorageSecurityState : System.Security.SecurityState
     {
         internal IsolatedStorageSecurityState() { }
         public System.IO.IsolatedStorage.IsolatedStorageSecurityOptions Options { get { throw null; } }
         public long Quota { get { throw null; } set { } }
         public long UsedSize { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public override void EnsureState() { }
     }
 }
@@ -9937,34 +10236,33 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._Assembly))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class Assembly : System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._Assembly, System.Runtime.Serialization.ISerializable, System.Security.IEvidenceFactory
     {
         protected Assembly() { }
         public virtual string CodeBase { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> DefinedTypes { get { throw null; } }
-        public virtual System.Reflection.MethodInfo EntryPoint { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
-        public virtual string EscapedCodeBase { get { throw null; } }
-        public virtual System.Security.Policy.Evidence Evidence { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true)]get { throw null; } }
+        public virtual System.Reflection.MethodInfo EntryPoint { get { throw null; } }
+        public virtual string EscapedCodeBase { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual System.Security.Policy.Evidence Evidence { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Type> ExportedTypes { get { throw null; } }
         public virtual string FullName { get { throw null; } }
         public virtual bool GlobalAssemblyCache { get { throw null; } }
-        [System.MonoTODOAttribute("Currently it always returns zero")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual long HostContext { get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual string ImageRuntimeVersion { get { throw null; } }
         public virtual bool IsDynamic { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public bool IsFullyTrusted { get { throw null; } }
+        public bool IsFullyTrusted { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public virtual string Location { get { throw null; } }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public virtual System.Reflection.Module ManifestModule { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.Module> Modules { get { throw null; } }
-        public virtual System.Security.PermissionSet PermissionSet { get { throw null; } }
+        public virtual System.Security.PermissionSet PermissionSet { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public virtual bool ReflectionOnly { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public virtual bool ReflectionOnly { get { throw null; } }
         public virtual System.Security.SecurityRuleSet SecurityRuleSet { get { throw null; } }
         public virtual event System.Reflection.ModuleResolveEventHandler ModuleResolve { add { } remove { } }
         public object CreateInstance(string typeName) { throw null; }
@@ -9973,22 +10271,24 @@ namespace System.Reflection
         public static string CreateQualifiedName(string assemblyName, string typeName) { throw null; }
         public override bool Equals(object o) { throw null; }
         public static System.Reflection.Assembly GetAssembly(System.Type type) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.Reflection.Assembly GetCallingAssembly() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        public static System.Reflection.Assembly GetCallingAssembly() { throw null; }
         public virtual object[] GetCustomAttributes(bool inherit) { throw null; }
         public virtual object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
         public virtual System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.Reflection.Assembly GetEntryAssembly() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.Reflection.Assembly GetExecutingAssembly() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Reflection.Assembly GetEntryAssembly() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        public static System.Reflection.Assembly GetExecutingAssembly() { throw null; }
         public virtual System.Type[] GetExportedTypes() { throw null; }
         public virtual System.IO.FileStream GetFile(string name) { throw null; }
         public virtual System.IO.FileStream[] GetFiles() { throw null; }
         public virtual System.IO.FileStream[] GetFiles(bool getResourceModules) { throw null; }
         public override int GetHashCode() { throw null; }
         public System.Reflection.Module[] GetLoadedModules() { throw null; }
-        [System.MonoTODOAttribute("Always returns the same as GetModules")]
         public virtual System.Reflection.Module[] GetLoadedModules(bool getResourceModules) { throw null; }
         public virtual System.Reflection.ManifestResourceInfo GetManifestResourceInfo(string resourceName) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public virtual string[] GetManifestResourceNames() { throw null; }
+        public virtual string[] GetManifestResourceNames() { throw null; }
         public virtual System.IO.Stream GetManifestResourceStream(string name) { throw null; }
         public virtual System.IO.Stream GetManifestResourceStream(System.Type type, string name) { throw null; }
         public virtual System.Reflection.Module GetModule(string name) { throw null; }
@@ -9996,6 +10296,7 @@ namespace System.Reflection
         public virtual System.Reflection.Module[] GetModules(bool getResourceModules) { throw null; }
         public virtual System.Reflection.AssemblyName GetName() { throw null; }
         public virtual System.Reflection.AssemblyName GetName(bool copiedName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public virtual System.Reflection.AssemblyName[] GetReferencedAssemblies() { throw null; }
         public virtual System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture) { throw null; }
@@ -10005,44 +10306,61 @@ namespace System.Reflection
         public virtual System.Type GetType(string name, bool throwOnError, bool ignoreCase) { throw null; }
         public virtual System.Type[] GetTypes() { throw null; }
         public virtual bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(byte[] rawAssembly) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(byte[] rawAssembly, byte[] rawSymbolStore) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. Please use an overload of Load which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(32))]
         public static System.Reflection.Assembly Load(byte[] rawAssembly, byte[] rawSymbolStore, System.Security.Policy.Evidence securityEvidence) { throw null; }
-        [System.MonoLimitationAttribute("Argument securityContextSource is ignored")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(byte[] rawAssembly, byte[] rawSymbolStore, System.Security.SecurityContextSource securityContextSource) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyRef) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. Please use an overload of Load which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(System.Reflection.AssemblyName assemblyRef, System.Security.Policy.Evidence assemblySecurity) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(string assemblyString) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. Please use an overload of Load which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly Load(string assemblyString, System.Security.Policy.Evidence assemblySecurity) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadFile(string path) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. Please use an overload of LoadFile which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(32))]
         public static System.Reflection.Assembly LoadFile(string path, System.Security.Policy.Evidence securityEvidence) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadFrom(string assemblyFile) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadFrom(string assemblyFile, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. Please use an overload of LoadFrom which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadFrom(string assemblyFile, System.Security.Policy.Evidence securityEvidence) { throw null; }
-        [System.MonoTODOAttribute("This overload is not currently implemented")]
-        [System.ObsoleteAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. Please use an overload of LoadFrom which does not take an Evidence parameter. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadFrom(string assemblyFile, System.Security.Policy.Evidence securityEvidence, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm) { throw null; }
-        [System.MonoTODOAttribute("Not implemented")]
         public System.Reflection.Module LoadModule(string moduleName, byte[] rawModule) { throw null; }
-        [System.MonoTODOAttribute("Not implemented")]
         public virtual System.Reflection.Module LoadModule(string moduleName, byte[] rawModule, byte[] rawSymbolStore) { throw null; }
-        [System.ObsoleteAttribute("This method has been deprecated. Please use Assembly.Load() instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method has been deprecated. Please use Assembly.Load() instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadWithPartialName(string partialName) { throw null; }
-        [System.ObsoleteAttribute("This method has been deprecated. Please use Assembly.Load() instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This method has been deprecated. Please use Assembly.Load() instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly LoadWithPartialName(string partialName, System.Security.Policy.Evidence securityEvidence) { throw null; }
         public static bool operator ==(System.Reflection.Assembly left, System.Reflection.Assembly right) { throw null; }
         public static bool operator !=(System.Reflection.Assembly left, System.Reflection.Assembly right) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly ReflectionOnlyLoad(byte[] rawAssembly) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly ReflectionOnlyLoad(string assemblyString) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Assembly ReflectionOnlyLoadFrom(string assemblyFile) { throw null; }
         System.Type System.Runtime.InteropServices._Assembly.GetType() { throw null; }
         public override string ToString() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecurityCriticalAttribute]
         public static System.Reflection.Assembly UnsafeLoadFrom(string assemblyFile) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), Inherited=false)]
@@ -10165,33 +10483,35 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._AssemblyName))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class AssemblyName : System.ICloneable, System.Runtime.InteropServices._AssemblyName, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
         public AssemblyName() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public AssemblyName(string assemblyName) { }
         public string CodeBase { get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Reflection.AssemblyContentType ContentType { get { throw null; } set { } }
         public System.Globalization.CultureInfo CultureInfo { get { throw null; } set { } }
         public string CultureName { get { throw null; } set { } }
-        public string EscapedCodeBase { get { throw null; } }
+        public string EscapedCodeBase { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Reflection.AssemblyNameFlags Flags { get { throw null; } set { } }
-        public string FullName { get { throw null; } }
+        public string FullName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm { get { throw null; } set { } }
         public System.Reflection.StrongNameKeyPair KeyPair { get { throw null; } set { } }
         public string Name { get { throw null; } set { } }
-        [System.MonoLimitationAttribute("Not used, as the values are too limited;  Mono supports more")]
         public System.Reflection.ProcessorArchitecture ProcessorArchitecture { get { throw null; } set { } }
         public System.Version Version { get { throw null; } set { } }
         public System.Configuration.Assemblies.AssemblyVersionCompatibility VersionCompatibility { get { throw null; } set { } }
         public object Clone() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.AssemblyName GetAssemblyName(string assemblyFile) { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public byte[] GetPublicKey() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] GetPublicKeyToken() { throw null; }
         public void OnDeserialization(object sender) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool ReferenceMatchesDefinition(System.Reflection.AssemblyName reference, System.Reflection.AssemblyName definition) { throw null; }
         public void SetPublicKey(byte[] publicKey) { }
         public void SetPublicKeyToken(byte[] publicKeyToken) { }
@@ -10306,6 +10626,7 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._ConstructorInfo))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     [System.SerializableAttribute]
     public abstract partial class ConstructorInfo : System.Reflection.MethodBase, System.Runtime.InteropServices._ConstructorInfo
     {
@@ -10454,8 +10775,8 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._EventInfo))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class EventInfo : System.Reflection.MemberInfo, System.Runtime.InteropServices._EventInfo
     {
         protected EventInfo() { }
@@ -10492,7 +10813,6 @@ namespace System.Reflection
         void System.Runtime.InteropServices._EventInfo.Invoke(uint dispIdMember, [System.Runtime.InteropServices.In]ref System.Guid riid, uint lcid, short wFlags, System.IntPtr pDispParams, System.IntPtr pVarResult, System.IntPtr pExcepInfo, System.IntPtr puArgErr) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class ExceptionHandlingClause
     {
         protected ExceptionHandlingClause() { }
@@ -10542,6 +10862,7 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._FieldInfo))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     [System.SerializableAttribute]
     public abstract partial class FieldInfo : System.Reflection.MemberInfo, System.Runtime.InteropServices._FieldInfo
     {
@@ -10666,7 +10987,6 @@ namespace System.Reflection
         System.Reflection.TypeInfo GetTypeInfo();
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class LocalVariableInfo
     {
         protected LocalVariableInfo() { }
@@ -10697,7 +11017,7 @@ namespace System.Reflection
         public virtual System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes { get { throw null; } }
         public abstract System.Type DeclaringType { get; }
         public abstract System.Reflection.MemberTypes MemberType { get; }
-        public virtual int MetadataToken { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public virtual int MetadataToken { get { throw null; } }
         public virtual System.Reflection.Module Module { get { throw null; } }
         public abstract string Name { get; }
         public abstract System.Type ReflectedType { get; }
@@ -10806,7 +11126,7 @@ namespace System.Reflection
         bool System.Runtime.InteropServices._MethodBase.IsStatic { get { throw null; } }
         bool System.Runtime.InteropServices._MethodBase.IsVirtual { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.Reflection.MethodBase GetCurrentMethod() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.Reflection.MethodBase GetCurrentMethod() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public virtual System.Type[] GetGenericArguments() { throw null; }
         public override int GetHashCode() { throw null; }
@@ -10831,7 +11151,6 @@ namespace System.Reflection
         void System.Runtime.InteropServices._MethodBase.Invoke(uint dispIdMember, [System.Runtime.InteropServices.In]ref System.Guid riid, uint lcid, short wFlags, System.IntPtr pDispParams, System.IntPtr pVarResult, System.IntPtr pExcepInfo, System.IntPtr puArgErr) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class MethodBody
     {
         protected MethodBody() { }
@@ -10906,8 +11225,8 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._Module))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class Module : System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._Module, System.Runtime.Serialization.ISerializable
     {
         public static readonly System.Reflection.TypeFilter FilterTypeName;
@@ -10938,7 +11257,7 @@ namespace System.Reflection
         protected virtual System.Reflection.MethodInfo GetMethodImpl(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
         public System.Reflection.MethodInfo[] GetMethods() { throw null; }
         public virtual System.Reflection.MethodInfo[] GetMethods(System.Reflection.BindingFlags bindingFlags) { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public virtual void GetPEKind(out System.Reflection.PortableExecutableKinds peKind, out System.Reflection.ImageFileMachine machine) { peKind = default(System.Reflection.PortableExecutableKinds); machine = default(System.Reflection.ImageFileMachine); }
         public virtual System.Security.Cryptography.X509Certificates.X509Certificate GetSignerCertificate() { throw null; }
@@ -11011,7 +11330,6 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._ParameterInfo))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class ParameterInfo : System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._ParameterInfo, System.Runtime.Serialization.IObjectReference
     {
         protected System.Reflection.ParameterAttributes AttrsImpl;
@@ -11040,6 +11358,7 @@ namespace System.Reflection
         public virtual object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
         public virtual System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
         public virtual System.Type[] GetOptionalCustomModifiers() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public object GetRealObject(System.Runtime.Serialization.StreamingContext context) { throw null; }
         public virtual System.Type[] GetRequiredCustomModifiers() { throw null; }
         public virtual bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
@@ -11078,6 +11397,7 @@ namespace System.Reflection
         ILOnly = 1,
         NotAPortableExecutableImage = 0,
         PE32Plus = 4,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         Preferred32Bit = 16,
         Required32Bit = 2,
         Unmanaged32Bit = 8,
@@ -11110,6 +11430,7 @@ namespace System.Reflection
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._PropertyInfo))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     [System.SerializableAttribute]
     public abstract partial class PropertyInfo : System.Reflection.MemberInfo, System.Runtime.InteropServices._PropertyInfo
     {
@@ -11172,6 +11493,7 @@ namespace System.Reflection
         public ReflectionTypeLoadException(System.Type[] classes, System.Exception[] exceptions, string message) { }
         public System.Exception[] LoaderExceptions { get { throw null; } }
         public System.Type[] Types { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.FlagsAttribute]
@@ -11209,15 +11531,21 @@ namespace System.Reflection
     [System.SerializableAttribute]
     public partial class StrongNameKeyPair : System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public StrongNameKeyPair(byte[] keyPairArray) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public StrongNameKeyPair(System.IO.FileStream keyPairFile) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected StrongNameKeyPair(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public StrongNameKeyPair(string keyPairContainer) { }
-        public byte[] PublicKey { get { throw null; } }
+        public byte[] PublicKey { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -11370,7 +11698,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._AssemblyBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class AssemblyBuilder : System.Reflection.Assembly, System.Runtime.InteropServices._AssemblyBuilder
     {
         internal AssemblyBuilder() { }
@@ -11384,22 +11712,27 @@ namespace System.Reflection.Emit
         public override bool IsDynamic { get { throw null; } }
         public override string Location { get { throw null; } }
         public override System.Reflection.Module ManifestModule { get { throw null; } }
-        public override System.Security.PermissionSet PermissionSet { get { throw null; } }
-        [System.MonoTODOAttribute]
+        public override System.Security.PermissionSet PermissionSet { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public override bool ReflectionOnly { get { throw null; } }
         public override System.Security.SecurityRuleSet SecurityRuleSet { get { throw null; } }
         public void AddResourceFile(string name, string fileName) { }
         public void AddResourceFile(string name, string fileName, System.Reflection.ResourceAttributes attribute) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ModuleBuilder DefineDynamicModule(string name) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ModuleBuilder DefineDynamicModule(string name, bool emitSymbolInfo) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ModuleBuilder DefineDynamicModule(string name, string fileName) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ModuleBuilder DefineDynamicModule(string name, string fileName, bool emitSymbolInfo) { throw null; }
         public System.Resources.IResourceWriter DefineResource(string name, string description, string fileName) { throw null; }
         public System.Resources.IResourceWriter DefineResource(string name, string description, string fileName, System.Reflection.ResourceAttributes attribute) { throw null; }
-        [System.MonoTODOAttribute("Not currently implemenented")]
         public void DefineUnmanagedResource(byte[] resource) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DefineUnmanagedResource(string resourceFileName) { }
         public void DefineVersionInfoResource() { }
         public void DefineVersionInfoResource(string product, string productVersion, string company, string copyright, string trademark) { }
@@ -11420,17 +11753,18 @@ namespace System.Reflection.Emit
         public override System.Reflection.Module GetModule(string name) { throw null; }
         public override System.Reflection.Module[] GetModules(bool getResourceModules) { throw null; }
         public override System.Reflection.AssemblyName GetName(bool copiedName) { throw null; }
-        [System.MonoTODOAttribute("This always returns an empty array")]
         public override System.Reflection.AssemblyName[] GetReferencedAssemblies() { throw null; }
-        public override System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture) { throw null; }
-        public override System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, System.Version version) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public override System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public override System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, System.Version version) { throw null; }
         public override System.Type GetType(string name, bool throwOnError, bool ignoreCase) { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
         public void Save(string assemblyFileName) { }
-        [System.MonoLimitationAttribute("No support for PE32+ assemblies for AMD64 and IA64")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Save(string assemblyFileName, System.Reflection.PortableExecutableKinds portableExecutableKind, System.Reflection.ImageFileMachine imageFileMachine) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
         public void SetEntryPoint(System.Reflection.MethodInfo entryMethod) { }
         public void SetEntryPoint(System.Reflection.MethodInfo entryMethod, System.Reflection.Emit.PEFileKinds fileKind) { }
@@ -11453,12 +11787,11 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._ConstructorBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class ConstructorBuilder : System.Reflection.ConstructorInfo, System.Runtime.InteropServices._ConstructorBuilder
     {
         internal ConstructorBuilder() { }
         public override System.Reflection.MethodAttributes Attributes { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Reflection.CallingConventions CallingConvention { get { throw null; } }
         public override System.Type DeclaringType { get { throw null; } }
         public bool InitLocals { get { throw null; } set { } }
@@ -11466,9 +11799,10 @@ namespace System.Reflection.Emit
         public override System.Reflection.Module Module { get { throw null; } }
         public override string Name { get { throw null; } }
         public override System.Type ReflectedType { get { throw null; } }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This property has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public System.Type ReturnType { get { throw null; } }
         public string Signature { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddDeclarativeSecurity(System.Security.Permissions.SecurityAction action, System.Security.PermissionSet pset) { }
         public System.Reflection.Emit.ParameterBuilder DefineParameter(int iSequence, System.Reflection.ParameterAttributes attributes, string strParamName) { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
@@ -11487,7 +11821,6 @@ namespace System.Reflection.Emit
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
         public void SetImplementationFlags(System.Reflection.MethodImplAttributes attributes) { }
         public void SetMethodBody(byte[] il, int maxStack, byte[] localSignature, System.Collections.Generic.IEnumerable<System.Reflection.Emit.ExceptionHandler> exceptionHandlers, System.Collections.Generic.IEnumerable<int> tokenFixups) { }
-        [System.MonoTODOAttribute]
         public void SetSymCustomAttribute(string name, byte[] data) { }
         void System.Runtime.InteropServices._ConstructorBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System.Runtime.InteropServices._ConstructorBuilder.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
@@ -11498,7 +11831,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._CustomAttributeBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class CustomAttributeBuilder : System.Runtime.InteropServices._CustomAttributeBuilder
     {
         public CustomAttributeBuilder(System.Reflection.ConstructorInfo con, object[] constructorArgs) { }
@@ -11515,72 +11848,79 @@ namespace System.Reflection.Emit
     {
         internal DynamicILInfo() { }
         public System.Reflection.Emit.DynamicMethod DynamicMethod { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int GetTokenFor(byte[] signature) { throw null; }
         public int GetTokenFor(System.Reflection.Emit.DynamicMethod method) { throw null; }
         public int GetTokenFor(System.RuntimeFieldHandle field) { throw null; }
-        [System.MonoTODOAttribute]
         public int GetTokenFor(System.RuntimeFieldHandle field, System.RuntimeTypeHandle contextType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public int GetTokenFor(System.RuntimeMethodHandle method) { throw null; }
-        [System.MonoTODOAttribute]
         public int GetTokenFor(System.RuntimeMethodHandle method, System.RuntimeTypeHandle contextType) { throw null; }
         public int GetTokenFor(System.RuntimeTypeHandle type) { throw null; }
         public int GetTokenFor(string literal) { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe void SetCode(byte* code, int codeSize, int maxStackSize) { }
         public void SetCode(byte[] code, int maxStackSize) { }
         [System.CLSCompliantAttribute(false)]
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe void SetExceptions(byte* exceptions, int exceptionsSize) { }
-        [System.MonoTODOAttribute]
         public void SetExceptions(byte[] exceptions) { }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe void SetLocalSignature(byte* localSignature, int signatureSize) { }
-        [System.MonoTODOAttribute]
         public void SetLocalSignature(byte[] localSignature) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class DynamicMethod : System.Reflection.MethodInfo
     {
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes, System.Reflection.Module m, bool skipVisibility) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes, System.Type owner, bool skipVisibility) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Type returnType, System.Type[] parameterTypes) { }
-        [System.MonoTODOAttribute("Visibility is not restricted")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Type returnType, System.Type[] parameterTypes, bool restrictedSkipVisibility) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Type returnType, System.Type[] parameterTypes, System.Reflection.Module m) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Type returnType, System.Type[] parameterTypes, System.Reflection.Module m, bool skipVisibility) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Type returnType, System.Type[] parameterTypes, System.Type owner) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public DynamicMethod(string name, System.Type returnType, System.Type[] parameterTypes, System.Type owner, bool skipVisibility) { }
         public override System.Reflection.MethodAttributes Attributes { get { throw null; } }
         public override System.Reflection.CallingConventions CallingConvention { get { throw null; } }
         public override System.Type DeclaringType { get { throw null; } }
         public bool InitLocals { get { throw null; } set { } }
-        public override bool IsSecurityCritical { get { throw null; } }
-        public override bool IsSecuritySafeCritical { get { throw null; } }
-        public override bool IsSecurityTransparent { get { throw null; } }
+        public override bool IsSecurityCritical { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override bool IsSecuritySafeCritical { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override bool IsSecurityTransparent { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override System.RuntimeMethodHandle MethodHandle { get { throw null; } }
         public override System.Reflection.Module Module { get { throw null; } }
         public override string Name { get { throw null; } }
         public override System.Type ReflectedType { get { throw null; } }
-        [System.MonoTODOAttribute("Not implemented")]
         public override System.Reflection.ParameterInfo ReturnParameter { get { throw null; } }
         public override System.Type ReturnType { get { throw null; } }
-        [System.MonoTODOAttribute("Not implemented")]
         public override System.Reflection.ICustomAttributeProvider ReturnTypeCustomAttributes { get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public sealed override System.Delegate CreateDelegate(System.Type delegateType) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public sealed override System.Delegate CreateDelegate(System.Type delegateType, object target) { throw null; }
         public System.Reflection.Emit.ParameterBuilder DefineParameter(int position, System.Reflection.ParameterAttributes attributes, string parameterName) { throw null; }
         public override System.Reflection.MethodInfo GetBaseDefinition() { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
         public override object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.DynamicILInfo GetDynamicILInfo() { throw null; }
         public System.Reflection.Emit.ILGenerator GetILGenerator() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ILGenerator GetILGenerator(int streamSize) { throw null; }
         public override System.Reflection.MethodImplAttributes GetMethodImplementationFlags() { throw null; }
         public override System.Reflection.ParameterInfo[] GetParameters() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override object Invoke(object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object[] parameters, System.Globalization.CultureInfo culture) { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
         public override string ToString() { throw null; }
@@ -11588,6 +11928,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._EnumBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EnumBuilder : System.Reflection.TypeInfo, System.Runtime.InteropServices._EnumBuilder
     {
         internal EnumBuilder() { }
@@ -11659,17 +12000,23 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._EventBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class EventBuilder : System.Runtime.InteropServices._EventBuilder
     {
         internal EventBuilder() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddOtherMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
         public System.Reflection.Emit.EventToken GetEventToken() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetAddOnMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetRaiseMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetRemoveOnMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
         void System.Runtime.InteropServices._EventBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System.Runtime.InteropServices._EventBuilder.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
@@ -11710,7 +12057,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._FieldBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class FieldBuilder : System.Reflection.FieldInfo, System.Runtime.InteropServices._FieldBuilder
     {
         internal FieldBuilder() { }
@@ -11726,12 +12073,17 @@ namespace System.Reflection.Emit
         public System.Reflection.Emit.FieldToken GetToken() { throw null; }
         public override object GetValue(object obj) { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetConstant(object defaultValue) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
-        [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead.")]
+        [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetMarshal(System.Reflection.Emit.UnmanagedMarshal unmanagedMarshal) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetOffset(int iOffset) { }
         public override void SetValue(object obj, object val, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Globalization.CultureInfo culture) { }
         void System.Runtime.InteropServices._FieldBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
@@ -11762,13 +12114,12 @@ namespace System.Reflection.Emit
         Cond_Branch = 3,
         Meta = 4,
         Next = 5,
-        [System.ObsoleteAttribute("This API has been deprecated.")]
+        [System.ObsoleteAttribute("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         Phi = 6,
         Return = 7,
         Throw = 8,
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class GenericTypeParameterBuilder : System.Reflection.TypeInfo
     {
         internal GenericTypeParameterBuilder() { }
@@ -11792,7 +12143,6 @@ namespace System.Reflection.Emit
         public override System.Type ReflectedType { get { throw null; } }
         public override System.RuntimeTypeHandle TypeHandle { get { throw null; } }
         public override System.Type UnderlyingSystemType { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override bool Equals(object o) { throw null; }
         protected override System.Reflection.TypeAttributes GetAttributeFlagsImpl() { throw null; }
         protected override System.Reflection.ConstructorInfo GetConstructorImpl(System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
@@ -11808,7 +12158,6 @@ namespace System.Reflection.Emit
         public override System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingAttr) { throw null; }
         public override System.Type[] GetGenericArguments() { throw null; }
         public override System.Type GetGenericTypeDefinition() { throw null; }
-        [System.MonoTODOAttribute]
         public override int GetHashCode() { throw null; }
         public override System.Type GetInterface(string name, bool ignoreCase) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -11841,7 +12190,6 @@ namespace System.Reflection.Emit
         public override System.Type MakeGenericType(params System.Type[] typeArguments) { throw null; }
         public override System.Type MakePointerType() { throw null; }
         public void SetBaseTypeConstraint(System.Type baseTypeConstraint) { }
-        [System.MonoTODOAttribute("unverified implementation")]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
         public void SetGenericParameterAttributes(System.Reflection.GenericParameterAttributes genericParameterAttributes) { }
@@ -11852,7 +12200,6 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._ILGenerator))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class ILGenerator : System.Runtime.InteropServices._ILGenerator
     {
         internal ILGenerator() { }
@@ -11868,25 +12215,31 @@ namespace System.Reflection.Emit
         public virtual System.Reflection.Emit.Label DefineLabel() { throw null; }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, byte arg) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, double arg) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, short arg) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, int arg) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, long arg) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.ConstructorInfo con) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.Emit.Label label) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.Emit.Label[] labels) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.Emit.LocalBuilder local) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.Emit.SignatureHelper signature) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.FieldInfo field) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Reflection.MethodInfo meth) { }
         [System.CLSCompliantAttribute(false)]
         public void Emit(System.Reflection.Emit.OpCode opcode, sbyte arg) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, float arg) { }
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, string str) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Emit(System.Reflection.Emit.OpCode opcode, System.Type cls) { }
-        [System.MonoLimitationAttribute("vararg methods are not supported")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void EmitCall(System.Reflection.Emit.OpCode opcode, System.Reflection.MethodInfo methodInfo, System.Type[] optionalParameterTypes) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void EmitCalli(System.Reflection.Emit.OpCode opcode, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes, System.Type[] optionalParameterTypes) { }
         public virtual void EmitCalli(System.Reflection.Emit.OpCode opcode, System.Runtime.InteropServices.CallingConvention unmanagedCallConv, System.Type returnType, System.Type[] parameterTypes) { }
         public virtual void EmitWriteLine(System.Reflection.Emit.LocalBuilder localBuilder) { }
@@ -11901,7 +12254,6 @@ namespace System.Reflection.Emit
         void System.Runtime.InteropServices._ILGenerator.GetTypeInfoCount(out uint pcTInfo) { pcTInfo = default(uint); }
         void System.Runtime.InteropServices._ILGenerator.Invoke(uint dispIdMember, [System.Runtime.InteropServices.In]ref System.Guid riid, uint lcid, short wFlags, System.IntPtr pDispParams, System.IntPtr pVarResult, System.IntPtr pExcepInfo, System.IntPtr puArgErr) { }
         public virtual void ThrowException(System.Type excType) { }
-        [System.MonoTODOAttribute("Not implemented")]
         public virtual void UsingNamespace(string usingNamespace) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -11918,7 +12270,6 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._LocalBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class LocalBuilder : System.Reflection.LocalVariableInfo, System.Runtime.InteropServices._LocalBuilder
     {
         internal LocalBuilder() { }
@@ -11935,7 +12286,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._MethodBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class MethodBuilder : System.Reflection.MethodInfo, System.Runtime.InteropServices._MethodBuilder
     {
         internal MethodBuilder() { }
@@ -11956,13 +12307,14 @@ namespace System.Reflection.Emit
         public override System.Reflection.ParameterInfo ReturnParameter { get { throw null; } }
         public override System.Type ReturnType { get { throw null; } }
         public override System.Reflection.ICustomAttributeProvider ReturnTypeCustomAttributes { get { throw null; } }
-        [System.MonoTODOAttribute("Not implemented")]
-        public string Signature { get { throw null; } }
+        public string Signature { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddDeclarativeSecurity(System.Security.Permissions.SecurityAction action, System.Security.PermissionSet pset) { }
         public void CreateMethodBody(byte[] il, int count) { }
         public System.Reflection.Emit.GenericTypeParameterBuilder[] DefineGenericParameters(params string[] names) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ParameterBuilder DefineParameter(int position, System.Reflection.ParameterAttributes attributes, string strParamName) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object obj) { throw null; }
         public override System.Reflection.MethodInfo GetBaseDefinition() { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
@@ -11975,37 +12327,43 @@ namespace System.Reflection.Emit
         public override System.Reflection.MethodImplAttributes GetMethodImplementationFlags() { throw null; }
         public System.Reflection.Module GetModule() { throw null; }
         public override System.Reflection.ParameterInfo[] GetParameters() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodToken GetToken() { throw null; }
         public override object Invoke(object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object[] parameters, System.Globalization.CultureInfo culture) { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
         public override System.Reflection.MethodInfo MakeGenericMethod(params System.Type[] typeArguments) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetImplementationFlags(System.Reflection.MethodImplAttributes attributes) { }
-        [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead.")]
+        [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetMarshal(System.Reflection.Emit.UnmanagedMarshal unmanagedMarshal) { }
         public void SetMethodBody(byte[] il, int maxStack, byte[] localSignature, System.Collections.Generic.IEnumerable<System.Reflection.Emit.ExceptionHandler> exceptionHandlers, System.Collections.Generic.IEnumerable<int> tokenFixups) { }
         public void SetParameters(params System.Type[] parameterTypes) { }
         public void SetReturnType(System.Type returnType) { }
         public void SetSignature(System.Type returnType, System.Type[] returnTypeRequiredCustomModifiers, System.Type[] returnTypeOptionalCustomModifiers, System.Type[] parameterTypes, System.Type[][] parameterTypeRequiredCustomModifiers, System.Type[][] parameterTypeOptionalCustomModifiers) { }
-        [System.MonoTODOAttribute]
         public void SetSymCustomAttribute(string name, byte[] data) { }
         void System.Runtime.InteropServices._MethodBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System.Runtime.InteropServices._MethodBuilder.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
         void System.Runtime.InteropServices._MethodBuilder.GetTypeInfoCount(out uint pcTInfo) { pcTInfo = default(uint); }
         void System.Runtime.InteropServices._MethodBuilder.Invoke(uint dispIdMember, [System.Runtime.InteropServices.In]ref System.Guid riid, uint lcid, short wFlags, System.IntPtr pDispParams, System.IntPtr pVarResult, System.IntPtr pExcepInfo, System.IntPtr puArgErr) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._MethodRental))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class MethodRental : System.Runtime.InteropServices._MethodRental
     {
         internal MethodRental() { }
         public const int JitImmediate = 1;
         public const int JitOnDemand = 0;
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public static void SwapMethodBody(System.Type cls, int methodtoken, System.IntPtr rgIL, int methodSize, int flags) { }
         void System.Runtime.InteropServices._MethodRental.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
@@ -12029,12 +12387,12 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._ModuleBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public partial class ModuleBuilder : System.Reflection.Module, System.Runtime.InteropServices._ModuleBuilder
     {
         internal ModuleBuilder() { }
         public override System.Reflection.Assembly Assembly { get { throw null; } }
-        public override string FullyQualifiedName { get { throw null; } }
+        public override string FullyQualifiedName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override int MDStreamVersion { get { throw null; } }
         public override int MetadataToken { get { throw null; } }
         public override System.Guid ModuleVersionId { get { throw null; } }
@@ -12042,6 +12400,7 @@ namespace System.Reflection.Emit
         public override string ScopeName { get { throw null; } }
         public void CreateGlobalFunctions() { }
         public System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument(string url, System.Guid language, System.Guid languageVendor, System.Guid documentType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.EnumBuilder DefineEnum(string name, System.Reflection.TypeAttributes visibility, System.Type underlyingType) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineGlobalMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineGlobalMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] requiredReturnTypeCustomModifiers, System.Type[] optionalReturnTypeCustomModifiers, System.Type[] parameterTypes, System.Type[][] requiredParameterTypeCustomModifiers, System.Type[][] optionalParameterTypeCustomModifiers) { throw null; }
@@ -12052,41 +12411,56 @@ namespace System.Reflection.Emit
         public System.Reflection.Emit.MethodBuilder DefinePInvokeMethod(string name, string dllName, string entryName, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes, System.Runtime.InteropServices.CallingConvention nativeCallConv, System.Runtime.InteropServices.CharSet nativeCharSet) { throw null; }
         public System.Resources.IResourceWriter DefineResource(string name, string description) { throw null; }
         public System.Resources.IResourceWriter DefineResource(string name, string description, System.Reflection.ResourceAttributes attribute) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name, System.Reflection.TypeAttributes attr) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name, System.Reflection.TypeAttributes attr, System.Type parent) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name, System.Reflection.TypeAttributes attr, System.Type parent, int typesize) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name, System.Reflection.TypeAttributes attr, System.Type parent, System.Reflection.Emit.PackingSize packsize) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name, System.Reflection.TypeAttributes attr, System.Type parent, System.Reflection.Emit.PackingSize packingSize, int typesize) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineType(string name, System.Reflection.TypeAttributes attr, System.Type parent, System.Type[] interfaces) { throw null; }
         public System.Reflection.Emit.FieldBuilder DefineUninitializedData(string name, int size, System.Reflection.FieldAttributes attributes) { throw null; }
-        [System.MonoTODOAttribute]
         public void DefineUnmanagedResource(byte[] resource) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DefineUnmanagedResource(string resourceFileName) { }
         public override bool Equals(object obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.MethodInfo GetArrayMethod(System.Type arrayClass, string methodName, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodToken GetArrayMethodToken(System.Type arrayClass, string methodName, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodToken GetConstructorToken(System.Reflection.ConstructorInfo con) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodToken GetConstructorToken(System.Reflection.ConstructorInfo constructor, System.Collections.Generic.IEnumerable<System.Type> optionalParameterTypes) { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
         public override object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
         public override System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData() { throw null; }
         public override System.Reflection.FieldInfo GetField(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
         public override System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingFlags) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.FieldToken GetFieldToken(System.Reflection.FieldInfo field) { throw null; }
         public override int GetHashCode() { throw null; }
         protected override System.Reflection.MethodInfo GetMethodImpl(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
         public override System.Reflection.MethodInfo[] GetMethods(System.Reflection.BindingFlags bindingFlags) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodToken GetMethodToken(System.Reflection.MethodInfo method) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodToken GetMethodToken(System.Reflection.MethodInfo method, System.Collections.Generic.IEnumerable<System.Type> optionalParameterTypes) { throw null; }
         public override void GetPEKind(out System.Reflection.PortableExecutableKinds peKind, out System.Reflection.ImageFileMachine machine) { peKind = default(System.Reflection.PortableExecutableKinds); machine = default(System.Reflection.ImageFileMachine); }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.SignatureToken GetSignatureToken(byte[] sigBytes, int sigLength) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.SignatureToken GetSignatureToken(System.Reflection.Emit.SignatureHelper sigHelper) { throw null; }
         public override System.Security.Cryptography.X509Certificates.X509Certificate GetSignerCertificate() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.StringToken GetStringConstant(string str) { throw null; }
         public System.Diagnostics.SymbolStore.ISymbolWriter GetSymWriter() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -12097,6 +12471,7 @@ namespace System.Reflection.Emit
         public override System.Type GetType(string className, bool throwOnError, bool ignoreCase) { throw null; }
         public override System.Type[] GetTypes() { throw null; }
         public System.Reflection.Emit.TypeToken GetTypeToken(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeToken GetTypeToken(System.Type type) { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
         public override bool IsResource() { throw null; }
@@ -12108,11 +12483,12 @@ namespace System.Reflection.Emit
         public override string ResolveString(int metadataToken) { throw null; }
         public override System.Type ResolveType(int metadataToken, System.Type[] genericTypeArguments, System.Type[] genericMethodArguments) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
-        [System.MonoTODOAttribute]
         public void SetSymCustomAttribute(string name, byte[] data) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetUserEntryPoint(System.Reflection.MethodInfo entryPoint) { }
         void System.Runtime.InteropServices._ModuleBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System.Runtime.InteropServices._ModuleBuilder.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
@@ -12375,7 +12751,7 @@ namespace System.Reflection.Emit
     [System.SerializableAttribute]
     public enum OpCodeType
     {
-        [System.ObsoleteAttribute("This API has been deprecated.")]
+        [System.ObsoleteAttribute("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         Annotation = 0,
         Macro = 1,
         Nternal = 2,
@@ -12393,7 +12769,7 @@ namespace System.Reflection.Emit
         InlineI8 = 3,
         InlineMethod = 4,
         InlineNone = 5,
-        [System.ObsoleteAttribute("This API has been deprecated.")]
+        [System.ObsoleteAttribute("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         InlinePhi = 6,
         InlineR = 7,
         InlineSig = 9,
@@ -12424,7 +12800,6 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._ParameterBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class ParameterBuilder : System.Runtime.InteropServices._ParameterBuilder
     {
         internal ParameterBuilder() { }
@@ -12435,11 +12810,15 @@ namespace System.Reflection.Emit
         public virtual string Name { get { throw null; } }
         public virtual int Position { get { throw null; } }
         public virtual System.Reflection.Emit.ParameterToken GetToken() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void SetConstant(object defaultValue) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
-        [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead.")]
+        [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead. http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void SetMarshal(System.Reflection.Emit.UnmanagedMarshal unmanagedMarshal) { }
         void System.Runtime.InteropServices._ParameterBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
         void System.Runtime.InteropServices._ParameterBuilder.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
@@ -12470,7 +12849,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._PropertyBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class PropertyBuilder : System.Reflection.PropertyInfo, System.Runtime.InteropServices._PropertyBuilder
     {
         internal PropertyBuilder() { }
@@ -12483,6 +12862,7 @@ namespace System.Reflection.Emit
         public System.Reflection.Emit.PropertyToken PropertyToken { get { throw null; } }
         public override System.Type PropertyType { get { throw null; } }
         public override System.Type ReflectedType { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddOtherMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
         public override System.Reflection.MethodInfo[] GetAccessors(bool nonPublic) { throw null; }
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
@@ -12493,11 +12873,16 @@ namespace System.Reflection.Emit
         public override object GetValue(object obj, object[] index) { throw null; }
         public override object GetValue(object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object[] index, System.Globalization.CultureInfo culture) { throw null; }
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetConstant(object defaultValue) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetGetMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetSetMethod(System.Reflection.Emit.MethodBuilder mdBuilder) { }
         public override void SetValue(object obj, object value, object[] index) { }
         public override void SetValue(object obj, object value, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object[] index, System.Globalization.CultureInfo culture) { }
@@ -12522,17 +12907,15 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._SignatureHelper))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class SignatureHelper : System.Runtime.InteropServices._SignatureHelper
     {
         internal SignatureHelper() { }
         public void AddArgument(System.Type clsArgument) { }
-        [System.MonoTODOAttribute("pinned is ignored")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddArgument(System.Type argument, bool pinned) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddArgument(System.Type argument, System.Type[] requiredCustomModifiers, System.Type[] optionalCustomModifiers) { }
-        [System.MonoTODOAttribute("Currently we ignore requiredCustomModifiers and optionalCustomModifiers")]
         public void AddArguments(System.Type[] arguments, System.Type[][] requiredCustomModifiers, System.Type[][] optionalCustomModifiers) { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void AddSentinel() { }
         public override bool Equals(object obj) { throw null; }
         public static System.Reflection.Emit.SignatureHelper GetFieldSigHelper(System.Reflection.Module mod) { throw null; }
@@ -12540,15 +12923,16 @@ namespace System.Reflection.Emit
         public static System.Reflection.Emit.SignatureHelper GetLocalVarSigHelper() { throw null; }
         public static System.Reflection.Emit.SignatureHelper GetLocalVarSigHelper(System.Reflection.Module mod) { throw null; }
         public static System.Reflection.Emit.SignatureHelper GetMethodSigHelper(System.Reflection.CallingConventions callingConvention, System.Type returnType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Emit.SignatureHelper GetMethodSigHelper(System.Reflection.Module mod, System.Reflection.CallingConventions callingConvention, System.Type returnType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Emit.SignatureHelper GetMethodSigHelper(System.Reflection.Module mod, System.Runtime.InteropServices.CallingConvention unmanagedCallConv, System.Type returnType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Emit.SignatureHelper GetMethodSigHelper(System.Reflection.Module mod, System.Type returnType, System.Type[] parameterTypes) { throw null; }
         public static System.Reflection.Emit.SignatureHelper GetMethodSigHelper(System.Runtime.InteropServices.CallingConvention unmanagedCallingConvention, System.Type returnType) { throw null; }
-        [System.MonoTODOAttribute("Not implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Reflection.Emit.SignatureHelper GetPropertySigHelper(System.Reflection.Module mod, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] requiredReturnTypeCustomModifiers, System.Type[] optionalReturnTypeCustomModifiers, System.Type[] parameterTypes, System.Type[][] requiredParameterTypeCustomModifiers, System.Type[][] optionalParameterTypeCustomModifiers) { throw null; }
-        [System.MonoTODOAttribute("Not implemented")]
         public static System.Reflection.Emit.SignatureHelper GetPropertySigHelper(System.Reflection.Module mod, System.Type returnType, System.Type[] parameterTypes) { throw null; }
-        [System.MonoTODOAttribute("Not implemented")]
         public static System.Reflection.Emit.SignatureHelper GetPropertySigHelper(System.Reflection.Module mod, System.Type returnType, System.Type[] requiredReturnTypeCustomModifiers, System.Type[] optionalReturnTypeCustomModifiers, System.Type[] parameterTypes, System.Type[][] requiredParameterTypeCustomModifiers, System.Type[][] optionalParameterTypeCustomModifiers) { throw null; }
         public byte[] GetSignature() { throw null; }
         void System.Runtime.InteropServices._SignatureHelper.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
@@ -12618,7 +13002,7 @@ namespace System.Reflection.Emit
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._TypeBuilder))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class TypeBuilder : System.Reflection.TypeInfo, System.Runtime.InteropServices._TypeBuilder
     {
         internal TypeBuilder() { }
@@ -12630,7 +13014,6 @@ namespace System.Reflection.Emit
         public override System.Type DeclaringType { get { throw null; } }
         public override string FullName { get { throw null; } }
         public override System.Reflection.GenericParameterAttributes GenericParameterAttributes { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override int GenericParameterPosition { get { throw null; } }
         public override System.Guid GUID { get { throw null; } }
         public override bool IsConstructedGenericType { get { throw null; } }
@@ -12649,52 +13032,76 @@ namespace System.Reflection.Emit
         public override System.RuntimeTypeHandle TypeHandle { get { throw null; } }
         public System.Reflection.Emit.TypeToken TypeToken { get { throw null; } }
         public override System.Type UnderlyingSystemType { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddDeclarativeSecurity(System.Security.Permissions.SecurityAction action, System.Security.PermissionSet pset) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddInterfaceImplementation(System.Type interfaceType) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Type CreateType() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.TypeInfo CreateTypeInfo() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public System.Reflection.Emit.ConstructorBuilder DefineConstructor(System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type[] parameterTypes) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ConstructorBuilder DefineConstructor(System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type[] parameterTypes, System.Type[][] requiredCustomModifiers, System.Type[][] optionalCustomModifiers) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public System.Reflection.Emit.ConstructorBuilder DefineDefaultConstructor(System.Reflection.MethodAttributes attributes) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.EventBuilder DefineEvent(string name, System.Reflection.EventAttributes attributes, System.Type eventtype) { throw null; }
         public System.Reflection.Emit.FieldBuilder DefineField(string fieldName, System.Type type, System.Reflection.FieldAttributes attributes) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.FieldBuilder DefineField(string fieldName, System.Type type, System.Type[] requiredCustomModifiers, System.Type[] optionalCustomModifiers, System.Reflection.FieldAttributes attributes) { throw null; }
         public System.Reflection.Emit.GenericTypeParameterBuilder[] DefineGenericParameters(params string[] names) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.FieldBuilder DefineInitializedData(string name, byte[] data, System.Reflection.FieldAttributes attributes) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineMethod(string name, System.Reflection.MethodAttributes attributes) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineMethod(string name, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] returnTypeRequiredCustomModifiers, System.Type[] returnTypeOptionalCustomModifiers, System.Type[] parameterTypes, System.Type[][] parameterTypeRequiredCustomModifiers, System.Type[][] parameterTypeOptionalCustomModifiers) { throw null; }
         public System.Reflection.Emit.MethodBuilder DefineMethod(string name, System.Reflection.MethodAttributes attributes, System.Type returnType, System.Type[] parameterTypes) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DefineMethodOverride(System.Reflection.MethodInfo methodInfoBody, System.Reflection.MethodInfo methodInfoDeclaration) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name, System.Reflection.TypeAttributes attr) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name, System.Reflection.TypeAttributes attr, System.Type parent) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name, System.Reflection.TypeAttributes attr, System.Type parent, int typeSize) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name, System.Reflection.TypeAttributes attr, System.Type parent, System.Reflection.Emit.PackingSize packSize) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name, System.Reflection.TypeAttributes attr, System.Type parent, System.Reflection.Emit.PackingSize packSize, int typeSize) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.TypeBuilder DefineNestedType(string name, System.Reflection.TypeAttributes attr, System.Type parent, System.Type[] interfaces) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodBuilder DefinePInvokeMethod(string name, string dllName, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes, System.Runtime.InteropServices.CallingConvention nativeCallConv, System.Runtime.InteropServices.CharSet nativeCharSet) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodBuilder DefinePInvokeMethod(string name, string dllName, string entryName, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes, System.Runtime.InteropServices.CallingConvention nativeCallConv, System.Runtime.InteropServices.CharSet nativeCharSet) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.MethodBuilder DefinePInvokeMethod(string name, string dllName, string entryName, System.Reflection.MethodAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] returnTypeRequiredCustomModifiers, System.Type[] returnTypeOptionalCustomModifiers, System.Type[] parameterTypes, System.Type[][] parameterTypeRequiredCustomModifiers, System.Type[][] parameterTypeOptionalCustomModifiers, System.Runtime.InteropServices.CallingConvention nativeCallConv, System.Runtime.InteropServices.CharSet nativeCharSet) { throw null; }
         public System.Reflection.Emit.PropertyBuilder DefineProperty(string name, System.Reflection.PropertyAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] parameterTypes) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.PropertyBuilder DefineProperty(string name, System.Reflection.PropertyAttributes attributes, System.Reflection.CallingConventions callingConvention, System.Type returnType, System.Type[] returnTypeRequiredCustomModifiers, System.Type[] returnTypeOptionalCustomModifiers, System.Type[] parameterTypes, System.Type[][] parameterTypeRequiredCustomModifiers, System.Type[][] parameterTypeOptionalCustomModifiers) { throw null; }
         public System.Reflection.Emit.PropertyBuilder DefineProperty(string name, System.Reflection.PropertyAttributes attributes, System.Type returnType, System.Type[] parameterTypes) { throw null; }
         public System.Reflection.Emit.PropertyBuilder DefineProperty(string name, System.Reflection.PropertyAttributes attributes, System.Type returnType, System.Type[] returnTypeRequiredCustomModifiers, System.Type[] returnTypeOptionalCustomModifiers, System.Type[] parameterTypes, System.Type[][] parameterTypeRequiredCustomModifiers, System.Type[][] parameterTypeOptionalCustomModifiers) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.ConstructorBuilder DefineTypeInitializer() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Reflection.Emit.FieldBuilder DefineUninitializedData(string name, int size, System.Reflection.FieldAttributes attributes) { throw null; }
         protected override System.Reflection.TypeAttributes GetAttributeFlagsImpl() { throw null; }
         public static System.Reflection.ConstructorInfo GetConstructor(System.Type type, System.Reflection.ConstructorInfo constructor) { throw null; }
         protected override System.Reflection.ConstructorInfo GetConstructorImpl(System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public override System.Reflection.ConstructorInfo[] GetConstructors(System.Reflection.BindingFlags bindingAttr) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override object[] GetCustomAttributes(bool inherit) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override object[] GetCustomAttributes(System.Type attributeType, bool inherit) { throw null; }
         public override System.Type GetElementType() { throw null; }
         public override System.Reflection.EventInfo GetEvent(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
@@ -12722,11 +13129,11 @@ namespace System.Reflection.Emit
         public override object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] namedParameters) { throw null; }
         protected override bool IsArrayImpl() { throw null; }
         public override bool IsAssignableFrom(System.Reflection.TypeInfo typeInfo) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool IsAssignableFrom(System.Type c) { throw null; }
         protected override bool IsByRefImpl() { throw null; }
         protected override bool IsCOMObjectImpl() { throw null; }
         public bool IsCreated() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool IsDefined(System.Type attributeType, bool inherit) { throw null; }
         protected override bool IsPointerImpl() { throw null; }
         protected override bool IsPrimitiveImpl() { throw null; }
@@ -12738,7 +13145,9 @@ namespace System.Reflection.Emit
         public override System.Type MakeGenericType(params System.Type[] typeArguments) { throw null; }
         public override System.Type MakePointerType() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.ConstructorInfo con, byte[] binaryAttribute) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetCustomAttribute(System.Reflection.Emit.CustomAttributeBuilder customBuilder) { }
         public void SetParent(System.Type parent) { }
         void System.Runtime.InteropServices._TypeBuilder.GetIDsOfNames([System.Runtime.InteropServices.In]ref System.Guid riid, System.IntPtr rgszNames, uint cNames, uint lcid, System.IntPtr rgDispId) { }
@@ -12760,10 +13169,10 @@ namespace System.Reflection.Emit
         public static bool operator ==(System.Reflection.Emit.TypeToken a, System.Reflection.Emit.TypeToken b) { throw null; }
         public static bool operator !=(System.Reflection.Emit.TypeToken a, System.Reflection.Emit.TypeToken b) { throw null; }
     }
-    [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead.")]
+    [System.ObsoleteAttribute("An alternate API is available: Emit the MarshalAs custom attribute instead. http://go.microsoft.com/fwlink/?linkid=14202")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class UnmanagedMarshal
     {
         internal UnmanagedMarshal() { }
@@ -12940,6 +13349,7 @@ namespace System.Runtime
         public AssemblyTargetedPatchBandAttribute(string targetedPatchBand) { }
         public string TargetedPatchBand { get { throw null; } }
     }
+    [System.SerializableAttribute]
     public enum GCLargeObjectHeapCompactionMode
     {
         CompactOnce = 2,
@@ -12956,23 +13366,24 @@ namespace System.Runtime
     }
     public static partial class GCSettings
     {
-        [System.MonoTODOAttribute("Always returns false")]
-        public static bool IsServerGC { get { throw null; } }
-        public static System.Runtime.GCLargeObjectHeapCompactionMode LargeObjectHeapCompactionMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute, System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute, System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]set { } }
-        [System.MonoTODOAttribute("Always returns GCLatencyMode.Interactive and ignores set")]
-        public static System.Runtime.GCLatencyMode LatencyMode { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]set { } }
+        public static bool IsServerGC { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static System.Runtime.GCLargeObjectHeapCompactionMode LargeObjectHeapCompactionMode { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecurityCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]set { } }
+        public static System.Runtime.GCLatencyMode LatencyMode { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecurityCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]set { } }
     }
     public sealed partial class MemoryFailPoint : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, System.IDisposable
     {
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public MemoryFailPoint(int sizeInMegabytes) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Dispose() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~MemoryFailPoint() { }
     }
     public static partial class ProfileOptimization
     {
+        [System.Security.SecurityCriticalAttribute]
         public static void SetProfileRoot(string directoryPath) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void StartProfile(string profile) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(96), AllowMultiple=false, Inherited=false)]
@@ -13110,14 +13521,21 @@ namespace System.Runtime.CompilerServices
     public static partial class CompilerMarshalOverride
     {
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public sealed partial class ConditionalWeakTable<TKey, TValue> where TKey : class where TValue : class
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public ConditionalWeakTable() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Add(TKey key, TValue value) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~ConditionalWeakTable() { }
         public TValue GetOrCreateValue(TKey key) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public TValue GetValue(TKey key, System.Runtime.CompilerServices.ConditionalWeakTable<TKey, TValue>.CreateValueCallback createValueCallback) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool Remove(TKey key) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool TryGetValue(TKey key, out TValue value) { value = default(TValue); throw null; }
         public delegate TValue CreateValueCallback(TKey key);
     }
@@ -13403,33 +13821,36 @@ namespace System.Runtime.CompilerServices
     }
     public static partial class RuntimeHelpers
     {
-        public static int OffsetToStringData { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        public static int OffsetToStringData { get { throw null; } }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void EnsureSufficientExecutionStack() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static new bool Equals(object o1, object o2) { throw null; }
-        [System.MonoTODOAttribute("Currently a no-op")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void ExecuteCodeWithGuaranteedCleanup(System.Runtime.CompilerServices.RuntimeHelpers.TryCode code, System.Runtime.CompilerServices.RuntimeHelpers.CleanupCode backoutCode, object userData) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static int GetHashCode(object o) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static object GetObjectValue(object obj) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static object GetObjectValue(object obj) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static void InitializeArray(System.Array array, System.RuntimeFieldHandle fldHandle) { }
-        [System.MonoTODOAttribute("Currently a no-op")]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static void PrepareConstrainedRegions() { }
-        [System.MonoTODOAttribute("Currently a no-op")]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static void PrepareConstrainedRegionsNoOP() { }
-        [System.MonoTODOAttribute("Currently a no-op")]
-        [System.Security.SecurityCriticalAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void PrepareContractedDelegate(System.Delegate d) { }
-        [System.MonoTODOAttribute("Currently a no-op")]
-        [System.Security.SecurityCriticalAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void PrepareDelegate(System.Delegate d) { }
-        [System.MonoTODOAttribute("Currently a no-op")]
+        [System.Security.SecurityCriticalAttribute]
         public static void PrepareMethod(System.RuntimeMethodHandle method) { }
-        [System.MonoTODOAttribute("Currently a no-op")]
+        [System.Security.SecurityCriticalAttribute]
         public static void PrepareMethod(System.RuntimeMethodHandle method, System.RuntimeTypeHandle[] instantiation) { }
-        [System.MonoTODOAttribute("Currently a no-op")]
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static void ProbeForSufficientStack() { }
         public static void RunClassConstructor(System.RuntimeTypeHandle type) { }
         public static void RunModuleConstructor(System.ModuleHandle module) { }
@@ -13495,6 +13916,8 @@ namespace System.Runtime.CompilerServices
         [System.Security.SecurityCriticalAttribute]
         public void UnsafeOnCompleted(System.Action continuation) { }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(11148))]
+    [System.CLSCompliantAttribute(false)]
     public sealed partial class TupleElementNamesAttribute : System.Attribute
     {
         public TupleElementNamesAttribute(string[] transformNames) { }
@@ -13578,11 +14001,16 @@ namespace System.Runtime.DesignerServices
 {
     public sealed partial class WindowsRuntimeDesignerContext
     {
+        [System.Security.SecurityCriticalAttribute]
         public WindowsRuntimeDesignerContext(System.Collections.Generic.IEnumerable<string> paths, string name) { }
         public string Name { get { throw null; } }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecurityCriticalAttribute]
         public System.Reflection.Assembly GetAssembly(string assemblyName) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecurityCriticalAttribute]
         public System.Type GetType(string typeName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void InitializeSharedContext(System.Collections.Generic.IEnumerable<string> paths) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void SetIterationContext(System.Runtime.DesignerServices.WindowsRuntimeDesignerContext context) { }
     }
 }
@@ -13621,13 +14049,14 @@ namespace System.Runtime.Hosting
         public System.ApplicationIdentity ApplicationIdentity { get { throw null; } }
         public override System.Security.Policy.EvidenceBase Clone() { throw null; }
     }
-    [System.MonoTODOAttribute("missing manifest support")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ApplicationActivator
     {
         public ApplicationActivator() { }
         public virtual System.Runtime.Remoting.ObjectHandle CreateInstance(System.ActivationContext activationContext) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual System.Runtime.Remoting.ObjectHandle CreateInstance(System.ActivationContext activationContext, string[] activationCustomData) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected static System.Runtime.Remoting.ObjectHandle CreateInstanceHelper(System.AppDomainSetup adSetup) { throw null; }
     }
 }
@@ -13675,7 +14104,7 @@ namespace System.Runtime.InteropServices
         public BestFitMappingAttribute(bool BestFitMapping) { }
         public bool BestFitMapping { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.BINDPTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Explicit, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct BINDPTR
     {
@@ -13686,7 +14115,7 @@ namespace System.Runtime.InteropServices
         [System.Runtime.InteropServices.FieldOffsetAttribute(0)]
         public System.IntPtr lpvardesc;
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.BIND_OPTS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct BIND_OPTS
     {
@@ -13707,7 +14136,7 @@ namespace System.Runtime.InteropServices
         public BStrWrapper(string value) { }
         public string WrappedObject { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.CALLCONV instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum CALLCONV
     {
@@ -13804,9 +14233,9 @@ namespace System.Runtime.InteropServices
     }
     public static partial class ComEventsHelper
     {
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static void Combine(object rcw, System.Guid iid, int dispid, System.Delegate d) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Delegate Remove(object rcw, System.Guid iid, int dispid, System.Delegate d) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -13918,6 +14347,7 @@ namespace System.Runtime.InteropServices
         public CurrencyWrapper(object obj) { }
         public decimal WrappedObject { get { throw null; } }
     }
+    [System.SerializableAttribute]
     public enum CustomQueryInterfaceMode
     {
         Allow = 1,
@@ -13945,7 +14375,7 @@ namespace System.Runtime.InteropServices
         public DefaultDllImportSearchPathsAttribute(System.Runtime.InteropServices.DllImportSearchPath paths) { }
         public System.Runtime.InteropServices.DllImportSearchPath Paths { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.DESCKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum DESCKIND
     {
@@ -13972,7 +14402,7 @@ namespace System.Runtime.InteropServices
         public DispIdAttribute(int dispId) { }
         public int Value { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.DISPPARAMS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct DISPPARAMS
     {
@@ -14007,7 +14437,7 @@ namespace System.Runtime.InteropServices
         UseDllDirectoryForDependencies = 256,
         UserDirectories = 1024,
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.ELEMDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct ELEMDESC
     {
@@ -14034,7 +14464,7 @@ namespace System.Runtime.InteropServices
         public ErrorWrapper(object errorCode) { }
         public int ErrorCode { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.EXCEPINFO instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct EXCEPINFO
     {
@@ -14062,6 +14492,7 @@ namespace System.Runtime.InteropServices
     public sealed partial class ExtensibleClassFactory
     {
         internal ExtensibleClassFactory() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static void RegisterObjectCreationCallback(System.Runtime.InteropServices.ObjectCreationDelegate callback) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -14083,14 +14514,14 @@ namespace System.Runtime.InteropServices
         public FieldOffsetAttribute(int offset) { }
         public int Value { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.FILETIME instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct FILETIME
     {
         public int dwHighDateTime;
         public int dwLowDateTime;
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.FUNCDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct FUNCDESC
     {
@@ -14108,7 +14539,7 @@ namespace System.Runtime.InteropServices
         public short wFuncFlags;
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.FUNCFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum FUNCFLAGS : short
     {
@@ -14126,7 +14557,7 @@ namespace System.Runtime.InteropServices
         FUNCFLAG_FUIDEFAULT = (short)512,
         FUNCFLAG_FUSESGETLASTERROR = (short)128,
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.FUNCKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum FUNCKIND
     {
@@ -14136,21 +14567,26 @@ namespace System.Runtime.InteropServices
         FUNC_STATIC = 3,
         FUNC_VIRTUAL = 0,
     }
-    [System.MonoTODOAttribute("Struct should be [StructLayout(LayoutKind.Sequential)] but will need to be reordered for that.")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct GCHandle
     {
         public bool IsAllocated { get { throw null; } }
-        public object Target { get { throw null; } set { } }
+        public object Target { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        [System.Security.SecurityCriticalAttribute]
         public System.IntPtr AddrOfPinnedObject() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.InteropServices.GCHandle Alloc(object value) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.InteropServices.GCHandle Alloc(object value, System.Runtime.InteropServices.GCHandleType type) { throw null; }
         public override bool Equals(object o) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void Free() { }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.InteropServices.GCHandle FromIntPtr(System.IntPtr value) { throw null; }
         public override int GetHashCode() { throw null; }
         public static bool operator ==(System.Runtime.InteropServices.GCHandle a, System.Runtime.InteropServices.GCHandle b) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static explicit operator System.Runtime.InteropServices.GCHandle (System.IntPtr value) { throw null; }
         public static explicit operator System.IntPtr (System.Runtime.InteropServices.GCHandle value) { throw null; }
         public static bool operator !=(System.Runtime.InteropServices.GCHandle a, System.Runtime.InteropServices.GCHandle b) { throw null; }
@@ -14226,7 +14662,7 @@ namespace System.Runtime.InteropServices
         InternalImpl = 1,
         SystemDefinedImpl = 0,
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IDLDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct IDLDESC
     {
@@ -14234,7 +14670,7 @@ namespace System.Runtime.InteropServices
         public System.Runtime.InteropServices.IDLFLAG wIDLFlags;
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IDLFLAG instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum IDLFLAG : short
     {
@@ -14245,7 +14681,7 @@ namespace System.Runtime.InteropServices
         IDLFLAG_NONE = (short)0,
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IMPLTYPEFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum IMPLTYPEFLAGS
     {
@@ -14301,7 +14737,7 @@ namespace System.Runtime.InteropServices
         public InvalidOleVariantTypeException(string message) { }
         public InvalidOleVariantTypeException(string message, System.Exception inner) { }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.INVOKEKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum INVOKEKIND
     {
@@ -14330,7 +14766,7 @@ namespace System.Runtime.InteropServices
         bool UnregisterAssembly(System.Reflection.Assembly assembly);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("F1C3BF78-C3E4-11D3-88E7-00902754C43A")]
+    [System.Runtime.InteropServices.GuidAttribute("F1C3BF78-C3E4-11d3-88E7-00902754C43A")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface ITypeLibConverter
     {
@@ -14341,7 +14777,7 @@ namespace System.Runtime.InteropServices
         bool GetPrimaryInteropAssembly(System.Guid g, int major, int minor, int lcid, out string asmName, out string asmCodeBase);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("fa1f3615-acb9-486d-9eac-1bef87e36b09")]
+    [System.Runtime.InteropServices.GuidAttribute("FA1F3615-ACB9-486d-9EAC-1BEF87E36B09")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface ITypeLibExporterNameProvider
     {
@@ -14349,7 +14785,7 @@ namespace System.Runtime.InteropServices
         string[] GetNames();
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("f1c3bf77-c3e4-11d3-88e7-00902754c43a")]
+    [System.Runtime.InteropServices.GuidAttribute("F1C3BF77-C3E4-11d3-88E7-00902754C43A")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface ITypeLibExporterNotifySink
     {
@@ -14358,7 +14794,7 @@ namespace System.Runtime.InteropServices
         object ResolveRef(System.Reflection.Assembly assembly);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("f1c3bf76-c3e4-11d3-88e7-00902754c43a")]
+    [System.Runtime.InteropServices.GuidAttribute("F1C3BF76-C3E4-11d3-88E7-00902754C43A")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface ITypeLibImporterNotifySink
     {
@@ -14381,7 +14817,7 @@ namespace System.Runtime.InteropServices
         public int Value { get { throw null; } }
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.LIBFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum LIBFLAGS : short
     {
@@ -14402,263 +14838,384 @@ namespace System.Runtime.InteropServices
     {
         public static readonly int SystemDefaultCharSize;
         public static readonly int SystemMaxDBCSCharSize;
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static int AddRef(System.IntPtr pUnk) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr AllocCoTaskMem(int cb) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr AllocCoTaskMem(int cb) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr AllocHGlobal(int cb) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr AllocHGlobal(System.IntPtr cb) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static bool AreComObjectsAvailableForCleanup() { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static object BindToMoniker(string monikerName) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void ChangeWrapperHandleStrength(object otp, bool fIsWeak) { }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void CleanupUnusedObjectsInCurrentContext() { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(byte[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(char[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(double[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(short[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(int[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(long[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, byte[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, char[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, double[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, short[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, int[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, long[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, System.IntPtr[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr source, float[] destination, int startIndex, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(System.IntPtr[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void Copy(float[] source, int startIndex, System.IntPtr destination, int length) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static System.IntPtr CreateAggregatedObject(System.IntPtr pOuter, object o) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr CreateAggregatedObject<T>(System.IntPtr pOuter, T o) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static object CreateWrapperOfType(object o, System.Type t) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static TWrapper CreateWrapperOfType<T, TWrapper>(T o) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public static void DestroyStructure(System.IntPtr ptr, System.Type structuretype) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void DestroyStructure<T>(System.IntPtr ptr) { }
+        [System.Security.SecurityCriticalAttribute]
         public static int FinalReleaseComObject(object o) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void FreeBSTR(System.IntPtr ptr) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void FreeCoTaskMem(System.IntPtr ptr) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
-        public static void FreeHGlobal(System.IntPtr hglobal) { }
-        public static System.Guid GenerateGuidForType(System.Type type) { throw null; }
-        public static string GenerateProgIdForType(System.Type type) { throw null; }
-        [System.MonoTODOAttribute]
-        public static object GetActiveObject(string progID) { throw null; }
-        public static System.IntPtr GetComInterfaceForObject(object o, System.Type T) { throw null; }
-        [System.MonoTODOAttribute]
-        public static System.IntPtr GetComInterfaceForObject(object o, System.Type T, System.Runtime.InteropServices.CustomQueryInterfaceMode mode) { throw null; }
-        [System.MonoTODOAttribute]
-        public static System.IntPtr GetComInterfaceForObjectInContext(object o, System.Type t) { throw null; }
-        public static System.IntPtr GetComInterfaceForObject<T, TInterface>(T o) { throw null; }
-        [System.MonoNotSupportedAttribute("MSDN states user code should never need to call this method.")]
-        public static object GetComObjectData(object obj, object key) { throw null; }
-        public static int GetComSlotForMethodInfo(System.Reflection.MemberInfo m) { throw null; }
-        public static System.Delegate GetDelegateForFunctionPointer(System.IntPtr ptr, System.Type t) { throw null; }
-        public static TDelegate GetDelegateForFunctionPointer<TDelegate>(System.IntPtr ptr) { throw null; }
-        [System.MonoTODOAttribute]
-        public static int GetEndComSlot(System.Type t) { throw null; }
-        public static int GetExceptionCode() { throw null; }
-        public static System.Exception GetExceptionForHR(int errorCode) { throw null; }
-        public static System.Exception GetExceptionForHR(int errorCode, System.IntPtr errorInfo) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-        public static System.IntPtr GetExceptionPointers() { throw null; }
-        public static System.IntPtr GetFunctionPointerForDelegate(System.Delegate d) { throw null; }
-        public static System.IntPtr GetFunctionPointerForDelegate<TDelegate>(TDelegate d) { throw null; }
-        public static System.IntPtr GetHINSTANCE(System.Reflection.Module m) { throw null; }
-        public static int GetHRForException(System.Exception e) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
+        public static void FreeBSTR(System.IntPtr ptr) { }
+        [System.Security.SecurityCriticalAttribute]
+        public static void FreeCoTaskMem(System.IntPtr ptr) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
+        public static void FreeHGlobal(System.IntPtr hglobal) { }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.Guid GenerateGuidForType(System.Type type) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static string GenerateProgIdForType(System.Type type) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static object GetActiveObject(string progID) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetComInterfaceForObject(object o, System.Type T) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetComInterfaceForObject(object o, System.Type T, System.Runtime.InteropServices.CustomQueryInterfaceMode mode) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetComInterfaceForObjectInContext(object o, System.Type t) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetComInterfaceForObject<T, TInterface>(T o) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static object GetComObjectData(object obj, object key) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static int GetComSlotForMethodInfo(System.Reflection.MemberInfo m) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.Delegate GetDelegateForFunctionPointer(System.IntPtr ptr, System.Type t) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static TDelegate GetDelegateForFunctionPointer<TDelegate>(System.IntPtr ptr) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
+        public static int GetEndComSlot(System.Type t) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
+        public static int GetExceptionCode() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.Exception GetExceptionForHR(int errorCode) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.Exception GetExceptionForHR(int errorCode, System.IntPtr errorInfo) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetExceptionPointers() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetFunctionPointerForDelegate(System.Delegate d) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetFunctionPointerForDelegate<TDelegate>(TDelegate d) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr GetHINSTANCE(System.Reflection.Module m) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
+        public static int GetHRForException(System.Exception e) { throw null; }
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static int GetHRForLastWin32Error() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetIDispatchForObject(object o) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetIDispatchForObjectInContext(object o) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetITypeInfoForType(System.Type t) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetIUnknownForObject(object o) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetIUnknownForObjectInContext(object o) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static int GetLastWin32Error() { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("This method has been deprecated")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.ObsoleteAttribute("The GetManagedThunkForUnmanagedMethodPtr method has been deprecated and will be removed in a future release.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetManagedThunkForUnmanagedMethodPtr(System.IntPtr pfnMethodToWrap, System.IntPtr pbSignature, int cbSignature) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static System.Reflection.MemberInfo GetMethodInfoForComSlot(System.Type t, int slot, ref System.Runtime.InteropServices.ComMemberType memberType) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void GetNativeVariantForObject(object obj, System.IntPtr pDstNativeVariant) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void GetNativeVariantForObject<T>(T obj, System.IntPtr pDstNativeVariant) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static object GetObjectForIUnknown(System.IntPtr pUnk) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static object GetObjectForNativeVariant(System.IntPtr pSrcNativeVariant) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static T GetObjectForNativeVariant<T>(System.IntPtr pSrcNativeVariant) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static object[] GetObjectsForNativeVariants(System.IntPtr aSrcNativeVariant, int cVars) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static T[] GetObjectsForNativeVariants<T>(System.IntPtr aSrcNativeVariant, int cVars) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static int GetStartComSlot(System.Type t) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("This method has been deprecated")]
+        [System.ObsoleteAttribute("The GetThreadFromFiberCookie method has been deprecated.  Use the hosting API to perform this operation.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Threading.Thread GetThreadFromFiberCookie(int cookie) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static object GetTypedObjectForIUnknown(System.IntPtr pUnk, System.Type t) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Type GetTypeForITypeInfo(System.IntPtr piTypeInfo) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Type GetTypeFromCLSID(System.Guid clsid) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string GetTypeInfoName(System.Runtime.InteropServices.ComTypes.ITypeInfo typeInfo) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Use System.Runtime.InteropServices.Marshal.GetTypeInfoName(ITypeInfo pTLB) instead. http://go.microsoft.com/fwlink/?linkid=14202&ID=0000011.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static string GetTypeInfoName(System.Runtime.InteropServices.UCOMITypeInfo pTI) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Guid GetTypeLibGuid(System.Runtime.InteropServices.ComTypes.ITypeLib typelib) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Use System.Runtime.InteropServices.Marshal.GetTypeLibGuid(ITypeLib pTLB) instead. http://go.microsoft.com/fwlink/?linkid=14202&ID=0000011.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Guid GetTypeLibGuid(System.Runtime.InteropServices.UCOMITypeLib pTLB) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Guid GetTypeLibGuidForAssembly(System.Reflection.Assembly asm) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static int GetTypeLibLcid(System.Runtime.InteropServices.ComTypes.ITypeLib typelib) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Use System.Runtime.InteropServices.Marshal.GetTypeLibLcid(ITypeLib pTLB) instead. http://go.microsoft.com/fwlink/?linkid=14202&ID=0000011.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static int GetTypeLibLcid(System.Runtime.InteropServices.UCOMITypeLib pTLB) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static string GetTypeLibName(System.Runtime.InteropServices.ComTypes.ITypeLib typelib) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Use System.Runtime.InteropServices.Marshal.GetTypeLibName(ITypeLib pTLB) instead. http://go.microsoft.com/fwlink/?linkid=14202&ID=0000011.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static string GetTypeLibName(System.Runtime.InteropServices.UCOMITypeLib pTLB) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static void GetTypeLibVersionForAssembly(System.Reflection.Assembly inputAssembly, out int majorVersion, out int minorVersion) { majorVersion = default(int); minorVersion = default(int); }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static object GetUniqueObjectForIUnknown(System.IntPtr unknown) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("This method has been deprecated")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.ObsoleteAttribute("The GetUnmanagedThunkForManagedMethodPtr method has been deprecated and will be removed in a future release.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr GetUnmanagedThunkForManagedMethodPtr(System.IntPtr pfnMethodToWrap, System.IntPtr pbSignature, int cbSignature) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static bool IsComObject(object o) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static bool IsComObject(object o) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static bool IsTypeVisibleFromCom(System.Type t) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static int NumParamBytes(System.Reflection.MethodInfo m) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr OffsetOf(System.Type t, string fieldName) { throw null; }
+        public static System.IntPtr OffsetOf(System.Type t, string fieldName) { throw null; }
         public static System.IntPtr OffsetOf<T>(string fieldName) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void Prelink(System.Reflection.MethodInfo m) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void PrelinkAll(System.Type c) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringAnsi(System.IntPtr ptr) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringAnsi(System.IntPtr ptr, int len) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static void Prelink(System.Reflection.MethodInfo m) { }
+        [System.Security.SecurityCriticalAttribute]
+        public static void PrelinkAll(System.Type c) { }
+        [System.Security.SecurityCriticalAttribute]
+        public static string PtrToStringAnsi(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static string PtrToStringAnsi(System.IntPtr ptr, int len) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string PtrToStringAuto(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string PtrToStringAuto(System.IntPtr ptr, int len) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringBSTR(System.IntPtr ptr) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringUni(System.IntPtr ptr) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static string PtrToStringUni(System.IntPtr ptr, int len) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
+        public static string PtrToStringBSTR(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static string PtrToStringUni(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static string PtrToStringUni(System.IntPtr ptr, int len) { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public static void PtrToStructure(System.IntPtr ptr, object structure) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public static object PtrToStructure(System.IntPtr ptr, System.Type structureType) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static T PtrToStructure<T>(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void PtrToStructure<T>(System.IntPtr ptr, T structure) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static int QueryInterface(System.IntPtr pUnk, ref System.Guid iid, out System.IntPtr ppv) { ppv = default(System.IntPtr); throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static byte ReadByte(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static byte ReadByte(System.IntPtr ptr, int ofs) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static byte ReadByte([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs) { throw null; }
+        public static extern byte ReadByte([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs);
+        [System.Security.SecurityCriticalAttribute]
         public static short ReadInt16(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static short ReadInt16(System.IntPtr ptr, int ofs) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static short ReadInt16([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs) { throw null; }
+        public static extern short ReadInt16([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs);
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static int ReadInt32(System.IntPtr ptr) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static int ReadInt32(System.IntPtr ptr, int ofs) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static int ReadInt32([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs) { throw null; }
+        public static extern int ReadInt32([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs);
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static long ReadInt64(System.IntPtr ptr) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static long ReadInt64(System.IntPtr ptr, int ofs) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static long ReadInt64([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs) { throw null; }
+        public static extern long ReadInt64([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs);
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr ReadIntPtr(System.IntPtr ptr) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr ReadIntPtr(System.IntPtr ptr, int ofs) { throw null; }
-        [System.MonoTODOAttribute]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr ReadIntPtr([System.Runtime.InteropServices.In][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr ReAllocCoTaskMem(System.IntPtr pv, int cb) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr ReAllocHGlobal(System.IntPtr pv, System.IntPtr cb) { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr ReAllocCoTaskMem(System.IntPtr pv, int cb) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr ReAllocHGlobal(System.IntPtr pv, System.IntPtr cb) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static int Release(System.IntPtr pUnk) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static int ReleaseComObject(object o) { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This API did not perform any operation and will be removed in future versions of the CLR.", false)]
+        [System.Security.SecurityCriticalAttribute]
         public static void ReleaseThreadCache() { }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr SecureStringToBSTR(System.Security.SecureString s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr SecureStringToCoTaskMemAnsi(System.Security.SecureString s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr SecureStringToCoTaskMemUnicode(System.Security.SecureString s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr SecureStringToGlobalAllocAnsi(System.Security.SecureString s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr SecureStringToGlobalAllocUnicode(System.Security.SecureString s) { throw null; }
-        [System.MonoNotSupportedAttribute("MSDN states user code should never need to call this method.")]
+        [System.Security.SecurityCriticalAttribute]
         public static bool SetComObjectData(object obj, object key, object data) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static int SizeOf(object structure) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static int SizeOf(System.Type t) { throw null; }
+        public static int SizeOf(System.Type t) { throw null; }
         public static int SizeOf<T>() { throw null; }
         public static int SizeOf<T>(T structure) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr StringToBSTR(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr StringToBSTR(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr StringToCoTaskMemAnsi(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr StringToCoTaskMemAuto(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr StringToCoTaskMemUni(string s) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr StringToHGlobalAnsi(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr StringToHGlobalAnsi(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr StringToHGlobalAuto(string s) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr StringToHGlobalUni(string s) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr StringToHGlobalUni(string s) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public static void StructureToPtr(object structure, System.IntPtr ptr, bool fDeleteOld) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void StructureToPtr<T>(T structure, System.IntPtr ptr, bool fDeleteOld) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void ThrowExceptionForHR(int errorCode) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void ThrowExceptionForHR(int errorCode, System.IntPtr errorInfo) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr UnsafeAddrOfPinnedArrayElement(System.Array arr, int index) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
+        public static System.IntPtr UnsafeAddrOfPinnedArrayElement(System.Array arr, int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr UnsafeAddrOfPinnedArrayElement<T>(T[] arr, int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteByte(System.IntPtr ptr, byte val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteByte(System.IntPtr ptr, int ofs, byte val) { }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static void WriteByte([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, byte val) { ptr = default(object); }
+        public static extern void WriteByte([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, byte val);
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt16(System.IntPtr ptr, char val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt16(System.IntPtr ptr, short val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt16(System.IntPtr ptr, int ofs, char val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt16(System.IntPtr ptr, int ofs, short val) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt16([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out]object ptr, int ofs, char val) { ptr = default(object); }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static void WriteInt16([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, short val) { ptr = default(object); }
+        public static extern void WriteInt16([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, short val);
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt32(System.IntPtr ptr, int val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt32(System.IntPtr ptr, int ofs, int val) { }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static void WriteInt32([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, int val) { ptr = default(object); }
+        public static extern void WriteInt32([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, int val);
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt64(System.IntPtr ptr, int ofs, long val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteInt64(System.IntPtr ptr, long val) { }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.DllImport("mscoree.dll")][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)][System.Security.SecurityCriticalAttribute]
         [System.Security.SuppressUnmanagedCodeSecurityAttribute]
-        public static void WriteInt64([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, long val) { ptr = default(object); }
+        public static extern void WriteInt64([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, long val);
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteIntPtr(System.IntPtr ptr, int ofs, System.IntPtr val) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteIntPtr(System.IntPtr ptr, System.IntPtr val) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static void WriteIntPtr([System.Runtime.InteropServices.In][System.Runtime.InteropServices.Out][System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.AsAny)]object ptr, int ofs, System.IntPtr val) { ptr = default(object); }
+        [System.Security.SecurityCriticalAttribute]
         public static void ZeroFreeBSTR(System.IntPtr s) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void ZeroFreeCoTaskMemAnsi(System.IntPtr s) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void ZeroFreeCoTaskMemUnicode(System.IntPtr s) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void ZeroFreeGlobalAllocAnsi(System.IntPtr s) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void ZeroFreeGlobalAllocUnicode(System.IntPtr s) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(10496), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class MarshalAsAttribute : System.Attribute
     {
         public System.Runtime.InteropServices.UnmanagedType ArraySubType;
@@ -14699,7 +15256,7 @@ namespace System.Runtime.InteropServices
     {
         public OutAttribute() { }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.PARAMDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct PARAMDESC
     {
@@ -14707,7 +15264,7 @@ namespace System.Runtime.InteropServices
         public System.Runtime.InteropServices.PARAMFLAG wParamFlags;
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.PARAMFLAG instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum PARAMFLAG : short
     {
@@ -14774,29 +15331,30 @@ namespace System.Runtime.InteropServices
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("475e398f-8afa-43a7-a3be-f4ef8d6787c9")]
+    [System.Runtime.InteropServices.GuidAttribute("475E398F-8AFA-43a7-A3BE-F4EF8D6787C9")]
     public partial class RegistrationServices : System.Runtime.InteropServices.IRegistrationServices
     {
         public RegistrationServices() { }
         public virtual System.Guid GetManagedCategoryGuid() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual string GetProgIdForType(System.Type type) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Type[] GetRegistrableTypesInAssembly(System.Reflection.Assembly assembly) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecurityCriticalAttribute]
         public virtual bool RegisterAssembly(System.Reflection.Assembly assembly, System.Runtime.InteropServices.AssemblyRegistrationFlags flags) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecurityCriticalAttribute]
         public virtual void RegisterTypeForComClients(System.Type type, ref System.Guid g) { }
-        [System.MonoTODOAttribute("implement")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public virtual int RegisterTypeForComClients(System.Type type, System.Runtime.InteropServices.RegistrationClassContext classContext, System.Runtime.InteropServices.RegistrationConnectionType flags) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual bool TypeRepresentsComType(System.Type type) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecurityCriticalAttribute]
         public virtual bool TypeRequiresRegistration(System.Type type) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecurityCriticalAttribute]
         public virtual bool UnregisterAssembly(System.Reflection.Assembly assembly) { throw null; }
-        [System.MonoTODOAttribute("implement")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public virtual void UnregisterTypeForComClients(int cookie) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -14835,11 +15393,12 @@ namespace System.Runtime.InteropServices
         public SafeArrayTypeMismatchException(string message) { }
         public SafeArrayTypeMismatchException(string message, System.Exception inner) { }
     }
+    [System.Security.SecurityCriticalAttribute]
     public abstract partial class SafeBuffer : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
     {
         protected SafeBuffer(bool ownsHandle) : base (default(bool)) { }
         [System.CLSCompliantAttribute(false)]
-        public ulong ByteLength { get { throw null; } }
+        public ulong ByteLength { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
         [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         public unsafe void AcquirePointer(ref byte* pointer) { }
@@ -14866,7 +15425,6 @@ namespace System.Runtime.InteropServices
     }
     [System.Security.SecurityCriticalAttribute]
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, UnmanagedCode=true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class SafeHandle : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, System.IDisposable
     {
         protected System.IntPtr handle;
@@ -14877,11 +15435,13 @@ namespace System.Runtime.InteropServices
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         [System.Security.SecurityCriticalAttribute]
         public void Close() { }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public void DangerousAddRef(ref bool success) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public System.IntPtr DangerousGetHandle() { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public void DangerousRelease() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         [System.Security.SecuritySafeCriticalAttribute]
@@ -14895,7 +15455,8 @@ namespace System.Runtime.InteropServices
         protected abstract bool ReleaseHandle();
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         protected void SetHandle(System.IntPtr handle) { }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public void SetHandleAsInvalid() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -14915,7 +15476,7 @@ namespace System.Runtime.InteropServices
     {
         public SetWin32ContextInIDispatchAttribute() { }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.STATSTG instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct STATSTG
     {
@@ -14942,7 +15503,7 @@ namespace System.Runtime.InteropServices
         public StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind layoutKind) { }
         public System.Runtime.InteropServices.LayoutKind Value { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.SYSKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum SYSKIND
     {
@@ -14950,7 +15511,7 @@ namespace System.Runtime.InteropServices
         SYS_WIN16 = 0,
         SYS_WIN32 = 1,
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.TYPEATTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct TYPEATTR
     {
@@ -14974,7 +15535,7 @@ namespace System.Runtime.InteropServices
         public short wMinorVerNum;
         public System.Runtime.InteropServices.TYPEFLAGS wTypeFlags;
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.TYPEDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct TYPEDESC
     {
@@ -14982,7 +15543,7 @@ namespace System.Runtime.InteropServices
         public short vt;
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.TYPEFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum TYPEFLAGS : short
     {
@@ -15011,7 +15572,7 @@ namespace System.Runtime.InteropServices
         public string Identifier { get { throw null; } }
         public string Scope { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.TYPEKIND instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum TYPEKIND
     {
@@ -15025,7 +15586,7 @@ namespace System.Runtime.InteropServices
         TKIND_RECORD = 1,
         TKIND_UNION = 7,
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.TYPELIBATTR instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct TYPELIBATTR
@@ -15039,18 +15600,20 @@ namespace System.Runtime.InteropServices
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("f1c3bf79-c3e4-11d3-88e7-00902754c43a")]
+    [System.Runtime.InteropServices.GuidAttribute("F1C3BF79-C3E4-11d3-88E7-00902754C43A")]
     public sealed partial class TypeLibConverter : System.Runtime.InteropServices.ITypeLibConverter
     {
         public TypeLibConverter() { }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         [return: System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]
         public object ConvertAssemblyToTypeLib(System.Reflection.Assembly assembly, string strTypeLibName, System.Runtime.InteropServices.TypeLibExporterFlags flags, System.Runtime.InteropServices.ITypeLibExporterNotifySink notifySink) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.Reflection.Emit.AssemblyBuilder ConvertTypeLibToAssembly([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]object typeLib, string asmFileName, int flags, System.Runtime.InteropServices.ITypeLibImporterNotifySink notifySink, byte[] publicKey, System.Reflection.StrongNameKeyPair keyPair, bool unsafeInterfaces) { throw null; }
-        [System.MonoTODOAttribute("implement")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.Reflection.Emit.AssemblyBuilder ConvertTypeLibToAssembly([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]object typeLib, string asmFileName, System.Runtime.InteropServices.TypeLibImporterFlags flags, System.Runtime.InteropServices.ITypeLibImporterNotifySink notifySink, byte[] publicKey, System.Reflection.StrongNameKeyPair keyPair, string asmNamespace, System.Version asmVersion) { throw null; }
-        [System.MonoTODOAttribute("implement")]
         public bool GetPrimaryInteropAssembly(System.Guid g, int major, int minor, int lcid, out string asmName, out string asmCodeBase) { asmName = default(string); asmCodeBase = default(string); throw null; }
     }
     [System.FlagsAttribute]
@@ -15182,8 +15745,8 @@ namespace System.Runtime.InteropServices
         public int MajorVersion { get { throw null; } }
         public int MinorVersion { get { throw null; } }
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("0000000e-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IBindCtx instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("0000000e-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIBindCtx
     {
@@ -15198,8 +15761,8 @@ namespace System.Runtime.InteropServices
         void RevokeObjectParam([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string pszKey);
         void SetBindOptions([System.Runtime.InteropServices.In]ref System.Runtime.InteropServices.BIND_OPTS pbindopts);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("b196b286-bab4-101a-b69c-00aa00341d07")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IConnectionPoint instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("B196B286-BAB4-101A-B69C-00AA00341D07")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIConnectionPoint
     {
@@ -15209,16 +15772,16 @@ namespace System.Runtime.InteropServices
         void GetConnectionPointContainer(out System.Runtime.InteropServices.UCOMIConnectionPointContainer ppCPC);
         void Unadvise(int dwCookie);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("b196b284-bab4-101a-b69c-00aa00341d07")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IConnectionPointContainer instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("B196B284-BAB4-101A-B69C-00AA00341D07")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIConnectionPointContainer
     {
         void EnumConnectionPoints(out System.Runtime.InteropServices.UCOMIEnumConnectionPoints ppEnum);
         void FindConnectionPoint(ref System.Guid riid, out System.Runtime.InteropServices.UCOMIConnectionPoint ppCP);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("b196b285-bab4-101a-b69c-00aa00341d07")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IEnumConnectionPoints instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("B196B285-BAB4-101A-B69C-00AA00341D07")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIEnumConnectionPoints
     {
@@ -15237,8 +15800,8 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]void Reset();
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Skip(int celt);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00000102-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IEnumMoniker instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00000102-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIEnumMoniker
     {
@@ -15247,8 +15810,8 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Reset();
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Skip(int celt);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00000101-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IEnumString instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00000101-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIEnumString
     {
@@ -15257,8 +15820,8 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Reset();
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Skip(int celt);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00020404-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IEnumVARIANT instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00020404-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIEnumVARIANT
     {
@@ -15267,8 +15830,8 @@ namespace System.Runtime.InteropServices
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Reset();
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.PreserveSig)]int Skip(int celt);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("0000000f-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IMoniker instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("0000000f-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIMoniker
     {
@@ -15293,8 +15856,8 @@ namespace System.Runtime.InteropServices
         void RelativePathTo(System.Runtime.InteropServices.UCOMIMoniker pmkOther, out System.Runtime.InteropServices.UCOMIMoniker ppmkRelPath);
         void Save(System.Runtime.InteropServices.UCOMIStream pStm, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]bool fClearDirty);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("0000010b-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IPersistFile instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("0000010b-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIPersistFile
     {
@@ -15305,8 +15868,8 @@ namespace System.Runtime.InteropServices
         void Save([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string pszFileName, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)]bool fRemember);
         void SaveCompleted([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string pszFileName);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00000010-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IRunningObjectTable instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00000010-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIRunningObjectTable
     {
@@ -15318,8 +15881,8 @@ namespace System.Runtime.InteropServices
         void Register(int grfFlags, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Interface)]object punkObject, System.Runtime.InteropServices.UCOMIMoniker pmkObjectName, out int pdwRegister);
         void Revoke(int dwRegister);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("0000000c-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.IStream instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("0000000c-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMIStream
     {
@@ -15335,16 +15898,16 @@ namespace System.Runtime.InteropServices
         void UnlockRegion(long libOffset, long cb, int dwLockType);
         void Write([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPArray)]byte[] pv, int cb, System.IntPtr pcbWritten);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00020403-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.ITypeComp instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00020403-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMITypeComp
     {
         void Bind([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string szName, int lHashVal, short wFlags, out System.Runtime.InteropServices.UCOMITypeInfo ppTInfo, out System.Runtime.InteropServices.DESCKIND pDescKind, out System.Runtime.InteropServices.BINDPTR pBindPtr);
         void BindType([System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)]string szName, int lHashVal, out System.Runtime.InteropServices.UCOMITypeInfo ppTInfo, out System.Runtime.InteropServices.UCOMITypeComp ppTComp);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00020401-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.ITypeInfo instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00020401-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMITypeInfo
     {
@@ -15368,8 +15931,8 @@ namespace System.Runtime.InteropServices
         void ReleaseTypeAttr(System.IntPtr pTypeAttr);
         void ReleaseVarDesc(System.IntPtr pVarDesc);
     }
-    [System.ObsoleteAttribute]
-    [System.Runtime.InteropServices.GuidAttribute("00020402-0000-0000-c000-000000000046")]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.ITypeLib instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
+    [System.Runtime.InteropServices.GuidAttribute("00020402-0000-0000-C000-000000000046")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface UCOMITypeLib
     {
@@ -15432,6 +15995,7 @@ namespace System.Runtime.InteropServices
         LPStr = 20,
         LPStruct = 43,
         LPTStr = 22,
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         LPUTF8Str = 48,
         LPWStr = 21,
         R4 = 11,
@@ -15448,7 +16012,7 @@ namespace System.Runtime.InteropServices
         VariantBool = 37,
         VBByRefStr = 34,
     }
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.VARDESC instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, CharSet=System.Runtime.InteropServices.CharSet.Unicode)]
     public partial struct VARDESC
     {
@@ -15517,7 +16081,7 @@ namespace System.Runtime.InteropServices
         VT_VOID = 24,
     }
     [System.FlagsAttribute]
-    [System.ObsoleteAttribute]
+    [System.ObsoleteAttribute("Use System.Runtime.InteropServices.ComTypes.VARFLAGS instead. http://go.microsoft.com/fwlink/?linkid=14202", false)]
     [System.SerializableAttribute]
     public enum VARFLAGS : short
     {
@@ -15555,7 +16119,7 @@ namespace System.Runtime.InteropServices
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.GuidAttribute("17156360-2F1A-384A-BC52-FDE93C215C5B")]
+    [System.Runtime.InteropServices.GuidAttribute("17156360-2f1a-384a-bc52-fde93c215c5b")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(0))]
     [System.Runtime.InteropServices.TypeLibImportClassAttribute(typeof(System.Reflection.Assembly))]
     public partial interface _Assembly
@@ -15590,6 +16154,7 @@ namespace System.Runtime.InteropServices
         System.Reflection.Module[] GetModules(bool getResourceModules);
         System.Reflection.AssemblyName GetName();
         System.Reflection.AssemblyName GetName(bool copiedName);
+        [System.Security.SecurityCriticalAttribute]
         void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
         System.Reflection.AssemblyName[] GetReferencedAssemblies();
         System.Reflection.Assembly GetSatelliteAssembly(System.Globalization.CultureInfo culture);
@@ -15783,6 +16348,7 @@ namespace System.Runtime.InteropServices
         bool Equals(object obj);
         System.Exception GetBaseException();
         int GetHashCode();
+        [System.Security.SecurityCriticalAttribute]
         void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
         System.Type GetType();
         string ToString();
@@ -16872,8 +17438,8 @@ namespace System.Runtime.InteropServices.WindowsRuntime
     public partial class DesignerNamespaceResolveEventArgs : System.EventArgs
     {
         public DesignerNamespaceResolveEventArgs(string namespaceName) { }
-        public string NamespaceName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.ObjectModel.Collection<string> ResolvedAssemblyFiles { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string NamespaceName { get { throw null; } }
+        public System.Collections.ObjectModel.Collection<string> ResolvedAssemblyFiles { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct EventRegistrationToken
@@ -16911,9 +17477,9 @@ namespace System.Runtime.InteropServices.WindowsRuntime
     public partial class NamespaceResolveEventArgs : System.EventArgs
     {
         public NamespaceResolveEventArgs(string namespaceName, System.Reflection.Assembly requestingAssembly) { }
-        public string NamespaceName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Reflection.Assembly RequestingAssembly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.ObjectModel.Collection<System.Reflection.Assembly> ResolvedAssemblies { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string NamespaceName { get { throw null; } }
+        public System.Reflection.Assembly RequestingAssembly { get { throw null; } }
+        public System.Collections.ObjectModel.Collection<System.Reflection.Assembly> ResolvedAssemblies { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(2048), Inherited=false, AllowMultiple=false)]
     public sealed partial class ReadOnlyArrayAttribute : System.Attribute
@@ -16943,12 +17509,13 @@ namespace System.Runtime.InteropServices.WindowsRuntime
         [System.Security.SecurityCriticalAttribute]
         public static System.IntPtr StringToHString(string s) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public static partial class WindowsRuntimeMetadata
     {
         public static event System.EventHandler<System.Runtime.InteropServices.WindowsRuntime.DesignerNamespaceResolveEventArgs> DesignerNamespaceResolve { add { } remove { } }
         public static event System.EventHandler<System.Runtime.InteropServices.WindowsRuntime.NamespaceResolveEventArgs> ReflectionOnlyNamespaceResolve { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Collections.Generic.IEnumerable<string> ResolveNamespace(string namespaceName, System.Collections.Generic.IEnumerable<string> packageGraphFilePaths) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Collections.Generic.IEnumerable<string> ResolveNamespace(string namespaceName, string windowsSdkFilePath, System.Collections.Generic.IEnumerable<string> packageGraphFilePaths) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(2048), Inherited=false, AllowMultiple=false)]
@@ -16966,7 +17533,7 @@ namespace System.Runtime.Remoting
         public ActivatedClientTypeEntry(System.Type type, string appUrl) { }
         public string ApplicationUrl { get { throw null; } }
         public System.Runtime.Remoting.Contexts.IContextAttribute[] ContextAttributes { get { throw null; } set { } }
-        public System.Type ObjectType { get { throw null; } }
+        public System.Type ObjectType { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]get { throw null; } }
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -16975,7 +17542,7 @@ namespace System.Runtime.Remoting
         public ActivatedServiceTypeEntry(string typeName, string assemblyName) { }
         public ActivatedServiceTypeEntry(System.Type type) { }
         public System.Runtime.Remoting.Contexts.IContextAttribute[] ContextAttributes { get { throw null; } set { } }
-        public System.Type ObjectType { get { throw null; } }
+        public System.Type ObjectType { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]get { throw null; } }
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -16988,25 +17555,29 @@ namespace System.Runtime.Remoting
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannelInfo
     {
-        object[] ChannelData { get; set; }
+        object[] ChannelData { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IEnvoyInfo
     {
-        System.Runtime.Remoting.Messaging.IMessageSink EnvoySinks { get; set; }
+        System.Runtime.Remoting.Messaging.IMessageSink EnvoySinks { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public partial class InternalRemotingServices
     {
         public InternalRemotingServices() { }
         [System.Diagnostics.ConditionalAttribute("_LOGGING")]
+        [System.Security.SecurityCriticalAttribute]
         public static void DebugOutChnl(string s) { }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Metadata.SoapAttribute GetCachedSoapAttribute(object reflectionObject) { throw null; }
         [System.Diagnostics.ConditionalAttribute("_DEBUG")]
         public static void RemotingAssert(bool condition, string message) { }
         [System.Diagnostics.ConditionalAttribute("_LOGGING")]
         public static void RemotingTrace(params object[] messages) { }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public static void SetServerIdentity(System.Runtime.Remoting.Messaging.MethodCall m, object srvID) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17019,7 +17590,8 @@ namespace System.Runtime.Remoting
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IRemotingTypeInfo
     {
-        string TypeName { get; set; }
+        string TypeName { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        [System.Security.SecurityCriticalAttribute]
         bool CanCastTo(System.Type fromType, object o);
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(2))]
@@ -17027,55 +17599,100 @@ namespace System.Runtime.Remoting
     public partial class ObjectHandle : System.MarshalByRefObject, System.Runtime.Remoting.IObjectHandle
     {
         public ObjectHandle(object o) { }
+        [System.Security.SecurityCriticalAttribute]
         public override object InitializeLifetimeService() { throw null; }
         public object Unwrap() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class ObjRef : System.Runtime.Serialization.IObjectReference, System.Runtime.Serialization.ISerializable
     {
         public ObjRef() { }
+        [System.Security.SecurityCriticalAttribute]
         public ObjRef(System.MarshalByRefObject o, System.Type requestedType) { }
+        [System.Security.SecurityCriticalAttribute]
         protected ObjRef(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public virtual System.Runtime.Remoting.IChannelInfo ChannelInfo { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } set { } }
         public virtual System.Runtime.Remoting.IEnvoyInfo EnvoyInfo { get { throw null; } set { } }
         public virtual System.Runtime.Remoting.IRemotingTypeInfo TypeInfo { get { throw null; } set { } }
         public virtual string URI { get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual object GetRealObject(System.Runtime.Serialization.StreamingContext context) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public bool IsFromThisAppDomain() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public bool IsFromThisProcess() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class RemotingConfiguration
     {
-        public static string ApplicationId { get { throw null; } }
-        public static string ApplicationName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public static System.Runtime.Remoting.CustomErrorsModes CustomErrorsMode { get { throw null; } set { } }
-        public static string ProcessId { get { throw null; } }
-        [System.ObsoleteAttribute("Use Configure(String,Boolean)")]
+        public static string ApplicationId { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public static string ApplicationName { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]set { } }
+        public static System.Runtime.Remoting.CustomErrorsModes CustomErrorsMode { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]set { } }
+        public static string ProcessId { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.ObsoleteAttribute("Use System.Runtime.Remoting.RemotingConfiguration.Configure(string fileName, bool ensureSecurity) instead.", false)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void Configure(string filename) { }
-        [System.MonoTODOAttribute("ensureSecurity support has not been implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void Configure(string filename, bool ensureSecurity) { }
         public static bool CustomErrorsEnabled(bool isLocalRequest) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ActivatedClientTypeEntry[] GetRegisteredActivatedClientTypes() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ActivatedServiceTypeEntry[] GetRegisteredActivatedServiceTypes() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.WellKnownClientTypeEntry[] GetRegisteredWellKnownClientTypes() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.WellKnownServiceTypeEntry[] GetRegisteredWellKnownServiceTypes() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static bool IsActivationAllowed(System.Type svrType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ActivatedClientTypeEntry IsRemotelyActivatedClientType(string typeName, string assemblyName) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ActivatedClientTypeEntry IsRemotelyActivatedClientType(System.Type svrType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.WellKnownClientTypeEntry IsWellKnownClientType(string typeName, string assemblyName) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.WellKnownClientTypeEntry IsWellKnownClientType(System.Type svrType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterActivatedClientType(System.Runtime.Remoting.ActivatedClientTypeEntry entry) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterActivatedClientType(System.Type type, string appUrl) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterActivatedServiceType(System.Runtime.Remoting.ActivatedServiceTypeEntry entry) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterActivatedServiceType(System.Type type) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterWellKnownClientType(System.Runtime.Remoting.WellKnownClientTypeEntry entry) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterWellKnownClientType(System.Type type, string objectUrl) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterWellKnownServiceType(System.Runtime.Remoting.WellKnownServiceTypeEntry entry) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterWellKnownServiceType(System.Type type, string objectUri, System.Runtime.Remoting.WellKnownObjectMode mode) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17091,36 +17708,63 @@ namespace System.Runtime.Remoting
     public static partial class RemotingServices
     {
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public static object Connect(System.Type classToProxy, string url) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public static object Connect(System.Type classToProxy, string url, object data) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool Disconnect(System.MarshalByRefObject obj) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Messaging.IMethodReturnMessage ExecuteMessage(System.MarshalByRefObject target, System.Runtime.Remoting.Messaging.IMethodCallMessage reqMsg) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Messaging.IMessageSink GetEnvoyChainForProxy(System.MarshalByRefObject obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object GetLifetimeService(System.MarshalByRefObject obj) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Reflection.MethodBase GetMethodBaseFromMethodMessage(System.Runtime.Remoting.Messaging.IMethodMessage msg) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void GetObjectData(object obj, System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         public static string GetObjectUri(System.MarshalByRefObject obj) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.ObjRef GetObjRefForProxy(System.MarshalByRefObject obj) { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Proxies.RealProxy GetRealProxy(object proxy) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Type GetServerTypeForUri(string URI) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string GetSessionIdForMethodMessage(System.Runtime.Remoting.Messaging.IMethodMessage msg) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool IsMethodOverloaded(System.Runtime.Remoting.Messaging.IMethodMessage msg) { throw null; }
         public static bool IsObjectOutOfAppDomain(object tp) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool IsObjectOutOfContext(object tp) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool IsOneWay(System.Reflection.MethodBase method) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool IsTransparentProxy(object proxy) { throw null; }
         [System.Diagnostics.ConditionalAttribute("REMOTING_PERF")]
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("It existed for only internal use in .NET and unimplemented in mono")]
+        [System.ObsoleteAttribute("Use of this method is not recommended. The LogRemotingStage existed for internal diagnostic purposes only.")]
+        [System.Security.SecurityCriticalAttribute]
         public static void LogRemotingStage(int stage) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ObjRef Marshal(System.MarshalByRefObject Obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ObjRef Marshal(System.MarshalByRefObject Obj, string URI) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Runtime.Remoting.ObjRef Marshal(System.MarshalByRefObject Obj, string ObjURI, System.Type RequestedType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void SetObjectUriForMarshal(System.MarshalByRefObject obj, string uri) { }
+        [System.Security.SecurityCriticalAttribute]
         public static object Unmarshal(System.Runtime.Remoting.ObjRef objectRef) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static object Unmarshal(System.Runtime.Remoting.ObjRef objectRef, bool fRefine) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17140,6 +17784,7 @@ namespace System.Runtime.Remoting
         public ServerException(string message, System.Exception InnerException) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public partial class SoapServices
     {
         internal SoapServices() { }
@@ -17147,24 +17792,39 @@ namespace System.Runtime.Remoting
         public static string XmlNsForClrTypeWithAssembly { get { throw null; } }
         public static string XmlNsForClrTypeWithNs { get { throw null; } }
         public static string XmlNsForClrTypeWithNsAndAssembly { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public static string CodeXmlNamespaceForClrTypeNamespace(string typeNamespace, string assemblyName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool DecodeXmlNamespaceForClrTypeNamespace(string inNamespace, out string typeNamespace, out string assemblyName) { typeNamespace = default(string); assemblyName = default(string); throw null; }
         public static void GetInteropFieldTypeAndNameFromXmlAttribute(System.Type containingType, string xmlAttribute, string xmlNamespace, out System.Type type, out string name) { type = default(System.Type); name = default(string); }
         public static void GetInteropFieldTypeAndNameFromXmlElement(System.Type containingType, string xmlElement, string xmlNamespace, out System.Type type, out string name) { type = default(System.Type); name = default(string); }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Type GetInteropTypeFromXmlElement(string xmlElement, string xmlNamespace) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Type GetInteropTypeFromXmlType(string xmlType, string xmlTypeNamespace) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string GetSoapActionFromMethodBase(System.Reflection.MethodBase mb) { throw null; }
         public static bool GetTypeAndMethodNameFromSoapAction(string soapAction, out string typeName, out string methodName) { typeName = default(string); methodName = default(string); throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool GetXmlElementForInteropType(System.Type type, out string xmlElement, out string xmlNamespace) { xmlElement = default(string); xmlNamespace = default(string); throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string GetXmlNamespaceForMethodCall(System.Reflection.MethodBase mb) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string GetXmlNamespaceForMethodResponse(System.Reflection.MethodBase mb) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool GetXmlTypeForInteropType(System.Type type, out string xmlType, out string xmlTypeNamespace) { xmlType = default(string); xmlTypeNamespace = default(string); throw null; }
         public static bool IsClrTypeNamespace(string namespaceString) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool IsSoapActionValidForMethodBase(string soapAction, System.Reflection.MethodBase mb) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void PreLoad(System.Reflection.Assembly assembly) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void PreLoad(System.Type type) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void RegisterInteropXmlElement(string xmlElement, string xmlNamespace, System.Type type) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void RegisterInteropXmlType(string xmlType, string xmlTypeNamespace, System.Type type) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void RegisterSoapActionForMethodBase(System.Reflection.MethodBase mb) { }
         public static void RegisterSoapActionForMethodBase(System.Reflection.MethodBase mb, string soapAction) { }
     }
@@ -17181,7 +17841,7 @@ namespace System.Runtime.Remoting
         public WellKnownClientTypeEntry(string typeName, string assemblyName, string objectUrl) { }
         public WellKnownClientTypeEntry(System.Type type, string objectUrl) { }
         public string ApplicationUrl { get { throw null; } set { } }
-        public System.Type ObjectType { get { throw null; } }
+        public System.Type ObjectType { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]get { throw null; } }
         public string ObjectUrl { get { throw null; } }
         public override string ToString() { throw null; }
     }
@@ -17199,7 +17859,7 @@ namespace System.Runtime.Remoting
         public WellKnownServiceTypeEntry(System.Type type, string objectUri, System.Runtime.Remoting.WellKnownObjectMode mode) { }
         public System.Runtime.Remoting.Contexts.IContextAttribute[] ContextAttributes { get { throw null; } set { } }
         public System.Runtime.Remoting.WellKnownObjectMode Mode { get { throw null; } }
-        public System.Type ObjectType { get { throw null; } }
+        public System.Type ObjectType { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]get { throw null; } }
         public string ObjectUri { get { throw null; } }
         public override string ToString() { throw null; }
     }
@@ -17219,166 +17879,221 @@ namespace System.Runtime.Remoting.Activation
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IActivator
     {
-        System.Runtime.Remoting.Activation.ActivatorLevel Level { get; }
-        System.Runtime.Remoting.Activation.IActivator NextActivator { get; set; }
+        System.Runtime.Remoting.Activation.ActivatorLevel Level { [System.Security.SecurityCriticalAttribute]get; }
+        System.Runtime.Remoting.Activation.IActivator NextActivator { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Activation.IConstructionReturnMessage Activate(System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IConstructionCallMessage : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodCallMessage, System.Runtime.Remoting.Messaging.IMethodMessage
     {
-        System.Type ActivationType { get; }
-        string ActivationTypeName { get; }
-        System.Runtime.Remoting.Activation.IActivator Activator { get; set; }
-        object[] CallSiteActivationAttributes { get; }
-        System.Collections.IList ContextProperties { get; }
+        System.Type ActivationType { [System.Security.SecurityCriticalAttribute]get; }
+        string ActivationTypeName { [System.Security.SecurityCriticalAttribute]get; }
+        System.Runtime.Remoting.Activation.IActivator Activator { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        object[] CallSiteActivationAttributes { [System.Security.SecurityCriticalAttribute]get; }
+        System.Collections.IList ContextProperties { [System.Security.SecurityCriticalAttribute]get; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IConstructionReturnMessage : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage, System.Runtime.Remoting.Messaging.IMethodReturnMessage
     {
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     [System.SerializableAttribute]
     public sealed partial class UrlAttribute : System.Runtime.Remoting.Contexts.ContextAttribute
     {
+        [System.Security.SecurityCriticalAttribute]
         public UrlAttribute(string callsiteURL) : base (default(string)) { }
-        public string UrlValue { get { throw null; } }
+        public string UrlValue { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object o) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public override void GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public override bool IsContextOK(System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage msg) { throw null; }
     }
 }
 namespace System.Runtime.Remoting.Channels
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public abstract partial class BaseChannelObjectWithProperties : System.Collections.ICollection, System.Collections.IDictionary, System.Collections.IEnumerable
     {
         protected BaseChannelObjectWithProperties() { }
-        public virtual int Count { get { throw null; } }
-        public virtual bool IsFixedSize { get { throw null; } }
-        public virtual bool IsReadOnly { get { throw null; } }
-        public virtual bool IsSynchronized { get { throw null; } }
-        public virtual object this[object key] { get { throw null; } set { } }
-        public virtual System.Collections.ICollection Keys { get { throw null; } }
-        public virtual System.Collections.IDictionary Properties { get { throw null; } }
-        public virtual object SyncRoot { get { throw null; } }
-        public virtual System.Collections.ICollection Values { get { throw null; } }
+        public virtual int Count { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual bool IsFixedSize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual bool IsReadOnly { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual bool IsSynchronized { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual object this[object key] { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public virtual System.Collections.ICollection Keys { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object SyncRoot { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.ICollection Values { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Add(object key, object value) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Clear() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual bool Contains(object key) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void CopyTo(System.Array array, int index) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual System.Collections.IDictionaryEnumerator GetEnumerator() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual void Remove(object key) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public abstract partial class BaseChannelSinkWithProperties : System.Runtime.Remoting.Channels.BaseChannelObjectWithProperties
     {
         protected BaseChannelSinkWithProperties() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public abstract partial class BaseChannelWithProperties : System.Runtime.Remoting.Channels.BaseChannelObjectWithProperties
     {
         protected System.Runtime.Remoting.Channels.IChannelSinkBase SinksWithProperties;
         protected BaseChannelWithProperties() { }
-        public override System.Collections.IDictionary Properties { get { throw null; } }
+        public override System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class ChannelDataStore : System.Runtime.Remoting.Channels.IChannelDataStore
     {
         public ChannelDataStore(string[] channelURIs) { }
-        public string[] ChannelUris { get { throw null; } set { } }
-        public object this[object key] { get { throw null; } set { } }
+        public string[] ChannelUris { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        public object this[object key] { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class ChannelServices
     {
         internal ChannelServices() { }
-        public static System.Runtime.Remoting.Channels.IChannel[] RegisteredChannels { get { throw null; } }
+        public static System.Runtime.Remoting.Channels.IChannel[] RegisteredChannels { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Messaging.IMessageCtrl AsyncDispatchMessage(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Channels.IServerChannelSink CreateServerChannelSinkChain(System.Runtime.Remoting.Channels.IServerChannelSinkProvider provider, System.Runtime.Remoting.Channels.IChannelReceiver channel) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Channels.ServerProcessing DispatchMessage(System.Runtime.Remoting.Channels.IServerChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage msg, out System.Runtime.Remoting.Messaging.IMessage replyMsg) { replyMsg = default(System.Runtime.Remoting.Messaging.IMessage); throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Channels.IChannel GetChannel(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static System.Collections.IDictionary GetChannelSinkProperties(object obj) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static string[] GetUrlsForObject(System.MarshalByRefObject obj) { throw null; }
-        [System.ObsoleteAttribute("Use RegisterChannel(IChannel,Boolean)")]
+        [System.ObsoleteAttribute("Use System.Runtime.Remoting.ChannelServices.RegisterChannel(IChannel chnl, bool ensureSecurity) instead.", false)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterChannel(System.Runtime.Remoting.Channels.IChannel chnl) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void RegisterChannel(System.Runtime.Remoting.Channels.IChannel chnl, bool ensureSecurity) { }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Runtime.Remoting.Messaging.IMessage SyncDispatchMessage(System.Runtime.Remoting.Messaging.IMessage msg) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]
         public static void UnregisterChannel(System.Runtime.Remoting.Channels.IChannel chnl) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public partial class ClientChannelSinkStack : System.Runtime.Remoting.Channels.IClientChannelSinkStack, System.Runtime.Remoting.Channels.IClientResponseChannelSinkStack
     {
         public ClientChannelSinkStack() { }
         public ClientChannelSinkStack(System.Runtime.Remoting.Messaging.IMessageSink replySink) { }
+        [System.Security.SecurityCriticalAttribute]
         public void AsyncProcessResponse(System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream) { }
+        [System.Security.SecurityCriticalAttribute]
         public void DispatchException(System.Exception e) { }
+        [System.Security.SecurityCriticalAttribute]
         public void DispatchReplyMessage(System.Runtime.Remoting.Messaging.IMessage msg) { }
+        [System.Security.SecurityCriticalAttribute]
         public object Pop(System.Runtime.Remoting.Channels.IClientChannelSink sink) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void Push(System.Runtime.Remoting.Channels.IClientChannelSink sink, object state) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannel
     {
-        string ChannelName { get; }
-        int ChannelPriority { get; }
+        string ChannelName { [System.Security.SecurityCriticalAttribute]get; }
+        int ChannelPriority { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         string Parse(string url, out string objectURI);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannelDataStore
     {
-        string[] ChannelUris { get; }
-        object this[object key] { get; set; }
+        string[] ChannelUris { [System.Security.SecurityCriticalAttribute]get; }
+        object this[object key] { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannelReceiver : System.Runtime.Remoting.Channels.IChannel
     {
-        object ChannelData { get; }
+        object ChannelData { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         string[] GetUrlsForUri(string objectURI);
+        [System.Security.SecurityCriticalAttribute]
         void StartListening(object data);
+        [System.Security.SecurityCriticalAttribute]
         void StopListening(object data);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannelReceiverHook
     {
-        string ChannelScheme { get; }
-        System.Runtime.Remoting.Channels.IServerChannelSink ChannelSinkChain { get; }
-        bool WantsToListen { get; }
+        string ChannelScheme { [System.Security.SecurityCriticalAttribute]get; }
+        System.Runtime.Remoting.Channels.IServerChannelSink ChannelSinkChain { [System.Security.SecurityCriticalAttribute]get; }
+        bool WantsToListen { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         void AddHookChannelUri(string channelUri);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannelSender : System.Runtime.Remoting.Channels.IChannel
     {
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessageSink CreateMessageSink(string url, object remoteChannelData, out string objectURI);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IChannelSinkBase
     {
-        System.Collections.IDictionary Properties { get; }
+        System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IClientChannelSink : System.Runtime.Remoting.Channels.IChannelSinkBase
     {
-        System.Runtime.Remoting.Channels.IClientChannelSink NextChannelSink { get; }
+        System.Runtime.Remoting.Channels.IClientChannelSink NextChannelSink { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         void AsyncProcessRequest(System.Runtime.Remoting.Channels.IClientChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
+        [System.Security.SecurityCriticalAttribute]
         void AsyncProcessResponse(System.Runtime.Remoting.Channels.IClientResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
+        [System.Security.SecurityCriticalAttribute]
         System.IO.Stream GetRequestStream(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers);
+        [System.Security.SecurityCriticalAttribute]
         void ProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders requestHeaders, System.IO.Stream requestStream, out System.Runtime.Remoting.Channels.ITransportHeaders responseHeaders, out System.IO.Stream responseStream);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IClientChannelSinkProvider
     {
-        System.Runtime.Remoting.Channels.IClientChannelSinkProvider Next { get; set; }
+        System.Runtime.Remoting.Channels.IClientChannelSinkProvider Next { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Channels.IClientChannelSink CreateSink(System.Runtime.Remoting.Channels.IChannelSender channel, string url, object remoteChannelData);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IClientChannelSinkStack : System.Runtime.Remoting.Channels.IClientResponseChannelSinkStack
     {
+        [System.Security.SecurityCriticalAttribute]
         object Pop(System.Runtime.Remoting.Channels.IClientChannelSink sink);
+        [System.Security.SecurityCriticalAttribute]
         void Push(System.Runtime.Remoting.Channels.IClientChannelSink sink, object state);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17392,36 +18107,49 @@ namespace System.Runtime.Remoting.Channels
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IClientResponseChannelSinkStack
     {
+        [System.Security.SecurityCriticalAttribute]
         void AsyncProcessResponse(System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
+        [System.Security.SecurityCriticalAttribute]
         void DispatchException(System.Exception e);
+        [System.Security.SecurityCriticalAttribute]
         void DispatchReplyMessage(System.Runtime.Remoting.Messaging.IMessage msg);
     }
     public partial interface ISecurableChannel
     {
-        bool IsSecured { get; set; }
+        bool IsSecured { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IServerChannelSink : System.Runtime.Remoting.Channels.IChannelSinkBase
     {
-        System.Runtime.Remoting.Channels.IServerChannelSink NextChannelSink { get; }
+        System.Runtime.Remoting.Channels.IServerChannelSink NextChannelSink { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         void AsyncProcessResponse(System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
+        [System.Security.SecurityCriticalAttribute]
         System.IO.Stream GetResponseStream(System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers);
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Channels.ServerProcessing ProcessMessage(System.Runtime.Remoting.Channels.IServerChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage requestMsg, System.Runtime.Remoting.Channels.ITransportHeaders requestHeaders, System.IO.Stream requestStream, out System.Runtime.Remoting.Messaging.IMessage responseMsg, out System.Runtime.Remoting.Channels.ITransportHeaders responseHeaders, out System.IO.Stream responseStream);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IServerChannelSinkProvider
     {
-        System.Runtime.Remoting.Channels.IServerChannelSinkProvider Next { get; set; }
+        System.Runtime.Remoting.Channels.IServerChannelSinkProvider Next { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Channels.IServerChannelSink CreateSink(System.Runtime.Remoting.Channels.IChannelReceiver channel);
+        [System.Security.SecurityCriticalAttribute]
         void GetChannelData(System.Runtime.Remoting.Channels.IChannelDataStore channelData);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IServerChannelSinkStack : System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack
     {
+        [System.Security.SecurityCriticalAttribute]
         object Pop(System.Runtime.Remoting.Channels.IServerChannelSink sink);
+        [System.Security.SecurityCriticalAttribute]
         void Push(System.Runtime.Remoting.Channels.IServerChannelSink sink, object state);
+        [System.Security.SecurityCriticalAttribute]
         void ServerCallback(System.IAsyncResult ar);
+        [System.Security.SecurityCriticalAttribute]
         void Store(System.Runtime.Remoting.Channels.IServerChannelSink sink, object state);
+        [System.Security.SecurityCriticalAttribute]
         void StoreAndDispatch(System.Runtime.Remoting.Channels.IServerChannelSink sink, object state);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17431,28 +18159,36 @@ namespace System.Runtime.Remoting.Channels
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IServerResponseChannelSinkStack
     {
+        [System.Security.SecurityCriticalAttribute]
         void AsyncProcessResponse(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
+        [System.Security.SecurityCriticalAttribute]
         System.IO.Stream GetResponseStream(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface ITransportHeaders
     {
-        object this[object key] { get; set; }
+        object this[object key] { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        [System.Security.SecurityCriticalAttribute]
         System.Collections.IEnumerator GetEnumerator();
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public partial class ServerChannelSinkStack : System.Runtime.Remoting.Channels.IServerChannelSinkStack, System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack
     {
         public ServerChannelSinkStack() { }
+        [System.Security.SecurityCriticalAttribute]
         public void AsyncProcessResponse(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream) { }
+        [System.Security.SecurityCriticalAttribute]
         public System.IO.Stream GetResponseStream(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public object Pop(System.Runtime.Remoting.Channels.IServerChannelSink sink) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void Push(System.Runtime.Remoting.Channels.IServerChannelSink sink, object state) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public void ServerCallback(System.IAsyncResult ar) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public void Store(System.Runtime.Remoting.Channels.IServerChannelSink sink, object state) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public void StoreAndDispatch(System.Runtime.Remoting.Channels.IServerChannelSink sink, object state) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17471,57 +18207,84 @@ namespace System.Runtime.Remoting.Channels
         public string Name { get { throw null; } }
         public System.Collections.IDictionary Properties { get { throw null; } }
     }
-    [System.MonoTODOAttribute("Serialization format not compatible with .NET")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class TransportHeaders : System.Runtime.Remoting.Channels.ITransportHeaders
     {
         public TransportHeaders() { }
-        public object this[object key] { get { throw null; } set { } }
+        public object this[object key] { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        [System.Security.SecurityCriticalAttribute]
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
     }
 }
 namespace System.Runtime.Remoting.Contexts
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class Context
     {
+        [System.Security.SecurityCriticalAttribute]
         public Context() { }
-        public virtual int ContextID { get { throw null; } }
-        public virtual System.Runtime.Remoting.Contexts.IContextProperty[] ContextProperties { get { throw null; } }
-        public static System.Runtime.Remoting.Contexts.Context DefaultContext { get { throw null; } }
+        public virtual int ContextID { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Runtime.Remoting.Contexts.IContextProperty[] ContextProperties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public static System.Runtime.Remoting.Contexts.Context DefaultContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public static System.LocalDataStoreSlot AllocateDataSlot() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.LocalDataStoreSlot AllocateNamedDataSlot(string name) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void DoCallBack(System.Runtime.Remoting.Contexts.CrossContextDelegate deleg) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~Context() { }
+        [System.Security.SecurityCriticalAttribute]
         public static void FreeNamedDataSlot(string name) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void Freeze() { }
+        [System.Security.SecurityCriticalAttribute]
         public static object GetData(System.LocalDataStoreSlot slot) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.LocalDataStoreSlot GetNamedDataSlot(string name) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.Contexts.IContextProperty GetProperty(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
         public static bool RegisterDynamicProperty(System.Runtime.Remoting.Contexts.IDynamicProperty prop, System.ContextBoundObject obj, System.Runtime.Remoting.Contexts.Context ctx) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void SetData(System.LocalDataStoreSlot slot, object data) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void SetProperty(System.Runtime.Remoting.Contexts.IContextProperty prop) { }
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
         public static bool UnregisterDynamicProperty(string name, System.ContextBoundObject obj, System.Runtime.Remoting.Contexts.Context ctx) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class ContextAttribute : System.Attribute, System.Runtime.Remoting.Contexts.IContextAttribute, System.Runtime.Remoting.Contexts.IContextProperty
     {
         protected string AttributeName;
         public ContextAttribute(string name) { }
-        public virtual string Name { get { throw null; } }
+        public virtual string Name { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object o) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void Freeze(System.Runtime.Remoting.Contexts.Context newContext) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual bool IsContextOK(System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual bool IsNewContextOK(System.Runtime.Remoting.Contexts.Context newCtx) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class ContextProperty
     {
         internal ContextProperty() { }
@@ -17533,63 +18296,81 @@ namespace System.Runtime.Remoting.Contexts
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContextAttribute
     {
+        [System.Security.SecurityCriticalAttribute]
         void GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
+        [System.Security.SecurityCriticalAttribute]
         bool IsContextOK(System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContextProperty
     {
-        string Name { get; }
+        string Name { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         void Freeze(System.Runtime.Remoting.Contexts.Context newContext);
+        [System.Security.SecurityCriticalAttribute]
         bool IsNewContextOK(System.Runtime.Remoting.Contexts.Context newCtx);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContextPropertyActivator
     {
+        [System.Security.SecurityCriticalAttribute]
         void CollectFromClientContext(System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
+        [System.Security.SecurityCriticalAttribute]
         void CollectFromServerContext(System.Runtime.Remoting.Activation.IConstructionReturnMessage msg);
+        [System.Security.SecurityCriticalAttribute]
         bool DeliverClientContextToServerContext(System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
+        [System.Security.SecurityCriticalAttribute]
         bool DeliverServerContextToClientContext(System.Runtime.Remoting.Activation.IConstructionReturnMessage msg);
+        [System.Security.SecurityCriticalAttribute]
         bool IsOKToActivate(System.Runtime.Remoting.Activation.IConstructionCallMessage msg);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContributeClientContextSink
     {
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessageSink GetClientContextSink(System.Runtime.Remoting.Messaging.IMessageSink nextSink);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContributeDynamicSink
     {
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Contexts.IDynamicMessageSink GetDynamicSink();
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContributeEnvoySink
     {
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessageSink GetEnvoySink(System.MarshalByRefObject obj, System.Runtime.Remoting.Messaging.IMessageSink nextSink);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContributeObjectSink
     {
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessageSink GetObjectSink(System.MarshalByRefObject obj, System.Runtime.Remoting.Messaging.IMessageSink nextSink);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IContributeServerContextSink
     {
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessageSink GetServerContextSink(System.Runtime.Remoting.Messaging.IMessageSink nextSink);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IDynamicMessageSink
     {
+        [System.Security.SecurityCriticalAttribute]
         void ProcessMessageFinish(System.Runtime.Remoting.Messaging.IMessage replyMsg, bool bCliSide, bool bAsync);
+        [System.Security.SecurityCriticalAttribute]
         void ProcessMessageStart(System.Runtime.Remoting.Messaging.IMessage reqMsg, bool bCliSide, bool bAsync);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IDynamicProperty
     {
-        string Name { get; }
+        string Name { [System.Security.SecurityCriticalAttribute]get; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class SynchronizationAttribute : System.Runtime.Remoting.Contexts.ContextAttribute, System.Runtime.Remoting.Contexts.IContributeClientContextSink, System.Runtime.Remoting.Contexts.IContributeServerContextSink
     {
@@ -17603,45 +18384,62 @@ namespace System.Runtime.Remoting.Contexts
         public SynchronizationAttribute(int flag, bool reEntrant) : base (default(string)) { }
         public virtual bool IsReEntrant { get { throw null; } }
         public virtual bool Locked { get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.Messaging.IMessageSink GetClientContextSink(System.Runtime.Remoting.Messaging.IMessageSink nextSink) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public override void GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.Messaging.IMessageSink GetServerContextSink(System.Runtime.Remoting.Messaging.IMessageSink nextSink) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public override bool IsContextOK(System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage msg) { throw null; }
     }
 }
 namespace System.Runtime.Remoting.Lifetime
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class ClientSponsor : System.MarshalByRefObject, System.Runtime.Remoting.Lifetime.ISponsor
     {
         public ClientSponsor() { }
         public ClientSponsor(System.TimeSpan renewalTime) { }
         public System.TimeSpan RenewalTime { get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public void Close() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~ClientSponsor() { }
+        [System.Security.SecurityCriticalAttribute]
         public override object InitializeLifetimeService() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public bool Register(System.MarshalByRefObject obj) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.TimeSpan Renewal(System.Runtime.Remoting.Lifetime.ILease lease) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void Unregister(System.MarshalByRefObject obj) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface ILease
     {
-        System.TimeSpan CurrentLeaseTime { get; }
-        System.Runtime.Remoting.Lifetime.LeaseState CurrentState { get; }
-        System.TimeSpan InitialLeaseTime { get; set; }
-        System.TimeSpan RenewOnCallTime { get; set; }
-        System.TimeSpan SponsorshipTimeout { get; set; }
+        System.TimeSpan CurrentLeaseTime { [System.Security.SecurityCriticalAttribute]get; }
+        System.Runtime.Remoting.Lifetime.LeaseState CurrentState { [System.Security.SecurityCriticalAttribute]get; }
+        System.TimeSpan InitialLeaseTime { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        System.TimeSpan RenewOnCallTime { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        System.TimeSpan SponsorshipTimeout { [System.Security.SecurityCriticalAttribute]get; [System.Security.SecurityCriticalAttribute]set; }
+        [System.Security.SecurityCriticalAttribute]
         void Register(System.Runtime.Remoting.Lifetime.ISponsor obj);
+        [System.Security.SecurityCriticalAttribute]
         void Register(System.Runtime.Remoting.Lifetime.ISponsor obj, System.TimeSpan renewalTime);
+        [System.Security.SecurityCriticalAttribute]
         System.TimeSpan Renew(System.TimeSpan renewalTime);
+        [System.Security.SecurityCriticalAttribute]
         void Unregister(System.Runtime.Remoting.Lifetime.ISponsor obj);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface ISponsor
     {
+        [System.Security.SecurityCriticalAttribute]
         System.TimeSpan Renewal(System.Runtime.Remoting.Lifetime.ILease lease);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17655,20 +18453,20 @@ namespace System.Runtime.Remoting.Lifetime
         Renewing = 3,
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public sealed partial class LifetimeServices
     {
-        [System.ObsoleteAttribute("Call the static methods directly on this type instead", true)]
+        [System.ObsoleteAttribute("Do not create instances of the LifetimeServices class.  Call the static methods directly on this type instead", true)]
         public LifetimeServices() { }
-        public static System.TimeSpan LeaseManagerPollTime { get { throw null; } set { } }
-        public static System.TimeSpan LeaseTime { get { throw null; } set { } }
-        public static System.TimeSpan RenewOnCallTime { get { throw null; } set { } }
-        public static System.TimeSpan SponsorshipTimeout { get { throw null; } set { } }
+        public static System.TimeSpan LeaseManagerPollTime { get { throw null; } [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]set { } }
+        public static System.TimeSpan LeaseTime { get { throw null; } [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]set { } }
+        public static System.TimeSpan RenewOnCallTime { get { throw null; } [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]set { } }
+        public static System.TimeSpan SponsorshipTimeout { get { throw null; } [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2048))]set { } }
     }
 }
 namespace System.Runtime.Remoting.Messaging
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial class AsyncResult : System.IAsyncResult, System.Runtime.Remoting.Messaging.IMessageSink
     {
         internal AsyncResult() { }
@@ -17678,10 +18476,12 @@ namespace System.Runtime.Remoting.Messaging
         public virtual bool CompletedSynchronously { get { throw null; } }
         public bool EndInvokeCalled { get { throw null; } set { } }
         public virtual bool IsCompleted { get { throw null; } }
-        public System.Runtime.Remoting.Messaging.IMessageSink NextSink { get { throw null; } }
+        public System.Runtime.Remoting.Messaging.IMessageSink NextSink { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.Messaging.IMessageCtrl AsyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink) { throw null; }
         public virtual System.Runtime.Remoting.Messaging.IMessage GetReplyMessage() { throw null; }
         public virtual void SetMessageCtrl(System.Runtime.Remoting.Messaging.IMessageCtrl mc) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.Messaging.IMessage SyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -17708,25 +18508,28 @@ namespace System.Runtime.Remoting.Messaging
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     [System.SerializableAttribute]
     public partial class ConstructionCall : System.Runtime.Remoting.Messaging.MethodCall, System.Runtime.Remoting.Activation.IConstructionCallMessage, System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodCallMessage, System.Runtime.Remoting.Messaging.IMethodMessage
     {
         public ConstructionCall(System.Runtime.Remoting.Messaging.Header[] headers) : base (default(System.Runtime.Remoting.Messaging.Header[])) { }
         public ConstructionCall(System.Runtime.Remoting.Messaging.IMessage m) : base (default(System.Runtime.Remoting.Messaging.Header[])) { }
-        public System.Type ActivationType { get { throw null; } }
-        public string ActivationTypeName { get { throw null; } }
-        public System.Runtime.Remoting.Activation.IActivator Activator { get { throw null; } set { } }
-        public object[] CallSiteActivationAttributes { get { throw null; } }
-        public System.Collections.IList ContextProperties { get { throw null; } }
-        public override System.Collections.IDictionary Properties { get { throw null; } }
+        public System.Type ActivationType { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string ActivationTypeName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Runtime.Remoting.Activation.IActivator Activator { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        public object[] CallSiteActivationAttributes { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Collections.IList ContextProperties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public override System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class ConstructionResponse : System.Runtime.Remoting.Messaging.MethodResponse, System.Runtime.Remoting.Activation.IConstructionReturnMessage, System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage, System.Runtime.Remoting.Messaging.IMethodReturnMessage
     {
         public ConstructionResponse(System.Runtime.Remoting.Messaging.Header[] h, System.Runtime.Remoting.Messaging.IMethodCallMessage mcm) : base (default(System.Runtime.Remoting.Messaging.Header[]), default(System.Runtime.Remoting.Messaging.IMethodCallMessage)) { }
-        public override System.Collections.IDictionary Properties { get { throw null; } }
+        public override System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -17749,54 +18552,64 @@ namespace System.Runtime.Remoting.Messaging
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IMessage
     {
-        System.Collections.IDictionary Properties { get; }
+        System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IMessageCtrl
     {
+        [System.Security.SecurityCriticalAttribute]
         void Cancel(int msToCancel);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IMessageSink
     {
-        System.Runtime.Remoting.Messaging.IMessageSink NextSink { get; }
+        System.Runtime.Remoting.Messaging.IMessageSink NextSink { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessageCtrl AsyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink);
+        [System.Security.SecurityCriticalAttribute]
         System.Runtime.Remoting.Messaging.IMessage SyncProcessMessage(System.Runtime.Remoting.Messaging.IMessage msg);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IMethodCallMessage : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage
     {
-        int InArgCount { get; }
-        object[] InArgs { get; }
+        int InArgCount { [System.Security.SecurityCriticalAttribute]get; }
+        object[] InArgs { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         object GetInArg(int argNum);
+        [System.Security.SecurityCriticalAttribute]
         string GetInArgName(int index);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IMethodMessage : System.Runtime.Remoting.Messaging.IMessage
     {
-        int ArgCount { get; }
-        object[] Args { get; }
-        bool HasVarArgs { get; }
-        System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { get; }
-        System.Reflection.MethodBase MethodBase { get; }
-        string MethodName { get; }
-        object MethodSignature { get; }
-        string TypeName { get; }
-        string Uri { get; }
+        int ArgCount { [System.Security.SecurityCriticalAttribute]get; }
+        object[] Args { [System.Security.SecurityCriticalAttribute]get; }
+        bool HasVarArgs { [System.Security.SecurityCriticalAttribute]get; }
+        System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { [System.Security.SecurityCriticalAttribute]get; }
+        System.Reflection.MethodBase MethodBase { [System.Security.SecurityCriticalAttribute]get; }
+        string MethodName { [System.Security.SecurityCriticalAttribute]get; }
+        object MethodSignature { [System.Security.SecurityCriticalAttribute]get; }
+        string TypeName { [System.Security.SecurityCriticalAttribute]get; }
+        string Uri { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         object GetArg(int argNum);
+        [System.Security.SecurityCriticalAttribute]
         string GetArgName(int index);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface IMethodReturnMessage : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage
     {
-        System.Exception Exception { get; }
-        int OutArgCount { get; }
-        object[] OutArgs { get; }
-        object ReturnValue { get; }
+        System.Exception Exception { [System.Security.SecurityCriticalAttribute]get; }
+        int OutArgCount { [System.Security.SecurityCriticalAttribute]get; }
+        object[] OutArgs { [System.Security.SecurityCriticalAttribute]get; }
+        object ReturnValue { [System.Security.SecurityCriticalAttribute]get; }
+        [System.Security.SecurityCriticalAttribute]
         object GetOutArg(int argNum);
+        [System.Security.SecurityCriticalAttribute]
         string GetOutArgName(int index);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public partial class InternalMessageWrapper
     {
         protected System.Runtime.Remoting.Messaging.IMessage WrappedMessage;
@@ -17830,111 +18643,141 @@ namespace System.Runtime.Remoting.Messaging
     public delegate bool MessageSurrogateFilter(string key, object value);
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class MethodCall : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodCallMessage, System.Runtime.Remoting.Messaging.IMethodMessage, System.Runtime.Serialization.ISerializable
     {
         protected System.Collections.IDictionary ExternalProperties;
         protected System.Collections.IDictionary InternalProperties;
+        [System.Security.SecurityCriticalAttribute]
         public MethodCall(System.Runtime.Remoting.Messaging.Header[] h1) { }
+        [System.Security.SecurityCriticalAttribute]
         public MethodCall(System.Runtime.Remoting.Messaging.IMessage msg) { }
-        public int ArgCount { get { throw null; } }
-        public object[] Args { get { throw null; } }
-        public bool HasVarArgs { get { throw null; } }
-        public int InArgCount { get { throw null; } }
-        public object[] InArgs { get { throw null; } }
-        public System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { get { throw null; } }
-        public System.Reflection.MethodBase MethodBase { get { throw null; } }
-        public string MethodName { get { throw null; } }
-        public object MethodSignature { get { throw null; } }
-        public virtual System.Collections.IDictionary Properties { get { throw null; } }
-        public string TypeName { get { throw null; } }
-        public string Uri { get { throw null; } set { } }
+        public int ArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object[] Args { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public bool HasVarArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public int InArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object[] InArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Reflection.MethodBase MethodBase { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string MethodName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object MethodSignature { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string TypeName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string Uri { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public object GetArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string GetArgName(int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public object GetInArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string GetInArgName(int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public virtual object HeaderHandler(System.Runtime.Remoting.Messaging.Header[] h) { throw null; }
         public virtual void Init() { }
+        [System.Security.SecurityCriticalAttribute]
         public void ResolveMethod() { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public void RootSetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext ctx) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class MethodCallMessageWrapper : System.Runtime.Remoting.Messaging.InternalMessageWrapper, System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodCallMessage, System.Runtime.Remoting.Messaging.IMethodMessage
     {
         public MethodCallMessageWrapper(System.Runtime.Remoting.Messaging.IMethodCallMessage msg) : base (default(System.Runtime.Remoting.Messaging.IMessage)) { }
-        public virtual int ArgCount { get { throw null; } }
-        public virtual object[] Args { get { throw null; } set { } }
-        public virtual bool HasVarArgs { get { throw null; } }
-        public virtual int InArgCount { get { throw null; } }
-        public virtual object[] InArgs { get { throw null; } }
-        public virtual System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { get { throw null; } }
-        public virtual System.Reflection.MethodBase MethodBase { get { throw null; } }
-        public virtual string MethodName { get { throw null; } }
-        public virtual object MethodSignature { get { throw null; } }
-        public virtual System.Collections.IDictionary Properties { get { throw null; } }
-        public virtual string TypeName { get { throw null; } }
-        public virtual string Uri { get { throw null; } set { } }
+        public virtual int ArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object[] Args { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        public virtual bool HasVarArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual int InArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object[] InArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Reflection.MethodBase MethodBase { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual string MethodName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object MethodSignature { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual string TypeName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual string Uri { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public virtual object GetArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual string GetArgName(int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual object GetInArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual string GetInArgName(int index) { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class MethodResponse : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage, System.Runtime.Remoting.Messaging.IMethodReturnMessage, System.Runtime.Serialization.ISerializable
     {
         protected System.Collections.IDictionary ExternalProperties;
         protected System.Collections.IDictionary InternalProperties;
+        [System.Security.SecurityCriticalAttribute]
         public MethodResponse(System.Runtime.Remoting.Messaging.Header[] h1, System.Runtime.Remoting.Messaging.IMethodCallMessage mcm) { }
-        public int ArgCount { get { throw null; } }
-        public object[] Args { get { throw null; } }
-        public System.Exception Exception { get { throw null; } }
-        public bool HasVarArgs { get { throw null; } }
-        public System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { get { throw null; } }
-        public System.Reflection.MethodBase MethodBase { get { throw null; } }
-        public string MethodName { get { throw null; } }
-        public object MethodSignature { get { throw null; } }
-        public int OutArgCount { get { throw null; } }
-        public object[] OutArgs { get { throw null; } }
-        public virtual System.Collections.IDictionary Properties { get { throw null; } }
-        public object ReturnValue { get { throw null; } }
-        public string TypeName { get { throw null; } }
-        public string Uri { get { throw null; } set { } }
+        public int ArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object[] Args { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Exception Exception { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public bool HasVarArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Reflection.MethodBase MethodBase { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string MethodName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object MethodSignature { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public int OutArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object[] OutArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object ReturnValue { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string TypeName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string Uri { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public object GetArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string GetArgName(int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         public object GetOutArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string GetOutArgName(int index) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public virtual object HeaderHandler(System.Runtime.Remoting.Messaging.Header[] h) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public void RootSetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext ctx) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class MethodReturnMessageWrapper : System.Runtime.Remoting.Messaging.InternalMessageWrapper, System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage, System.Runtime.Remoting.Messaging.IMethodReturnMessage
     {
         public MethodReturnMessageWrapper(System.Runtime.Remoting.Messaging.IMethodReturnMessage msg) : base (default(System.Runtime.Remoting.Messaging.IMessage)) { }
-        public virtual int ArgCount { get { throw null; } }
-        public virtual object[] Args { get { throw null; } set { } }
-        public virtual System.Exception Exception { get { throw null; } set { } }
-        public virtual bool HasVarArgs { get { throw null; } }
-        public virtual System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { get { throw null; } }
-        public virtual System.Reflection.MethodBase MethodBase { get { throw null; } }
-        public virtual string MethodName { get { throw null; } }
-        public virtual object MethodSignature { get { throw null; } }
-        public virtual int OutArgCount { get { throw null; } }
-        public virtual object[] OutArgs { get { throw null; } }
-        public virtual System.Collections.IDictionary Properties { get { throw null; } }
-        public virtual object ReturnValue { get { throw null; } set { } }
-        public virtual string TypeName { get { throw null; } }
-        public string Uri { get { throw null; } set { } }
+        public virtual int ArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object[] Args { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        public virtual System.Exception Exception { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        public virtual bool HasVarArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Reflection.MethodBase MethodBase { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual string MethodName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object MethodSignature { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual int OutArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object[] OutArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object ReturnValue { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        public virtual string TypeName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string Uri { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public virtual object GetArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual string GetArgName(int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual object GetOutArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual string GetOutArgName(int index) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
@@ -17944,40 +18787,52 @@ namespace System.Runtime.Remoting.Messaging
         public OneWayAttribute() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class RemotingSurrogateSelector : System.Runtime.Serialization.ISurrogateSelector
     {
         public RemotingSurrogateSelector() { }
         public System.Runtime.Remoting.Messaging.MessageSurrogateFilter Filter { get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void ChainSelector(System.Runtime.Serialization.ISurrogateSelector selector) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Serialization.ISurrogateSelector GetNextSelector() { throw null; }
         public object GetRootObject() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Serialization.ISerializationSurrogate GetSurrogate(System.Type type, System.Runtime.Serialization.StreamingContext context, out System.Runtime.Serialization.ISurrogateSelector ssout) { ssout = default(System.Runtime.Serialization.ISurrogateSelector); throw null; }
         public void SetRootObject(object obj) { }
-        [System.MonoTODOAttribute]
         public virtual void UseSoapFormat() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class ReturnMessage : System.Runtime.Remoting.Messaging.IMessage, System.Runtime.Remoting.Messaging.IMethodMessage, System.Runtime.Remoting.Messaging.IMethodReturnMessage
     {
+        [System.Security.SecurityCriticalAttribute]
         public ReturnMessage(System.Exception e, System.Runtime.Remoting.Messaging.IMethodCallMessage mcm) { }
+        [System.Security.SecurityCriticalAttribute]
         public ReturnMessage(object ret, object[] outArgs, int outArgsCount, System.Runtime.Remoting.Messaging.LogicalCallContext callCtx, System.Runtime.Remoting.Messaging.IMethodCallMessage mcm) { }
-        public int ArgCount { get { throw null; } }
-        public object[] Args { get { throw null; } }
-        public System.Exception Exception { get { throw null; } }
-        public bool HasVarArgs { get { throw null; } }
-        public System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { get { throw null; } }
-        public System.Reflection.MethodBase MethodBase { get { throw null; } }
-        public string MethodName { get { throw null; } }
-        public object MethodSignature { get { throw null; } }
-        public int OutArgCount { get { throw null; } }
-        public object[] OutArgs { get { throw null; } }
-        public virtual System.Collections.IDictionary Properties { get { throw null; } }
-        public virtual object ReturnValue { get { throw null; } }
-        public string TypeName { get { throw null; } }
-        public string Uri { get { throw null; } set { } }
+        public int ArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object[] Args { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Exception Exception { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public bool HasVarArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Runtime.Remoting.Messaging.LogicalCallContext LogicalCallContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Reflection.MethodBase MethodBase { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string MethodName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object MethodSignature { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public int OutArgCount { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object[] OutArgs { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual System.Collections.IDictionary Properties { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public virtual object ReturnValue { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string TypeName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public string Uri { [System.Security.SecurityCriticalAttribute]get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public object GetArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string GetArgName(int index) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public object GetOutArg(int argNum) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string GetOutArgName(int index) { throw null; }
     }
 }
@@ -18010,9 +18865,9 @@ namespace System.Runtime.Remoting.Metadata
         public string ResponseXmlElementName { get { throw null; } set { } }
         public string ResponseXmlNamespace { get { throw null; } set { } }
         public string ReturnXmlElementName { get { throw null; } set { } }
-        public string SoapAction { get { throw null; } set { } }
+        public string SoapAction { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public override bool UseAttribute { get { throw null; } set { } }
-        public override string XmlNamespace { get { throw null; } set { } }
+        public override string XmlNamespace { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
     }
     [System.FlagsAttribute]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -18043,7 +18898,7 @@ namespace System.Runtime.Remoting.Metadata
         public System.Runtime.Remoting.Metadata.XmlFieldOrderOption XmlFieldOrder { get { throw null; } set { } }
         public override string XmlNamespace { get { throw null; } set { } }
         public string XmlTypeName { get { throw null; } set { } }
-        public string XmlTypeNamespace { get { throw null; } set { } }
+        public string XmlTypeNamespace { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -18125,6 +18980,7 @@ namespace System.Runtime.Remoting.Metadata.W3cXsd2001
         public SoapDuration() { }
         public static string XsdType { get { throw null; } }
         public static System.TimeSpan Parse(string value) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string ToString(System.TimeSpan timeSpan) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -18438,72 +19294,94 @@ namespace System.Runtime.Remoting.Metadata.W3cXsd2001
 }
 namespace System.Runtime.Remoting.Proxies
 {
-    [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public partial class ProxyAttribute : System.Attribute, System.Runtime.Remoting.Contexts.IContextAttribute
     {
         public ProxyAttribute() { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.MarshalByRefObject CreateInstance(System.Type serverType) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.Proxies.RealProxy CreateProxy(System.Runtime.Remoting.ObjRef objRef, System.Type serverType, object serverObject, System.Runtime.Remoting.Contexts.Context serverContext) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public void GetPropertiesForNewContext(System.Runtime.Remoting.Activation.IConstructionCallMessage msg) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public bool IsContextOK(System.Runtime.Remoting.Contexts.Context ctx, System.Runtime.Remoting.Activation.IConstructionCallMessage msg) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     public abstract partial class RealProxy
     {
         protected RealProxy() { }
+        [System.Security.SecurityCriticalAttribute]
         protected RealProxy(System.Type classToProxy) { }
+        [System.Security.SecurityCriticalAttribute]
         protected RealProxy(System.Type classToProxy, System.IntPtr stub, object stubData) { }
+        [System.Security.SecurityCriticalAttribute]
         protected void AttachServer(System.MarshalByRefObject s) { }
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         protected System.MarshalByRefObject DetachServer() { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public virtual System.IntPtr GetCOMIUnknown(bool fIsMarshalled) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public System.Type GetProxiedType() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static object GetStubData(System.Runtime.Remoting.Proxies.RealProxy rp) { throw null; }
         public virtual object GetTransparentProxy() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         protected System.MarshalByRefObject GetUnwrappedServer() { throw null; }
-        [System.MonoTODOAttribute]
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecurityCriticalAttribute]
         public System.Runtime.Remoting.Activation.IConstructionReturnMessage InitializeServerObject(System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg) { throw null; }
         public abstract System.Runtime.Remoting.Messaging.IMessage Invoke(System.Runtime.Remoting.Messaging.IMessage msg);
-        [System.MonoTODOAttribute]
         public virtual void SetCOMIUnknown(System.IntPtr i) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecurityCriticalAttribute]
         public static void SetStubData(System.Runtime.Remoting.Proxies.RealProxy rp, object stubData) { }
-        [System.MonoTODOAttribute]
         public virtual System.IntPtr SupportsInterface(ref System.Guid iid) { throw null; }
     }
 }
 namespace System.Runtime.Remoting.Services
 {
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public sealed partial class EnterpriseServicesHelper
     {
         public EnterpriseServicesHelper() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public static System.Runtime.Remoting.Activation.IConstructionReturnMessage CreateConstructionReturnMessage(System.Runtime.Remoting.Activation.IConstructionCallMessage ctorMsg, System.MarshalByRefObject retObj) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static void SwitchWrappers(System.Runtime.Remoting.Proxies.RealProxy oldcp, System.Runtime.Remoting.Proxies.RealProxy newcp) { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public static object WrapIUnknownWithComObject(System.IntPtr punk) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial interface ITrackingHandler
     {
+        [System.Security.SecurityCriticalAttribute]
         void DisconnectedObject(object obj);
+        [System.Security.SecurityCriticalAttribute]
         void MarshaledObject(object obj, System.Runtime.Remoting.ObjRef or);
+        [System.Security.SecurityCriticalAttribute]
         void UnmarshaledObject(object obj, System.Runtime.Remoting.ObjRef or);
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public partial class TrackingServices
     {
         public TrackingServices() { }
-        public static System.Runtime.Remoting.Services.ITrackingHandler[] RegisteredHandlers { get { throw null; } }
+        public static System.Runtime.Remoting.Services.ITrackingHandler[] RegisteredHandlers { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public static void RegisterTrackingHandler(System.Runtime.Remoting.Services.ITrackingHandler handler) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void UnregisterTrackingHandler(System.Runtime.Remoting.Services.ITrackingHandler handler) { }
     }
 }
@@ -19073,18 +19951,19 @@ namespace System.Security
         public AllowPartiallyTrustedCallersAttribute() { }
         public System.Security.PartialTrustVisibilityLevel PartialTrustVisibilityLevel { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute("CAS support is experimental (and unsupported).")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, ControlEvidence=true, ControlPolicy=true)]
     [System.SerializableAttribute]
     public abstract partial class CodeAccessPermission : System.Security.IPermission, System.Security.ISecurityEncodable, System.Security.IStackWalk
     {
         protected CodeAccessPermission() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void Assert() { }
         public abstract System.Security.IPermission Copy();
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void Demand() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Deny is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Deny() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool Equals(object obj) { throw null; }
@@ -19093,21 +19972,21 @@ namespace System.Security
         public override int GetHashCode() { throw null; }
         public abstract System.Security.IPermission Intersect(System.Security.IPermission target);
         public abstract bool IsSubsetOf(System.Security.IPermission target);
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void PermitOnly() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static void RevertAll() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static void RevertAssert() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Deny is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void RevertDeny() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static void RevertPermitOnly() { }
         public override string ToString() { throw null; }
         public abstract System.Security.SecurityElement ToXml();
         public virtual System.Security.IPermission Union(System.Security.IPermission other) { throw null; }
     }
-    [System.MonoTODOAttribute("Not supported in the runtime")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public partial class HostProtectionException : System.SystemException
@@ -19119,18 +19998,22 @@ namespace System.Security
         public HostProtectionException(string message, System.Security.Permissions.HostProtectionResource protectedResources, System.Security.Permissions.HostProtectionResource demandedResources) { }
         public System.Security.Permissions.HostProtectionResource DemandedResources { get { throw null; } }
         public System.Security.Permissions.HostProtectionResource ProtectedResources { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(4096))]
     [System.SerializableAttribute]
     public partial class HostSecurityManager
     {
         public HostSecurityManager() { }
+        [System.ObsoleteAttribute("AppDomain policy levels are obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public virtual System.Security.Policy.PolicyLevel DomainPolicy { get { throw null; } }
         public virtual System.Security.HostSecurityManagerOptions Flags { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
         public virtual System.Security.Policy.ApplicationTrust DetermineApplicationTrust(System.Security.Policy.Evidence applicationEvidence, System.Security.Policy.Evidence activatorEvidence, System.Security.Policy.TrustManagerContext context) { throw null; }
         public virtual System.Security.Policy.EvidenceBase GenerateAppDomainEvidence(System.Type evidenceType) { throw null; }
         public virtual System.Security.Policy.EvidenceBase GenerateAssemblyEvidence(System.Type evidenceType, System.Reflection.Assembly assembly) { throw null; }
@@ -19149,6 +20032,7 @@ namespace System.Security
         HostAppDomainEvidence = 1,
         HostAssemblyEvidence = 4,
         HostDetermineApplicationTrust = 8,
+        [System.ObsoleteAttribute("AppDomain policy levels are obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         HostPolicyLevel = 2,
         HostResolvePolicy = 16,
         None = 0,
@@ -19211,9 +20095,8 @@ namespace System.Security
         NotVisibleByDefault = 1,
         VisibleToAllHosts = 0,
     }
-    [System.MonoTODOAttribute("CAS support is experimental (and unsupported).")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Security.Permissions.StrongNameIdentityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, PublicKey="002400000480000094000000060200000024000052534131000400000100010007D1FA57C4AED9F0A32E84AA0FAEFD0DE9E8FD6AEC8F87FB03766C834C99921EB23BE79AD9D5DCC1DD9AD236132102900B723CF980957FC4E177108FC607774F29E8320E92EA05ECE4E821C0A5EFE8F1645C4C0C93C1AB99285D622CAA652C1DFAD63D745D6F2DE5F17E5EAF0FC4963D261C8A12436518206DC093344D5AD293")]
+    [System.Security.Permissions.StrongNameIdentityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="mscorlib", PublicKey="0x00000000000000000400000000000000")]
     [System.SerializableAttribute]
     public partial class PermissionSet : System.Collections.ICollection, System.Collections.IEnumerable, System.Runtime.Serialization.IDeserializationCallback, System.Security.ISecurityEncodable, System.Security.IStackWalk
     {
@@ -19225,15 +20108,17 @@ namespace System.Security
         public virtual object SyncRoot { get { throw null; } }
         public System.Security.IPermission AddPermission(System.Security.IPermission perm) { throw null; }
         protected virtual System.Security.IPermission AddPermissionImpl(System.Security.IPermission perm) { throw null; }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Assertion=true)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void Assert() { }
         public bool ContainsNonCodeAccessPermissions() { throw null; }
+        [System.ObsoleteAttribute("This method is obsolete and shoud no longer be used.")]
         public static byte[] ConvertPermissionSet(string inFormat, byte[] inData, string outFormat) { throw null; }
         public virtual System.Security.PermissionSet Copy() { throw null; }
         public virtual void CopyTo(System.Array array, int index) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void Demand() { }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("Deny is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Deny() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool Equals(object obj) { throw null; }
@@ -19248,14 +20133,14 @@ namespace System.Security
         public bool IsEmpty() { throw null; }
         public bool IsSubsetOf(System.Security.PermissionSet target) { throw null; }
         public bool IsUnrestricted() { throw null; }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). Imperative mode is not implemented.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void PermitOnly() { }
         public System.Security.IPermission RemovePermission(System.Type permClass) { throw null; }
         protected virtual System.Security.IPermission RemovePermissionImpl(System.Type permClass) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static void RevertAssert() { }
         public System.Security.IPermission SetPermission(System.Security.IPermission perm) { throw null; }
         protected virtual System.Security.IPermission SetPermissionImpl(System.Security.IPermission perm) { throw null; }
-        [System.MonoTODOAttribute("may not be required")]
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
         public override string ToString() { throw null; }
         public virtual System.Security.SecurityElement ToXml() { throw null; }
@@ -19270,6 +20155,7 @@ namespace System.Security
         Machine = 1,
         User = 0,
     }
+    [System.SerializableAttribute]
     public sealed partial class ReadOnlyPermissionSet : System.Security.PermissionSet
     {
         public ReadOnlyPermissionSet(System.Security.SecurityElement permissionSetXml) : base (default(System.Security.Permissions.PermissionState)) { }
@@ -19283,41 +20169,54 @@ namespace System.Security
         protected override System.Security.IPermission SetPermissionImpl(System.Security.IPermission perm) { throw null; }
         public override System.Security.SecurityElement ToXml() { throw null; }
     }
-    [System.MonoTODOAttribute("work in progress - encryption is missing")]
     public sealed partial class SecureString : System.IDisposable
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecureString() { }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe SecureString(char* value, int length) { }
-        public int Length { get { throw null; } }
-        [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        public int Length { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]get { throw null; } }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AppendChar(char c) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Security.SecuritySafeCriticalAttribute]
         public void Clear() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Security.SecuritySafeCriticalAttribute]
         public System.Security.SecureString Copy() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Security.SecuritySafeCriticalAttribute]
         public void Dispose() { }
-        [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void InsertAt(int index, char c) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Security.SecuritySafeCriticalAttribute]
         public bool IsReadOnly() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Security.SecuritySafeCriticalAttribute]
         public void MakeReadOnly() { }
-        [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveAt(int index) { }
-        [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)][System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetAt(int index, char c) { }
     }
     public sealed partial class SecurityContext : System.IDisposable
     {
         internal SecurityContext() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.SecurityContext Capture() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.SecurityContext CreateCopy() { throw null; }
         public void Dispose() { }
         public static bool IsFlowSuppressed() { throw null; }
         public static bool IsWindowsIdentityFlowSuppressed() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void RestoreFlow() { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, ControlPrincipal=true)]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecurityCriticalAttribute]
         public static void Run(System.Security.SecurityContext securityContext, System.Threading.ContextCallback callback, object state) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+        [System.Security.SecurityCriticalAttribute]
         public static System.Threading.AsyncFlowControl SuppressFlow() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Threading.AsyncFlowControl SuppressFlowWindowsIdentity() { throw null; }
     }
     public enum SecurityContextSource
@@ -19370,74 +20269,89 @@ namespace System.Security
     public partial class SecurityException : System.SystemException
     {
         public SecurityException() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected SecurityException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public SecurityException(string message) { }
         public SecurityException(string message, System.Exception inner) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecurityException(string message, object deny, object permitOnly, System.Reflection.MethodInfo method, object demanded, System.Security.IPermission permThatFailed) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecurityException(string message, System.Reflection.AssemblyName assemblyName, System.Security.PermissionSet grant, System.Security.PermissionSet refused, System.Reflection.MethodInfo method, System.Security.Permissions.SecurityAction action, object demanded, System.Security.IPermission permThatFailed, System.Security.Policy.Evidence evidence) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecurityException(string message, System.Type type) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecurityException(string message, System.Type type, string state) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Security.Permissions.SecurityAction Action { get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public object Demanded { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
+        public object Demanded { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public object DenySetInstance { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
+        public object DenySetInstance { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Reflection.AssemblyName FailedAssemblyInfo { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
-        public System.Security.IPermission FirstPermissionThatFailed { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
-        public string GrantedSet { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
+        public System.Reflection.AssemblyName FailedAssemblyInfo { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
+        public System.Security.IPermission FirstPermissionThatFailed { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
+        public string GrantedSet { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Reflection.MethodInfo Method { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
-        public string PermissionState { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
-        public System.Type PermissionType { get { throw null; } set { } }
+        public System.Reflection.MethodInfo Method { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
+        public string PermissionState { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
+        public System.Type PermissionType { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public object PermitOnlySetInstance { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
-        public string RefusedSet { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
-        public string Url { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]get { throw null; } set { } }
+        public object PermitOnlySetInstance { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
+        public string RefusedSet { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
+        public string Url { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(96))]get { throw null; } set { } }
         public System.Security.SecurityZone Zone { get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class SecurityManager
     {
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Because execution permission checks can no longer be turned off, the CheckExecutionRights property no longer has any effect.")]
         public static bool CheckExecutionRights { get { throw null; } set { } }
-        [System.ObsoleteAttribute("The security manager cannot be turned off on MS runtime")]
-        public static bool SecurityEnabled { [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]set { } }
+        [System.ObsoleteAttribute("Because security can no longer be turned off, the SecurityEnabled property no longer has any effect.")]
+        public static bool SecurityEnabled { get { throw null; } set { } }
+        [System.Security.SecurityCriticalAttribute]
         public static bool CurrentThreadRequiresSecurityContextCapture() { throw null; }
         public static System.Security.PermissionSet GetStandardSandbox(System.Security.Policy.Evidence evidence) { throw null; }
-        [System.MonoTODOAttribute("CAS support is experimental (and unsupported). This method only works in FullTrust.")]
-        [System.Security.Permissions.StrongNameIdentityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, PublicKey="0x00000000000000000400000000000000")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecurityCriticalAttribute]
         public static void GetZoneAndOrigin(out System.Collections.ArrayList zone, out System.Collections.ArrayList origin) { zone = default(System.Collections.ArrayList); origin = default(System.Collections.ArrayList); }
-        [System.ObsoleteAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("IsGranted is obsolete and will be removed in a future release of the .NET Framework.  Please use the PermissionSet property of either AppDomain or Assembly instead.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static bool IsGranted(System.Security.IPermission perm) { throw null; }
-        [System.ObsoleteAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]
         public static System.Security.Policy.PolicyLevel LoadPolicyLevelFromFile(string path, System.Security.PolicyLevelType type) { throw null; }
-        [System.ObsoleteAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]
         public static System.Security.Policy.PolicyLevel LoadPolicyLevelFromString(string str, System.Security.PolicyLevelType type) { throw null; }
-        [System.ObsoleteAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Collections.IEnumerator PolicyHierarchy() { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.PermissionSet ResolvePolicy(System.Security.Policy.Evidence evidence) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.PermissionSet ResolvePolicy(System.Security.Policy.Evidence evidence, System.Security.PermissionSet reqdPset, System.Security.PermissionSet optPset, System.Security.PermissionSet denyPset, out System.Security.PermissionSet denied) { denied = default(System.Security.PermissionSet); throw null; }
-        [System.MonoTODOAttribute("(2.0) more tests are needed")]
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         public static System.Security.PermissionSet ResolvePolicy(System.Security.Policy.Evidence[] evidences) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Collections.IEnumerator ResolvePolicyGroups(System.Security.Policy.Evidence evidence) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.PermissionSet ResolveSystemPolicy(System.Security.Policy.Evidence evidence) { throw null; }
-        [System.ObsoleteAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]
         public static void SavePolicy() { }
-        [System.ObsoleteAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]
+        [System.ObsoleteAttribute("This method is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]
         public static void SavePolicyLevel(System.Security.Policy.PolicyLevel level) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), AllowMultiple=false)]
@@ -19458,10 +20372,13 @@ namespace System.Security
     {
         public SecuritySafeCriticalAttribute() { }
     }
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
     public abstract partial class SecurityState
     {
         protected SecurityState() { }
         public abstract void EnsureState();
+        [System.Security.SecurityCriticalAttribute]
         public bool IsStateAvailable() { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1), AllowMultiple=false, Inherited=false)]
@@ -19671,6 +20588,7 @@ namespace System.Security.AccessControl
         public void Purge(System.Security.Principal.SecurityIdentifier sid) { }
         public void RemoveInheritedAces() { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class CommonObjectSecurity : System.Security.AccessControl.ObjectSecurity
     {
         protected CommonObjectSecurity(bool isContainer) { }
@@ -19715,10 +20633,8 @@ namespace System.Security.AccessControl
     public sealed partial class CompoundAce : System.Security.AccessControl.KnownAce
     {
         public CompoundAce(System.Security.AccessControl.AceFlags flags, int accessMask, System.Security.AccessControl.CompoundAceType compoundAceType, System.Security.Principal.SecurityIdentifier sid) { }
-        [System.MonoTODOAttribute]
         public override int BinaryLength { get { throw null; } }
         public System.Security.AccessControl.CompoundAceType CompoundAceType { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override void GetBinaryForm(byte[] binaryForm, int offset) { }
     }
     public enum CompoundAceType
@@ -19781,6 +20697,7 @@ namespace System.Security.AccessControl
     public sealed partial class CryptoKeySecurity : System.Security.AccessControl.NativeObjectSecurity
     {
         public CryptoKeySecurity() : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public CryptoKeySecurity(System.Security.AccessControl.CommonSecurityDescriptor securityDescriptor) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
         public override System.Type AccessRightType { get { throw null; } }
         public override System.Type AccessRuleType { get { throw null; } }
@@ -19801,13 +20718,10 @@ namespace System.Security.AccessControl
     }
     public sealed partial class CustomAce : System.Security.AccessControl.GenericAce
     {
-        [System.MonoTODOAttribute]
         public static readonly int MaxOpaqueLength;
         public CustomAce(System.Security.AccessControl.AceType type, System.Security.AccessControl.AceFlags flags, byte[] opaque) { }
-        [System.MonoTODOAttribute]
         public override int BinaryLength { get { throw null; } }
         public int OpaqueLength { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override void GetBinaryForm(byte[] binaryForm, int offset) { }
         public byte[] GetOpaque() { throw null; }
         public void SetOpaque(byte[] opaque) { }
@@ -19836,7 +20750,10 @@ namespace System.Security.AccessControl
     }
     public sealed partial class DirectorySecurity : System.Security.AccessControl.FileSystemSecurity
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public DirectorySecurity() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         public DirectorySecurity(string name, System.Security.AccessControl.AccessControlSections includeSections) { }
     }
     public sealed partial class DiscretionaryAcl : System.Security.AccessControl.CommonAcl
@@ -19847,9 +20764,7 @@ namespace System.Security.AccessControl
         public void AddAccess(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags) { }
         public void AddAccess(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.ObjectAceFlags objectFlags, System.Guid objectType, System.Guid inheritedObjectType) { }
         public void AddAccess(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, System.Security.AccessControl.ObjectAccessRule rule) { }
-        [System.MonoTODOAttribute]
         public bool RemoveAccess(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags) { throw null; }
-        [System.MonoTODOAttribute]
         public bool RemoveAccess(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.ObjectAceFlags objectFlags, System.Guid objectType, System.Guid inheritedObjectType) { throw null; }
         public bool RemoveAccess(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, System.Security.AccessControl.ObjectAccessRule rule) { throw null; }
         public void RemoveAccessSpecific(System.Security.AccessControl.AccessControlType accessType, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags) { }
@@ -19903,7 +20818,10 @@ namespace System.Security.AccessControl
     }
     public sealed partial class FileSecurity : System.Security.AccessControl.FileSystemSecurity
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileSecurity() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         public FileSecurity(string fileName, System.Security.AccessControl.AccessControlSections includeSections) { }
     }
     public sealed partial class FileSystemAccessRule : System.Security.AccessControl.AccessRule
@@ -20014,6 +20932,7 @@ namespace System.Security.AccessControl
         public abstract System.Security.Principal.SecurityIdentifier Owner { get; set; }
         public static byte Revision { get { throw null; } }
         public void GetBinaryForm(byte[] binaryForm, int offset) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string GetSddlForm(System.Security.AccessControl.AccessControlSections includeSections) { throw null; }
         public static bool IsSddlConversionSupported() { throw null; }
     }
@@ -20055,6 +20974,7 @@ namespace System.Security.AccessControl
     public sealed partial class MutexSecurity : System.Security.AccessControl.NativeObjectSecurity
     {
         public MutexSecurity() : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public MutexSecurity(string name, System.Security.AccessControl.AccessControlSections includeSections) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
         public override System.Type AccessRightType { get { throw null; } }
         public override System.Type AccessRuleType { get { throw null; } }
@@ -20076,15 +20996,22 @@ namespace System.Security.AccessControl
     public abstract partial class NativeObjectSecurity : System.Security.AccessControl.CommonObjectSecurity
     {
         protected NativeObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType) : base (default(bool)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected NativeObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, System.Runtime.InteropServices.SafeHandle handle, System.Security.AccessControl.AccessControlSections includeSections) : base (default(bool)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected NativeObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, System.Runtime.InteropServices.SafeHandle handle, System.Security.AccessControl.AccessControlSections includeSections, System.Security.AccessControl.NativeObjectSecurity.ExceptionFromErrorCode exceptionFromErrorCode, object exceptionContext) : base (default(bool)) { }
         protected NativeObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, System.Security.AccessControl.NativeObjectSecurity.ExceptionFromErrorCode exceptionFromErrorCode, object exceptionContext) : base (default(bool)) { }
         protected NativeObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, string name, System.Security.AccessControl.AccessControlSections includeSections) : base (default(bool)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected NativeObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, string name, System.Security.AccessControl.AccessControlSections includeSections, System.Security.AccessControl.NativeObjectSecurity.ExceptionFromErrorCode exceptionFromErrorCode, object exceptionContext) : base (default(bool)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected sealed override void Persist(System.Runtime.InteropServices.SafeHandle handle, System.Security.AccessControl.AccessControlSections includeSections) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void Persist(System.Runtime.InteropServices.SafeHandle handle, System.Security.AccessControl.AccessControlSections includeSections, object exceptionContext) { }
         protected sealed override void Persist(string name, System.Security.AccessControl.AccessControlSections includeSections) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void Persist(string name, System.Security.AccessControl.AccessControlSections includeSections, object exceptionContext) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected internal delegate System.Exception ExceptionFromErrorCode(int errorCode, string name, System.Runtime.InteropServices.SafeHandle handle, object context);
     }
     public abstract partial class ObjectAccessRule : System.Security.AccessControl.AccessRule
@@ -20147,9 +21074,10 @@ namespace System.Security.AccessControl
         public virtual bool ModifyAccessRule(System.Security.AccessControl.AccessControlModification modification, System.Security.AccessControl.AccessRule rule, out bool modified) { modified = default(bool); throw null; }
         protected abstract bool ModifyAudit(System.Security.AccessControl.AccessControlModification modification, System.Security.AccessControl.AuditRule rule, out bool modified);
         public virtual bool ModifyAuditRule(System.Security.AccessControl.AccessControlModification modification, System.Security.AccessControl.AuditRule rule, out bool modified) { modified = default(bool); throw null; }
-        [System.MonoTODOAttribute]
         [System.Runtime.ExceptionServices.HandleProcessCorruptedStateExceptionsAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void Persist(bool enableOwnershipPrivilege, string name, System.Security.AccessControl.AccessControlSections includeSections) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void Persist(System.Runtime.InteropServices.SafeHandle handle, System.Security.AccessControl.AccessControlSections includeSections) { }
         protected virtual void Persist(string name, System.Security.AccessControl.AccessControlSections includeSections) { }
         public virtual void PurgeAccessRules(System.Security.Principal.IdentityReference identity) { }
@@ -20170,7 +21098,9 @@ namespace System.Security.AccessControl
     public abstract partial class ObjectSecurity<T> : System.Security.AccessControl.NativeObjectSecurity where T : struct
     {
         protected ObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected ObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, System.Runtime.InteropServices.SafeHandle safeHandle, System.Security.AccessControl.AccessControlSections includeSections) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected ObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, System.Runtime.InteropServices.SafeHandle safeHandle, System.Security.AccessControl.AccessControlSections includeSections, System.Security.AccessControl.NativeObjectSecurity.ExceptionFromErrorCode exceptionFromErrorCode, object exceptionContext) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
         protected ObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, string name, System.Security.AccessControl.AccessControlSections includeSections) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
         protected ObjectSecurity(bool isContainer, System.Security.AccessControl.ResourceType resourceType, string name, System.Security.AccessControl.AccessControlSections includeSections, System.Security.AccessControl.NativeObjectSecurity.ExceptionFromErrorCode exceptionFromErrorCode, object exceptionContext) : base (default(bool), default(System.Security.AccessControl.ResourceType)) { }
@@ -20181,7 +21111,11 @@ namespace System.Security.AccessControl
         public virtual void AddAccessRule(System.Security.AccessControl.AccessRule<T> rule) { }
         public virtual void AddAuditRule(System.Security.AccessControl.AuditRule<T> rule) { }
         public override System.Security.AccessControl.AuditRule AuditRuleFactory(System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AuditFlags flags) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         protected internal void Persist(System.Runtime.InteropServices.SafeHandle handle) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         protected internal void Persist(string name) { }
         public virtual bool RemoveAccessRule(System.Security.AccessControl.AccessRule<T> rule) { throw null; }
         public virtual void RemoveAccessRuleAll(System.Security.AccessControl.AccessRule<T> rule) { }
@@ -20200,7 +21134,7 @@ namespace System.Security.AccessControl
         public PrivilegeNotHeldException(string privilege) { }
         public PrivilegeNotHeldException(string privilege, System.Exception inner) { }
         public string PrivilegeName { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.FlagsAttribute]
@@ -20235,6 +21169,7 @@ namespace System.Security.AccessControl
     {
         public RawSecurityDescriptor(byte[] binaryForm, int offset) { }
         public RawSecurityDescriptor(System.Security.AccessControl.ControlFlags flags, System.Security.Principal.SecurityIdentifier owner, System.Security.Principal.SecurityIdentifier group, System.Security.AccessControl.RawAcl systemAcl, System.Security.AccessControl.RawAcl discretionaryAcl) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public RawSecurityDescriptor(string sddlForm) { }
         public override System.Security.AccessControl.ControlFlags ControlFlags { get { throw null; } }
         public System.Security.AccessControl.RawAcl DiscretionaryAcl { get { throw null; } set { } }
@@ -20328,9 +21263,7 @@ namespace System.Security.AccessControl
         public void AddAudit(System.Security.AccessControl.AuditFlags auditFlags, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags) { }
         public void AddAudit(System.Security.AccessControl.AuditFlags auditFlags, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.ObjectAceFlags objectFlags, System.Guid objectType, System.Guid inheritedObjectType) { }
         public void AddAudit(System.Security.Principal.SecurityIdentifier sid, System.Security.AccessControl.ObjectAuditRule rule) { }
-        [System.MonoTODOAttribute]
         public bool RemoveAudit(System.Security.AccessControl.AuditFlags auditFlags, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags) { throw null; }
-        [System.MonoTODOAttribute]
         public bool RemoveAudit(System.Security.AccessControl.AuditFlags auditFlags, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.ObjectAceFlags objectFlags, System.Guid objectType, System.Guid inheritedObjectType) { throw null; }
         public bool RemoveAudit(System.Security.Principal.SecurityIdentifier sid, System.Security.AccessControl.ObjectAuditRule rule) { throw null; }
         public void RemoveAuditSpecific(System.Security.AccessControl.AuditFlags auditFlags, System.Security.Principal.SecurityIdentifier sid, int accessMask, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags) { }
@@ -20632,25 +21565,30 @@ namespace System.Security.Cryptography
         public bool CanReuseTransform { get { throw null; } }
         public bool CanTransformMultipleBlocks { get { throw null; } }
         public int InputBlockSize { get { throw null; } }
-        public System.IntPtr KeyHandle { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]get { throw null; } }
+        public System.IntPtr KeyHandle { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         public int OutputBlockSize { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Clear() { }
         public void Dispose() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Reset() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public int TransformBlock(byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] TransformFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class CryptoConfig
     {
         public CryptoConfig() { }
-        [System.MonoLimitationAttribute("nothing is FIPS certified so it never make sense to restrict to this (empty) subset")]
-        public static bool AllowOnlyFipsAlgorithms { get { throw null; } }
+        public static bool AllowOnlyFipsAlgorithms { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public static void AddAlgorithm(System.Type algorithm, params string[] names) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void AddOID(string oid, params string[] names) { }
         public static object CreateFromName(string name) { throw null; }
-        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object CreateFromName(string name, params object[] args) { throw null; }
         public static byte[] EncodeOID(string str) { throw null; }
         public static string MapNameToOID(string name) { throw null; }
@@ -20709,20 +21647,21 @@ namespace System.Security.Cryptography
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class CspKeyContainerInfo
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public CspKeyContainerInfo(System.Security.Cryptography.CspParameters parameters) { }
-        public bool Accessible { get { throw null; } }
-        public System.Security.AccessControl.CryptoKeySecurity CryptoKeySecurity { get { throw null; } }
-        public bool Exportable { get { throw null; } }
-        public bool HardwareDevice { get { throw null; } }
+        public bool Accessible { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.AccessControl.CryptoKeySecurity CryptoKeySecurity { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool Exportable { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool HardwareDevice { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public string KeyContainerName { get { throw null; } }
         public System.Security.Cryptography.KeyNumber KeyNumber { get { throw null; } }
         public bool MachineKeyStore { get { throw null; } }
-        public bool Protected { get { throw null; } }
+        public bool Protected { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public string ProviderName { get { throw null; } }
         public int ProviderType { get { throw null; } }
         public bool RandomlyGenerated { get { throw null; } }
-        public bool Removable { get { throw null; } }
-        public string UniqueKeyContainerName { get { throw null; } }
+        public bool Removable { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string UniqueKeyContainerName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class CspParameters
@@ -20814,33 +21753,40 @@ namespace System.Security.Cryptography
     {
         public DSACryptoServiceProvider() { }
         public DSACryptoServiceProvider(int dwKeySize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public DSACryptoServiceProvider(int dwKeySize, System.Security.Cryptography.CspParameters parameters) { }
         public DSACryptoServiceProvider(System.Security.Cryptography.CspParameters parameters) { }
-        [System.MonoTODOAttribute("call into KeyPairPersistence to get details")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Security.Cryptography.CspKeyContainerInfo CspKeyContainerInfo { get { throw null; } }
+        public System.Security.Cryptography.CspKeyContainerInfo CspKeyContainerInfo { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override string KeyExchangeAlgorithm { get { throw null; } }
-        public override int KeySize { get { throw null; } }
-        public bool PersistKeyInCsp { get { throw null; } set { } }
+        public override int KeySize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool PersistKeyInCsp { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public bool PublicOnly { get { throw null; } }
+        public bool PublicOnly { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override string SignatureAlgorithm { get { throw null; } }
         public static bool UseMachineKeyStore { get { throw null; } set { } }
         public override byte[] CreateSignature(byte[] rgbHash) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] ExportCspBlob(bool includePrivateParameters) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
         protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void ImportCspBlob(byte[] keyBlob) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void ImportParameters(System.Security.Cryptography.DSAParameters parameters) { }
         public byte[] SignData(byte[] buffer) { throw null; }
         public byte[] SignData(byte[] buffer, int offset, int count) { throw null; }
         public byte[] SignData(System.IO.Stream inputStream) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] SignHash(byte[] rgbHash, string str) { throw null; }
         public bool VerifyData(byte[] rgbData, byte[] rgbSignature) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool VerifyHash(byte[] rgbHash, string str, byte[] rgbSignature) { throw null; }
         public override bool VerifySignature(byte[] rgbHash, byte[] rgbSignature) { throw null; }
     }
@@ -21071,10 +22017,15 @@ namespace System.Security.Cryptography
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class MD5CryptoServiceProvider : System.Security.Cryptography.MD5
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public MD5CryptoServiceProvider() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override byte[] HashFinal() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void Initialize() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -21225,10 +22176,14 @@ namespace System.Security.Cryptography
     {
         public RNGCryptoServiceProvider() { }
         public RNGCryptoServiceProvider(byte[] rgb) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public RNGCryptoServiceProvider(System.Security.Cryptography.CspParameters cspParams) { }
         public RNGCryptoServiceProvider(string str) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void GetBytes(byte[] data) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void GetNonZeroBytes(byte[] data) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -21261,35 +22216,46 @@ namespace System.Security.Cryptography
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class RSACryptoServiceProvider : System.Security.Cryptography.RSA, System.Security.Cryptography.ICspAsymmetricAlgorithm
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public RSACryptoServiceProvider() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public RSACryptoServiceProvider(int dwKeySize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public RSACryptoServiceProvider(int dwKeySize, System.Security.Cryptography.CspParameters parameters) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public RSACryptoServiceProvider(System.Security.Cryptography.CspParameters parameters) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Security.Cryptography.CspKeyContainerInfo CspKeyContainerInfo { get { throw null; } }
+        public System.Security.Cryptography.CspKeyContainerInfo CspKeyContainerInfo { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override string KeyExchangeAlgorithm { get { throw null; } }
-        public override int KeySize { get { throw null; } }
-        public bool PersistKeyInCsp { get { throw null; } set { } }
+        public override int KeySize { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool PersistKeyInCsp { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public bool PublicOnly { get { throw null; } }
+        public bool PublicOnly { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override string SignatureAlgorithm { get { throw null; } }
         public static bool UseMachineKeyStore { get { throw null; } set { } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] Decrypt(byte[] rgb, bool fOAEP) { throw null; }
         public override byte[] Decrypt(byte[] data, System.Security.Cryptography.RSAEncryptionPadding padding) { throw null; }
         public override byte[] DecryptValue(byte[] rgb) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] Encrypt(byte[] rgb, bool fOAEP) { throw null; }
         public override byte[] Encrypt(byte[] data, System.Security.Cryptography.RSAEncryptionPadding padding) { throw null; }
         public override byte[] EncryptValue(byte[] rgb) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public byte[] ExportCspBlob(bool includePrivateParameters) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.Cryptography.RSAParameters ExportParameters(bool includePrivateParameters) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void ImportCspBlob(byte[] keyBlob) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void ImportParameters(System.Security.Cryptography.RSAParameters parameters) { }
         public byte[] SignData(byte[] buffer, int offset, int count, object halg) { throw null; }
         public byte[] SignData(byte[] buffer, object halg) { throw null; }
@@ -21394,6 +22360,7 @@ namespace System.Security.Cryptography
         public RSAPKCS1SignatureDeformatter(System.Security.Cryptography.AsymmetricAlgorithm key) { }
         public override void SetHashAlgorithm(string strName) { }
         public override void SetKey(System.Security.Cryptography.AsymmetricAlgorithm key) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool VerifySignature(byte[] rgbHash, byte[] rgbSignature) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -21401,6 +22368,7 @@ namespace System.Security.Cryptography
     {
         public RSAPKCS1SignatureFormatter() { }
         public RSAPKCS1SignatureFormatter(System.Security.Cryptography.AsymmetricAlgorithm key) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override byte[] CreateSignature(byte[] rgbHash) { throw null; }
         public override void SetHashAlgorithm(string strName) { }
         public override void SetKey(System.Security.Cryptography.AsymmetricAlgorithm key) { }
@@ -21433,10 +22401,15 @@ namespace System.Security.Cryptography
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class SHA1CryptoServiceProvider : System.Security.Cryptography.SHA1
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public SHA1CryptoServiceProvider() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override byte[] HashFinal() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void Initialize() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -21583,48 +22556,52 @@ namespace System.Security.Cryptography
 }
 namespace System.Security.Cryptography.X509Certificates
 {
-    [System.MonoTODOAttribute("X509ContentType.SerializedCert isn't supported (anywhere in the class)")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public partial class X509Certificate : System.IDisposable, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
         public X509Certificate() { }
         public X509Certificate(byte[] data) { }
-        [System.MonoTODOAttribute("SecureString support is incomplete")]
         public X509Certificate(byte[] rawData, System.Security.SecureString password) { }
-        [System.MonoTODOAttribute("SecureString support is incomplete")]
         public X509Certificate(byte[] rawData, System.Security.SecureString password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
         public X509Certificate(byte[] rawData, string password) { }
         public X509Certificate(byte[] rawData, string password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public X509Certificate(System.IntPtr handle) { }
         public X509Certificate(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public X509Certificate(System.Security.Cryptography.X509Certificates.X509Certificate cert) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public X509Certificate(string fileName) { }
-        [System.MonoTODOAttribute("SecureString support is incomplete")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public X509Certificate(string fileName, System.Security.SecureString password) { }
-        [System.MonoTODOAttribute("SecureString support is incomplete")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public X509Certificate(string fileName, System.Security.SecureString password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public X509Certificate(string fileName, string password) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public X509Certificate(string fileName, string password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.IntPtr Handle { get { throw null; } }
-        public string Issuer { get { throw null; } }
-        public string Subject { get { throw null; } }
+        public System.IntPtr Handle { [System.Security.SecurityCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
+        public string Issuer { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public string Subject { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public static System.Security.Cryptography.X509Certificates.X509Certificate CreateFromCertFile(string filename) { throw null; }
-        [System.MonoTODOAttribute("Incomplete - minimal validation in this version")]
         public static System.Security.Cryptography.X509Certificates.X509Certificate CreateFromSignedFile(string filename) { throw null; }
         public void Dispose() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void Dispose(bool disposing) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool Equals(object obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual bool Equals(System.Security.Cryptography.X509Certificates.X509Certificate other) { throw null; }
-        [System.MonoTODOAttribute("X509ContentType.Pfx/Pkcs12 and SerializedCert are not supported")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] Export(System.Security.Cryptography.X509Certificates.X509ContentType contentType) { throw null; }
-        [System.MonoTODOAttribute("X509ContentType.Pfx/Pkcs12 and SerializedCert are not supported. SecureString support is incomplete.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] Export(System.Security.Cryptography.X509Certificates.X509ContentType contentType, System.Security.SecureString password) { throw null; }
-        [System.MonoTODOAttribute("X509ContentType.Pfx/Pkcs12 and SerializedCert are not supported")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] Export(System.Security.Cryptography.X509Certificates.X509ContentType contentType, string password) { throw null; }
         protected static string FormatDate(System.DateTime date) { throw null; }
         public virtual byte[] GetCertHash() { throw null; }
@@ -21632,41 +22609,63 @@ namespace System.Security.Cryptography.X509Certificates
         public virtual string GetEffectiveDateString() { throw null; }
         public virtual string GetExpirationDateString() { throw null; }
         public virtual string GetFormat() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
-        [System.ObsoleteAttribute("Use the Issuer property.")]
+        [System.ObsoleteAttribute("This method has been deprecated.  Please use the Issuer property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual string GetIssuerName() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual string GetKeyAlgorithm() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] GetKeyAlgorithmParameters() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual string GetKeyAlgorithmParametersString() { throw null; }
-        [System.ObsoleteAttribute("Use the Subject property.")]
+        [System.ObsoleteAttribute("This method has been deprecated.  Please use the Subject property instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual string GetName() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] GetPublicKey() { throw null; }
         public virtual string GetPublicKeyString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] GetRawCertData() { throw null; }
         public virtual string GetRawCertDataString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual byte[] GetSerialNumber() { throw null; }
         public virtual string GetSerialNumberString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Import(byte[] rawData) { }
-        [System.MonoTODOAttribute("SecureString support is incomplete")]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Import(byte[] rawData, System.Security.SecureString password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
-        [System.MonoTODOAttribute("missing KeyStorageFlags support")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Import(byte[] rawData, string password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Import(string fileName) { }
-        [System.MonoTODOAttribute("SecureString support is incomplete, missing KeyStorageFlags support")]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Import(string fileName, System.Security.SecureString password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
-        [System.MonoTODOAttribute("missing KeyStorageFlags support")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Import(string fileName, string password, System.Security.Cryptography.X509Certificates.X509KeyStorageFlags keyStorageFlags) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual void Reset() { }
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual string ToString(bool fVerbose) { throw null; }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum X509ContentType
     {
         Authenticode = 6,
@@ -21679,6 +22678,7 @@ namespace System.Security.Cryptography.X509Certificates
         Unknown = 0,
     }
     [System.FlagsAttribute]
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public enum X509KeyStorageFlags
     {
@@ -21705,15 +22705,19 @@ namespace System.Security.Permissions
     {
         public EnvironmentPermission(System.Security.Permissions.EnvironmentPermissionAccess flag, string pathList) { }
         public EnvironmentPermission(System.Security.Permissions.PermissionState state) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddPathList(System.Security.Permissions.EnvironmentPermissionAccess flag, string pathList) { }
         public override System.Security.IPermission Copy() { throw null; }
         public override void FromXml(System.Security.SecurityElement esd) { }
         public string GetPathList(System.Security.Permissions.EnvironmentPermissionAccess flag) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
         public bool IsUnrestricted() { throw null; }
         public void SetPathList(System.Security.Permissions.EnvironmentPermissionAccess flag, string pathList) { }
         public override System.Security.SecurityElement ToXml() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.IPermission Union(System.Security.IPermission other) { throw null; }
     }
     [System.FlagsAttribute]
@@ -21776,25 +22780,29 @@ namespace System.Security.Permissions
     [System.SerializableAttribute]
     public sealed partial class FileIOPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
-        [System.MonoTODOAttribute("(2.0) Access Control isn't implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileIOPermission(System.Security.Permissions.FileIOPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string path) { }
-        [System.MonoTODOAttribute("(2.0) Access Control isn't implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileIOPermission(System.Security.Permissions.FileIOPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string[] pathList) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileIOPermission(System.Security.Permissions.FileIOPermissionAccess access, string path) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public FileIOPermission(System.Security.Permissions.FileIOPermissionAccess access, string[] pathList) { }
         public FileIOPermission(System.Security.Permissions.PermissionState state) { }
         public System.Security.Permissions.FileIOPermissionAccess AllFiles { get { throw null; } set { } }
         public System.Security.Permissions.FileIOPermissionAccess AllLocalFiles { get { throw null; } set { } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddPathList(System.Security.Permissions.FileIOPermissionAccess access, string path) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddPathList(System.Security.Permissions.FileIOPermissionAccess access, string[] pathList) { }
         public override System.Security.IPermission Copy() { throw null; }
-        [System.MonoTODOAttribute("(2.0)")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool Equals(object obj) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override void FromXml(System.Security.SecurityElement esd) { }
-        [System.MonoTODOAttribute("(2.0)")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override int GetHashCode() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string[] GetPathList(System.Security.Permissions.FileIOPermissionAccess access) { throw null; }
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
@@ -21822,7 +22830,7 @@ namespace System.Security.Permissions
     public sealed partial class FileIOPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public FileIOPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
-        [System.ObsoleteAttribute("use newer properties")]
+        [System.ObsoleteAttribute("Please use the ViewAndModify property instead.")]
         public string All { get { throw null; } set { } }
         public System.Security.Permissions.FileIOPermissionAccess AllFiles { get { throw null; } set { } }
         public System.Security.Permissions.FileIOPermissionAccess AllLocalFiles { get { throw null; } set { } }
@@ -21918,7 +22926,6 @@ namespace System.Security.Permissions
         public override System.Security.IPermission Copy() { throw null; }
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
-        [System.MonoTODOAttribute("(2.0) new override - something must have been added ???")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
@@ -21967,14 +22974,10 @@ namespace System.Security.Permissions
         public System.Security.Permissions.KeyContainerPermissionAccessEntryCollection AccessEntries { get { throw null; } }
         public System.Security.Permissions.KeyContainerPermissionFlags Flags { get { throw null; } }
         public override System.Security.IPermission Copy() { throw null; }
-        [System.MonoTODOAttribute("(2.0) missing support for AccessEntries")]
         public override void FromXml(System.Security.SecurityElement securityElement) { }
-        [System.MonoTODOAttribute("(2.0)")]
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
-        [System.MonoTODOAttribute("(2.0)")]
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
         public bool IsUnrestricted() { throw null; }
-        [System.MonoTODOAttribute("(2.0) missing support for AccessEntries")]
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
@@ -22065,6 +23068,7 @@ namespace System.Security.Permissions
         public bool UnicodeEncoded { get { throw null; } set { } }
         public string XML { get { throw null; } set { } }
         public override System.Security.IPermission CreatePermission() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.PermissionSet CreatePermissionSet() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -22082,6 +23086,7 @@ namespace System.Security.Permissions
         public PrincipalPermission(string name, string role) { }
         public PrincipalPermission(string name, string role, bool isAuthenticated) { }
         public System.Security.IPermission Copy() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Demand() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool Equals(object obj) { throw null; }
@@ -22154,10 +23159,10 @@ namespace System.Security.Permissions
         public ReflectionPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
         public System.Security.Permissions.ReflectionPermissionFlag Flags { get { throw null; } set { } }
         public bool MemberAccess { get { throw null; } set { } }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This permission is no longer used by the CLR.")]
         public bool ReflectionEmit { get { throw null; } set { } }
         public bool RestrictedMemberAccess { get { throw null; } set { } }
-        [System.ObsoleteAttribute("not enforced in 2.0+")]
+        [System.ObsoleteAttribute("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         public bool TypeInformation { get { throw null; } set { } }
         public override System.Security.IPermission CreatePermission() { throw null; }
     }
@@ -22166,15 +23171,15 @@ namespace System.Security.Permissions
     [System.SerializableAttribute]
     public enum ReflectionPermissionFlag
     {
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This permission has been deprecated. Use PermissionState.Unrestricted to get full access.")]
         AllFlags = 7,
         MemberAccess = 2,
         NoFlags = 0,
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This permission is no longer used by the CLR.")]
         ReflectionEmit = 4,
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         RestrictedMemberAccess = 8,
-        [System.ObsoleteAttribute("not used anymore")]
+        [System.ObsoleteAttribute("This API has been deprecated. http://go.microsoft.com/fwlink/?linkid=14202")]
         TypeInformation = 1,
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -22184,17 +23189,22 @@ namespace System.Security.Permissions
         public RegistryPermission(System.Security.Permissions.PermissionState state) { }
         public RegistryPermission(System.Security.Permissions.RegistryPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string pathList) { }
         public RegistryPermission(System.Security.Permissions.RegistryPermissionAccess access, string pathList) { }
-        [System.MonoTODOAttribute("(2.0) Access Control isn't implemented")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddPathList(System.Security.Permissions.RegistryPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string pathList) { }
         public void AddPathList(System.Security.Permissions.RegistryPermissionAccess access, string pathList) { }
         public override System.Security.IPermission Copy() { throw null; }
         public override void FromXml(System.Security.SecurityElement esd) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public string GetPathList(System.Security.Permissions.RegistryPermissionAccess access) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
         public bool IsUnrestricted() { throw null; }
         public void SetPathList(System.Security.Permissions.RegistryPermissionAccess access, string pathList) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.SecurityElement ToXml() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.IPermission Union(System.Security.IPermission other) { throw null; }
     }
     [System.FlagsAttribute]
@@ -22214,7 +23224,7 @@ namespace System.Security.Permissions
     public sealed partial class RegistryPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public RegistryPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
-        [System.ObsoleteAttribute("use newer properties")]
+        [System.ObsoleteAttribute("Please use the ViewAndModify property instead.")]
         public string All { get { throw null; } set { } }
         public string ChangeAccessControl { get { throw null; } set { } }
         public string Create { get { throw null; } set { } }
@@ -22230,16 +23240,16 @@ namespace System.Security.Permissions
     {
         Assert = 3,
         Demand = 2,
-        [System.ObsoleteAttribute("This requests should not be used")]
+        [System.ObsoleteAttribute("Deny is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         Deny = 4,
         InheritanceDemand = 7,
         LinkDemand = 6,
         PermitOnly = 5,
-        [System.ObsoleteAttribute("This requests should not be used")]
+        [System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         RequestMinimum = 8,
-        [System.ObsoleteAttribute("This requests should not be used")]
+        [System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         RequestOptional = 9,
-        [System.ObsoleteAttribute("This requests should not be used")]
+        [System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
         RequestRefuse = 10,
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
@@ -22509,6 +23519,8 @@ namespace System.Security.Policy
         public System.Security.SecurityElement ToXml(System.Security.Policy.PolicyLevel level) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class ApplicationSecurityInfo
     {
         public ApplicationSecurityInfo(System.ActivationContext activationContext) { }
@@ -22520,10 +23532,10 @@ namespace System.Security.Policy
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public static partial class ApplicationSecurityManager
     {
-        public static System.Security.Policy.IApplicationTrustManager ApplicationTrustManager { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true)]get { throw null; } }
-        public static System.Security.Policy.ApplicationTrustCollection UserApplicationTrusts { get { throw null; } }
-        [System.MonoTODOAttribute("Missing application manifest support")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPolicy=true, ControlEvidence=true)]
+        public static System.Security.Policy.IApplicationTrustManager ApplicationTrustManager { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]get { throw null; } }
+        public static System.Security.Policy.ApplicationTrustCollection UserApplicationTrusts { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
         public static bool DetermineApplicationTrust(System.ActivationContext activationContext, System.Security.Policy.TrustManagerContext context) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -22539,39 +23551,54 @@ namespace System.Security.Policy
         public System.Collections.Generic.IList<System.Security.Policy.StrongName> FullTrustAssemblies { get { throw null; } }
         public bool IsApplicationTrustedToRun { get { throw null; } set { } }
         public bool Persist { get { throw null; } set { } }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public void FromXml(System.Security.SecurityElement element) { }
         public System.Security.SecurityElement ToXml() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
     public sealed partial class ApplicationTrustCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal ApplicationTrustCollection() { }
-        public int Count { get { throw null; } }
-        public bool IsSynchronized { get { throw null; } }
-        public System.Security.Policy.ApplicationTrust this[int index] { get { throw null; } }
-        public System.Security.Policy.ApplicationTrust this[string appFullName] { get { throw null; } }
-        public object SyncRoot { get { throw null; } }
+        public int Count { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool IsSynchronized { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Policy.ApplicationTrust this[int index] { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Security.Policy.ApplicationTrust this[string appFullName] { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public object SyncRoot { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public int Add(System.Security.Policy.ApplicationTrust trust) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void AddRange(System.Security.Policy.ApplicationTrustCollection trusts) { }
+        [System.Security.SecurityCriticalAttribute]
         public void AddRange(System.Security.Policy.ApplicationTrust[] trusts) { }
+        [System.Security.SecurityCriticalAttribute]
         public void Clear() { }
         public void CopyTo(System.Security.Policy.ApplicationTrust[] array, int index) { }
+        [System.Security.SecurityCriticalAttribute]
         public System.Security.Policy.ApplicationTrustCollection Find(System.ApplicationIdentity applicationIdentity, System.Security.Policy.ApplicationVersionMatch versionMatch) { throw null; }
         public System.Security.Policy.ApplicationTrustEnumerator GetEnumerator() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void Remove(System.ApplicationIdentity applicationIdentity, System.Security.Policy.ApplicationVersionMatch versionMatch) { }
+        [System.Security.SecurityCriticalAttribute]
         public void Remove(System.Security.Policy.ApplicationTrust trust) { }
+        [System.Security.SecurityCriticalAttribute]
         public void RemoveRange(System.Security.Policy.ApplicationTrustCollection trusts) { }
+        [System.Security.SecurityCriticalAttribute]
         public void RemoveRange(System.Security.Policy.ApplicationTrust[] trusts) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class ApplicationTrustEnumerator : System.Collections.IEnumerator
     {
         internal ApplicationTrustEnumerator() { }
-        public System.Security.Policy.ApplicationTrust Current { get { throw null; } }
-        object System.Collections.IEnumerator.Current { get { throw null; } }
+        public System.Security.Policy.ApplicationTrust Current { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        object System.Collections.IEnumerator.Current { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool MoveNext() { throw null; }
         public void Reset() { }
     }
@@ -22589,7 +23616,6 @@ namespace System.Security.Policy
         public static readonly int DefaultPort;
         public static readonly int OriginPort;
         public static readonly string OriginScheme;
-        [System.MonoTODOAttribute("(2.0) validations incomplete")]
         public CodeConnectAccess(string allowScheme, int allowPort) { }
         public int Port { get { throw null; } }
         public string Scheme { get { throw null; } }
@@ -22604,72 +23630,88 @@ namespace System.Security.Policy
     {
         protected CodeGroup(System.Security.Policy.IMembershipCondition membershipCondition, System.Security.Policy.PolicyStatement policy) { }
         public virtual string AttributeString { get { throw null; } }
-        public System.Collections.IList Children { get { throw null; } set { } }
+        public System.Collections.IList Children { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public string Description { get { throw null; } set { } }
-        public System.Security.Policy.IMembershipCondition MembershipCondition { get { throw null; } set { } }
+        public System.Security.Policy.IMembershipCondition MembershipCondition { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public abstract string MergeLogic { get; }
         public string Name { get { throw null; } set { } }
         public virtual string PermissionSetName { get { throw null; } }
         public System.Security.Policy.PolicyStatement PolicyStatement { get { throw null; } set { } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddChild(System.Security.Policy.CodeGroup group) { }
         public abstract System.Security.Policy.CodeGroup Copy();
         protected virtual void CreateXml(System.Security.SecurityElement element, System.Security.Policy.PolicyLevel level) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override bool Equals(object o) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool Equals(System.Security.Policy.CodeGroup cg, bool compareChildren) { throw null; }
         public void FromXml(System.Security.SecurityElement e) { }
         public void FromXml(System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override int GetHashCode() { throw null; }
         protected virtual void ParseXml(System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveChild(System.Security.Policy.CodeGroup group) { }
         public abstract System.Security.Policy.PolicyStatement Resolve(System.Security.Policy.Evidence evidence);
         public abstract System.Security.Policy.CodeGroup ResolveMatchingCodeGroups(System.Security.Policy.Evidence evidence);
         public System.Security.SecurityElement ToXml() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.SecurityElement ToXml(System.Security.Policy.PolicyLevel level) { throw null; }
     }
-    [System.MonoTODOAttribute("Serialization format not compatible with .NET")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public sealed partial class Evidence : System.Collections.ICollection, System.Collections.IEnumerable
     {
         public Evidence() { }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This constructor is obsolete. Please use the constructor which takes arrays of EvidenceBase instead.")]
         public Evidence(object[] hostEvidence, object[] assemblyEvidence) { }
         public Evidence(System.Security.Policy.Evidence evidence) { }
         public Evidence(System.Security.Policy.EvidenceBase[] hostEvidence, System.Security.Policy.EvidenceBase[] assemblyEvidence) { }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Evidence should not be treated as an ICollection. Please use GetHostEnumerator and GetAssemblyEnumerator to iterate over the evidence to collect a count.")]
         public int Count { get { throw null; } }
         public bool IsReadOnly { get { throw null; } }
         public bool IsSynchronized { get { throw null; } }
-        public bool Locked { get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true)]set { } }
+        public bool Locked { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         public object SyncRoot { get { throw null; } }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete. Please use AddAssemblyEvidence instead.")]
         public void AddAssembly(object id) { }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void AddAssemblyEvidence<T>(T evidence) where T : System.Security.Policy.EvidenceBase { }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method is obsolete. Please use AddHostEvidence instead.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddHost(object id) { }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void AddHostEvidence<T>(T evidence) where T : System.Security.Policy.EvidenceBase { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Clear() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Security.Policy.Evidence Clone() { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("Evidence should not be treated as an ICollection. Please use the GetHostEnumerator and GetAssemblyEnumerator methods rather than using CopyTo.")]
         public void CopyTo(System.Array array, int index) { }
         public System.Collections.IEnumerator GetAssemblyEnumerator() { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public T GetAssemblyEvidence<T>() where T : System.Security.Policy.EvidenceBase { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("GetEnumerator is obsolete. Please use GetAssemblyEnumerator and GetHostEnumerator instead.")]
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public System.Collections.IEnumerator GetHostEnumerator() { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public T GetHostEvidence<T>() where T : System.Security.Policy.EvidenceBase { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Merge(System.Security.Policy.Evidence evidence) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveType(System.Type t) { }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
     [System.SerializableAttribute]
     public abstract partial class EvidenceBase
     {
         protected EvidenceBase() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, SerializationFormatter=true)]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         public virtual System.Security.Policy.EvidenceBase Clone() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -22685,9 +23727,11 @@ namespace System.Security.Policy
         public override bool Equals(object o) { throw null; }
         public override int GetHashCode() { throw null; }
         protected override void ParseXml(System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.Policy.PolicyStatement Resolve(System.Security.Policy.Evidence evidence) { throw null; }
         public override System.Security.Policy.CodeGroup ResolveMatchingCodeGroups(System.Security.Policy.Evidence evidence) { throw null; }
     }
+    [System.ObsoleteAttribute("This type is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public sealed partial class FirstMatchCodeGroup : System.Security.Policy.CodeGroup
@@ -22695,6 +23739,7 @@ namespace System.Security.Policy
         public FirstMatchCodeGroup(System.Security.Policy.IMembershipCondition membershipCondition, System.Security.Policy.PolicyStatement policy) : base (default(System.Security.Policy.IMembershipCondition), default(System.Security.Policy.PolicyStatement)) { }
         public override string MergeLogic { get { throw null; } }
         public override System.Security.Policy.CodeGroup Copy() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.Policy.PolicyStatement Resolve(System.Security.Policy.Evidence evidence) { throw null; }
         public override System.Security.Policy.CodeGroup ResolveMatchingCodeGroups(System.Security.Policy.Evidence evidence) { throw null; }
     }
@@ -22738,6 +23783,7 @@ namespace System.Security.Policy
         public static System.Security.Policy.Hash CreateSHA1(byte[] sha1) { throw null; }
         public static System.Security.Policy.Hash CreateSHA256(byte[] sha256) { throw null; }
         public byte[] GenerateHash(System.Security.Cryptography.HashAlgorithm hashAlg) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -22754,9 +23800,8 @@ namespace System.Security.Policy
         public void FromXml(System.Security.SecurityElement e) { }
         public void FromXml(System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level) { }
         public override int GetHashCode() { throw null; }
-        [System.MonoTODOAttribute("fx 2.0")]
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
-        [System.MonoTODOAttribute("fx 2.0")]
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
         public System.Security.SecurityElement ToXml() { throw null; }
@@ -22790,20 +23835,19 @@ namespace System.Security.Policy
         public override string AttributeString { get { throw null; } }
         public override string MergeLogic { get { throw null; } }
         public override string PermissionSetName { get { throw null; } }
-        [System.MonoTODOAttribute("(2.0) missing validations")]
         public void AddConnectAccess(string originScheme, System.Security.Policy.CodeConnectAccess connectAccess) { }
         public override System.Security.Policy.CodeGroup Copy() { throw null; }
-        [System.MonoTODOAttribute("(2.0) Add new stuff (CodeConnectAccess) into XML")]
         protected override void CreateXml(System.Security.SecurityElement element, System.Security.Policy.PolicyLevel level) { }
         public override bool Equals(object o) { throw null; }
         public System.Collections.DictionaryEntry[] GetConnectAccessRules() { throw null; }
         public override int GetHashCode() { throw null; }
-        [System.MonoTODOAttribute("(2.0) Parse new stuff (CodeConnectAccess) from XML")]
         protected override void ParseXml(System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level) { }
         public void ResetConnectAccess() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.Policy.PolicyStatement Resolve(System.Security.Policy.Evidence evidence) { throw null; }
         public override System.Security.Policy.CodeGroup ResolveMatchingCodeGroups(System.Security.Policy.Evidence evidence) { throw null; }
     }
+    [System.ObsoleteAttribute("Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public sealed partial class PermissionRequestEvidence : System.Security.Policy.EvidenceBase
@@ -22830,33 +23874,45 @@ namespace System.Security.Policy
     public sealed partial class PolicyLevel
     {
         internal PolicyLevel() { }
-        [System.ObsoleteAttribute("All GACed assemblies are now fully trusted and all permissions now succeed on fully trusted code.")]
-        public System.Collections.IList FullTrustAssemblies { get { throw null; } }
+        [System.ObsoleteAttribute("Because all GAC assemblies always get full trust, the full trust list is no longer meaningful. You should install any assemblies that are used in security policy in the GAC to ensure they are trusted.")]
+        public System.Collections.IList FullTrustAssemblies { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public string Label { get { throw null; } }
-        public System.Collections.IList NamedPermissionSets { get { throw null; } }
-        public System.Security.Policy.CodeGroup RootCodeGroup { get { throw null; } set { } }
-        public string StoreLocation { get { throw null; } }
+        public System.Collections.IList NamedPermissionSets { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Policy.CodeGroup RootCodeGroup { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public string StoreLocation { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(64))]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.Security.PolicyLevelType Type { get { throw null; } }
-        [System.ObsoleteAttribute("All GACed assemblies are now fully trusted and all permissions now succeed on fully trusted code.")]
+        [System.ObsoleteAttribute("Because all GAC assemblies always get full trust, the full trust list is no longer meaningful. You should install any assemblies that are used in security policy in the GAC to ensure they are trusted.")]
         public void AddFullTrustAssembly(System.Security.Policy.StrongName sn) { }
-        [System.ObsoleteAttribute("All GACed assemblies are now fully trusted and all permissions now succeed on fully trusted code.")]
+        [System.ObsoleteAttribute("Because all GAC assemblies always get full trust, the full trust list is no longer meaningful. You should install any assemblies that are used in security policy in the GAC to ensure they are trusted.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddFullTrustAssembly(System.Security.Policy.StrongNameMembershipCondition snMC) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AddNamedPermissionSet(System.Security.NamedPermissionSet permSet) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.NamedPermissionSet ChangeNamedPermissionSet(string name, System.Security.PermissionSet pSet) { throw null; }
+        [System.ObsoleteAttribute("AppDomain policy levels are obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Policy.PolicyLevel CreateAppDomainLevel() { throw null; }
         public void FromXml(System.Security.SecurityElement e) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.NamedPermissionSet GetNamedPermissionSet(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Recover() { }
-        [System.ObsoleteAttribute("All GACed assemblies are now fully trusted and all permissions now succeed on fully trusted code.")]
+        [System.ObsoleteAttribute("Because all GAC assemblies always get full trust, the full trust list is no longer meaningful. You should install any assemblies that are used in security policy in the GAC to ensure they are trusted.")]
         public void RemoveFullTrustAssembly(System.Security.Policy.StrongName sn) { }
-        [System.ObsoleteAttribute("All GACed assemblies are now fully trusted and all permissions now succeed on fully trusted code.")]
+        [System.ObsoleteAttribute("Because all GAC assemblies always get full trust, the full trust list is no longer meaningful. You should install any assemblies that are used in security policy in the GAC to ensure they are trusted.")]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveFullTrustAssembly(System.Security.Policy.StrongNameMembershipCondition snMC) { }
         public System.Security.NamedPermissionSet RemoveNamedPermissionSet(System.Security.NamedPermissionSet permSet) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.NamedPermissionSet RemoveNamedPermissionSet(string name) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Reset() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.Policy.PolicyStatement Resolve(System.Security.Policy.Evidence evidence) { throw null; }
         public System.Security.Policy.CodeGroup ResolveMatchingCodeGroups(System.Security.Policy.Evidence evidence) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.SecurityElement ToXml() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -22872,6 +23928,7 @@ namespace System.Security.Policy
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool Equals(object obj) { throw null; }
         public void FromXml(System.Security.SecurityElement et) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void FromXml(System.Security.SecurityElement et, System.Security.Policy.PolicyLevel level) { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override int GetHashCode() { throw null; }
@@ -22999,6 +24056,7 @@ namespace System.Security.Policy
         Run = 2,
         Upgrade = 1,
     }
+    [System.ObsoleteAttribute("This type is obsolete and will be removed in a future release of the .NET Framework. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public sealed partial class UnionCodeGroup : System.Security.Policy.CodeGroup
@@ -23006,6 +24064,7 @@ namespace System.Security.Policy
         public UnionCodeGroup(System.Security.Policy.IMembershipCondition membershipCondition, System.Security.Policy.PolicyStatement policy) : base (default(System.Security.Policy.IMembershipCondition), default(System.Security.Policy.PolicyStatement)) { }
         public override string MergeLogic { get { throw null; } }
         public override System.Security.Policy.CodeGroup Copy() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public override System.Security.Policy.PolicyStatement Resolve(System.Security.Policy.Evidence evidence) { throw null; }
         public override System.Security.Policy.CodeGroup ResolveMatchingCodeGroups(System.Security.Policy.Evidence evidence) { throw null; }
     }
@@ -23043,10 +24102,9 @@ namespace System.Security.Policy
     public sealed partial class Zone : System.Security.Policy.EvidenceBase, System.Security.Policy.IIdentityPermissionFactory
     {
         public Zone(System.Security.SecurityZone zone) { }
-        public System.Security.SecurityZone SecurityZone { get { throw null; } }
+        public System.Security.SecurityZone SecurityZone { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override System.Security.Policy.EvidenceBase Clone() { throw null; }
         public object Copy() { throw null; }
-        [System.MonoTODOAttribute("Not user configurable yet")]
         public static System.Security.Policy.Zone CreateFromUrl(string url) { throw null; }
         public System.Security.IPermission CreateIdentityPermission(System.Security.Policy.Evidence evidence) { throw null; }
         public override bool Equals(object o) { throw null; }
@@ -23103,7 +24161,7 @@ namespace System.Security.Principal
         public IdentityNotMappedException(string message) { }
         public IdentityNotMappedException(string message, System.Exception inner) { }
         public System.Security.Principal.IdentityReferenceCollection UnmappedIdentities { get { throw null; } }
-        [System.MonoTODOAttribute("not implemented")]
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -23135,6 +24193,8 @@ namespace System.Security.Principal
         public bool Remove(System.Security.Principal.IdentityReference identity) { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public System.Security.Principal.IdentityReferenceCollection Translate(System.Type targetType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public System.Security.Principal.IdentityReferenceCollection Translate(System.Type targetType, bool forceSuccess) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -23162,6 +24222,8 @@ namespace System.Security.Principal
         public static bool operator ==(System.Security.Principal.NTAccount left, System.Security.Principal.NTAccount right) { throw null; }
         public static bool operator !=(System.Security.Principal.NTAccount left, System.Security.Principal.NTAccount right) { throw null; }
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public override System.Security.Principal.IdentityReference Translate(System.Type targetType) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -23178,10 +24240,14 @@ namespace System.Security.Principal
         public static readonly int MaxBinaryLength;
         public static readonly int MinBinaryLength;
         public SecurityIdentifier(byte[] binaryForm, int offset) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, UnmanagedCode=true)]
         public SecurityIdentifier(System.IntPtr binaryForm) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecurityIdentifier(System.Security.Principal.WellKnownSidType sidType, System.Security.Principal.SecurityIdentifier domainSid) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public SecurityIdentifier(string sddlForm) { }
-        public System.Security.Principal.SecurityIdentifier AccountDomainSid { get { throw null; } }
+        public System.Security.Principal.SecurityIdentifier AccountDomainSid { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public int BinaryLength { get { throw null; } }
         public override string Value { get { throw null; } }
         public int CompareTo(System.Security.Principal.SecurityIdentifier sid) { throw null; }
@@ -23189,13 +24255,18 @@ namespace System.Security.Principal
         public bool Equals(System.Security.Principal.SecurityIdentifier sid) { throw null; }
         public void GetBinaryForm(byte[] binaryForm, int offset) { }
         public override int GetHashCode() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool IsAccountSid() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool IsEqualDomainSid(System.Security.Principal.SecurityIdentifier sid) { throw null; }
         public override bool IsValidTargetType(System.Type targetType) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool IsWellKnown(System.Security.Principal.WellKnownSidType type) { throw null; }
         public static bool operator ==(System.Security.Principal.SecurityIdentifier left, System.Security.Principal.SecurityIdentifier right) { throw null; }
         public static bool operator !=(System.Security.Principal.SecurityIdentifier left, System.Security.Principal.SecurityIdentifier right) { throw null; }
         public override string ToString() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public override System.Security.Principal.IdentityReference Translate(System.Type targetType) { throw null; }
     }
     [System.FlagsAttribute]
@@ -23322,62 +24393,80 @@ namespace System.Security.Principal
     {
         [System.NonSerializedAttribute]
         public new const string DefaultIssuer = "AD AUTHORITY";
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public WindowsIdentity(System.IntPtr userToken) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public WindowsIdentity(System.IntPtr userToken, string type) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public WindowsIdentity(System.IntPtr userToken, string type, System.Security.Principal.WindowsAccountType acctType) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public WindowsIdentity(System.IntPtr userToken, string type, System.Security.Principal.WindowsAccountType acctType, bool isAuthenticated) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public WindowsIdentity(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected WindowsIdentity(System.Security.Principal.WindowsIdentity identity) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public WindowsIdentity(string sUserPrincipalName) { }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public WindowsIdentity(string sUserPrincipalName, string type) { }
-        public Microsoft.Win32.SafeHandles.SafeAccessTokenHandle AccessToken { get { throw null; } }
-        public sealed override string AuthenticationType { get { throw null; } }
+        public Microsoft.Win32.SafeHandles.SafeAccessTokenHandle AccessToken { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public sealed override string AuthenticationType { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> Claims { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> DeviceClaims { get { throw null; } }
-        [System.MonoTODOAttribute("not implemented")]
-        public System.Security.Principal.IdentityReferenceCollection Groups { get { throw null; } }
-        [System.MonoTODOAttribute("not implemented")]
+        public System.Security.Principal.IdentityReferenceCollection Groups { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get { throw null; } }
-        public virtual bool IsAnonymous { get { throw null; } }
+        public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual bool IsAnonymous { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public override bool IsAuthenticated { get { throw null; } }
-        public virtual bool IsGuest { get { throw null; } }
-        public virtual bool IsSystem { get { throw null; } }
-        public override string Name { get { throw null; } }
-        [System.MonoTODOAttribute("not implemented")]
+        public virtual bool IsGuest { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual bool IsSystem { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public override string Name { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Security.Principal.SecurityIdentifier Owner { get { throw null; } }
-        public virtual System.IntPtr Token { get { throw null; } }
-        [System.MonoTODOAttribute("not implemented")]
+        public System.Security.Principal.SecurityIdentifier Owner { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public virtual System.IntPtr Token { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]get { throw null; } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
-        public System.Security.Principal.SecurityIdentifier User { get { throw null; } }
+        public System.Security.Principal.SecurityIdentifier User { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> UserClaims { get { throw null; } }
         public override System.Security.Claims.ClaimsIdentity Clone() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void Dispose() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Principal.WindowsIdentity GetAnonymous() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public static System.Security.Principal.WindowsIdentity GetCurrent() { throw null; }
-        [System.MonoTODOAttribute("need icall changes")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public static System.Security.Principal.WindowsIdentity GetCurrent(bool ifImpersonating) { throw null; }
-        [System.MonoTODOAttribute("need icall changes")]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]
         public static System.Security.Principal.WindowsIdentity GetCurrent(System.Security.Principal.TokenAccessLevels desiredAccess) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public virtual System.Security.Principal.WindowsImpersonationContext Impersonate() { throw null; }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(514))]
         public static System.Security.Principal.WindowsImpersonationContext Impersonate(System.IntPtr userToken) { throw null; }
-        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static void RunImpersonated(Microsoft.Win32.SafeHandles.SafeAccessTokenHandle safeAccessTokenHandle, System.Action action) { }
-        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static T RunImpersonated<T>(Microsoft.Win32.SafeHandles.SafeAccessTokenHandle safeAccessTokenHandle, System.Func<T> func) { throw null; }
         void System.Runtime.Serialization.IDeserializationCallback.OnDeserialization(object sender) { }
+        [System.Security.SecurityCriticalAttribute]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -23387,10 +24476,13 @@ namespace System.Security.Principal
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void Dispose() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void Dispose(bool disposing) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Undo() { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SecurityInfrastructure=true)]
     [System.SerializableAttribute]
     public partial class WindowsPrincipal : System.Security.Claims.ClaimsPrincipal
     {
@@ -23399,10 +24491,12 @@ namespace System.Security.Principal
         public override System.Security.Principal.IIdentity Identity { get { throw null; } }
         public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> UserClaims { get { throw null; } }
         public virtual bool IsInRole(int rid) { throw null; }
-        [System.MonoTODOAttribute("not implemented")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual bool IsInRole(System.Security.Principal.SecurityIdentifier sid) { throw null; }
         public virtual bool IsInRole(System.Security.Principal.WindowsBuiltInRole role) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]
         public override bool IsInRole(string role) { throw null; }
     }
 }
@@ -23769,7 +24863,6 @@ namespace System.Text
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class StringBuilder : System.Runtime.Serialization.ISerializable
     {
         public StringBuilder() { }
@@ -24164,12 +25257,13 @@ namespace System.Threading
     public sealed partial class CompressedStack : System.Runtime.Serialization.ISerializable
     {
         internal CompressedStack() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static System.Threading.CompressedStack Capture() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Threading.CompressedStack CreateCopy() { throw null; }
-        [System.Security.SecurityCriticalAttribute]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecurityCriticalAttribute]
         public static System.Threading.CompressedStack GetCompressedStack() { throw null; }
-        [System.MonoTODOAttribute("incomplete")]
         [System.Security.SecurityCriticalAttribute]
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         [System.Security.SecurityCriticalAttribute]
@@ -24258,12 +25352,12 @@ namespace System.Threading
         [System.Security.SecurityCriticalAttribute]
         public static System.Threading.AsyncFlowControl SuppressFlow() { throw null; }
     }
-    [System.MonoTODOAttribute("Useless until the runtime supports it")]
     public partial class HostExecutionContext : System.IDisposable
     {
         public HostExecutionContext() { }
         public HostExecutionContext(object state) { }
         protected internal object State { get { throw null; } set { } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual System.Threading.HostExecutionContext CreateCopy() { throw null; }
         public void Dispose() { }
         public virtual void Dispose(bool disposing) { }
@@ -24271,54 +25365,67 @@ namespace System.Threading
     public partial class HostExecutionContextManager
     {
         public HostExecutionContextManager() { }
-        [System.MonoTODOAttribute]
+        [System.Security.SecuritySafeCriticalAttribute]
         public virtual System.Threading.HostExecutionContext Capture() { throw null; }
-        [System.MonoTODOAttribute]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public virtual void Revert(object previousState) { }
-        [System.MonoTODOAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]
+        [System.Security.SecurityCriticalAttribute]
         public virtual object SetHostExecutionContext(System.Threading.HostExecutionContext hostExecutionContext) { throw null; }
     }
     public static partial class Interlocked
     {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static int Add(ref int location1, int value) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static long Add(ref long location1, long value) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static double CompareExchange(ref double location1, double value, double comparand) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static double CompareExchange(ref double location1, double value, double comparand) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int CompareExchange(ref int location1, int value, int comparand) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static long CompareExchange(ref long location1, long value, long comparand) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static long CompareExchange(ref long location1, long value, long comparand) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IntPtr CompareExchange(ref System.IntPtr location1, System.IntPtr value, System.IntPtr comparand) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object CompareExchange(ref object location1, object value, object comparand) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static float CompareExchange(ref float location1, float value, float comparand) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static float CompareExchange(ref float location1, float value, float comparand) { throw null; }
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static T CompareExchange<T>(ref T location1, T value, T comparand) where T : class { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static int Decrement(ref int location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static long Decrement(ref long location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static double Exchange(ref double location1, double value) { throw null; }
+        public static long Decrement(ref long location) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static double Exchange(ref double location1, double value) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int Exchange(ref int location1, int value) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static long Exchange(ref long location1, long value) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static long Exchange(ref long location1, long value) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.IntPtr Exchange(ref System.IntPtr location1, System.IntPtr value) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static object Exchange(ref object location1, object value) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static float Exchange(ref float location1, float value) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
+        public static float Exchange(ref float location1, float value) { throw null; }
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static T Exchange<T>(ref T location1, T value) where T : class { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static int Increment(ref int location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static long Increment(ref long location) { throw null; }
         public static void MemoryBarrier() { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static long Read(ref long location) { throw null; }
+        public static long Read(ref long location) { throw null; }
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -24416,28 +25523,38 @@ namespace System.Threading
         public static bool Wait(object obj, System.TimeSpan timeout, bool exitContext) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public sealed partial class Mutex : System.Threading.WaitHandle
     {
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Mutex() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Mutex(bool initiallyOwned) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
+        [System.Security.SecurityCriticalAttribute]
         public Mutex(bool initiallyOwned, string name) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]
+        [System.Security.SecurityCriticalAttribute]
         public Mutex(bool initiallyOwned, string name, out bool createdNew) { createdNew = default(bool); }
-        [System.MonoTODOAttribute("Use MutexSecurity in CreateMutex_internal")]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public Mutex(bool initiallyOwned, string name, out bool createdNew, System.Security.AccessControl.MutexSecurity mutexSecurity) { createdNew = default(bool); }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Security.AccessControl.MutexSecurity GetAccessControl() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Threading.Mutex OpenExisting(string name) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Threading.Mutex OpenExisting(string name, System.Security.AccessControl.MutexRights rights) { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void ReleaseMutex() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void SetAccessControl(System.Security.AccessControl.MutexSecurity mutexSecurity) { }
+        [System.Security.SecurityCriticalAttribute]
         public static bool TryOpenExisting(string name, System.Security.AccessControl.MutexRights rights, out System.Threading.Mutex result) { result = default(System.Threading.Mutex); throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static bool TryOpenExisting(string name, out System.Threading.Mutex result) { result = default(System.Threading.Mutex); throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -24454,58 +25571,75 @@ namespace System.Threading
     public partial class Overlapped
     {
         public Overlapped() { }
-        [System.ObsoleteAttribute("Not 64bit compatible.  Please use the constructor that takes IntPtr for the event handle")]
+        [System.ObsoleteAttribute("This constructor is not 64-bit compatible.  Use the constructor that takes an IntPtr for the event handle.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public Overlapped(int offsetLo, int offsetHi, int hEvent, System.IAsyncResult ar) { }
         public Overlapped(int offsetLo, int offsetHi, System.IntPtr hEvent, System.IAsyncResult ar) { }
         public System.IAsyncResult AsyncResult { get { throw null; } set { } }
-        [System.ObsoleteAttribute("Not 64bit compatible.  Use EventHandleIntPtr instead.")]
+        [System.ObsoleteAttribute("This property is not 64-bit compatible.  Use EventHandleIntPtr instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public int EventHandle { get { throw null; } set { } }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.IntPtr EventHandleIntPtr { get { throw null; } set { } }
         public int OffsetHigh { get { throw null; } set { } }
         public int OffsetLow { get { throw null; } set { } }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static void Free(System.Threading.NativeOverlapped* nativeOverlappedPtr) { }
         [System.CLSCompliantAttribute(false)]
-        [System.MonoTODOAttribute("Security - we need to propagate the call stack")]
-        [System.ObsoleteAttribute("Use Pack(iocb, userData) instead")]
+        [System.ObsoleteAttribute("This method is not safe.  Use Pack (iocb, userData) instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe System.Threading.NativeOverlapped* Pack(System.Threading.IOCompletionCallback iocb) { throw null; }
         [System.CLSCompliantAttribute(false)]
-        [System.MonoTODOAttribute("handle userData")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe System.Threading.NativeOverlapped* Pack(System.Threading.IOCompletionCallback iocb, object userData) { throw null; }
         [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe static System.Threading.Overlapped Unpack(System.Threading.NativeOverlapped* nativeOverlappedPtr) { throw null; }
         [System.CLSCompliantAttribute(false)]
-        [System.ObsoleteAttribute("Use UnsafePack(iocb, userData) instead")]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlEvidence=true, ControlPolicy=true)]
+        [System.ObsoleteAttribute("This method is not safe.  Use UnsafePack (iocb, userData) instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe System.Threading.NativeOverlapped* UnsafePack(System.Threading.IOCompletionCallback iocb) { throw null; }
         [System.CLSCompliantAttribute(false)]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
         public unsafe System.Threading.NativeOverlapped* UnsafePack(System.Threading.IOCompletionCallback iocb, object userData) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public delegate void ParameterizedThreadStart(object obj);
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public sealed partial class ReaderWriterLock : System.Runtime.ConstrainedExecution.CriticalFinalizerObject
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public ReaderWriterLock() { }
-        public bool IsReaderLockHeld { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
-        public bool IsWriterLockHeld { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
-        public int WriterSeqNum { get { throw null; } }
+        public bool IsReaderLockHeld { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool IsWriterLockHeld { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public int WriterSeqNum { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AcquireReaderLock(int millisecondsTimeout) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AcquireReaderLock(System.TimeSpan timeout) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AcquireWriterLock(int millisecondsTimeout) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void AcquireWriterLock(System.TimeSpan timeout) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public bool AnyWritersSince(int seqNum) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DowngradeFromWriterLock(ref System.Threading.LockCookie lockCookie) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         ~ReaderWriterLock() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Threading.LockCookie ReleaseLock() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void ReleaseReaderLock() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void ReleaseWriterLock() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void RestoreLock(ref System.Threading.LockCookie lockCookie) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Threading.LockCookie UpgradeToWriterLock(int millisecondsTimeout) { throw null; }
         public System.Threading.LockCookie UpgradeToWriterLock(System.TimeSpan timeout) { throw null; }
     }
@@ -24514,6 +25648,7 @@ namespace System.Threading
     {
         internal RegisteredWaitHandle() { }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public bool Unregister(System.Threading.WaitHandle waitObject) { throw null; }
     }
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System, Version=2.0.0.0, Culture=Neutral, PublicKeyToken=b77a5c561934e089")]
@@ -24604,7 +25739,7 @@ namespace System.Threading
         [System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute]
         [System.Security.SecurityCriticalAttribute]
         public virtual int Wait(System.IntPtr[] waitHandles, bool waitAll, int millisecondsTimeout) { throw null; }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.PrePrepareMethodAttribute]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
         [System.Security.SecurityCriticalAttribute]
@@ -24622,7 +25757,6 @@ namespace System.Threading
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComDefaultInterfaceAttribute(typeof(System.Runtime.InteropServices._Thread))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class Thread : System.Runtime.ConstrainedExecution.CriticalFinalizerObject, System.Runtime.InteropServices._Thread
     {
         [System.Security.SecuritySafeCriticalAttribute]
@@ -24633,50 +25767,63 @@ namespace System.Threading
         public Thread(System.Threading.ThreadStart start) { }
         [System.Security.SecuritySafeCriticalAttribute]
         public Thread(System.Threading.ThreadStart start, int maxStackSize) { }
-        [System.ObsoleteAttribute("Deprecated in favor of GetApartmentState, SetApartmentState and TrySetApartmentState.")]
-        public System.Threading.ApartmentState ApartmentState { get { throw null; } set { } }
-        public static System.Runtime.Remoting.Contexts.Context CurrentContext { [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Infrastructure=true)]get { throw null; } }
-        public System.Globalization.CultureInfo CurrentCulture { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
-        public static System.Security.Principal.IPrincipal CurrentPrincipal { get { throw null; } [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlPrincipal=true)]set { } }
-        public static System.Threading.Thread CurrentThread { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]get { throw null; } }
+        [System.ObsoleteAttribute("The ApartmentState property has been deprecated.  Use GetApartmentState, SetApartmentState or TrySetApartmentState instead.", false)]
+        public System.Threading.ApartmentState ApartmentState { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, SelfAffectingThreading=true)]set { } }
+        public static System.Runtime.Remoting.Contexts.Context CurrentContext { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public System.Globalization.CultureInfo CurrentCulture { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlThread=true)]set { } }
+        public static System.Security.Principal.IPrincipal CurrentPrincipal { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(512))]set { } }
+        public static System.Threading.Thread CurrentThread { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1)), System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Globalization.CultureInfo CurrentUICulture { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]set { } }
         public System.Threading.ExecutionContext ExecutionContext { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1)), System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
-        public bool IsAlive { get { throw null; } }
-        public bool IsBackground { get { throw null; } set { } }
-        public bool IsThreadPoolThread { get { throw null; } }
-        public int ManagedThreadId { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } }
-        public string Name { get { throw null; } set { } }
+        public bool IsAlive { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public bool IsBackground { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SelfAffectingThreading=true)]set { } }
+        public bool IsThreadPoolThread { [System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public int ManagedThreadId { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2)), System.Security.SecuritySafeCriticalAttribute][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]get { throw null; } }
+        public string Name { get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]set { } }
         public System.Threading.ThreadPriority Priority { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SelfAffectingThreading=true)]set { } }
-        public System.Threading.ThreadState ThreadState { get { throw null; } }
+        public System.Threading.ThreadState ThreadState { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlThread=true)]
         public void Abort() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlThread=true)]
         public void Abort(object stateInfo) { }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true, ExternalThreading=true)]
         public static System.LocalDataStoreSlot AllocateDataSlot() { throw null; }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true, ExternalThreading=true)]
         public static System.LocalDataStoreSlot AllocateNamedDataSlot(string name) { throw null; }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
         public static void BeginCriticalRegion() { }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static void BeginThreadAffinity() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecurityCriticalAttribute]
         public void DisableComObjectEagerCleanup() { }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
         public static void EndCriticalRegion() { }
-        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(1))]
+        [System.Security.SecurityCriticalAttribute]
         public static void EndThreadAffinity() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         ~Thread() { }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true, ExternalThreading=true)]
         public static void FreeNamedDataSlot(string name) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public System.Threading.ApartmentState GetApartmentState() { throw null; }
         [System.ObsoleteAttribute("Thread.GetCompressedStack is no longer supported. Please use the System.Threading.CompressedStack class")]
         [System.Security.SecurityCriticalAttribute]
         public System.Threading.CompressedStack GetCompressedStack() { throw null; }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true, ExternalThreading=true)]
         public static object GetData(System.LocalDataStoreSlot slot) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.AppDomain GetDomain() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static int GetDomainID() { throw null; }
+        public static int GetDomainID() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override int GetHashCode() { throw null; }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true, ExternalThreading=true)]
@@ -24701,6 +25848,8 @@ namespace System.Threading
         [System.Security.SecuritySafeCriticalAttribute]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, ControlThread=true)]
         public void Resume() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, SelfAffectingThreading=true)]
         public void SetApartmentState(System.Threading.ApartmentState state) { }
         [System.ObsoleteAttribute("Thread.SetCompressedStack is no longer supported. Please use the System.Threading.CompressedStack class")]
         [System.Security.SecurityCriticalAttribute]
@@ -24711,6 +25860,8 @@ namespace System.Threading
         public static void Sleep(int millisecondsTimeout) { }
         public static void Sleep(System.TimeSpan timeout) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
         public static void SpinWait(int iterations) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
         public void Start() { }
@@ -24725,42 +25876,44 @@ namespace System.Threading
         void System.Runtime.InteropServices._Thread.GetTypeInfo(uint iTInfo, uint lcid, System.IntPtr ppTInfo) { }
         void System.Runtime.InteropServices._Thread.GetTypeInfoCount(out uint pcTInfo) { pcTInfo = default(uint); }
         void System.Runtime.InteropServices._Thread.Invoke(uint dispIdMember, [System.Runtime.InteropServices.In]ref System.Guid riid, uint lcid, short wFlags, System.IntPtr pDispParams, System.IntPtr pVarResult, System.IntPtr pExcepInfo, System.IntPtr puArgErr) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, SelfAffectingThreading=true)]
         public bool TrySetApartmentState(System.Threading.ApartmentState state) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static byte VolatileRead(ref byte address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static double VolatileRead(ref double address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static short VolatileRead(ref short address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static int VolatileRead(ref int address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static long VolatileRead(ref long address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static System.IntPtr VolatileRead(ref System.IntPtr address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static object VolatileRead(ref object address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static byte VolatileRead(ref byte address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static double VolatileRead(ref double address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static short VolatileRead(ref short address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static int VolatileRead(ref int address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static long VolatileRead(ref long address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static System.IntPtr VolatileRead(ref System.IntPtr address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static object VolatileRead(ref object address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static sbyte VolatileRead(ref sbyte address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static float VolatileRead(ref float address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static float VolatileRead(ref float address) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static ushort VolatileRead(ref ushort address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static uint VolatileRead(ref uint address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static ulong VolatileRead(ref ulong address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static System.UIntPtr VolatileRead(ref System.UIntPtr address) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref byte address, byte value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref double address, double value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref short address, short value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref int address, int value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref long address, long value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref System.IntPtr address, System.IntPtr value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref object address, object value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref byte address, byte value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref double address, double value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref short address, short value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref int address, int value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref long address, long value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref System.IntPtr address, System.IntPtr value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref object address, object value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref sbyte address, sbyte value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]public static void VolatileWrite(ref float address, float value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void VolatileWrite(ref float address, float value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref ushort address, ushort value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref uint address, uint value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref ulong address, ulong value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         public static void VolatileWrite(ref System.UIntPtr address, System.UIntPtr value) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         [System.Security.SecuritySafeCriticalAttribute]
@@ -24901,13 +26054,19 @@ namespace System.Threading
         public static readonly System.TimeSpan InfiniteTimeSpan;
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public sealed partial class Timer : System.MarshalByRefObject, System.IDisposable
     {
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public Timer(System.Threading.TimerCallback callback) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public Timer(System.Threading.TimerCallback callback, object state, int dueTime, int period) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public Timer(System.Threading.TimerCallback callback, object state, long dueTime, long period) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public Timer(System.Threading.TimerCallback callback, object state, System.TimeSpan dueTime, System.TimeSpan period) { }
-        [System.CLSCompliantAttribute(false)]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
         public Timer(System.Threading.TimerCallback callback, object state, uint dueTime, uint period) { }
         public bool Change(int dueTime, int period) { throw null; }
         public bool Change(long dueTime, long period) { throw null; }
@@ -24921,77 +26080,80 @@ namespace System.Threading
     public delegate void TimerCallback(object state);
     public static partial class Volatile
     {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static bool Read(ref bool location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static byte Read(ref byte location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static double Read(ref double location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static short Read(ref short location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static int Read(ref int location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static long Read(ref long location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static System.IntPtr Read(ref System.IntPtr location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static sbyte Read(ref sbyte location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static float Read(ref float location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static ushort Read(ref ushort location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static uint Read(ref uint location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static ulong Read(ref ulong location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static System.UIntPtr Read(ref System.UIntPtr location) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static T Read<T>(ref T location) where T : class { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref bool location, bool value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref byte location, byte value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref double location, double value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref short location, short value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref int location, int value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref long location, long value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref System.IntPtr location, System.IntPtr value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref sbyte location, sbyte value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref float location, float value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref ushort location, ushort value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref uint location, uint value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Write(ref ulong location, ulong value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.CLSCompliantAttribute(false)]
+        [System.CLSCompliantAttribute(false)]
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         public static void Write(ref System.UIntPtr location, System.UIntPtr value) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Write<T>(ref T location, T value) where T : class { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public delegate void WaitCallback(object state);
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public abstract partial class WaitHandle : System.MarshalByRefObject, System.IDisposable
     {
         protected static readonly System.IntPtr InvalidHandle;

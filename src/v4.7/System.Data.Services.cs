@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Data.Services.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Data.Services.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Data.Services.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -18,43 +18,12 @@
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
+[assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
 [assembly:System.Security.SecurityCriticalAttribute]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
 namespace System.Data.Services
 {
     [System.AttributeUsageAttribute((System.AttributeTargets)(64), AllowMultiple=true, Inherited=true)]
@@ -100,10 +69,11 @@ namespace System.Data.Services
         protected DataServiceException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public DataServiceException(string message) { }
         public DataServiceException(string message, System.Exception innerException) { }
-        public string ErrorCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MessageLanguage { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int StatusCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ErrorCode { get { throw null; } }
+        public string MessageLanguage { get { throw null; } }
+        public int StatusCode { get { throw null; } }
         [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.CLSCompliantAttribute(false)]
@@ -138,15 +108,15 @@ namespace System.Data.Services
     public sealed partial class DataServiceProcessingPipelineEventArgs : System.EventArgs
     {
         internal DataServiceProcessingPipelineEventArgs() { }
-        public System.Data.Services.DataServiceOperationContext OperationContext { get { throw null; } }
+        public System.Data.Services.DataServiceOperationContext OperationContext { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
     [System.ServiceModel.Activation.AspNetCompatibilityRequirementsAttribute(RequirementsMode=(System.ServiceModel.Activation.AspNetCompatibilityRequirementsMode)(1))]
     [System.ServiceModel.ServiceBehaviorAttribute(InstanceContextMode=(System.ServiceModel.InstanceContextMode)(1))]
     public partial class DataService<T> : System.Data.Services.IRequestHandler
     {
         public DataService() { }
-        protected T CurrentDataSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.Services.DataServiceProcessingPipeline ProcessingPipeline { get { throw null; } }
+        protected T CurrentDataSource { get { throw null; } }
+        public System.Data.Services.DataServiceProcessingPipeline ProcessingPipeline { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public void AttachHost(System.Data.Services.IDataServiceHost host) { }
         protected virtual T CreateDataSource() { throw null; }
         protected virtual void HandleException(System.Data.Services.HandleExceptionArgs args) { }
@@ -180,10 +150,10 @@ namespace System.Data.Services
     {
         public ExpandSegment(string name, System.Linq.Expressions.Expression filter) { }
         public System.Data.Services.Providers.ResourceProperty ExpandedProperty { get { throw null; } }
-        public System.Linq.Expressions.Expression Filter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Linq.Expressions.Expression Filter { get { throw null; } }
         public bool HasFilter { get { throw null; } }
         public int MaxResultsExpected { get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
         public static bool PathHasFilter(System.Collections.Generic.IEnumerable<System.Data.Services.ExpandSegment> path) { throw null; }
     }
     public partial class ExpandSegmentCollection : System.Collections.Generic.List<System.Data.Services.ExpandSegment>
@@ -195,11 +165,11 @@ namespace System.Data.Services
     public partial class HandleExceptionArgs
     {
         internal HandleExceptionArgs() { }
-        public System.Exception Exception { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string ResponseContentType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int ResponseStatusCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool ResponseWritten { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool UseVerboseErrors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Exception Exception { get { throw null; } set { } }
+        public string ResponseContentType { get { throw null; } }
+        public int ResponseStatusCode { get { throw null; } }
+        public bool ResponseWritten { get { throw null; } }
+        public bool UseVerboseErrors { get { throw null; } set { } }
     }
     public partial interface IDataServiceConfiguration
     {
@@ -284,15 +254,15 @@ namespace System.Data.Services
     public sealed partial class MimeTypeAttribute : System.Attribute
     {
         public MimeTypeAttribute(string memberName, string mimeType) { }
-        public string MemberName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MimeType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string MemberName { get { throw null; } }
+        public string MimeType { get { throw null; } }
     }
     public sealed partial class ProcessRequestArgs
     {
         internal ProcessRequestArgs() { }
-        public bool IsBatchOperation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsBatchOperation { get { throw null; } }
         public System.Data.Services.DataServiceOperationContext OperationContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri RequestUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Uri RequestUri { get { throw null; } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64), AllowMultiple=true, Inherited=true)]
     public sealed partial class QueryInterceptorAttribute : System.Attribute
@@ -329,16 +299,19 @@ namespace System.Data.Services.Configuration
     public sealed partial class DataServicesFeaturesSection : System.Configuration.ConfigurationSection
     {
         public DataServicesFeaturesSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("replaceFunction")]
         public System.Data.Services.Configuration.DataServicesReplaceFunctionFeature ReplaceFunction { get { throw null; } set { } }
     }
     public partial class DataServicesReplaceFunctionFeature : System.Configuration.ConfigurationElement
     {
         public DataServicesReplaceFunctionFeature() { }
+        [System.Configuration.ConfigurationPropertyAttribute("enable")]
         public bool Enable { get { throw null; } set { } }
     }
     public sealed partial class DataServicesSectionGroup : System.Configuration.ConfigurationSectionGroup
     {
         public DataServicesSectionGroup() { }
+        [System.Configuration.ConfigurationPropertyAttribute("features")]
         public System.Data.Services.Configuration.DataServicesFeaturesSection Features { get { throw null; } }
     }
 }
@@ -516,7 +489,6 @@ namespace System.Data.Services.Internal
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public sealed partial class ProjectedWrapper0 : System.Data.Services.Internal.ProjectedWrapper
     {
-        [System.Runtime.TargetedPatchingOptOutAttribute("Performance critical to inline this type of method across NGen image boundaries")]
         public ProjectedWrapper0() { }
         protected override object InternalGetProjectedPropertyValue(int propertyIndex) { throw null; }
     }
@@ -731,29 +703,29 @@ namespace System.Data.Services.Providers
     public sealed partial class ResourceAssociationSet
     {
         public ResourceAssociationSet(string name, System.Data.Services.Providers.ResourceAssociationSetEnd end1, System.Data.Services.Providers.ResourceAssociationSetEnd end2) { }
-        public System.Data.Services.Providers.ResourceAssociationSetEnd End1 { get { throw null; } }
-        public System.Data.Services.Providers.ResourceAssociationSetEnd End2 { get { throw null; } }
-        public string Name { get { throw null; } }
+        public System.Data.Services.Providers.ResourceAssociationSetEnd End1 { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Data.Services.Providers.ResourceAssociationSetEnd End2 { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("ResourceAssociationSetEnd: {Name}: ({ResourceSet.Name}, {ResourceType.Name}, {ResourceProperty.Name})")]
     public sealed partial class ResourceAssociationSetEnd
     {
         public ResourceAssociationSetEnd(System.Data.Services.Providers.ResourceSet resourceSet, System.Data.Services.Providers.ResourceType resourceType, System.Data.Services.Providers.ResourceProperty resourceProperty) { }
-        public System.Data.Services.Providers.ResourceProperty ResourceProperty { get { throw null; } }
-        public System.Data.Services.Providers.ResourceSet ResourceSet { get { throw null; } }
-        public System.Data.Services.Providers.ResourceType ResourceType { get { throw null; } }
+        public System.Data.Services.Providers.ResourceProperty ResourceProperty { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Data.Services.Providers.ResourceSet ResourceSet { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Data.Services.Providers.ResourceType ResourceType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("{kind}: {name}")]
     public partial class ResourceProperty
     {
         public ResourceProperty(string name, System.Data.Services.Providers.ResourcePropertyKind kind, System.Data.Services.Providers.ResourceType propertyResourceType) { }
         public bool CanReflectOnInstanceTypeProperty { get { throw null; } set { } }
-        public object CustomState { get { throw null; } set { } }
-        public bool IsReadOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.Services.Providers.ResourcePropertyKind Kind { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MimeType { get { throw null; } set { } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.Services.Providers.ResourceType ResourceType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public object CustomState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IsReadOnly { get { throw null; } }
+        public System.Data.Services.Providers.ResourcePropertyKind Kind { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string MimeType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Data.Services.Providers.ResourceType ResourceType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public void SetReadOnly() { }
     }
     [System.FlagsAttribute]
@@ -771,31 +743,31 @@ namespace System.Data.Services.Providers
     {
         public ResourceSet(string name, System.Data.Services.Providers.ResourceType elementType) { }
         public object CustomState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsReadOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.Services.Providers.ResourceType ResourceType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsReadOnly { get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Data.Services.Providers.ResourceType ResourceType { get { throw null; } }
         public void SetReadOnly() { }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("{Name}: {InstanceType}, {ResourceTypeKind}")]
     public partial class ResourceType
     {
         public ResourceType(System.Type instanceType, System.Data.Services.Providers.ResourceTypeKind resourceTypeKind, System.Data.Services.Providers.ResourceType baseType, string namespaceName, string name, bool isAbstract) { }
-        public System.Data.Services.Providers.ResourceType BaseType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool CanReflectOnInstanceType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public object CustomState { get { throw null; } set { } }
+        public System.Data.Services.Providers.ResourceType BaseType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public bool CanReflectOnInstanceType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public object CustomState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Data.Services.Providers.ResourceProperty> ETagProperties { get { throw null; } }
-        public string FullName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type InstanceType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsAbstract { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsMediaLinkEntry { get { throw null; } set { } }
-        public bool IsOpenType { get { throw null; } set { } }
-        public bool IsReadOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string FullName { get { throw null; } }
+        public System.Type InstanceType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public bool IsAbstract { get { throw null; } }
+        public bool IsMediaLinkEntry { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public bool IsOpenType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public bool IsReadOnly { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Data.Services.Providers.ResourceProperty> KeyProperties { get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Name { get { throw null; } }
         public string Namespace { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Data.Services.Providers.ResourceProperty> Properties { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Data.Services.Providers.ResourceProperty> PropertiesDeclaredOnThisType { get { throw null; } }
-        public System.Data.Services.Providers.ResourceTypeKind ResourceTypeKind { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Data.Services.Providers.ResourceTypeKind ResourceTypeKind { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public void AddEntityPropertyMappingAttribute(System.Data.Services.Common.EntityPropertyMappingAttribute attribute) { }
         public void AddProperty(System.Data.Services.Providers.ResourceProperty property) { }
         public static System.Data.Services.Providers.ResourceType GetPrimitiveResourceType(System.Type type) { throw null; }
@@ -828,9 +800,9 @@ namespace System.Data.Services.Providers
     {
         public ServiceOperationParameter(string name, System.Data.Services.Providers.ResourceType parameterType) { }
         public object CustomState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsReadOnly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.Services.Providers.ResourceType ParameterType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsReadOnly { get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Data.Services.Providers.ResourceType ParameterType { get { throw null; } }
         public void SetReadOnly() { }
     }
     public enum ServiceOperationResultKind

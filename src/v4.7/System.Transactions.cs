@@ -4,58 +4,25 @@
 
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
-[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Transactions.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Transactions.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Transactions.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.BestFitMappingAttribute(false)]
+[assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum)]
 namespace System.Transactions
 {
     [System.SerializableAttribute]
@@ -77,14 +44,13 @@ namespace System.Transactions
         BlockCommitUntilComplete = 0,
         RollbackIfNotComplete = 1,
     }
-    [System.MonoTODOAttribute("Not supported yet")]
     [System.SerializableAttribute]
     public sealed partial class DependentTransaction : System.Transactions.Transaction
     {
         internal DependentTransaction() { }
-        [System.MonoTODOAttribute]
         public void Complete() { }
     }
+    [System.SerializableAttribute]
     public sealed partial class DistributedTransactionPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
         public DistributedTransactionPermission(System.Security.Permissions.PermissionState state) { }
@@ -96,6 +62,7 @@ namespace System.Transactions
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
     public sealed partial class DistributedTransactionPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public DistributedTransactionPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
@@ -120,6 +87,7 @@ namespace System.Transactions
         None = 0,
     }
     public delegate System.Transactions.Transaction HostCurrentTransactionCallback();
+    [System.Runtime.InteropServices.GuidAttribute("0fb15084-af41-11ce-bd2b-204c4f4f5020")]
     [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface IDtcTransaction
     {
@@ -166,11 +134,8 @@ namespace System.Transactions
     {
         internal PreparingEnlistment() { }
         public void ForceRollback() { }
-        [System.MonoTODOAttribute]
         public void ForceRollback(System.Exception e) { }
-        [System.MonoTODOAttribute]
         public void Prepared() { }
-        [System.MonoTODOAttribute]
         public byte[] RecoveryInformation() { throw null; }
     }
     public partial class SinglePhaseEnlistment : System.Transactions.Enlistment
@@ -178,11 +143,8 @@ namespace System.Transactions
         internal SinglePhaseEnlistment() { }
         public void Aborted() { }
         public void Aborted(System.Exception e) { }
-        [System.MonoTODOAttribute]
         public void Committed() { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void InDoubt() { }
-        [System.MonoTODOAttribute("Not implemented")]
         public void InDoubt(System.Exception e) { }
     }
     [System.SerializableAttribute]
@@ -200,33 +162,31 @@ namespace System.Transactions
         public System.Transactions.TransactionInformation TransactionInformation { get { throw null; } }
         public event System.Transactions.TransactionCompletedEventHandler TransactionCompleted { add { } remove { } }
         public System.Transactions.Transaction Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public System.Transactions.DependentTransaction DependentClone(System.Transactions.DependentCloneOption cloneOption) { throw null; }
         public void Dispose() { }
-        [System.MonoTODOAttribute("Only SinglePhase commit supported for durable resource managers.")]
-        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public System.Transactions.Enlistment EnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.IEnlistmentNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
-        [System.MonoTODOAttribute("Only Local Transaction Manager supported. Cannot have more than 1 durable resource per transaction. Only EnlistmentOptions.None supported yet.")]
-        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public System.Transactions.Enlistment EnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public bool EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification) { throw null; }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public bool EnlistPromotableSinglePhase(System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification, System.Guid promoterType) { throw null; }
-        [System.MonoTODOAttribute("EnlistmentOptions being ignored")]
         public System.Transactions.Enlistment EnlistVolatile(System.Transactions.IEnlistmentNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
-        [System.MonoTODOAttribute("EnlistmentOptions being ignored")]
         public System.Transactions.Enlistment EnlistVolatile(System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public byte[] GetPromotedToken() { throw null; }
         public static bool operator ==(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
         public static bool operator !=(System.Transactions.Transaction x, System.Transactions.Transaction y) { throw null; }
-        [System.MonoTODOAttribute("Only Local Transaction Manager supported. Cannot have more than 1 durable resource per transaction.")]
-        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand)]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public System.Transactions.Enlistment PromoteAndEnlistDurable(System.Guid resourceManagerIdentifier, System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Transactions.ISinglePhaseNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions) { throw null; }
         public void Rollback() { }
         public void Rollback(System.Exception e) { }
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public void SetDistributedTransactionIdentifier(System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Guid distributedTransactionIdentifier) { }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
@@ -267,35 +227,27 @@ namespace System.Transactions
         public string LocalIdentifier { get { throw null; } }
         public System.Transactions.TransactionStatus Status { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public static partial class TransactionInterop
     {
         public static readonly System.Guid PromoterTypeDtc;
-        [System.MonoTODOAttribute]
         public static System.Transactions.IDtcTransaction GetDtcTransaction(System.Transactions.Transaction transaction) { throw null; }
-        [System.MonoTODOAttribute]
         public static byte[] GetExportCookie(System.Transactions.Transaction transaction, byte[] whereabouts) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Transactions.Transaction GetTransactionFromDtcTransaction(System.Transactions.IDtcTransaction transactionNative) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Transactions.Transaction GetTransactionFromExportCookie(byte[] cookie) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Transactions.Transaction GetTransactionFromTransmitterPropagationToken(byte[] propagationToken) { throw null; }
-        [System.MonoTODOAttribute]
         public static byte[] GetTransmitterPropagationToken(System.Transactions.Transaction transaction) { throw null; }
-        [System.MonoTODOAttribute]
         public static byte[] GetWhereabouts() { throw null; }
     }
     public static partial class TransactionManager
     {
         public static System.TimeSpan DefaultTimeout { get { throw null; } }
-        [System.MonoTODOAttribute("Not implemented")]
-        public static System.Transactions.HostCurrentTransactionCallback HostCurrentCallback { get { throw null; } set { } }
+        public static System.Transactions.HostCurrentTransactionCallback HostCurrentCallback { [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]get { throw null; } [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]set { } }
         public static System.TimeSpan MaximumTimeout { get { throw null; } }
         public static event System.Transactions.TransactionStartedEventHandler DistributedTransactionStarted { add { } remove { } }
-        [System.MonoTODOAttribute("Not implemented")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public static void RecoveryComplete(System.Guid resourceManagerIdentifier) { }
-        [System.MonoTODOAttribute("Not implemented")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public static System.Transactions.Enlistment Reenlist(System.Guid resourceManagerIdentifier, byte[] recoveryInformation, System.Transactions.IEnlistmentNotification enlistmentNotification) { throw null; }
     }
     [System.SerializableAttribute]
@@ -329,7 +281,7 @@ namespace System.Transactions
         public TransactionScope() { }
         public TransactionScope(System.Transactions.Transaction transactionToUse) { }
         public TransactionScope(System.Transactions.Transaction transactionToUse, System.TimeSpan scopeTimeout) { }
-        [System.MonoTODOAttribute("EnterpriseServicesInteropOption not supported.")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public TransactionScope(System.Transactions.Transaction transactionToUse, System.TimeSpan scopeTimeout, System.Transactions.EnterpriseServicesInteropOption interopOption) { }
         public TransactionScope(System.Transactions.Transaction transactionToUse, System.TimeSpan scopeTimeout, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
         public TransactionScope(System.Transactions.Transaction transactionToUse, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
@@ -338,7 +290,7 @@ namespace System.Transactions
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.TimeSpan scopeTimeout) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.TimeSpan scopeTimeout, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionOptions transactionOptions) { }
-        [System.MonoTODOAttribute("EnterpriseServicesInteropOption not supported")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionOptions transactionOptions, System.Transactions.EnterpriseServicesInteropOption interopOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionOptions transactionOptions, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }
         public TransactionScope(System.Transactions.TransactionScopeOption scopeOption, System.Transactions.TransactionScopeAsyncFlowOption asyncFlowOption) { }

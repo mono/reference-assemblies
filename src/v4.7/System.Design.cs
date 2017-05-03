@@ -5,12 +5,13 @@
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
+[assembly:System.Drawing.BitmapSuffixInSatelliteAssemblyAttribute]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Design.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Design.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Design.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -21,6 +22,8 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.ComponentModel.Design
 {
     public partial class ActiveDesignSurfaceChangedEventArgs : System.EventArgs
@@ -40,7 +43,6 @@ namespace System.ComponentModel.Design
     public sealed partial class BinaryEditor : System.Drawing.Design.UITypeEditor
     {
         public BinaryEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
@@ -48,29 +50,17 @@ namespace System.ComponentModel.Design
     [System.ComponentModel.ToolboxItemAttribute(false)]
     public partial class ByteViewer : System.Windows.Forms.TableLayoutPanel
     {
-        [System.MonoTODOAttribute]
         public ByteViewer() { }
-        [System.MonoTODOAttribute]
         public virtual byte[] GetBytes() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.ComponentModel.Design.DisplayMode GetDisplayMode() { throw null; }
-        [System.MonoTODOAttribute]
         protected override void OnKeyDown(System.Windows.Forms.KeyEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnLayout(System.Windows.Forms.LayoutEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void SaveToFile(string path) { }
-        [System.MonoTODOAttribute]
         protected virtual void ScrollChanged(object source, System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void SetBytes(byte[] bytes) { }
-        [System.MonoTODOAttribute]
         public virtual void SetDisplayMode(System.ComponentModel.Design.DisplayMode mode) { }
-        [System.MonoTODOAttribute]
         public virtual void SetFile(string path) { }
-        [System.MonoTODOAttribute]
         public virtual void SetStartLine(int line) { }
     }
     public partial class CollectionEditor : System.Drawing.Design.UITypeEditor
@@ -143,10 +133,10 @@ namespace System.ComponentModel.Design
         public virtual void Initialize(System.ComponentModel.IComponent component) { }
         public virtual void InitializeExistingComponent(System.Collections.IDictionary defaultValues) { }
         public virtual void InitializeNewComponent(System.Collections.IDictionary defaultValues) { }
-        [System.ObsoleteAttribute("This method has been deprecated. Use InitializeExistingComponent instead.")]
+        [System.ObsoleteAttribute("This method has been deprecated. Use InitializeExistingComponent instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual void InitializeNonDefault() { }
         protected System.ComponentModel.InheritanceAttribute InvokeGetInheritanceAttribute(System.ComponentModel.Design.ComponentDesigner toInvoke) { throw null; }
-        [System.ObsoleteAttribute("This method has been deprecated. Use InitializeNewComponent instead.")]
+        [System.ObsoleteAttribute("This method has been deprecated. Use InitializeNewComponent instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual void OnSetComponentDefaults() { }
         protected virtual void PostFilterAttributes(System.Collections.IDictionary attributes) { }
         protected virtual void PostFilterEvents(System.Collections.IDictionary events) { }
@@ -210,6 +200,8 @@ namespace System.ComponentModel.Design
         public virtual System.ComponentModel.Design.DesignerActionItemCollection GetSortedActionItems() { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public partial class DesignerActionListCollection : System.Collections.CollectionBase
     {
         public DesignerActionListCollection() { }
@@ -267,33 +259,20 @@ namespace System.ComponentModel.Design
     }
     public partial class DesignerActionService : System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public DesignerActionService(System.IServiceProvider serviceProvider) { }
         public event System.ComponentModel.Design.DesignerActionListsChangedEventHandler DesignerActionListsChanged { add { } remove { } }
-        [System.MonoTODOAttribute]
         public void Add(System.ComponentModel.IComponent comp, System.ComponentModel.Design.DesignerActionList actionList) { }
-        [System.MonoTODOAttribute]
         public void Add(System.ComponentModel.IComponent comp, System.ComponentModel.Design.DesignerActionListCollection designerActionListCollection) { }
-        [System.MonoTODOAttribute]
         public void Clear() { }
-        [System.MonoTODOAttribute]
         public bool Contains(System.ComponentModel.IComponent comp) { throw null; }
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         protected virtual void Dispose(bool disposing) { }
-        [System.MonoTODOAttribute]
         public System.ComponentModel.Design.DesignerActionListCollection GetComponentActions(System.ComponentModel.IComponent component) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.ComponentModel.Design.DesignerActionListCollection GetComponentActions(System.ComponentModel.IComponent component, System.ComponentModel.Design.ComponentActionsType type) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void GetComponentDesignerActions(System.ComponentModel.IComponent component, System.ComponentModel.Design.DesignerActionListCollection actionLists) { }
-        [System.MonoTODOAttribute]
         protected virtual void GetComponentServiceActions(System.ComponentModel.IComponent component, System.ComponentModel.Design.DesignerActionListCollection actionLists) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.ComponentModel.Design.DesignerActionList actionList) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.ComponentModel.IComponent comp) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.ComponentModel.IComponent comp, System.ComponentModel.Design.DesignerActionList actionList) { }
     }
     public partial class DesignerActionTextItem : System.ComponentModel.Design.DesignerActionItem
@@ -304,15 +283,10 @@ namespace System.ComponentModel.Design
     {
         internal DesignerActionUIService() { }
         public event System.ComponentModel.Design.DesignerActionUIStateChangeEventHandler DesignerActionUIStateChange { add { } remove { } }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         public void HideUI(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public void Refresh(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public bool ShouldAutoShow(System.ComponentModel.IComponent component) { throw null; }
-        [System.MonoTODOAttribute]
         public void ShowUI(System.ComponentModel.IComponent component) { }
     }
     public partial class DesignerActionUIStateChangeEventArgs : System.EventArgs
@@ -333,9 +307,10 @@ namespace System.ComponentModel.Design
         public DesignerCommandSet() { }
         public System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
         public System.ComponentModel.Design.DesignerVerbCollection Verbs { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Collections.ICollection GetCommands(string name) { throw null; }
     }
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public partial class DesignSurface : System.IDisposable, System.IServiceProvider
     {
         public DesignSurface() { }
@@ -343,7 +318,7 @@ namespace System.ComponentModel.Design
         public DesignSurface(System.IServiceProvider parentProvider, System.Type rootComponentType) { }
         public DesignSurface(System.Type rootComponentType) { }
         public System.ComponentModel.IContainer ComponentContainer { get { throw null; } }
-        public bool DtelLoading { get { throw null; } set { } }
+        public bool DtelLoading { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool IsLoaded { get { throw null; } }
         public System.Collections.ICollection LoadErrors { get { throw null; } }
         protected System.ComponentModel.Design.ServiceContainer ServiceContainer { get { throw null; } }
@@ -357,7 +332,7 @@ namespace System.ComponentModel.Design
         public event System.EventHandler ViewActivated { add { } remove { } }
         public void BeginLoad(System.ComponentModel.Design.Serialization.DesignerLoader loader) { }
         public void BeginLoad(System.Type rootComponentType) { }
-        [System.ObsoleteAttribute("CreateComponent has been replaced by CreateInstance")]
+        [System.ObsoleteAttribute("CreateComponent has been replaced by CreateInstance and will be removed after Beta2")]
         protected internal virtual System.ComponentModel.IComponent CreateComponent(System.Type componentType) { throw null; }
         protected internal virtual System.ComponentModel.Design.IDesigner CreateDesigner(System.ComponentModel.IComponent component, bool rootDesigner) { throw null; }
         protected internal virtual object CreateInstance(System.Type type) { throw null; }
@@ -392,6 +367,8 @@ namespace System.ComponentModel.Design
         public System.ComponentModel.Design.DesignSurface Surface { get { throw null; } }
     }
     public delegate void DesignSurfaceEventHandler(object sender, System.ComponentModel.Design.DesignSurfaceEventArgs e);
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public partial class DesignSurfaceManager : System.IDisposable, System.IServiceProvider
     {
         public DesignSurfaceManager() { }
@@ -417,6 +394,8 @@ namespace System.ComponentModel.Design
         Hexdump = 1,
         Unicode = 3,
     }
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class EventBindingService : System.ComponentModel.Design.IEventBindingService
     {
         protected EventBindingService(System.IServiceProvider provider) { }
@@ -441,10 +420,9 @@ namespace System.ComponentModel.Design
     [System.SerializableAttribute]
     public sealed partial class ExceptionCollection : System.Exception
     {
-        [System.MonoTODOAttribute]
         public ExceptionCollection(System.Collections.ArrayList exceptions) { }
         public System.Collections.ArrayList Exceptions { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial interface IComponentDesignerDebugService
@@ -460,6 +438,9 @@ namespace System.ComponentModel.Design
         object GetState(System.ComponentModel.IComponent component, string key);
         void SetState(System.ComponentModel.IComponent component, string key, object value);
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+    [System.Runtime.InteropServices.GuidAttribute("665f0ba5-ce72-4e87-9ba0-3c461de74d0b")]
+    [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(1))]
     public partial interface IDesignTimeAssemblyLoader
     {
         string GetTargetAssemblyPath(System.Reflection.AssemblyName runtimeOrTargetAssemblyName, string suggestedAssemblyPath, System.Runtime.Versioning.FrameworkName targetFramework);
@@ -471,19 +452,12 @@ namespace System.ComponentModel.Design
     }
     public partial class InheritanceService : System.ComponentModel.Design.IInheritanceService, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public InheritanceService() { }
-        [System.MonoTODOAttribute]
         public void AddInheritedComponents(System.ComponentModel.IComponent component, System.ComponentModel.IContainer container) { }
-        [System.MonoTODOAttribute]
         protected virtual void AddInheritedComponents(System.Type type, System.ComponentModel.IComponent component, System.ComponentModel.IContainer container) { }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         protected virtual void Dispose(bool disposing) { }
-        [System.MonoTODOAttribute]
         public System.ComponentModel.InheritanceAttribute GetInheritanceAttribute(System.ComponentModel.IComponent component) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual bool IgnoreInheritedMember(System.Reflection.MemberInfo member, System.ComponentModel.IComponent component) { throw null; }
     }
     public sealed partial class LoadedEventArgs : System.EventArgs
@@ -496,37 +470,26 @@ namespace System.ComponentModel.Design
     [System.ComponentModel.ProvidePropertyAttribute("Language", typeof(object))]
     [System.ComponentModel.ProvidePropertyAttribute("LoadLanguage", typeof(object))]
     [System.ComponentModel.ProvidePropertyAttribute("Localizable", typeof(object))]
-    [System.ObsoleteAttribute("use CodeDomLocalizationProvider")]
+    [System.ObsoleteAttribute("This class has been deprecated. Use CodeDomLocalizationProvider instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial class LocalizationExtenderProvider : System.ComponentModel.IExtenderProvider, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public LocalizationExtenderProvider(System.ComponentModel.ISite serviceProvider, System.ComponentModel.IComponent baseComponent) { }
-        [System.MonoTODOAttribute]
         public bool CanExtend(object o) { throw null; }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         protected virtual void Dispose(bool disposing) { }
         [System.ComponentModel.DesignOnlyAttribute(true)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute]
         public System.Globalization.CultureInfo GetLanguage(object o) { throw null; }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.DesignOnlyAttribute(true)]
-        [System.MonoTODOAttribute]
         public System.Globalization.CultureInfo GetLoadLanguage(object o) { throw null; }
         [System.ComponentModel.DesignOnlyAttribute(true)]
         [System.ComponentModel.LocalizableAttribute(true)]
-        [System.MonoTODOAttribute]
         public bool GetLocalizable(object o) { throw null; }
-        [System.MonoTODOAttribute]
         public void ResetLanguage(object o) { }
-        [System.MonoTODOAttribute]
         public void SetLanguage(object o, System.Globalization.CultureInfo language) { }
-        [System.MonoTODOAttribute]
         public void SetLocalizable(object o, bool localizable) { }
-        [System.MonoTODOAttribute]
         public bool ShouldSerializeLanguage(object o) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -580,38 +543,24 @@ namespace System.ComponentModel.Design
         public bool SubObjectSelector;
         public ObjectSelectorEditor() { }
         public ObjectSelectorEditor(bool subObjectSelector) { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public bool EqualsToValue(object value) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void FillTreeWithData(System.ComponentModel.Design.ObjectSelectorEditor.Selector selector, System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider) { }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public virtual void SetValue(object value) { }
         public partial class Selector : System.Windows.Forms.TreeView
         {
-            [System.MonoTODOAttribute]
             public bool clickSeen;
-            [System.MonoTODOAttribute]
             public Selector(System.ComponentModel.Design.ObjectSelectorEditor editor) { }
-            [System.MonoTODOAttribute]
             public System.ComponentModel.Design.ObjectSelectorEditor.SelectorNode AddNode(string label, object value, System.ComponentModel.Design.ObjectSelectorEditor.SelectorNode parent) { throw null; }
-            [System.MonoTODOAttribute]
             public void Clear() { }
-            [System.MonoTODOAttribute]
             protected void OnAfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e) { }
-            [System.MonoTODOAttribute]
             protected override void OnKeyDown(System.Windows.Forms.KeyEventArgs e) { }
-            [System.MonoTODOAttribute]
             protected override void OnKeyPress(System.Windows.Forms.KeyPressEventArgs e) { }
-            [System.MonoTODOAttribute]
             protected override void OnNodeMouseClick(System.Windows.Forms.TreeNodeMouseClickEventArgs e) { }
-            [System.MonoTODOAttribute]
             public bool SetSelection(object value, System.Windows.Forms.TreeNodeCollection nodes) { throw null; }
-            [System.MonoTODOAttribute]
             public void Start(System.Windows.Forms.Design.IWindowsFormsEditorService edSvc, object value) { }
-            [System.MonoTODOAttribute]
             public void Stop() { }
-            [System.MonoTODOAttribute]
             protected override void WndProc(ref System.Windows.Forms.Message m) { }
         }
         public partial class SelectorNode : System.Windows.Forms.TreeNode
@@ -620,6 +569,7 @@ namespace System.ComponentModel.Design
             public SelectorNode(string label, object value) { }
         }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1036))]
     public sealed partial class ProjectTargetFrameworkAttribute : System.Attribute
     {
         public ProjectTargetFrameworkAttribute(string targetFrameworkMoniker) { }
@@ -675,19 +625,12 @@ namespace System.ComponentModel.Design.Data
     public partial class DataSourceDescriptorCollection : System.Collections.CollectionBase
     {
         public DataSourceDescriptorCollection() { }
-        [System.MonoTODOAttribute]
         public System.ComponentModel.Design.Data.DataSourceDescriptor this[int index] { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int Add(System.ComponentModel.Design.Data.DataSourceDescriptor value) { throw null; }
-        [System.MonoTODOAttribute]
         public bool Contains(System.ComponentModel.Design.Data.DataSourceDescriptor value) { throw null; }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.ComponentModel.Design.Data.DataSourceDescriptor[] array, int index) { }
-        [System.MonoTODOAttribute]
         public int IndexOf(System.ComponentModel.Design.Data.DataSourceDescriptor value) { throw null; }
-        [System.MonoTODOAttribute]
         public void Insert(int index, System.ComponentModel.Design.Data.DataSourceDescriptor value) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.ComponentModel.Design.Data.DataSourceDescriptor value) { }
     }
     public abstract partial class DataSourceGroup
@@ -701,19 +644,12 @@ namespace System.ComponentModel.Design.Data
     public partial class DataSourceGroupCollection : System.Collections.CollectionBase
     {
         public DataSourceGroupCollection() { }
-        [System.MonoTODOAttribute]
         public System.ComponentModel.Design.Data.DataSourceGroup this[int index] { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int Add(System.ComponentModel.Design.Data.DataSourceGroup value) { throw null; }
-        [System.MonoTODOAttribute]
         public bool Contains(System.ComponentModel.Design.Data.DataSourceGroup value) { throw null; }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.ComponentModel.Design.Data.DataSourceGroup[] array, int index) { }
-        [System.MonoTODOAttribute]
         public int IndexOf(System.ComponentModel.Design.Data.DataSourceGroup value) { throw null; }
-        [System.MonoTODOAttribute]
         public void Insert(int index, System.ComponentModel.Design.Data.DataSourceGroup value) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.ComponentModel.Design.Data.DataSourceGroup value) { }
     }
     [System.Runtime.InteropServices.GuidAttribute("ABE5C1F0-C96E-40c4-A22D-4A5CEC899BDC")]
@@ -730,11 +666,8 @@ namespace System.ComponentModel.Design.Data
     }
     public sealed partial class DesignerDataColumn
     {
-        [System.MonoTODOAttribute]
         public DesignerDataColumn(string name, System.Data.DbType dataType) { }
-        [System.MonoTODOAttribute]
         public DesignerDataColumn(string name, System.Data.DbType dataType, object defaultValue) { }
-        [System.MonoTODOAttribute]
         public DesignerDataColumn(string name, System.Data.DbType dataType, object defaultValue, bool identity, bool nullable, bool primaryKey, int precision, int scale, int length) { }
         public System.Data.DbType DataType { get { throw null; } }
         public object DefaultValue { get { throw null; } }
@@ -748,17 +681,11 @@ namespace System.ComponentModel.Design.Data
     }
     public sealed partial class DesignerDataConnection
     {
-        [System.MonoTODOAttribute]
         public DesignerDataConnection(string name, string providerName, string connectionString) { }
-        [System.MonoTODOAttribute]
         public DesignerDataConnection(string name, string providerName, string connectionString, bool isConfigured) { }
-        [System.MonoTODOAttribute]
         public string ConnectionString { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsConfigured { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string Name { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string ProviderName { get { throw null; } }
     }
     public sealed partial class DesignerDataParameter
@@ -785,13 +712,10 @@ namespace System.ComponentModel.Design.Data
     }
     public abstract partial class DesignerDataStoredProcedure
     {
-        [System.MonoTODOAttribute]
         protected DesignerDataStoredProcedure(string name) { }
-        [System.MonoTODOAttribute]
         protected DesignerDataStoredProcedure(string name, string owner) { }
         public string Name { get { throw null; } }
         public string Owner { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.ICollection Parameters { get { throw null; } }
         protected abstract System.Collections.ICollection CreateParameters();
     }
@@ -799,7 +723,6 @@ namespace System.ComponentModel.Design.Data
     {
         protected DesignerDataTable(string name) : base (default(string)) { }
         protected DesignerDataTable(string name, string owner) : base (default(string)) { }
-        [System.MonoTODOAttribute]
         public System.Collections.ICollection Relationships { get { throw null; } }
         protected abstract System.Collections.ICollection CreateRelationships();
     }
@@ -807,7 +730,6 @@ namespace System.ComponentModel.Design.Data
     {
         protected DesignerDataTableBase(string name) { }
         protected DesignerDataTableBase(string name, string owner) { }
-        [System.MonoTODOAttribute]
         public System.Collections.ICollection Columns { get { throw null; } }
         public string Name { get { throw null; } }
         public string Owner { get { throw null; } }
@@ -843,6 +765,8 @@ namespace System.ComponentModel.Design.Data
 }
 namespace System.ComponentModel.Design.Serialization
 {
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class BasicDesignerLoader : System.ComponentModel.Design.Serialization.DesignerLoader, System.ComponentModel.Design.Serialization.IDesignerLoaderService
     {
         protected BasicDesignerLoader() { }
@@ -893,6 +817,8 @@ namespace System.ComponentModel.Design.Serialization
         public override void SerializeMember(System.ComponentModel.Design.Serialization.SerializationStore store, object owningObject, System.ComponentModel.MemberDescriptor member) { }
         public override void SerializeMemberAbsolute(System.ComponentModel.Design.Serialization.SerializationStore store, object owningObject, System.ComponentModel.MemberDescriptor member) { }
     }
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
     public abstract partial class CodeDomDesignerLoader : System.ComponentModel.Design.Serialization.BasicDesignerLoader, System.ComponentModel.Design.Serialization.IDesignerSerializationService, System.ComponentModel.Design.Serialization.INameCreationService
     {
         protected CodeDomDesignerLoader() { }
@@ -923,13 +849,9 @@ namespace System.ComponentModel.Design.Serialization
     }
     public sealed partial class CodeDomLocalizationProvider : System.ComponentModel.Design.Serialization.IDesignerSerializationProvider, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public CodeDomLocalizationProvider(System.IServiceProvider provider, System.ComponentModel.Design.Serialization.CodeDomLocalizationModel model) { }
-        [System.MonoTODOAttribute]
         public CodeDomLocalizationProvider(System.IServiceProvider provider, System.ComponentModel.Design.Serialization.CodeDomLocalizationModel model, System.Globalization.CultureInfo[] supportedCultures) { }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         object System.ComponentModel.Design.Serialization.IDesignerSerializationProvider.GetSerializer(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object currentSerializer, System.Type objectType, System.Type serializerType) { throw null; }
     }
     public partial class CodeDomSerializer : System.ComponentModel.Design.Serialization.CodeDomSerializerBase
@@ -942,7 +864,7 @@ namespace System.ComponentModel.Design.Serialization
         public virtual object SerializeAbsolute(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
         public virtual System.CodeDom.CodeStatementCollection SerializeMember(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object owningObject, System.ComponentModel.MemberDescriptor member) { throw null; }
         public virtual System.CodeDom.CodeStatementCollection SerializeMemberAbsolute(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object owningObject, System.ComponentModel.MemberDescriptor member) { throw null; }
-        [System.ObsoleteAttribute("This method has been deprecated. Use SerializeToExpression or GetExpression instead.")]
+        [System.ObsoleteAttribute("This method has been deprecated. Use SerializeToExpression or GetExpression instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         protected System.CodeDom.CodeExpression SerializeToReferenceExpression(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -984,15 +906,11 @@ namespace System.ComponentModel.Design.Serialization
     public partial class CodeDomSerializerException : System.SystemException
     {
         public CodeDomSerializerException(System.Exception ex, System.CodeDom.CodeLinePragma linePragma) { }
-        [System.MonoTODOAttribute]
         public CodeDomSerializerException(System.Exception ex, System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager) { }
-        [System.MonoTODOAttribute]
         protected CodeDomSerializerException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public CodeDomSerializerException(string message, System.CodeDom.CodeLinePragma linePragma) { }
-        [System.MonoTODOAttribute]
         public CodeDomSerializerException(string message, System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager) { }
         public System.CodeDom.CodeLinePragma LinePragma { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class CollectionCodeDomSerializer : System.ComponentModel.Design.Serialization.CodeDomSerializer
@@ -1099,29 +1017,17 @@ namespace System.Data.Design
     public partial class MethodSignatureGenerator
     {
         public MethodSignatureGenerator() { }
-        [System.MonoTODOAttribute]
         public System.CodeDom.Compiler.CodeDomProvider CodeProvider { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Type ContainerParameterType { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string DataSetClassName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IsGetMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool PagingMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Data.Design.ParameterGenerationOption ParameterOption { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string TableClassName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.CodeDom.CodeMemberMethod GenerateMethod() { throw null; }
-        [System.MonoTODOAttribute]
         public string GenerateMethodSignature() { throw null; }
-        [System.MonoTODOAttribute]
         public System.CodeDom.CodeTypeDeclaration GenerateUpdatingMethods() { throw null; }
-        [System.MonoTODOAttribute]
         public void SetDesignTableContent(string designTableContent) { }
-        [System.MonoTODOAttribute]
         public void SetMethodSourceContent(string methodSourceContent) { }
     }
     public enum ParameterGenerationOption
@@ -1133,25 +1039,18 @@ namespace System.Data.Design
     public sealed partial class TypedDataSetGenerator
     {
         internal TypedDataSetGenerator() { }
-        [System.MonoTODOAttribute]
         public static System.Collections.Generic.ICollection<System.Reflection.Assembly> ReferencedAssemblies { get { throw null; } }
         public static string Generate(System.Data.DataSet dataSet, System.CodeDom.CodeNamespace codeNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
         public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
-        [System.MonoTODOAttribute]
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders) { }
-        [System.MonoTODOAttribute]
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option) { }
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace) { }
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace, string basePath) { }
-        [System.MonoTODOAttribute]
         public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Common.DbProviderFactory specifiedFactory) { }
-        [System.MonoTODOAttribute]
         public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option) { throw null; }
         public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace) { throw null; }
         public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option, string dataSetNamespace, string basePath) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetProviderName(string inputFileContent) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetProviderName(string inputFileContent, string tableName) { throw null; }
         [System.FlagsAttribute]
         public enum GenerateOption
@@ -1170,15 +1069,14 @@ namespace System.Data.Design
         public TypedDataSetGeneratorException(string message) { }
         public TypedDataSetGeneratorException(string message, System.Exception innerException) { }
         public System.Collections.IList ErrorList { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class TypedDataSetSchemaImporterExtension : System.Xml.Serialization.Advanced.SchemaImporterExtension
     {
         public TypedDataSetSchemaImporterExtension() { }
         protected TypedDataSetSchemaImporterExtension(System.Data.Design.TypedDataSetGenerator.GenerateOption dataSetGenerateOptions) { }
-        [System.MonoTODOAttribute]
         public override string ImportSchemaType(string name, string namespaceName, System.Xml.Schema.XmlSchemaObject context, System.Xml.Serialization.XmlSchemas schemas, System.Xml.Serialization.XmlSchemaImporter importer, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.Xml.Serialization.CodeGenerationOptions options, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ImportSchemaType(System.Xml.Schema.XmlSchemaType type, System.Xml.Schema.XmlSchemaObject context, System.Xml.Serialization.XmlSchemas schemas, System.Xml.Serialization.XmlSchemaImporter importer, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.Xml.Serialization.CodeGenerationOptions options, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
     }
     public partial class TypedDataSetSchemaImporterExtensionFx35 : System.Data.Design.TypedDataSetSchemaImporterExtension
@@ -1188,40 +1086,40 @@ namespace System.Data.Design
 }
 namespace System.Diagnostics.Design
 {
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LogConverter : System.ComponentModel.TypeConverter
     {
         public LogConverter() { }
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ProcessDesigner : System.ComponentModel.Design.ComponentDesigner
     {
         public ProcessDesigner() { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ProcessModuleDesigner : System.ComponentModel.Design.ComponentDesigner
     {
         public ProcessModuleDesigner() { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ProcessThreadDesigner : System.ComponentModel.Design.ComponentDesigner
     {
         public ProcessThreadDesigner() { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
 }
 namespace System.Messaging.Design
 {
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class MessageDesigner : System.ComponentModel.Design.ComponentDesigner
     {
         public MessageDesigner() { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
 }
@@ -1242,10 +1140,10 @@ namespace System.Resources.Tools
 }
 namespace System.ServiceProcess.Design
 {
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ServiceControllerDesigner : System.ComponentModel.Design.ComponentDesigner
     {
         public ServiceControllerDesigner() { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
 }
@@ -1257,10 +1155,10 @@ namespace System.Web.UI.Design
         public override object EvaluateExpression(string expression, object parseTimeData, System.Type propertyType, System.IServiceProvider serviceProvider) { throw null; }
         public override System.Web.UI.Design.ExpressionEditorSheet GetExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CalendarDataBindingHandler : System.Web.UI.Design.DataBindingHandler
     {
         public CalendarDataBindingHandler() { }
-        [System.MonoTODOAttribute]
         public override void DataBindControl(System.ComponentModel.Design.IDesignerHost designerHost, System.Web.UI.Control control) { }
     }
     public sealed partial class ClientScriptItem
@@ -1276,23 +1174,19 @@ namespace System.Web.UI.Design
     {
         public ClientScriptItemCollection(System.Web.UI.Design.ClientScriptItem[] clientScriptItems) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class ColorBuilder
     {
         internal ColorBuilder() { }
-        [System.MonoTODOAttribute]
         public static string BuildColor(System.ComponentModel.IComponent component, System.Windows.Forms.Control owner, string initialColor) { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ConnectionStringEditor : System.Drawing.Design.UITypeEditor
     {
         public ConnectionStringEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual string GetProviderName(object instance) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void SetProviderName(object instance, System.ComponentModel.Design.Data.DesignerDataConnection connection) { }
     }
     public partial class ConnectionStringsExpressionEditor : System.Web.UI.Design.ExpressionEditor
@@ -1305,24 +1199,15 @@ namespace System.Web.UI.Design
     public partial class ContainerControlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public ContainerControlDesigner() { }
-        [System.MonoTODOAttribute]
         public override bool AllowResize { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual string FrameCaption { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Web.UI.WebControls.Style FrameStyle { get { throw null; } }
         protected virtual bool NoWrap { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected virtual void AddDesignTimeCssAttributes(System.Collections.IDictionary styleAttributes) { }
-        [System.MonoTODOAttribute]
         public virtual System.Collections.IDictionary GetDesignTimeCssAttributes() { throw null; }
-        [System.MonoTODOAttribute]
         public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
-        [System.MonoTODOAttribute]
         public override string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
-        [System.MonoTODOAttribute]
         public override string GetPersistenceContent() { throw null; }
-        [System.MonoTODOAttribute]
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
     public partial class ContentDefinition
@@ -1337,140 +1222,83 @@ namespace System.Web.UI.Design
         ShowDefaultContent = 0,
         ShowUserContent = 1,
     }
-    [System.MonoTODOAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ControlDesigner : System.Web.UI.Design.HtmlControlDesigner
     {
         public ControlDesigner() { }
-        [System.MonoNotSupportedAttribute("")]
         public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool AllowResize { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         protected virtual bool DataBindingsEnabled { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        protected System.Web.UI.Design.ControlDesignerState DesignerState { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("It is documented as not in use anymore", true)]
+        protected System.Web.UI.Design.ControlDesignerState DesignerState { get { throw null; } }
+        [System.ObsoleteAttribute("Error: This property can no longer be referenced, and is included to support existing compiled applications. The design-time element view architecture is no longer used. http://go.microsoft.com/fwlink/?linkid=14202", true)]
         protected object DesignTimeElementView { get { throw null; } }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use SetViewFlags(ViewFlags.DesignTimeHtmlRequiresLoadComplete, true)")]
+        [System.ObsoleteAttribute("The recommended alternative is SetViewFlags(ViewFlags.DesignTimeHtmlRequiresLoadComplete, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual bool DesignTimeHtmlRequiresLoadComplete { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         protected internal virtual bool HidePropertiesInTemplateMode { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual string ID { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         protected bool InTemplateMode { get { throw null; } }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use Tag.SetDirty() and Tag.IsDirty instead.")]
+        [System.ObsoleteAttribute("The recommended alternative is to use Tag.SetDirty() and Tag.IsDirty. http://go.microsoft.com/fwlink/?linkid=14202")]
         public bool IsDirty { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use ContainerControlDesigner and EditableDesignerRegion")]
+        [System.ObsoleteAttribute("The recommended alternative is to inherit from ContainerControlDesigner instead and to use an EditableDesignerRegion. Regions allow for better control of the content in the designer. http://go.microsoft.com/fwlink/?linkid=14202")]
         public bool ReadOnly { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         protected System.Web.UI.Design.WebFormsRootDesigner RootDesigner { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         protected System.Web.UI.Design.IControlDesignerTag Tag { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual System.Web.UI.Design.TemplateGroupCollection TemplateGroups { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
+        public virtual System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
         protected virtual bool UsePreviewControl { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Control ViewControl { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool ViewControlCreated { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
+        public System.Web.UI.Control ViewControl { get { throw null; } set { } }
+        public virtual bool ViewControlCreated { get { throw null; } set { } }
         protected virtual bool Visible { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         protected string CreateErrorDesignTimeHtml(string errorMessage) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected string CreateErrorDesignTimeHtml(string errorMessage, System.Exception e) { throw null; }
-        [System.MonoTODOAttribute]
         protected string CreatePlaceHolderDesignTimeHtml() { throw null; }
-        [System.MonoTODOAttribute]
         protected string CreatePlaceHolderDesignTimeHtml(string instruction) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected virtual System.Web.UI.Control CreateViewControl() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public System.Drawing.Rectangle GetBounds() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual string GetDesignTimeHtml() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public virtual string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public static System.Web.UI.Design.DesignTimeResourceProviderFactory GetDesignTimeResourceProviderFactory(System.IServiceProvider serviceProvider) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public virtual string GetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual string GetEmptyDesignTimeHtml() { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public virtual string GetPersistenceContent() { throw null; }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use GetPersistenceContent() instead")]
+        [System.ObsoleteAttribute("The recommended alternative is GetPersistenceContent(). http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual string GetPersistInnerHtml() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public System.Web.UI.Design.ViewRendering GetViewRendering() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public static System.Web.UI.Design.ViewRendering GetViewRendering(System.Web.UI.Control control) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public static System.Web.UI.Design.ViewRendering GetViewRendering(System.Web.UI.Design.ControlDesigner designer) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public void Invalidate() { }
-        [System.MonoTODOAttribute]
         public void Invalidate(System.Drawing.Rectangle rectangle) { }
-        [System.MonoTODOAttribute]
         public static void InvokeTransactedChange(System.ComponentModel.IComponent component, System.Web.UI.Design.TransactedChangeCallback callback, object context, string description) { }
-        [System.MonoTODOAttribute]
         public static void InvokeTransactedChange(System.ComponentModel.IComponent component, System.Web.UI.Design.TransactedChangeCallback callback, object context, string description, System.ComponentModel.MemberDescriptor member) { }
-        [System.MonoTODOAttribute]
         public static void InvokeTransactedChange(System.IServiceProvider serviceProvider, System.ComponentModel.IComponent component, System.Web.UI.Design.TransactedChangeCallback callback, object context, string description, System.ComponentModel.MemberDescriptor member) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use DataBindings.Contains(string) instead")]
+        [System.ObsoleteAttribute("The recommended alternative is DataBindings.Contains(string). The DataBindings collection allows more control of the databindings associated with the control. http://go.microsoft.com/fwlink/?linkid=14202")]
         public bool IsPropertyBound(string propName) { throw null; }
-        [System.MonoTODOAttribute]
         public void Localize(System.Web.UI.Design.IDesignTimeResourceWriter resourceWriter) { }
-        [System.MonoTODOAttribute]
         public virtual void OnAutoFormatApplied(System.Web.UI.Design.DesignerAutoFormat appliedAutoFormat) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use DataBindings.Changed event instead")]
+        [System.ObsoleteAttribute("The recommended alternative is to handle the Changed event on the DataBindings collection. The DataBindings collection allows more control of the databindings associated with the control. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override void OnBindingsCollectionChanged(string propName) { }
-        [System.MonoTODOAttribute]
         protected virtual void OnClick(System.Web.UI.Design.DesignerRegionMouseEventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
-        [System.MonoTODOAttribute]
         public virtual void OnComponentChanging(object sender, System.ComponentModel.Design.ComponentChangingEventArgs ce) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use OnComponentChanged() instead")]
+        [System.ObsoleteAttribute("The recommended alternative is OnComponentChanged(). OnComponentChanged is called when any property of the control is changed. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual void OnControlResize() { }
-        [System.MonoTODOAttribute]
         protected virtual void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use OnComponentChanged() instead")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because resizing is handled by the OnComponentChanged() method. http://go.microsoft.com/fwlink/?linkid=14202")]
         public void RaiseResizeEvent() { }
-        [System.MonoTODOAttribute]
         public void RegisterClone(object original, object clone) { }
-        [System.MonoNotSupportedAttribute("")]
         public virtual void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
-        [System.MonoTODOAttribute]
         protected void SetRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
-        [System.MonoNotSupportedAttribute("")]
         protected void SetViewFlags(System.Web.UI.Design.ViewFlags viewFlags, bool setFlag) { }
-        [System.MonoTODOAttribute]
         public virtual void UpdateDesignTimeHtml() { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class ControlDesignerState
     {
         internal ControlDesignerState() { }
-        [System.MonoNotSupportedAttribute("")]
-        public object this[string key] { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
+        public object this[string key] { get { throw null; } set { } }
     }
     public enum ControlLocation
     {
@@ -1481,463 +1309,305 @@ namespace System.Web.UI.Design
         Last = 3,
         LastChild = 5,
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class ControlParser
     {
         internal ControlParser() { }
-        [System.MonoTODOAttribute]
         public static System.Web.UI.Control ParseControl(System.ComponentModel.Design.IDesignerHost designerHost, string controlText) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Web.UI.Control ParseControl(System.ComponentModel.Design.IDesignerHost designerHost, string controlText, string directives) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Web.UI.Control[] ParseControls(System.ComponentModel.Design.IDesignerHost designerHost, string controlText) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Web.UI.ITemplate ParseTemplate(System.ComponentModel.Design.IDesignerHost designerHost, string templateText) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Web.UI.ITemplate ParseTemplate(System.ComponentModel.Design.IDesignerHost designerHost, string templateText, string directives) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class ControlPersister
     {
         internal ControlPersister() { }
-        [System.MonoTODOAttribute]
         public static void PersistControl(System.IO.TextWriter sw, System.Web.UI.Control control) { }
-        [System.MonoTODOAttribute]
         public static void PersistControl(System.IO.TextWriter sw, System.Web.UI.Control control, System.ComponentModel.Design.IDesignerHost host) { }
-        [System.MonoTODOAttribute]
         public static string PersistControl(System.Web.UI.Control control) { throw null; }
-        [System.MonoTODOAttribute]
         public static string PersistControl(System.Web.UI.Control control, System.ComponentModel.Design.IDesignerHost host) { throw null; }
-        [System.MonoTODOAttribute]
         public static void PersistInnerProperties(System.IO.TextWriter sw, object component, System.ComponentModel.Design.IDesignerHost host) { }
-        [System.MonoTODOAttribute]
         public static string PersistInnerProperties(object component, System.ComponentModel.Design.IDesignerHost host) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public static void PersistTemplate(System.IO.TextWriter writer, System.Web.UI.ITemplate template, System.ComponentModel.Design.IDesignerHost host) { }
-        [System.MonoNotSupportedAttribute("")]
         public static string PersistTemplate(System.Web.UI.ITemplate template, System.ComponentModel.Design.IDesignerHost host) { throw null; }
     }
-    [System.ObsoleteAttribute("This class is not supposed to be in use anymore as DesignerActionList is supposed to be used for editing DataBinding")]
+    [System.ObsoleteAttribute("Use of this type is not recommended because DataBindings editing is launched via a DesignerActionList instead of the property grid. http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataBindingCollectionConverter : System.ComponentModel.TypeConverter
     {
         public DataBindingCollectionConverter() { }
         public override object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, System.Type destinationType) { throw null; }
     }
-    [System.ObsoleteAttribute("This class is not supposed to be in use anymore as DesignerActionList is supposed to be used for editing DataBinding")]
+    [System.ObsoleteAttribute("Use of this type is not recommended because DataBindings editing is launched via a DesignerActionList instead of the property grid. http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataBindingCollectionEditor : System.Drawing.Design.UITypeEditor
     {
         public DataBindingCollectionEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public abstract partial class DataBindingHandler
     {
         protected DataBindingHandler() { }
         public abstract void DataBindControl(System.ComponentModel.Design.IDesignerHost designerHost, System.Web.UI.Control control);
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataBindingValueUIHandler
     {
         public DataBindingValueUIHandler() { }
-        [System.MonoTODOAttribute]
         public void OnGetUIValueItem(System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor propDesc, System.Collections.ArrayList valueUIItemList) { }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataColumnSelectionConverter : System.ComponentModel.TypeConverter
     {
         public DataColumnSelectionConverter() { }
-        [System.MonoTODOAttribute]
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
-        [System.MonoTODOAttribute]
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataFieldConverter : System.ComponentModel.TypeConverter
     {
         public DataFieldConverter() { }
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataMemberConverter : System.ComponentModel.TypeConverter
     {
         public DataMemberConverter() { }
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
     public sealed partial class DataSetFieldSchema : System.Web.UI.Design.IDataSourceFieldSchema
     {
-        [System.MonoTODOAttribute]
         public DataSetFieldSchema(System.Data.DataColumn column) { }
-        [System.MonoTODOAttribute]
         public System.Type DataType { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool Identity { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsReadOnly { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsUnique { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int Length { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string Name { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool Nullable { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int Precision { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool PrimaryKey { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int Scale { get { throw null; } }
     }
     public sealed partial class DataSetSchema : System.Web.UI.Design.IDataSourceSchema
     {
-        [System.MonoTODOAttribute]
         public DataSetSchema(System.Data.DataSet dataSet) { }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.IDataSourceViewSchema[] GetViews() { throw null; }
     }
     public sealed partial class DataSetViewSchema : System.Web.UI.Design.IDataSourceViewSchema
     {
-        [System.MonoTODOAttribute]
         public DataSetViewSchema(System.Data.DataTable dataTable) { }
-        [System.MonoTODOAttribute]
         public string Name { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.IDataSourceViewSchema[] GetChildren() { throw null; }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.IDataSourceFieldSchema[] GetFields() { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataSourceBooleanViewSchemaConverter : System.Web.UI.Design.DataSourceViewSchemaConverter
     {
         public DataSourceBooleanViewSchemaConverter() { }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataSourceConverter : System.ComponentModel.TypeConverter
     {
         public DataSourceConverter() { }
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual bool IsValidDataSource(System.ComponentModel.IComponent component) { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataSourceDesigner : System.Web.UI.Design.ControlDesigner, System.Web.UI.Design.IDataSourceDesigner
     {
         public DataSourceDesigner() { }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool CanConfigure { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool CanRefreshSchema { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected bool SuppressingDataSourceEvents { get { throw null; } }
         public event System.EventHandler DataSourceChanged { add { } remove { } }
         public event System.EventHandler SchemaRefreshed { add { } remove { } }
-        [System.MonoTODOAttribute]
         public virtual void Configure() { }
-        [System.MonoTODOAttribute]
         public override string GetDesignTimeHtml() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Web.UI.Design.DesignerDataSourceView GetView(string viewName) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual string[] GetViewNames() { throw null; }
         protected virtual void OnDataSourceChanged(System.EventArgs e) { }
         protected virtual void OnSchemaRefreshed(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void RefreshSchema(bool preferSilent) { }
-        [System.MonoTODOAttribute]
         public virtual void ResumeDataSourceEvents() { }
-        [System.MonoTODOAttribute]
         public static bool SchemasEquivalent(System.Web.UI.Design.IDataSourceSchema schema1, System.Web.UI.Design.IDataSourceSchema schema2) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void SuppressDataSourceEvents() { }
-        [System.MonoTODOAttribute]
         public static bool ViewSchemasEquivalent(System.Web.UI.Design.IDataSourceViewSchema viewSchema1, System.Web.UI.Design.IDataSourceViewSchema viewSchema2) { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataSourceViewSchemaConverter : System.ComponentModel.TypeConverter
     {
         public DataSourceViewSchemaConverter() { }
-        [System.MonoTODOAttribute]
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
-        [System.MonoTODOAttribute]
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context, System.Type typeFilter) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
     public abstract partial class DesignerAutoFormat
     {
         protected DesignerAutoFormat(string name) { }
-        [System.MonoTODOAttribute]
         public string Name { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.DesignerAutoFormatStyle Style { get { throw null; } }
         public abstract void Apply(System.Web.UI.Control control);
-        [System.MonoTODOAttribute]
         public virtual System.Web.UI.Control GetPreviewControl(System.Web.UI.Control runtimeControl) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public sealed partial class DesignerAutoFormatCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
         public DesignerAutoFormatCollection() { }
-        [System.MonoTODOAttribute]
         public int Count { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.DesignerAutoFormat this[int index] { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Drawing.Size PreviewSize { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object SyncRoot { get { throw null; } }
-        [System.MonoTODOAttribute]
         int System.Collections.ICollection.Count { get { throw null; } }
-        [System.MonoTODOAttribute]
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
-        [System.MonoTODOAttribute]
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
-        [System.MonoTODOAttribute]
         bool System.Collections.IList.IsReadOnly { get { throw null; } }
-        [System.MonoTODOAttribute]
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int Add(System.Web.UI.Design.DesignerAutoFormat format) { throw null; }
-        [System.MonoTODOAttribute]
         public void Clear() { }
-        [System.MonoTODOAttribute]
         public bool Contains(System.Web.UI.Design.DesignerAutoFormat format) { throw null; }
-        [System.MonoTODOAttribute]
         public int IndexOf(System.Web.UI.Design.DesignerAutoFormat format) { throw null; }
-        [System.MonoTODOAttribute]
         public void Insert(int index, System.Web.UI.Design.DesignerAutoFormat format) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.Web.UI.Design.DesignerAutoFormat format) { }
-        [System.MonoTODOAttribute]
         public void RemoveAt(int index) { }
-        [System.MonoTODOAttribute]
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
-        [System.MonoTODOAttribute]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         int System.Collections.IList.Add(object value) { throw null; }
-        [System.MonoTODOAttribute]
         bool System.Collections.IList.Contains(object value) { throw null; }
-        [System.MonoTODOAttribute]
         int System.Collections.IList.IndexOf(object value) { throw null; }
-        [System.MonoTODOAttribute]
         void System.Collections.IList.Insert(int index, object value) { }
-        [System.MonoTODOAttribute]
         void System.Collections.IList.Remove(object value) { }
-        [System.MonoTODOAttribute]
         void System.Collections.IList.RemoveAt(int index) { }
     }
     public partial class DesignerAutoFormatStyle : System.Web.UI.WebControls.Style
     {
         public DesignerAutoFormatStyle() { }
-        [System.MonoTODOAttribute]
         public System.Web.UI.WebControls.VerticalAlign VerticalAlign { get { throw null; } set { } }
     }
     public abstract partial class DesignerDataSourceView
     {
-        [System.MonoNotSupportedAttribute("")]
         protected DesignerDataSourceView(System.Web.UI.Design.IDataSourceDesigner owner, string viewName) { }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool CanDelete { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool CanInsert { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool CanPage { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool CanRetrieveTotalRowCount { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool CanSort { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool CanUpdate { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.IDataSourceDesigner DataSourceDesigner { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public string Name { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual System.Web.UI.Design.IDataSourceViewSchema Schema { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
+        public virtual bool CanDelete { get { throw null; } }
+        public virtual bool CanInsert { get { throw null; } }
+        public virtual bool CanPage { get { throw null; } }
+        public virtual bool CanRetrieveTotalRowCount { get { throw null; } }
+        public virtual bool CanSort { get { throw null; } }
+        public virtual bool CanUpdate { get { throw null; } }
+        public System.Web.UI.Design.IDataSourceDesigner DataSourceDesigner { get { throw null; } }
+        public string Name { get { throw null; } }
+        public virtual System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
         public virtual System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
     }
     public abstract partial class DesignerHierarchicalDataSourceView
     {
-        [System.MonoTODOAttribute]
         protected DesignerHierarchicalDataSourceView(System.Web.UI.Design.IHierarchicalDataSourceDesigner owner, string viewPath) { }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.IHierarchicalDataSourceDesigner DataSourceDesigner { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string Path { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Web.UI.Design.IDataSourceSchema Schema { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Web.UI.IHierarchicalEnumerable GetDesignTimeData(out bool isSampleData) { isSampleData = default(bool); throw null; }
     }
     public abstract partial class DesignerObject : System.IServiceProvider
     {
-        [System.MonoNotSupportedAttribute("")]
         protected DesignerObject(System.Web.UI.Design.ControlDesigner designer, string name) { }
-        [System.MonoNotSupportedAttribute("")]
         public System.Web.UI.Design.ControlDesigner Designer { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public string Name { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public System.Collections.IDictionary Properties { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         protected object GetService(System.Type serviceType) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         object System.IServiceProvider.GetService(System.Type serviceType) { throw null; }
     }
     public partial class DesignerRegion : System.Web.UI.Design.DesignerObject
     {
         public static readonly string DesignerRegionAttributeName;
-        [System.MonoNotSupportedAttribute("")]
         public DesignerRegion(System.Web.UI.Design.ControlDesigner designer, string name) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public DesignerRegion(System.Web.UI.Design.ControlDesigner designer, string name, bool selectable) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public virtual string Description { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual string DisplayName { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public bool EnsureSize { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual bool Highlight { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual bool Selectable { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual bool Selected { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public object UserData { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public System.Drawing.Rectangle GetBounds() { throw null; }
     }
     public partial class DesignerRegionCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
-        [System.MonoNotSupportedAttribute("")]
         public DesignerRegionCollection() { }
-        [System.MonoNotSupportedAttribute("")]
         public DesignerRegionCollection(System.Web.UI.Design.ControlDesigner owner) { }
-        [System.MonoNotSupportedAttribute("")]
         public int Count { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public bool IsFixedSize { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public bool IsReadOnly { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public bool IsSynchronized { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public System.Web.UI.Design.DesignerRegion this[int index] { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public System.Web.UI.Design.ControlDesigner Owner { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public object SyncRoot { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         int System.Collections.ICollection.Count { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         bool System.Collections.IList.IsReadOnly { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         object System.Collections.IList.this[int index] { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public int Add(System.Web.UI.Design.DesignerRegion region) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public void Clear() { }
-        [System.MonoNotSupportedAttribute("")]
         public bool Contains(System.Web.UI.Design.DesignerRegion region) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public void CopyTo(System.Array array, int index) { }
-        [System.MonoNotSupportedAttribute("")]
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public int IndexOf(System.Web.UI.Design.DesignerRegion region) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public void Insert(int index, System.Web.UI.Design.DesignerRegion region) { }
-        [System.MonoNotSupportedAttribute("")]
         public void Remove(System.Web.UI.Design.DesignerRegion region) { }
-        [System.MonoNotSupportedAttribute("")]
         public void RemoveAt(int index) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
-        [System.MonoNotSupportedAttribute("")]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         int System.Collections.IList.Add(object o) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.Clear() { }
-        [System.MonoNotSupportedAttribute("")]
         bool System.Collections.IList.Contains(object o) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         int System.Collections.IList.IndexOf(object o) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.Insert(int index, object o) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.Remove(object o) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.RemoveAt(int index) { }
     }
     public sealed partial class DesignerRegionMouseEventArgs : System.EventArgs
     {
-        [System.MonoNotSupportedAttribute("")]
         public DesignerRegionMouseEventArgs(System.Web.UI.Design.DesignerRegion region, System.Drawing.Point location) { }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Drawing.Point Location { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.DesignerRegion Region { [System.MonoNotSupportedAttribute("")]get { throw null; } }
+        public System.Drawing.Point Location { get { throw null; } }
+        public System.Web.UI.Design.DesignerRegion Region { get { throw null; } }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class DesignTimeData
     {
         internal DesignTimeData() { }
         public static readonly System.EventHandler DataBindingHandler;
-        [System.MonoTODOAttribute]
         public static System.Data.DataTable CreateDummyDataBoundDataTable() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Data.DataTable CreateDummyDataTable() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Data.DataTable CreateSampleDataTable(System.Collections.IEnumerable referenceData) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Data.DataTable CreateSampleDataTable(System.Collections.IEnumerable referenceData, bool useDataBoundData) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ComponentModel.PropertyDescriptorCollection GetDataFields(System.Collections.IEnumerable dataSource) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Collections.IEnumerable GetDataMember(System.ComponentModel.IListSource dataSource, string dataMember) { throw null; }
-        [System.MonoTODOAttribute]
         public static string[] GetDataMembers(object dataSource) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Collections.IEnumerable GetDesignTimeDataSource(System.Data.DataTable dataTable, int minimumRows) { throw null; }
-        [System.MonoTODOAttribute]
         public static object GetSelectedDataSource(System.ComponentModel.IComponent component, string dataSource) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Collections.IEnumerable GetSelectedDataSource(System.ComponentModel.IComponent component, string dataSource, string dataMember) { throw null; }
     }
     public abstract partial class DesignTimeResourceProviderFactory
@@ -1949,17 +1619,11 @@ namespace System.Web.UI.Design
     }
     public partial class EditableDesignerRegion : System.Web.UI.Design.DesignerRegion
     {
-        [System.MonoNotSupportedAttribute("")]
         public EditableDesignerRegion(System.Web.UI.Design.ControlDesigner owner, string name) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public EditableDesignerRegion(System.Web.UI.Design.ControlDesigner owner, string name, bool serverControlsOnly) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public virtual string Content { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public bool ServerControlsOnly { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual bool SupportsDataBinding { get { throw null; } set { } }
-        [System.MonoNotSupportedAttribute("")]
         public virtual System.Web.UI.Design.ViewRendering GetChildViewRendering(System.Web.UI.Control control) { throw null; }
     }
     public abstract partial class ExpressionEditor
@@ -1968,7 +1632,6 @@ namespace System.Web.UI.Design
         public string ExpressionPrefix { get { throw null; } }
         public abstract object EvaluateExpression(string expression, object parseTimeData, System.Type propertyType, System.IServiceProvider serviceProvider);
         public static System.Web.UI.Design.ExpressionEditor GetExpressionEditor(string expressionPrefix, System.IServiceProvider serviceProvider) { throw null; }
-        [System.MonoTODOAttribute("the docs make it sound like this still requires accessing <expressionBuilders>")]
         public static System.Web.UI.Design.ExpressionEditor GetExpressionEditor(System.Type expressionBuilderType, System.IServiceProvider serviceProvider) { throw null; }
         public virtual System.Web.UI.Design.ExpressionEditorSheet GetExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) { throw null; }
     }
@@ -1985,99 +1648,73 @@ namespace System.Web.UI.Design
     public partial class ExpressionsCollectionConverter : System.ComponentModel.TypeConverter
     {
         public ExpressionsCollectionConverter() { }
-        [System.MonoTODOAttribute]
         public override object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, System.Type destinationType) { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ExpressionsCollectionEditor : System.Drawing.Design.UITypeEditor
     {
         public ExpressionsCollectionEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HierarchicalDataSourceConverter : System.Web.UI.Design.DataSourceConverter
     {
         public HierarchicalDataSourceConverter() { }
-        [System.MonoTODOAttribute]
         protected override bool IsValidDataSource(System.ComponentModel.IComponent component) { throw null; }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HierarchicalDataSourceDesigner : System.Web.UI.Design.ControlDesigner, System.Web.UI.Design.IHierarchicalDataSourceDesigner
     {
         public HierarchicalDataSourceDesigner() { }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool CanConfigure { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool CanRefreshSchema { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected bool SuppressingDataSourceEvents { get { throw null; } }
         public event System.EventHandler DataSourceChanged { add { } remove { } }
         public event System.EventHandler SchemaRefreshed { add { } remove { } }
         public virtual void Configure() { }
-        [System.MonoTODOAttribute]
         public override string GetDesignTimeHtml() { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Web.UI.Design.DesignerHierarchicalDataSourceView GetView(string viewPath) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void OnDataSourceChanged(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         protected virtual void OnSchemaRefreshed(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void RefreshSchema(bool preferSilent) { }
-        [System.MonoTODOAttribute]
         public virtual void ResumeDataSourceEvents() { }
-        [System.MonoTODOAttribute]
         public virtual void SuppressDataSourceEvents() { }
     }
-    [System.MonoTODOAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HtmlControlDesigner : System.ComponentModel.Design.ComponentDesigner
     {
-        [System.MonoTODOAttribute]
         public HtmlControlDesigner() { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use ControlDesigner.Tag instead")]
+        [System.ObsoleteAttribute("The recommended alternative is ControlDesigner.Tag. http://go.microsoft.com/fwlink/?linkid=14202")]
         public System.Web.UI.Design.IHtmlControlDesignerBehavior Behavior { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Web.UI.DataBindingCollection DataBindings { get { throw null; } }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use new WebFormsRootDesigner feature instead. It is not used anymore", true)]
+        [System.ObsoleteAttribute("Error: This property can no longer be referenced, and is included to support existing compiled applications. The design-time element may not always provide access to the element in the markup. There are alternate methods on WebFormsRootDesigner for handling client script and controls. http://go.microsoft.com/fwlink/?linkid=14202", true)]
         protected object DesignTimeElement { get { throw null; } }
         public System.Web.UI.ExpressionBindingCollection Expressions { get { throw null; } }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Code serialization is not supported in 2.0 anymore")]
+        [System.ObsoleteAttribute("Use of this property is not recommended because code serialization is not supported. http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual bool ShouldCodeSerialize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected override void Dispose(bool disposing) { }
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use ControlDesigner.Tag instead")]
+        [System.ObsoleteAttribute("The recommended alternative is ControlDesigner.Tag. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual void OnBehaviorAttached() { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use ControlDesigner.Tag instead")]
+        [System.ObsoleteAttribute("The recommended alternative is ControlDesigner.Tag. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual void OnBehaviorDetaching() { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use DataBinding.Changed event instead")]
+        [System.ObsoleteAttribute("The recommended alternative is to handle the Changed event on the DataBindings collection. The DataBindings collection allows more control of the databindings associated with the control. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected virtual void OnBindingsCollectionChanged(string propName) { }
-        [System.MonoTODOAttribute]
         public virtual void OnSetParent() { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterEvents(System.Collections.IDictionary events) { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HtmlIntrinsicControlDesigner : System.Web.UI.Design.HtmlControlDesigner
     {
         public HtmlIntrinsicControlDesigner() { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HyperLinkDataBindingHandler : System.Web.UI.Design.DataBindingHandler
     {
         public HyperLinkDataBindingHandler() { }
-        [System.MonoTODOAttribute]
         public override void DataBindControl(System.ComponentModel.Design.IDesignerHost designerHost, System.Web.UI.Control control) { }
     }
     public partial interface IContentResolutionService
@@ -2086,7 +1723,7 @@ namespace System.Web.UI.Design
         System.Web.UI.Design.ContentDesignerState GetContentDesignerState(string identifier);
         void SetContentDesignerState(string identifier, System.Web.UI.Design.ContentDesignerState state);
     }
-    [System.ObsoleteAttribute("Use IControlDesignerTag interface instead")]
+    [System.ObsoleteAttribute("The recommended alternative is System.Web.UI.Design.IControlDesignerTag and System.Web.UI.Design.IControlDesignerView. http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial interface IControlDesignerBehavior
     {
         object DesignTimeElementView { get; }
@@ -2194,7 +1831,7 @@ namespace System.Web.UI.Design
         void ResumeDataSourceEvents();
         void SuppressDataSourceEvents();
     }
-    [System.ObsoleteAttribute("Use IControlDesignerTag and IControlDesignerView instead")]
+    [System.ObsoleteAttribute("The recommended alternative is System.Web.UI.Design.IControlDesignerTag and System.Web.UI.Design.IControlDesignerView. http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial interface IHtmlControlDesignerBehavior
     {
         System.Web.UI.Design.HtmlControlDesigner Designer { get; set; }
@@ -2206,6 +1843,7 @@ namespace System.Web.UI.Design
         void SetAttribute(string attribute, object value, bool ignoreCase);
         void SetStyleAttribute(string attribute, bool designTimeOnly, object value, bool ignoreCase);
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ImageUrlEditor : System.Web.UI.Design.UrlEditor
     {
         public ImageUrlEditor() { }
@@ -2219,7 +1857,7 @@ namespace System.Web.UI.Design
         System.Web.UI.Design.IProjectItem Parent { get; }
         string PhysicalPath { get; }
     }
-    [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+    [System.ObsoleteAttribute("Use of this type is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial interface ITemplateEditingFrame : System.IDisposable
     {
         System.Web.UI.WebControls.Style ControlStyle { get; }
@@ -2235,7 +1873,7 @@ namespace System.Web.UI.Design
         void Save();
         void UpdateControlName(string newName);
     }
-    [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+    [System.ObsoleteAttribute("Use of this type is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial interface ITemplateEditingService
     {
         bool SupportsNestedTemplateEditing { get; }
@@ -2254,7 +1892,7 @@ namespace System.Web.UI.Design
         System.Web.UI.Design.IProjectItem GetProjectItemFromUrl(string appRelativeUrl);
         System.Configuration.Configuration OpenWebConfiguration(bool isReadOnly);
     }
-    [System.ObsoleteAttribute("Use new WebFormsReferenceManager feature")]
+    [System.ObsoleteAttribute("The recommended alternative is System.Web.UI.Design.WebFormsReferenceManager. The WebFormsReferenceManager contains additional functionality and allows for more extensibility. To get the WebFormsReferenceManager use the RootDesigner.ReferenceManager property from your ControlDesigner. http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial interface IWebFormReferenceManager
     {
         System.Type GetObjectType(string tagPrefix, string typeName);
@@ -2266,7 +1904,7 @@ namespace System.Web.UI.Design
         string BuildColor(System.Windows.Forms.Control owner, string initialColor);
         string BuildUrl(System.Windows.Forms.Control owner, string initialUrl, string baseUrl, string caption, string filter, System.Web.UI.Design.UrlBuilderOptions options);
     }
-    [System.ObsoleteAttribute("Use new WebFormsReferenceManager feature")]
+    [System.ObsoleteAttribute("The recommended alternative is System.Web.UI.Design.WebFormsRootDesigner. The WebFormsRootDesigner contains additional functionality and allows for more extensibility. To get the WebFormsRootDesigner use the RootDesigner property from your ControlDesigner. http://go.microsoft.com/fwlink/?linkid=14202")]
     public partial interface IWebFormsDocumentService
     {
         string DocumentUrl { get; }
@@ -2281,36 +1919,26 @@ namespace System.Web.UI.Design
     public partial class MailFileEditor : System.Web.UI.Design.UrlEditor
     {
         public MailFileEditor() { }
-        [System.MonoTODOAttribute]
         protected override string Caption { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override string Filter { get { throw null; } }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class MdbDataFileEditor : System.Web.UI.Design.UrlEditor
     {
         public MdbDataFileEditor() { }
-        [System.MonoTODOAttribute]
         protected override string Caption { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override string Filter { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
-    [System.ObsoleteAttribute("Use ContainerControlDesigner instead")]
+    [System.ObsoleteAttribute("The recommended alternative is ContainerControlDesigner because it uses an EditableDesignerRegion for editing the content. Designer regions allow for better control of the content being edited. http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ReadWriteControlDesigner : System.Web.UI.Design.ControlDesigner
     {
-        [System.MonoTODOAttribute]
         public ReadWriteControlDesigner() { }
-        [System.MonoTODOAttribute]
         public override string GetDesignTimeHtml() { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void MapPropertyToStyle(string propName, object varPropValue) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use ControlDesigner.Tag instead")]
+        [System.ObsoleteAttribute("The recommended alternative is ControlDesigner.Tag. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override void OnBehaviorAttached() { }
-        [System.MonoTODOAttribute]
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
-        [System.MonoTODOAttribute]
         public override void UpdateDesignTimeHtml() { }
     }
     public partial class ResourceExpressionEditor : System.Web.UI.Design.ExpressionEditor
@@ -2321,17 +1949,13 @@ namespace System.Web.UI.Design
     }
     public partial class ResourceExpressionEditorSheet : System.Web.UI.Design.ExpressionEditorSheet
     {
-        [System.MonoTODOAttribute]
         public ResourceExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.MonoTODOAttribute]
         public string ClassKey { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override bool IsValid { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.TypeConverterAttribute("System.Web.UI.Design.ResourceExpressionEditorSheet.ResourceKeyTypeConverter")]
         public string ResourceKey { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override string GetExpression() { throw null; }
     }
     public partial class RouteUrlExpressionEditor : System.Web.UI.Design.ExpressionEditor
@@ -2344,7 +1968,9 @@ namespace System.Web.UI.Design
     {
         public RouteUrlExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
         public override bool IsValid { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute("")]
         public string RouteName { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute("")]
         public string RouteValues { get { throw null; } set { } }
         public override string GetExpression() { throw null; }
     }
@@ -2358,24 +1984,18 @@ namespace System.Web.UI.Design
     {
         public RouteValueExpressionEditorSheet(string expression, System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
         public override bool IsValid { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute("")]
         public string RouteValue { get { throw null; } set { } }
         public override string GetExpression() { throw null; }
     }
     public partial class SkinIDTypeConverter : System.ComponentModel.TypeConverter
     {
-        [System.MonoTODOAttribute]
         public SkinIDTypeConverter() { }
-        [System.MonoTODOAttribute]
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Type destType) { throw null; }
-        [System.MonoTODOAttribute]
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override object ConvertTo(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, System.Type destinationType) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
@@ -2388,193 +2008,130 @@ namespace System.Web.UI.Design
         public override int GetHashCode() { throw null; }
         public override bool IsDefaultAttribute() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public abstract partial class TemplatedControlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public TemplatedControlDesigner() { }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this property is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public System.Web.UI.Design.ITemplateEditingFrame ActiveTemplateEditingFrame { get { throw null; } }
         public bool CanEnterTemplateMode { get { throw null; } }
         protected override bool DataBindingsEnabled { get { throw null; } }
-        [System.ObsoleteAttribute("Use ControlDesigner.InTemplateMode instead")]
+        [System.ObsoleteAttribute("The recommended alternative is System.Web.UI.Design.ControlDesigner.InTemplateMode. http://go.microsoft.com/fwlink/?linkid=14202")]
         public new bool InTemplateMode { get { throw null; } }
         public override System.Web.UI.Design.TemplateGroupCollection TemplateGroups { get { throw null; } }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         protected abstract System.Web.UI.Design.ITemplateEditingFrame CreateTemplateEditingFrame(System.Web.UI.Design.TemplateEditingVerb verb);
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public void EnterTemplateMode(System.Web.UI.Design.ITemplateEditingFrame newTemplateEditingFrame) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public void ExitTemplateMode(bool fSwitchingTemplates, bool fNested, bool fSave) { }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         protected abstract System.Web.UI.Design.TemplateEditingVerb[] GetCachedTemplateEditingVerbs();
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual string GetTemplateContainerDataItemProperty(string templateName) { throw null; }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual System.Collections.IEnumerable GetTemplateContainerDataSource(string templateName) { throw null; }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public abstract string GetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, out bool allowEditing);
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public System.Web.UI.Design.TemplateEditingVerb[] GetTemplateEditingVerbs() { throw null; }
-        [System.MonoTODOAttribute]
         protected System.Web.UI.ITemplate GetTemplateFromText(string text) { throw null; }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public virtual System.Type GetTemplatePropertyParentType(string templateName) { throw null; }
-        [System.MonoTODOAttribute]
         protected string GetTextFromTemplate(System.Web.UI.ITemplate template) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
-        [System.ObsoleteAttribute("Use ControlDesigner.Tag instead")]
+        [System.ObsoleteAttribute("The recommended alternative is ControlDesigner.Tag. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override void OnBehaviorAttached() { }
-        [System.MonoTODOAttribute]
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
-        [System.MonoTODOAttribute]
         public override void OnSetParent() { }
-        [System.MonoTODOAttribute]
         protected virtual void OnTemplateModeChanged() { }
-        [System.MonoTODOAttribute]
         protected void SaveActiveTemplateEditingFrame() { }
-        [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public abstract void SetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, string templateContent);
-        [System.MonoTODOAttribute]
         public override void UpdateDesignTimeHtml() { }
     }
     public partial class TemplatedEditableDesignerRegion : System.Web.UI.Design.EditableDesignerRegion
     {
-        [System.MonoNotSupportedAttribute("")]
         public TemplatedEditableDesignerRegion(System.Web.UI.Design.TemplateDefinition templateDefinition) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool IsSingleInstanceTemplate { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public override bool SupportsDataBinding { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.TemplateDefinition TemplateDefinition { [System.MonoNotSupportedAttribute("")]get { throw null; } }
+        public virtual bool IsSingleInstanceTemplate { get { throw null; } set { } }
+        public override bool SupportsDataBinding { get { throw null; } set { } }
+        public System.Web.UI.Design.TemplateDefinition TemplateDefinition { get { throw null; } }
     }
     public partial class TemplateDefinition : System.Web.UI.Design.DesignerObject
     {
-        [System.MonoNotSupportedAttribute("")]
         public TemplateDefinition(System.Web.UI.Design.ControlDesigner designer, string name, object templatedObject, string templatePropertyName) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public TemplateDefinition(System.Web.UI.Design.ControlDesigner designer, string name, object templatedObject, string templatePropertyName, bool serverControlsOnly) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public TemplateDefinition(System.Web.UI.Design.ControlDesigner designer, string name, object templatedObject, string templatePropertyName, System.Web.UI.WebControls.Style style) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
         public TemplateDefinition(System.Web.UI.Design.ControlDesigner designer, string name, object templatedObject, string templatePropertyName, System.Web.UI.WebControls.Style style, bool serverControlsOnly) : base (default(System.Web.UI.Design.ControlDesigner), default(string)) { }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual bool AllowEditing { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public virtual string Content { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public bool ServerControlsOnly { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.WebControls.Style Style { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public bool SupportsDataBinding { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public object TemplatedObject { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public string TemplatePropertyName { [System.MonoNotSupportedAttribute("")]get { throw null; } }
+        public virtual bool AllowEditing { get { throw null; } }
+        public virtual string Content { get { throw null; } set { } }
+        public bool ServerControlsOnly { get { throw null; } }
+        public System.Web.UI.WebControls.Style Style { get { throw null; } }
+        public bool SupportsDataBinding { get { throw null; } set { } }
+        public object TemplatedObject { get { throw null; } }
+        public string TemplatePropertyName { get { throw null; } }
     }
-    [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+    [System.ObsoleteAttribute("Use of this type is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class TemplateEditingService : System.IDisposable, System.Web.UI.Design.ITemplateEditingService
     {
         public TemplateEditingService(System.ComponentModel.Design.IDesignerHost designerHost) { }
         public bool SupportsNestedTemplateEditing { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.ITemplateEditingFrame CreateFrame(System.Web.UI.Design.TemplatedControlDesigner designer, string frameName, string[] templateNames) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.ITemplateEditingFrame CreateFrame(System.Web.UI.Design.TemplatedControlDesigner designer, string frameName, string[] templateNames, System.Web.UI.WebControls.Style controlStyle, System.Web.UI.WebControls.Style[] templateStyles) { throw null; }
         public void Dispose() { }
         ~TemplateEditingService() { }
-        [System.MonoTODOAttribute]
         public string GetContainingTemplateName(System.Web.UI.Control control) { throw null; }
     }
-    [System.ObsoleteAttribute("Template editing is supported in ControlDesigner.TemplateGroups with SetViewFlags(ViewFlags.TemplateEditing, true) in 2.0.")]
+    [System.ObsoleteAttribute("Use of this type is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TemplateEditingVerb : System.ComponentModel.Design.DesignerVerb, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public TemplateEditingVerb(string text, int index) : base (default(string), default(System.EventHandler)) { }
         public TemplateEditingVerb(string text, int index, System.Web.UI.Design.TemplatedControlDesigner designer) : base (default(string), default(System.EventHandler)) { }
         public int Index { get { throw null; } }
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         protected virtual void Dispose(bool disposing) { }
         ~TemplateEditingVerb() { }
     }
     public partial class TemplateGroup
     {
-        [System.MonoNotSupportedAttribute("")]
         public TemplateGroup(string groupName) { }
-        [System.MonoNotSupportedAttribute("")]
         public TemplateGroup(string groupName, System.Web.UI.WebControls.Style groupStyle) { }
-        [System.MonoNotSupportedAttribute("")]
-        public string GroupName { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.WebControls.Style GroupStyle { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public bool IsEmpty { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.TemplateDefinition[] Templates { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
+        public string GroupName { get { throw null; } }
+        public System.Web.UI.WebControls.Style GroupStyle { get { throw null; } }
+        public bool IsEmpty { get { throw null; } }
+        public System.Web.UI.Design.TemplateDefinition[] Templates { get { throw null; } }
         public void AddTemplateDefinition(System.Web.UI.Design.TemplateDefinition templateDefinition) { }
     }
     public sealed partial class TemplateGroupCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
     {
-        [System.MonoNotSupportedAttribute("")]
         public TemplateGroupCollection() { }
-        [System.MonoNotSupportedAttribute("")]
-        public int Count { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.TemplateGroup this[int index] { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        int System.Collections.ICollection.Count { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        bool System.Collections.ICollection.IsSynchronized { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        object System.Collections.ICollection.SyncRoot { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        bool System.Collections.IList.IsFixedSize { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        bool System.Collections.IList.IsReadOnly { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        object System.Collections.IList.this[int index] { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
+        public int Count { get { throw null; } }
+        public System.Web.UI.Design.TemplateGroup this[int index] { get { throw null; } set { } }
+        int System.Collections.ICollection.Count { get { throw null; } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
+        bool System.Collections.IList.IsFixedSize { get { throw null; } }
+        bool System.Collections.IList.IsReadOnly { get { throw null; } }
+        object System.Collections.IList.this[int index] { get { throw null; } set { } }
         public int Add(System.Web.UI.Design.TemplateGroup group) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public void AddRange(System.Web.UI.Design.TemplateGroupCollection groups) { }
-        [System.MonoNotSupportedAttribute("")]
         public void Clear() { }
-        [System.MonoNotSupportedAttribute("")]
         public bool Contains(System.Web.UI.Design.TemplateGroup group) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public void CopyTo(System.Web.UI.Design.TemplateGroup[] array, int index) { }
-        [System.MonoNotSupportedAttribute("")]
         public int IndexOf(System.Web.UI.Design.TemplateGroup group) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public void Insert(int index, System.Web.UI.Design.TemplateGroup group) { }
-        [System.MonoNotSupportedAttribute("")]
         public void Remove(System.Web.UI.Design.TemplateGroup group) { }
-        [System.MonoNotSupportedAttribute("")]
         public void RemoveAt(int index) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
-        [System.MonoNotSupportedAttribute("")]
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         int System.Collections.IList.Add(object o) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.Clear() { }
-        [System.MonoNotSupportedAttribute("")]
         bool System.Collections.IList.Contains(object o) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         int System.Collections.IList.IndexOf(object o) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.Insert(int index, object o) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.Remove(object o) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Collections.IList.RemoveAt(int index) { }
     }
     public partial class TemplateModeChangedEventArgs : System.EventArgs
@@ -2582,35 +2139,31 @@ namespace System.Web.UI.Design
         public TemplateModeChangedEventArgs(System.Web.UI.Design.TemplateGroup newTemplateGroup) { }
         public System.Web.UI.Design.TemplateGroup NewTemplateGroup { get { throw null; } }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TextControlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public TextControlDesigner() { }
-        [System.MonoTODOAttribute]
         public override string GetDesignTimeHtml() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TextDataBindingHandler : System.Web.UI.Design.DataBindingHandler
     {
         public TextDataBindingHandler() { }
-        [System.MonoTODOAttribute]
         public override void DataBindControl(System.ComponentModel.Design.IDesignerHost designerHost, System.Web.UI.Control control) { }
     }
     public delegate bool TransactedChangeCallback(object context);
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class TypeSchema : System.Web.UI.Design.IDataSourceSchema
     {
-        [System.MonoTODOAttribute]
         public TypeSchema(System.Type type) { }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.IDataSourceViewSchema[] GetViews() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class UrlBuilder
     {
         internal UrlBuilder() { }
-        [System.MonoTODOAttribute]
         public static string BuildUrl(System.ComponentModel.IComponent component, System.Windows.Forms.Control owner, string initialUrl, string caption, string filter) { throw null; }
-        [System.MonoTODOAttribute]
         public static string BuildUrl(System.ComponentModel.IComponent component, System.Windows.Forms.Control owner, string initialUrl, string caption, string filter, System.Web.UI.Design.UrlBuilderOptions options) { throw null; }
-        [System.MonoTODOAttribute]
         public static string BuildUrl(System.IServiceProvider serviceProvider, System.Windows.Forms.Control owner, string initialUrl, string caption, string filter, System.Web.UI.Design.UrlBuilderOptions options) { throw null; }
     }
     [System.FlagsAttribute]
@@ -2619,17 +2172,17 @@ namespace System.Web.UI.Design
         NoAbsolute = 1,
         None = 0,
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class UrlEditor : System.Drawing.Design.UITypeEditor
     {
         public UrlEditor() { }
         protected virtual string Caption { get { throw null; } }
         protected virtual string Filter { get { throw null; } }
         protected virtual System.Web.UI.Design.UrlBuilderOptions Options { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class UserControlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public UserControlDesigner() { }
@@ -2641,9 +2194,7 @@ namespace System.Web.UI.Design
     public partial class UserControlFileEditor : System.Web.UI.Design.UrlEditor
     {
         public UserControlFileEditor() { }
-        [System.MonoTODOAttribute]
         protected override string Caption { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override string Filter { get { throw null; } }
     }
     public sealed partial class ViewEvent
@@ -2670,43 +2221,30 @@ namespace System.Web.UI.Design
     }
     public partial class ViewRendering
     {
-        [System.MonoNotSupportedAttribute("")]
         public ViewRendering(string content, System.Web.UI.Design.DesignerRegionCollection regions) { }
         public ViewRendering(string content, System.Web.UI.Design.DesignerRegionCollection regions, bool visible) { }
-        [System.MonoNotSupportedAttribute("")]
         public string Content { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
         public System.Web.UI.Design.DesignerRegionCollection Regions { get { throw null; } }
         public bool Visible { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     [System.SerializableAttribute]
     public partial class WebControlToolboxItem : System.Drawing.Design.ToolboxItem
     {
         public WebControlToolboxItem() { }
         protected WebControlToolboxItem(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public WebControlToolboxItem(System.Type type) { }
-        [System.MonoTODOAttribute]
         protected override System.ComponentModel.IComponent[] CreateComponentsCore(System.ComponentModel.Design.IDesignerHost host) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void Deserialize(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public object GetToolAttributeValue(System.ComponentModel.Design.IDesignerHost host, System.Type attributeType) { throw null; }
-        [System.MonoTODOAttribute]
         public string GetToolHtml(System.ComponentModel.Design.IDesignerHost host) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Type GetToolType(System.ComponentModel.Design.IDesignerHost host) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Initialize(System.Type type) { }
-        [System.MonoTODOAttribute]
         protected override void Serialize(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class WebFormsDesignerActionService : System.ComponentModel.Design.DesignerActionService
     {
-        [System.MonoTODOAttribute]
         public WebFormsDesignerActionService(System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
-        [System.MonoTODOAttribute]
         protected override void GetComponentDesignerActions(System.ComponentModel.IComponent component, System.ComponentModel.Design.DesignerActionListCollection actionLists) { }
     }
     public abstract partial class WebFormsReferenceManager
@@ -2721,107 +2259,72 @@ namespace System.Web.UI.Design
     public abstract partial class WebFormsRootDesigner : System.ComponentModel.Design.IDesigner, System.ComponentModel.Design.IDesignerFilter, System.ComponentModel.Design.IRootDesigner, System.IDisposable
     {
         protected WebFormsRootDesigner() { }
-        [System.MonoTODOAttribute]
         public virtual System.ComponentModel.IComponent Component { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Globalization.CultureInfo CurrentCulture { get { throw null; } }
         public abstract string DocumentUrl { get; }
         public abstract bool IsDesignerViewLocked { get; }
         public abstract bool IsLoading { get; }
         public abstract System.Web.UI.Design.WebFormsReferenceManager ReferenceManager { get; }
-        [System.MonoTODOAttribute]
         protected System.ComponentModel.Design.ViewTechnology[] SupportedTechnologies { get { throw null; } }
-        [System.MonoTODOAttribute]
         System.ComponentModel.Design.DesignerVerbCollection System.ComponentModel.Design.IDesigner.Verbs { get { throw null; } }
-        [System.MonoTODOAttribute]
         System.ComponentModel.Design.ViewTechnology[] System.ComponentModel.Design.IRootDesigner.SupportedTechnologies { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected System.ComponentModel.Design.DesignerVerbCollection Verbs { get { throw null; } }
         public event System.EventHandler LoadComplete { add { } remove { } }
         public abstract void AddClientScriptToDocument(System.Web.UI.Design.ClientScriptItem scriptItem);
         public abstract string AddControlToDocument(System.Web.UI.Control newControl, System.Web.UI.Control referenceControl, System.Web.UI.Design.ControlLocation location);
-        [System.MonoTODOAttribute]
         protected virtual System.ComponentModel.Design.DesignerActionService CreateDesignerActionService(System.IServiceProvider serviceProvider) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual System.Web.UI.IUrlResolutionService CreateUrlResolutionService() { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void Dispose(bool disposing) { }
         ~WebFormsRootDesigner() { }
-        [System.MonoTODOAttribute]
         public virtual string GenerateEmptyDesignTimeHtml(System.Web.UI.Control control) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual string GenerateErrorDesignTimeHtml(System.Web.UI.Control control, System.Exception e, string errorMessage) { throw null; }
         public abstract System.Web.UI.Design.ClientScriptItemCollection GetClientScriptsInDocument();
         protected internal abstract void GetControlViewAndTag(System.Web.UI.Control control, out System.Web.UI.Design.IControlDesignerView view, out System.Web.UI.Design.IControlDesignerTag tag);
-        [System.MonoTODOAttribute]
         protected internal virtual object GetService(System.Type serviceType) { throw null; }
-        [System.MonoTODOAttribute]
         protected object GetView(System.ComponentModel.Design.ViewTechnology viewTechnology) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         protected virtual void OnLoadComplete(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         protected virtual void PostFilterAttributes(System.Collections.IDictionary attributes) { }
-        [System.MonoTODOAttribute]
         protected virtual void PostFilterEvents(System.Collections.IDictionary events) { }
-        [System.MonoTODOAttribute]
         protected virtual void PostFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoTODOAttribute]
         protected virtual void PreFilterAttributes(System.Collections.IDictionary attributes) { }
-        [System.MonoTODOAttribute]
         protected virtual void PreFilterEvents(System.Collections.IDictionary events) { }
-        [System.MonoTODOAttribute]
         protected virtual void PreFilterProperties(System.Collections.IDictionary properties) { }
         public abstract void RemoveClientScriptFromDocument(string clientScriptId);
         public abstract void RemoveControlFromDocument(System.Web.UI.Control control);
-        [System.MonoTODOAttribute]
         public string ResolveUrl(string relativeUrl) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void SetControlID(System.Web.UI.Control control, string id) { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesigner.DoDefaultAction() { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesignerFilter.PostFilterAttributes(System.Collections.IDictionary attributes) { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesignerFilter.PostFilterEvents(System.Collections.IDictionary events) { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesignerFilter.PostFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesignerFilter.PreFilterAttributes(System.Collections.IDictionary attributes) { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesignerFilter.PreFilterEvents(System.Collections.IDictionary events) { }
-        [System.MonoTODOAttribute]
         void System.ComponentModel.Design.IDesignerFilter.PreFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoTODOAttribute]
         object System.ComponentModel.Design.IRootDesigner.GetView(System.ComponentModel.Design.ViewTechnology viewTechnology) { throw null; }
-        [System.MonoTODOAttribute]
         void System.IDisposable.Dispose() { }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlDataFileEditor : System.Web.UI.Design.UrlEditor
     {
         public XmlDataFileEditor() { }
-        [System.MonoTODOAttribute]
         protected override string Caption { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override string Filter { get { throw null; } }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public sealed partial class XmlDocumentSchema : System.Web.UI.Design.IDataSourceSchema
     {
-        [System.MonoTODOAttribute]
         public XmlDocumentSchema(System.Xml.XmlDocument xmlDocument, string xPath) { }
-        [System.MonoTODOAttribute]
         public System.Web.UI.Design.IDataSourceViewSchema[] GetViews() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlFileEditor : System.Drawing.Design.UITypeEditor
     {
         public XmlFileEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlUrlEditor : System.Web.UI.Design.UrlEditor
     {
         public XmlUrlEditor() { }
@@ -2833,20 +2336,17 @@ namespace System.Web.UI.Design
     public partial class XsdSchemaFileEditor : System.Web.UI.Design.UrlEditor
     {
         public XsdSchemaFileEditor() { }
-        [System.MonoTODOAttribute]
         protected override string Caption { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override string Filter { get { throw null; } }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XslTransformFileEditor : System.Web.UI.Design.UrlEditor
     {
         public XslTransformFileEditor() { }
-        [System.MonoTODOAttribute]
         protected override string Caption { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override string Filter { get { throw null; } }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XslUrlEditor : System.Web.UI.Design.UrlEditor
     {
         public XslUrlEditor() { }
@@ -2857,28 +2357,31 @@ namespace System.Web.UI.Design
 }
 namespace System.Web.UI.Design.Directives
 {
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=false, Inherited=true)]
     public sealed partial class DirectiveAttribute : System.Attribute
     {
         public DirectiveAttribute() { }
-        public bool AllowedOnMobilePages { get { throw null; } set { } }
-        public string BuilderType { get { throw null; } set { } }
-        public bool Culture { get { throw null; } set { } }
-        public string RenameType { get { throw null; } set { } }
-        public bool ServerLanguageExtensions { get { throw null; } set { } }
-        public bool ServerLanguageNames { get { throw null; } set { } }
+        public bool AllowedOnMobilePages { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string BuilderType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool Culture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string RenameType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool ServerLanguageExtensions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool ServerLanguageNames { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public static partial class DirectiveRegistry
     {
         public static System.Collections.ObjectModel.ReadOnlyCollection<System.Type> GetDirectives(System.Version frameworkVersion, string extension) { throw null; }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     public sealed partial class SchemaElementNameAttribute : System.Attribute
     {
         public SchemaElementNameAttribute(string value) { }
-        public string Value { get { throw null; } }
+        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
 }
 namespace System.Web.UI.Design.WebControls
 {
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class AccessDataSourceDesigner : System.Web.UI.Design.WebControls.SqlDataSourceDesigner
     {
         public AccessDataSourceDesigner() { }
@@ -2886,6 +2389,8 @@ namespace System.Web.UI.Design.WebControls
         protected override string GetConnectionString() { throw null; }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class AdRotatorDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
     {
         public AdRotatorDesigner() { }
@@ -2893,41 +2398,31 @@ namespace System.Web.UI.Design.WebControls
     }
     public abstract partial class BaseDataBoundControlDesigner : System.Web.UI.Design.ControlDesigner
     {
-        [System.MonoNotSupportedAttribute("")]
         protected BaseDataBoundControlDesigner() { }
-        [System.MonoNotSupportedAttribute("")]
-        public string DataSource { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public string DataSourceID { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
+        public string DataSource { get { throw null; } set { } }
+        public string DataSourceID { get { throw null; } set { } }
         protected abstract bool ConnectToDataSource();
         protected abstract void CreateDataSource();
         protected abstract void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl);
         protected abstract void DisconnectFromDataSource();
-        [System.MonoNotSupportedAttribute("")]
         protected override void Dispose(bool disposing) { }
-        [System.MonoNotSupportedAttribute("")]
         public override string GetDesignTimeHtml() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected override string GetEmptyDesignTimeHtml() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoNotSupportedAttribute("")]
         protected virtual void OnDataSourceChanged(bool forceUpdateView) { }
-        [System.MonoNotSupportedAttribute("")]
         protected virtual void OnSchemaRefreshed() { }
-        [System.MonoNotSupportedAttribute("")]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoNotSupportedAttribute("")]
         public static System.Windows.Forms.DialogResult ShowCreateDataSourceDialog(System.Web.UI.Design.ControlDesigner controlDesigner, System.Type dataSourceType, bool configure, out string dataSourceID) { dataSourceID = default(string); throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public abstract partial class BaseDataListComponentEditor : System.Windows.Forms.Design.WindowsFormsComponentEditor
     {
         public BaseDataListComponentEditor(int initialPage) { }
         public override bool EditComponent(System.ComponentModel.ITypeDescriptorContext context, object obj, System.Windows.Forms.IWin32Window parent) { throw null; }
         protected override int GetInitialComponentEditorPageIndex() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public abstract partial class BaseDataListDesigner : System.Web.UI.Design.TemplatedControlDesigner, System.Web.UI.Design.IDataBindingSchemaProvider, System.Web.UI.Design.IDataSourceProvider
     {
         protected BaseDataListDesigner() { }
@@ -2945,9 +2440,11 @@ namespace System.Web.UI.Design.WebControls
         protected System.Collections.IEnumerable GetDesignTimeDataSource(int minimumRows, out bool dummyDataSource) { dummyDataSource = default(bool); throw null; }
         public System.Collections.IEnumerable GetResolvedSelectedDataSource() { throw null; }
         public object GetSelectedDataSource() { throw null; }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override System.Collections.IEnumerable GetTemplateContainerDataSource(string templateName) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected internal void InvokePropertyBuilder(int initialPage) { }
+        [System.ObsoleteAttribute("Use of this method is not recommended because the AutoFormat dialog is launched by the designer host. The list of available AutoFormats is exposed on the ControlDesigner in the AutoFormats property. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected void OnAutoFormat(object sender, System.EventArgs e) { }
         public override void OnAutoFormatApplied(System.Web.UI.Design.DesignerAutoFormat appliedAutoFormat) { }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs e) { }
@@ -2959,6 +2456,8 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         void System.Web.UI.Design.IDataBindingSchemaProvider.RefreshSchema(bool preferSilent) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class BaseValidatorDesigner : System.Web.UI.Design.WebControls.PreviewControlDesigner
     {
         public BaseValidatorDesigner() { }
@@ -2972,11 +2471,16 @@ namespace System.Web.UI.Design.WebControls
         protected override bool UsePreviewControl { get { throw null; } }
         protected override void PostFilterEvents(System.Collections.IDictionary events) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ButtonDesigner : System.Web.UI.Design.ControlDesigner
     {
         public ButtonDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
     }
+    [System.ComponentModel.ToolboxItemAttribute(false)]
+    [System.ObsoleteAttribute("Use of this type is not recommended because the AutoFormat dialog is launched by the designer host. The list of available AutoFormats is exposed on the ControlDesigner in the AutoFormats property. http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CalendarAutoFormatDialog : System.Windows.Forms.Form
     {
         public CalendarAutoFormatDialog(System.Web.UI.WebControls.Calendar calendar) { }
@@ -2986,6 +2490,8 @@ namespace System.Web.UI.Design.WebControls
         protected void OnSelChangedScheme(object source, System.EventArgs e) { }
         protected void SaveComponent() { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CalendarDesigner : System.Web.UI.Design.ControlDesigner
     {
         public CalendarDesigner() { }
@@ -2993,6 +2499,7 @@ namespace System.Web.UI.Design.WebControls
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected void OnAutoFormat(object sender, System.EventArgs e) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ChangePasswordDesigner : System.Web.UI.Design.ControlDesigner
     {
         public ChangePasswordDesigner() { }
@@ -3010,11 +2517,14 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CheckBoxDesigner : System.Web.UI.Design.ControlDesigner
     {
         public CheckBoxDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CompositeControlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public CompositeControlDesigner() { }
@@ -3022,6 +2532,7 @@ namespace System.Web.UI.Design.WebControls
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ContentDesigner : System.Web.UI.Design.ControlDesigner
     {
         public ContentDesigner() { }
@@ -3034,6 +2545,7 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterEvents(System.Collections.IDictionary events) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ContentPlaceHolderDesigner : System.Web.UI.Design.ControlDesigner
     {
         public ContentPlaceHolderDesigner() { }
@@ -3044,6 +2556,7 @@ namespace System.Web.UI.Design.WebControls
         public override string GetPersistenceContent() { throw null; }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CreateUserWizardDesigner : System.Web.UI.Design.WebControls.WizardDesigner
     {
         public CreateUserWizardDesigner() { }
@@ -3056,6 +2569,7 @@ namespace System.Web.UI.Design.WebControls
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CreateUserWizardStepCollectionEditor : System.Web.UI.Design.WebControls.WizardStepCollectionEditor
     {
         public CreateUserWizardStepCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3065,45 +2579,25 @@ namespace System.Web.UI.Design.WebControls
     }
     public partial class DataBoundControlDesigner : System.Web.UI.Design.WebControls.BaseDataBoundControlDesigner, System.Web.UI.Design.IDataBindingSchemaProvider, System.Web.UI.Design.IDataSourceProvider
     {
-        [System.MonoNotSupportedAttribute("")]
         public DataBoundControlDesigner() { }
-        [System.MonoNotSupportedAttribute("")]
-        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public string DataMember { [System.MonoNotSupportedAttribute("")]get { throw null; } [System.MonoNotSupportedAttribute("")]set { } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.IDataSourceDesigner DataSourceDesigner { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        public System.Web.UI.Design.DesignerDataSourceView DesignerView { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        protected virtual int SampleRowCount { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        bool System.Web.UI.Design.IDataBindingSchemaProvider.CanRefreshSchema { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
+        public override System.ComponentModel.Design.DesignerActionListCollection ActionLists { get { throw null; } }
+        public string DataMember { get { throw null; } set { } }
+        public System.Web.UI.Design.IDataSourceDesigner DataSourceDesigner { get { throw null; } }
+        public System.Web.UI.Design.DesignerDataSourceView DesignerView { get { throw null; } }
+        protected virtual int SampleRowCount { get { throw null; } }
+        bool System.Web.UI.Design.IDataBindingSchemaProvider.CanRefreshSchema { get { throw null; } }
         System.Web.UI.Design.IDataSourceViewSchema System.Web.UI.Design.IDataBindingSchemaProvider.Schema { get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
-        protected virtual bool UseDataSourcePickerActionList { [System.MonoNotSupportedAttribute("")]get { throw null; } }
-        [System.MonoNotSupportedAttribute("")]
+        protected virtual bool UseDataSourcePickerActionList { get { throw null; } }
         protected override bool ConnectToDataSource() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected override void CreateDataSource() { }
-        [System.MonoNotSupportedAttribute("")]
         protected override void DataBind(System.Web.UI.WebControls.BaseDataBoundControl dataBoundControl) { }
-        [System.MonoNotSupportedAttribute("")]
         protected override void DisconnectFromDataSource() { }
-        [System.MonoNotSupportedAttribute("")]
         protected override void Dispose(bool disposing) { }
-        [System.MonoNotSupportedAttribute("")]
         protected virtual System.Collections.IEnumerable GetDesignTimeDataSource() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected virtual System.Collections.IEnumerable GetSampleDataSource() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoNotSupportedAttribute("")]
         void System.Web.UI.Design.IDataBindingSchemaProvider.RefreshSchema(bool preferSilent) { }
-        [System.MonoNotSupportedAttribute("")]
         System.Collections.IEnumerable System.Web.UI.Design.IDataSourceProvider.GetResolvedSelectedDataSource() { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         object System.Web.UI.Design.IDataSourceProvider.GetSelectedDataSource() { throw null; }
     }
     public abstract partial class DataControlFieldDesigner
@@ -3128,59 +2622,77 @@ namespace System.Web.UI.Design.WebControls
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataGridColumnCollectionEditor : System.Drawing.Design.UITypeEditor
     {
         public DataGridColumnCollectionEditor() { }
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataGridComponentEditor : System.Web.UI.Design.WebControls.BaseDataListComponentEditor
     {
         public DataGridComponentEditor() : base (default(int)) { }
         public DataGridComponentEditor(int initialPage) : base (default(int)) { }
         protected override System.Type[] GetComponentEditorPages() { throw null; }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataGridDesigner : System.Web.UI.Design.WebControls.BaseDataListDesigner
     {
         public DataGridDesigner() { }
         public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override System.Web.UI.Design.ITemplateEditingFrame CreateTemplateEditingFrame(System.Web.UI.Design.TemplateEditingVerb verb) { throw null; }
         protected override void Dispose(bool disposing) { }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override System.Web.UI.Design.TemplateEditingVerb[] GetCachedTemplateEditingVerbs() { throw null; }
         public override string GetDesignTimeHtml() { throw null; }
         protected override string GetEmptyDesignTimeHtml() { throw null; }
         protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override string GetTemplateContainerDataItemProperty(string templateName) { throw null; }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override string GetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, out bool allowEditing) { allowEditing = default(bool); throw null; }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override System.Type GetTemplatePropertyParentType(string templateName) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         public virtual void OnColumnsChanged() { }
         protected override void OnTemplateEditingVerbsChanged() { }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override void SetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, string templateContent) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataListComponentEditor : System.Web.UI.Design.WebControls.BaseDataListComponentEditor
     {
         public DataListComponentEditor() : base (default(int)) { }
         public DataListComponentEditor(int initialPage) : base (default(int)) { }
         protected override System.Type[] GetComponentEditorPages() { throw null; }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DataListDesigner : System.Web.UI.Design.WebControls.BaseDataListDesigner
     {
         public DataListDesigner() { }
         public override bool AllowResize { get { throw null; } }
         public override System.Web.UI.Design.DesignerAutoFormatCollection AutoFormats { get { throw null; } }
         protected bool TemplatesExist { get { throw null; } }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override System.Web.UI.Design.ITemplateEditingFrame CreateTemplateEditingFrame(System.Web.UI.Design.TemplateEditingVerb verb) { throw null; }
         protected override void Dispose(bool disposing) { }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override System.Web.UI.Design.TemplateEditingVerb[] GetCachedTemplateEditingVerbs() { throw null; }
         public override string GetDesignTimeHtml() { throw null; }
         protected override string GetEmptyDesignTimeHtml() { throw null; }
         protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override string GetTemplateContainerDataItemProperty(string templateName) { throw null; }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override string GetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, out bool allowEditing) { allowEditing = default(bool); throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected override void OnSchemaRefreshed() { }
         protected override void OnTemplateEditingVerbsChanged() { }
+        [System.ObsoleteAttribute("Use of this method is not recommended because template editing is handled in ControlDesigner. To support template editing expose template data in the TemplateGroups property and call SetViewFlags(ViewFlags.TemplateEditing, true). http://go.microsoft.com/fwlink/?linkid=14202")]
         public override void SetTemplateContent(System.Web.UI.Design.ITemplateEditingFrame editingFrame, string templateName, string templateContent) { }
     }
     public partial class DataProviderNameConverter : System.ComponentModel.StringConverter
@@ -3195,7 +2707,6 @@ namespace System.Web.UI.Design.WebControls
         public DataSourceIDConverter() { }
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { throw null; }
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ComponentModel.TypeConverter.StandardValuesCollection GetStandardValues(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesExclusive(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
         public override bool GetStandardValuesSupported(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
@@ -3219,6 +2730,7 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class EmbeddedMailObjectCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public EmbeddedMailObjectCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3257,6 +2769,7 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HiddenFieldDesigner : System.Web.UI.Design.ControlDesigner
     {
         public HiddenFieldDesigner() { }
@@ -3290,26 +2803,35 @@ namespace System.Web.UI.Design.WebControls
         protected override bool CanSelectMultipleInstances() { throw null; }
         protected override System.Type[] CreateNewItemTypes() { throw null; }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class HyperLinkDesigner : System.Web.UI.Design.TextControlDesigner
     {
         public HyperLinkDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LabelDesigner : System.Web.UI.Design.TextControlDesigner
     {
         public LabelDesigner() { }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LinkButtonDesigner : System.Web.UI.Design.TextControlDesigner
     {
         public LinkButtonDesigner() { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ListControlDataBindingHandler : System.Web.UI.Design.DataBindingHandler
     {
         public ListControlDataBindingHandler() { }
         public override void DataBindControl(System.ComponentModel.Design.IDesignerHost designerHost, System.Web.UI.Control control) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ListControlDesigner : System.Web.UI.Design.WebControls.DataBoundControlDesigner
     {
         public ListControlDesigner() { }
@@ -3326,17 +2848,21 @@ namespace System.Web.UI.Design.WebControls
         protected override void OnDataSourceChanged(bool forceUpdateView) { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ListItemsCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public ListItemsCollectionEditor(System.Type type) : base (default(System.Type)) { }
         protected override string HelpTopic { get { throw null; } }
         protected override bool CanSelectMultipleInstances() { throw null; }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LiteralDesigner : System.Web.UI.Design.ControlDesigner
     {
         public LiteralDesigner() { }
         public override void OnComponentChanged(object sender, System.ComponentModel.Design.ComponentChangedEventArgs ce) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LoginDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
     {
         public LoginDesigner() { }
@@ -3353,12 +2879,14 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LoginNameDesigner : System.Web.UI.Design.ControlDesigner
     {
         public LoginNameDesigner() { }
         protected override bool UsePreviewControl { get { throw null; } }
         protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LoginStatusDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
     {
         public LoginStatusDesigner() { }
@@ -3367,6 +2895,7 @@ namespace System.Web.UI.Design.WebControls
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class LoginViewDesigner : System.Web.UI.Design.ControlDesigner
     {
         public LoginViewDesigner() { }
@@ -3383,6 +2912,7 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class MailDefinitionBodyFileNameEditor : System.Web.UI.Design.UrlEditor
     {
         public MailDefinitionBodyFileNameEditor() { }
@@ -3421,6 +2951,7 @@ namespace System.Web.UI.Design.WebControls
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class MenuItemStyleCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public MenuItemStyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3429,11 +2960,13 @@ namespace System.Web.UI.Design.WebControls
         protected override object CreateInstance(System.Type itemType) { throw null; }
         protected override System.Type[] CreateNewItemTypes() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class MultiViewDesigner : System.Web.UI.Design.ContainerControlDesigner
     {
         public MultiViewDesigner() { }
         protected override bool NoWrap { get { throw null; } }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ObjectDataSourceDesigner : System.Web.UI.Design.DataSourceDesigner
     {
         public ObjectDataSourceDesigner() { }
@@ -3447,6 +2980,7 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void RefreshSchema(bool preferSilent) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ObjectDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
     {
         public ObjectDesignerDataSourceView(System.Web.UI.Design.WebControls.ObjectDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
@@ -3468,10 +3002,13 @@ namespace System.Web.UI.Design.WebControls
         protected override void AddDesignTimeCssAttributes(System.Collections.IDictionary styleAttributes) { }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.ObsoleteAttribute("The recommended alternative is PanelContainerDesigner because it uses an EditableDesignerRegion for editing the content. Designer regions allow for better control of the content being edited. http://go.microsoft.com/fwlink/?linkid=14202")]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class PanelDesigner : System.Web.UI.Design.ReadWriteControlDesigner
     {
         public PanelDesigner() { }
         protected override void MapPropertyToStyle(string propName, object varPropValue) { }
+        [System.ObsoleteAttribute("The recommended alternative is ControlDesigner.Tag. http://go.microsoft.com/fwlink/?linkid=14202")]
         protected override void OnBehaviorAttached() { }
     }
     public partial class ParameterCollectionEditor : System.Drawing.Design.UITypeEditor
@@ -3492,6 +3029,7 @@ namespace System.Web.UI.Design.WebControls
         protected virtual void OnParametersChanged(object sender, System.EventArgs e) { }
         public void SetAllowCollectionChanges(bool allowChanges) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class PasswordRecoveryDesigner : System.Web.UI.Design.ControlDesigner
     {
         public PasswordRecoveryDesigner() { }
@@ -3509,11 +3047,15 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class PreviewControlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public PreviewControlDesigner() { }
         protected override bool UsePreviewControl { get { throw null; } }
     }
+    [System.ComponentModel.ToolboxItemAttribute(false)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class RegexEditorDialog : System.Windows.Forms.Form
     {
         public RegexEditorDialog(System.ComponentModel.ISite site) { }
@@ -3526,12 +3068,14 @@ namespace System.Web.UI.Design.WebControls
         protected void RegexTypeEditor_Activated(object sender, System.EventArgs e) { }
         protected void txtExpression_TextChanged(object sender, System.EventArgs e) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class RegexTypeEditor : System.Drawing.Design.UITypeEditor
     {
         public RegexTypeEditor() { }
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class RepeaterDesigner : System.Web.UI.Design.ControlDesigner, System.Web.UI.Design.IDataSourceProvider
     {
         public RepeaterDesigner() { }
@@ -3556,11 +3100,13 @@ namespace System.Web.UI.Design.WebControls
         public virtual void OnDataSourceChanged() { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class RoleGroupCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public RoleGroupCollectionEditor(System.Type type) : base (default(System.Type)) { }
         protected override bool CanSelectMultipleInstances() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SiteMapDataSourceDesigner : System.Web.UI.Design.HierarchicalDataSourceDesigner, System.Web.UI.Design.IDataSourceDesigner
     {
         public SiteMapDataSourceDesigner() { }
@@ -3581,18 +3127,21 @@ namespace System.Web.UI.Design.WebControls
         void System.Web.UI.Design.IDataSourceDesigner.ResumeDataSourceEvents() { }
         void System.Web.UI.Design.IDataSourceDesigner.SuppressDataSourceEvents() { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SiteMapDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
     {
         public SiteMapDesignerDataSourceView(System.Web.UI.Design.WebControls.SiteMapDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
         public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
         public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SiteMapDesignerHierarchicalDataSourceView : System.Web.UI.Design.DesignerHierarchicalDataSourceView
     {
         public SiteMapDesignerHierarchicalDataSourceView(System.Web.UI.Design.WebControls.SiteMapDataSourceDesigner owner, string viewPath) : base (default(System.Web.UI.Design.IHierarchicalDataSourceDesigner), default(string)) { }
         public override System.Web.UI.Design.IDataSourceSchema Schema { get { throw null; } }
         public override System.Web.UI.IHierarchicalEnumerable GetDesignTimeData(out bool isSampleData) { isSampleData = default(bool); throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SiteMapPathDesigner : System.Web.UI.Design.ControlDesigner
     {
         public SiteMapPathDesigner() { }
@@ -3603,23 +3152,45 @@ namespace System.Web.UI.Design.WebControls
         protected override string GetErrorDesignTimeHtml(System.Exception e) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SqlDataSourceConnectionStringEditor : System.Web.UI.Design.ConnectionStringEditor
     {
         public SqlDataSourceConnectionStringEditor() { }
         protected override string GetProviderName(object instance) { throw null; }
         protected override void SetProviderName(object instance, System.ComponentModel.Design.Data.DesignerDataConnection connection) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SqlDataSourceDesigner : System.Web.UI.Design.DataSourceDesigner
     {
         public SqlDataSourceDesigner() { }
         public override bool CanConfigure { get { throw null; } }
         public override bool CanRefreshSchema { get { throw null; } }
         public string ConnectionString { get { throw null; } set { } }
+        [System.ComponentModel.CategoryAttribute("Data")]
+        [System.ComponentModel.DefaultValueAttribute((System.Web.UI.DataSourceOperation)(0))]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.MergablePropertyAttribute(false)]
+        [System.ComponentModel.TypeConverterAttribute("System.Web.UI.Design.WebControls.SqlDataSourceQueryConverter")]
         public System.Web.UI.DataSourceOperation DeleteQuery { get { throw null; } set { } }
+        [System.ComponentModel.CategoryAttribute("Data")]
+        [System.ComponentModel.DefaultValueAttribute((System.Web.UI.DataSourceOperation)(1))]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.MergablePropertyAttribute(false)]
+        [System.ComponentModel.TypeConverterAttribute("System.Web.UI.Design.WebControls.SqlDataSourceQueryConverter")]
         public System.Web.UI.DataSourceOperation InsertQuery { get { throw null; } set { } }
         public string ProviderName { get { throw null; } set { } }
         public string SelectCommand { get { throw null; } set { } }
+        [System.ComponentModel.CategoryAttribute("Data")]
+        [System.ComponentModel.DefaultValueAttribute((System.Web.UI.DataSourceOperation)(2))]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.MergablePropertyAttribute(false)]
+        [System.ComponentModel.TypeConverterAttribute("System.Web.UI.Design.WebControls.SqlDataSourceQueryConverter")]
         public System.Web.UI.DataSourceOperation SelectQuery { get { throw null; } set { } }
+        [System.ComponentModel.CategoryAttribute("Data")]
+        [System.ComponentModel.DefaultValueAttribute((System.Web.UI.DataSourceOperation)(3))]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.MergablePropertyAttribute(false)]
+        [System.ComponentModel.TypeConverterAttribute("System.Web.UI.Design.WebControls.SqlDataSourceQueryConverter")]
         public System.Web.UI.DataSourceOperation UpdateQuery { get { throw null; } set { } }
         public override void Configure() { }
         protected virtual System.Web.UI.Design.WebControls.SqlDesignerDataSourceView CreateView(string viewName) { throw null; }
@@ -3631,6 +3202,7 @@ namespace System.Web.UI.Design.WebControls
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
         public override void RefreshSchema(bool preferSilent) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SqlDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
     {
         public SqlDesignerDataSourceView(System.Web.UI.Design.WebControls.SqlDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
@@ -3643,11 +3215,13 @@ namespace System.Web.UI.Design.WebControls
         public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
         public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class StyleCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public StyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
         protected override object CreateInstance(System.Type itemType) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SubMenuStyleCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public SubMenuStyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3656,22 +3230,28 @@ namespace System.Web.UI.Design.WebControls
         protected override object CreateInstance(System.Type itemType) { throw null; }
         protected override System.Type[] CreateNewItemTypes() { throw null; }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class SubstitutionDesigner : System.Web.UI.Design.ControlDesigner
     {
         public SubstitutionDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TableCellsCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public TableCellsCollectionEditor(System.Type type) : base (default(System.Type)) { }
         protected override bool CanSelectMultipleInstances() { throw null; }
         protected override object CreateInstance(System.Type itemType) { throw null; }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TableDesigner : System.Web.UI.Design.ControlDesigner
     {
         public TableDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TableRowsCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public TableRowsCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3690,6 +3270,7 @@ namespace System.Web.UI.Design.WebControls
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class TreeNodeStyleCollectionEditor : System.Web.UI.Design.WebControls.StyleCollectionEditor
     {
         public TreeNodeStyleCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3717,12 +3298,15 @@ namespace System.Web.UI.Design.WebControls
         protected override System.Web.UI.IHierarchicalEnumerable GetSampleDataSource() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Web.UI.Design.SupportsPreviewControlAttribute(true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ValidationSummaryDesigner : System.Web.UI.Design.WebControls.PreviewControlDesigner
     {
         public ValidationSummaryDesigner() { }
         protected override System.Web.UI.Control CreateViewControl() { throw null; }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ViewDesigner : System.Web.UI.Design.ContainerControlDesigner
     {
         public ViewDesigner() { }
@@ -3731,6 +3315,7 @@ namespace System.Web.UI.Design.WebControls
         public override string GetDesignTimeHtml(System.Web.UI.Design.DesignerRegionCollection regions) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class WizardDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
     {
         public WizardDesigner() { }
@@ -3753,6 +3338,7 @@ namespace System.Web.UI.Design.WebControls
         protected void ResetTemplate(string description, System.ComponentModel.IComponent component, string templateName) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class WizardStepCollectionEditor : System.ComponentModel.Design.CollectionEditor
     {
         public WizardStepCollectionEditor(System.Type type) : base (default(System.Type)) { }
@@ -3771,6 +3357,7 @@ namespace System.Web.UI.Design.WebControls
         public WizardStepTemplatedEditableRegion(System.Web.UI.Design.TemplateDefinition templateDefinition, System.Web.UI.WebControls.WizardStepBase wizardStep) : base (default(System.Web.UI.Design.TemplateDefinition)) { }
         public System.Web.UI.WebControls.WizardStepBase Step { get { throw null; } }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlDataSourceDesigner : System.Web.UI.Design.HierarchicalDataSourceDesigner, System.Web.UI.Design.IDataSourceDesigner
     {
         public XmlDataSourceDesigner() { }
@@ -3797,6 +3384,7 @@ namespace System.Web.UI.Design.WebControls
         void System.Web.UI.Design.IDataSourceDesigner.ResumeDataSourceEvents() { }
         void System.Web.UI.Design.IDataSourceDesigner.SuppressDataSourceEvents() { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlDesigner : System.Web.UI.Design.ControlDesigner
     {
         public XmlDesigner() { }
@@ -3805,12 +3393,14 @@ namespace System.Web.UI.Design.WebControls
         protected override string GetEmptyDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlDesignerDataSourceView : System.Web.UI.Design.DesignerDataSourceView
     {
         public XmlDesignerDataSourceView(System.Web.UI.Design.WebControls.XmlDataSourceDesigner owner, string viewName) : base (default(System.Web.UI.Design.IDataSourceDesigner), default(string)) { }
         public override System.Web.UI.Design.IDataSourceViewSchema Schema { get { throw null; } }
         public override System.Collections.IEnumerable GetDesignTimeData(int minimumRows, out bool isSampleData) { isSampleData = default(bool); throw null; }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class XmlDesignerHierarchicalDataSourceView : System.Web.UI.Design.DesignerHierarchicalDataSourceView
     {
         public XmlDesignerHierarchicalDataSourceView(System.Web.UI.Design.WebControls.XmlDataSourceDesigner owner, string viewPath) : base (default(System.Web.UI.Design.IHierarchicalDataSourceDesigner), default(string)) { }
@@ -3820,6 +3410,7 @@ namespace System.Web.UI.Design.WebControls
 }
 namespace System.Web.UI.Design.WebControls.WebParts
 {
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CatalogPartDesigner : System.Web.UI.Design.WebControls.WebParts.PartDesigner
     {
         public CatalogPartDesigner() { }
@@ -3827,6 +3418,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class CatalogZoneDesigner : System.Web.UI.Design.WebControls.WebParts.ToolZoneDesigner
     {
         public CatalogZoneDesigner() { }
@@ -3839,6 +3431,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override void Initialize(System.ComponentModel.IComponent component) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ConnectionsZoneDesigner : System.Web.UI.Design.WebControls.WebParts.ToolZoneDesigner
     {
         public ConnectionsZoneDesigner() { }
@@ -3847,6 +3440,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class DeclarativeCatalogPartDesigner : System.Web.UI.Design.WebControls.WebParts.CatalogPartDesigner
     {
         public DeclarativeCatalogPartDesigner() { }
@@ -3855,6 +3449,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         protected override string GetEmptyDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class EditorPartDesigner : System.Web.UI.Design.WebControls.WebParts.PartDesigner
     {
         public EditorPartDesigner() { }
@@ -3862,6 +3457,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class EditorZoneDesigner : System.Web.UI.Design.WebControls.WebParts.ToolZoneDesigner
     {
         public EditorZoneDesigner() { }
@@ -3874,18 +3470,21 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override void Initialize(System.ComponentModel.IComponent component) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class PageCatalogPartDesigner : System.Web.UI.Design.WebControls.WebParts.CatalogPartDesigner
     {
         public PageCatalogPartDesigner() { }
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public abstract partial class PartDesigner : System.Web.UI.Design.WebControls.CompositeControlDesigner
     {
         internal PartDesigner() { }
         protected override bool UsePreviewControl { get { throw null; } }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ProxyWebPartManagerDesigner : System.Web.UI.Design.ControlDesigner
     {
         public ProxyWebPartManagerDesigner() { }
@@ -3893,6 +3492,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class ToolZoneDesigner : System.Web.UI.Design.WebControls.WebParts.WebZoneDesigner
     {
         public ToolZoneDesigner() { }
@@ -3900,11 +3500,13 @@ namespace System.Web.UI.Design.WebControls.WebParts
         protected bool ViewInBrowseMode { get { throw null; } }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class WebPartDesigner : System.Web.UI.Design.WebControls.WebParts.PartDesigner
     {
         public WebPartDesigner() { }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class WebPartManagerDesigner : System.Web.UI.Design.ControlDesigner
     {
         public WebPartManagerDesigner() { }
@@ -3912,12 +3514,14 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override string GetDesignTimeHtml() { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class WebPartZoneBaseDesigner : System.Web.UI.Design.WebControls.WebParts.WebZoneDesigner
     {
         public WebPartZoneBaseDesigner() { }
         public override void Initialize(System.ComponentModel.IComponent component) { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class WebPartZoneDesigner : System.Web.UI.Design.WebControls.WebParts.WebPartZoneBaseDesigner
     {
         public WebPartZoneDesigner() { }
@@ -3930,6 +3534,7 @@ namespace System.Web.UI.Design.WebControls.WebParts
         public override void Initialize(System.ComponentModel.IComponent component) { }
         public override void SetEditableDesignerRegionContent(System.Web.UI.Design.EditableDesignerRegion region, string content) { }
     }
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public abstract partial class WebZoneDesigner : System.Web.UI.Design.ControlDesigner
     {
         internal WebZoneDesigner() { }
@@ -3945,24 +3550,15 @@ namespace System.Windows.Forms.Design
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class AxImporter
     {
-        [System.MonoTODOAttribute]
         public AxImporter(System.Windows.Forms.Design.AxImporter.Options options) { }
-        [System.MonoTODOAttribute]
         public string[] GeneratedAssemblies { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string[] GeneratedSources { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Runtime.InteropServices.TYPELIBATTR[] GeneratedTypeLibAttributes { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string GenerateFromFile(System.IO.FileInfo file) { throw null; }
-        [System.MonoTODOAttribute]
         public string GenerateFromTypeLibrary(System.Runtime.InteropServices.UCOMITypeLib typeLib) { throw null; }
-        [System.MonoTODOAttribute]
         public string GenerateFromTypeLibrary(System.Runtime.InteropServices.UCOMITypeLib typeLib, System.Guid clsid) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetFileOfTypeLib(ref System.Runtime.InteropServices.TYPELIBATTR tlibattr) { throw null; }
         public partial interface IReferenceResolver
         {
@@ -3973,123 +3569,85 @@ namespace System.Windows.Forms.Design
         }
         public sealed partial class Options
         {
-            [System.MonoTODOAttribute]
             public bool delaySign;
-            [System.MonoTODOAttribute]
             public bool genSources;
             public bool ignoreRegisteredOcx;
-            [System.MonoTODOAttribute]
             public string keyContainer;
-            [System.MonoTODOAttribute]
             public string keyFile;
-            [System.MonoTODOAttribute]
             public System.Reflection.StrongNameKeyPair keyPair;
-            [System.MonoTODOAttribute]
             public bool msBuildErrors;
-            [System.MonoTODOAttribute]
             public bool noLogo;
-            [System.MonoTODOAttribute]
             public string outputDirectory;
-            [System.MonoTODOAttribute]
             public string outputName;
-            [System.MonoTODOAttribute]
             public bool overwriteRCW;
-            [System.MonoTODOAttribute]
             public byte[] publicKey;
-            [System.MonoTODOAttribute]
             public System.Windows.Forms.Design.AxImporter.IReferenceResolver references;
-            [System.MonoTODOAttribute]
             public bool silentMode;
-            [System.MonoTODOAttribute]
             public bool verboseMode;
             public Options() { }
         }
     }
     public partial class AxParameterData
     {
-        [System.MonoTODOAttribute]
         public AxParameterData(System.Reflection.ParameterInfo info) { }
-        [System.MonoTODOAttribute]
         public AxParameterData(System.Reflection.ParameterInfo info, bool ignoreByRefs) { }
-        [System.MonoTODOAttribute]
         public AxParameterData(string inname, string typeName) { }
-        [System.MonoTODOAttribute]
         public AxParameterData(string inname, System.Type type) { }
         public System.CodeDom.FieldDirection Direction { get { throw null; } }
         public bool IsByRef { get { throw null; } }
         public bool IsIn { get { throw null; } }
         public bool IsOptional { get { throw null; } }
         public bool IsOut { get { throw null; } }
-        public string Name { get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string Name { get { throw null; } set { } }
         public System.Type ParameterType { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string TypeName { get { throw null; } }
-        [System.MonoTODOAttribute]
         public static System.Windows.Forms.Design.AxParameterData[] Convert(System.Reflection.ParameterInfo[] infos) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Windows.Forms.Design.AxParameterData[] Convert(System.Reflection.ParameterInfo[] infos, bool ignoreByRefs) { throw null; }
     }
     public partial class AxWrapperGen
     {
-        [System.MonoTODOAttribute]
         public static System.Collections.ArrayList GeneratedSources;
-        [System.MonoTODOAttribute]
         public AxWrapperGen(System.Type axType) { }
     }
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
     public partial class BorderSidesEditor : System.Drawing.Design.UITypeEditor
     {
         public BorderSidesEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
     public partial class ComponentDocumentDesigner : System.ComponentModel.Design.ComponentDesigner, System.ComponentModel.Design.IDesigner, System.ComponentModel.Design.IRootDesigner, System.ComponentModel.Design.ITypeDescriptorFilterService, System.Drawing.Design.IToolboxUser, System.IDisposable
     {
-        [System.MonoTODOAttribute]
         public ComponentDocumentDesigner() { }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Control Control { get { throw null; } }
         System.ComponentModel.Design.ViewTechnology[] System.ComponentModel.Design.IRootDesigner.SupportedTechnologies { get { throw null; } }
         public bool TrayAutoArrange { get { throw null; } set { } }
         public bool TrayLargeIcon { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected override void Dispose(bool disposing) { }
         protected virtual bool GetToolSupported(System.Drawing.Design.ToolboxItem tool) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
-        [System.MonoTODOAttribute]
         object System.ComponentModel.Design.IRootDesigner.GetView(System.ComponentModel.Design.ViewTechnology technology) { throw null; }
-        [System.MonoTODOAttribute]
         bool System.ComponentModel.Design.ITypeDescriptorFilterService.FilterAttributes(System.ComponentModel.IComponent component, System.Collections.IDictionary attributes) { throw null; }
-        [System.MonoTODOAttribute]
         bool System.ComponentModel.Design.ITypeDescriptorFilterService.FilterEvents(System.ComponentModel.IComponent component, System.Collections.IDictionary events) { throw null; }
-        [System.MonoTODOAttribute]
         bool System.ComponentModel.Design.ITypeDescriptorFilterService.FilterProperties(System.ComponentModel.IComponent component, System.Collections.IDictionary properties) { throw null; }
         bool System.Drawing.Design.IToolboxUser.GetToolSupported(System.Drawing.Design.ToolboxItem tool) { throw null; }
-        [System.MonoTODOAttribute]
         void System.Drawing.Design.IToolboxUser.ToolPicked(System.Drawing.Design.ToolboxItem tool) { }
     }
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
     [System.ComponentModel.ProvidePropertyAttribute("Location", typeof(System.ComponentModel.IComponent))]
+    [System.ComponentModel.ProvidePropertyAttribute("TrayLocation", typeof(System.ComponentModel.IComponent))]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     public partial class ComponentTray : System.Windows.Forms.ScrollableControl, System.ComponentModel.IExtenderProvider
     {
         public ComponentTray(System.ComponentModel.Design.IDesigner mainDesigner, System.IServiceProvider serviceProvider) { }
         public bool AutoArrange { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int ComponentCount { get { throw null; } }
         public bool ShowLargeIcons { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual void AddComponent(System.ComponentModel.IComponent component) { }
         protected virtual bool CanCreateComponentFromTool(System.Drawing.Design.ToolboxItem tool) { throw null; }
         protected virtual bool CanDisplayComponent(System.ComponentModel.IComponent component) { throw null; }
-        [System.MonoTODOAttribute]
         public void CreateComponentFromTool(System.Drawing.Design.ToolboxItem tool) { }
-        [System.MonoTODOAttribute]
         protected void DisplayError(System.Exception e) { }
         protected override void Dispose(bool disposing) { }
         [System.ComponentModel.BrowsableAttribute(false)]
@@ -4097,53 +3655,32 @@ namespace System.Windows.Forms.Design
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.DesignOnlyAttribute(true)]
         [System.ComponentModel.LocalizableAttribute(false)]
-        [System.MonoTODOAttribute]
         public System.Drawing.Point GetLocation(System.ComponentModel.IComponent receiver) { throw null; }
-        [System.MonoTODOAttribute]
         public System.ComponentModel.IComponent GetNextComponent(System.ComponentModel.IComponent component, bool forward) { throw null; }
         protected override object GetService(System.Type serviceType) { throw null; }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.CategoryAttribute("Layout")]
         [System.ComponentModel.DesignOnlyAttribute(true)]
         [System.ComponentModel.LocalizableAttribute(false)]
-        [System.MonoTODOAttribute]
         public System.Drawing.Point GetTrayLocation(System.ComponentModel.IComponent receiver) { throw null; }
-        [System.MonoTODOAttribute]
         public bool IsTrayComponent(System.ComponentModel.IComponent comp) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void OnDragDrop(System.Windows.Forms.DragEventArgs de) { }
-        [System.MonoTODOAttribute]
         protected override void OnDragEnter(System.Windows.Forms.DragEventArgs de) { }
-        [System.MonoTODOAttribute]
         protected override void OnDragLeave(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnDragOver(System.Windows.Forms.DragEventArgs de) { }
-        [System.MonoTODOAttribute]
         protected override void OnGiveFeedback(System.Windows.Forms.GiveFeedbackEventArgs gfevent) { }
-        [System.MonoTODOAttribute]
         protected override void OnLayout(System.Windows.Forms.LayoutEventArgs levent) { }
-        [System.MonoTODOAttribute]
         protected virtual void OnLostCapture() { }
-        [System.MonoTODOAttribute]
         protected override void OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e) { }
-        [System.MonoTODOAttribute]
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs pe) { }
-        [System.MonoTODOAttribute]
         protected virtual void OnSetCursor() { }
-        [System.MonoTODOAttribute]
         public virtual void RemoveComponent(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public void SetLocation(System.ComponentModel.IComponent receiver, System.Drawing.Point location) { }
-        [System.MonoTODOAttribute]
         public void SetTrayLocation(System.ComponentModel.IComponent receiver, System.Drawing.Point location) { }
         bool System.ComponentModel.IExtenderProvider.CanExtend(object component) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
     }
     public partial class ControlDesigner : System.ComponentModel.Design.ComponentDesigner
@@ -4153,18 +3690,14 @@ namespace System.Windows.Forms.Design
         public ControlDesigner() { }
         public virtual System.Windows.Forms.AccessibleObject AccessibilityObject { get { throw null; } }
         public override System.Collections.ICollection AssociatedComponents { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool AutoResizeHandles { get { throw null; } set { } }
         protected System.Windows.Forms.Design.Behavior.BehaviorService BehaviorService { get { throw null; } }
         public virtual System.Windows.Forms.Control Control { get { throw null; } }
         protected virtual bool EnableDragRect { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override System.ComponentModel.InheritanceAttribute InheritanceAttribute { get { throw null; } }
         protected override System.ComponentModel.IComponent ParentComponent { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool ParticipatesWithSnapLines { get { throw null; } }
         public virtual System.Windows.Forms.Design.SelectionRules SelectionRules { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Collections.IList SnapLines { get { throw null; } }
         protected void BaseWndProc(ref System.Windows.Forms.Message m) { }
         public virtual bool CanBeParentedTo(System.ComponentModel.Design.IDesigner parentDesigner) { throw null; }
@@ -4173,22 +3706,17 @@ namespace System.Windows.Forms.Design
         protected override void Dispose(bool disposing) { }
         protected bool EnableDesignMode(System.Windows.Forms.Control child, string name) { throw null; }
         protected void EnableDragDrop(bool value) { }
-        [System.MonoTODOAttribute]
         protected virtual System.Windows.Forms.Design.Behavior.ControlBodyGlyph GetControlGlyph(System.Windows.Forms.Design.Behavior.GlyphSelectionType selectionType) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.Design.Behavior.GlyphCollection GetGlyphs(System.Windows.Forms.Design.Behavior.GlyphSelectionType selectionType) { throw null; }
         protected virtual bool GetHitTest(System.Drawing.Point point) { throw null; }
         protected void HookChildControls(System.Windows.Forms.Control firstChild) { }
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public override void InitializeExistingComponent(System.Collections.IDictionary defaultValues) { }
-        [System.MonoTODOAttribute]
         public override void InitializeNewComponent(System.Collections.IDictionary defaultValues) { }
         public virtual System.Windows.Forms.Design.ControlDesigner InternalControlDesigner(int internalControlIndex) { throw null; }
         public virtual int NumberOfInternalControlDesigners() { throw null; }
         protected virtual void OnContextMenu(int x, int y) { }
         protected virtual void OnCreateHandle() { }
-        [System.MonoTODOAttribute]
         protected virtual void OnDragComplete(System.Windows.Forms.DragEventArgs de) { }
         protected virtual void OnDragDrop(System.Windows.Forms.DragEventArgs de) { }
         protected virtual void OnDragEnter(System.Windows.Forms.DragEventArgs de) { }
@@ -4202,6 +3730,7 @@ namespace System.Windows.Forms.Design
         protected virtual void OnMouseHover() { }
         protected virtual void OnMouseLeave() { }
         protected virtual void OnPaintAdornments(System.Windows.Forms.PaintEventArgs pe) { }
+        [System.ObsoleteAttribute("This method has been deprecated. Use InitializeNewComponent instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public override void OnSetComponentDefaults() { }
         protected virtual void OnSetCursor() { }
         protected override void PreFilterProperties(System.Collections.IDictionary properties) { }
@@ -4210,55 +3739,34 @@ namespace System.Windows.Forms.Design
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class ControlDesignerAccessibleObject : System.Windows.Forms.AccessibleObject
         {
-            [System.MonoTODOAttribute]
             public ControlDesignerAccessibleObject(System.Windows.Forms.Design.ControlDesigner designer, System.Windows.Forms.Control control) { }
-            [System.MonoTODOAttribute]
             public override System.Drawing.Rectangle Bounds { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override string DefaultAction { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override string Description { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override string Name { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleObject Parent { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleStates State { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override string Value { get { throw null; } }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
-            [System.MonoTODOAttribute]
             public override int GetChildCount() { throw null; }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleObject GetFocused() { throw null; }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleObject GetSelected() { throw null; }
-            [System.MonoTODOAttribute]
             public override System.Windows.Forms.AccessibleObject HitTest(int x, int y) { throw null; }
         }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class DesignerOptions
     {
         public DesignerOptions() { }
         [System.ComponentModel.BrowsableAttribute(false)]
-        [System.MonoTODOAttribute]
         public virtual bool EnableInSituEditing { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual System.Drawing.Size GridSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual bool ObjectBoundSmartTagAutoShow { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual bool ShowGrid { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual bool SnapToGrid { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual bool UseOptimizedCodeGeneration { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual bool UseSmartTags { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public virtual bool UseSnapLines { get { throw null; } set { } }
     }
     public sealed partial class DockEditor : System.Drawing.Design.UITypeEditor
@@ -4293,23 +3801,17 @@ namespace System.Windows.Forms.Design
         public EventHandlerService(System.Windows.Forms.Control focusWnd) { }
         public System.Windows.Forms.Control FocusWindow { get { throw null; } }
         public event System.EventHandler EventHandlerChanged { add { } remove { } }
-        [System.MonoTODOAttribute]
         public object GetHandler(System.Type handlerType) { throw null; }
-        [System.MonoTODOAttribute]
         public void PopHandler(object handler) { }
-        [System.MonoTODOAttribute]
         public void PushHandler(object handler) { }
     }
     public partial class FileNameEditor : System.Drawing.Design.UITypeEditor
     {
         public FileNameEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void InitializeDialog(System.Windows.Forms.OpenFileDialog openFileDialog) { }
     }
-    [System.MonoTODOAttribute]
     public partial class FolderNameEditor : System.Drawing.Design.UITypeEditor
     {
         public FolderNameEditor() { }
@@ -4318,15 +3820,12 @@ namespace System.Windows.Forms.Design
         protected virtual void InitializeDialog(System.Windows.Forms.Design.FolderNameEditor.FolderBrowser folderBrowser) { }
         protected sealed partial class FolderBrowser : System.ComponentModel.Component
         {
-            [System.MonoTODOAttribute]
             public FolderBrowser() { }
             public string Description { get { throw null; } set { } }
             public string DirectoryPath { get { throw null; } }
             public System.Windows.Forms.Design.FolderNameEditor.FolderBrowserFolder StartLocation { get { throw null; } set { } }
             public System.Windows.Forms.Design.FolderNameEditor.FolderBrowserStyles Style { get { throw null; } set { } }
-            [System.MonoTODOAttribute]
             public System.Windows.Forms.DialogResult ShowDialog() { throw null; }
-            [System.MonoTODOAttribute]
             public System.Windows.Forms.DialogResult ShowDialog(System.Windows.Forms.IWin32Window owner) { throw null; }
         }
         protected enum FolderBrowserFolder
@@ -4363,9 +3862,7 @@ namespace System.Windows.Forms.Design
     public partial class ImageListCodeDomSerializer : System.ComponentModel.Design.Serialization.CodeDomSerializer
     {
         public ImageListCodeDomSerializer() { }
-        [System.MonoTODOAttribute]
         public override object Deserialize(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object codeObject) { throw null; }
-        [System.MonoTODOAttribute]
         public override object Serialize(System.ComponentModel.Design.Serialization.IDesignerSerializationManager manager, object value) { throw null; }
     }
     public partial class ImageListImageEditor : System.Drawing.Design.ImageEditor
@@ -4388,21 +3885,15 @@ namespace System.Windows.Forms.Design
     public abstract partial class MaskDescriptor
     {
         protected MaskDescriptor() { }
-        [System.MonoTODOAttribute]
         public virtual System.Globalization.CultureInfo Culture { get { throw null; } }
         public abstract string Mask { get; }
         public abstract string Name { get; }
         public abstract string Sample { get; }
         public abstract System.Type ValidatingType { get; }
-        [System.MonoTODOAttribute]
         public override bool Equals(object maskDescriptor) { throw null; }
-        [System.MonoTODOAttribute]
         public override int GetHashCode() { throw null; }
-        [System.MonoTODOAttribute]
         public static bool IsValidMaskDescriptor(System.Windows.Forms.Design.MaskDescriptor maskDescriptor) { throw null; }
-        [System.MonoTODOAttribute]
         public static bool IsValidMaskDescriptor(System.Windows.Forms.Design.MaskDescriptor maskDescriptor, out string validationErrorDescription) { validationErrorDescription = default(string); throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public sealed partial class MenuCommands : System.ComponentModel.Design.StandardCommands
@@ -4447,21 +3938,15 @@ namespace System.Windows.Forms.Design
     public partial class ParentControlDesigner : System.Windows.Forms.Design.ControlDesigner
     {
         public ParentControlDesigner() { }
-        [System.MonoTODOAttribute]
         protected virtual bool AllowControlLasso { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected virtual bool AllowGenericDragBox { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal virtual bool AllowSetChildIndexOnDrop { get { throw null; } }
         protected virtual System.Drawing.Point DefaultControlLocation { get { throw null; } }
         protected virtual bool DrawGrid { get { throw null; } set { } }
         protected override bool EnableDragRect { get { throw null; } }
         protected System.Drawing.Size GridSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected System.Drawing.Design.ToolboxItem MouseDragTool { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Collections.IList SnapLines { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected void AddPaddingSnapLines(ref System.Collections.ArrayList snapLines) { }
         protected internal virtual bool CanAddComponent(System.ComponentModel.IComponent component) { throw null; }
         public virtual bool CanParent(System.Windows.Forms.Control control) { throw null; }
@@ -4472,16 +3957,11 @@ namespace System.Windows.Forms.Design
         protected virtual System.ComponentModel.IComponent[] CreateToolCore(System.Drawing.Design.ToolboxItem tool, int x, int y, int width, int height, bool hasLocation, bool hasSize) { throw null; }
         protected override void Dispose(bool disposing) { }
         protected System.Windows.Forms.Control GetControl(object component) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.Windows.Forms.Design.Behavior.ControlBodyGlyph GetControlGlyph(System.Windows.Forms.Design.Behavior.GlyphSelectionType selectionType) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Windows.Forms.Design.Behavior.GlyphCollection GetGlyphs(System.Windows.Forms.Design.Behavior.GlyphSelectionType selectionType) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual System.Windows.Forms.Control GetParentForComponent(System.ComponentModel.IComponent component) { throw null; }
-        [System.MonoTODOAttribute]
         protected System.Drawing.Rectangle GetUpdatedRect(System.Drawing.Rectangle originalRect, System.Drawing.Rectangle dragRect, bool updateSize) { throw null; }
         public override void Initialize(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public override void InitializeNewComponent(System.Collections.IDictionary defaultValues) { }
         protected static void InvokeCreateTool(System.Windows.Forms.Design.ParentControlDesigner toInvoke, System.Drawing.Design.ToolboxItem tool) { }
         protected override void OnDragComplete(System.Windows.Forms.DragEventArgs de) { }
@@ -4515,14 +3995,12 @@ namespace System.Windows.Forms.Design
         TopSizeable = 1,
         Visible = 1073741824,
     }
+    [System.Security.SecurityCriticalAttribute]
     [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ShortcutKeysEditor : System.Drawing.Design.UITypeEditor
     {
         public ShortcutKeysEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
     public enum ThemedScrollbarMode
@@ -4531,6 +4009,7 @@ namespace System.Windows.Forms.Design
         None = 2,
         OnlyTopLevel = 3,
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ThemedScrollbarWindow
     {
         public System.IntPtr Handle;
@@ -4540,7 +4019,6 @@ namespace System.Windows.Forms.Design
     {
         public WindowsFormsDesignerOptionService() { }
         public virtual System.Windows.Forms.Design.DesignerOptions CompatibilityOptions { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override void PopulateOptionCollection(System.ComponentModel.Design.DesignerOptionService.DesignerOptionCollection options) { }
     }
 }
@@ -4549,58 +4027,33 @@ namespace System.Windows.Forms.Design.Behavior
     public sealed partial class Adorner
     {
         public Adorner() { }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Design.Behavior.BehaviorService BehaviorService { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool Enabled { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Design.Behavior.GlyphCollection Glyphs { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Invalidate() { }
-        [System.MonoTODOAttribute]
         public void Invalidate(System.Drawing.Rectangle rectangle) { }
-        [System.MonoTODOAttribute]
         public void Invalidate(System.Drawing.Region region) { }
     }
     public abstract partial class Behavior
     {
-        [System.MonoTODOAttribute]
         protected Behavior() { }
-        [System.MonoTODOAttribute]
         protected Behavior(bool callParentBehavior, System.Windows.Forms.Design.Behavior.BehaviorService behaviorService) { }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.Cursor Cursor { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual bool DisableAllCommands { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.ComponentModel.Design.MenuCommand FindCommand(System.ComponentModel.Design.CommandID commandId) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void OnDragDrop(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.DragEventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void OnDragEnter(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.DragEventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void OnDragLeave(System.Windows.Forms.Design.Behavior.Glyph g, System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void OnDragOver(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.DragEventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void OnGiveFeedback(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.GiveFeedbackEventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual void OnLoseCapture(System.Windows.Forms.Design.Behavior.Glyph g, System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseDoubleClick(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.MouseButtons button, System.Drawing.Point mouseLoc) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseDown(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.MouseButtons button, System.Drawing.Point mouseLoc) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseEnter(System.Windows.Forms.Design.Behavior.Glyph g) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseHover(System.Windows.Forms.Design.Behavior.Glyph g, System.Drawing.Point mouseLoc) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseLeave(System.Windows.Forms.Design.Behavior.Glyph g) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseMove(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.MouseButtons button, System.Drawing.Point mouseLoc) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool OnMouseUp(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.MouseButtons button) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void OnQueryContinueDrag(System.Windows.Forms.Design.Behavior.Glyph g, System.Windows.Forms.QueryContinueDragEventArgs e) { }
     }
     public partial class BehaviorDragDropEventArgs : System.EventArgs
@@ -4612,44 +4065,26 @@ namespace System.Windows.Forms.Design.Behavior
     public sealed partial class BehaviorService : System.IDisposable
     {
         internal BehaviorService() { }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Design.Behavior.BehaviorServiceAdornerCollection Adorners { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Drawing.Graphics AdornerWindowGraphics { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Design.Behavior.Behavior CurrentBehavior { get { throw null; } }
         public event System.Windows.Forms.Design.Behavior.BehaviorDragDropEventHandler BeginDrag { add { } remove { } }
         public event System.Windows.Forms.Design.Behavior.BehaviorDragDropEventHandler EndDrag { add { } remove { } }
         public event System.EventHandler Synchronize { add { } remove { } }
-        [System.MonoTODOAttribute]
         public System.Drawing.Point AdornerWindowPointToScreen(System.Drawing.Point p) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Drawing.Point AdornerWindowToScreen() { throw null; }
-        [System.MonoTODOAttribute]
         public System.Drawing.Rectangle ControlRectInAdornerWindow(System.Windows.Forms.Control c) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Drawing.Point ControlToAdornerWindow(System.Windows.Forms.Control c) { throw null; }
-        [System.MonoTODOAttribute]
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Design.Behavior.Behavior GetNextBehavior(System.Windows.Forms.Design.Behavior.Behavior behavior) { throw null; }
-        [System.MonoTODOAttribute]
         public void Invalidate() { }
-        [System.MonoTODOAttribute]
         public void Invalidate(System.Drawing.Rectangle rect) { }
-        [System.MonoTODOAttribute]
         public void Invalidate(System.Drawing.Region r) { }
-        [System.MonoTODOAttribute]
         public System.Drawing.Point MapAdornerWindowPoint(System.IntPtr handle, System.Drawing.Point pt) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Windows.Forms.Design.Behavior.Behavior PopBehavior(System.Windows.Forms.Design.Behavior.Behavior behavior) { throw null; }
-        [System.MonoTODOAttribute]
         public void PushBehavior(System.Windows.Forms.Design.Behavior.Behavior behavior) { }
-        [System.MonoTODOAttribute]
         public void PushCaptureBehavior(System.Windows.Forms.Design.Behavior.Behavior behavior) { }
-        [System.MonoTODOAttribute]
         public System.Drawing.Point ScreenToAdornerWindow(System.Drawing.Point p) { throw null; }
-        [System.MonoTODOAttribute]
         public void SyncSelection() { }
     }
     public sealed partial class BehaviorServiceAdornerCollection : System.Collections.CollectionBase
@@ -4682,35 +4117,24 @@ namespace System.Windows.Forms.Design.Behavior
     {
         public ComponentGlyph(System.ComponentModel.IComponent relatedComponent) : base (default(System.Windows.Forms.Design.Behavior.Behavior)) { }
         public ComponentGlyph(System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.Behavior.Behavior behavior) : base (default(System.Windows.Forms.Design.Behavior.Behavior)) { }
-        [System.MonoTODOAttribute]
         public System.ComponentModel.IComponent RelatedComponent { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Windows.Forms.Cursor GetHitTest(System.Drawing.Point p) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Paint(System.Windows.Forms.PaintEventArgs pe) { }
     }
     public partial class ControlBodyGlyph : System.Windows.Forms.Design.Behavior.ComponentGlyph
     {
-        [System.MonoTODOAttribute]
         public ControlBodyGlyph(System.Drawing.Rectangle bounds, System.Windows.Forms.Cursor cursor, System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.Behavior.Behavior behavior) : base (default(System.ComponentModel.IComponent), default(System.Windows.Forms.Design.Behavior.Behavior)) { }
-        [System.MonoTODOAttribute]
         public ControlBodyGlyph(System.Drawing.Rectangle bounds, System.Windows.Forms.Cursor cursor, System.ComponentModel.IComponent relatedComponent, System.Windows.Forms.Design.ControlDesigner designer) : base (default(System.ComponentModel.IComponent), default(System.Windows.Forms.Design.Behavior.Behavior)) { }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Rectangle Bounds { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.Windows.Forms.Cursor GetHitTest(System.Drawing.Point p) { throw null; }
     }
     public abstract partial class Glyph
     {
-        [System.MonoTODOAttribute]
         protected Glyph(System.Windows.Forms.Design.Behavior.Behavior behavior) { }
-        [System.MonoTODOAttribute]
         public virtual System.Windows.Forms.Design.Behavior.Behavior Behavior { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.Drawing.Rectangle Bounds { get { throw null; } }
         public abstract System.Windows.Forms.Cursor GetHitTest(System.Drawing.Point p);
         public abstract void Paint(System.Windows.Forms.PaintEventArgs pe);
-        [System.MonoTODOAttribute]
         protected void SetBehavior(System.Windows.Forms.Design.Behavior.Behavior behavior) { }
     }
     public partial class GlyphCollection : System.Collections.CollectionBase
@@ -4736,13 +4160,9 @@ namespace System.Windows.Forms.Design.Behavior
     }
     public sealed partial class SnapLine
     {
-        [System.MonoTODOAttribute]
         public SnapLine(System.Windows.Forms.Design.Behavior.SnapLineType type, int offset) { }
-        [System.MonoTODOAttribute]
         public SnapLine(System.Windows.Forms.Design.Behavior.SnapLineType type, int offset, string filter) { }
-        [System.MonoTODOAttribute]
         public SnapLine(System.Windows.Forms.Design.Behavior.SnapLineType type, int offset, string filter, System.Windows.Forms.Design.Behavior.SnapLinePriority priority) { }
-        [System.MonoTODOAttribute]
         public SnapLine(System.Windows.Forms.Design.Behavior.SnapLineType type, int offset, System.Windows.Forms.Design.Behavior.SnapLinePriority priority) { }
         public string Filter { get { throw null; } }
         public bool IsHorizontal { get { throw null; } }
@@ -4750,11 +4170,8 @@ namespace System.Windows.Forms.Design.Behavior
         public int Offset { get { throw null; } }
         public System.Windows.Forms.Design.Behavior.SnapLinePriority Priority { get { throw null; } }
         public System.Windows.Forms.Design.Behavior.SnapLineType SnapLineType { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void AdjustOffset(int adjustment) { }
-        [System.MonoTODOAttribute]
         public static bool ShouldSnap(System.Windows.Forms.Design.Behavior.SnapLine line1, System.Windows.Forms.Design.Behavior.SnapLine line2) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public enum SnapLinePriority

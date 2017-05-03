@@ -4,13 +4,13 @@
 
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
-[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
+[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(263))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Net.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Net.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Net.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,8 +19,11 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
 [assembly:System.Security.SecurityCriticalAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Execution=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Net.Cookie))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Net.CookieCollection))]
@@ -71,77 +74,65 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Net.WebResponse))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Net.WriteStreamClosedEventArgs))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Net.WriteStreamClosedEventHandler))]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
 namespace System.Net
 {
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial interface INetworkProgress
     {
         event System.EventHandler<System.Net.NetworkProgressChangedEventArgs> ProgressChanged;
         event System.EventHandler<System.Net.NetworkProgressChangedEventArgs> ProgressCompleted;
         event System.EventHandler<System.Net.NetworkProgressChangedEventArgs> ProgressFailed;
     }
+    [System.SerializableAttribute]
     public partial class IPEndPointCollection : System.Collections.ObjectModel.Collection<System.Net.IPEndPoint>
     {
         public IPEndPointCollection() { }
         protected override void InsertItem(int index, System.Net.IPEndPoint item) { }
         protected override void SetItem(int index, System.Net.IPEndPoint item) { }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial interface IUnsafeWebRequestCreate
     {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         System.Net.WebRequest Create(System.Uri uri);
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial class NetworkProgressChangedEventArgs : System.ComponentModel.ProgressChangedEventArgs
     {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public NetworkProgressChangedEventArgs(int percentage, int processedBytes, int totalBytes, object userState) : base (default(int), default(object)) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public int ProcessedBytes { get { throw null; } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public int TotalBytes { get { throw null; } }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public static partial class UiSynchronizationContext
     {
-        public static System.Threading.SynchronizationContext Current { get { throw null; } set { } }
-        public static int ManagedUiThreadId { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public static System.Threading.SynchronizationContext Current { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public static int ManagedUiThreadId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
 }
 namespace System.Net.PeerToPeer
 {
+    [System.SerializableAttribute]
     public partial class Cloud : System.IEquatable<System.Net.PeerToPeer.Cloud>, System.Runtime.Serialization.ISerializable
     {
         public static readonly System.Net.PeerToPeer.Cloud AllLinkLocal;
         public static readonly System.Net.PeerToPeer.Cloud Available;
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected Cloud(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public static System.Net.PeerToPeer.Cloud Global { get { throw null; } }
         public string Name { get { throw null; } }
@@ -152,56 +143,76 @@ namespace System.Net.PeerToPeer
         public static System.Net.PeerToPeer.CloudCollection GetAvailableClouds() { throw null; }
         public static System.Net.PeerToPeer.Cloud GetCloudByName(string cloudName) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class CloudCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.Cloud>
     {
         public CloudCollection() { }
         protected override void InsertItem(int index, System.Net.PeerToPeer.Cloud item) { }
         protected override void SetItem(int index, System.Net.PeerToPeer.Cloud item) { }
     }
+    [System.SerializableAttribute]
     public partial class PeerName : System.IEquatable<System.Net.PeerToPeer.PeerName>, System.Runtime.Serialization.ISerializable
     {
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerName(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public PeerName(string remotePeerName) { }
+        [System.Security.SecurityCriticalAttribute]
         public PeerName(string classifier, System.Net.PeerToPeer.PeerNameType peerNameType) { }
         public string Authority { get { throw null; } }
         public string Classifier { get { throw null; } }
         public bool IsSecured { get { throw null; } }
-        public string PeerHostName { get { throw null; } }
+        public string PeerHostName { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.PeerName CreateFromPeerHostName(string peerHostName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.PeerName CreateRelativePeerName(System.Net.PeerToPeer.PeerName peerName, string classifier) { throw null; }
         public bool Equals(System.Net.PeerToPeer.PeerName other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerNameRecord : System.Runtime.Serialization.ISerializable
     {
         public PeerNameRecord() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerNameRecord(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public string Comment { get { throw null; } set { } }
         public byte[] Data { get { throw null; } set { } }
         public System.Net.IPEndPointCollection EndPointCollection { get { throw null; } }
         public System.Net.PeerToPeer.PeerName PeerName { get { throw null; } set { } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+    [System.SerializableAttribute]
     public partial class PeerNameRecordCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.PeerNameRecord>
     {
         public PeerNameRecordCollection() { }
         protected override void InsertItem(int index, System.Net.PeerToPeer.PeerNameRecord item) { }
         protected override void SetItem(int index, System.Net.PeerToPeer.PeerNameRecord item) { }
     }
+    [System.SerializableAttribute]
     public partial class PeerNameRegistration : System.IDisposable, System.Runtime.Serialization.ISerializable
     {
         public PeerNameRegistration() { }
         public PeerNameRegistration(System.Net.PeerToPeer.PeerName name, int port) { }
         public PeerNameRegistration(System.Net.PeerToPeer.PeerName name, int port, System.Net.PeerToPeer.Cloud cloud) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerNameRegistration(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public System.Net.PeerToPeer.Cloud Cloud { get { throw null; } set { } }
         public string Comment { get { throw null; } set { } }
@@ -212,11 +223,17 @@ namespace System.Net.PeerToPeer
         public bool UseAutoEndPointSelection { get { throw null; } set { } }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public bool IsRegistered() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void Start() { }
+        [System.Security.SecurityCriticalAttribute]
         public void Stop() { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         public void Update() { }
     }
     public partial class PeerNameResolver
@@ -229,11 +246,18 @@ namespace System.Net.PeerToPeer
         public System.Net.PeerToPeer.PeerNameRecordCollection Resolve(System.Net.PeerToPeer.PeerName peerName) { throw null; }
         public System.Net.PeerToPeer.PeerNameRecordCollection Resolve(System.Net.PeerToPeer.PeerName peerName, int maxRecords) { throw null; }
         public System.Net.PeerToPeer.PeerNameRecordCollection Resolve(System.Net.PeerToPeer.PeerName peerName, System.Net.PeerToPeer.Cloud cloud) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.PeerNameRecordCollection Resolve(System.Net.PeerToPeer.PeerName peerName, System.Net.PeerToPeer.Cloud cloud, int maxRecords) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public void ResolveAsync(System.Net.PeerToPeer.PeerName peerName, int maxRecords, object userState) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public void ResolveAsync(System.Net.PeerToPeer.PeerName peerName, System.Net.PeerToPeer.Cloud cloud, int maxRecords, object userState) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public void ResolveAsync(System.Net.PeerToPeer.PeerName peerName, System.Net.PeerToPeer.Cloud cloud, object userState) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public void ResolveAsync(System.Net.PeerToPeer.PeerName peerName, object userState) { }
+        [System.Security.SecurityCriticalAttribute]
         public void ResolveAsyncCancel(object userState) { }
     }
     public enum PeerNameType
@@ -241,15 +265,22 @@ namespace System.Net.PeerToPeer
         Secured = 0,
         Unsecured = 1,
     }
+    [System.SerializableAttribute]
     public partial class PeerToPeerException : System.Exception, System.Runtime.Serialization.ISerializable
     {
         public PeerToPeerException() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerToPeerException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public PeerToPeerException(string message) { }
         public PeerToPeerException(string message, System.Exception innerException) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+    [System.SerializableAttribute]
     public sealed partial class PnrpPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
         public PnrpPermission(System.Security.Permissions.PermissionState state) { }
@@ -261,6 +292,8 @@ namespace System.Net.PeerToPeer
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
+    [System.SerializableAttribute]
     public sealed partial class PnrpPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public PnrpPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
@@ -297,7 +330,10 @@ namespace System.Net.PeerToPeer.Collaboration
     public sealed partial class ContactManager : System.IDisposable
     {
         internal ContactManager() { }
-        public static System.Net.PeerToPeer.Collaboration.PeerContact LocalContact { get { throw null; } }
+        public static System.Net.PeerToPeer.Collaboration.PeerContact LocalContact { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.DescriptionAttribute("SynchronizingObject")]
         public System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get { throw null; } set { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs> ApplicationChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.CreateContactCompletedEventArgs> CreateContactCompleted { add { } remove { } }
@@ -305,14 +341,21 @@ namespace System.Net.PeerToPeer.Collaboration
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs> ObjectChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.PresenceChangedEventArgs> PresenceChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.SubscriptionListChangedEventArgs> SubscriptionListChanged { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         public void AddContact(System.Net.PeerToPeer.Collaboration.PeerContact peerContact) { }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerContact CreateContact(System.Net.PeerToPeer.Collaboration.PeerNearMe peerNearMe) { throw null; }
         public void CreateContactAsync(System.Net.PeerToPeer.Collaboration.PeerNearMe peerNearMe, object userToken) { }
         public void DeleteContact(System.Net.PeerToPeer.Collaboration.PeerContact peerContact) { }
+        [System.Security.SecurityCriticalAttribute]
         public void DeleteContact(System.Net.PeerToPeer.PeerName peerName) { }
+        [System.Security.SecurityCriticalAttribute]
         public void Dispose() { }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerContact GetContact(System.Net.PeerToPeer.PeerName peerName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerContactCollection GetContacts() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public void UpdateContact(System.Net.PeerToPeer.Collaboration.PeerContact peerContact) { }
     }
     public partial class CreateContactCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
@@ -340,33 +383,47 @@ namespace System.Net.PeerToPeer.Collaboration
         public System.Net.PeerToPeer.Collaboration.PeerEndPoint PeerEndPoint { get { throw null; } }
         public System.Net.PeerToPeer.Collaboration.PeerObject PeerObject { get { throw null; } }
     }
+    [System.SerializableAttribute]
     public abstract partial class Peer : System.IDisposable, System.IEquatable<System.Net.PeerToPeer.Collaboration.Peer>, System.Runtime.Serialization.ISerializable
     {
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected Peer(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public bool IsOnline { get { throw null; } }
         public virtual System.Net.PeerToPeer.Collaboration.PeerEndPointCollection PeerEndPoints { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.DescriptionAttribute("SynchronizingObject")]
         public System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get { throw null; } set { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.InviteCompletedEventArgs> InviteCompleted { add { } remove { } }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         public bool Equals(System.Net.PeerToPeer.Collaboration.Peer other) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerObjectCollection GetObjects() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerObjectCollection GetObjects(System.Guid objectId) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerPresenceInfo GetPresenceInfo(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint) { throw null; }
         public abstract System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite();
         public abstract System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite(System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData);
         public abstract void InviteAsync(System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData, object userToken);
         public abstract void InviteAsync(object userToken);
+        [System.Security.SecurityCriticalAttribute]
         public void InviteAsyncCancel(object userToken) { }
         protected virtual void OnInviteCompleted(System.Net.PeerToPeer.Collaboration.InviteCompletedEventArgs e) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerApplication : System.IDisposable, System.IEquatable<System.Net.PeerToPeer.Collaboration.PeerApplication>, System.Runtime.Serialization.ISerializable
     {
         public PeerApplication() { }
         public PeerApplication(System.Guid id, string description, byte[] data, string path, string commandLineArgs, System.Net.PeerToPeer.Collaboration.PeerScope peerScope) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerApplication(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public string CommandLineArgs { get { throw null; } set { } }
         public byte[] Data { get { throw null; } set { } }
@@ -374,19 +431,28 @@ namespace System.Net.PeerToPeer.Collaboration
         public System.Guid Id { get { throw null; } set { } }
         public string Path { get { throw null; } set { } }
         public System.Net.PeerToPeer.Collaboration.PeerScope PeerScope { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.DescriptionAttribute("SynchronizingObject")]
         public System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get { throw null; } set { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs> ApplicationChanged { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         public void Dispose() { }
+        [System.Security.SecurityCriticalAttribute]
         protected virtual void Dispose(bool disposing) { }
         public bool Equals(System.Net.PeerToPeer.Collaboration.PeerApplication other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static new bool Equals(object objA, object objB) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         protected virtual void OnApplicationChanged(System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs appChangedArgs) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerApplicationCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.Collaboration.PeerApplication>
     {
         internal PeerApplicationCollection() { }
@@ -416,27 +482,40 @@ namespace System.Net.PeerToPeer.Collaboration
     }
     public static partial class PeerCollaboration
     {
-        public static System.Net.PeerToPeer.Collaboration.PeerApplicationLaunchInfo ApplicationLaunchInfo { get { throw null; } }
-        public static System.Net.PeerToPeer.Collaboration.ContactManager ContactManager { get { throw null; } }
-        public static string LocalEndPointName { get { throw null; } set { } }
-        public static System.Net.PeerToPeer.Collaboration.PeerPresenceInfo LocalPresenceInfo { get { throw null; } set { } }
-        public static System.Net.PeerToPeer.Collaboration.PeerScope SignInScope { get { throw null; } }
+        public static System.Net.PeerToPeer.Collaboration.PeerApplicationLaunchInfo ApplicationLaunchInfo { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public static System.Net.PeerToPeer.Collaboration.ContactManager ContactManager { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        public static string LocalEndPointName { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        public static System.Net.PeerToPeer.Collaboration.PeerPresenceInfo LocalPresenceInfo { [System.Security.SecurityCriticalAttribute]get { throw null; } [System.Security.SecurityCriticalAttribute]set { } }
+        public static System.Net.PeerToPeer.Collaboration.PeerScope SignInScope { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.DescriptionAttribute("SynchronizingObject")]
         public static System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get { throw null; } set { } }
         public static event System.EventHandler<System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs> LocalApplicationChanged { add { } remove { } }
         public static event System.EventHandler<System.Net.PeerToPeer.Collaboration.NameChangedEventArgs> LocalNameChanged { add { } remove { } }
         public static event System.EventHandler<System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs> LocalObjectChanged { add { } remove { } }
         public static event System.EventHandler<System.Net.PeerToPeer.Collaboration.PresenceChangedEventArgs> LocalPresenceChanged { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         public static void DeleteObject(System.Net.PeerToPeer.Collaboration.PeerObject peerObject) { }
         public static System.Net.PeerToPeer.Collaboration.PeerApplicationCollection GetLocalRegisteredApplications() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.Collaboration.PeerApplicationCollection GetLocalRegisteredApplications(System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType type) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.Collaboration.PeerObjectCollection GetLocalSetObjects() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.Collaboration.PeerNearMeCollection GetPeersNearMe() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static void RegisterApplication(System.Net.PeerToPeer.Collaboration.PeerApplication application, System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType type) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void SetObject(System.Net.PeerToPeer.Collaboration.PeerObject peerObject) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void SignIn(System.Net.PeerToPeer.Collaboration.PeerScope peerScope) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void SignOut(System.Net.PeerToPeer.Collaboration.PeerScope peerScope) { }
+        [System.Security.SecurityCriticalAttribute]
         public static void UnregisterApplication(System.Net.PeerToPeer.Collaboration.PeerApplication application, System.Net.PeerToPeer.Collaboration.PeerApplicationRegistrationType type) { }
     }
+    [System.SerializableAttribute]
     public sealed partial class PeerCollaborationPermission : System.Security.CodeAccessPermission, System.Security.Permissions.IUnrestrictedPermission
     {
         public PeerCollaborationPermission(System.Security.Permissions.PermissionState state) { }
@@ -448,46 +527,67 @@ namespace System.Net.PeerToPeer.Collaboration
         public override System.Security.SecurityElement ToXml() { throw null; }
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(109), AllowMultiple=true, Inherited=false)]
+    [System.SerializableAttribute]
     public sealed partial class PeerCollaborationPermissionAttribute : System.Security.Permissions.CodeAccessSecurityAttribute
     {
         public PeerCollaborationPermissionAttribute(System.Security.Permissions.SecurityAction action) : base (default(System.Security.Permissions.SecurityAction)) { }
         public override System.Security.IPermission CreatePermission() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerContact : System.Net.PeerToPeer.Collaboration.Peer, System.IEquatable<System.Net.PeerToPeer.Collaboration.PeerContact>, System.Runtime.Serialization.ISerializable
     {
+        [System.Security.SecurityCriticalAttribute]
         protected PeerContact(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
         public System.Security.Cryptography.X509Certificates.X509Certificate2 Credentials { get { throw null; } }
         public string DisplayName { get { throw null; } set { } }
         public System.Net.Mail.MailAddress EmailAddress { get { throw null; } set { } }
         public bool IsSubscribed { get { throw null; } }
         public string Nickname { get { throw null; } set { } }
-        public override System.Net.PeerToPeer.Collaboration.PeerEndPointCollection PeerEndPoints { get { throw null; } }
+        public override System.Net.PeerToPeer.Collaboration.PeerEndPointCollection PeerEndPoints { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public System.Net.PeerToPeer.PeerName PeerName { get { throw null; } }
         public System.Net.PeerToPeer.Collaboration.SubscriptionType SubscribeAllowed { get { throw null; } set { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs> ApplicationChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs> ObjectChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.PresenceChangedEventArgs> PresenceChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.SubscribeCompletedEventArgs> SubscribeCompleted { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         protected override void Dispose(bool disposing) { }
         public bool Equals(System.Net.PeerToPeer.Collaboration.PeerContact other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static new bool Equals(object objA, object objB) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.Collaboration.PeerContact FromXml(string peerContactXml) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerApplicationCollection GetApplications() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerApplicationCollection GetApplications(System.Guid applicationId) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerApplicationCollection GetApplications(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerApplicationCollection GetApplications(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint, System.Guid applicationId) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerObjectCollection GetObjects(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerObjectCollection GetObjects(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint, System.Guid objectId) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite(System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint, System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override void InviteAsync(System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData, object userToken) { }
+        [System.Security.SecurityCriticalAttribute]
         public void InviteAsync(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint, object userToken) { }
+        [System.Security.SecurityCriticalAttribute]
         public void InviteAsync(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint, string message, byte[] invitationData, System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, object userToken) { }
+        [System.Security.SecurityCriticalAttribute]
         public override void InviteAsync(object userToken) { }
         protected virtual void OnApplicationChanged(System.Net.PeerToPeer.Collaboration.ApplicationChangedEventArgs appChangedArgs) { }
         protected virtual void OnObjectChanged(System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs objChangedArgs) { }
@@ -495,11 +595,15 @@ namespace System.Net.PeerToPeer.Collaboration
         protected void OnSubscribeCompleted(System.Net.PeerToPeer.Collaboration.SubscribeCompletedEventArgs e) { }
         public virtual void Subscribe() { }
         public virtual void SubscribeAsync(object userToken) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public string ToXml() { throw null; }
         public virtual void Unsubscribe() { }
     }
+    [System.SerializableAttribute]
     public partial class PeerContactCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.Collaboration.PeerContact>
     {
         internal PeerContactCollection() { }
@@ -507,27 +611,38 @@ namespace System.Net.PeerToPeer.Collaboration
         protected override void SetItem(int index, System.Net.PeerToPeer.Collaboration.PeerContact item) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerEndPoint : System.IDisposable, System.IEquatable<System.Net.PeerToPeer.Collaboration.PeerEndPoint>, System.Runtime.Serialization.ISerializable
     {
         public PeerEndPoint() { }
         public PeerEndPoint(System.Net.IPEndPoint endPoint) { }
         public PeerEndPoint(System.Net.IPEndPoint endPoint, string endPointName) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerEndPoint(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public System.Net.IPEndPoint EndPoint { get { throw null; } set { } }
         public string Name { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.DescriptionAttribute("SynchronizingObject")]
         public System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get { throw null; } set { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.NameChangedEventArgs> NameChanged { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         public void Dispose() { }
+        [System.Security.SecurityCriticalAttribute]
         protected virtual void Dispose(bool disposing) { }
         public bool Equals(System.Net.PeerToPeer.Collaboration.PeerEndPoint other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static new bool Equals(object objA, object objB) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         protected void OnNameChanged(System.Net.PeerToPeer.Collaboration.NameChangedEventArgs nameChangedArgs) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerEndPointCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.Collaboration.PeerEndPoint>, System.IEquatable<System.Net.PeerToPeer.Collaboration.PeerEndPointCollection>
     {
         internal PeerEndPointCollection() { }
@@ -547,30 +662,44 @@ namespace System.Net.PeerToPeer.Collaboration
         Declined = 0,
         Expired = 2,
     }
+    [System.SerializableAttribute]
     public partial class PeerNearMe : System.Net.PeerToPeer.Collaboration.Peer, System.IEquatable<System.Net.PeerToPeer.Collaboration.PeerNearMe>, System.Runtime.Serialization.ISerializable
     {
         public PeerNearMe() : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerNearMe(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) : base (default(System.Runtime.Serialization.SerializationInfo), default(System.Runtime.Serialization.StreamingContext)) { }
         public string Nickname { get { throw null; } }
         public static event System.EventHandler<System.Net.PeerToPeer.Collaboration.PeerNearMeChangedEventArgs> PeerNearMeChanged { add { } remove { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.RefreshDataCompletedEventArgs> RefreshDataCompleted { add { } remove { } }
         public System.Net.PeerToPeer.Collaboration.PeerContact AddToContactManager() { throw null; }
         public System.Net.PeerToPeer.Collaboration.PeerContact AddToContactManager(string displayName, string nickname, System.Net.Mail.MailAddress emailAddress) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public static System.Net.PeerToPeer.Collaboration.PeerNearMe CreateFromPeerEndPoint(System.Net.PeerToPeer.Collaboration.PeerEndPoint peerEndPoint) { throw null; }
         protected override void Dispose(bool disposing) { }
         public bool Equals(System.Net.PeerToPeer.Collaboration.PeerNearMe other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static new bool Equals(object objA, object objB) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.SecurityCriticalAttribute]
         protected internal void InternalRefreshData(object state) { }
+        [System.Security.SecurityCriticalAttribute]
         public override System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override System.Net.PeerToPeer.Collaboration.PeerInvitationResponse Invite(System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override void InviteAsync(System.Net.PeerToPeer.Collaboration.PeerApplication applicationToInvite, string message, byte[] invitationData, object userToken) { }
+        [System.Security.SecurityCriticalAttribute]
         public override void InviteAsync(object userToken) { }
         protected void OnRefreshDataCompleted(System.Net.PeerToPeer.Collaboration.RefreshDataCompletedEventArgs e) { }
+        [System.Security.SecurityCriticalAttribute]
         public void RefreshData() { }
+        [System.Security.SecurityCriticalAttribute]
         public void RefreshDataAsync(object userToken) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -580,6 +709,7 @@ namespace System.Net.PeerToPeer.Collaboration
         public System.Net.PeerToPeer.Collaboration.PeerChangeType PeerChangeType { get { throw null; } }
         public System.Net.PeerToPeer.Collaboration.PeerNearMe PeerNearMe { get { throw null; } }
     }
+    [System.SerializableAttribute]
     public partial class PeerNearMeCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.Collaboration.PeerNearMe>
     {
         internal PeerNearMeCollection() { }
@@ -587,27 +717,38 @@ namespace System.Net.PeerToPeer.Collaboration
         protected override void SetItem(int index, System.Net.PeerToPeer.Collaboration.PeerNearMe item) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerObject : System.IDisposable, System.IEquatable<System.Net.PeerToPeer.Collaboration.PeerObject>, System.Runtime.Serialization.ISerializable
     {
         public PeerObject() { }
         public PeerObject(System.Guid Id, byte[] data, System.Net.PeerToPeer.Collaboration.PeerScope peerScope) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         protected PeerObject(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
         public byte[] Data { get { throw null; } set { } }
         public System.Guid Id { get { throw null; } set { } }
         public System.Net.PeerToPeer.Collaboration.PeerScope PeerScope { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.DescriptionAttribute("SynchronizingObject")]
         public System.ComponentModel.ISynchronizeInvoke SynchronizingObject { get { throw null; } set { } }
         public event System.EventHandler<System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs> ObjectChanged { add { } remove { } }
+        [System.Security.SecurityCriticalAttribute]
         public void Dispose() { }
+        [System.Security.SecurityCriticalAttribute]
         protected virtual void Dispose(bool disposing) { }
         public bool Equals(System.Net.PeerToPeer.Collaboration.PeerObject other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public static new bool Equals(object objA, object objB) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         protected virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         protected virtual void OnObjectChanged(System.Net.PeerToPeer.Collaboration.ObjectChangedEventArgs objChangedArgs) { }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128), SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class PeerObjectCollection : System.Collections.ObjectModel.Collection<System.Net.PeerToPeer.Collaboration.PeerObject>
     {
         internal PeerObjectCollection() { }
@@ -674,50 +815,124 @@ namespace System.Net.PeerToPeer.Collaboration
 }
 namespace System.Net.Sockets
 {
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial class HttpPolicyDownloaderProtocol
     {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public HttpPolicyDownloaderProtocol(System.Uri appUri, System.Net.IPAddress address) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.Net.Sockets.SocketPolicy Result { get { throw null; } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void Abort() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void BeginDownload(System.Net.Sockets.SecurityCriticalAction callback) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void DownloadCallback(System.IAsyncResult ar) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void ReadCallback(System.IAsyncResult ar) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public static void RegisterUnsafeWebRequestCreator(System.Net.IUnsafeWebRequestCreate creator) { }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public delegate void SecurityCriticalAction();
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial class SocketPolicy
     {
         public SocketPolicy() { }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial class UdpAnySourceMulticastClient : System.IDisposable
     {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public UdpAnySourceMulticastClient(System.Net.IPAddress groupAddress, int localPort) { }
-        public bool MulticastLoopback { get { throw null; } set { } }
-        public int ReceiveBufferSize { get { throw null; } set { } }
-        public int SendBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public bool MulticastLoopback { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public int ReceiveBufferSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public int SendBufferSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginJoinGroup(System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginReceiveFromGroup(byte[] buffer, int offset, int count, System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginSendTo(byte[] buffer, int offset, int count, System.Net.IPEndPoint remoteEndPoint, System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginSendToGroup(byte[] buffer, int offset, int count, System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void BlockSource(System.Net.IPAddress sourceAddress) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void Dispose() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void EndJoinGroup(System.IAsyncResult result) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public int EndReceiveFromGroup(System.IAsyncResult result, out System.Net.IPEndPoint source) { source = default(System.Net.IPEndPoint); throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void EndSendTo(System.IAsyncResult result) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void EndSendToGroup(System.IAsyncResult result) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void UnblockSource(System.Net.IPAddress sourceAddress) { }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
     public partial class UdpSingleSourceMulticastClient : System.IDisposable
     {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public UdpSingleSourceMulticastClient(System.Net.IPAddress sourceAddress, System.Net.IPAddress groupAddress, int localPort) { }
-        public int ReceiveBufferSize { get { throw null; } set { } }
-        public int SendBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public int ReceiveBufferSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
+        public int SendBufferSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginJoinGroup(System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginReceiveFromSource(byte[] buffer, int offset, int count, System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.IAsyncResult BeginSendToSource(byte[] buffer, int offset, int count, int remotePort, System.AsyncCallback callback, object state) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void Dispose() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void EndJoinGroup(System.IAsyncResult result) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public int EndReceiveFromSource(System.IAsyncResult result, out int sourcePort) { sourcePort = default(int); throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public void EndSendToSource(System.IAsyncResult result) { }
     }
 }

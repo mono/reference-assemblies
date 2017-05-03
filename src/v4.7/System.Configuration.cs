@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Configuration.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Configuration.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Configuration.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -20,42 +20,10 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.Configuration
 {
     public sealed partial class AppSettingsSection : System.Configuration.ConfigurationSection
@@ -64,14 +32,12 @@ namespace System.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("file", DefaultValue="")]
         public string File { get { throw null; } set { } }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
+        [System.Configuration.ConfigurationPropertyAttribute("", IsDefaultCollection=true)]
         public System.Configuration.KeyValueConfigurationCollection Settings { get { throw null; } }
-        [System.MonoInternalNoteAttribute("file path?  do we use a System.Configuration api for opening it?  do we keep it open?  do we open it writable?")]
         protected internal override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
         protected internal override object GetRuntimeObject() { throw null; }
         protected internal override bool IsModified() { throw null; }
         protected internal override void Reset(System.Configuration.ConfigurationElement parentSection) { }
-        [System.MonoTODOAttribute]
         protected internal override string SerializeSection(System.Configuration.ConfigurationElement parentElement, string name, System.Configuration.ConfigurationSaveMode saveMode) { throw null; }
     }
     public sealed partial class CallbackValidator : System.Configuration.ConfigurationValidatorBase
@@ -113,7 +79,7 @@ namespace System.Configuration
     {
         internal Configuration() { }
         public System.Configuration.AppSettingsSection AppSettings { get { throw null; } }
-        public System.Func<string, string> AssemblyStringTransformer { get { throw null; } set { } }
+        public System.Func<string, string> AssemblyStringTransformer { get { throw null; } [System.Configuration.ConfigurationPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]set { } }
         public System.Configuration.ConnectionStringsSection ConnectionStrings { get { throw null; } }
         public System.Configuration.ContextInformation EvaluationContext { get { throw null; } }
         public string FilePath { get { throw null; } }
@@ -123,8 +89,8 @@ namespace System.Configuration
         public System.Configuration.ConfigurationSectionGroup RootSectionGroup { get { throw null; } }
         public System.Configuration.ConfigurationSectionGroupCollection SectionGroups { get { throw null; } }
         public System.Configuration.ConfigurationSectionCollection Sections { get { throw null; } }
-        public System.Runtime.Versioning.FrameworkName TargetFramework { get { throw null; } set { } }
-        public System.Func<string, string> TypeStringTransformer { get { throw null; } set { } }
+        public System.Runtime.Versioning.FrameworkName TargetFramework { get { throw null; } [System.Configuration.ConfigurationPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]set { } }
+        public System.Func<string, string> TypeStringTransformer { get { throw null; } [System.Configuration.ConfigurationPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]set { } }
         public System.Configuration.ConfigurationSection GetSection(string sectionName) { throw null; }
         public System.Configuration.ConfigurationSectionGroup GetSectionGroup(string sectionGroupName) { throw null; }
         public void Save() { }
@@ -132,7 +98,6 @@ namespace System.Configuration
         public void Save(System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll) { }
         public void SaveAs(string filename) { }
         public void SaveAs(string filename, System.Configuration.ConfigurationSaveMode saveMode) { }
-        [System.MonoInternalNoteAttribute("Detect if file has changed")]
         public void SaveAs(string filename, System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll) { }
     }
     public enum ConfigurationAllowDefinition
@@ -156,7 +121,6 @@ namespace System.Configuration
         public string AddItemName { get { throw null; } set { } }
         public string ClearItemsName { get { throw null; } set { } }
         public System.Configuration.ConfigurationElementCollectionType CollectionType { get { throw null; } set { } }
-        [System.MonoInternalNoteAttribute("Do something with this in ConfigurationElementCollection")]
         public System.Type ItemType { get { throw null; } }
         public string RemoveItemName { get { throw null; } set { } }
     }
@@ -191,7 +155,6 @@ namespace System.Configuration
         protected internal virtual void InitializeDefault() { }
         protected internal virtual bool IsModified() { throw null; }
         public virtual bool IsReadOnly() { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual void ListErrors(System.Collections.IList errorList) { }
         protected virtual bool OnDeserializeUnrecognizedAttribute(string name, string value) { throw null; }
         protected virtual bool OnDeserializeUnrecognizedElement(string elementName, System.Xml.XmlReader reader) { throw null; }
@@ -202,7 +165,6 @@ namespace System.Configuration
         protected internal virtual void ResetModified() { }
         protected internal virtual bool SerializeElement(System.Xml.XmlWriter writer, bool serializeCollectionKey) { throw null; }
         protected internal virtual bool SerializeToXmlElement(System.Xml.XmlWriter writer, string elementName) { throw null; }
-        [System.MonoTODOAttribute]
         protected void SetPropertyValue(System.Configuration.ConfigurationProperty prop, object value, bool ignoreLocks) { }
         protected internal virtual void SetReadOnly() { }
         protected internal virtual void Unmerge(System.Configuration.ConfigurationElement sourceElement, System.Configuration.ConfigurationElement parentElement, System.Configuration.ConfigurationSaveMode saveMode) { }
@@ -244,13 +206,11 @@ namespace System.Configuration
         protected virtual bool IsElementName(string elementName) { throw null; }
         protected virtual bool IsElementRemovable(System.Configuration.ConfigurationElement element) { throw null; }
         protected internal override bool IsModified() { throw null; }
-        [System.MonoTODOAttribute]
         public override bool IsReadOnly() { throw null; }
         protected override bool OnDeserializeUnrecognizedElement(string elementName, System.Xml.XmlReader reader) { throw null; }
         protected internal override void Reset(System.Configuration.ConfigurationElement parentElement) { }
         protected internal override void ResetModified() { }
         protected internal override bool SerializeElement(System.Xml.XmlWriter writer, bool serializeCollectionKey) { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void SetReadOnly() { }
         void System.Collections.ICollection.CopyTo(System.Array arr, int index) { }
         protected internal override void Unmerge(System.Configuration.ConfigurationElement sourceElement, System.Configuration.ConfigurationElement parentElement, System.Configuration.ConfigurationSaveMode saveMode) { }
@@ -290,6 +250,7 @@ namespace System.Configuration
         public static string GetFilename(System.Xml.XmlReader reader) { throw null; }
         public static int GetLineNumber(System.Xml.XmlNode node) { throw null; }
         public static int GetLineNumber(System.Xml.XmlReader reader) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
 #endif
@@ -316,20 +277,15 @@ namespace System.Configuration
         internal ConfigurationLockCollection() { }
         public string AttributeList { get { throw null; } }
         public int Count { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool HasParentElements { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsModified { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsSynchronized { get { throw null; } }
-        [System.MonoTODOAttribute]
         public object SyncRoot { get { throw null; } }
         public void Add(string name) { }
         public void Clear() { }
         public bool Contains(string name) { throw null; }
         public void CopyTo(string[] array, int index) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        [System.MonoInternalNoteAttribute("we can't possibly *always* return false here...")]
         public bool IsReadOnly(string name) { throw null; }
         public void Remove(string name) { }
         public void SetFromList(string attributeList) { }
@@ -343,7 +299,6 @@ namespace System.Configuration
         public static System.Configuration.Configuration OpenExeConfiguration(System.Configuration.ConfigurationUserLevel userLevel) { throw null; }
         public static System.Configuration.Configuration OpenExeConfiguration(string exePath) { throw null; }
         public static System.Configuration.Configuration OpenMachineConfiguration() { throw null; }
-        [System.MonoLimitationAttribute("ConfigurationUserLevel parameter is not supported.")]
         public static System.Configuration.Configuration OpenMappedExeConfiguration(System.Configuration.ExeConfigurationFileMap fileMap, System.Configuration.ConfigurationUserLevel userLevel) { throw null; }
         public static System.Configuration.Configuration OpenMappedExeConfiguration(System.Configuration.ExeConfigurationFileMap fileMap, System.Configuration.ConfigurationUserLevel userLevel, bool preLoad) { throw null; }
         public static System.Configuration.Configuration OpenMappedMachineConfiguration(System.Configuration.ConfigurationFileMap fileMap) { throw null; }
@@ -434,15 +389,10 @@ namespace System.Configuration
     public abstract partial class ConfigurationSection : System.Configuration.ConfigurationElement
     {
         protected ConfigurationSection() { }
-        [System.MonoTODOAttribute]
         public System.Configuration.SectionInformation SectionInformation { get { throw null; } }
-        [System.MonoInternalNoteAttribute("find the proper location for the decryption stuff")]
         protected internal virtual void DeserializeSection(System.Xml.XmlReader reader) { }
-        [System.MonoTODOAttribute("Provide ConfigContext. Likely the culprit of bug #322493")]
         protected internal virtual object GetRuntimeObject() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override bool IsModified() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void ResetModified() { }
         protected internal virtual string SerializeSection(System.Configuration.ConfigurationElement parentElement, string name, System.Configuration.ConfigurationSaveMode saveMode) { throw null; }
         protected internal virtual bool ShouldSerializeElementInTargetVersion(System.Configuration.ConfigurationElement element, string elementName, System.Runtime.Versioning.FrameworkName targetFramework) { throw null; }
@@ -464,7 +414,7 @@ namespace System.Configuration
         public System.Configuration.ConfigurationSection Get(string name) { throw null; }
         public override System.Collections.IEnumerator GetEnumerator() { throw null; }
         public string GetKey(int index) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public void Remove(string name) { }
         public void RemoveAt(int index) { }
@@ -472,18 +422,14 @@ namespace System.Configuration
     public partial class ConfigurationSectionGroup
     {
         public ConfigurationSectionGroup() { }
-        [System.MonoTODOAttribute]
         public bool IsDeclarationRequired { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsDeclared { get { throw null; } }
         public string Name { get { throw null; } }
-        [System.MonoInternalNoteAttribute("Check if this is correct")]
         public string SectionGroupName { get { throw null; } }
         public System.Configuration.ConfigurationSectionGroupCollection SectionGroups { get { throw null; } }
         public System.Configuration.ConfigurationSectionCollection Sections { get { throw null; } }
         public string Type { get { throw null; } set { } }
         public void ForceDeclaration() { }
-        [System.MonoTODOAttribute]
         public void ForceDeclaration(bool force) { }
         protected internal virtual bool ShouldSerializeSectionGroupInTargetVersion(System.Runtime.Versioning.FrameworkName targetFramework) { throw null; }
     }
@@ -502,7 +448,7 @@ namespace System.Configuration
         public System.Configuration.ConfigurationSectionGroup Get(string name) { throw null; }
         public override System.Collections.IEnumerator GetEnumerator() { throw null; }
         public string GetKey(int index) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public void Remove(string name) { }
         public void RemoveAt(int index) { }
@@ -532,22 +478,21 @@ namespace System.Configuration
         public ConnectionStringSettings() { }
         public ConnectionStringSettings(string name, string connectionString) { }
         public ConnectionStringSettings(string name, string connectionString, string providerName) { }
-        [System.Configuration.ConfigurationPropertyAttribute("connectionString", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.ConfigurationPropertyAttribute("connectionString", Options=(System.Configuration.ConfigurationPropertyOptions)(2), DefaultValue="")]
         public string ConnectionString { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6), DefaultValue="")]
         public string Name { get { throw null; } set { } }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("providerName", DefaultValue="System.Data.SqlClient")]
         public string ProviderName { get { throw null; } set { } }
         public override string ToString() { throw null; }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.ConnectionStringSettings), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.ConnectionStringSettings))]
     public sealed partial class ConnectionStringSettingsCollection : System.Configuration.ConfigurationElementCollection
     {
         public ConnectionStringSettingsCollection() { }
         public System.Configuration.ConnectionStringSettings this[int index] { get { throw null; } set { } }
         public new System.Configuration.ConnectionStringSettings this[string name] { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Add(System.Configuration.ConnectionStringSettings settings) { }
         protected override void BaseAdd(int index, System.Configuration.ConfigurationElement element) { }
@@ -571,7 +516,6 @@ namespace System.Configuration
     {
         internal ContextInformation() { }
         public object HostingContext { get { throw null; } }
-        [System.MonoInternalNoteAttribute("should this use HostingContext instead?")]
         public bool IsMachineLevel { get { throw null; } }
         public object GetSection(string sectionName) { throw null; }
     }
@@ -580,13 +524,9 @@ namespace System.Configuration
         public DefaultSection() { }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal override void DeserializeSection(System.Xml.XmlReader xmlReader) { }
-        [System.MonoTODOAttribute]
         protected internal override bool IsModified() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void Reset(System.Configuration.ConfigurationElement parentSection) { }
-        [System.MonoTODOAttribute]
         protected internal override void ResetModified() { }
-        [System.MonoTODOAttribute]
         protected internal override string SerializeSection(System.Configuration.ConfigurationElement parentSection, string name, System.Configuration.ConfigurationSaveMode saveMode) { throw null; }
     }
     public sealed partial class DefaultValidator : System.Configuration.ConfigurationValidatorBase
@@ -595,25 +535,21 @@ namespace System.Configuration
         public override bool CanValidate(System.Type type) { throw null; }
         public override void Validate(object value) { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
     public sealed partial class DpapiProtectedConfigurationProvider : System.Configuration.ProtectedConfigurationProvider
     {
         public DpapiProtectedConfigurationProvider() { }
         public bool UseMachineProtection { get { throw null; } }
-        [System.MonoNotSupportedAttribute("DpapiProtectedConfigurationProvider depends on the Microsoft Data\nProtection API, and is unimplemented in Mono.  For portability's sake,\nit is suggested that you use the RsaProtectedConfigurationProvider.")]
         public override System.Xml.XmlNode Decrypt(System.Xml.XmlNode encryptedNode) { throw null; }
-        [System.MonoNotSupportedAttribute("DpapiProtectedConfigurationProvider depends on the Microsoft Data\nProtection API, and is unimplemented in Mono.  For portability's sake,\nit is suggested that you use the RsaProtectedConfigurationProvider.")]
         public override System.Xml.XmlNode Encrypt(System.Xml.XmlNode node) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Initialize(string name, System.Collections.Specialized.NameValueCollection configurationValues) { }
     }
     public sealed partial class ElementInformation
     {
         internal ElementInformation() { }
-        [System.MonoTODOAttribute]
         public System.Collections.ICollection Errors { get { throw null; } }
         public bool IsCollection { get { throw null; } }
         public bool IsLocked { get { throw null; } }
-        [System.MonoTODOAttribute("Support multiple levels of inheritance")]
         public bool IsPresent { get { throw null; } }
         public int LineNumber { get { throw null; } }
         public System.Configuration.PropertyInformationCollection Properties { get { throw null; } }
@@ -648,9 +584,7 @@ namespace System.Configuration
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal override void DeserializeSection(System.Xml.XmlReader xmlReader) { }
         protected internal override bool IsModified() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void Reset(System.Configuration.ConfigurationElement parentSection) { }
-        [System.MonoTODOAttribute]
         protected internal override void ResetModified() { }
         protected internal override string SerializeSection(System.Configuration.ConfigurationElement parentSection, string name, System.Configuration.ConfigurationSaveMode saveMode) { throw null; }
     }
@@ -683,7 +617,7 @@ namespace System.Configuration
         public int MinValue { get { throw null; } set { } }
         public override System.Configuration.ConfigurationValidatorBase ValidatorInstance { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.KeyValueConfigurationElement), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.KeyValueConfigurationElement))]
     public partial class KeyValueConfigurationCollection : System.Configuration.ConfigurationElementCollection
     {
         public KeyValueConfigurationCollection() { }
@@ -701,12 +635,11 @@ namespace System.Configuration
     public partial class KeyValueConfigurationElement : System.Configuration.ConfigurationElement
     {
         public KeyValueConfigurationElement(string key, string value) { }
-        [System.Configuration.ConfigurationPropertyAttribute("key", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.ConfigurationPropertyAttribute("key", Options=(System.Configuration.ConfigurationPropertyOptions)(4), DefaultValue="")]
         public string Key { get { throw null; } }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="")]
         public string Value { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected internal override void Init() { }
     }
     public partial class LongValidator : System.Configuration.ConfigurationValidatorBase
@@ -726,7 +659,7 @@ namespace System.Configuration
         public long MinValue { get { throw null; } set { } }
         public override System.Configuration.ConfigurationValidatorBase ValidatorInstance { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.NameValueConfigurationElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.NameValueConfigurationElement))]
     public sealed partial class NameValueConfigurationCollection : System.Configuration.ConfigurationElementCollection
     {
         public NameValueConfigurationCollection() { }
@@ -743,10 +676,10 @@ namespace System.Configuration
     public sealed partial class NameValueConfigurationElement : System.Configuration.ConfigurationElement
     {
         public NameValueConfigurationElement(string name, string value) { }
-        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.ConfigurationPropertyAttribute("name", IsKey=true, DefaultValue="")]
         public string Name { get { throw null; } }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="")]
         public string Value { get { throw null; } set { } }
     }
     public enum OverrideMode
@@ -774,7 +707,6 @@ namespace System.Configuration
         public object DefaultValue { get { throw null; } }
         public string Description { get { throw null; } }
         public bool IsKey { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsLocked { get { throw null; } }
         public bool IsModified { get { throw null; } }
         public bool IsRequired { get { throw null; } }
@@ -793,7 +725,7 @@ namespace System.Configuration
         public System.Configuration.PropertyInformation this[string propertyName] { get { throw null; } }
         public void CopyTo(System.Configuration.PropertyInformation[] array, int index) { }
         public override System.Collections.IEnumerator GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public enum PropertyValueOrigin
@@ -802,6 +734,7 @@ namespace System.Configuration
         Inherited = 1,
         SetHere = 2,
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public static partial class ProtectedConfiguration
     {
         public const string DataProtectionProviderName = "DataProtectionConfigurationProvider";
@@ -819,9 +752,7 @@ namespace System.Configuration
     public partial class ProtectedConfigurationProviderCollection : System.Configuration.Provider.ProviderCollection
     {
         public ProtectedConfigurationProviderCollection() { }
-        [System.MonoTODOAttribute]
         public new System.Configuration.ProtectedConfigurationProvider this[string name] { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override void Add(System.Configuration.Provider.ProviderBase provider) { }
     }
     public sealed partial class ProtectedConfigurationSection : System.Configuration.ConfigurationSection
@@ -837,26 +768,25 @@ namespace System.Configuration
     {
         public ProtectedProviderSettings() { }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
+        [System.Configuration.ConfigurationPropertyAttribute("", IsDefaultCollection=true, Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.Configuration.ProviderSettingsCollection Providers { get { throw null; } }
     }
     public sealed partial class ProviderSettings : System.Configuration.ConfigurationElement
     {
         public ProviderSettings() { }
         public ProviderSettings(string name, string type) { }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.ConfigurationPropertyAttribute("name", IsRequired=true, IsKey=true)]
         public string Name { get { throw null; } set { } }
         public System.Collections.Specialized.NameValueCollection Parameters { get { throw null; } }
         protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.ConfigurationPropertyAttribute("type", IsRequired=true)]
         public string Type { get { throw null; } set { } }
         protected internal override bool IsModified() { throw null; }
         protected override bool OnDeserializeUnrecognizedAttribute(string name, string value) { throw null; }
         protected internal override void Reset(System.Configuration.ConfigurationElement parentElement) { }
-        [System.MonoTODOAttribute]
         protected internal override void Unmerge(System.Configuration.ConfigurationElement sourceElement, System.Configuration.ConfigurationElement parentElement, System.Configuration.ConfigurationSaveMode saveMode) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.ProviderSettings), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.Configuration.ProviderSettings))]
     public sealed partial class ProviderSettingsCollection : System.Configuration.ConfigurationElementCollection
     {
         public ProviderSettingsCollection() { }
@@ -882,6 +812,7 @@ namespace System.Configuration
         public string Regex { get { throw null; } }
         public override System.Configuration.ConfigurationValidatorBase ValidatorInstance { get { throw null; } }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
     public sealed partial class RsaProtectedConfigurationProvider : System.Configuration.ProtectedConfigurationProvider
     {
         public RsaProtectedConfigurationProvider() { }
@@ -891,19 +822,12 @@ namespace System.Configuration
         public bool UseFIPS { get { throw null; } }
         public bool UseMachineContainer { get { throw null; } }
         public bool UseOAEP { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void AddKey(int keySize, bool exportable) { }
-        [System.MonoTODOAttribute]
         public override System.Xml.XmlNode Decrypt(System.Xml.XmlNode encryptedNode) { throw null; }
-        [System.MonoTODOAttribute]
         public void DeleteKey() { }
-        [System.MonoTODOAttribute]
         public override System.Xml.XmlNode Encrypt(System.Xml.XmlNode node) { throw null; }
-        [System.MonoTODOAttribute]
         public void ExportKey(string xmlFileName, bool includePrivateParameters) { }
-        [System.MonoTODOAttribute]
         public void ImportKey(string xmlFileName, bool exportable) { }
-        [System.MonoTODOAttribute]
         public override void Initialize(string name, System.Collections.Specialized.NameValueCollection configurationValues) { }
     }
     public sealed partial class SectionInformation
@@ -916,11 +840,8 @@ namespace System.Configuration
         public string ConfigSource { get { throw null; } set { } }
         public bool ForceSave { get { throw null; } set { } }
         public bool InheritInChildApplications { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IsDeclarationRequired { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsDeclared { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsLocked { get { throw null; } }
         public bool IsProtected { get { throw null; } }
         public string Name { get { throw null; } }
@@ -928,20 +849,15 @@ namespace System.Configuration
         public System.Configuration.OverrideMode OverrideModeDefault { get { throw null; } set { } }
         public System.Configuration.OverrideMode OverrideModeEffective { get { throw null; } }
         public System.Configuration.ProtectedConfigurationProvider ProtectionProvider { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool RequirePermission { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool RestartOnExternalChanges { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string SectionName { get { throw null; } }
         public string Type { get { throw null; } set { } }
         public void ForceDeclaration() { }
-        [System.MonoTODOAttribute]
         public void ForceDeclaration(bool force) { }
         public System.Configuration.ConfigurationSection GetParentSection() { throw null; }
         public string GetRawXml() { throw null; }
         public void ProtectSection(string protectionProvider) { }
-        [System.MonoTODOAttribute]
         public void RevertToParent() { }
         public void SetRawXml(string rawXml) { }
         public void UnprotectSection() { }

@@ -4,25 +4,26 @@
 
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
-[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Data.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Data.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Data.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.Data.DataSetExtensions, PublicKey=00000000000000000400000000000000")]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.Design, PublicKey=002400000480000094000000060200000024000052534131000400000100010007d1fa57c4aed9f0a32e84aa0faefd0de9e8fd6aec8f87fb03766c834c99921eb23be79ad9d5dcc1dd9ad236132102900b723cf980957fc4e177108fc607774f29e8320e92ea05ece4e821c0a5efe8f1645c4c0c93c1ab99285d622caa652c1dfad63d745d6f2de5f17e5eaf0fc4963d261c8a12436518206dc093344d5ad293")]
 [assembly:System.Runtime.CompilerServices.InternalsVisibleToAttribute("System.Web, PublicKey=002400000480000094000000060200000024000052534131000400000100010007d1fa57c4aed9f0a32e84aa0faefd0de9e8fd6aec8f87fb03766c834c99921eb23be79ad9d5dcc1dd9ad236132102900b723cf980957fc4e177108fc607774f29e8320e92ea05ece4e821c0a5efe8f1645c4c0c93c1ab99285d622caa652c1dfad63d745d6f2de5f17e5eaf0fc4963d261c8a12436518206dc093344d5ad293")]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
+[assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1))]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace Microsoft.SqlServer.Server
 {
@@ -142,6 +143,7 @@ namespace Microsoft.SqlServer.Server
         public virtual void SetTimeSpan(int ordinal, System.TimeSpan value) { }
         public virtual void SetValue(int ordinal, object value) { }
         public virtual int SetValues(params object[] values) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         System.Data.IDataReader System.Data.IDataRecord.GetData(int ordinal) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(10624), AllowMultiple=false, Inherited=false)]
@@ -170,30 +172,22 @@ namespace Microsoft.SqlServer.Server
     public sealed partial class SqlMetaData
     {
         public SqlMetaData(string name, System.Data.SqlDbType dbType) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, byte precision, byte scale) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, byte precision, byte scale, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, long maxLength) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, long maxLength, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, long maxLength, byte precision, byte scale, long locale, System.Data.SqlTypes.SqlCompareOptions compareOptions, System.Type userDefinedType) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, long maxLength, byte precision, byte scale, long localeId, System.Data.SqlTypes.SqlCompareOptions compareOptions, System.Type userDefinedType, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, long maxLength, long locale, System.Data.SqlTypes.SqlCompareOptions compareOptions) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, long maxLength, long locale, System.Data.SqlTypes.SqlCompareOptions compareOptions, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, string database, string owningSchema, string objectName) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, string database, string owningSchema, string objectName, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
-        [System.MonoTODOAttribute]
         public SqlMetaData(string name, System.Data.SqlDbType dbType, System.Type userDefinedType) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, System.Type userDefinedType, string serverTypeName) { }
         public SqlMetaData(string name, System.Data.SqlDbType dbType, System.Type userDefinedType, string serverTypeName, bool useServerDefault, bool isUniqueKey, System.Data.SqlClient.SortOrder columnSortOrder, int sortOrdinal) { }
         public System.Data.SqlTypes.SqlCompareOptions CompareOptions { get { throw null; } }
         public System.Data.DbType DbType { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsUniqueKey { get { throw null; } }
         public long LocaleId { get { throw null; } }
         public static long Max { get { throw null; } }
@@ -201,15 +195,11 @@ namespace Microsoft.SqlServer.Server
         public string Name { get { throw null; } }
         public byte Precision { get { throw null; } }
         public byte Scale { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Data.SqlClient.SortOrder SortOrder { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int SortOrdinal { get { throw null; } }
         public System.Data.SqlDbType SqlDbType { get { throw null; } }
         public System.Type Type { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string TypeName { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool UseServerDefault { get { throw null; } }
         public string XmlSchemaCollectionDatabase { get { throw null; } }
         public string XmlSchemaCollectionName { get { throw null; } }
@@ -234,7 +224,6 @@ namespace Microsoft.SqlServer.Server
         public System.Data.SqlTypes.SqlMoney Adjust(System.Data.SqlTypes.SqlMoney value) { throw null; }
         public System.Data.SqlTypes.SqlSingle Adjust(System.Data.SqlTypes.SqlSingle value) { throw null; }
         public System.Data.SqlTypes.SqlString Adjust(System.Data.SqlTypes.SqlString value) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Data.SqlTypes.SqlXml Adjust(System.Data.SqlTypes.SqlXml value) { throw null; }
         public System.DateTime Adjust(System.DateTime value) { throw null; }
         public System.DateTimeOffset Adjust(System.DateTimeOffset value) { throw null; }
@@ -405,41 +394,6 @@ namespace Microsoft.SqlServer.Server
         Update = 2,
     }
 }
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
 namespace System.Data
 {
     public enum AcceptRejectRule
@@ -497,6 +451,7 @@ namespace System.Data
         public override string ToString() { throw null; }
     }
     [System.ComponentModel.DefaultEventAttribute("CollectionChanged")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.ConstraintsCollectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class ConstraintCollection : System.Data.InternalDataCollectionBase
     {
         internal ConstraintCollection() { }
@@ -530,6 +485,7 @@ namespace System.Data
     }
     [System.ComponentModel.DefaultPropertyAttribute("ColumnName")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataColumnEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     public partial class DataColumn : System.ComponentModel.MarshalByValueComponent
     {
@@ -594,11 +550,12 @@ namespace System.Data
     {
         public DataColumnChangeEventArgs(System.Data.DataRow row, System.Data.DataColumn column, object value) { }
         public System.Data.DataColumn Column { get { throw null; } }
-        public object ProposedValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Data.DataRow Row { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public object ProposedValue { get { throw null; } set { } }
+        public System.Data.DataRow Row { get { throw null; } }
     }
     public delegate void DataColumnChangeEventHandler(object sender, System.Data.DataColumnChangeEventArgs e);
     [System.ComponentModel.DefaultEventAttribute("CollectionChanged")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.ColumnsCollectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class DataColumnCollection : System.Data.InternalDataCollectionBase
     {
         internal DataColumnCollection() { }
@@ -631,6 +588,7 @@ namespace System.Data
         public DataException(string s, System.Exception innerException) { }
     }
     [System.ComponentModel.DefaultPropertyAttribute("RelationName")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataRelationEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.TypeConverterAttribute("System.Data.RelationshipConverter")]
     public partial class DataRelation
     {
@@ -664,6 +622,7 @@ namespace System.Data
     }
     [System.ComponentModel.DefaultEventAttribute("CollectionChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("Table")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataRelationCollectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public abstract partial class DataRelationCollection : System.Data.InternalDataCollectionBase
     {
         protected DataRelationCollection() { }
@@ -766,8 +725,8 @@ namespace System.Data
     public partial class DataRowChangeEventArgs : System.EventArgs
     {
         public DataRowChangeEventArgs(System.Data.DataRow row, System.Data.DataRowAction action) { }
-        public System.Data.DataRowAction Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.DataRow Row { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Data.DataRowAction Action { get { throw null; } }
+        public System.Data.DataRow Row { get { throw null; } }
     }
     public delegate void DataRowChangeEventHandler(object sender, System.Data.DataRowChangeEventArgs e);
     public sealed partial class DataRowCollection : System.Data.InternalDataCollectionBase
@@ -843,6 +802,8 @@ namespace System.Data
         object System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner(System.ComponentModel.PropertyDescriptor pd) { throw null; }
     }
     [System.ComponentModel.DefaultPropertyAttribute("DataSetName")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.DataSetDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.DataSetToolboxItem, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Xml.Serialization.XmlRootAttribute("DataSet")]
     [System.Xml.Serialization.XmlSchemaProviderAttribute("GetDataSetSchema")]
     [System.SerializableAttribute]
@@ -899,6 +860,7 @@ namespace System.Data
         public System.Data.DataSet GetChanges() { throw null; }
         public System.Data.DataSet GetChanges(System.Data.DataRowState rowStates) { throw null; }
         public static System.Xml.Schema.XmlSchemaComplexType GetDataSetSchema(System.Xml.Schema.XmlSchemaSet schemaSet) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         protected virtual System.Xml.Schema.XmlSchema GetSchemaSerializable() { throw null; }
         protected void GetSerializationData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
@@ -988,6 +950,7 @@ namespace System.Data
     [System.ComponentModel.DefaultEventAttribute("RowChanging")]
     [System.ComponentModel.DefaultPropertyAttribute("TableName")]
     [System.ComponentModel.DesignTimeVisibleAttribute(false)]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataTableEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemAttribute(false)]
     [System.Xml.Serialization.XmlSchemaProviderAttribute("GetDataTableSchema")]
     [System.SerializableAttribute]
@@ -1028,6 +991,7 @@ namespace System.Data
         public System.Data.DataRelationCollection ParentRelations { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute("")]
         public string Prefix { get { throw null; } set { } }
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.PrimaryKeyEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.TypeConverterAttribute("System.Data.PrimaryKeyTypeConverter")]
         public System.Data.DataColumn[] PrimaryKey { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Data.SerializationFormat)(0))]
@@ -1066,6 +1030,7 @@ namespace System.Data
         public System.Data.DataTable GetChanges(System.Data.DataRowState rowStates) { throw null; }
         public static System.Xml.Schema.XmlSchemaComplexType GetDataTableSchema(System.Xml.Schema.XmlSchemaSet schemaSet) { throw null; }
         public System.Data.DataRow[] GetErrors() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         protected virtual System.Type GetRowType() { throw null; }
         protected virtual System.Xml.Schema.XmlSchema GetSchema() { throw null; }
@@ -1140,12 +1105,13 @@ namespace System.Data
     public sealed partial class DataTableClearEventArgs : System.EventArgs
     {
         public DataTableClearEventArgs(System.Data.DataTable dataTable) { }
-        public System.Data.DataTable Table { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Data.DataTable Table { get { throw null; } }
         public string TableName { get { throw null; } }
         public string TableNamespace { get { throw null; } }
     }
     public delegate void DataTableClearEventHandler(object sender, System.Data.DataTableClearEventArgs e);
     [System.ComponentModel.DefaultEventAttribute("CollectionChanged")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.TablesCollectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ListBindableAttribute(false)]
     public sealed partial class DataTableCollection : System.Data.InternalDataCollectionBase
     {
@@ -1177,7 +1143,7 @@ namespace System.Data
     public sealed partial class DataTableNewRowEventArgs : System.EventArgs
     {
         public DataTableNewRowEventArgs(System.Data.DataRow dataRow) { }
-        public System.Data.DataRow Row { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Data.DataRow Row { get { throw null; } }
     }
     public delegate void DataTableNewRowEventHandler(object sender, System.Data.DataTableNewRowEventArgs e);
     public sealed partial class DataTableReader : System.Data.Common.DbDataReader
@@ -1223,6 +1189,8 @@ namespace System.Data
     }
     [System.ComponentModel.DefaultEventAttribute("PositionChanged")]
     [System.ComponentModel.DefaultPropertyAttribute("Table")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.DataViewDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataSourceEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class DataView : System.ComponentModel.MarshalByValueComponent, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList, System.ComponentModel.IBindingList, System.ComponentModel.IBindingListView, System.ComponentModel.ISupportInitialize, System.ComponentModel.ISupportInitializeNotification, System.ComponentModel.ITypedList
     {
         public DataView() { }
@@ -1318,6 +1286,7 @@ namespace System.Data
         protected void UpdateIndex() { }
         protected virtual void UpdateIndex(bool force) { }
     }
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.DataViewManagerDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class DataViewManager : System.ComponentModel.MarshalByValueComponent, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList, System.ComponentModel.IBindingList, System.ComponentModel.ITypedList
     {
         public DataViewManager() { }
@@ -1365,6 +1334,7 @@ namespace System.Data
         string System.ComponentModel.ITypedList.GetListName(System.ComponentModel.PropertyDescriptor[] listAccessors) { throw null; }
         protected virtual void TableCollectionChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) { }
     }
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataViewRowStateEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.FlagsAttribute]
     public enum DataViewRowState
     {
@@ -1390,6 +1360,7 @@ namespace System.Data
         [System.ComponentModel.BrowsableAttribute(false)]
         public System.Data.DataTable Table { get { throw null; } }
     }
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataViewSettingsCollectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class DataViewSettingCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
         internal DataViewSettingCollection() { }
@@ -1419,6 +1390,7 @@ namespace System.Data
         public int RowCount { get { throw null; } }
         public void CopyToRows(System.Data.DataRow[] array) { }
         public void CopyToRows(System.Data.DataRow[] array, int arrayIndex) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
     }
     public enum DbType
@@ -1485,6 +1457,7 @@ namespace System.Data
     }
     public delegate void FillErrorEventHandler(object sender, System.Data.FillErrorEventArgs e);
     [System.ComponentModel.DefaultPropertyAttribute("ConstraintName")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.ForeignKeyConstraintEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class ForeignKeyConstraint : System.Data.Constraint
     {
         public ForeignKeyConstraint(System.Data.DataColumn parentColumn, System.Data.DataColumn childColumn) { }
@@ -1728,8 +1701,8 @@ namespace System.Data
     public partial class MergeFailedEventArgs : System.EventArgs
     {
         public MergeFailedEventArgs(System.Data.DataTable table, string conflict) { }
-        public string Conflict { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Data.DataTable Table { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Conflict { get { throw null; } }
+        public System.Data.DataTable Table { get { throw null; } }
     }
     public delegate void MergeFailedEventHandler(object sender, System.Data.MergeFailedEventArgs e);
     public enum MissingMappingAction
@@ -1873,7 +1846,7 @@ namespace System.Data
     public sealed partial class StatementCompletedEventArgs : System.EventArgs
     {
         public StatementCompletedEventArgs(int recordCount) { }
-        public int RecordCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int RecordCount { get { throw null; } }
     }
     public delegate void StatementCompletedEventHandler(object sender, System.Data.StatementCompletedEventArgs e);
     public enum StatementType
@@ -1921,6 +1894,7 @@ namespace System.Data
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.ComponentModel.DefaultPropertyAttribute("ConstraintName")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.UniqueConstraintEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class UniqueConstraint : System.Data.Constraint
     {
         public UniqueConstraint(System.Data.DataColumn column) { }
@@ -2010,6 +1984,7 @@ namespace System.Data.Common
         public System.Data.Common.DataTableMappingCollection TableMappings { get { throw null; } }
         public event System.Data.FillErrorEventHandler FillError { add { } remove { } }
         [System.ObsoleteAttribute("CloneInternals() has been deprecated.  Use the DataAdapter(DataAdapter from) constructor.  http://go.microsoft.com/fwlink/?linkid=14202")]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Name="FullTrust")]
         protected virtual System.Data.Common.DataAdapter CloneInternals() { throw null; }
         protected virtual System.Data.Common.DataTableMappingCollection CreateTableMappings() { throw null; }
         protected override void Dispose(bool disposing) { }
@@ -2116,6 +2091,7 @@ namespace System.Data.Common
         object System.ICloneable.Clone() { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DataTableMappingCollectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ListBindableAttribute(false)]
     public sealed partial class DataTableMappingCollection : System.MarshalByRefObject, System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList, System.Data.ITableMappingCollection
     {
@@ -2743,7 +2719,7 @@ namespace System.Data.Common
     public sealed partial class DbProviderSpecificTypePropertyAttribute : System.Attribute
     {
         public DbProviderSpecificTypePropertyAttribute(bool isProviderSpecificTypeProperty) { }
-        public bool IsProviderSpecificTypeProperty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsProviderSpecificTypeProperty { get { throw null; } }
     }
     public abstract partial class DbTransaction : System.MarshalByRefObject, System.Data.IDbTransaction, System.IDisposable
     {
@@ -2846,7 +2822,7 @@ namespace System.Data.Common
 namespace System.Data.Odbc
 {
     [System.ComponentModel.DefaultEventAttribute("RecordsAffected")]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OdbcCommandDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OdbcCommandDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemAttribute(true)]
     public sealed partial class OdbcCommand : System.Data.Common.DbCommand, System.ICloneable
     {
@@ -2855,7 +2831,7 @@ namespace System.Data.Odbc
         public OdbcCommand(string cmdText, System.Data.Odbc.OdbcConnection connection) { }
         public OdbcCommand(string cmdText, System.Data.Odbc.OdbcConnection connection, System.Data.Odbc.OdbcTransaction transaction) { }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Odbc.Design.OdbcCommandTextEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Odbc.Design.OdbcCommandTextEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override string CommandText { get { throw null; } set { } }
         public override int CommandTimeout { get { throw null; } set { } }
@@ -2863,7 +2839,7 @@ namespace System.Data.Odbc
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override System.Data.CommandType CommandType { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DbConnectionEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DbConnectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.Odbc.OdbcConnection Connection { get { throw null; } set { } }
         protected override System.Data.Common.DbConnection DbConnection { get { throw null; } set { } }
         protected override System.Data.Common.DbParameterCollection DbParameterCollection { get { throw null; } }
@@ -2922,7 +2898,7 @@ namespace System.Data.Odbc
         public OdbcConnection() { }
         public OdbcConnection(string connectionString) { }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Odbc.Design.OdbcConnectionStringEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Odbc.Design.OdbcConnectionStringEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.RecommendedAsConfigurableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         [System.ComponentModel.SettingsBindableAttribute(true)]
@@ -2982,8 +2958,8 @@ namespace System.Data.Odbc
         public override bool TryGetValue(string keyword, out object value) { value = default(object); throw null; }
     }
     [System.ComponentModel.DefaultEventAttribute("RowUpdated")]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OdbcDataAdapterDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.OdbcDataAdapterToolboxItem, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OdbcDataAdapterDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.OdbcDataAdapterToolboxItem, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class OdbcDataAdapter : System.Data.Common.DbDataAdapter, System.Data.IDataAdapter, System.Data.IDbDataAdapter, System.ICloneable
     {
         public OdbcDataAdapter() { }
@@ -2991,20 +2967,20 @@ namespace System.Data.Odbc
         public OdbcDataAdapter(string selectCommandText, System.Data.Odbc.OdbcConnection selectConnection) { }
         public OdbcDataAdapter(string selectCommandText, string selectConnectionString) { }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.Odbc.OdbcCommand DeleteCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.Odbc.OdbcCommand InsertCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.Odbc.OdbcCommand SelectCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.DeleteCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.InsertCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.SelectCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.UpdateCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.Odbc.OdbcCommand UpdateCommand { get { throw null; } set { } }
         public event System.Data.Odbc.OdbcRowUpdatedEventHandler RowUpdated { add { } remove { } }
         public event System.Data.Odbc.OdbcRowUpdatingEventHandler RowUpdating { add { } remove { } }
@@ -3158,7 +3134,7 @@ namespace System.Data.Odbc
         object System.ICloneable.Clone() { throw null; }
         public override string ToString() { throw null; }
     }
-    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBParametersEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBParametersEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ListBindableAttribute(false)]
     public sealed partial class OdbcParameterCollection : System.Data.Common.DbParameterCollection
     {
@@ -3279,7 +3255,7 @@ namespace System.Data.Odbc
 namespace System.Data.OleDb
 {
     [System.ComponentModel.DefaultEventAttribute("RecordsAffected")]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OleDbCommandDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OleDbCommandDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ToolboxItemAttribute(true)]
     public sealed partial class OleDbCommand : System.Data.Common.DbCommand, System.Data.IDbCommand, System.ICloneable, System.IDisposable
     {
@@ -3288,7 +3264,7 @@ namespace System.Data.OleDb
         public OleDbCommand(string cmdText, System.Data.OleDb.OleDbConnection connection) { }
         public OleDbCommand(string cmdText, System.Data.OleDb.OleDbConnection connection, System.Data.OleDb.OleDbTransaction transaction) { }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.ADO.Design.OleDbCommandTextEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.ADO.Design.OleDbCommandTextEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override string CommandText { get { throw null; } set { } }
         public override int CommandTimeout { get { throw null; } set { } }
@@ -3296,7 +3272,7 @@ namespace System.Data.OleDb
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override System.Data.CommandType CommandType { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DbConnectionEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DbConnectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.OleDb.OleDbConnection Connection { get { throw null; } set { } }
         protected override System.Data.Common.DbConnection DbConnection { get { throw null; } set { } }
         protected override System.Data.Common.DbParameterCollection DbParameterCollection { get { throw null; } }
@@ -3358,7 +3334,7 @@ namespace System.Data.OleDb
         public OleDbConnection() { }
         public OleDbConnection(string connectionString) { }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.ADO.Design.OleDbConnectionStringEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.ADO.Design.OleDbConnectionStringEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.RecommendedAsConfigurableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         [System.ComponentModel.SettingsBindableAttribute(true)]
@@ -3431,8 +3407,8 @@ namespace System.Data.OleDb
         public override bool TryGetValue(string keyword, out object value) { value = default(object); throw null; }
     }
     [System.ComponentModel.DefaultEventAttribute("RowUpdated")]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OleDbDataAdapterDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.OleDbDataAdapterToolboxItem, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.OleDbDataAdapterDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.OleDbDataAdapterToolboxItem, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class OleDbDataAdapter : System.Data.Common.DbDataAdapter, System.Data.IDataAdapter, System.Data.IDbDataAdapter, System.ICloneable
     {
         public OleDbDataAdapter() { }
@@ -3440,20 +3416,20 @@ namespace System.Data.OleDb
         public OleDbDataAdapter(string selectCommandText, System.Data.OleDb.OleDbConnection selectConnection) { }
         public OleDbDataAdapter(string selectCommandText, string selectConnectionString) { }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.OleDb.OleDbCommand DeleteCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.OleDb.OleDbCommand InsertCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.OleDb.OleDbCommand SelectCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.DeleteCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.InsertCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.SelectCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.UpdateCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.OleDb.OleDbCommand UpdateCommand { get { throw null; } set { } }
         public event System.Data.OleDb.OleDbRowUpdatedEventHandler RowUpdated { add { } remove { } }
         public event System.Data.OleDb.OleDbRowUpdatingEventHandler RowUpdating { add { } remove { } }
@@ -3660,7 +3636,7 @@ namespace System.Data.OleDb
         object System.ICloneable.Clone() { throw null; }
         public override string ToString() { throw null; }
     }
-    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBParametersEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBParametersEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ListBindableAttribute(false)]
     public sealed partial class OleDbParameterCollection : System.Data.Common.DbParameterCollection
     {
@@ -3867,6 +3843,7 @@ namespace System.Data.SqlClient
         ReadWrite = 0,
     }
     public delegate void OnChangeEventHandler(object sender, System.Data.SqlClient.SqlNotificationEventArgs e);
+    [System.SerializableAttribute]
     public enum PoolBlockingPeriod
     {
         AlwaysBlock = 1,
@@ -3889,30 +3866,24 @@ namespace System.Data.SqlClient
     public sealed partial class SqlBulkCopy : System.IDisposable
     {
         public SqlBulkCopy(System.Data.SqlClient.SqlConnection connection) { }
-        [System.MonoTODOAttribute]
         public SqlBulkCopy(System.Data.SqlClient.SqlConnection connection, System.Data.SqlClient.SqlBulkCopyOptions copyOptions, System.Data.SqlClient.SqlTransaction externalTransaction) { }
         public SqlBulkCopy(string connectionString) { }
-        [System.MonoTODOAttribute]
         public SqlBulkCopy(string connectionString, System.Data.SqlClient.SqlBulkCopyOptions copyOptions) { }
         public int BatchSize { get { throw null; } set { } }
         public int BulkCopyTimeout { get { throw null; } set { } }
         public System.Data.SqlClient.SqlBulkCopyColumnMappingCollection ColumnMappings { get { throw null; } }
         public string DestinationTableName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool EnableStreaming { get { throw null; } set { } }
         public int NotifyAfter { get { throw null; } set { } }
         public event System.Data.SqlClient.SqlRowsCopiedEventHandler SqlRowsCopied { add { } remove { } }
         public void Close() { }
         void System.IDisposable.Dispose() { }
-        [System.MonoTODOAttribute]
         public void WriteToServer(System.Data.Common.DbDataReader reader) { }
         public void WriteToServer(System.Data.DataRow[] rows) { }
         public void WriteToServer(System.Data.DataTable table) { }
         public void WriteToServer(System.Data.DataTable table, System.Data.DataRowState rowState) { }
         public void WriteToServer(System.Data.IDataReader reader) { }
-        [System.MonoTODOAttribute]
         public System.Threading.Tasks.Task WriteToServerAsync(System.Data.Common.DbDataReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Threading.Tasks.Task WriteToServerAsync(System.Data.Common.DbDataReader reader, System.Threading.CancellationToken cancellationToken) { throw null; }
         public System.Threading.Tasks.Task WriteToServerAsync(System.Data.DataRow[] rows) { throw null; }
         public System.Threading.Tasks.Task WriteToServerAsync(System.Data.DataRow[] rows, System.Threading.CancellationToken cancellationToken) { throw null; }
@@ -4041,8 +4012,8 @@ namespace System.Data.SqlClient
         public abstract byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey);
     }
     [System.ComponentModel.DefaultEventAttribute("RecordsAffected")]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.SqlCommandDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
-    [System.ComponentModel.ToolboxItemAttribute("System.Drawing.Design.ToolboxItem, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.SqlCommandDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.ToolboxItemAttribute(true)]
     public sealed partial class SqlCommand : System.Data.Common.DbCommand, System.ICloneable
     {
         public SqlCommand() { }
@@ -4050,9 +4021,11 @@ namespace System.Data.SqlClient
         public SqlCommand(string cmdText, System.Data.SqlClient.SqlConnection connection) { }
         public SqlCommand(string cmdText, System.Data.SqlClient.SqlConnection connection, System.Data.SqlClient.SqlTransaction transaction) { }
         public SqlCommand(string cmdText, System.Data.SqlClient.SqlConnection connection, System.Data.SqlClient.SqlTransaction transaction, System.Data.SqlClient.SqlCommandColumnEncryptionSetting columnEncryptionSetting) { }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Data.SqlClient.SqlCommandColumnEncryptionSetting ColumnEncryptionSetting { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.SQL.Design.SqlCommandTextEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.SQL.Design.SqlCommandTextEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override string CommandText { get { throw null; } set { } }
         public override int CommandTimeout { get { throw null; } set { } }
@@ -4060,7 +4033,7 @@ namespace System.Data.SqlClient
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override System.Data.CommandType CommandType { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DbConnectionEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DbConnectionEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         public new System.Data.SqlClient.SqlConnection Connection { get { throw null; } set { } }
         protected override System.Data.Common.DbConnection DbConnection { get { throw null; } set { } }
         protected override System.Data.Common.DbParameterCollection DbParameterCollection { get { throw null; } }
@@ -4083,13 +4056,21 @@ namespace System.Data.SqlClient
         [System.ComponentModel.DefaultValueAttribute((System.Data.UpdateRowSource)(3))]
         public override System.Data.UpdateRowSource UpdatedRowSource { get { throw null; } set { } }
         public event System.Data.StatementCompletedEventHandler StatementCompleted { add { } remove { } }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteNonQuery() { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteNonQuery(System.AsyncCallback callback, object stateObject) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteReader() { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteReader(System.AsyncCallback callback, object stateObject) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteReader(System.AsyncCallback callback, object stateObject, System.Data.CommandBehavior behavior) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteReader(System.Data.CommandBehavior behavior) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteXmlReader() { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public System.IAsyncResult BeginExecuteXmlReader(System.AsyncCallback callback, object stateObject) { throw null; }
         public override void Cancel() { }
         public System.Data.SqlClient.SqlCommand Clone() { throw null; }
@@ -4174,19 +4155,27 @@ namespace System.Data.SqlClient
         public SqlConnection() { }
         public SqlConnection(string connectionString) { }
         public SqlConnection(string connectionString, System.Data.SqlClient.SqlCredential credential) { }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public string AccessToken { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Guid ClientConnectionId { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public static System.TimeSpan ColumnEncryptionKeyCacheTtl { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public static bool ColumnEncryptionQueryMetadataCacheEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public static System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> ColumnEncryptionTrustedMasterKeyPaths { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.SQL.Design.SqlConnectionStringEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.SQL.Design.SqlConnectionStringEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.RecommendedAsConfigurableAttribute(true)]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
-        public override string ConnectionString { get { throw null; } [System.MonoTODOAttribute("persist security info, encrypt, enlist keyword not implemented")]set { } }
+        [System.ComponentModel.SettingsBindableAttribute(true)]
+        public override string ConnectionString { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public override int ConnectionTimeout { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public System.Data.SqlClient.SqlCredential Credential { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public override string Database { get { throw null; } }
@@ -4222,7 +4211,6 @@ namespace System.Data.SqlClient
         public new System.Data.SqlClient.SqlCommand CreateCommand() { throw null; }
         protected override System.Data.Common.DbCommand CreateDbCommand() { throw null; }
         protected override void Dispose(bool disposing) { }
-        [System.MonoTODOAttribute("Not sure what this means at present.")]
         public void EnlistDistributedTransaction(System.EnterpriseServices.ITransaction transaction) { }
         public override void EnlistTransaction(System.Transactions.Transaction transaction) { }
         public override System.Data.DataTable GetSchema() { throw null; }
@@ -4231,9 +4219,7 @@ namespace System.Data.SqlClient
         public override void Open() { }
         public override System.Threading.Tasks.Task OpenAsync(System.Threading.CancellationToken cancellationToken) { throw null; }
         public static void RegisterColumnEncryptionKeyStoreProviders(System.Collections.Generic.IDictionary<string, System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider> customProviders) { }
-        [System.MonoTODOAttribute]
         public void ResetStatistics() { }
-        [System.MonoTODOAttribute]
         public System.Collections.IDictionary RetrieveStatistics() { throw null; }
         object System.ICloneable.Clone() { throw null; }
     }
@@ -4340,6 +4326,8 @@ namespace System.Data.SqlClient
         [System.ComponentModel.DisplayNameAttribute("Persist Security Info")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public bool PersistSecurityInfo { get { throw null; } set { } }
+        [System.ComponentModel.DisplayNameAttribute("PoolBlockingPeriod")]
+        [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public System.Data.SqlClient.PoolBlockingPeriod PoolBlockingPeriod { get { throw null; } set { } }
         [System.ComponentModel.DisplayNameAttribute("Pooling")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
@@ -4350,6 +4338,8 @@ namespace System.Data.SqlClient
         [System.ComponentModel.DisplayNameAttribute("Transaction Binding")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public string TransactionBinding { get { throw null; } set { } }
+        [System.ComponentModel.DisplayNameAttribute("TransparentNetworkIPResolution")]
+        [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public bool TransparentNetworkIPResolution { get { throw null; } set { } }
         [System.ComponentModel.DisplayNameAttribute("TrustServerCertificate")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
@@ -4374,7 +4364,6 @@ namespace System.Data.SqlClient
         public override bool ShouldSerialize(string keyword) { throw null; }
         public override bool TryGetValue(string keyword, out object value) { value = default(object); throw null; }
     }
-    [System.SerializableAttribute]
     public sealed partial class SqlCredential
     {
         public SqlCredential(string userId, System.Security.SecureString password) { }
@@ -4382,8 +4371,8 @@ namespace System.Data.SqlClient
         public string UserId { get { throw null; } }
     }
     [System.ComponentModel.DefaultEventAttribute("RowUpdated")]
-    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.SqlDataAdapterDesigner, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.ComponentModel.Design.IDesigner")]
-    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.SqlDataAdapterToolboxItem, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.SqlDataAdapterDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.ToolboxItemAttribute("Microsoft.VSDesigner.Data.VS.SqlDataAdapterToolboxItem, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public sealed partial class SqlDataAdapter : System.Data.Common.DbDataAdapter, System.Data.IDataAdapter, System.Data.IDbDataAdapter, System.ICloneable
     {
         public SqlDataAdapter() { }
@@ -4391,42 +4380,35 @@ namespace System.Data.SqlClient
         public SqlDataAdapter(string selectCommandText, System.Data.SqlClient.SqlConnection selectConnection) { }
         public SqlDataAdapter(string selectCommandText, string selectConnectionString) { }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        public new System.Data.SqlClient.SqlCommand DeleteCommand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        public new System.Data.SqlClient.SqlCommand DeleteCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        public new System.Data.SqlClient.SqlCommand InsertCommand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        public new System.Data.SqlClient.SqlCommand InsertCommand { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        public new System.Data.SqlClient.SqlCommand SelectCommand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        public new System.Data.SqlClient.SqlCommand SelectCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.DeleteCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.InsertCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.SelectCommand { get { throw null; } set { } }
         System.Data.IDbCommand System.Data.IDbDataAdapter.UpdateCommand { get { throw null; } set { } }
         public override int UpdateBatchSize { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        public new System.Data.SqlClient.SqlCommand UpdateCommand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBCommandEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        public new System.Data.SqlClient.SqlCommand UpdateCommand { get { throw null; } set { } }
         public event System.Data.SqlClient.SqlRowUpdatedEventHandler RowUpdated { add { } remove { } }
         public event System.Data.SqlClient.SqlRowUpdatingEventHandler RowUpdating { add { } remove { } }
-        [System.MonoTODOAttribute]
         protected override int AddToBatch(System.Data.IDbCommand command) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void ClearBatch() { }
         protected override System.Data.Common.RowUpdatedEventArgs CreateRowUpdatedEvent(System.Data.DataRow dataRow, System.Data.IDbCommand command, System.Data.StatementType statementType, System.Data.Common.DataTableMapping tableMapping) { throw null; }
         protected override System.Data.Common.RowUpdatingEventArgs CreateRowUpdatingEvent(System.Data.DataRow dataRow, System.Data.IDbCommand command, System.Data.StatementType statementType, System.Data.Common.DataTableMapping tableMapping) { throw null; }
-        [System.MonoTODOAttribute]
         protected override int ExecuteBatch() { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.Data.IDataParameter GetBatchedParameter(int commandIdentifier, int parameterIndex) { throw null; }
         protected override bool GetBatchedRecordsAffected(int commandIdentifier, out int recordsAffected, out System.Exception error) { recordsAffected = default(int); error = default(System.Exception); throw null; }
-        [System.MonoTODOAttribute]
         protected override void InitializeBatching() { }
         protected override void OnRowUpdated(System.Data.Common.RowUpdatedEventArgs value) { }
         protected override void OnRowUpdating(System.Data.Common.RowUpdatingEventArgs value) { }
-        [System.MonoTODOAttribute]
         object System.ICloneable.Clone() { throw null; }
-        [System.MonoTODOAttribute]
         protected override void TerminateBatching() { }
     }
     public partial class SqlDataReader : System.Data.Common.DbDataReader, System.Data.IDataReader, System.Data.IDataRecord, System.IDisposable
@@ -4450,7 +4432,6 @@ namespace System.Data.SqlClient
         public override long GetChars(int i, long dataIndex, char[] buffer, int bufferIndex, int length) { throw null; }
         public override string GetDataTypeName(int i) { throw null; }
         public override System.DateTime GetDateTime(int i) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.DateTimeOffset GetDateTimeOffset(int i) { throw null; }
         public override decimal GetDecimal(int i) { throw null; }
         public override double GetDouble(int i) { throw null; }
@@ -4473,7 +4454,6 @@ namespace System.Data.SqlClient
         public virtual System.Data.SqlTypes.SqlBoolean GetSqlBoolean(int i) { throw null; }
         public virtual System.Data.SqlTypes.SqlByte GetSqlByte(int i) { throw null; }
         public virtual System.Data.SqlTypes.SqlBytes GetSqlBytes(int i) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Data.SqlTypes.SqlChars GetSqlChars(int i) { throw null; }
         public virtual System.Data.SqlTypes.SqlDateTime GetSqlDateTime(int i) { throw null; }
         public virtual System.Data.SqlTypes.SqlDecimal GetSqlDecimal(int i) { throw null; }
@@ -4491,11 +4471,9 @@ namespace System.Data.SqlClient
         public override System.IO.Stream GetStream(int i) { throw null; }
         public override string GetString(int i) { throw null; }
         public override System.IO.TextReader GetTextReader(int i) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.TimeSpan GetTimeSpan(int i) { throw null; }
         public override object GetValue(int i) { throw null; }
         public override int GetValues(object[] values) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.Xml.XmlReader GetXmlReader(int i) { throw null; }
         protected internal bool IsCommandBehavior(System.Data.CommandBehavior condition) { throw null; }
         public override bool IsDBNull(int i) { throw null; }
@@ -4504,41 +4482,35 @@ namespace System.Data.SqlClient
         public override System.Threading.Tasks.Task<bool> NextResultAsync(System.Threading.CancellationToken cancellationToken) { throw null; }
         public override bool Read() { throw null; }
         public override System.Threading.Tasks.Task<bool> ReadAsync(System.Threading.CancellationToken cancellationToken) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         System.Data.IDataReader System.Data.IDataRecord.GetData(int i) { throw null; }
     }
     [System.Runtime.InteropServices.ClassInterfaceAttribute((System.Runtime.InteropServices.ClassInterfaceType)(0))]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Runtime.InteropServices.GuidAttribute("afef65ad-4577-447a-a148-83acadd3d4b9")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class SQLDebugging
     {
-        [System.MonoTODOAttribute]
         public SQLDebugging() { }
     }
     public sealed partial class SqlDependency
     {
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public SqlDependency() { }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public SqlDependency(System.Data.SqlClient.SqlCommand command) { }
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public SqlDependency(System.Data.SqlClient.SqlCommand command, string options, int timeout) { }
-        [System.MonoTODOAttribute]
         public bool HasChanges { get { throw null; } }
         public string Id { get { throw null; } }
-        [System.MonoTODOAttribute]
         public event System.Data.SqlClient.OnChangeEventHandler OnChange { add { } remove { } }
-        [System.MonoTODOAttribute]
         public void AddCommandDependency(System.Data.SqlClient.SqlCommand command) { }
-        [System.MonoTODOAttribute]
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public static bool Start(string connectionString) { throw null; }
-        [System.MonoTODOAttribute]
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public static bool Start(string connectionString, string queue) { throw null; }
-        [System.MonoTODOAttribute]
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public static bool Stop(string connectionString) { throw null; }
-        [System.MonoTODOAttribute]
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public static bool Stop(string connectionString, string queue) { throw null; }
     }
@@ -4556,6 +4528,7 @@ namespace System.Data.SqlClient
         public byte State { get { throw null; } }
         public override string ToString() { throw null; }
     }
+    [System.ComponentModel.ListBindableAttribute(false)]
     [System.SerializableAttribute]
     public sealed partial class SqlErrorCollection : System.Collections.ICollection, System.Collections.IEnumerable
     {
@@ -4573,7 +4546,6 @@ namespace System.Data.SqlClient
     {
         internal SqlException() { }
         public byte Class { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Guid ClientConnectionId { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         public System.Data.SqlClient.SqlErrorCollection Errors { get { throw null; } }
@@ -4583,6 +4555,7 @@ namespace System.Data.SqlClient
         public string Server { get { throw null; } }
         public override string Source { get { throw null; } }
         public byte State { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -4644,7 +4617,7 @@ namespace System.Data.SqlClient
         Subscribe = 1,
         Unknown = -1,
     }
-    [System.ComponentModel.TypeConverterAttribute("System.Data.SqlClient.SqlParameter+SqlParameterConverter, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+    [System.ComponentModel.TypeConverterAttribute("System.Data.SqlClient.SqlParameter.SqlParameterConverter")]
     public sealed partial class SqlParameter : System.Data.Common.DbParameter, System.Data.IDataParameter, System.Data.IDbDataParameter, System.ICloneable
     {
         public SqlParameter() { }
@@ -4660,7 +4633,8 @@ namespace System.Data.SqlClient
         public override System.Data.DbType DbType { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public override System.Data.ParameterDirection Direction { get { throw null; } set { } }
-        public bool ForceColumnEncryption { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool ForceColumnEncryption { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override bool IsNullable { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         public int LocaleId { get { throw null; } set { } }
@@ -4668,9 +4642,9 @@ namespace System.Data.SqlClient
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public int Offset { get { throw null; } set { } }
         public override string ParameterName { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [System.ComponentModel.DefaultValueAttribute((byte)0)]
         public new byte Precision { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [System.ComponentModel.DefaultValueAttribute((byte)0)]
         public new byte Scale { get { throw null; } set { } }
         public override int Size { get { throw null; } set { } }
         public override string SourceColumn { get { throw null; } set { } }
@@ -4683,9 +4657,11 @@ namespace System.Data.SqlClient
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         public object SqlValue { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
-        public string TypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        public string TypeName { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
-        public string UdtTypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        public string UdtTypeName { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.StringConverter))]
         public override object Value { get { throw null; } set { } }
@@ -4697,7 +4673,7 @@ namespace System.Data.SqlClient
         object System.ICloneable.Clone() { throw null; }
         public override string ToString() { throw null; }
     }
-    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBParametersEditor, Microsoft.VSDesigner, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.Data.Design.DBParametersEditor, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.ListBindableAttribute(false)]
     public sealed partial class SqlParameterCollection : System.Data.Common.DbParameterCollection
     {
@@ -4720,7 +4696,7 @@ namespace System.Data.SqlClient
         public System.Data.SqlClient.SqlParameter Add(string parameterName, System.Data.SqlDbType sqlDbType, int size) { throw null; }
         public System.Data.SqlClient.SqlParameter Add(string parameterName, System.Data.SqlDbType sqlDbType, int size, string sourceColumn) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.ObsoleteAttribute("Do not call this method.")]
+        [System.ObsoleteAttribute("Add(String parameterName, Object value) has been deprecated.  Use AddWithValue(String parameterName, Object value).  http://go.microsoft.com/fwlink/?linkid=14202", false)]
         public System.Data.SqlClient.SqlParameter Add(string parameterName, object value) { throw null; }
         public override void AddRange(System.Array values) { }
         public void AddRange(System.Data.SqlClient.SqlParameter[] values) { }
@@ -5000,6 +4976,7 @@ namespace System.Data.SqlTypes
         public long Read(long offset, byte[] buffer, int offsetInBuffer, int count) { throw null; }
         public void SetLength(long value) { }
         public void SetNull() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
         void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader r) { }
@@ -5028,6 +5005,7 @@ namespace System.Data.SqlTypes
         public long Read(long offset, char[] buffer, int offsetInBuffer, int count) { throw null; }
         public void SetLength(long value) { }
         public void SetNull() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
         void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader r) { }
@@ -5256,15 +5234,20 @@ namespace System.Data.SqlTypes
         public SqlFileStream(string path, byte[] transactionContext, System.IO.FileAccess access, System.IO.FileOptions options, long allocationSize) { }
         public override bool CanRead { get { throw null; } }
         public override bool CanSeek { get { throw null; } }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override bool CanTimeout { get { throw null; } }
         public override bool CanWrite { get { throw null; } }
         public override long Length { get { throw null; } }
         public string Name { get { throw null; } }
         public override long Position { get { throw null; } set { } }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override int ReadTimeout { get { throw null; } set { } }
         public byte[] TransactionContext { get { throw null; } }
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public override int WriteTimeout { get { throw null; } set { } }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.IAsyncResult BeginRead(byte[] buffer, int offset, int count, System.AsyncCallback callback, object state) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public override System.IAsyncResult BeginWrite(byte[] buffer, int offset, int count, System.AsyncCallback callback, object state) { throw null; }
         protected override void Dispose(bool disposing) { }
         public override int EndRead(System.IAsyncResult asyncResult) { throw null; }
@@ -5917,6 +5900,7 @@ namespace System.Data.SqlTypes
 namespace System.Xml
 {
     [System.ObsoleteAttribute("XmlDataDocument class will be removed in a future release.")]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
     public partial class XmlDataDocument : System.Xml.XmlDocument
     {
         public XmlDataDocument() { }

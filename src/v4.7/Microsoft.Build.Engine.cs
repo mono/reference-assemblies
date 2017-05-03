@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.Build.Engine.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.Build.Engine.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.Build.Engine.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,8 +19,11 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Flags=(System.Security.Permissions.SecurityPermissionFlag)(8))]
 namespace Microsoft.Build.BuildEngine
 {
+    [System.Diagnostics.DebuggerDisplayAttribute("BuildItem (Name = { Name }, Include = { Include }, FinalItemSpec = { FinalItemSpec }, Condition = { Condition } )")]
     public partial class BuildItem
     {
         public BuildItem(string itemName, Microsoft.Build.Framework.ITaskItem taskItem) { }
@@ -35,7 +38,6 @@ namespace Microsoft.Build.BuildEngine
         public int MetadataCount { get { throw null; } }
         public System.Collections.ICollection MetadataNames { get { throw null; } }
         public string Name { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildItem Clone() { throw null; }
         public void CopyCustomMetadataTo(Microsoft.Build.BuildEngine.BuildItem destinationItem) { }
         public string GetEvaluatedMetadata(string metadataName) { throw null; }
@@ -45,19 +47,17 @@ namespace Microsoft.Build.BuildEngine
         public void SetMetadata(string metadataName, string metadataValue) { }
         public void SetMetadata(string metadataName, string metadataValue, bool treatMetadataValueAsLiteral) { }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("BuildItemGroup (Count = { Count }, Condition = { Condition })")]
     public partial class BuildItemGroup : System.Collections.IEnumerable
     {
         public BuildItemGroup() { }
         public string Condition { get { throw null; } set { } }
         public int Count { get { throw null; } }
         public bool IsImported { get { throw null; } }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildItem this[int index] { get { throw null; } }
         public Microsoft.Build.BuildEngine.BuildItem AddNewItem(string itemName, string itemInclude) { throw null; }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildItem AddNewItem(string itemName, string itemInclude, bool treatItemIncludeAsLiteral) { throw null; }
         public void Clear() { }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildItemGroup Clone(bool deepClone) { throw null; }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public void RemoveItem(Microsoft.Build.BuildEngine.BuildItem itemToRemove) { }
@@ -73,6 +73,7 @@ namespace Microsoft.Build.BuildEngine
         public void CopyTo(System.Array array, int index) { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("BuildProperty (Name = { Name }, Value = { Value }, FinalValue = { FinalValue }, Condition = { Condition })")]
     public partial class BuildProperty
     {
         public BuildProperty(string propertyName, string propertyValue) { }
@@ -81,11 +82,11 @@ namespace Microsoft.Build.BuildEngine
         public bool IsImported { get { throw null; } }
         public string Name { get { throw null; } }
         public string Value { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildProperty Clone(bool deepClone) { throw null; }
         public static explicit operator string (Microsoft.Build.BuildEngine.BuildProperty propertyToCast) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("BuildPropertyGroup (Count = { Count }, Condition = { Condition })")]
     public partial class BuildPropertyGroup : System.Collections.IEnumerable
     {
         public BuildPropertyGroup() { }
@@ -97,7 +98,6 @@ namespace Microsoft.Build.BuildEngine
         public Microsoft.Build.BuildEngine.BuildProperty AddNewProperty(string propertyName, string propertyValue) { throw null; }
         public Microsoft.Build.BuildEngine.BuildProperty AddNewProperty(string propertyName, string propertyValue, bool treatPropertyValueAsLiteral) { throw null; }
         public void Clear() { }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildPropertyGroup Clone(bool deepClone) { throw null; }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public void RemoveProperty(Microsoft.Build.BuildEngine.BuildProperty property) { }
@@ -125,16 +125,11 @@ namespace Microsoft.Build.BuildEngine
     {
         internal BuildTask() { }
         public string Condition { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool ContinueOnError { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.Framework.ITaskHost HostObject { get { throw null; } set { } }
         public string Name { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Type Type { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void AddOutputItem(string taskParameter, string itemName) { }
-        [System.MonoTODOAttribute]
         public void AddOutputProperty(string taskParameter, string propertyName) { }
         public bool Execute() { throw null; }
         public string[] GetParameterNames() { throw null; }
@@ -169,7 +164,6 @@ namespace Microsoft.Build.BuildEngine
         public void ApplyParameter(string parameterName, string parameterValue) { }
         public void BuildFinishedHandler(object sender, Microsoft.Build.Framework.BuildFinishedEventArgs e) { }
         public void BuildStartedHandler(object sender, Microsoft.Build.Framework.BuildStartedEventArgs e) { }
-        [System.MonoTODOAttribute]
         public void CustomEventHandler(object sender, Microsoft.Build.Framework.CustomBuildEventArgs e) { }
         public void ErrorHandler(object sender, Microsoft.Build.Framework.BuildErrorEventArgs e) { }
         public virtual void Initialize(Microsoft.Build.Framework.IEventSource eventSource) { }
@@ -195,6 +189,7 @@ namespace Microsoft.Build.BuildEngine
         public void Initialize(Microsoft.Build.Framework.IEventSource eventSource, int nodeCount) { }
         public void Shutdown() { }
     }
+    [System.ObsoleteAttribute("This class has been deprecated. Please use Microsoft.Build.Evaluation.ProjectCollection from the Microsoft.Build assembly instead.")]
     public partial class Engine
     {
         public Engine() { }
@@ -202,7 +197,9 @@ namespace Microsoft.Build.BuildEngine
         public Engine(Microsoft.Build.BuildEngine.BuildPropertyGroup globalProperties, Microsoft.Build.BuildEngine.ToolsetDefinitionLocations locations) { }
         public Engine(Microsoft.Build.BuildEngine.BuildPropertyGroup globalProperties, Microsoft.Build.BuildEngine.ToolsetDefinitionLocations locations, int numberOfCpus, string localNodeProviderParameters) { }
         public Engine(Microsoft.Build.BuildEngine.ToolsetDefinitionLocations locations) { }
+        [System.ObsoleteAttribute("If you were simply passing in the .NET Framework location as the BinPath, just change to the parameterless Engine() constructor. Otherwise, you can define custom toolsets in the registry or config file, or by adding elements to the Engine's ToolsetCollection. Then use either the Engine() or Engine(ToolsetLocations) constructor instead.")]
         public Engine(string binPath) { }
+        [System.ObsoleteAttribute("Avoid setting BinPath. If you were simply passing in the .NET Framework location as the BinPath, no other action is necessary. Otherwise, define Toolsets instead in the registry or config file, or by adding elements to the Engine's ToolsetCollection, in order to use a custom BinPath.")]
         public string BinPath { get { throw null; } set { } }
         public bool BuildEnabled { get { throw null; } set { } }
         public string DefaultToolsVersion { get { throw null; } set { } }
@@ -210,26 +207,17 @@ namespace Microsoft.Build.BuildEngine
         public Microsoft.Build.BuildEngine.BuildPropertyGroup GlobalProperties { get { throw null; } set { } }
         public bool IsBuilding { get { throw null; } }
         public bool OnlyLogCriticalEvents { get { throw null; } set { } }
-        public Microsoft.Build.BuildEngine.ToolsetCollection Toolsets { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.BuildEngine.ToolsetCollection Toolsets { get { throw null; } }
         public static System.Version Version { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool BuildProject(Microsoft.Build.BuildEngine.Project project) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProject(Microsoft.Build.BuildEngine.Project project, string targetName) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProject(Microsoft.Build.BuildEngine.Project project, string[] targetNames) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProject(Microsoft.Build.BuildEngine.Project project, string[] targetNames, System.Collections.IDictionary targetOutputs) { throw null; }
         public bool BuildProject(Microsoft.Build.BuildEngine.Project project, string[] targetNames, System.Collections.IDictionary targetOutputs, Microsoft.Build.BuildEngine.BuildSettings buildFlags) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProjectFile(string projectFile) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProjectFile(string projectFile, string targetName) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProjectFile(string projectFile, string[] targetNames) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProjectFile(string projectFile, string[] targetNames, Microsoft.Build.BuildEngine.BuildPropertyGroup globalProperties) { throw null; }
-        [System.MonoTODOAttribute]
         public bool BuildProjectFile(string projectFile, string[] targetNames, Microsoft.Build.BuildEngine.BuildPropertyGroup globalProperties, System.Collections.IDictionary targetOutputs) { throw null; }
         public bool BuildProjectFile(string projectFile, string[] targetNames, Microsoft.Build.BuildEngine.BuildPropertyGroup globalProperties, System.Collections.IDictionary targetOutputs, Microsoft.Build.BuildEngine.BuildSettings buildFlags) { throw null; }
         public bool BuildProjectFile(string projectFile, string[] targetNames, Microsoft.Build.BuildEngine.BuildPropertyGroup globalProperties, System.Collections.IDictionary targetOutputs, Microsoft.Build.BuildEngine.BuildSettings buildFlags, string toolsVersion) { throw null; }
@@ -237,12 +225,10 @@ namespace Microsoft.Build.BuildEngine
         public Microsoft.Build.BuildEngine.Project CreateNewProject() { throw null; }
         public Microsoft.Build.BuildEngine.Project GetLoadedProject(string projectFullFileName) { throw null; }
         public void RegisterDistributedLogger(Microsoft.Build.Framework.ILogger centralLogger, Microsoft.Build.BuildEngine.LoggerDescription forwardingLogger) { }
-        [System.MonoTODOAttribute]
         public void RegisterLogger(Microsoft.Build.Framework.ILogger logger) { }
         public void Shutdown() { }
         public void UnloadAllProjects() { }
         public void UnloadProject(Microsoft.Build.BuildEngine.Project project) { }
-        [System.MonoTODOAttribute]
         public void UnregisterAllLoggers() { }
     }
     public partial class FileLogger : Microsoft.Build.BuildEngine.ConsoleLogger
@@ -282,7 +268,7 @@ namespace Microsoft.Build.BuildEngine
         public string ErrorCode { get { throw null; } }
         public string HelpKeyword { get { throw null; } }
         public bool InitializationException { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
@@ -292,7 +278,6 @@ namespace Microsoft.Build.BuildEngine
         public InvalidProjectFileException(string message) { }
         public InvalidProjectFileException(string message, System.Exception innerException) { }
         public InvalidProjectFileException(string projectFile, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string errorSubcategory, string errorCode, string helpKeyword) { }
-        [System.MonoTODOAttribute]
         public InvalidProjectFileException(System.Xml.XmlNode xmlNode, string message, string errorSubcategory, string errorCode, string helpKeyword) { }
         public string BaseMessage { get { throw null; } }
         public int ColumnNumber { get { throw null; } }
@@ -304,9 +289,10 @@ namespace Microsoft.Build.BuildEngine
         public int LineNumber { get { throw null; } }
         public override string Message { get { throw null; } }
         public string ProjectFile { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+    [System.SerializableAttribute]
     public partial class InvalidToolsetDefinitionException : System.Exception
     {
         public InvalidToolsetDefinitionException() { }
@@ -316,6 +302,7 @@ namespace Microsoft.Build.BuildEngine
         public InvalidToolsetDefinitionException(string message, string errorCode) { }
         public InvalidToolsetDefinitionException(string message, string errorCode, System.Exception innerException) { }
         public string ErrorCode { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class LocalNode
@@ -329,6 +316,7 @@ namespace Microsoft.Build.BuildEngine
         public string LoggerSwitchParameters { get { throw null; } }
         public Microsoft.Build.Framework.LoggerVerbosity Verbosity { get { throw null; } }
     }
+    [System.ObsoleteAttribute("This class has been deprecated. Please use Microsoft.Build.Evaluation.Project from the Microsoft.Build assembly instead.")]
     public partial class Project
     {
         public Project() { }
@@ -337,7 +325,6 @@ namespace Microsoft.Build.BuildEngine
         public bool BuildEnabled { get { throw null; } set { } }
         public string DefaultTargets { get { throw null; } set { } }
         public string DefaultToolsVersion { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Text.Encoding Encoding { get { throw null; } }
         public Microsoft.Build.BuildEngine.BuildItemGroup EvaluatedItems { get { throw null; } }
         public Microsoft.Build.BuildEngine.BuildItemGroup EvaluatedItemsIgnoringCondition { get { throw null; } }
@@ -355,41 +342,26 @@ namespace Microsoft.Build.BuildEngine
         public string SchemaFile { get { throw null; } set { } }
         public Microsoft.Build.BuildEngine.TargetCollection Targets { get { throw null; } }
         public System.DateTime TimeOfLastDirty { get { throw null; } }
-        public string ToolsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ToolsVersion { get { throw null; } }
         public Microsoft.Build.BuildEngine.UsingTaskCollection UsingTasks { get { throw null; } }
-        [System.MonoTODOAttribute]
         public string Xml { get { throw null; } }
-        [System.MonoTODOAttribute("Not tested")]
         public void AddNewImport(string projectFile, string condition) { }
         public Microsoft.Build.BuildEngine.BuildItem AddNewItem(string itemName, string itemInclude) { throw null; }
-        [System.MonoTODOAttribute("Adds item not in the same place as MS")]
         public Microsoft.Build.BuildEngine.BuildItem AddNewItem(string itemName, string itemInclude, bool treatItemIncludeAsLiteral) { throw null; }
-        [System.MonoTODOAttribute("Not tested")]
         public Microsoft.Build.BuildEngine.BuildItemGroup AddNewItemGroup() { throw null; }
-        [System.MonoTODOAttribute("Ignores insertAtEndOfProject")]
         public Microsoft.Build.BuildEngine.BuildPropertyGroup AddNewPropertyGroup(bool insertAtEndOfProject) { throw null; }
-        [System.MonoTODOAttribute("Not tested, isn't added to TaskDatabase (no reevaluation)")]
         public void AddNewUsingTaskFromAssemblyFile(string taskName, string assemblyFile) { }
-        [System.MonoTODOAttribute("Not tested, isn't added to TaskDatabase (no reevaluation)")]
         public void AddNewUsingTaskFromAssemblyName(string taskName, string assemblyName) { }
-        [System.MonoTODOAttribute("Not tested")]
         public bool Build() { throw null; }
-        [System.MonoTODOAttribute("Not tested")]
         public bool Build(string targetName) { throw null; }
-        [System.MonoTODOAttribute("Not tested")]
         public bool Build(string[] targetNames) { throw null; }
-        [System.MonoTODOAttribute("Not tested")]
         public bool Build(string[] targetNames, System.Collections.IDictionary targetOutputs) { throw null; }
-        [System.MonoTODOAttribute("Not tested")]
         public bool Build(string[] targetNames, System.Collections.IDictionary targetOutputs, Microsoft.Build.BuildEngine.BuildSettings buildFlags) { throw null; }
-        [System.MonoTODOAttribute]
         public string[] GetConditionedPropertyValues(string propertyName) { throw null; }
         public Microsoft.Build.BuildEngine.BuildItemGroup GetEvaluatedItemsByName(string itemName) { throw null; }
         public Microsoft.Build.BuildEngine.BuildItemGroup GetEvaluatedItemsByNameIgnoringCondition(string itemName) { throw null; }
         public string GetEvaluatedProperty(string propertyName) { throw null; }
-        [System.MonoTODOAttribute("We should remember that node and not use XPath to get it")]
         public string GetProjectExtensions(string id) { throw null; }
-        [System.MonoTODOAttribute("Not tested")]
         public void Load(System.IO.TextReader textReader) { }
         public void Load(System.IO.TextReader textReader, Microsoft.Build.BuildEngine.ProjectLoadSettings projectLoadSettings) { }
         public void Load(string projectFileName) { }
@@ -397,41 +369,30 @@ namespace Microsoft.Build.BuildEngine
         public void LoadXml(string projectXml) { }
         public void LoadXml(string projectXml, Microsoft.Build.BuildEngine.ProjectLoadSettings projectLoadSettings) { }
         public void MarkProjectAsDirty() { }
-        [System.MonoTODOAttribute("Not tested")]
         public void RemoveAllItemGroups() { }
-        [System.MonoTODOAttribute("Not tested")]
         public void RemoveAllPropertyGroups() { }
         public void RemoveImportedPropertyGroup(Microsoft.Build.BuildEngine.BuildPropertyGroup propertyGroupToRemove) { }
-        [System.MonoTODOAttribute]
         public void RemoveItem(Microsoft.Build.BuildEngine.BuildItem itemToRemove) { }
-        [System.MonoTODOAttribute("Not tested")]
         public void RemoveItemGroup(Microsoft.Build.BuildEngine.BuildItemGroup itemGroupToRemove) { }
-        [System.MonoTODOAttribute]
         public void RemoveItemGroupsWithMatchingCondition(string matchCondition) { }
-        [System.MonoTODOAttribute]
         public void RemoveItemsByName(string itemName) { }
-        [System.MonoTODOAttribute("Not tested")]
         public void RemovePropertyGroup(Microsoft.Build.BuildEngine.BuildPropertyGroup propertyGroupToRemove) { }
-        [System.MonoTODOAttribute]
         public void RemovePropertyGroupsWithMatchingCondition(string matchCondition) { }
         public void RemovePropertyGroupsWithMatchingCondition(string matchCondition, bool includeImportedPropertyGroups) { }
-        [System.MonoTODOAttribute]
         public void ResetBuildStatus() { }
         public void Save(System.IO.TextWriter textWriter) { }
         public void Save(string projectFileName) { }
-        [System.MonoTODOAttribute("Ignores encoding")]
         public void Save(string projectFileName, System.Text.Encoding encoding) { }
         public void SetImportedProperty(string propertyName, string propertyValue, string condition, Microsoft.Build.BuildEngine.Project importProject) { }
         public void SetImportedProperty(string propertyName, string propertyValue, string condition, Microsoft.Build.BuildEngine.Project importedProject, Microsoft.Build.BuildEngine.PropertyPosition position) { }
-        [System.MonoTODOAttribute]
         public void SetImportedProperty(string propertyName, string propertyValue, string condition, Microsoft.Build.BuildEngine.Project importedProject, Microsoft.Build.BuildEngine.PropertyPosition position, bool treatPropertyValueAsLiteral) { }
         public void SetProjectExtensions(string id, string content) { }
         public void SetProperty(string propertyName, string propertyValue) { }
         public void SetProperty(string propertyName, string propertyValue, string condition) { }
         public void SetProperty(string propertyName, string propertyValue, string condition, Microsoft.Build.BuildEngine.PropertyPosition position) { }
-        [System.MonoTODOAttribute]
         public void SetProperty(string propertyName, string propertyValue, string condition, Microsoft.Build.BuildEngine.PropertyPosition position, bool treatPropertyValueAsLiteral) { }
     }
+    [System.FlagsAttribute]
     public enum ProjectLoadSettings
     {
         IgnoreMissingImports = 1,
@@ -442,15 +403,18 @@ namespace Microsoft.Build.BuildEngine
         UseExistingOrCreateAfterLastImport = 1,
         UseExistingOrCreateAfterLastPropertyGroup = 0,
     }
+    [System.SerializableAttribute]
     public sealed partial class RemoteErrorException : System.Exception
     {
         internal RemoteErrorException() { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public static partial class SolutionWrapperProject
     {
         public static string Generate(string solutionPath, string toolsVersionOverride, Microsoft.Build.Framework.BuildEventContext projectBuildEventContext) { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Target (Name = { Name }, Condition = { Condition })")]
     public partial class Target : System.Collections.IEnumerable
     {
         internal Target() { }
@@ -460,7 +424,6 @@ namespace Microsoft.Build.BuildEngine
         public bool IsImported { get { throw null; } }
         public string Name { get { throw null; } }
         public string Outputs { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.BuildTask AddNewTask(string taskName) { throw null; }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public void RemoveTask(Microsoft.Build.BuildEngine.BuildTask taskElement) { }
@@ -472,7 +435,6 @@ namespace Microsoft.Build.BuildEngine
         public bool IsSynchronized { get { throw null; } }
         public Microsoft.Build.BuildEngine.Target this[string index] { get { throw null; } }
         public object SyncRoot { get { throw null; } }
-        [System.MonoTODOAttribute]
         public Microsoft.Build.BuildEngine.Target AddNewTarget(string targetName) { throw null; }
         public void CopyTo(System.Array array, int index) { }
         public bool Exists(string targetName) { throw null; }
@@ -483,9 +445,9 @@ namespace Microsoft.Build.BuildEngine
     {
         public Toolset(string toolsVersion, string toolsPath) { }
         public Toolset(string toolsVersion, string toolsPath, Microsoft.Build.BuildEngine.BuildPropertyGroup buildProperties) { }
-        public Microsoft.Build.BuildEngine.BuildPropertyGroup BuildProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ToolsPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ToolsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.BuildEngine.BuildPropertyGroup BuildProperties { get { throw null; } }
+        public string ToolsPath { get { throw null; } }
+        public string ToolsVersion { get { throw null; } }
         public Microsoft.Build.BuildEngine.Toolset Clone() { throw null; }
     }
     public partial class ToolsetCollection : System.Collections.Generic.ICollection<Microsoft.Build.BuildEngine.Toolset>, System.Collections.Generic.IEnumerable<Microsoft.Build.BuildEngine.Toolset>, System.Collections.IEnumerable
@@ -504,6 +466,7 @@ namespace Microsoft.Build.BuildEngine
         public bool Remove(Microsoft.Build.BuildEngine.Toolset item) { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
+    [System.FlagsAttribute]
     public enum ToolsetDefinitionLocations
     {
         ConfigurationFile = 1,
@@ -534,39 +497,4 @@ namespace Microsoft.Build.BuildEngine
         public static string Escape(string unescapedExpression) { throw null; }
     }
     public delegate void WriteHandler(string message);
-}
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
 }

@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.ServiceModel.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.ServiceModel.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.ServiceModel.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -23,8 +23,10 @@
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-[assembly:System.Security.SecurityCriticalAttribute((System.Security.SecurityCriticalScope)(0))]
+[assembly:System.Security.SecurityCriticalAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1))]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.ServiceModel.Activation.HostedTransportConfiguration))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.ServiceModel.Activation.ServiceBuildProvider))]
@@ -47,46 +49,15 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.ServiceModel.ServiceHostingEnvironment))]
 namespace System
 {
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class UriTemplate
     {
         public UriTemplate(string template) { }
         public UriTemplate(string template, bool ignoreTrailingSlash) { }
         public UriTemplate(string template, bool ignoreTrailingSlash, System.Collections.Generic.IDictionary<string, string> additionalDefaults) { }
         public UriTemplate(string template, System.Collections.Generic.IDictionary<string, string> additionalDefaults) { }
-        public System.Collections.Generic.IDictionary<string, string> Defaults { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IgnoreTrailingSlash { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> Defaults { get { throw null; } }
+        public bool IgnoreTrailingSlash { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<string> PathSegmentVariableNames { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<string> QueryValueVariableNames { get { throw null; } }
         public System.Uri BindByName(System.Uri baseAddress, System.Collections.Generic.IDictionary<string, string> parameters) { throw null; }
@@ -98,12 +69,14 @@ namespace System
         public System.UriTemplateMatch Match(System.Uri baseAddress, System.Uri candidate) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class UriTemplateEquivalenceComparer : System.Collections.Generic.IEqualityComparer<System.UriTemplate>
     {
         public UriTemplateEquivalenceComparer() { }
         public bool Equals(System.UriTemplate x, System.UriTemplate y) { throw null; }
         public int GetHashCode(System.UriTemplate obj) { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class UriTemplateMatch
     {
         public UriTemplateMatch() { }
@@ -116,6 +89,7 @@ namespace System
         public System.UriTemplate Template { get { throw null; } set { } }
         public System.Collections.ObjectModel.Collection<string> WildcardPathSegments { get { throw null; } }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     [System.SerializableAttribute]
     public partial class UriTemplateMatchException : System.SystemException
     {
@@ -124,6 +98,7 @@ namespace System
         public UriTemplateMatchException(string message) { }
         public UriTemplateMatchException(string message, System.Exception innerException) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class UriTemplateTable
     {
         public UriTemplateTable() { }
@@ -134,7 +109,6 @@ namespace System
         public bool IsReadOnly { get { throw null; } }
         public System.Collections.Generic.IList<System.Collections.Generic.KeyValuePair<System.UriTemplate, object>> KeyValuePairs { get { throw null; } }
         public System.Uri OriginalBaseAddress { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void MakeReadOnly(bool allowDuplicateEquivalentUriTemplates) { }
         public System.Collections.ObjectModel.Collection<System.UriTemplateMatch> Match(System.Uri uri) { throw null; }
         public System.UriTemplateMatch MatchSingle(System.Uri uri) { throw null; }
@@ -176,7 +150,6 @@ namespace System.Collections.Generic
         protected virtual void ClearItems() { }
         public bool Contains(T item) { throw null; }
         public void CopyTo(T[] array, int index) { }
-        [System.MonoTODOAttribute("Should be synchronized enumerator?")]
         public System.Collections.Generic.IEnumerator<T> GetEnumerator() { throw null; }
         public int IndexOf(T item) { throw null; }
         public void Insert(int index, T item) { }
@@ -203,16 +176,12 @@ namespace System.Collections.Generic
         protected System.Collections.Generic.IDictionary<K, T> Dictionary { get { throw null; } }
         public T this[K key] { get { throw null; } }
         protected void ChangeItemKey(T item, K newKey) { }
-        [System.MonoTODOAttribute("This lock is not an atomic.")]
         protected override void ClearItems() { }
         public bool Contains(K key) { throw null; }
         protected abstract K GetKeyForItem(T item);
-        [System.MonoTODOAttribute("This lock is not an atomic.")]
         protected override void InsertItem(int index, T item) { }
         public bool Remove(K key) { throw null; }
-        [System.MonoTODOAttribute("This lock is not an atomic.")]
         protected override void RemoveItem(int index) { }
-        [System.MonoTODOAttribute("This lock is not an atomic.")]
         protected override void SetItem(int index, T item) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
@@ -254,6 +223,7 @@ namespace System.Collections.Generic
 }
 namespace System.IO
 {
+    [System.SerializableAttribute]
     public partial class PipeException : System.IO.IOException
     {
         public PipeException() { }
@@ -314,19 +284,26 @@ namespace System.ServiceModel
         public BasicHttpBinding() { }
         public BasicHttpBinding(System.ServiceModel.BasicHttpSecurityMode securityMode) { }
         public BasicHttpBinding(string configurationName) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This property is obsolete. To enable Http CookieContainer, use the AllowCookies property instead.", false)]
         public bool EnableHttpCookieContainer { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
         public System.ServiceModel.BasicHttpSecurity Security { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeEnableHttpCookieContainer() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class BasicHttpContextBinding : System.ServiceModel.BasicHttpBinding
     {
         public BasicHttpContextBinding() { }
         public BasicHttpContextBinding(System.ServiceModel.BasicHttpSecurityMode securityMode) { }
         public BasicHttpContextBinding(string configName) { }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
     }
@@ -335,13 +312,14 @@ namespace System.ServiceModel
         Certificate = 1,
         UserName = 0,
     }
-    [System.MonoTODOAttribute]
     public sealed partial class BasicHttpMessageSecurity
     {
         public BasicHttpMessageSecurity() { }
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
         public System.ServiceModel.BasicHttpMessageCredentialType ClientCredentialType { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeAlgorithmSuite() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeClientCredentialType() { throw null; }
     }
     public partial class BasicHttpsBinding : System.ServiceModel.HttpBindingBase
@@ -349,10 +327,12 @@ namespace System.ServiceModel
         public BasicHttpsBinding() { }
         public BasicHttpsBinding(System.ServiceModel.BasicHttpsSecurityMode securityMode) { }
         public BasicHttpsBinding(string configurationName) { }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
         public System.ServiceModel.BasicHttpsSecurity Security { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public sealed partial class BasicHttpSecurity
@@ -361,7 +341,9 @@ namespace System.ServiceModel
         public System.ServiceModel.BasicHttpMessageSecurity Message { get { throw null; } set { } }
         public System.ServiceModel.BasicHttpSecurityMode Mode { get { throw null; } set { } }
         public System.ServiceModel.HttpTransportSecurity Transport { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessage() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransport() { throw null; }
     }
     public enum BasicHttpSecurityMode
@@ -378,7 +360,9 @@ namespace System.ServiceModel
         public System.ServiceModel.BasicHttpMessageSecurity Message { get { throw null; } set { } }
         public System.ServiceModel.BasicHttpsSecurityMode Mode { get { throw null; } set { } }
         public System.ServiceModel.HttpTransportSecurity Transport { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessage() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransport() { throw null; }
     }
     public enum BasicHttpsSecurityMode
@@ -396,29 +380,18 @@ namespace System.ServiceModel
     public sealed partial class CallbackBehaviorAttribute : System.Attribute, System.ServiceModel.Description.IEndpointBehavior
     {
         public CallbackBehaviorAttribute() { }
-        [System.MonoTODOAttribute]
-        public bool AutomaticSessionShutdown { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.ConcurrencyMode ConcurrencyMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool IgnoreExtensionDataObject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool IncludeExceptionDetailInFaults { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MaxItemsInObjectGraph { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Transactions.IsolationLevel TransactionIsolationLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public string TransactionTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool UseSynchronizationContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool ValidateMustUnderstand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool AutomaticSessionShutdown { get { throw null; } set { } }
+        public System.ServiceModel.ConcurrencyMode ConcurrencyMode { get { throw null; } set { } }
+        public bool IgnoreExtensionDataObject { get { throw null; } set { } }
+        public bool IncludeExceptionDetailInFaults { get { throw null; } set { } }
+        public int MaxItemsInObjectGraph { get { throw null; } set { } }
+        public System.Transactions.IsolationLevel TransactionIsolationLevel { get { throw null; } set { } }
+        public string TransactionTimeout { get { throw null; } set { } }
+        public bool UseSynchronizationContext { get { throw null; } set { } }
+        public bool ValidateMustUnderstand { get { throw null; } set { } }
         void System.ServiceModel.Description.IEndpointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IEndpointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.ClientRuntime clientRuntime) { }
         void System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IEndpointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint) { }
     }
     public abstract partial class ChannelFactory : System.ServiceModel.Channels.CommunicationObject, System.IDisposable, System.ServiceModel.Channels.IChannelFactory, System.ServiceModel.ICommunicationObject
@@ -482,7 +455,6 @@ namespace System.ServiceModel
         public ChannelTerminatedException(string message) { }
         public ChannelTerminatedException(string message, System.Exception innerException) { }
     }
-    [System.MonoTODOAttribute("It somehow rejects classes, but dunno how we can do that besides our code wise.")]
     public abstract partial class ClientBase<TChannel> : System.IDisposable, System.ServiceModel.ICommunicationObject where TChannel : class
     {
         protected ClientBase() { }
@@ -551,7 +523,9 @@ namespace System.ServiceModel
             event System.EventHandler System.ServiceModel.ICommunicationObject.Faulted { add { } remove { } }
             event System.EventHandler System.ServiceModel.ICommunicationObject.Opened { add { } remove { } }
             event System.EventHandler System.ServiceModel.ICommunicationObject.Opening { add { } remove { } }
+            [System.Security.SecuritySafeCriticalAttribute]
             protected System.IAsyncResult BeginInvoke(string methodName, object[] args, System.AsyncCallback callback, object state) { throw null; }
+            [System.Security.SecuritySafeCriticalAttribute]
             protected object EndInvoke(string methodName, object[] args, System.IAsyncResult result) { throw null; }
             void System.IDisposable.Dispose() { }
             TProperty System.ServiceModel.Channels.IChannel.GetProperty<TProperty>() { throw null; }
@@ -584,17 +558,14 @@ namespace System.ServiceModel
         protected partial class InvokeAsyncCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
         {
             internal InvokeAsyncCompletedEventArgs() : base (default(System.Exception), default(bool), default(object)) { }
-            public object[] Results { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            public object[] Results { get { throw null; } }
         }
     }
-    [System.MonoTODOAttribute]
     public partial class ClientCredentialsSecurityTokenManager : System.IdentityModel.Selectors.SecurityTokenManager
     {
         public ClientCredentialsSecurityTokenManager(System.ServiceModel.Description.ClientCredentials clientCredentials) { }
         public System.ServiceModel.Description.ClientCredentials ClientCredentials { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Selectors.SecurityTokenAuthenticator CreateSecurityTokenAuthenticator(System.IdentityModel.Selectors.SecurityTokenRequirement tokenRequirement, out System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { outOfBandTokenResolver = default(System.IdentityModel.Selectors.SecurityTokenResolver); throw null; }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Selectors.SecurityTokenProvider CreateSecurityTokenProvider(System.IdentityModel.Selectors.SecurityTokenRequirement tokenRequirement) { throw null; }
         public override System.IdentityModel.Selectors.SecurityTokenSerializer CreateSecurityTokenSerializer(System.IdentityModel.Selectors.SecurityTokenVersion version) { throw null; }
         protected System.IdentityModel.Selectors.SecurityTokenSerializer CreateSecurityTokenSerializer(System.ServiceModel.Security.SecurityVersion version) { throw null; }
@@ -639,7 +610,7 @@ namespace System.ServiceModel
         Reentrant = 1,
         Single = 0,
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(1092), Inherited=false)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1092), Inherited=false, AllowMultiple=false)]
     public sealed partial class DataContractFormatAttribute : System.Attribute
     {
         public DataContractFormatAttribute() { }
@@ -651,8 +622,7 @@ namespace System.ServiceModel
         None = 0,
         System = 1,
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(1028), AllowMultiple=true, Inherited=false)]
-    [System.MonoTODOAttribute]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1028), AllowMultiple=true)]
     public sealed partial class DeliveryRequirementsAttribute : System.Attribute, System.ServiceModel.Description.IContractBehavior, System.ServiceModel.Description.IContractBehaviorAttribute
     {
         public DeliveryRequirementsAttribute() { }
@@ -732,8 +702,8 @@ namespace System.ServiceModel
         public bool IsAnonymous { get { throw null; } }
         public bool IsNone { get { throw null; } }
         public static System.Uri NoneUri { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
         public System.Uri Uri { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void ApplyTo(System.ServiceModel.Channels.Message message) { }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -833,15 +803,15 @@ namespace System.ServiceModel
     {
         public ExceptionDetail(System.Exception exception) { }
         [System.Runtime.Serialization.DataMemberAttribute]
-        public string HelpLink { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string HelpLink { get { throw null; } set { } }
         [System.Runtime.Serialization.DataMemberAttribute]
-        public System.ServiceModel.ExceptionDetail InnerException { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.ExceptionDetail InnerException { get { throw null; } set { } }
         [System.Runtime.Serialization.DataMemberAttribute]
-        public string Message { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Message { get { throw null; } set { } }
         [System.Runtime.Serialization.DataMemberAttribute]
-        public string StackTrace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string StackTrace { get { throw null; } set { } }
         [System.Runtime.Serialization.DataMemberAttribute]
-        public string Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Type { get { throw null; } set { } }
         public override string ToString() { throw null; }
     }
     public partial class ExceptionMapper
@@ -856,15 +826,11 @@ namespace System.ServiceModel
         public ExtensionCollection(T owner) { }
         public ExtensionCollection(T owner, object syncRoot) { }
         bool System.Collections.Generic.ICollection<System.ServiceModel.IExtension<T>>.IsReadOnly { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override void ClearItems() { }
         public System.Collections.ObjectModel.Collection<E> FindAll<E>() { throw null; }
         public E Find<E>() { throw null; }
-        [System.MonoTODOAttribute]
         protected override void InsertItem(int index, System.ServiceModel.IExtension<T> item) { }
-        [System.MonoTODOAttribute]
         protected override void RemoveItem(int index) { }
-        [System.MonoTODOAttribute]
         protected override void SetItem(int index, System.ServiceModel.IExtension<T> item) { }
     }
     public partial class FaultCode
@@ -884,7 +850,7 @@ namespace System.ServiceModel
         public static System.ServiceModel.FaultCode CreateSenderFaultCode(System.ServiceModel.FaultCode subCode) { throw null; }
         public static System.ServiceModel.FaultCode CreateSenderFaultCode(string name, string ns) { throw null; }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(64), Inherited=false, AllowMultiple=true)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(64), AllowMultiple=true, Inherited=false)]
     public sealed partial class FaultContractAttribute : System.Attribute
     {
         public FaultContractAttribute(System.Type detailType) { }
@@ -895,16 +861,17 @@ namespace System.ServiceModel
         public string Namespace { get { throw null; } set { } }
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
     }
+#if false
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.ServiceModel.FaultException.FaultCodeData[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.ServiceModel.FaultException.FaultReasonData[]))]
+#endif
     [System.SerializableAttribute]
     public partial class FaultException : System.ServiceModel.CommunicationException
     {
         public FaultException() { }
-        [System.MonoTODOAttribute]
         protected FaultException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public FaultException(System.ServiceModel.Channels.MessageFault fault) { }
         public FaultException(System.ServiceModel.Channels.MessageFault fault, string action) { }
-        [System.MonoTODOAttribute]
         public FaultException(System.ServiceModel.FaultReason reason) { }
         public FaultException(System.ServiceModel.FaultReason reason, System.ServiceModel.FaultCode code) { }
         public FaultException(System.ServiceModel.FaultReason reason, System.ServiceModel.FaultCode code, string action) { }
@@ -915,18 +882,16 @@ namespace System.ServiceModel
         public System.ServiceModel.FaultCode Code { get { throw null; } }
         public override string Message { get { throw null; } }
         public System.ServiceModel.FaultReason Reason { get { throw null; } }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.FaultException CreateFault(System.ServiceModel.Channels.MessageFault messageFault, string action, params System.Type[] faultDetailTypes) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.FaultException CreateFault(System.ServiceModel.Channels.MessageFault messageFault, params System.Type[] faultDetailTypes) { throw null; }
         public virtual System.ServiceModel.Channels.MessageFault CreateMessageFault() { throw null; }
-        [System.MonoTODOAttribute]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
     public partial class FaultException<TDetail> : System.ServiceModel.FaultException
     {
-        [System.MonoTODOAttribute]
         protected FaultException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public FaultException(TDetail detail) { }
         public FaultException(TDetail detail, System.ServiceModel.FaultReason reason) { }
@@ -937,7 +902,8 @@ namespace System.ServiceModel
         public FaultException(TDetail detail, string reason, System.ServiceModel.FaultCode code, string action) { }
         public TDetail Detail { get { throw null; } }
         public override System.ServiceModel.Channels.MessageFault CreateMessageFault() { throw null; }
-        [System.MonoTODOAttribute("see FaultException.TestGetObjectData to see how it's serialized")]
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string ToString() { throw null; }
     }
@@ -965,7 +931,6 @@ namespace System.ServiceModel
         public string XmlLang { get { throw null; } }
         public bool Matches(System.Globalization.CultureInfo cultureInfo) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class FederatedMessageSecurityOverHttp
     {
         public FederatedMessageSecurityOverHttp() { }
@@ -973,17 +938,27 @@ namespace System.ServiceModel
         public System.Collections.ObjectModel.Collection<System.ServiceModel.Security.Tokens.ClaimTypeRequirement> ClaimTypeRequirements { get { throw null; } }
         public bool EstablishSecurityContext { get { throw null; } set { } }
         public System.IdentityModel.Tokens.SecurityKeyType IssuedKeyType { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public string IssuedTokenType { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.ServiceModel.EndpointAddress IssuerAddress { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.ServiceModel.Channels.Binding IssuerBinding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.ServiceModel.EndpointAddress IssuerMetadataAddress { get { throw null; } set { } }
         public bool NegotiateServiceCredential { get { throw null; } set { } }
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> TokenRequestParameters { get { throw null; } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeAlgorithmSuite() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeClaimTypeRequirements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeEstablishSecurityContext() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeIssuedKeyType() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeNegotiateServiceCredential() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTokenRequestParameters() { throw null; }
     }
     public enum HostNameComparisonMode
@@ -995,21 +970,34 @@ namespace System.ServiceModel
     public abstract partial class HttpBindingBase : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences
     {
         internal HttpBindingBase() { }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool AllowCookies { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(65536)]
         public int MaxBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
         public System.Uri ProxyAddress { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
-        public override string Scheme { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public override string Scheme { get { throw null; } }
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
         public System.Text.Encoding TextEncoding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTextEncoding() { throw null; }
     }
     public enum HttpClientCredentialType
@@ -1034,13 +1022,16 @@ namespace System.ServiceModel
     {
         public HttpTransportSecurity() { }
         public System.ServiceModel.HttpClientCredentialType ClientCredentialType { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { get { throw null; } set { } }
         public System.ServiceModel.HttpProxyCredentialType ProxyCredentialType { get { throw null; } set { } }
         public string Realm { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeClientCredentialType() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeExtendedProtectionPolicy() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeProxyCredentialType() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeRealm() { throw null; }
     }
     public partial interface IClientChannel : System.IDisposable, System.ServiceModel.Channels.IChannel, System.ServiceModel.ICommunicationObject, System.ServiceModel.IContextChannel, System.ServiceModel.IExtensibleObject<System.ServiceModel.IContextChannel>
@@ -1130,7 +1121,6 @@ namespace System.ServiceModel
         public System.Collections.Generic.ICollection<System.ServiceModel.Channels.IChannel> IncomingChannels { get { throw null; } }
         public int ManualFlowControlLimit { get { throw null; } set { } }
         public System.Collections.Generic.ICollection<System.ServiceModel.Channels.IChannel> OutgoingChannels { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Threading.SynchronizationContext SynchronizationContext { get { throw null; } set { } }
         public object GetServiceInstance() { throw null; }
         public object GetServiceInstance(System.ServiceModel.Channels.Message message) { throw null; }
@@ -1144,7 +1134,6 @@ namespace System.ServiceModel
         protected override void OnEndOpen(System.IAsyncResult result) { }
         protected override void OnFaulted() { }
         protected override void OnOpen(System.TimeSpan timeout) { }
-        [System.MonoTODOAttribute]
         protected override void OnOpened() { }
         protected override void OnOpening() { }
         public void ReleaseServiceInstance() { }
@@ -1179,7 +1168,7 @@ namespace System.ServiceModel
         public MessageBodyMemberAttribute() { }
         public int Order { get { throw null; } set { } }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(12))]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(12), AllowMultiple=false)]
     public sealed partial class MessageContractAttribute : System.Attribute
     {
         public MessageContractAttribute() { }
@@ -1205,12 +1194,12 @@ namespace System.ServiceModel
         UserName = 2,
         Windows = 1,
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(384), Inherited=false)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(384), AllowMultiple=false, Inherited=false)]
     public sealed partial class MessageHeaderArrayAttribute : System.ServiceModel.MessageHeaderAttribute
     {
         public MessageHeaderArrayAttribute() { }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(384), Inherited=false)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(384), AllowMultiple=false, Inherited=false)]
     public partial class MessageHeaderAttribute : System.ServiceModel.MessageContractMemberAttribute
     {
         public MessageHeaderAttribute() { }
@@ -1230,9 +1219,9 @@ namespace System.ServiceModel
         public MessageHeaderException(string message, string headerName, string ns, bool isDuplicate) { }
         public MessageHeaderException(string message, string headerName, string ns, bool isDuplicate, System.Exception innerException) { }
         public MessageHeaderException(string message, string headerName, string ns, System.Exception innerException) { }
-        public string HeaderName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string HeaderNamespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsDuplicate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string HeaderName { get { throw null; } }
+        public string HeaderNamespace { get { throw null; } }
+        public bool IsDuplicate { get { throw null; } }
     }
     public partial class MessageHeader<T>
     {
@@ -1264,20 +1253,27 @@ namespace System.ServiceModel
         public System.ServiceModel.MessageCredentialType ClientCredentialType { get { throw null; } set { } }
         public bool NegotiateServiceCredential { get { throw null; } set { } }
         protected virtual bool IsSecureConversationEnabled() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeAlgorithmSuite() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeClientCredentialType() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeNegotiateServiceCredential() { throw null; }
     }
     public sealed partial class MessageSecurityOverMsmq
     {
         public MessageSecurityOverMsmq() { }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.ServiceModel.Security.SecurityAlgorithmSuite), "Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MessageCredentialType)(1))]
         public System.ServiceModel.MessageCredentialType ClientCredentialType { get { throw null; } set { } }
     }
     public sealed partial class MessageSecurityOverTcp
     {
         public MessageSecurityOverTcp() { }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.ServiceModel.Security.SecurityAlgorithmSuite), "Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MessageCredentialType)(1))]
         public System.ServiceModel.MessageCredentialType ClientCredentialType { get { throw null; } set { } }
     }
     public abstract partial class MessageSecurityVersion
@@ -1285,11 +1281,11 @@ namespace System.ServiceModel
         internal MessageSecurityVersion() { }
         public abstract System.ServiceModel.Security.BasicSecurityProfileVersion BasicSecurityProfileVersion { get; }
         public static System.ServiceModel.MessageSecurityVersion Default { get { throw null; } }
-        public System.ServiceModel.Security.SecureConversationVersion SecureConversationVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Security.SecureConversationVersion SecureConversationVersion { get { throw null; } }
         public abstract System.ServiceModel.Security.SecurityPolicyVersion SecurityPolicyVersion { get; }
         public System.IdentityModel.Selectors.SecurityTokenVersion SecurityTokenVersion { get { throw null; } }
-        public System.ServiceModel.Security.SecurityVersion SecurityVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.ServiceModel.Security.TrustVersion TrustVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Security.SecurityVersion SecurityVersion { get { throw null; } }
+        public System.ServiceModel.Security.TrustVersion TrustVersion { get { throw null; } }
         public static System.ServiceModel.MessageSecurityVersion WSSecurity10WSTrust13WSSecureConversation13WSSecurityPolicy12BasicSecurityProfile10 { get { throw null; } }
         public static System.ServiceModel.MessageSecurityVersion WSSecurity10WSTrustFebruary2005WSSecureConversationFebruary2005WSSecurityPolicy11BasicSecurityProfile10 { get { throw null; } }
         public static System.ServiceModel.MessageSecurityVersion WSSecurity11WSTrust13WSSecureConversation13WSSecurityPolicy12 { get { throw null; } }
@@ -1306,22 +1302,35 @@ namespace System.ServiceModel
     public abstract partial class MsmqBindingBase : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences
     {
         protected MsmqBindingBase() { }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Uri CustomDeadLetterQueue { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.DeadLetterQueue)(1))]
         public System.ServiceModel.DeadLetterQueue DeadLetterQueue { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool Durable { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ExactlyOnce { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(2)]
         public int MaxRetryCycles { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ReceiveContextEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.ReceiveErrorHandling)(0))]
         public System.ServiceModel.ReceiveErrorHandling ReceiveErrorHandling { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(5)]
         public int ReceiveRetryCount { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:30:00")]
         public System.TimeSpan RetryCycleDelay { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
-        [System.MonoTODOAttribute]
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "1.00:00:00")]
         public System.TimeSpan TimeToLive { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool UseMsmqTracing { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool UseSourceJournal { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:05:00")]
         public System.TimeSpan ValidityDuration { get { throw null; } set { } }
     }
     public enum MsmqEncryptionAlgorithm
@@ -1348,6 +1357,8 @@ namespace System.ServiceModel
         public MsmqPoisonMessageException(string message) { }
         public MsmqPoisonMessageException(string message, System.Exception innerException) { }
         public long MessageLookupId { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public enum MsmqSecureHashAlgorithm
@@ -1361,30 +1372,37 @@ namespace System.ServiceModel
     {
         public MsmqTransportSecurity() { }
         public MsmqTransportSecurity(System.ServiceModel.MsmqTransportSecurity other) { }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqAuthenticationMode)(1))]
         public System.ServiceModel.MsmqAuthenticationMode MsmqAuthenticationMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqEncryptionAlgorithm)(0))]
         public System.ServiceModel.MsmqEncryptionAlgorithm MsmqEncryptionAlgorithm { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel MsmqProtectionLevel { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqSecureHashAlgorithm)(1))]
         public System.ServiceModel.MsmqSecureHashAlgorithm MsmqSecureHashAlgorithm { get { throw null; } set { } }
     }
     public sealed partial class NamedPipeTransportSecurity
     {
         public NamedPipeTransportSecurity() { }
-        public System.Net.Security.ProtectionLevel ProtectionLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(2))]
+        public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public partial class NetHttpBinding : System.ServiceModel.HttpBindingBase
     {
         public NetHttpBinding() { }
         public NetHttpBinding(System.ServiceModel.BasicHttpSecurityMode securityMode) { }
         public NetHttpBinding(System.ServiceModel.BasicHttpSecurityMode securityMode, bool reliableSessionEnabled) { }
         public NetHttpBinding(string configurationName) { }
-        public System.ServiceModel.NetHttpMessageEncoding MessageEncoding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.OptionalReliableSession ReliableSession { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.BasicHttpSecurity Security { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.NetHttpMessageEncoding)(0))]
+        public System.ServiceModel.NetHttpMessageEncoding MessageEncoding { get { throw null; } set { } }
+        public System.ServiceModel.OptionalReliableSession ReliableSession { get { throw null; } set { } }
+        public System.ServiceModel.BasicHttpSecurity Security { get { throw null; } set { } }
         public System.ServiceModel.Channels.WebSocketTransportSettings WebSocketSettings { get { throw null; } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReliableSession() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public enum NetHttpMessageEncoding
@@ -1393,42 +1411,49 @@ namespace System.ServiceModel
         Mtom = 2,
         Text = 1,
     }
-    [System.MonoTODOAttribute]
     public partial class NetHttpsBinding : System.ServiceModel.HttpBindingBase
     {
         public NetHttpsBinding() { }
         public NetHttpsBinding(System.ServiceModel.BasicHttpsSecurityMode securityMode) { }
         public NetHttpsBinding(System.ServiceModel.BasicHttpsSecurityMode securityMode, bool reliableSessionEnabled) { }
         public NetHttpsBinding(string configurationName) { }
-        public System.ServiceModel.NetHttpMessageEncoding MessageEncoding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.OptionalReliableSession ReliableSession { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.BasicHttpsSecurity Security { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.NetHttpMessageEncoding)(0))]
+        public System.ServiceModel.NetHttpMessageEncoding MessageEncoding { get { throw null; } set { } }
+        public System.ServiceModel.OptionalReliableSession ReliableSession { get { throw null; } set { } }
+        public System.ServiceModel.BasicHttpsSecurity Security { get { throw null; } set { } }
         public System.ServiceModel.Channels.WebSocketTransportSettings WebSocketSettings { get { throw null; } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReliableSession() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public partial class NetMsmqBinding : System.ServiceModel.MsmqBindingBase
     {
         public NetMsmqBinding() { }
         public NetMsmqBinding(System.ServiceModel.NetMsmqSecurityMode securityMode) { }
-        [System.MonoTODOAttribute]
         public NetMsmqBinding(string configurationName) { }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.QueueTransferProtocol)(0))]
         public System.ServiceModel.QueueTransferProtocol QueueTransferProtocol { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
         public System.ServiceModel.NetMsmqSecurity Security { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool UseActiveDirectory { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public sealed partial class NetMsmqSecurity
     {
         public NetMsmqSecurity() { }
         public System.ServiceModel.MessageSecurityOverMsmq Message { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.NetMsmqSecurityMode)(1))]
         public System.ServiceModel.NetMsmqSecurityMode Mode { get { throw null; } set { } }
         public System.ServiceModel.MsmqTransportSecurity Transport { get { throw null; } set { } }
     }
@@ -1443,39 +1468,43 @@ namespace System.ServiceModel
     {
         public NetNamedPipeBinding() { }
         public NetNamedPipeBinding(System.ServiceModel.NetNamedPipeSecurityMode securityMode) { }
-        [System.MonoTODOAttribute]
         public NetNamedPipeBinding(string configurationName) { }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(65536)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public int MaxConnections { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public int MaxConnections { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
         public System.ServiceModel.NetNamedPipeSecurity Security { get { throw null; } set { } }
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public bool TransactionFlow { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.TransactionProtocol TransactionProtocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool TransactionFlow { get { throw null; } set { } }
+        public System.ServiceModel.TransactionProtocol TransactionProtocol { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMaxConnections() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransactionProtocol() { throw null; }
     }
     public sealed partial class NetNamedPipeSecurity
     {
         public NetNamedPipeSecurity() { }
-        public System.ServiceModel.NetNamedPipeSecurityMode Mode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.NamedPipeTransportSecurity Transport { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.NetNamedPipeSecurityMode)(1))]
+        public System.ServiceModel.NetNamedPipeSecurityMode Mode { get { throw null; } set { } }
+        public System.ServiceModel.NamedPipeTransportSecurity Transport { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransport() { throw null; }
     }
     public enum NetNamedPipeSecurityMode
@@ -1483,19 +1512,21 @@ namespace System.ServiceModel
         None = 0,
         Transport = 1,
     }
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
     public partial class NetPeerTcpBinding : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences
     {
         public NetPeerTcpBinding() { }
-        [System.MonoTODOAttribute]
         public NetPeerTcpBinding(string configurationName) { }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
         public static bool IsPnrpAvailable { get { throw null; } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.PeerTransportListenAddressConverter")]
         public System.Net.IPAddress ListenIPAddress { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(0)]
         public int Port { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
         public System.ServiceModel.PeerResolvers.PeerResolverSettings Resolver { get { throw null; } }
@@ -1503,7 +1534,9 @@ namespace System.ServiceModel
         public System.ServiceModel.PeerSecuritySettings Security { get { throw null; } set { } }
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public partial class NetTcpBinding : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences
@@ -1513,39 +1546,54 @@ namespace System.ServiceModel
         public NetTcpBinding(System.ServiceModel.SecurityMode securityMode, bool reliableSessionEnabled) { }
         public NetTcpBinding(string configurationName) { }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
         public int ListenBacklog { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(65536)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int MaxConnections { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool PortSharingEnabled { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.OptionalReliableSession ReliableSession { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
         public System.ServiceModel.NetTcpSecurity Security { get { throw null; } set { } }
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool TransactionFlow { get { throw null; } set { } }
         public System.ServiceModel.TransactionProtocol TransactionProtocol { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeListenBacklog() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMaxConnections() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReliableSession() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransactionProtocol() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class NetTcpContextBinding : System.ServiceModel.NetTcpBinding
     {
         public NetTcpContextBinding() { }
         public NetTcpContextBinding(System.ServiceModel.SecurityMode securityMode) { }
         public NetTcpContextBinding(System.ServiceModel.SecurityMode securityMode, bool reliableSessionEnabled) { }
         public NetTcpContextBinding(string configName) { }
-        public System.Uri ClientCallbackAddress { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public System.Uri ClientCallbackAddress { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel ContextProtectionLevel { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
     }
@@ -1553,13 +1601,13 @@ namespace System.ServiceModel
     {
         public NetTcpSecurity() { }
         public System.ServiceModel.MessageSecurityOverTcp Message { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.SecurityMode)(1))]
         public System.ServiceModel.SecurityMode Mode { get { throw null; } set { } }
         public System.ServiceModel.TcpTransportSecurity Transport { get { throw null; } set { } }
     }
     public sealed partial class NonDualMessageSecurityOverHttp : System.ServiceModel.MessageSecurityOverHttp
     {
         public NonDualMessageSecurityOverHttp() { }
-        [System.MonoTODOAttribute]
         public bool EstablishSecurityContext { get { throw null; } set { } }
         protected override bool IsSecureConversationEnabled() { throw null; }
     }
@@ -1572,19 +1620,16 @@ namespace System.ServiceModel
         public System.ServiceModel.ReleaseInstanceMode ReleaseInstanceMode { get { throw null; } set { } }
         public bool TransactionAutoComplete { get { throw null; } set { } }
         public bool TransactionScopeRequired { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Dispatcher.ClientOperation proxy) { }
         void System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Dispatcher.DispatchOperation dispatch) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription description) { }
     }
     public sealed partial class OperationContext : System.ServiceModel.IExtensibleObject<System.ServiceModel.OperationContext>
     {
         public OperationContext(System.ServiceModel.IContextChannel channel) { }
         public System.ServiceModel.IContextChannel Channel { get { throw null; } }
-        public System.Security.Claims.ClaimsPrincipal ClaimsPrincipal { get { throw null; } }
+        public System.Security.Claims.ClaimsPrincipal ClaimsPrincipal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.OperationContext Current { get { throw null; } set { } }
         public System.ServiceModel.Dispatcher.EndpointDispatcher EndpointDispatcher { get { throw null; } set { } }
         public System.ServiceModel.IExtensionCollection<System.ServiceModel.OperationContext> Extensions { get { throw null; } }
@@ -1593,9 +1638,8 @@ namespace System.ServiceModel
         public System.ServiceModel.Channels.MessageHeaders IncomingMessageHeaders { get { throw null; } }
         public System.ServiceModel.Channels.MessageProperties IncomingMessageProperties { get { throw null; } }
         public System.ServiceModel.Channels.MessageVersion IncomingMessageVersion { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.InstanceContext InstanceContext { get { throw null; } }
-        public bool IsUserContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsUserContext { get { throw null; } }
         public System.ServiceModel.Channels.MessageHeaders OutgoingMessageHeaders { get { throw null; } }
         public System.ServiceModel.Channels.MessageProperties OutgoingMessageProperties { get { throw null; } }
         public System.ServiceModel.Channels.RequestContext RequestContext { get { throw null; } set { } }
@@ -1604,7 +1648,6 @@ namespace System.ServiceModel
         public System.Collections.Generic.ICollection<System.ServiceModel.Security.SupportingTokenSpecification> SupportingTokens { get { throw null; } }
         public event System.EventHandler OperationCompleted { add { } remove { } }
         public T GetCallbackChannel<T>() { throw null; }
-        [System.MonoTODOAttribute]
         public void SetTransactionComplete() { }
     }
     public sealed partial class OperationContextScope : System.IDisposable
@@ -1643,6 +1686,7 @@ namespace System.ServiceModel
         public OptionalReliableSession(System.ServiceModel.Channels.ReliableSessionBindingElement reliableSessionBindingElement) { }
         public bool Enabled { get { throw null; } set { } }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(384), AllowMultiple=false, Inherited=false)]
     public sealed partial class PeerHopCountAttribute : System.ServiceModel.MessageHeaderAttribute
     {
         public PeerHopCountAttribute() { }
@@ -1673,9 +1717,9 @@ namespace System.ServiceModel
     public sealed partial class PeerNode : System.ServiceModel.IOnlineStatus
     {
         internal PeerNode() { }
-        public bool IsOnline { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsOnline { get { throw null; } }
         public System.ServiceModel.PeerMessagePropagationFilter MessagePropagationFilter { get { throw null; } set { } }
-        public int Port { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int Port { get { throw null; } }
         public event System.EventHandler Offline { add { } remove { } }
         public event System.EventHandler Online { add { } remove { } }
         public void RefreshConnection() { }
@@ -1703,8 +1747,10 @@ namespace System.ServiceModel
     {
         public PeerSecuritySettings() { }
         public System.ServiceModel.SecurityMode Mode { get { throw null; } set { } }
-        public System.ServiceModel.PeerTransportSecuritySettings Transport { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } set { } }
+        public System.ServiceModel.PeerTransportSecuritySettings Transport { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMode() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransport() { throw null; }
     }
     public enum PeerTransportCredentialType
@@ -1715,7 +1761,7 @@ namespace System.ServiceModel
     public sealed partial class PeerTransportSecuritySettings
     {
         public PeerTransportSecuritySettings() { }
-        public System.ServiceModel.PeerTransportCredentialType CredentialType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.PeerTransportCredentialType CredentialType { get { throw null; } set { } }
     }
     [System.SerializableAttribute]
     public partial class PoisonMessageException : System.ServiceModel.CommunicationException
@@ -1753,10 +1799,11 @@ namespace System.ServiceModel
         public QuotaExceededException(string message) { }
         public QuotaExceededException(string message, System.Exception innerException) { }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
     public sealed partial class ReceiveContextEnabledAttribute : System.Attribute, System.ServiceModel.Description.IOperationBehavior
     {
         public ReceiveContextEnabledAttribute() { }
-        public bool ManualControl { get { throw null; } set { } }
+        public bool ManualControl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void AddBindingParameters(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
         public void ApplyClientBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.ClientOperation clientOperation) { }
         public void ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription operationDescription, System.ServiceModel.Dispatcher.DispatchOperation dispatchOperation) { }
@@ -1776,7 +1823,7 @@ namespace System.ServiceModel
         BeforeCall = 1,
         None = 0,
     }
-    [System.MonoTODOAttribute]
+    [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.ReliableMessagingVersionConverter")]
     public abstract partial class ReliableMessagingVersion
     {
         internal ReliableMessagingVersion() { }
@@ -1788,14 +1835,14 @@ namespace System.ServiceModel
     {
         public ReliableSession() { }
         public ReliableSession(System.ServiceModel.Channels.ReliableSessionBindingElement reliableSessionBindingElement) { }
-        public System.TimeSpan InactivityTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool Ordered { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.TimeSpan InactivityTimeout { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool Ordered { get { throw null; } set { } }
     }
     public partial class RsaEndpointIdentity : System.ServiceModel.EndpointIdentity
     {
         public RsaEndpointIdentity(System.IdentityModel.Claims.Claim identity) { }
         public RsaEndpointIdentity(System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { }
-        [System.MonoTODOAttribute]
         public RsaEndpointIdentity(string publicKey) { }
     }
     public enum SecurityMode
@@ -1831,45 +1878,43 @@ namespace System.ServiceModel
         public ServiceAuthorizationManager() { }
         public virtual bool CheckAccess(System.ServiceModel.OperationContext operationContext) { throw null; }
         public virtual bool CheckAccess(System.ServiceModel.OperationContext operationContext, ref System.ServiceModel.Channels.Message message) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual bool CheckAccessCore(System.ServiceModel.OperationContext operationContext) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> GetAuthorizationPolicies(System.ServiceModel.OperationContext operationContext) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     public sealed partial class ServiceBehaviorAttribute : System.Attribute, System.ServiceModel.Description.IServiceBehavior
     {
         public ServiceBehaviorAttribute() { }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.AddressFilterMode AddressFilterMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool AutomaticSessionShutdown { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.ConcurrencyMode ConcurrencyMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public string ConfigurationName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.AddressFilterMode)(0))]
+        public System.ServiceModel.AddressFilterMode AddressFilterMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool AutomaticSessionShutdown { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.ConcurrencyMode)(0))]
+        public System.ServiceModel.ConcurrencyMode ConcurrencyMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public string ConfigurationName { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool EnsureOrderedDispatch { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public bool IgnoreExtensionDataObject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IncludeExceptionDetailInFaults { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.InstanceContextMode InstanceContextMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MaxItemsInObjectGraph { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool ReleaseServiceInstanceOnTransactionComplete { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool TransactionAutoCompleteOnSessionClose { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Transactions.IsolationLevel TransactionIsolationLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool IgnoreExtensionDataObject { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool IncludeExceptionDetailInFaults { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.InstanceContextMode)(0))]
+        public System.ServiceModel.InstanceContextMode InstanceContextMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(2147483647)]
+        public int MaxItemsInObjectGraph { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public string Name { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public string Namespace { get { throw null; } set { } }
+        public bool ReleaseServiceInstanceOnTransactionComplete { get { throw null; } set { } }
+        public bool TransactionAutoCompleteOnSessionClose { get { throw null; } set { } }
+        public System.Transactions.IsolationLevel TransactionIsolationLevel { get { throw null; } set { } }
         public string TransactionTimeout { get { throw null; } set { } }
-        public bool UseSynchronizationContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool ValidateMustUnderstand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool UseSynchronizationContext { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool ValidateMustUnderstand { get { throw null; } set { } }
         public object GetWellKnownSingleton() { throw null; }
         public void SetWellKnownSingleton(object value) { }
         public bool ShouldSerializeConfigurationName() { throw null; }
@@ -1877,11 +1922,8 @@ namespace System.ServiceModel
         public bool ShouldSerializeTransactionAutoCompleteOnSessionClose() { throw null; }
         public bool ShouldSerializeTransactionIsolationLevel() { throw null; }
         public bool ShouldSerializeTransactionTimeout() { throw null; }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
     public partial class ServiceConfiguration
@@ -1906,7 +1948,7 @@ namespace System.ServiceModel
         public void LoadFromConfiguration(System.Configuration.Configuration configuration) { }
         public void SetEndpointAddress(System.ServiceModel.Description.ServiceEndpoint endpoint, string relativeAddress) { }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(1028), Inherited=false)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1028), Inherited=false, AllowMultiple=false)]
     public sealed partial class ServiceContractAttribute : System.Attribute
     {
         public ServiceContractAttribute() { }
@@ -1938,7 +1980,7 @@ namespace System.ServiceModel
     {
         protected ServiceHostBase() { }
         public System.ServiceModel.Description.ServiceAuthenticationBehavior Authentication { get { throw null; } }
-        public System.ServiceModel.Description.ServiceAuthorizationBehavior Authorization { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Description.ServiceAuthorizationBehavior Authorization { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.Uri> BaseAddresses { get { throw null; } }
         public System.ServiceModel.Dispatcher.ChannelDispatcherCollection ChannelDispatchers { get { throw null; } }
         public System.TimeSpan CloseTimeout { get { throw null; } set { } }
@@ -1973,12 +2015,11 @@ namespace System.ServiceModel
         protected override void OnEndOpen(System.IAsyncResult result) { }
         protected override void OnOpen(System.TimeSpan timeout) { }
         protected override void OnOpened() { }
-        [System.MonoTODOAttribute]
         protected void ReleasePerformanceCounters() { }
         public void SetEndpointAddress(System.ServiceModel.Description.ServiceEndpoint endpoint, string relativeAddress) { }
         void System.IDisposable.Dispose() { }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(1092), AllowMultiple=true, Inherited=true)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1092), Inherited=true, AllowMultiple=true)]
     public sealed partial class ServiceKnownTypeAttribute : System.Attribute
     {
         public ServiceKnownTypeAttribute(string methodName) { }
@@ -1993,17 +2034,12 @@ namespace System.ServiceModel
         public ServiceSecurityContext(System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> authorizationPolicies) { }
         public ServiceSecurityContext(System.IdentityModel.Policy.AuthorizationContext authorizationContext) { }
         public ServiceSecurityContext(System.IdentityModel.Policy.AuthorizationContext authorizationContext, System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> authorizationPolicies) { }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.ServiceSecurityContext Anonymous { get { throw null; } }
         public System.IdentityModel.Policy.AuthorizationContext AuthorizationContext { get { throw null; } }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> AuthorizationPolicies { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.ServiceSecurityContext Current { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool IsAnonymous { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Security.Principal.IIdentity PrimaryIdentity { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Security.Principal.WindowsIdentity WindowsIdentity { get { throw null; } }
     }
     public enum SessionMode
@@ -2016,7 +2052,6 @@ namespace System.ServiceModel
     {
         public SpnEndpointIdentity(System.IdentityModel.Claims.Claim identity) { }
         public SpnEndpointIdentity(string spnName) { }
-        [System.MonoTODOAttribute]
         public static System.TimeSpan SpnLookupTime { get { throw null; } set { } }
     }
     public enum TcpClientCredentialType
@@ -2025,28 +2060,27 @@ namespace System.ServiceModel
         None = 0,
         Windows = 1,
     }
-    [System.MonoTODOAttribute]
     public sealed partial class TcpTransportSecurity
     {
         public TcpTransportSecurity() { }
-        public System.ServiceModel.TcpClientCredentialType ClientCredentialType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.TcpClientCredentialType)(1))]
+        public System.ServiceModel.TcpClientCredentialType ClientCredentialType { get { throw null; } set { } }
         public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { get { throw null; } set { } }
-        public System.Net.Security.ProtectionLevel ProtectionLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(2))]
+        public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Security.Authentication.SslProtocols)(4032))]
         public System.Security.Authentication.SslProtocols SslProtocols { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeExtendedProtectionPolicy() { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(64))]
     public sealed partial class TransactionFlowAttribute : System.Attribute, System.ServiceModel.Description.IOperationBehavior
     {
         public TransactionFlowAttribute(System.ServiceModel.TransactionFlowOption transactions) { }
-        public System.ServiceModel.TransactionFlowOption Transactions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.TransactionFlowOption Transactions { get { throw null; } }
         void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Dispatcher.ClientOperation proxy) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IOperationBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Dispatcher.DispatchOperation dispatch) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IOperationBehavior.Validate(System.ServiceModel.Description.OperationDescription description) { }
     }
     public enum TransactionFlowOption
@@ -2055,6 +2089,7 @@ namespace System.ServiceModel
         Mandatory = 2,
         NotAllowed = 0,
     }
+    [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TransactionProtocolConverter")]
     public abstract partial class TransactionProtocol
     {
         protected TransactionProtocol() { }
@@ -2080,72 +2115,78 @@ namespace System.ServiceModel
         public UpnEndpointIdentity(System.IdentityModel.Claims.Claim identity) { }
         public UpnEndpointIdentity(string upnName) { }
     }
-    [System.MonoTODOAttribute("It is untested.")]
     public partial class UriSchemeKeyedCollection : System.Collections.Generic.SynchronizedKeyedCollection<string, System.Uri>
     {
         public UriSchemeKeyedCollection(params System.Uri[] addresses) { }
         protected override string GetKeyForItem(System.Uri item) { throw null; }
-        [System.MonoTODOAttribute("hmm, what should I do further?")]
         protected override void InsertItem(int index, System.Uri item) { }
-        [System.MonoTODOAttribute("hmm, what should I do further?")]
         protected override void SetItem(int index, System.Uri item) { }
     }
-    [System.MonoTODOAttribute]
     public partial class WS2007FederationHttpBinding : System.ServiceModel.WSFederationHttpBinding
     {
         public WS2007FederationHttpBinding() { }
         public WS2007FederationHttpBinding(System.ServiceModel.WSFederationHttpSecurityMode securityMode) { }
         public WS2007FederationHttpBinding(System.ServiceModel.WSFederationHttpSecurityMode securityMode, bool reliableSessionEnabled) { }
-        [System.MonoTODOAttribute]
         public WS2007FederationHttpBinding(string configName) { }
         protected override System.ServiceModel.Channels.SecurityBindingElement CreateMessageSecurity() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class WS2007HttpBinding : System.ServiceModel.WSHttpBinding
     {
         public WS2007HttpBinding() { }
         public WS2007HttpBinding(System.ServiceModel.SecurityMode securityMode) { }
         public WS2007HttpBinding(System.ServiceModel.SecurityMode securityMode, bool reliableSessionEnabled) { }
-        [System.MonoTODOAttribute]
         public WS2007HttpBinding(string configName) { }
         protected override System.ServiceModel.Channels.SecurityBindingElement CreateMessageSecurity() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class WSDualHttpBinding : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences
     {
         public WSDualHttpBinding() { }
         public WSDualHttpBinding(System.ServiceModel.WSDualHttpSecurityMode securityMode) { }
         public WSDualHttpBinding(string configName) { }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Uri ClientBaseAddress { get { throw null; } set { } }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Uri ProxyAddress { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
         public System.ServiceModel.ReliableSession ReliableSession { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
         public System.ServiceModel.WSDualHttpSecurity Security { get { throw null; } set { } }
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
         public System.Text.Encoding TextEncoding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool TransactionFlow { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReliableSession() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTextEncoding() { throw null; }
     }
     public sealed partial class WSDualHttpSecurity
     {
         public WSDualHttpSecurity() { }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.MessageSecurityOverHttp Message { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.WSDualHttpSecurityMode Mode { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessage() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMode() { throw null; }
     }
     public enum WSDualHttpSecurityMode
@@ -2158,20 +2199,16 @@ namespace System.ServiceModel
         public WSFederationHttpBinding() { }
         public WSFederationHttpBinding(System.ServiceModel.WSFederationHttpSecurityMode securityMode) { }
         public WSFederationHttpBinding(System.ServiceModel.WSFederationHttpSecurityMode securityMode, bool reliableSessionEnabled) { }
-        [System.MonoTODOAttribute]
         public WSFederationHttpBinding(string configName) { }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Uri PrivacyNoticeAt { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(0)]
         public int PrivacyNoticeVersion { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.WSFederationHttpSecurity Security { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.SecurityBindingElement CreateMessageSecurity() { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.TransportBindingElement GetTransport() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public sealed partial class WSFederationHttpSecurity
@@ -2179,7 +2216,9 @@ namespace System.ServiceModel
         public WSFederationHttpSecurity() { }
         public System.ServiceModel.FederatedMessageSecurityOverHttp Message { get { throw null; } set { } }
         public System.ServiceModel.WSFederationHttpSecurityMode Mode { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessage() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMode() { throw null; }
     }
     public enum WSFederationHttpSecurityMode
@@ -2193,70 +2232,81 @@ namespace System.ServiceModel
         public WSHttpBinding() { }
         public WSHttpBinding(System.ServiceModel.SecurityMode securityMode) { }
         public WSHttpBinding(System.ServiceModel.SecurityMode securityMode, bool reliableSessionEnabled) { }
-        [System.MonoTODOAttribute]
         public WSHttpBinding(string configName) { }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool AllowCookies { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.WSHttpSecurity Security { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.SecurityBindingElement CreateMessageSecurity() { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.TransportBindingElement GetTransport() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class WSHttpBindingBase : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences
     {
         protected WSHttpBindingBase() { }
         protected WSHttpBindingBase(bool reliableSessionEnabled) { }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
         public System.ServiceModel.EnvelopeVersion EnvelopeVersion { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
         public System.Uri ProxyAddress { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
         public System.ServiceModel.OptionalReliableSession ReliableSession { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
         bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
         public System.Text.Encoding TextEncoding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool TransactionFlow { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
         protected abstract System.ServiceModel.Channels.SecurityBindingElement CreateMessageSecurity();
         protected abstract System.ServiceModel.Channels.TransportBindingElement GetTransport();
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReliableSession() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTextEncoding() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class WSHttpContextBinding : System.ServiceModel.WSHttpBinding
     {
         public WSHttpContextBinding() { }
         public WSHttpContextBinding(System.ServiceModel.SecurityMode securityMode) { }
         public WSHttpContextBinding(System.ServiceModel.SecurityMode securityMode, bool reliableSessionEnabled) { }
         public WSHttpContextBinding(string configName) { }
-        public System.Uri ClientCallbackAddress { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public System.Uri ClientCallbackAddress { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel ContextProtectionLevel { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
     }
     public sealed partial class WSHttpSecurity
     {
         public WSHttpSecurity() { }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.NonDualMessageSecurityOverHttp Message { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.SecurityMode Mode { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.HttpTransportSecurity Transport { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessage() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMode() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransport() { throw null; }
     }
     public enum WSMessageEncoding
@@ -2270,22 +2320,24 @@ namespace System.ServiceModel
         public X509CertificateEndpointIdentity(System.Security.Cryptography.X509Certificates.X509Certificate2 primaryCertificate, System.Security.Cryptography.X509Certificates.X509Certificate2Collection supportingCertificates) { }
         public System.Security.Cryptography.X509Certificates.X509Certificate2Collection Certificates { get { throw null; } }
     }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(1092), Inherited=false)]
+    [System.AttributeUsageAttribute((System.AttributeTargets)(1092), Inherited=false, AllowMultiple=false)]
     public sealed partial class XmlSerializerFormatAttribute : System.Attribute
     {
         public XmlSerializerFormatAttribute() { }
-        public System.ServiceModel.OperationFormatStyle Style { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool SupportFaults { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.OperationFormatUse Use { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.OperationFormatStyle Style { get { throw null; } set { } }
+        public bool SupportFaults { get { throw null; } set { } }
+        public System.ServiceModel.OperationFormatUse Use { get { throw null; } set { } }
     }
+    [System.Windows.Markup.ContentPropertyAttribute("Expression")]
     public partial class XPathMessageQuery : System.ServiceModel.Dispatcher.MessageQuery
     {
         public XPathMessageQuery() { }
         public XPathMessageQuery(string expression) { }
         public XPathMessageQuery(string expression, System.Xml.XmlNamespaceManager namespaces) { }
         public XPathMessageQuery(string expression, System.Xml.Xsl.XsltContext context) { }
+        [System.ComponentModel.DefaultValueAttribute("")]
         public string Expression { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Xml.XmlNamespaceManager Namespaces { get { throw null; } set { } }
         public override System.ServiceModel.Dispatcher.MessageQueryCollection CreateMessageQueryCollection() { throw null; }
         public override TResult Evaluate<TResult>(System.ServiceModel.Channels.Message message) { throw null; }
@@ -2295,7 +2347,6 @@ namespace System.ServiceModel
 namespace System.ServiceModel.Activation
 {
     [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
-    [System.MonoTODOAttribute]
     public sealed partial class AspNetCompatibilityRequirementsAttribute : System.Attribute, System.ServiceModel.Description.IServiceBehavior
     {
         public AspNetCompatibilityRequirementsAttribute() { }
@@ -2318,8 +2369,8 @@ namespace System.ServiceModel.Activation
     public sealed partial class VirtualPathExtension : System.ServiceModel.IExtension<System.ServiceModel.ServiceHostBase>
     {
         internal VirtualPathExtension() { }
-        public string ApplicationVirtualPath { get { throw null; } }
-        public string SiteName { get { throw null; } }
+        public string ApplicationVirtualPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string SiteName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public string VirtualPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public void Attach(System.ServiceModel.ServiceHostBase owner) { }
         public void Detach(System.ServiceModel.ServiceHostBase owner) { }
@@ -2330,28 +2381,46 @@ namespace System.ServiceModel.Activation.Configuration
     public sealed partial class DiagnosticSection : System.Configuration.ConfigurationSection
     {
         public DiagnosticSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("performanceCountersEnabled", DefaultValue=true)]
         public bool PerformanceCountersEnabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
     public sealed partial class NetPipeSection : System.Configuration.ConfigurationSection
     {
         public NetPipeSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("allowAccounts")]
         public System.ServiceModel.Activation.Configuration.SecurityIdentifierElementCollection AllowAccounts { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingAccepts", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingAccepts { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingConnections", DefaultValue=100)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingConnections { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveTimeout", DefaultValue="00:00:30")]
         public System.TimeSpan ReceiveTimeout { get { throw null; } set { } }
         protected override void InitializeDefault() { }
     }
     public sealed partial class NetTcpSection : System.Configuration.ConfigurationSection
     {
         public NetTcpSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("allowAccounts")]
         public System.ServiceModel.Activation.Configuration.SecurityIdentifierElementCollection AllowAccounts { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("listenBacklog", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int ListenBacklog { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingAccepts", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingAccepts { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingConnections", DefaultValue=100)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingConnections { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveTimeout", DefaultValue="00:00:30")]
         public System.TimeSpan ReceiveTimeout { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("teredoEnabled", DefaultValue=false)]
         public bool TeredoEnabled { get { throw null; } set { } }
         protected override void InitializeDefault() { }
     }
@@ -2360,8 +2429,11 @@ namespace System.ServiceModel.Activation.Configuration
         public SecurityIdentifierElement() { }
         public SecurityIdentifierElement(System.Security.Principal.SecurityIdentifier sid) { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Activation.Configuration.SecurityIdentifierConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("securityIdentifier", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         public System.Security.Principal.SecurityIdentifier SecurityIdentifier { get { throw null; } set { } }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Activation.Configuration.SecurityIdentifierElement))]
     public sealed partial class SecurityIdentifierElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Activation.Configuration.SecurityIdentifierElement>
     {
         public SecurityIdentifierElementCollection() { }
@@ -2421,7 +2493,7 @@ namespace System.ServiceModel.Channels
         internal ApplicationContainerSettings() { }
         public const int CurrentSession = -1;
         public const int ServiceSession = 0;
-        public string PackageFullName { get { throw null; } set { } }
+        public string PackageFullName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int SessionId { get { throw null; } set { } }
     }
     public sealed partial class AsymmetricSecurityBindingElement : System.ServiceModel.Channels.SecurityBindingElement, System.ServiceModel.Description.IPolicyExportExtension
@@ -2434,27 +2506,24 @@ namespace System.ServiceModel.Channels
         public System.ServiceModel.Security.MessageProtectionOrder MessageProtectionOrder { get { throw null; } set { } }
         public System.ServiceModel.Security.Tokens.SecurityTokenParameters RecipientTokenParameters { get { throw null; } set { } }
         public bool RequireSignatureConfirmation { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactoryCore<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListenerCore<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override void SetKeyDerivation(bool requireDerivedKeys) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class BinaryMessageEncodingBindingElement : System.ServiceModel.Channels.MessageEncodingBindingElement, System.ServiceModel.Description.IPolicyExportExtension, System.ServiceModel.Description.IWsdlExportExtension
     {
         public BinaryMessageEncodingBindingElement() { }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.Channels.CompressionFormat)(0))]
         public System.ServiceModel.Channels.CompressionFormat CompressionFormat { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(64)]
         public int MaxReadPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(2048)]
         public int MaxSessionSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(16)]
         public int MaxWritePoolSize { get { throw null; } set { } }
         public override System.ServiceModel.Channels.MessageVersion MessageVersion { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
@@ -2464,10 +2533,11 @@ namespace System.ServiceModel.Channels
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override System.ServiceModel.Channels.MessageEncoderFactory CreateMessageEncoderFactory() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessageVersion() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext policyContext) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
         void System.ServiceModel.Description.IWsdlExportExtension.ExportEndpoint(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlEndpointConversionContext context) { }
     }
@@ -2475,13 +2545,17 @@ namespace System.ServiceModel.Channels
     {
         protected Binding() { }
         protected Binding(string name, string ns) { }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:01:00")]
         public System.TimeSpan CloseTimeout { get { throw null; } set { } }
         public System.ServiceModel.Channels.MessageVersion MessageVersion { get { throw null; } }
         public string Name { get { throw null; } set { } }
         public string Namespace { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:01:00")]
         public System.TimeSpan OpenTimeout { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:10:00")]
         public System.TimeSpan ReceiveTimeout { get { throw null; } set { } }
         public abstract string Scheme { get; }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:01:00")]
         public System.TimeSpan SendTimeout { get { throw null; } set { } }
         public System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(params object[] parameters) { throw null; }
         public virtual System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) { throw null; }
@@ -2499,7 +2573,9 @@ namespace System.ServiceModel.Channels
         public virtual bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingParameterCollection parameters) where TChannel : class, System.ServiceModel.Channels.IChannel { throw null; }
         public abstract System.ServiceModel.Channels.BindingElementCollection CreateBindingElements();
         public T GetProperty<T>(System.ServiceModel.Channels.BindingParameterCollection parameters) where T : class { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeName() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeNamespace() { throw null; }
     }
     public partial class BindingContext
@@ -2522,7 +2598,6 @@ namespace System.ServiceModel.Channels
     public abstract partial class BindingElement
     {
         protected BindingElement() { }
-        [System.MonoTODOAttribute]
         protected BindingElement(System.ServiceModel.Channels.BindingElement elementToBeCloned) { }
         public virtual System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public virtual System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) where TChannel : class, System.ServiceModel.Channels.IChannel { throw null; }
@@ -2531,7 +2606,6 @@ namespace System.ServiceModel.Channels
         public abstract System.ServiceModel.Channels.BindingElement Clone();
         public abstract T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) where T : class;
     }
-    [System.MonoTODOAttribute]
     public partial class BindingElementCollection : System.Collections.ObjectModel.Collection<System.ServiceModel.Channels.BindingElement>
     {
         public BindingElementCollection() { }
@@ -2572,6 +2646,7 @@ namespace System.ServiceModel.Channels
         public abstract void ReturnBuffer(byte[] buffer);
         public abstract byte[] TakeBuffer(int bufferSize);
     }
+    [System.SerializableAttribute]
     public partial class CallbackContextMessageProperty : System.ServiceModel.Channels.IMessageProperty
     {
         public CallbackContextMessageProperty(System.Collections.Generic.IDictionary<string, string> context) { }
@@ -2590,7 +2665,6 @@ namespace System.ServiceModel.Channels
         public static bool TryGet(System.ServiceModel.Channels.Message message, out System.ServiceModel.Channels.CallbackContextMessageProperty contextMessageProperty) { contextMessageProperty = default(System.ServiceModel.Channels.CallbackContextMessageProperty); throw null; }
         public static bool TryGet(System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Channels.CallbackContextMessageProperty contextMessageProperty) { contextMessageProperty = default(System.ServiceModel.Channels.CallbackContextMessageProperty); throw null; }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class ChannelBase : System.ServiceModel.Channels.CommunicationObject, System.ServiceModel.Channels.IChannel, System.ServiceModel.ICommunicationObject, System.ServiceModel.IDefaultCommunicationTimeouts
     {
         protected ChannelBase(System.ServiceModel.Channels.ChannelManagerBase channelManager) { }
@@ -2633,7 +2707,6 @@ namespace System.ServiceModel.Channels
         protected override void OnEndClose(System.IAsyncResult result) { }
         protected void ValidateCreateChannel() { }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class ChannelListenerBase : System.ServiceModel.Channels.ChannelManagerBase, System.ServiceModel.Channels.IChannelListener, System.ServiceModel.ICommunicationObject
     {
         protected ChannelListenerBase() { }
@@ -2687,13 +2760,12 @@ namespace System.ServiceModel.Channels
     }
     public partial class ChannelPoolSettings
     {
-        [System.MonoTODOAttribute]
         public ChannelPoolSettings() { }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:02:00")]
         public System.TimeSpan IdleTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:10:00")]
         public System.TimeSpan LeaseTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(10)]
         public int MaxOutboundChannelsPerEndpoint { get { throw null; } set { } }
     }
     public abstract partial class ClientWebSocketFactory
@@ -2745,24 +2817,22 @@ namespace System.ServiceModel.Channels
         protected internal void ThrowIfDisposedOrImmutable() { }
         protected internal void ThrowIfDisposedOrNotOpen() { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class CompositeDuplexBindingElement : System.ServiceModel.Channels.BindingElement, System.ServiceModel.Description.IPolicyExportExtension
     {
         public CompositeDuplexBindingElement() { }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Uri ClientBaseAddress { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public partial class CompositeDuplexBindingElementImporter : System.ServiceModel.Description.IPolicyImportExtension
     {
         public CompositeDuplexBindingElementImporter() { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyImportExtension.ImportPolicy(System.ServiceModel.Description.MetadataImporter importer, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public enum CompressionFormat
@@ -2771,27 +2841,35 @@ namespace System.ServiceModel.Channels
         GZip = 1,
         None = 0,
     }
-    [System.MonoTODOAttribute]
     public abstract partial class ConnectionOrientedTransportBindingElement : System.ServiceModel.Channels.TransportBindingElement, System.ServiceModel.Description.IPolicyExportExtension, System.ServiceModel.Description.IWsdlExportExtension
     {
         internal ConnectionOrientedTransportBindingElement() { }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:00:30")]
         public System.TimeSpan ChannelInitializationTimeout { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(8192)]
         public int ConnectionBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(65536)]
         public int MaxBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:00:00.2")]
         public System.TimeSpan MaxOutputDelay { get { throw null; } set { } }
         public int MaxPendingAccepts { get { throw null; } set { } }
         public int MaxPendingConnections { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMaxPendingAccepts() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMaxPendingConnections() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
         void System.ServiceModel.Description.IWsdlExportExtension.ExportEndpoint(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlEndpointConversionContext endpointContext) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class ContextBindingElement : System.ServiceModel.Channels.BindingElement, System.ServiceModel.Channels.IContextBindingElement, System.ServiceModel.Description.IPolicyExportExtension
     {
         public ContextBindingElement() { }
@@ -2799,9 +2877,13 @@ namespace System.ServiceModel.Channels
         public ContextBindingElement(System.Net.Security.ProtectionLevel protectionLevel, System.ServiceModel.Channels.ContextExchangeMechanism contextExchangeMechanism) { }
         public ContextBindingElement(System.Net.Security.ProtectionLevel protectionLevel, System.ServiceModel.Channels.ContextExchangeMechanism contextExchangeMechanism, System.Uri clientCallbackAddress) { }
         public ContextBindingElement(System.Net.Security.ProtectionLevel protectionLevel, System.ServiceModel.Channels.ContextExchangeMechanism contextExchangeMechanism, System.Uri clientCallbackAddress, bool contextManagementEnabled) { }
-        public System.Uri ClientCallbackAddress { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public System.Uri ClientCallbackAddress { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.Channels.ContextExchangeMechanism)(0))]
         public System.ServiceModel.Channels.ContextExchangeMechanism ContextExchangeMechanism { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -2811,6 +2893,7 @@ namespace System.ServiceModel.Channels
         public virtual void ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class ContextBindingElementImporter : System.ServiceModel.Description.IPolicyImportExtension, System.ServiceModel.Description.IWsdlImportExtension
     {
         public ContextBindingElementImporter() { }
@@ -2819,11 +2902,14 @@ namespace System.ServiceModel.Channels
         public void ImportEndpoint(System.ServiceModel.Description.WsdlImporter importer, System.ServiceModel.Description.WsdlEndpointConversionContext context) { }
         public virtual void ImportPolicy(System.ServiceModel.Description.MetadataImporter importer, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public enum ContextExchangeMechanism
     {
         ContextSoapHeader = 0,
         HttpCookie = 1,
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.SerializableAttribute]
     public partial class ContextMessageProperty : System.ServiceModel.Channels.IMessageProperty
     {
         public ContextMessageProperty() { }
@@ -2880,12 +2966,13 @@ namespace System.ServiceModel.Channels
     public sealed partial class CorrelationKey : System.Runtime.DurableInstancing.InstanceKey
     {
         public CorrelationKey(System.Collections.Generic.IDictionary<string, string> keyData, System.Xml.Linq.XName scopeName, System.Xml.Linq.XNamespace provider) : base (default(System.Guid)) { }
-        public System.Collections.Generic.IDictionary<string, string> KeyData { get { throw null; } }
-        public string KeyString { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> KeyData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string KeyString { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public string Name { get { throw null; } set { } }
-        public System.Xml.Linq.XNamespace Provider { get { throw null; } }
-        public System.Xml.Linq.XName ScopeName { get { throw null; } }
+        public System.Xml.Linq.XNamespace Provider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Xml.Linq.XName ScopeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
+    [System.Runtime.Serialization.DataContractAttribute]
     public partial class CorrelationMessageProperty
     {
         public CorrelationMessageProperty(System.Runtime.DurableInstancing.InstanceKey correlationKey, System.Collections.Generic.IEnumerable<System.Runtime.DurableInstancing.InstanceKey> additionalKeys) { }
@@ -2897,6 +2984,7 @@ namespace System.ServiceModel.Channels
         public static bool TryGet(System.ServiceModel.Channels.Message message, out System.ServiceModel.Channels.CorrelationMessageProperty property) { property = default(System.ServiceModel.Channels.CorrelationMessageProperty); throw null; }
         public static bool TryGet(System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Channels.CorrelationMessageProperty property) { property = default(System.ServiceModel.Channels.CorrelationMessageProperty); throw null; }
     }
+    [System.Windows.Markup.ContentPropertyAttribute("Elements")]
     public partial class CustomBinding : System.ServiceModel.Channels.Binding
     {
         public CustomBinding() { }
@@ -2936,34 +3024,48 @@ namespace System.ServiceModel.Channels
     {
         protected FaultConverter() { }
         public static System.ServiceModel.Channels.FaultConverter GetDefaultFaultConverter(System.ServiceModel.Channels.MessageVersion version) { throw null; }
-        [System.MonoTODOAttribute]
         protected abstract bool OnTryCreateException(System.ServiceModel.Channels.Message message, System.ServiceModel.Channels.MessageFault fault, out System.Exception exception);
-        [System.MonoTODOAttribute]
         protected abstract bool OnTryCreateFaultMessage(System.Exception exception, out System.ServiceModel.Channels.Message message);
         public bool TryCreateException(System.ServiceModel.Channels.Message message, System.ServiceModel.Channels.MessageFault fault, out System.Exception exception) { exception = default(System.Exception); throw null; }
         public bool TryCreateFaultMessage(System.Exception exception, out System.ServiceModel.Channels.Message message) { message = default(System.ServiceModel.Channels.Message); throw null; }
     }
-    [System.ObsoleteAttribute("Use AllowCookies.")]
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.ObsoleteAttribute("This type is obsolete. To enable the Http CookieContainer, use the AllowCookies property on the http binding or on the HttpTransportBindingElement.", false)]
     public partial class HttpCookieContainerBindingElement : System.ServiceModel.Channels.BindingElement
     {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This type is obsolete. To enable the Http CookieContainer, use the AllowCookies property on the http binding or on the HttpTransportBindingElement.", false)]
         public HttpCookieContainerBindingElement() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This type is obsolete. To enable the Http CookieContainer, use the AllowCookies property on the http binding or on the HttpTransportBindingElement.", false)]
         protected HttpCookieContainerBindingElement(System.ServiceModel.Channels.HttpCookieContainerBindingElement elementToBeCloned) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
     }
     public partial class HttpMessageHandlerFactory
     {
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         protected HttpMessageHandlerFactory() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public HttpMessageHandlerFactory(System.Func<System.Collections.Generic.IEnumerable<System.Net.Http.DelegatingHandler>> handlers) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public HttpMessageHandlerFactory(params System.Type[] handlers) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public System.Net.Http.HttpMessageHandler Create(System.Net.Http.HttpMessageHandler innerChannel) { throw null; }
         protected virtual System.Net.Http.HttpMessageHandler OnCreate(System.Net.Http.HttpMessageHandler innerChannel) { throw null; }
     }
     public sealed partial class HttpMessageSettings : System.IEquatable<System.ServiceModel.Channels.HttpMessageSettings>
     {
         public HttpMessageSettings() { }
-        public bool HttpMessagesSupported { get { throw null; } set { } }
+        public bool HttpMessagesSupported { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool Equals(System.ServiceModel.Channels.HttpMessageSettings other) { throw null; }
     }
     public static partial class HttpRequestMessageExtensionMethods
@@ -2992,15 +3094,14 @@ namespace System.ServiceModel.Channels
         public bool SuppressPreamble { get { throw null; } set { } }
         System.ServiceModel.Channels.IMessageProperty System.ServiceModel.Channels.IMessageProperty.CreateCopy() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class HttpsTransportBindingElement : System.ServiceModel.Channels.HttpTransportBindingElement, System.ServiceModel.Channels.ITransportTokenAssertionProvider
     {
         public HttpsTransportBindingElement() { }
         protected HttpsTransportBindingElement(System.ServiceModel.Channels.HttpsTransportBindingElement elementToBeCloned) { }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool RequireClientCertificate { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -3016,17 +3117,16 @@ namespace System.ServiceModel.Channels
         public System.Net.AuthenticationSchemes AuthenticationScheme { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.MonoTODOAttribute]
-        public bool DecompressionEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool DecompressionEnabled { get { throw null; } set { } }
+        public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool KeepAliveEnabled { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(65536)]
         public int MaxBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(0)]
         public int MaxPendingAccepts { get { throw null; } set { } }
         public System.ServiceModel.Channels.HttpMessageHandlerFactory MessageHandlerFactory { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
@@ -3036,6 +3136,7 @@ namespace System.ServiceModel.Channels
         public System.Net.AuthenticationSchemes ProxyAuthenticationScheme { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         public string Realm { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:00:00")]
         public System.TimeSpan RequestInitializationTimeout { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.TransferMode)(0))]
@@ -3051,13 +3152,14 @@ namespace System.ServiceModel.Channels
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeExtendedProtectionPolicy() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessageHandlerFactory() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeWebSocketSettings() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportEndpoint(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlEndpointConversionContext endpointContext) { }
         protected void UpdateAuthenticationSchemes(System.ServiceModel.Channels.BindingContext context) { }
     }
@@ -3107,9 +3209,11 @@ namespace System.ServiceModel.Channels
         System.IAsyncResult BeginAcceptChannel(System.TimeSpan timeout, System.AsyncCallback callback, object state);
         TChannel EndAcceptChannel(System.IAsyncResult result);
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial interface IContextBindingElement
     {
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial interface IContextManager
     {
         bool Enabled { get; set; }
@@ -3166,7 +3270,6 @@ namespace System.ServiceModel.Channels
     [System.SerializableAttribute]
     public partial class InvalidChannelBindingException : System.Exception
     {
-        [System.MonoTODOAttribute]
         public InvalidChannelBindingException() { }
         protected InvalidChannelBindingException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public InvalidChannelBindingException(string message) { }
@@ -3254,7 +3357,6 @@ namespace System.ServiceModel.Channels
         string InputCloseStatusDescription { get; }
         void SetOutputCloseStatus(System.Net.WebSockets.WebSocketCloseStatus closeStatus, string closeStatusDescription);
     }
-    [System.MonoTODOAttribute]
     public sealed partial class LocalClientSecuritySettings
     {
         public LocalClientSecuritySettings() { }
@@ -3262,19 +3364,17 @@ namespace System.ServiceModel.Channels
         public int CookieRenewalThresholdPercentage { get { throw null; } set { } }
         public bool DetectReplays { get { throw null; } set { } }
         public System.ServiceModel.Security.IdentityVerifier IdentityVerifier { get { throw null; } set { } }
-        public System.TimeSpan MaxClockSkew { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.TimeSpan MaxClockSkew { get { throw null; } set { } }
         public System.TimeSpan MaxCookieCachingTime { get { throw null; } set { } }
         public System.ServiceModel.Security.NonceCache NonceCache { get { throw null; } set { } }
         public bool ReconnectTransportOnFailure { get { throw null; } set { } }
         public int ReplayCacheSize { get { throw null; } set { } }
-        public System.TimeSpan ReplayWindow { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.TimeSpan ReplayWindow { get { throw null; } set { } }
         public System.TimeSpan SessionKeyRenewalInterval { get { throw null; } set { } }
         public System.TimeSpan SessionKeyRolloverInterval { get { throw null; } set { } }
-        public System.TimeSpan TimestampValidityDuration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute("What happens to IdentityVerifier?")]
+        public System.TimeSpan TimestampValidityDuration { get { throw null; } set { } }
         public System.ServiceModel.Channels.LocalClientSecuritySettings Clone() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class LocalServiceSecuritySettings
     {
         public LocalServiceSecuritySettings() { }
@@ -3303,7 +3403,7 @@ namespace System.ServiceModel.Channels
         public virtual bool IsEmpty { get { throw null; } }
         public virtual bool IsFault { get { throw null; } }
         public abstract System.ServiceModel.Channels.MessageProperties Properties { get; }
-        public System.ServiceModel.Channels.MessageState State { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Channels.MessageState State { get { throw null; } }
         public abstract System.ServiceModel.Channels.MessageVersion Version { get; }
         public System.IAsyncResult BeginWriteBodyContents(System.Xml.XmlDictionaryWriter writer, System.AsyncCallback callback, object state) { throw null; }
         public System.IAsyncResult BeginWriteMessage(System.Xml.XmlDictionaryWriter writer, System.AsyncCallback callback, object state) { throw null; }
@@ -3361,9 +3461,7 @@ namespace System.ServiceModel.Channels
         public abstract System.ServiceModel.Channels.Message CreateMessage();
         public System.Xml.XPath.XPathNavigator CreateNavigator() { throw null; }
         public System.Xml.XPath.XPathNavigator CreateNavigator(int nodeQuota) { throw null; }
-        [System.MonoTODOAttribute("Handle node_quota and xmlspace")]
         public System.Xml.XPath.XPathNavigator CreateNavigator(int nodeQuota, System.Xml.XmlSpace space) { throw null; }
-        [System.MonoTODOAttribute("supply proper quota")]
         public System.Xml.XPath.XPathNavigator CreateNavigator(System.Xml.XmlSpace space) { throw null; }
         void System.IDisposable.Dispose() { }
         public virtual void WriteMessage(System.IO.Stream stream) { }
@@ -3376,7 +3474,6 @@ namespace System.ServiceModel.Channels
         public abstract System.ServiceModel.Channels.MessageVersion MessageVersion { get; }
         public virtual System.IAsyncResult BeginWriteMessage(System.ServiceModel.Channels.Message message, System.IO.Stream stream, System.AsyncCallback callback, object state) { throw null; }
         public virtual void EndWriteMessage(System.IAsyncResult result) { }
-        [System.MonoTODOAttribute]
         public virtual T GetProperty<T>() where T : class { throw null; }
         public virtual bool IsContentTypeSupported(string contentType) { throw null; }
         public System.ServiceModel.Channels.Message ReadMessage(System.ArraySegment<byte> buffer, System.ServiceModel.Channels.BufferManager bufferManager) { throw null; }
@@ -3393,13 +3490,11 @@ namespace System.ServiceModel.Channels
         protected MessageEncoderFactory() { }
         public abstract System.ServiceModel.Channels.MessageEncoder Encoder { get; }
         public abstract System.ServiceModel.Channels.MessageVersion MessageVersion { get; }
-        [System.MonoTODOAttribute("Not sure how it is used; it just returns Encoder so far")]
         public virtual System.ServiceModel.Channels.MessageEncoder CreateSessionEncoder() { throw null; }
     }
     public abstract partial class MessageEncodingBindingElement : System.ServiceModel.Channels.BindingElement
     {
         protected MessageEncodingBindingElement() { }
-        [System.MonoTODOAttribute]
         protected MessageEncodingBindingElement(System.ServiceModel.Channels.MessageEncodingBindingElement elementToBeCloned) { }
         public abstract System.ServiceModel.Channels.MessageVersion MessageVersion { get; set; }
         public abstract System.ServiceModel.Channels.MessageEncoderFactory CreateMessageEncoderFactory();
@@ -3416,12 +3511,10 @@ namespace System.ServiceModel.Channels
     public abstract partial class MessageFault
     {
         protected MessageFault() { }
-        [System.MonoTODOAttribute("is this true?")]
         public virtual string Actor { get { throw null; } }
         public abstract System.ServiceModel.FaultCode Code { get; }
         public abstract bool HasDetail { get; }
         public bool IsMustUnderstandFault { get { throw null; } }
-        [System.MonoTODOAttribute("is this true?")]
         public virtual string Node { get { throw null; } }
         public abstract System.ServiceModel.FaultReason Reason { get; }
         public static System.ServiceModel.Channels.MessageFault CreateFault(System.ServiceModel.Channels.Message message, int maxBufferSize) { throw null; }
@@ -3492,7 +3585,6 @@ namespace System.ServiceModel.Channels
         public System.Xml.UniqueId RelatesTo { get { throw null; } set { } }
         public System.ServiceModel.EndpointAddress ReplyTo { get { throw null; } set { } }
         public System.Uri To { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.Channels.UnderstoodHeaders UnderstoodHeaders { get { throw null; } }
         public void Add(System.ServiceModel.Channels.MessageHeader header) { }
         public void Clear() { }
@@ -3560,19 +3652,20 @@ namespace System.ServiceModel.Channels
         Read = 1,
         Written = 2,
     }
+    [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.MessageVersionConverter")]
     public sealed partial class MessageVersion
     {
         internal MessageVersion() { }
         public System.ServiceModel.Channels.AddressingVersion Addressing { get { throw null; } }
         public static System.ServiceModel.Channels.MessageVersion Default { get { throw null; } }
         public System.ServiceModel.EnvelopeVersion Envelope { get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion None { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion Soap11 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion Soap11WSAddressing10 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion Soap11WSAddressingAugust2004 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion Soap12 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion Soap12WSAddressing10 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Channels.MessageVersion Soap12WSAddressingAugust2004 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion None { get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion Soap11 { get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion Soap11WSAddressing10 { get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion Soap11WSAddressingAugust2004 { get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion Soap12 { get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion Soap12WSAddressing10 { get { throw null; } }
+        public static System.ServiceModel.Channels.MessageVersion Soap12WSAddressingAugust2004 { get { throw null; } }
         public static System.ServiceModel.Channels.MessageVersion CreateVersion(System.ServiceModel.EnvelopeVersion envelopeVersion) { throw null; }
         public static System.ServiceModel.Channels.MessageVersion CreateVersion(System.ServiceModel.EnvelopeVersion envelopeVersion, System.ServiceModel.Channels.AddressingVersion addressingVersion) { throw null; }
         public override bool Equals(object obj) { throw null; }
@@ -3599,9 +3692,7 @@ namespace System.ServiceModel.Channels
         public System.TimeSpan ValidityDuration { get { throw null; } set { } }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportEndpoint(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlEndpointConversionContext endpointContext) { }
     }
     public sealed partial class MsmqMessageProperty
@@ -3612,7 +3703,6 @@ namespace System.ServiceModel.Channels
         public System.Nullable<System.ServiceModel.Channels.DeliveryFailure> DeliveryFailure { get { throw null; } }
         public System.Nullable<System.ServiceModel.Channels.DeliveryStatus> DeliveryStatus { get { throw null; } }
         public int MoveCount { get { throw null; } }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.MsmqMessageProperty Get(System.ServiceModel.Channels.Message message) { throw null; }
     }
     public sealed partial class MsmqTransportBindingElement : System.ServiceModel.Channels.MsmqBindingElementBase
@@ -3621,26 +3711,26 @@ namespace System.ServiceModel.Channels
         public int MaxPoolSize { get { throw null; } set { } }
         public System.ServiceModel.QueueTransferProtocol QueueTransferProtocol { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
-        [System.MonoLimitationAttribute("ActiveDirectory is windows-only solution")]
         public bool UseActiveDirectory { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class MtomMessageEncodingBindingElement : System.ServiceModel.Channels.MessageEncodingBindingElement, System.ServiceModel.Description.IPolicyExportExtension, System.ServiceModel.Description.IWsdlExportExtension
     {
         public MtomMessageEncodingBindingElement() { }
         public MtomMessageEncodingBindingElement(System.ServiceModel.Channels.MessageVersion messageVersion, System.Text.Encoding writeEncoding) { }
+        [System.ComponentModel.DefaultValueAttribute(65536)]
         public int MaxBufferSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(64)]
         public int MaxReadPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(16)]
         public int MaxWritePoolSize { get { throw null; } set { } }
         public override System.ServiceModel.Channels.MessageVersion MessageVersion { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
         public System.Text.Encoding WriteEncoding { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -3649,9 +3739,11 @@ namespace System.ServiceModel.Channels
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override System.ServiceModel.Channels.MessageEncoderFactory CreateMessageEncoderFactory() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeMessageVersion() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeWriteEncoding() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext policyContext) { }
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
@@ -3660,17 +3752,14 @@ namespace System.ServiceModel.Channels
     public sealed partial class NamedPipeConnectionPoolSettings
     {
         internal NamedPipeConnectionPoolSettings() { }
-        [System.MonoTODOAttribute]
         public string GroupName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.TimeSpan IdleTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int MaxOutboundConnectionsPerEndpoint { get { throw null; } set { } }
     }
     public sealed partial class NamedPipeSettings
     {
         internal NamedPipeSettings() { }
-        public System.ServiceModel.Channels.ApplicationContainerSettings ApplicationContainerSettings { get { throw null; } }
+        public System.ServiceModel.Channels.ApplicationContainerSettings ApplicationContainerSettings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     public partial class NamedPipeTransportBindingElement : System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement
     {
@@ -3688,26 +3777,26 @@ namespace System.ServiceModel.Channels
     {
         public OneWayBindingElement() { }
         public System.ServiceModel.Channels.ChannelPoolSettings ChannelPoolSettings { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(10)]
         public int MaxAcceptedChannels { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool PacketRoutable { get { throw null; } set { } }
-        [System.MonoTODOAttribute("It generates just pass-thru factory")]
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute("It generates just pass-thru listener")]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeChannelPoolSettings() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public partial class OneWayBindingElementImporter : System.ServiceModel.Description.IPolicyImportExtension
     {
         public OneWayBindingElementImporter() { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyImportExtension.ImportPolicy(System.ServiceModel.Description.MetadataImporter importer, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
     public sealed partial class PeerCustomResolverBindingElement : System.ServiceModel.Channels.PeerResolverBindingElement
     {
         public PeerCustomResolverBindingElement() { }
@@ -3716,15 +3805,13 @@ namespace System.ServiceModel.Channels
         public PeerCustomResolverBindingElement(System.ServiceModel.PeerResolvers.PeerCustomResolverSettings settings) { }
         public System.ServiceModel.EndpointAddress Address { get { throw null; } set { } }
         public System.ServiceModel.Channels.Binding Binding { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public override System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public override System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override System.ServiceModel.PeerResolver CreatePeerResolver() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
     }
     public abstract partial class PeerResolverBindingElement : System.ServiceModel.Channels.BindingElement
@@ -3734,11 +3821,11 @@ namespace System.ServiceModel.Channels
         public abstract System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { get; set; }
         public abstract System.ServiceModel.PeerResolver CreatePeerResolver();
     }
-    [System.MonoTODOAttribute]
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
     public sealed partial class PeerTransportBindingElement : System.ServiceModel.Channels.TransportBindingElement, System.ServiceModel.Description.IPolicyExportExtension, System.ServiceModel.Description.IWsdlExportExtension
     {
         public PeerTransportBindingElement() { }
-        public System.Net.IPAddress ListenIPAddress { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Net.IPAddress ListenIPAddress { get { throw null; } set { } }
         public override long MaxReceivedMessageSize { get { throw null; } set { } }
         public int Port { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
@@ -3749,39 +3836,29 @@ namespace System.ServiceModel.Channels
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportEndpoint(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlEndpointConversionContext endpointContext) { }
     }
-    [System.MonoTODOAttribute("We aren't actually going to implement this windows-only protocol")]
     public sealed partial class PnrpPeerResolverBindingElement : System.ServiceModel.Channels.PeerResolverBindingElement
     {
         public PnrpPeerResolverBindingElement() { }
         public PnrpPeerResolverBindingElement(System.ServiceModel.PeerResolvers.PeerReferralPolicy referralPolicy) { }
-        public override System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public override System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.PeerResolver CreatePeerResolver() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
     }
     public sealed partial class PrivacyNoticeBindingElement : System.ServiceModel.Channels.BindingElement, System.ServiceModel.Description.IPolicyExportExtension
     {
         public PrivacyNoticeBindingElement() { }
         public PrivacyNoticeBindingElement(System.ServiceModel.Channels.PrivacyNoticeBindingElement elementToBeCloned) { }
-        [System.MonoTODOAttribute]
-        public System.Uri Url { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int Version { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Uri Url { get { throw null; } set { } }
+        public int Version { get { throw null; } set { } }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
@@ -3795,7 +3872,7 @@ namespace System.ServiceModel.Channels
     {
         public static readonly string Name;
         protected ReceiveContext() { }
-        public System.ServiceModel.Channels.ReceiveContextState State { get { throw null; } protected set { } }
+        public System.ServiceModel.Channels.ReceiveContextState State { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
         protected object ThisLock { get { throw null; } }
         public event System.EventHandler Faulted { add { } remove { } }
         public virtual void Abandon(System.Exception exception, System.TimeSpan timeout) { }
@@ -3828,13 +3905,14 @@ namespace System.ServiceModel.Channels
         Faulted = 5,
         Received = 0,
     }
+    [System.SerializableAttribute]
     public partial class RedirectionDuration
     {
         internal RedirectionDuration() { }
-        public string Namespace { get { throw null; } }
+        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionDuration Permanent { get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionDuration Temporary { get { throw null; } }
-        public string Value { get { throw null; } }
+        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionDuration Create(string duration, string ns) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -3842,6 +3920,7 @@ namespace System.ServiceModel.Channels
         public static bool operator !=(System.ServiceModel.Channels.RedirectionDuration left, System.ServiceModel.Channels.RedirectionDuration right) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class RedirectionException : System.ServiceModel.CommunicationException
     {
         protected RedirectionException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
@@ -3849,25 +3928,28 @@ namespace System.ServiceModel.Channels
         public RedirectionException(System.ServiceModel.Channels.RedirectionType type, System.ServiceModel.Channels.RedirectionDuration duration, System.ServiceModel.Channels.RedirectionScope scope, params System.ServiceModel.Channels.RedirectionLocation[] locations) { }
         public RedirectionException(string message, System.ServiceModel.Channels.RedirectionType type, System.ServiceModel.Channels.RedirectionDuration duration, System.ServiceModel.Channels.RedirectionScope scope, System.Exception innerException, params System.ServiceModel.Channels.RedirectionLocation[] locations) { }
         public RedirectionException(string message, System.ServiceModel.Channels.RedirectionType type, System.ServiceModel.Channels.RedirectionDuration duration, System.ServiceModel.Channels.RedirectionScope scope, params System.ServiceModel.Channels.RedirectionLocation[] locations) { }
-        public System.ServiceModel.Channels.RedirectionDuration Duration { get { throw null; } }
-        public System.Collections.Generic.IEnumerable<System.ServiceModel.Channels.RedirectionLocation> Locations { get { throw null; } }
-        public System.ServiceModel.Channels.RedirectionScope Scope { get { throw null; } }
-        public System.ServiceModel.Channels.RedirectionType Type { get { throw null; } }
+        public System.ServiceModel.Channels.RedirectionDuration Duration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IEnumerable<System.ServiceModel.Channels.RedirectionLocation> Locations { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Channels.RedirectionScope Scope { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Channels.RedirectionType Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+    [System.SerializableAttribute]
     public partial class RedirectionLocation
     {
         public RedirectionLocation(System.Uri address) { }
-        public System.Uri Address { get { throw null; } }
+        public System.Uri Address { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
+    [System.SerializableAttribute]
     public partial class RedirectionScope
     {
         internal RedirectionScope() { }
         public static System.ServiceModel.Channels.RedirectionScope Endpoint { get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionScope Message { get { throw null; } }
-        public string Namespace { get { throw null; } }
+        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionScope Session { get { throw null; } }
-        public string Value { get { throw null; } }
+        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionScope Create(string scope, string ns) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -3875,14 +3957,15 @@ namespace System.ServiceModel.Channels
         public static bool operator !=(System.ServiceModel.Channels.RedirectionScope left, System.ServiceModel.Channels.RedirectionScope right) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public sealed partial class RedirectionType
     {
         internal RedirectionType() { }
         public static System.ServiceModel.Channels.RedirectionType Cache { get { throw null; } }
-        public string Namespace { get { throw null; } }
+        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionType Resource { get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionType UseIntermediary { get { throw null; } }
-        public string Value { get { throw null; } }
+        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public static System.ServiceModel.Channels.RedirectionType Create(string type, string ns) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -3894,29 +3977,25 @@ namespace System.ServiceModel.Channels
     {
         public ReliableSessionBindingElement() { }
         public ReliableSessionBindingElement(bool ordered) { }
-        [System.MonoTODOAttribute]
-        public System.TimeSpan AcknowledgementInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool FlowControlEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.TimeSpan InactivityTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MaxPendingChannels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MaxRetryCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MaxTransferWindowSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool Ordered { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:00:00.2")]
+        public System.TimeSpan AcknowledgementInterval { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool FlowControlEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:10:00")]
+        public System.TimeSpan InactivityTimeout { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(4)]
+        public int MaxPendingChannels { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(8)]
+        public int MaxRetryCount { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(8)]
+        public int MaxTransferWindowSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool Ordered { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.ServiceModel.ReliableMessagingVersion), "WSReliableMessagingFebruary2005")]
+        public System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -3925,15 +4004,14 @@ namespace System.ServiceModel.Channels
     public sealed partial class ReliableSessionBindingElementImporter : System.ServiceModel.Description.IPolicyImportExtension
     {
         public ReliableSessionBindingElementImporter() { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyImportExtension.ImportPolicy(System.ServiceModel.Description.MetadataImporter importer, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public sealed partial class RemoteEndpointMessageProperty
     {
         public RemoteEndpointMessageProperty(string address, int port) { }
-        public string Address { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Address { get { throw null; } }
         public static string Name { get { throw null; } }
-        public int Port { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int Port { get { throw null; } }
     }
     public abstract partial class RequestContext : System.IDisposable
     {
@@ -3950,9 +4028,11 @@ namespace System.ServiceModel.Channels
         public abstract void Reply(System.ServiceModel.Channels.Message message, System.TimeSpan timeout);
         void System.IDisposable.Dispose() { }
     }
+    [System.SerializableAttribute]
     public partial class RetryException : System.ServiceModel.CommunicationException
     {
         public RetryException() { }
+        [System.Security.SecurityCriticalAttribute]
         protected RetryException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public RetryException(string message) { }
         public RetryException(string message, System.Exception innerException) { }
@@ -3964,9 +4044,9 @@ namespace System.ServiceModel.Channels
         public System.ServiceModel.Security.SecurityAlgorithmSuite DefaultAlgorithmSuite { get { throw null; } set { } }
         public bool EnableUnsecuredResponse { get { throw null; } set { } }
         public System.ServiceModel.Security.Tokens.SupportingTokenParameters EndpointSupportingTokenParameters { get { throw null; } }
-        public bool IncludeTimestamp { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IncludeTimestamp { get { throw null; } set { } }
         public System.ServiceModel.Security.SecurityKeyEntropyMode KeyEntropyMode { get { throw null; } set { } }
-        public System.ServiceModel.Channels.LocalClientSecuritySettings LocalClientSettings { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Channels.LocalClientSecuritySettings LocalClientSettings { get { throw null; } }
         public System.ServiceModel.Channels.LocalServiceSecuritySettings LocalServiceSettings { get { throw null; } }
         public System.ServiceModel.MessageSecurityVersion MessageSecurityVersion { get { throw null; } set { } }
         public System.Collections.Generic.IDictionary<string, System.ServiceModel.Security.Tokens.SupportingTokenParameters> OperationSupportingTokenParameters { get { throw null; } }
@@ -3978,35 +4058,23 @@ namespace System.ServiceModel.Channels
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         protected abstract System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListenerCore<TChannel>(System.ServiceModel.Channels.BindingContext context) where TChannel : class, System.ServiceModel.Channels.IChannel;
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute("Implement for TransportSecurityBindingElement")]
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute("Implement for TransportSecurityBindingElement")]
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateAnonymousForCertificateBindingElement() { throw null; }
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateCertificateOverTransportBindingElement() { throw null; }
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateCertificateOverTransportBindingElement(System.ServiceModel.MessageSecurityVersion version) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.AsymmetricSecurityBindingElement CreateCertificateSignatureBindingElement() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateIssuedTokenBindingElement(System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters issuedTokenParameters) { throw null; }
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateIssuedTokenForCertificateBindingElement(System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters issuedTokenParameters) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateIssuedTokenForSslBindingElement(System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters issuedTokenParameters) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateIssuedTokenForSslBindingElement(System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters issuedTokenParameters, bool requireCancellation) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateIssuedTokenOverTransportBindingElement(System.ServiceModel.Security.Tokens.IssuedSecurityTokenParameters issuedTokenParameters) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateKerberosBindingElement() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateKerberosOverTransportBindingElement() { throw null; }
         public static System.ServiceModel.Channels.SecurityBindingElement CreateMutualCertificateBindingElement() { throw null; }
         public static System.ServiceModel.Channels.SecurityBindingElement CreateMutualCertificateBindingElement(System.ServiceModel.MessageSecurityVersion version) { throw null; }
-        [System.MonoTODOAttribute("Does not support allowSerializedSigningTokenOnReply.")]
         public static System.ServiceModel.Channels.SecurityBindingElement CreateMutualCertificateBindingElement(System.ServiceModel.MessageSecurityVersion version, bool allowSerializedSigningTokenOnReply) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.AsymmetricSecurityBindingElement CreateMutualCertificateDuplexBindingElement() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.AsymmetricSecurityBindingElement CreateMutualCertificateDuplexBindingElement(System.ServiceModel.MessageSecurityVersion version) { throw null; }
         public static System.ServiceModel.Channels.SecurityBindingElement CreateSecureConversationBindingElement(System.ServiceModel.Channels.SecurityBindingElement bootstrapSecurity) { throw null; }
         public static System.ServiceModel.Channels.SecurityBindingElement CreateSecureConversationBindingElement(System.ServiceModel.Channels.SecurityBindingElement bootstrapSecurity, bool requireCancellation) { throw null; }
@@ -4016,12 +4084,10 @@ namespace System.ServiceModel.Channels
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateSspiNegotiationBindingElement() { throw null; }
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateSspiNegotiationBindingElement(bool requireCancellation) { throw null; }
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateSspiNegotiationOverTransportBindingElement() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateSspiNegotiationOverTransportBindingElement(bool requireCancellation) { throw null; }
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateUserNameForCertificateBindingElement() { throw null; }
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateUserNameForSslBindingElement() { throw null; }
         public static System.ServiceModel.Channels.SymmetricSecurityBindingElement CreateUserNameForSslBindingElement(bool requireCancellation) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Channels.TransportSecurityBindingElement CreateUserNameOverTransportBindingElement() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         protected static void SetIssuerBindingContextIfRequired(System.ServiceModel.Security.Tokens.SecurityTokenParameters parameters, System.ServiceModel.Channels.BindingContext issuerBindingContext) { }
@@ -4031,9 +4097,7 @@ namespace System.ServiceModel.Channels
     public partial class SecurityBindingElementImporter : System.ServiceModel.Description.IPolicyImportExtension
     {
         public SecurityBindingElementImporter() { }
-        [System.MonoTODOAttribute]
         public int MaxPolicyRedirections { get { throw null; } }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyImportExtension.ImportPolicy(System.ServiceModel.Description.MetadataImporter importer, System.ServiceModel.Description.PolicyConversionContext policyContext) { }
     }
     public enum SecurityHeaderLayout
@@ -4049,34 +4113,26 @@ namespace System.ServiceModel.Channels
         public abstract bool IsEnabled { get; }
         public abstract void UpdateMessageProperties(System.ServiceModel.Channels.MessageProperties inboundMessageProperties);
     }
-    [System.MonoTODOAttribute]
     public partial class SslStreamSecurityBindingElement : System.ServiceModel.Channels.StreamUpgradeBindingElement, System.ServiceModel.Channels.ITransportTokenAssertionProvider, System.ServiceModel.Description.IPolicyExportExtension
     {
         public SslStreamSecurityBindingElement() { }
         protected SslStreamSecurityBindingElement(System.ServiceModel.Channels.SslStreamSecurityBindingElement elementToBeCloned) { }
         public System.ServiceModel.Security.IdentityVerifier IdentityVerifier { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool RequireClientCertificate { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DefaultValueAttribute((System.Security.Authentication.SslProtocols)(4032))]
         public System.Security.Authentication.SslProtocols SslProtocols { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.StreamUpgradeProvider BuildClientStreamUpgradeProvider(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.StreamUpgradeProvider BuildServerStreamUpgradeProvider(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Xml.XmlElement GetTransportTokenAssertion() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeIdentityVerifier() { throw null; }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public partial class StandardBindingImporter : System.ServiceModel.Description.IWsdlImportExtension
@@ -4145,34 +4201,23 @@ namespace System.ServiceModel.Channels
     {
         public SymmetricSecurityBindingElement() { }
         public SymmetricSecurityBindingElement(System.ServiceModel.Security.Tokens.SecurityTokenParameters protectionTokenParameters) { }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.Security.MessageProtectionOrder MessageProtectionOrder { get { throw null; } set { } }
         public System.ServiceModel.Security.Tokens.SecurityTokenParameters ProtectionTokenParameters { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool RequireSignatureConfirmation { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactoryCore<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListenerCore<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override void SetKeyDerivation(bool requireDerivedKeys) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public sealed partial class TcpConnectionPoolSettings
     {
         internal TcpConnectionPoolSettings() { }
-        [System.MonoTODOAttribute]
         public string GroupName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.TimeSpan IdleTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.TimeSpan LeaseTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int MaxOutboundConnectionsPerEndpoint { get { throw null; } set { } }
     }
     public partial class TcpTransportBindingElement : System.ServiceModel.Channels.ConnectionOrientedTransportBindingElement
@@ -4182,55 +4227,60 @@ namespace System.ServiceModel.Channels
         public System.ServiceModel.Channels.TcpConnectionPoolSettings ConnectionPoolSettings { get { throw null; } }
         public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { get { throw null; } set { } }
         public int ListenBacklog { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool PortSharingEnabled { get { throw null; } set { } }
         public override string Scheme { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool TeredoEnabled { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeExtendedProtectionPolicy() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeListenBacklog() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class TextMessageEncodingBindingElement : System.ServiceModel.Channels.MessageEncodingBindingElement, System.ServiceModel.Description.IPolicyExportExtension, System.ServiceModel.Description.IWsdlExportExtension
     {
         public TextMessageEncodingBindingElement() { }
         public TextMessageEncodingBindingElement(System.ServiceModel.Channels.MessageVersion messageVersion, System.Text.Encoding writeEncoding) { }
+        [System.ComponentModel.DefaultValueAttribute(64)]
         public int MaxReadPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(16)]
         public int MaxWritePoolSize { get { throw null; } set { } }
         public override System.ServiceModel.Channels.MessageVersion MessageVersion { get { throw null; } set { } }
         public System.Xml.XmlDictionaryReaderQuotas ReaderQuotas { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
         public System.Text.Encoding WriteEncoding { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override System.ServiceModel.Channels.MessageEncoderFactory CreateMessageEncoderFactory() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeReaderQuotas() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeWriteEncoding() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IWsdlExportExtension.ExportContract(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlContractConversionContext context) { }
         void System.ServiceModel.Description.IWsdlExportExtension.ExportEndpoint(System.ServiceModel.Description.WsdlExporter exporter, System.ServiceModel.Description.WsdlEndpointConversionContext context) { }
     }
     public sealed partial class TransactionFlowBindingElement : System.ServiceModel.Channels.BindingElement, System.ServiceModel.Description.IPolicyExportExtension
     {
-        [System.MonoTODOAttribute]
         public TransactionFlowBindingElement() { }
         public TransactionFlowBindingElement(System.ServiceModel.TransactionProtocol transactionProtocol) { }
-        public bool AllowWildcardAction { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool AllowWildcardAction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.ServiceModel.TransactionProtocol TransactionProtocol { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeTransactionProtocol() { throw null; }
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
@@ -4255,8 +4305,11 @@ namespace System.ServiceModel.Channels
     {
         protected TransportBindingElement() { }
         protected TransportBindingElement(System.ServiceModel.Channels.TransportBindingElement elementToBeCloned) { }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public virtual bool ManualAddressing { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)524288)]
         public virtual long MaxBufferPoolSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((long)65536)]
         public virtual long MaxReceivedMessageSize { get { throw null; } set { } }
         public abstract string Scheme { get; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -4272,14 +4325,10 @@ namespace System.ServiceModel.Channels
     public sealed partial class TransportSecurityBindingElement : System.ServiceModel.Channels.SecurityBindingElement, System.ServiceModel.Description.IPolicyExportExtension
     {
         public TransportSecurityBindingElement() { }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactoryCore<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListenerCore<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext policyContext) { }
     }
     public sealed partial class UnderstoodHeaders : System.Collections.Generic.IEnumerable<System.ServiceModel.Channels.MessageHeaderInfo>, System.Collections.IEnumerable
@@ -4291,15 +4340,11 @@ namespace System.ServiceModel.Channels
         public void Remove(System.ServiceModel.Channels.MessageHeaderInfo headerInfo) { }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class UseManagedPresentationBindingElement : System.ServiceModel.Channels.BindingElement, System.ServiceModel.Description.IPolicyExportExtension
     {
         public UseManagedPresentationBindingElement() { }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public sealed partial class UseManagedPresentationBindingElementImporter : System.ServiceModel.Description.IPolicyImportExtension
@@ -4316,7 +4361,6 @@ namespace System.ServiceModel.Channels
         public string SubProtocol { get { throw null; } }
         public System.Net.WebSockets.WebSocketContext WebSocketContext { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class WebSocketTransportSettings : System.IEquatable<System.ServiceModel.Channels.WebSocketTransportSettings>
     {
         public const string BinaryEncoderTransferModeHeader = "microsoft-binary-transfer-mode";
@@ -4325,12 +4369,18 @@ namespace System.ServiceModel.Channels
         public const string SoapContentTypeHeader = "soap-content-type";
         public const string TextMessageReceivedAction = "http://schemas.microsoft.com/2011/02/websockets/ontextmessage";
         public WebSocketTransportSettings() { }
-        public bool CreateNotificationOnConnection { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool DisablePayloadMasking { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan KeepAliveInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int MaxPendingConnections { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string SubProtocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Channels.WebSocketTransportUsage TransportUsage { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool CreateNotificationOnConnection { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool DisablePayloadMasking { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(typeof(System.TimeSpan), "00:00:00")]
+        public System.TimeSpan KeepAliveInterval { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(0)]
+        public int MaxPendingConnections { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        public string SubProtocol { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.Channels.WebSocketTransportUsage)(2))]
+        public System.ServiceModel.Channels.WebSocketTransportUsage TransportUsage { get { throw null; } set { } }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ServiceModel.Channels.WebSocketTransportSettings other) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -4341,12 +4391,12 @@ namespace System.ServiceModel.Channels
         Never = 2,
         WhenDuplex = 0,
     }
-    [System.MonoTODOAttribute]
     public partial class WindowsStreamSecurityBindingElement : System.ServiceModel.Channels.StreamUpgradeBindingElement, System.ServiceModel.Channels.ITransportTokenAssertionProvider, System.ServiceModel.Description.IPolicyExportExtension
     {
         public WindowsStreamSecurityBindingElement() { }
         protected WindowsStreamSecurityBindingElement(System.ServiceModel.Channels.WindowsStreamSecurityBindingElement elementToBeCloned) { }
-        public System.Net.Security.ProtectionLevel ProtectionLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(2))]
+        public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override System.ServiceModel.Channels.StreamUpgradeProvider BuildClientStreamUpgradeProvider(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -4356,7 +4406,6 @@ namespace System.ServiceModel.Channels
         public override System.ServiceModel.Channels.BindingElement Clone() { throw null; }
         public override T GetProperty<T>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public System.Xml.XmlElement GetTransportTokenAssertion() { throw null; }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IPolicyExportExtension.ExportPolicy(System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context) { }
     }
     public partial class WrappedOptions
@@ -4376,12 +4425,16 @@ namespace System.ServiceModel.Channels
 }
 namespace System.ServiceModel.ComIntegration
 {
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Runtime.InteropServices.GuidAttribute("59856830-3ECB-4D29-9CFE-DDD0F74B96A2")]
     public partial class DllHostInitializer : System.EnterpriseServices.IProcessInitializer
     {
         public DllHostInitializer() { }
         public void Shutdown() { }
         public void Startup(object punkProcessControl) { }
     }
+    [System.Runtime.InteropServices.GuidAttribute("181b448c-c17c-4b17-ac6d-06699b93198f")]
+    [System.Runtime.InteropServices.InterfaceTypeAttribute((System.Runtime.InteropServices.ComInterfaceType)(2))]
     public partial interface IChannelCredentials
     {
         void SetClientCertificateFromFile(string fileName, string password, string keyStorageFlags);
@@ -4395,13 +4448,20 @@ namespace System.ServiceModel.ComIntegration
         void SetUserNameCredential(string userName, string password);
         void SetWindowsCredential(string domain, string userName, string password, int impersonationLevel, bool allowNtlm);
     }
+    [System.Runtime.Serialization.DataContractAttribute]
     public partial class PersistStreamTypeWrapper : System.Runtime.Serialization.IExtensibleDataObject
     {
         public PersistStreamTypeWrapper() { }
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData { get { throw null; } set { } }
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public void GetObject<T>(ref T obj) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public void SetObject<T>(T obj) { }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Runtime.InteropServices.GuidAttribute("CE39D6F3-DAB7-41b3-9F7D-BD1CC4E92399")]
     public sealed partial class ServiceMoniker : System.ContextBoundObject
     {
         public ServiceMoniker() { }
@@ -4417,11 +4477,11 @@ namespace System.ServiceModel.Configuration
     public sealed partial class AddressHeaderCollectionElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public AddressHeaderCollectionElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("headers", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("headers", DefaultValue=null)]
         public System.ServiceModel.Channels.AddressHeaderCollection Headers { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
-        [System.MonoTODOAttribute]
         protected override bool SerializeToXmlElement(System.Xml.XmlWriter writer, string elementName) { throw null; }
     }
     public sealed partial class AllowedAudienceUriElement : System.Configuration.ConfigurationElement
@@ -4443,8 +4503,12 @@ namespace System.ServiceModel.Configuration
     public sealed partial class ApplicationContainerSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public ApplicationContainerSettingsElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("packageFullName", DefaultValue=null)]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string PackageFullName { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SessionIdTypeConvertor")]
+        [System.Configuration.ConfigurationPropertyAttribute("sessionId", DefaultValue="CurrentSession")]
         public int SessionId { get { throw null; } set { } }
     }
     public enum AuthenticationMode
@@ -4472,12 +4536,12 @@ namespace System.ServiceModel.Configuration
     {
         public AuthorizationPolicyTypeElement() { }
         public AuthorizationPolicyTypeElement(string policyType) { }
-        [System.Configuration.ConfigurationPropertyAttribute("policyType", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("policyType", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string PolicyType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.AuthorizationPolicyTypeElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.AuthorizationPolicyTypeElement))]
     public sealed partial class AuthorizationPolicyTypeElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.AuthorizationPolicyTypeElement>
     {
         public AuthorizationPolicyTypeElementCollection() { }
@@ -4486,12 +4550,12 @@ namespace System.ServiceModel.Configuration
     public sealed partial class BaseAddressElement : System.Configuration.ConfigurationElement
     {
         public BaseAddressElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("baseAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("baseAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string BaseAddress { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.BaseAddressElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.BaseAddressElement), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public sealed partial class BaseAddressElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.BaseAddressElement>
     {
         public BaseAddressElementCollection() { }
@@ -4503,11 +4567,11 @@ namespace System.ServiceModel.Configuration
     {
         public BaseAddressPrefixFilterElement() { }
         public BaseAddressPrefixFilterElement(System.Uri prefix) { }
-        [System.Configuration.ConfigurationPropertyAttribute("prefix", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("prefix", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
         public System.Uri Prefix { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.BaseAddressPrefixFilterElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.BaseAddressPrefixFilterElement))]
     public sealed partial class BaseAddressPrefixFilterElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.BaseAddressPrefixFilterElement>
     {
         public BaseAddressPrefixFilterElementCollection() { }
@@ -4524,23 +4588,26 @@ namespace System.ServiceModel.Configuration
         public BasicHttpBindingElement() : base (default(string)) { }
         public BasicHttpBindingElement(string name) : base (default(string)) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue="Text", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue=(System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.BasicHttpSecurityElement Security { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class BasicHttpContextBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.BasicHttpContextBinding, System.ServiceModel.Configuration.BasicHttpContextBindingElement>
     {
         public BasicHttpContextBindingCollectionElement() { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class BasicHttpContextBindingElement : System.ServiceModel.Configuration.BasicHttpBindingElement
     {
         public BasicHttpContextBindingElement() { }
         public BasicHttpContextBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextManagementEnabled", DefaultValue=true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
@@ -4550,9 +4617,9 @@ namespace System.ServiceModel.Configuration
     {
         public BasicHttpMessageSecurityElement() { }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", DefaultValue="Default", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", DefaultValue="Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue="UserName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.BasicHttpMessageCredentialType)(0))]
         public System.ServiceModel.BasicHttpMessageCredentialType ClientCredentialType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -4565,10 +4632,10 @@ namespace System.ServiceModel.Configuration
         public BasicHttpsBindingElement() : base (default(string)) { }
         public BasicHttpsBindingElement(string name) : base (default(string)) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue="Text", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue=(System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.BasicHttpsSecurityElement Security { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -4576,23 +4643,23 @@ namespace System.ServiceModel.Configuration
     public sealed partial class BasicHttpSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public BasicHttpSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.BasicHttpMessageSecurityElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue="None", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.BasicHttpSecurityMode)(0))]
         public System.ServiceModel.BasicHttpSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.HttpTransportSecurityElement Transport { get { throw null; } }
     }
     public sealed partial class BasicHttpsSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public BasicHttpsSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.BasicHttpMessageSecurityElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue="None", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.BasicHttpsSecurityMode)(0))]
         public System.ServiceModel.BasicHttpsSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.HttpTransportSecurityElement Transport { get { throw null; } }
     }
     public abstract partial class BehaviorExtensionElement : System.ServiceModel.Configuration.ServiceModelExtensionElement
@@ -4614,25 +4681,25 @@ namespace System.ServiceModel.Configuration
     {
         public BinaryMessageEncodingElement() { }
         public override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("compressionFormat", DefaultValue=(System.ServiceModel.Channels.CompressionFormat)(0))]
         public System.ServiceModel.Channels.CompressionFormat CompressionFormat { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReadPoolSize", DefaultValue="64", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReadPoolSize", DefaultValue=64)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxReadPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxSessionSize", DefaultValue="2048", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxSessionSize", DefaultValue=2048)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxSessionSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxWritePoolSize", DefaultValue="16", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxWritePoolSize", DefaultValue=16)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxWritePoolSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class BindingCollectionElement : System.Configuration.ConfigurationElement
     {
         protected BindingCollectionElement() { }
@@ -4664,18 +4731,23 @@ namespace System.ServiceModel.Configuration
         public new System.ServiceModel.Configuration.BindingCollectionElement this[string binding] { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("msmqIntegrationBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.MsmqIntegrationBindingCollectionElement MsmqIntegrationBinding { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("netHttpBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.NetHttpBindingCollectionElement NetHttpBinding { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("netHttpsBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.NetHttpsBindingCollectionElement NetHttpsBinding { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("netMsmqBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.NetMsmqBindingCollectionElement NetMsmqBinding { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("netNamedPipeBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.NetNamedPipeBindingCollectionElement NetNamedPipeBinding { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("netPeerTcpBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
         public System.ServiceModel.Configuration.NetPeerTcpBindingCollectionElement NetPeerTcpBinding { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("netTcpBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.NetTcpBindingCollectionElement NetTcpBinding { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("ws2007FederationHttpBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.WS2007FederationHttpBindingCollectionElement WS2007FederationHttpBinding { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("ws2007HttpBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.WS2007HttpBindingCollectionElement WS2007HttpBinding { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("wsDualHttpBinding", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.WSDualHttpBindingCollectionElement WSDualHttpBinding { get { throw null; } }
@@ -4690,7 +4762,7 @@ namespace System.ServiceModel.Configuration
     {
         public CallbackDebugElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("includeExceptionDetailInFaults", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("includeExceptionDetailInFaults", DefaultValue=false)]
         public bool IncludeExceptionDetailInFaults { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -4701,75 +4773,72 @@ namespace System.ServiceModel.Configuration
         public CallbackTimeoutsElement() { }
         public override System.Type BehaviorType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("transactionTimeout", DefaultValue="00:00:00", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionTimeout", DefaultValue="00:00:00")]
         public System.TimeSpan TransactionTimeout { get { throw null; } set { } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override object CreateBehavior() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class CertificateElement : System.Configuration.ConfigurationElement
     {
         public CertificateElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("encodedValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("encodedValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string EncodedValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class CertificateReferenceElement : System.Configuration.ConfigurationElement
     {
         public CertificateReferenceElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("isChainIncluded", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("isChainIncluded", DefaultValue=false)]
         public bool IsChainIncluded { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="LocalMachine", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ChannelEndpointElement : System.Configuration.ConfigurationElement
     {
         public ChannelEndpointElement() { }
         public ChannelEndpointElement(System.ServiceModel.EndpointAddress address, string contractType) { }
         [System.Configuration.ConfigurationPropertyAttribute("address", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.Uri Address { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BehaviorConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("binding", Options=(System.Configuration.ConfigurationPropertyOptions)(2), IsRequired=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("binding", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Binding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("contract", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("contract", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Contract { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("endpointConfiguration", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.ConfigurationPropertyAttribute("endpointConfiguration", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string EndpointConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("headers", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("headers")]
         public System.ServiceModel.Configuration.AddressHeaderCollectionElement Headers { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("identity", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("identity")]
         public System.ServiceModel.Configuration.IdentityElement Identity { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("kind", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.ConfigurationPropertyAttribute("kind", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Kind { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4), IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ChannelEndpointElement), AddItemName="endpoint", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ChannelEndpointElement), AddItemName="endpoint")]
     public sealed partial class ChannelEndpointElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ChannelEndpointElement>
     {
         public ChannelEndpointElementCollection() { }
@@ -4778,14 +4847,14 @@ namespace System.ServiceModel.Configuration
     public sealed partial class ChannelPoolSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public ChannelPoolSettingsElement() { }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("idleTimeout", DefaultValue="00:02:00", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("idleTimeout", DefaultValue="00:02:00")]
         public System.TimeSpan IdleTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("leaseTimeout", DefaultValue="00:10:00", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("leaseTimeout", DefaultValue="00:10:00")]
         public System.TimeSpan LeaseTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxOutboundChannelsPerEndpoint", DefaultValue="10", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxOutboundChannelsPerEndpoint", DefaultValue=10)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxOutboundChannelsPerEndpoint { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -4793,14 +4862,14 @@ namespace System.ServiceModel.Configuration
     {
         public ClaimTypeElement() { }
         public ClaimTypeElement(string claimType, bool isOptional) { }
-        [System.Configuration.ConfigurationPropertyAttribute("claimType", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("claimType", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string ClaimType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("isOptional", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("isOptional", DefaultValue=false)]
         public bool IsOptional { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ClaimTypeElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ClaimTypeElement))]
     public sealed partial class ClaimTypeElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.ClaimTypeElement>
     {
         public ClaimTypeElementCollection() { }
@@ -4816,25 +4885,25 @@ namespace System.ServiceModel.Configuration
     {
         public ClientCredentialsElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCertificate")]
         public System.ServiceModel.Configuration.X509InitiatorCertificateClientElement ClientCertificate { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpDigest", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.MonoTODOAttribute]
+        [System.Configuration.ConfigurationPropertyAttribute("httpDigest")]
         public System.ServiceModel.Configuration.HttpDigestClientElement HttpDigest { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuedToken", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedToken")]
         public System.ServiceModel.Configuration.IssuedTokenClientElement IssuedToken { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("peer", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("peer")]
         public System.ServiceModel.Configuration.PeerCredentialElement Peer { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("serviceCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("serviceCertificate")]
         public System.ServiceModel.Configuration.X509RecipientCertificateClientElement ServiceCertificate { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("supportInteractive", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("supportInteractive", DefaultValue=true)]
         public bool SupportInteractive { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("type", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("type", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Type { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("useIdentityConfiguration", DefaultValue=false)]
         public bool UseIdentityConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("windows", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("windows")]
         public System.ServiceModel.Configuration.WindowsClientElement Windows { get { throw null; } }
         protected internal void ApplyConfiguration(System.ServiceModel.Description.ClientCredentials behavior) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -4843,9 +4912,9 @@ namespace System.ServiceModel.Configuration
     public sealed partial class ClientSection : System.Configuration.ConfigurationSection
     {
         public ClientSection() { }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.ChannelEndpointElementCollection Endpoints { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("metadata", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("metadata")]
         public System.ServiceModel.Configuration.MetadataElement Metadata { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected override void InitializeDefault() { }
@@ -4856,70 +4925,64 @@ namespace System.ServiceModel.Configuration
         public ClientViaElement() { }
         public override System.Type BehaviorType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("viaUri", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("viaUri")]
         public System.Uri ViaUri { get { throw null; } set { } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override object CreateBehavior() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ComContractElement : System.Configuration.ConfigurationElement
     {
         public ComContractElement() { }
         public ComContractElement(string contractType) { }
-        [System.Configuration.ConfigurationPropertyAttribute("contract", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("contract", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Contract { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("exposedMethods", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.ComMethodElementCollection ExposedMethods { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("namespace", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Namespace { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("persistableTypes", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("persistableTypes")]
         public System.ServiceModel.Configuration.ComPersistableTypeElementCollection PersistableTypes { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("requiresSession", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("requiresSession", DefaultValue=true)]
         public bool RequiresSession { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("userDefinedTypes", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("userDefinedTypes")]
         public System.ServiceModel.Configuration.ComUdtElementCollection UserDefinedTypes { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComContractElement), AddItemName="comContract", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComContractElement), AddItemName="comContract")]
     public sealed partial class ComContractElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ComContractElement>
     {
         public ComContractElementCollection() { }
         protected override bool ThrowOnDuplicate { get { throw null; } }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ComContractsSection : System.Configuration.ConfigurationSection
     {
         public ComContractsSection() { }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.ComContractElementCollection ComContracts { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ComMethodElement : System.Configuration.ConfigurationElement
     {
         public ComMethodElement() { }
         public ComMethodElement(string method) { }
-        [System.Configuration.ConfigurationPropertyAttribute("exposedMethod", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("exposedMethod", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string ExposedMethod { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComMethodElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComMethodElement))]
     public sealed partial class ComMethodElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ComMethodElement>
     {
         public ComMethodElementCollection() { }
         protected override bool ThrowOnDuplicate { get { throw null; } }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class CommonBehaviorsSection : System.Configuration.ConfigurationSection
     {
         public CommonBehaviorsSection() { }
@@ -4929,35 +4992,31 @@ namespace System.ServiceModel.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("serviceBehaviors", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.CommonServiceBehaviorElement ServiceBehaviors { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public partial class CommonEndpointBehaviorElement : System.ServiceModel.Configuration.ServiceModelExtensionCollectionElement<System.ServiceModel.Configuration.BehaviorExtensionElement>
     {
         public CommonEndpointBehaviorElement() { }
         public override void Add(System.ServiceModel.Configuration.BehaviorExtensionElement element) { }
         public override bool CanAdd(System.ServiceModel.Configuration.BehaviorExtensionElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class CommonServiceBehaviorElement : System.ServiceModel.Configuration.ServiceModelExtensionCollectionElement<System.ServiceModel.Configuration.BehaviorExtensionElement>
     {
         public CommonServiceBehaviorElement() { }
         public override void Add(System.ServiceModel.Configuration.BehaviorExtensionElement element) { }
         public override bool CanAdd(System.ServiceModel.Configuration.BehaviorExtensionElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ComPersistableTypeElement : System.Configuration.ConfigurationElement
     {
         public ComPersistableTypeElement() { }
         public ComPersistableTypeElement(string ID) { }
-        [System.Configuration.ConfigurationPropertyAttribute("ID", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("ID", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string ID { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComPersistableTypeElement), AddItemName="type", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComPersistableTypeElement), AddItemName="type")]
     public sealed partial class ComPersistableTypeElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ComPersistableTypeElement>
     {
         public ComPersistableTypeElementCollection() { }
@@ -4968,36 +5027,33 @@ namespace System.ServiceModel.Configuration
     {
         public CompositeDuplexElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientBaseAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("clientBaseAddress", DefaultValue=null)]
         public System.Uri ClientBaseAddress { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ComUdtElement : System.Configuration.ConfigurationElement
     {
         public ComUdtElement() { }
         public ComUdtElement(string typeDefID) { }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("typeDefID", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("typeDefID", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string TypeDefID { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("typeLibID", Options=(System.Configuration.ConfigurationPropertyOptions)(2), IsRequired=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("typeLibID", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string TypeLibID { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("typeLibVersion", Options=(System.Configuration.ConfigurationPropertyOptions)(2), IsRequired=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("typeLibVersion", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string TypeLibVersion { get { throw null; } set { } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComUdtElement), AddItemName="userDefinedType", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ComUdtElement), AddItemName="userDefinedType")]
     public sealed partial class ComUdtElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ComUdtElement>
     {
         public ComUdtElementCollection() { }
@@ -5015,48 +5071,53 @@ namespace System.ServiceModel.Configuration
     public abstract partial class ConnectionOrientedTransportElement : System.ServiceModel.Configuration.TransportElement
     {
         internal ConnectionOrientedTransportElement() { }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("channelInitializationTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:00:05")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("channelInitializationTimeout", DefaultValue="00:00:30")]
         public System.TimeSpan ChannelInitializationTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("connectionBufferSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="8192")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("connectionBufferSize", DefaultValue=8192)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int ConnectionBufferSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="StrongWildcard")]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue=65536)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("maxOutputDelay", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:00:00.2")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maxOutputDelay", DefaultValue="00:00:00.2")]
         public System.TimeSpan MaxOutputDelay { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxPendingAccepts", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="1")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingAccepts", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingAccepts { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxPendingConnections", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingConnections", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingConnections { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transferMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Buffered")]
+        [System.Configuration.ConfigurationPropertyAttribute("transferMode", DefaultValue=(System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class ContextBindingElementExtensionElement : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         public ContextBindingElementExtensionElement() { }
         public override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("clientCallbackAddress", DefaultValue=null)]
         public System.Uri ClientCallbackAddress { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextExchangeMechanism", DefaultValue=(System.ServiceModel.Channels.ContextExchangeMechanism)(0))]
         public System.ServiceModel.Channels.ContextExchangeMechanism ContextExchangeMechanism { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextManagementEnabled", DefaultValue=true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
     }
     public sealed partial class CustomBindingCollectionElement : System.ServiceModel.Configuration.BindingCollectionElement
     {
         public CustomBindingCollectionElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.CustomBindingElementCollection Bindings { get { throw null; } }
         public override System.Type BindingType { get { throw null; } }
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.Configuration.IBindingConfigurationElement> ConfiguredBindings { get { throw null; } }
@@ -5069,28 +5130,25 @@ namespace System.ServiceModel.Configuration
     {
         public CustomBindingElement() { }
         public CustomBindingElement(string name) { }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("closeTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("closeTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan CloseTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("openTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("openTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan OpenTimeout { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("receiveTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:10:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveTimeout", DefaultValue="00:10:00")]
         public System.TimeSpan ReceiveTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("sendTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("sendTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan SendTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute("what to reject?")]
         public override void Add(System.ServiceModel.Configuration.BindingElementExtensionElement element) { }
         public void ApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
-        [System.MonoTODOAttribute("what to reject?")]
         public override bool CanAdd(System.ServiceModel.Configuration.BindingElementExtensionElement element) { throw null; }
         protected void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.CustomBindingElement), AddItemName="binding", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.CustomBindingElement), AddItemName="binding")]
     public sealed partial class CustomBindingElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.CustomBindingElement>
     {
         public CustomBindingElementCollection() { }
@@ -5100,10 +5158,10 @@ namespace System.ServiceModel.Configuration
     {
         public DataContractSerializerElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("ignoreExtensionDataObject", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("ignoreExtensionDataObject", DefaultValue=false)]
         public bool IgnoreExtensionDataObject { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxItemsInObjectGraph", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxItemsInObjectGraph", DefaultValue=2147483647)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxItemsInObjectGraph { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -5113,10 +5171,15 @@ namespace System.ServiceModel.Configuration
     {
         public DefaultPortElement() { }
         public DefaultPortElement(System.ServiceModel.Configuration.DefaultPortElement other) { }
+        [System.Configuration.ConfigurationPropertyAttribute("port", DefaultValue=0, Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=65535)]
         public int Port { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("scheme", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Scheme { get { throw null; } set { } }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.DefaultPortElement), AddItemName="add")]
     public sealed partial class DefaultPortElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.DefaultPortElement>
     {
         public DefaultPortElementCollection() { }
@@ -5126,8 +5189,11 @@ namespace System.ServiceModel.Configuration
     {
         public DelegatingHandlerElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Type { get { throw null; } set { } }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.DelegatingHandlerElement), AddItemName="handler", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public sealed partial class DelegatingHandlerElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.DelegatingHandlerElement>
     {
         public DelegatingHandlerElementCollection() { }
@@ -5140,45 +5206,45 @@ namespace System.ServiceModel.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("endToEndTracing", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.EndToEndTracingElement EndToEndTracing { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("etwProviderId", DefaultValue="{c651f5f6-1c0d-492e-8ae1-b4efd7c9d503}")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        [System.Configuration.StringValidatorAttribute(MinLength=32)]
         public string EtwProviderId { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("messageLogging", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.MessageLoggingElement MessageLogging { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("performanceCountersEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
-        public bool PerformanceCountersEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("performanceCounters", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Off")]
+        [System.Configuration.ConfigurationPropertyAttribute("performanceCounters", DefaultValue=(System.ServiceModel.Diagnostics.PerformanceCounterScope)(3))]
         public System.ServiceModel.Diagnostics.PerformanceCounterScope PerformanceCounters { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("wmiProviderEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("wmiProviderEnabled", DefaultValue=false)]
         public bool WmiProviderEnabled { get { throw null; } set { } }
     }
     public sealed partial class DispatcherSynchronizationElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public DispatcherSynchronizationElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("asynchronousSendEnabled", DefaultValue=false)]
         public bool AsynchronousSendEnabled { get { throw null; } set { } }
         public override System.Type BehaviorType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingReceives", DefaultValue=1)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxPendingReceives { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override object CreateBehavior() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class DnsElement : System.Configuration.ConfigurationElement
     {
         public DnsElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("value", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Value { get { throw null; } set { } }
     }
     public partial class EndpointAddressElementBase : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         protected EndpointAddressElementBase() { }
-        [System.Configuration.ConfigurationPropertyAttribute("address", Options=(System.Configuration.ConfigurationPropertyOptions)(2), DefaultValue=null, IsRequired=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("address", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
         public System.Uri Address { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("headers", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("headers")]
         public System.ServiceModel.Configuration.AddressHeaderCollectionElement Headers { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("identity", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("identity")]
         public System.ServiceModel.Configuration.IdentityElement Identity { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal void Copy(System.ServiceModel.Configuration.EndpointAddressElementBase source) { }
@@ -5191,7 +5257,7 @@ namespace System.ServiceModel.Configuration
         public override void Add(System.ServiceModel.Configuration.BehaviorExtensionElement element) { }
         public override bool CanAdd(System.ServiceModel.Configuration.BehaviorExtensionElement element) { throw null; }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.EndpointBehaviorElement), AddItemName="behavior", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.EndpointBehaviorElement), AddItemName="behavior")]
     public sealed partial class EndpointBehaviorElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.EndpointBehaviorElement>
     {
         public EndpointBehaviorElementCollection() { }
@@ -5212,11 +5278,11 @@ namespace System.ServiceModel.Configuration
     public sealed partial class EndToEndTracingElement : System.Configuration.ConfigurationElement
     {
         public EndToEndTracingElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("activityTracing", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("activityTracing", DefaultValue=false)]
         public bool ActivityTracing { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageFlowTracing", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("messageFlowTracing", DefaultValue=false)]
         public bool MessageFlowTracing { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("propagateActivity", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("propagateActivity", DefaultValue=false)]
         public bool PropagateActivity { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -5225,15 +5291,15 @@ namespace System.ServiceModel.Configuration
         public ExtensionElement() { }
         public ExtensionElement(string name) { }
         public ExtensionElement(string name, string type) { }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(2), IsRequired=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Type { get { throw null; } set { } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ExtensionElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ExtensionElement), CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public partial class ExtensionElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.ExtensionElement>
     {
         public ExtensionElementCollection() { }
@@ -5245,41 +5311,40 @@ namespace System.ServiceModel.Configuration
     public partial class ExtensionsSection : System.Configuration.ConfigurationSection
     {
         public ExtensionsSection() { }
-        [System.Configuration.ConfigurationPropertyAttribute("behaviorExtensions", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("behaviorExtensions")]
         public System.ServiceModel.Configuration.ExtensionElementCollection BehaviorExtensions { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingElementExtensions", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingElementExtensions")]
         public System.ServiceModel.Configuration.ExtensionElementCollection BindingElementExtensions { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingExtensions", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingExtensions")]
         public System.ServiceModel.Configuration.ExtensionElementCollection BindingExtensions { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("endpointExtensions", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("endpointExtensions")]
         public System.ServiceModel.Configuration.ExtensionElementCollection EndpointExtensions { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected override void InitializeDefault() { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class FederatedMessageSecurityOverHttpElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public FederatedMessageSecurityOverHttpElement() { }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", DefaultValue="Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("claimTypeRequirements", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("claimTypeRequirements")]
         public System.ServiceModel.Configuration.ClaimTypeElementCollection ClaimTypeRequirements { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("establishSecurityContext", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("establishSecurityContext", DefaultValue=true)]
         public bool EstablishSecurityContext { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuedKeyType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="SymmetricKey")]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedKeyType", DefaultValue=(System.IdentityModel.Tokens.SecurityKeyType)(0))]
         public System.IdentityModel.Tokens.SecurityKeyType IssuedKeyType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string IssuedTokenType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuer", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuer")]
         public System.ServiceModel.Configuration.IssuedTokenParametersEndpointAddressElement Issuer { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuerMetadata", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuerMetadata")]
         public System.ServiceModel.Configuration.EndpointAddressElementBase IssuerMetadata { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("negotiateServiceCredential", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("negotiateServiceCredential", DefaultValue=true)]
         public bool NegotiateServiceCredential { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("tokenRequestParameters", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("tokenRequestParameters")]
         public System.ServiceModel.Configuration.XmlElementElementCollection TokenRequestParameters { get { throw null; } }
     }
     public sealed partial class HostElement : System.Configuration.ConfigurationElement
@@ -5294,43 +5359,43 @@ namespace System.ServiceModel.Configuration
     public sealed partial class HostTimeoutsElement : System.Configuration.ConfigurationElement
     {
         public HostTimeoutsElement() { }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("closeTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:00:10")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("closeTimeout", DefaultValue="00:00:10")]
         public System.TimeSpan CloseTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("openTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("openTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan OpenTimeout { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
     public abstract partial class HttpBindingBaseElement : System.ServiceModel.Configuration.StandardBindingElement
     {
         protected HttpBindingBaseElement(string name) { }
-        [System.Configuration.ConfigurationPropertyAttribute("allowCookies", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("allowCookies", DefaultValue=false)]
         public bool AllowCookies { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue="StrongWildcard", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue="524288", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue="65536", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue=65536)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue="65536", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null)]
         public System.Uri ProxyAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("textEncoding", DefaultValue="utf-8", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("textEncoding", DefaultValue="utf-8")]
         public System.Text.Encoding TextEncoding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("transferMode", DefaultValue="Buffered", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transferMode", DefaultValue=(System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -5338,7 +5403,7 @@ namespace System.ServiceModel.Configuration
     public sealed partial class HttpDigestClientElement : System.Configuration.ConfigurationElement
     {
         public HttpDigestClientElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("impersonationLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=(System.Security.Principal.TokenImpersonationLevel)(2))]
+        [System.Configuration.ConfigurationPropertyAttribute("impersonationLevel", DefaultValue=(System.Security.Principal.TokenImpersonationLevel)(2))]
         public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.HttpDigestClientElement from) { }
@@ -5346,8 +5411,11 @@ namespace System.ServiceModel.Configuration
     public sealed partial class HttpMessageHandlerFactoryElement : System.Configuration.ConfigurationElement
     {
         public HttpMessageHandlerFactoryElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("handlers")]
         public System.ServiceModel.Configuration.DelegatingHandlerElementCollection Handlers { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("type")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Type { get { throw null; } set { } }
     }
     public partial class HttpsTransportElement : System.ServiceModel.Configuration.HttpTransportElement
@@ -5355,7 +5423,7 @@ namespace System.ServiceModel.Configuration
         public HttpsTransportElement() { }
         public override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("requireClientCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("requireClientCertificate", DefaultValue=false)]
         public bool RequireClientCertificate { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -5365,60 +5433,65 @@ namespace System.ServiceModel.Configuration
     public partial class HttpTransportElement : System.ServiceModel.Configuration.TransportElement
     {
         public HttpTransportElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("allowCookies", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("allowCookies", DefaultValue=false)]
         public bool AllowCookies { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("authenticationScheme", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Anonymous")]
+        [System.Configuration.ConfigurationPropertyAttribute("authenticationScheme", DefaultValue=(System.Net.AuthenticationSchemes)(32768))]
         public System.Net.AuthenticationSchemes AuthenticationScheme { get { throw null; } set { } }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("decompressionEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("decompressionEnabled", DefaultValue=true)]
         public bool DecompressionEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy")]
         public System.Security.Authentication.ExtendedProtection.Configuration.ExtendedProtectionPolicyElement ExtendedProtectionPolicy { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="StrongWildcard")]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("keepAliveEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("keepAliveEnabled", DefaultValue=true)]
         public bool KeepAliveEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue=65536)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxBufferSize { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingAccepts", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=100000)]
         public int MaxPendingAccepts { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("messageHandlerFactory", DefaultValue=null)]
         public System.ServiceModel.Configuration.HttpMessageHandlerFactoryElement MessageHandlerFactory { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null)]
         public System.Uri ProxyAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyAuthenticationScheme", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Anonymous")]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyAuthenticationScheme", DefaultValue=(System.Net.AuthenticationSchemes)(32768))]
         public System.Net.AuthenticationSchemes ProxyAuthenticationScheme { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("realm", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("realm", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Realm { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("requestInitializationTimeout", DefaultValue="00:00:00")]
         public System.TimeSpan RequestInitializationTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("transferMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Buffered")]
+        [System.Configuration.ConfigurationPropertyAttribute("transferMode", DefaultValue=(System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("unsafeConnectionNtlmAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("unsafeConnectionNtlmAuthentication", DefaultValue=false)]
         public bool UnsafeConnectionNtlmAuthentication { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("webSocketSettings")]
         public System.ServiceModel.Configuration.WebSocketTransportSettingsElement WebSocketSettings { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected override System.ServiceModel.Channels.TransportBindingElement CreateDefaultBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class HttpTransportSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public HttpTransportSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=(System.ServiceModel.HttpClientCredentialType)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.HttpClientCredentialType)(0))]
         public System.ServiceModel.HttpClientCredentialType ClientCredentialType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy")]
         public System.Security.Authentication.ExtendedProtection.Configuration.ExtendedProtectionPolicyElement ExtendedProtectionPolicy { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyCredentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=(System.ServiceModel.HttpProxyCredentialType)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyCredentialType", DefaultValue=(System.ServiceModel.HttpProxyCredentialType)(0))]
         public System.ServiceModel.HttpProxyCredentialType ProxyCredentialType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("realm", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("realm", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Realm { get { throw null; } set { } }
     }
     public partial interface IBindingConfigurationElement
@@ -5433,61 +5506,57 @@ namespace System.ServiceModel.Configuration
     public sealed partial class IdentityElement : System.Configuration.ConfigurationElement
     {
         public IdentityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("certificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificate")]
         public System.ServiceModel.Configuration.CertificateElement Certificate { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("certificateReference", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificateReference")]
         public System.ServiceModel.Configuration.CertificateReferenceElement CertificateReference { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("dns", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("dns")]
         public System.ServiceModel.Configuration.DnsElement Dns { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("rsa", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("rsa")]
         public System.ServiceModel.Configuration.RsaElement Rsa { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("servicePrincipalName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("servicePrincipalName")]
         public System.ServiceModel.Configuration.ServicePrincipalNameElement ServicePrincipalName { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("userPrincipalName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("userPrincipalName")]
         public System.ServiceModel.Configuration.UserPrincipalNameElement UserPrincipalName { get { throw null; } }
         public void InitializeFrom(System.ServiceModel.EndpointIdentity identity) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class IssuedTokenClientBehaviorsElement : System.Configuration.ConfigurationElement
     {
         public IssuedTokenClientBehaviorsElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BehaviorConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuerAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(6), DefaultValue="", IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("issuerAddress", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string IssuerAddress { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.IssuedTokenClientBehaviorsElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.IssuedTokenClientBehaviorsElement))]
     public sealed partial class IssuedTokenClientBehaviorsElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.IssuedTokenClientBehaviorsElement>
     {
         public IssuedTokenClientBehaviorsElementCollection() { }
-        [System.MonoTODOAttribute]
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class IssuedTokenClientElement : System.Configuration.ConfigurationElement
     {
         public IssuedTokenClientElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("cacheIssuedTokens", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("cacheIssuedTokens", DefaultValue=true)]
         public bool CacheIssuedTokens { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("defaultKeyEntropyMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="CombinedEntropy")]
+        [System.Configuration.ConfigurationPropertyAttribute("defaultKeyEntropyMode", DefaultValue=(System.ServiceModel.Security.SecurityKeyEntropyMode)(2))]
         public System.ServiceModel.Security.SecurityKeyEntropyMode DefaultKeyEntropyMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenRenewalThresholdPercentage", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="60")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=100, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenRenewalThresholdPercentage", DefaultValue=60)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=100)]
         public int IssuedTokenRenewalThresholdPercentage { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuerChannelBehaviors", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuerChannelBehaviors")]
         public System.ServiceModel.Configuration.IssuedTokenClientBehaviorsElementCollection IssuerChannelBehaviors { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("localIssuer", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("localIssuer")]
         public System.ServiceModel.Configuration.IssuedTokenParametersEndpointAddressElement LocalIssuer { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("localIssuerChannelBehaviors", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("localIssuerChannelBehaviors", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string LocalIssuerChannelBehaviors { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("maxIssuedTokenCachingTime", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10675199.02:48:05.4775807")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maxIssuedTokenCachingTime", DefaultValue="10675199.02:48:05.4775807")]
         public System.TimeSpan MaxIssuedTokenCachingTime { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.IssuedTokenClientElement from) { }
@@ -5495,24 +5564,27 @@ namespace System.ServiceModel.Configuration
     public sealed partial class IssuedTokenParametersElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public IssuedTokenParametersElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("additionalRequestParameters", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("additionalRequestParameters")]
         public System.ServiceModel.Configuration.XmlElementElementCollection AdditionalRequestParameters { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("claimTypeRequirements", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("claimTypeRequirements")]
         public System.ServiceModel.Configuration.ClaimTypeElementCollection ClaimTypeRequirements { get { throw null; } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.MessageSecurityVersionConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("defaultMessageSecurityVersion")]
         public System.ServiceModel.MessageSecurityVersion DefaultMessageSecurityVersion { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuer", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuer")]
         public System.ServiceModel.Configuration.IssuedTokenParametersEndpointAddressElement Issuer { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuerMetadata", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuerMetadata")]
         public System.ServiceModel.Configuration.EndpointAddressElementBase IssuerMetadata { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("keySize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="0")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("keySize", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int KeySize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("keyType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="SymmetricKey")]
+        [System.Configuration.ConfigurationPropertyAttribute("keyType", DefaultValue=(System.IdentityModel.Tokens.SecurityKeyType)(0))]
         public System.IdentityModel.Tokens.SecurityKeyType KeyType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("tokenType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("tokenType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string TokenType { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("useStrTransform", DefaultValue=false)]
         public bool UseStrTransform { get { throw null; } set { } }
         protected override bool SerializeToXmlElement(System.Xml.XmlWriter writer, string elementName) { throw null; }
         protected override void Unmerge(System.Configuration.ConfigurationElement sourceElement, System.Configuration.ConfigurationElement parentElement, System.Configuration.ConfigurationSaveMode saveMode) { }
@@ -5520,11 +5592,11 @@ namespace System.ServiceModel.Configuration
     public sealed partial class IssuedTokenParametersEndpointAddressElement : System.ServiceModel.Configuration.EndpointAddressElementBase
     {
         public IssuedTokenParametersEndpointAddressElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("binding", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("binding", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Binding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingConfiguration { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -5533,22 +5605,22 @@ namespace System.ServiceModel.Configuration
         public IssuedTokenServiceElement() { }
         [System.Configuration.ConfigurationPropertyAttribute("allowedAudienceUris")]
         public System.ServiceModel.Configuration.AllowedAudienceUriElementCollection AllowedAudienceUris { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("allowUntrustedRsaIssuers", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("allowUntrustedRsaIssuers", DefaultValue=false)]
         public bool AllowUntrustedRsaIssuers { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("audienceUriMode", DefaultValue=(System.IdentityModel.Selectors.AudienceUriMode)(2))]
+        [System.Configuration.ConfigurationPropertyAttribute("audienceUriMode", DefaultValue=(System.IdentityModel.Selectors.AudienceUriMode)(1))]
         public System.IdentityModel.Selectors.AudienceUriMode AudienceUriMode { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue=(System.ServiceModel.Security.X509CertificateValidationMode)(2))]
         public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string CustomCertificateValidatorType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("knownCertificates", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("knownCertificates")]
         public System.ServiceModel.Configuration.X509CertificateTrustedIssuerElementCollection KnownCertificates { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue=(System.Security.Cryptography.X509Certificates.X509RevocationMode)(1))]
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("samlSerializerType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("samlSerializerType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string SamlSerializerType { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2))]
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
@@ -5557,105 +5629,103 @@ namespace System.ServiceModel.Configuration
     public sealed partial class LocalClientSecuritySettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public LocalClientSecuritySettingsElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("cacheCookies", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("cacheCookies", DefaultValue=true)]
         public bool CacheCookies { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("cookieRenewalThresholdPercentage", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="60")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=100, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("cookieRenewalThresholdPercentage", DefaultValue=60)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=100)]
         public int CookieRenewalThresholdPercentage { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("detectReplays", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("detectReplays", DefaultValue=true)]
         public bool DetectReplays { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("maxClockSkew", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maxClockSkew", DefaultValue="00:05:00")]
         public System.TimeSpan MaxClockSkew { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("maxCookieCachingTime", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10675199.02:48:05.4775807")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maxCookieCachingTime", DefaultValue="10675199.02:48:05.4775807")]
         public System.TimeSpan MaxCookieCachingTime { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("reconnectTransportOnFailure", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("reconnectTransportOnFailure", DefaultValue=true)]
         public bool ReconnectTransportOnFailure { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("replayCacheSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="900000")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("replayCacheSize", DefaultValue=900000)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int ReplayCacheSize { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("replayWindow", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("replayWindow", DefaultValue="00:05:00")]
         public System.TimeSpan ReplayWindow { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRenewalInterval", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10:00:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRenewalInterval", DefaultValue="10:00:00")]
         public System.TimeSpan SessionKeyRenewalInterval { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRolloverInterval", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRolloverInterval", DefaultValue="00:05:00")]
         public System.TimeSpan SessionKeyRolloverInterval { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("timestampValidityDuration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("timestampValidityDuration", DefaultValue="00:05:00")]
         public System.TimeSpan TimestampValidityDuration { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class LocalServiceSecuritySettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public LocalServiceSecuritySettingsElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("detectReplays", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("detectReplays", DefaultValue=true)]
         public bool DetectReplays { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("inactivityTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:02:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("inactivityTimeout", DefaultValue="00:02:00")]
         public System.TimeSpan InactivityTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("issuedCookieLifetime", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10:00:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedCookieLifetime", DefaultValue="10:00:00")]
         public System.TimeSpan IssuedCookieLifetime { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxCachedCookies", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="1000")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxCachedCookies", DefaultValue=1000)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxCachedCookies { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("maxClockSkew", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("maxClockSkew", DefaultValue="00:05:00")]
         public System.TimeSpan MaxClockSkew { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxPendingSessions", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="128")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingSessions", DefaultValue=128)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxPendingSessions { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxStatefulNegotiations", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="128")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxStatefulNegotiations", DefaultValue=128)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxStatefulNegotiations { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("negotiationTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("negotiationTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan NegotiationTimeout { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("reconnectTransportOnFailure", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("reconnectTransportOnFailure", DefaultValue=true)]
         public bool ReconnectTransportOnFailure { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("replayCacheSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="900000")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("replayCacheSize", DefaultValue=900000)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int ReplayCacheSize { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("replayWindow", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("replayWindow", DefaultValue="00:05:00")]
         public System.TimeSpan ReplayWindow { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRenewalInterval", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="15:00:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRenewalInterval", DefaultValue="15:00:00")]
         public System.TimeSpan SessionKeyRenewalInterval { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRolloverInterval", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("sessionKeyRolloverInterval", DefaultValue="00:05:00")]
         public System.TimeSpan SessionKeyRolloverInterval { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("timestampValidityDuration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("timestampValidityDuration", DefaultValue="00:05:00")]
         public System.TimeSpan TimestampValidityDuration { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class MessageLoggingElement : System.Configuration.ConfigurationElement
     {
         public MessageLoggingElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("filters", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("filters", DefaultValue=null)]
         public System.ServiceModel.Configuration.XPathMessageFilterElementCollection Filters { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("logEntireMessage", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("logEntireMessage", DefaultValue=false)]
         public bool LogEntireMessage { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("logKnownPii", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("logKnownPii", DefaultValue=false)]
         public bool LogKnownPii { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("logMalformedMessages", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("logMalformedMessages", DefaultValue=false)]
         public bool LogMalformedMessages { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("logMessagesAtServiceLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("logMessagesAtServiceLevel", DefaultValue=false)]
         public bool LogMessagesAtServiceLevel { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("logMessagesAtTransportLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("logMessagesAtTransportLevel", DefaultValue=false)]
         public bool LogMessagesAtTransportLevel { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxMessagesToLog", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10000")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=-1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxMessagesToLog", DefaultValue=10000)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=-1)]
         public int MaxMessagesToLog { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxSizeOfMessageToLog", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="262144")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=-1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxSizeOfMessageToLog", DefaultValue=262144)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=-1)]
         public int MaxSizeOfMessageToLog { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -5663,48 +5733,45 @@ namespace System.ServiceModel.Configuration
     {
         internal MessageSecurityOverHttpElement() { }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", DefaultValue="Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Windows")]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.MessageCredentialType)(1))]
         public System.ServiceModel.MessageCredentialType ClientCredentialType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("negotiateServiceCredential", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("negotiateServiceCredential", DefaultValue=true)]
         public bool NegotiateServiceCredential { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class MessageSecurityOverMsmqElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public MessageSecurityOverMsmqElement() { }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", DefaultValue="Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Windows")]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.MessageCredentialType)(1))]
         public System.ServiceModel.MessageCredentialType ClientCredentialType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class MessageSecurityOverTcpElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public MessageSecurityOverTcpElement() { }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("algorithmSuite", DefaultValue="Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite AlgorithmSuite { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Windows")]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.MessageCredentialType)(1))]
         public System.ServiceModel.MessageCredentialType ClientCredentialType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
     public sealed partial class MetadataElement : System.Configuration.ConfigurationElement
     {
         public MetadataElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("policyImporters", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("policyImporters")]
         public System.ServiceModel.Configuration.PolicyImporterElementCollection PolicyImporters { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("wsdlImporters", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("wsdlImporters")]
         public System.ServiceModel.Configuration.WsdlImporterElementCollection WsdlImporters { get { throw null; } }
         public System.Collections.ObjectModel.Collection<System.ServiceModel.Description.IPolicyImportExtension> LoadPolicyImportExtensions() { throw null; }
         public System.Collections.ObjectModel.Collection<System.ServiceModel.Description.IWsdlImportExtension> LoadWsdlImportExtensions() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class MexBindingBindingCollectionElement<TStandardBinding, TBindingConfiguration> : System.ServiceModel.Configuration.StandardBindingCollectionElement<TStandardBinding, TBindingConfiguration> where TStandardBinding : System.ServiceModel.Channels.Binding where TBindingConfiguration : System.ServiceModel.Configuration.StandardBindingElement, new()
     {
         protected MexBindingBindingCollectionElement() { }
@@ -5736,7 +5803,6 @@ namespace System.ServiceModel.Configuration
         public MexHttpsBindingElement() : base (default(string)) { }
         public MexHttpsBindingElement(string name) : base (default(string)) { }
     }
-    [System.MonoTODOAttribute]
     public partial class MexNamedPipeBindingCollectionElement : System.ServiceModel.Configuration.MexBindingBindingCollectionElement<System.ServiceModel.Channels.CustomBinding, System.ServiceModel.Configuration.MexNamedPipeBindingElement>
     {
         public MexNamedPipeBindingCollectionElement() { }
@@ -5747,7 +5813,6 @@ namespace System.ServiceModel.Configuration
         public MexNamedPipeBindingElement() : base (default(string)) { }
         public MexNamedPipeBindingElement(string name) : base (default(string)) { }
     }
-    [System.MonoTODOAttribute]
     public partial class MexTcpBindingCollectionElement : System.ServiceModel.Configuration.MexBindingBindingCollectionElement<System.ServiceModel.Channels.CustomBinding, System.ServiceModel.Configuration.MexTcpBindingElement>
     {
         public MexTcpBindingCollectionElement() { }
@@ -5758,42 +5823,44 @@ namespace System.ServiceModel.Configuration
         public MexTcpBindingElement() : base (default(string)) { }
         public MexTcpBindingElement(string name) : base (default(string)) { }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class MsmqBindingElementBase : System.ServiceModel.Configuration.StandardBindingElement
     {
         protected MsmqBindingElementBase() { }
         protected MsmqBindingElementBase(string name) { }
-        [System.Configuration.ConfigurationPropertyAttribute("customDeadLetterQueue", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("customDeadLetterQueue", DefaultValue=null)]
         public System.Uri CustomDeadLetterQueue { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("deadLetterQueue", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="System")]
+        [System.Configuration.ConfigurationPropertyAttribute("deadLetterQueue", DefaultValue=(System.ServiceModel.DeadLetterQueue)(1))]
         public System.ServiceModel.DeadLetterQueue DeadLetterQueue { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("durable", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("durable", DefaultValue=true)]
         public bool Durable { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("exactlyOnce", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("exactlyOnce", DefaultValue=true)]
         public bool ExactlyOnce { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxRetryCycles", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="2")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxRetryCycles", DefaultValue=2)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxRetryCycles { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("receiveContextEnabled", DefaultValue=true)]
         public bool ReceiveContextEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("receiveErrorHandling", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Fault")]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveErrorHandling", DefaultValue=(System.ServiceModel.ReceiveErrorHandling)(0))]
         public System.ServiceModel.ReceiveErrorHandling ReceiveErrorHandling { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("receiveRetryCount", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="5")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveRetryCount", DefaultValue=5)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int ReceiveRetryCount { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("retryCycleDelay", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:30:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("retryCycleDelay", DefaultValue="00:30:00")]
         public System.TimeSpan RetryCycleDelay { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("timeToLive", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="1.00:00:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("timeToLive", DefaultValue="1.00:00:00")]
         public System.TimeSpan TimeToLive { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useMsmqTracing", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("useMsmqTracing", DefaultValue=false)]
         public bool UseMsmqTracing { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useSourceJournal", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("useSourceJournal", DefaultValue=false)]
         public bool UseSourceJournal { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("validityDuration", DefaultValue="00:05:00")]
         public System.TimeSpan ValidityDuration { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -5801,54 +5868,57 @@ namespace System.ServiceModel.Configuration
     public abstract partial class MsmqElementBase : System.ServiceModel.Configuration.TransportElement
     {
         protected MsmqElementBase() { }
-        [System.Configuration.ConfigurationPropertyAttribute("customDeadLetterQueue", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("customDeadLetterQueue", DefaultValue=null)]
         public System.Uri CustomDeadLetterQueue { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("deadLetterQueue", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="System")]
+        [System.Configuration.ConfigurationPropertyAttribute("deadLetterQueue", DefaultValue=(System.ServiceModel.DeadLetterQueue)(1))]
         public System.ServiceModel.DeadLetterQueue DeadLetterQueue { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("durable", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("durable", DefaultValue=true)]
         public bool Durable { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("exactlyOnce", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("exactlyOnce", DefaultValue=true)]
         public bool ExactlyOnce { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxRetryCycles", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="2")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxRetryCycles", DefaultValue=2)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxRetryCycles { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("msmqTransportSecurity", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("msmqTransportSecurity")]
         public System.ServiceModel.Configuration.MsmqTransportSecurityElement MsmqTransportSecurity { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("receiveContextEnabled", DefaultValue=true)]
         public bool ReceiveContextEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("receiveErrorHandling", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Fault")]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveErrorHandling", DefaultValue=(System.ServiceModel.ReceiveErrorHandling)(0))]
         public System.ServiceModel.ReceiveErrorHandling ReceiveErrorHandling { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("receiveRetryCount", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="5")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveRetryCount", DefaultValue=5)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int ReceiveRetryCount { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("retryCycleDelay", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:30:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("retryCycleDelay", DefaultValue="00:30:00")]
         public System.TimeSpan RetryCycleDelay { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("timeToLive", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="1.00:00:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("timeToLive", DefaultValue="1.00:00:00")]
         public System.TimeSpan TimeToLive { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useMsmqTracing", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("useMsmqTracing", DefaultValue=false)]
         public bool UseMsmqTracing { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useSourceJournal", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("useSourceJournal", DefaultValue=false)]
         public bool UseSourceJournal { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("validityDuration", DefaultValue="00:05:00")]
         public System.TimeSpan ValidityDuration { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public partial class MsmqIntegrationBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding, System.ServiceModel.Configuration.MsmqIntegrationBindingElement>
     {
         public MsmqIntegrationBindingCollectionElement() { }
     }
-    [System.MonoTODOAttribute]
     public partial class MsmqIntegrationBindingElement : System.ServiceModel.Configuration.MsmqBindingElementBase
     {
         public MsmqIntegrationBindingElement() { }
         public MsmqIntegrationBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.MsmqIntegrationSecurityElement Security { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("serializationFormat", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Xml")]
+        [System.Configuration.ConfigurationPropertyAttribute("serializationFormat", DefaultValue=(System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat)(0))]
         public System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat SerializationFormat { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -5858,51 +5928,49 @@ namespace System.ServiceModel.Configuration
         public MsmqIntegrationElement() { }
         public override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("serializationFormat", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Xml")]
+        [System.Configuration.ConfigurationPropertyAttribute("serializationFormat", DefaultValue=(System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat)(0))]
         public System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat SerializationFormat { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected override System.ServiceModel.Channels.TransportBindingElement CreateDefaultBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class MsmqIntegrationSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public MsmqIntegrationSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Transport")]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.MsmqIntegration.MsmqIntegrationSecurityMode)(1))]
         public System.ServiceModel.MsmqIntegration.MsmqIntegrationSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.MsmqTransportSecurityElement Transport { get { throw null; } }
     }
     public sealed partial class MsmqTransportElement : System.ServiceModel.Configuration.MsmqElementBase
     {
         public MsmqTransportElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="8")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxPoolSize", DefaultValue=8)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPoolSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("queueTransferProtocol", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Native")]
+        [System.Configuration.ConfigurationPropertyAttribute("queueTransferProtocol", DefaultValue=(System.ServiceModel.QueueTransferProtocol)(0))]
         public System.ServiceModel.QueueTransferProtocol QueueTransferProtocol { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useActiveDirectory", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("useActiveDirectory", DefaultValue=false)]
         public bool UseActiveDirectory { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected override System.ServiceModel.Channels.TransportBindingElement CreateDefaultBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class MsmqTransportSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public MsmqTransportSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("msmqAuthenticationMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="WindowsDomain")]
+        [System.Configuration.ConfigurationPropertyAttribute("msmqAuthenticationMode", DefaultValue=(System.ServiceModel.MsmqAuthenticationMode)(1))]
         public System.ServiceModel.MsmqAuthenticationMode MsmqAuthenticationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("msmqEncryptionAlgorithm", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="RC4Stream")]
+        [System.Configuration.ConfigurationPropertyAttribute("msmqEncryptionAlgorithm", DefaultValue=(System.ServiceModel.MsmqEncryptionAlgorithm)(0))]
         public System.ServiceModel.MsmqEncryptionAlgorithm MsmqEncryptionAlgorithm { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("msmqProtectionLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Sign")]
+        [System.Configuration.ConfigurationPropertyAttribute("msmqProtectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel MsmqProtectionLevel { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("msmqSecureHashAlgorithm", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Sha1")]
+        [System.Configuration.ConfigurationPropertyAttribute("msmqSecureHashAlgorithm", DefaultValue=(System.ServiceModel.MsmqSecureHashAlgorithm)(1))]
         public System.ServiceModel.MsmqSecureHashAlgorithm MsmqSecureHashAlgorithm { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -5910,48 +5978,47 @@ namespace System.ServiceModel.Configuration
     {
         public MtomMessageEncodingElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue=65536)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReadPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="64")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReadPoolSize", DefaultValue=64)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxReadPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxWritePoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="16")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxWritePoolSize", DefaultValue=16)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxWritePoolSize { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.MessageVersionConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("messageVersion", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Soap12WSAddressing10")]
+        [System.Configuration.ConfigurationPropertyAttribute("messageVersion", DefaultValue="Soap12WSAddressing10")]
         public System.ServiceModel.Channels.MessageVersion MessageVersion { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("writeEncoding", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="utf-8")]
+        [System.Configuration.ConfigurationPropertyAttribute("writeEncoding", DefaultValue="utf-8")]
         public System.Text.Encoding WriteEncoding { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class NamedPipeConnectionPoolSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public NamedPipeConnectionPoolSettingsElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("groupName", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="default")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("groupName", DefaultValue="default")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string GroupName { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("idleTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:02:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("idleTimeout", DefaultValue="00:02:00")]
         public System.TimeSpan IdleTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxOutboundConnectionsPerEndpoint", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxOutboundConnectionsPerEndpoint", DefaultValue=10)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxOutboundConnectionsPerEndpoint { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
     public sealed partial class NamedPipeSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public NamedPipeSettingsElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("applicationContainerSettings")]
         public System.ServiceModel.Configuration.ApplicationContainerSettingsElement ApplicationContainerSettings { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -5959,8 +6026,9 @@ namespace System.ServiceModel.Configuration
     {
         public NamedPipeTransportElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("connectionPoolSettings", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("connectionPoolSettings")]
         public System.ServiceModel.Configuration.NamedPipeConnectionPoolSettingsElement ConnectionPoolSettings { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("pipeSettings")]
         public System.ServiceModel.Configuration.NamedPipeSettingsElement PipeSettings { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
@@ -5968,19 +6036,18 @@ namespace System.ServiceModel.Configuration
         protected override System.ServiceModel.Channels.TransportBindingElement CreateDefaultBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class NamedPipeTransportSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public NamedPipeTransportSecurityElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="EncryptAndSign")]
+        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(2))]
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
     }
     public abstract partial class NamedServiceModelExtensionCollectionElement<TServiceModelExtensionElement> : System.ServiceModel.Configuration.ServiceModelExtensionCollectionElement<TServiceModelExtensionElement> where TServiceModelExtensionElement : System.ServiceModel.Configuration.ServiceModelExtensionElement
     {
         internal NamedServiceModelExtensionCollectionElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -5993,10 +6060,14 @@ namespace System.ServiceModel.Configuration
         public NetHttpBindingElement() : base (default(string)) { }
         public NetHttpBindingElement(string name) : base (default(string)) { }
         protected override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue=(System.ServiceModel.NetHttpMessageEncoding)(0))]
         public System.ServiceModel.NetHttpMessageEncoding MessageEncoding { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("reliableSession")]
         public System.ServiceModel.Configuration.StandardBindingOptionalReliableSessionElement ReliableSession { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.BasicHttpSecurityElement Security { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("webSocketSettings")]
         public System.ServiceModel.Configuration.NetHttpWebSocketTransportSettingsElement WebSocketSettings { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -6010,10 +6081,14 @@ namespace System.ServiceModel.Configuration
         public NetHttpsBindingElement() : base (default(string)) { }
         public NetHttpsBindingElement(string name) : base (default(string)) { }
         protected override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue=(System.ServiceModel.NetHttpMessageEncoding)(0))]
         public System.ServiceModel.NetHttpMessageEncoding MessageEncoding { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("reliableSession")]
         public System.ServiceModel.Configuration.StandardBindingOptionalReliableSessionElement ReliableSession { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.BasicHttpsSecurityElement Security { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("webSocketSettings")]
         public System.ServiceModel.Configuration.NetHttpWebSocketTransportSettingsElement WebSocketSettings { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -6022,48 +6097,47 @@ namespace System.ServiceModel.Configuration
     {
         public NetHttpWebSocketTransportSettingsElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("subProtocol", DefaultValue="soap")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public override string SubProtocol { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("transportUsage", DefaultValue=(System.ServiceModel.Channels.WebSocketTransportUsage)(0))]
         public override System.ServiceModel.Channels.WebSocketTransportUsage TransportUsage { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public partial class NetMsmqBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.NetMsmqBinding, System.ServiceModel.Configuration.NetMsmqBindingElement>
     {
         public NetMsmqBindingCollectionElement() { }
     }
-    [System.MonoTODOAttribute]
     public partial class NetMsmqBindingElement : System.ServiceModel.Configuration.MsmqBindingElementBase
     {
         public NetMsmqBindingElement() { }
         public NetMsmqBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="524288")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("queueTransferProtocol", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Native")]
+        [System.Configuration.ConfigurationPropertyAttribute("queueTransferProtocol", DefaultValue=(System.ServiceModel.QueueTransferProtocol)(0))]
         public System.ServiceModel.QueueTransferProtocol QueueTransferProtocol { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.NetMsmqSecurityElement Security { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("useActiveDirectory", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("useActiveDirectory", DefaultValue=false)]
         public bool UseActiveDirectory { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class NetMsmqSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public NetMsmqSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.MessageSecurityOverMsmqElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Transport")]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.NetMsmqSecurityMode)(1))]
         public System.ServiceModel.NetMsmqSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.MsmqTransportSecurityElement Transport { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public partial class NetNamedPipeBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.NetNamedPipeBinding, System.ServiceModel.Configuration.NetNamedPipeBindingElement>
     {
         public NetNamedPipeBindingCollectionElement() { }
@@ -6073,78 +6147,77 @@ namespace System.ServiceModel.Configuration
         public NetNamedPipeBindingElement() { }
         public NetNamedPipeBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="StrongWildcard")]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="524288")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue=65536)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxConnections", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxConnections", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxConnections { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.NetNamedPipeSecurityElement Security { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", DefaultValue=false)]
         public bool TransactionFlow { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TransactionProtocolConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("transactionProtocol", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="OleTransactions")]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionProtocol", DefaultValue="OleTransactions")]
         public System.ServiceModel.TransactionProtocol TransactionProtocol { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("transferMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Buffered")]
+        [System.Configuration.ConfigurationPropertyAttribute("transferMode", DefaultValue=(System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class NetNamedPipeSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public NetNamedPipeSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Transport")]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.NetNamedPipeSecurityMode)(1))]
         public System.ServiceModel.NetNamedPipeSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.NamedPipeTransportSecurityElement Transport { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
     public partial class NetPeerTcpBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.NetPeerTcpBinding, System.ServiceModel.Configuration.NetPeerTcpBindingElement>
     {
         public NetPeerTcpBindingCollectionElement() { }
     }
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
     public partial class NetPeerTcpBindingElement : System.ServiceModel.Configuration.StandardBindingElement
     {
         public NetPeerTcpBindingElement() { }
         public NetPeerTcpBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("listenIPAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
-        [System.MonoTODOAttribute("get converter for IPAddress")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.PeerTransportListenAddressConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("listenIPAddress", DefaultValue=null)]
         public System.Net.IPAddress ListenIPAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="524288")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)16384, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)16384)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("port", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="0")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=65535, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("port", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=65535)]
         public int Port { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("resolver", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("resolver", DefaultValue=null)]
         public System.ServiceModel.Configuration.PeerResolverElement Resolver { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.PeerSecurityElement Security { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public partial class NetTcpBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.NetTcpBinding, System.ServiceModel.Configuration.NetTcpBindingElement>
     {
         public NetTcpBindingCollectionElement() { }
@@ -6154,75 +6227,78 @@ namespace System.ServiceModel.Configuration
         public NetTcpBindingElement() { }
         public NetTcpBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="StrongWildcard")]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("listenBacklog", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("listenBacklog", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int ListenBacklog { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="524288")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferSize", DefaultValue=65536)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxBufferSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxConnections", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxConnections", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxConnections { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("portSharingEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("portSharingEnabled", DefaultValue=false)]
         public bool PortSharingEnabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("reliableSession", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.MonoTODOAttribute("This configuration prpperty is not applied yet")]
+        [System.Configuration.ConfigurationPropertyAttribute("reliableSession")]
         public System.ServiceModel.Configuration.StandardBindingOptionalReliableSessionElement ReliableSession { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.NetTcpSecurityElement Security { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", DefaultValue=false)]
         public bool TransactionFlow { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TransactionProtocolConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("transactionProtocol", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="OleTransactions")]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionProtocol", DefaultValue="OleTransactions")]
         public System.ServiceModel.TransactionProtocol TransactionProtocol { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("transferMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Buffered")]
+        [System.Configuration.ConfigurationPropertyAttribute("transferMode", DefaultValue=(System.ServiceModel.TransferMode)(0))]
         public System.ServiceModel.TransferMode TransferMode { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class NetTcpContextBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.NetTcpContextBinding, System.ServiceModel.Configuration.NetTcpContextBindingElement>
     {
         public NetTcpContextBindingCollectionElement() { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class NetTcpContextBindingElement : System.ServiceModel.Configuration.NetTcpBindingElement
     {
         public NetTcpContextBindingElement() { }
         public NetTcpContextBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("clientCallbackAddress", DefaultValue=null)]
         public System.Uri ClientCallbackAddress { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextManagementEnabled", DefaultValue=true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextProtectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel ContextProtectionLevel { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class NetTcpSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public NetTcpSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.MessageSecurityOverTcpElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Transport")]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.SecurityMode)(1))]
         public System.ServiceModel.SecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.TcpTransportSecurityElement Transport { get { throw null; } }
     }
     public sealed partial class NonDualMessageSecurityOverHttpElement : System.ServiceModel.Configuration.MessageSecurityOverHttpElement
     {
         public NonDualMessageSecurityOverHttpElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("establishSecurityContext", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("establishSecurityContext", DefaultValue=true)]
         public bool EstablishSecurityContext { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -6230,106 +6306,100 @@ namespace System.ServiceModel.Configuration
     {
         public OneWayElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("channelPoolSettings", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("channelPoolSettings")]
         public System.ServiceModel.Configuration.ChannelPoolSettingsElement ChannelPoolSettings { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxAcceptedChannels", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxAcceptedChannels", DefaultValue=10)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxAcceptedChannels { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("packetRoutable", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("packetRoutable", DefaultValue=false)]
         public bool PacketRoutable { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class PeerCredentialElement : System.Configuration.ConfigurationElement
     {
         public PeerCredentialElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("certificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificate")]
         public System.ServiceModel.Configuration.X509PeerCertificateElement Certificate { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageSenderAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("messageSenderAuthentication")]
         public System.ServiceModel.Configuration.X509PeerCertificateAuthenticationElement MessageSenderAuthentication { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("peerAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("peerAuthentication")]
         public System.ServiceModel.Configuration.X509PeerCertificateAuthenticationElement PeerAuthentication { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.PeerCredentialElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class PeerCustomResolverElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public PeerCustomResolverElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("address", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("address", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.Uri Address { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("binding", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("binding", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Binding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("headers", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("headers")]
         public System.ServiceModel.Configuration.AddressHeaderCollectionElement Headers { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("identity", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("identity")]
         public System.ServiceModel.Configuration.IdentityElement Identity { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("resolverType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("resolverType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string ResolverType { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class PeerResolverElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public PeerResolverElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("custom", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("custom")]
         public System.ServiceModel.Configuration.PeerCustomResolverElement Custom { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Auto")]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.PeerResolvers.PeerResolverMode)(0))]
         public System.ServiceModel.PeerResolvers.PeerResolverMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("referralPolicy", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Service")]
+        [System.Configuration.ConfigurationPropertyAttribute("referralPolicy", DefaultValue=(System.ServiceModel.PeerResolvers.PeerReferralPolicy)(0))]
         public System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class PeerSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public PeerSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Transport")]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.SecurityMode)(1))]
         public System.ServiceModel.SecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.PeerTransportSecurityElement Transport { get { throw null; } }
     }
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
     public partial class PeerTransportElement : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         public PeerTransportElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.IPAddressConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("listenIPAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.PeerTransportListenAddressConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("listenIPAddress", DefaultValue=null)]
         public System.Net.IPAddress ListenIPAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="524288")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("port", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="0")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=65535, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("port", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=65535)]
         public int Port { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.PeerSecurityElement Security { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class PeerTransportSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public PeerTransportSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("credentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Password")]
+        [System.Configuration.ConfigurationPropertyAttribute("credentialType", DefaultValue=(System.ServiceModel.PeerTransportCredentialType)(0))]
         public System.ServiceModel.PeerTransportCredentialType CredentialType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -6337,7 +6407,6 @@ namespace System.ServiceModel.Configuration
     {
         public PnrpPeerResolverElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
     }
     public sealed partial class PolicyImporterElement : System.Configuration.ConfigurationElement
@@ -6346,11 +6415,11 @@ namespace System.ServiceModel.Configuration
         public PolicyImporterElement(string type) { }
         public PolicyImporterElement(System.Type type) { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Type { get { throw null; } set { } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.PolicyImporterElement), AddItemName="extension", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.PolicyImporterElement), AddItemName="extension")]
     public sealed partial class PolicyImporterElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.PolicyImporterElement>
     {
         public PolicyImporterElementCollection() { }
@@ -6361,14 +6430,13 @@ namespace System.ServiceModel.Configuration
         public PrivacyNoticeElement() { }
         public override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("url", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("url")]
         public System.Uri Url { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("version", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="0")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("version", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int Version { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
@@ -6377,14 +6445,14 @@ namespace System.ServiceModel.Configuration
         public ProtocolMappingElement() { }
         public ProtocolMappingElement(string schemeType, string binding, string bindingConfiguration) { }
         [System.Configuration.ConfigurationPropertyAttribute("binding", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Binding { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingConfiguration { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("scheme", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Scheme { get { throw null; } set { } }
     }
     [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ProtocolMappingElement), AddItemName="add")]
@@ -6404,25 +6472,25 @@ namespace System.ServiceModel.Configuration
     public sealed partial class ReliableSessionElement : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         public ReliableSessionElement() { }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("acknowledgementInterval", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:00:00.2")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("acknowledgementInterval", DefaultValue="00:00:00.2")]
         public System.TimeSpan AcknowledgementInterval { get { throw null; } set { } }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("flowControlEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("flowControlEnabled", DefaultValue=true)]
         public bool FlowControlEnabled { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("inactivityTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:10:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("inactivityTimeout", DefaultValue="00:10:00")]
         public System.TimeSpan InactivityTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxPendingChannels", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="4")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=16384, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingChannels", DefaultValue=4)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=16384)]
         public int MaxPendingChannels { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxRetryCount", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="8")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxRetryCount", DefaultValue=8)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxRetryCount { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxTransferWindowSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="8")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=4096, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxTransferWindowSize", DefaultValue=8)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=4096)]
         public int MaxTransferWindowSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("ordered", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("ordered", DefaultValue=true)]
         public bool Ordered { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.ReliableMessagingVersionConverter")]
@@ -6437,27 +6505,27 @@ namespace System.ServiceModel.Configuration
     {
         public RemoveBehaviorElement() { }
         public override System.Type BehaviorType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override object CreateBehavior() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class RsaElement : System.Configuration.ConfigurationElement
     {
         public RsaElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("value", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Value { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class SecureConversationServiceElement : System.Configuration.ConfigurationElement
     {
         public SecureConversationServiceElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("securityStateEncoderType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("securityStateEncoderType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string SecurityStateEncoderType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.SecureConversationServiceElement from) { }
     }
@@ -6465,7 +6533,7 @@ namespace System.ServiceModel.Configuration
     {
         public SecurityElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("secureConversationBootstrap", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("secureConversationBootstrap")]
         public System.ServiceModel.Configuration.SecurityElementBase SecureConversationBootstrap { get { throw null; } }
         protected override void AddBindingTemplates(System.Collections.Generic.Dictionary<System.ServiceModel.Configuration.AuthenticationMode, System.ServiceModel.Channels.SecurityBindingElement> bindingTemplates) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -6475,47 +6543,50 @@ namespace System.ServiceModel.Configuration
     public partial class SecurityElementBase : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         internal SecurityElementBase() { }
+        [System.Configuration.ConfigurationPropertyAttribute("allowInsecureTransport", DefaultValue=false)]
         public bool AllowInsecureTransport { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("allowSerializedSigningTokenOnReply", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("allowSerializedSigningTokenOnReply", DefaultValue=false)]
         public bool AllowSerializedSigningTokenOnReply { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("authenticationMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="SspiNegotiated")]
+        [System.Configuration.ConfigurationPropertyAttribute("authenticationMode", DefaultValue=(System.ServiceModel.Configuration.AuthenticationMode)(13))]
         public System.ServiceModel.Configuration.AuthenticationMode AuthenticationMode { get { throw null; } set { } }
         public override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("canRenewSecurityContextToken", DefaultValue=true)]
         public bool CanRenewSecurityContextToken { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("defaultAlgorithmSuite", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("defaultAlgorithmSuite", DefaultValue="Default")]
         public System.ServiceModel.Security.SecurityAlgorithmSuite DefaultAlgorithmSuite { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("enableUnsecuredResponse", DefaultValue=false)]
         public bool EnableUnsecuredResponse { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("includeTimestamp", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("includeTimestamp", DefaultValue=true)]
         public bool IncludeTimestamp { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenParameters", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenParameters")]
         public System.ServiceModel.Configuration.IssuedTokenParametersElement IssuedTokenParameters { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("keyEntropyMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="CombinedEntropy")]
+        [System.Configuration.ConfigurationPropertyAttribute("keyEntropyMode", DefaultValue=(System.ServiceModel.Security.SecurityKeyEntropyMode)(2))]
         public System.ServiceModel.Security.SecurityKeyEntropyMode KeyEntropyMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("localClientSettings", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("localClientSettings")]
         public System.ServiceModel.Configuration.LocalClientSecuritySettingsElement LocalClientSettings { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("localServiceSettings", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("localServiceSettings")]
         public System.ServiceModel.Configuration.LocalServiceSecuritySettingsElement LocalServiceSettings { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageProtectionOrder", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="SignBeforeEncryptAndEncryptSignature")]
+        [System.Configuration.ConfigurationPropertyAttribute("messageProtectionOrder", DefaultValue=(System.ServiceModel.Security.MessageProtectionOrder)(1))]
         public System.ServiceModel.Security.MessageProtectionOrder MessageProtectionOrder { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.MessageSecurityVersionConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("messageSecurityVersion", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("messageSecurityVersion", DefaultValue="Default")]
         public System.ServiceModel.MessageSecurityVersion MessageSecurityVersion { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("protectTokens", DefaultValue=false)]
         public bool ProtectTokens { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("requireDerivedKeys", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("requireDerivedKeys", DefaultValue=true)]
         public bool RequireDerivedKeys { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("requireSecurityContextCancellation", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("requireSecurityContextCancellation", DefaultValue=true)]
         public bool RequireSecurityContextCancellation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("requireSignatureConfirmation", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("requireSignatureConfirmation", DefaultValue=false)]
         public bool RequireSignatureConfirmation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("securityHeaderLayout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Strict")]
+        [System.Configuration.ConfigurationPropertyAttribute("securityHeaderLayout", DefaultValue=(System.ServiceModel.Channels.SecurityHeaderLayout)(0))]
         public System.ServiceModel.Channels.SecurityHeaderLayout SecurityHeaderLayout { get { throw null; } set { } }
         protected void AddBindingTemplate(System.Collections.Generic.Dictionary<System.ServiceModel.Configuration.AuthenticationMode, System.ServiceModel.Channels.SecurityBindingElement> bindingTemplates, System.ServiceModel.Configuration.AuthenticationMode mode) { }
         protected virtual void AddBindingTemplates(System.Collections.Generic.Dictionary<System.ServiceModel.Configuration.AuthenticationMode, System.ServiceModel.Channels.SecurityBindingElement> bindingTemplates) { }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal virtual System.ServiceModel.Channels.BindingElement CreateBindingElement(bool createTemplateOnly) { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
@@ -6530,11 +6601,17 @@ namespace System.ServiceModel.Configuration
         public ServiceActivationElement(string relativeAddress) { }
         public ServiceActivationElement(string relativeAddress, string service) { }
         public ServiceActivationElement(string relativeAddress, string service, string factory) { }
+        [System.Configuration.ConfigurationPropertyAttribute("factory", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Factory { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("relativeAddress", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
         public string RelativeAddress { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("service", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Service { get { throw null; } set { } }
     }
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceActivationElement))]
     public sealed partial class ServiceActivationElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.ServiceActivationElement>
     {
         public ServiceActivationElementCollection() { }
@@ -6545,32 +6622,35 @@ namespace System.ServiceModel.Configuration
     public sealed partial class ServiceAuthenticationElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public ServiceAuthenticationElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("authenticationSchemes", DefaultValue=(System.Net.AuthenticationSchemes)(0))]
         public System.Net.AuthenticationSchemes AuthenticationSchemes { get { throw null; } set { } }
         public override System.Type BehaviorType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("serviceAuthenticationManagerType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string ServiceAuthenticationManagerType { get { throw null; } set { } }
         protected internal override object CreateBehavior() { throw null; }
     }
     public sealed partial class ServiceAuthorizationElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public ServiceAuthorizationElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("authorizationPolicies", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("authorizationPolicies")]
         public System.ServiceModel.Configuration.AuthorizationPolicyTypeElementCollection AuthorizationPolicies { get { throw null; } }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("impersonateCallerForAllOperations", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("impersonateCallerForAllOperations", DefaultValue=false)]
         public bool ImpersonateCallerForAllOperations { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("impersonateOnSerializingReply", DefaultValue=false)]
         public bool ImpersonateOnSerializingReply { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("principalPermissionMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="UseWindowsGroups")]
+        [System.Configuration.ConfigurationPropertyAttribute("principalPermissionMode", DefaultValue=(System.ServiceModel.Description.PrincipalPermissionMode)(1))]
         public System.ServiceModel.Description.PrincipalPermissionMode PrincipalPermissionMode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("roleProviderName", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("roleProviderName", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string RoleProviderName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("serviceAuthorizationManagerType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("serviceAuthorizationManagerType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string ServiceAuthorizationManagerType { get { throw null; } set { } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override object CreateBehavior() { throw null; }
     }
     public partial class ServiceBehaviorElement : System.ServiceModel.Configuration.NamedServiceModelExtensionCollectionElement<System.ServiceModel.Configuration.BehaviorExtensionElement>
@@ -6581,13 +6661,12 @@ namespace System.ServiceModel.Configuration
         public override bool CanAdd(System.ServiceModel.Configuration.BehaviorExtensionElement element) { throw null; }
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceBehaviorElement), AddItemName="behavior", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceBehaviorElement), AddItemName="behavior")]
     public sealed partial class ServiceBehaviorElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ServiceBehaviorElement>
     {
         public ServiceBehaviorElementCollection() { }
         protected override bool ThrowOnDuplicate { get { throw null; } }
         protected override void BaseAdd(System.Configuration.ConfigurationElement element) { }
-        [System.MonoTODOAttribute]
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
@@ -6595,25 +6674,28 @@ namespace System.ServiceModel.Configuration
     {
         public ServiceCredentialsElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCertificate")]
         public System.ServiceModel.Configuration.X509InitiatorCertificateServiceElement ClientCertificate { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("identityConfiguration", IsRequired=false, DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string IdentityConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("issuedTokenAuthentication")]
         public System.ServiceModel.Configuration.IssuedTokenServiceElement IssuedTokenAuthentication { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("peer", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("peer")]
         public System.ServiceModel.Configuration.PeerCredentialElement Peer { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("secureConversationAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("secureConversationAuthentication")]
         public System.ServiceModel.Configuration.SecureConversationServiceElement SecureConversationAuthentication { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("serviceCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("serviceCertificate")]
         public System.ServiceModel.Configuration.X509RecipientCertificateServiceElement ServiceCertificate { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("type", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Type { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("useIdentityConfiguration", DefaultValue=false, IsRequired=false)]
         public bool UseIdentityConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("userNameAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("userNameAuthentication")]
         public System.ServiceModel.Configuration.UserNameServiceElement UserNameAuthentication { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("windowsAuthentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("windowsAuthentication")]
         public System.ServiceModel.Configuration.WindowsServiceElement WindowsAuthentication { get { throw null; } }
         protected internal void ApplyConfiguration(System.ServiceModel.Description.ServiceCredentials behavior) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -6629,9 +6711,9 @@ namespace System.ServiceModel.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("httpHelpPageBindingConfiguration", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string HttpHelpPageBindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpHelpPageEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("httpHelpPageEnabled", DefaultValue=true)]
         public bool HttpHelpPageEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpHelpPageUrl", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("httpHelpPageUrl")]
         public System.Uri HttpHelpPageUrl { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("httpsHelpPageBinding", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
@@ -6639,11 +6721,11 @@ namespace System.ServiceModel.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("httpsHelpPageBindingConfiguration", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string HttpsHelpPageBindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpsHelpPageEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("httpsHelpPageEnabled", DefaultValue=true)]
         public bool HttpsHelpPageEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpsHelpPageUrl", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("httpsHelpPageUrl")]
         public System.Uri HttpsHelpPageUrl { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("includeExceptionDetailInFaults", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("includeExceptionDetailInFaults", DefaultValue=false)]
         public bool IncludeExceptionDetailInFaults { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -6653,20 +6735,21 @@ namespace System.ServiceModel.Configuration
     {
         public ServiceElement() { }
         public ServiceElement(string serviceName) { }
-        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BehaviorConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.ServiceEndpointElementCollection Endpoints { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("host", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.HostElement Host { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceElement), AddItemName="service", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceElement), AddItemName="service")]
     public sealed partial class ServiceElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ServiceElement>
     {
         public ServiceElementCollection() { }
@@ -6676,69 +6759,72 @@ namespace System.ServiceModel.Configuration
     {
         public ServiceEndpointElement() { }
         public ServiceEndpointElement(System.Uri address, string contractType) { }
-        [System.Configuration.ConfigurationPropertyAttribute("address", Options=(System.Configuration.ConfigurationPropertyOptions)(4), DefaultValue="", IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("address", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         public System.Uri Address { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("behaviorConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BehaviorConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("binding", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("binding", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Binding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", Options=(System.Configuration.ConfigurationPropertyOptions)(4), DefaultValue="", IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingConfiguration", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingName", Options=(System.Configuration.ConfigurationPropertyOptions)(4), DefaultValue="", IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingName", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("bindingNamespace", Options=(System.Configuration.ConfigurationPropertyOptions)(4), DefaultValue="", IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("bindingNamespace", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string BindingNamespace { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("contract", Options=(System.Configuration.ConfigurationPropertyOptions)(4), DefaultValue="", IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("contract", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Contract { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("endpointConfiguration", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string EndpointConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("headers", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("headers")]
         public System.ServiceModel.Configuration.AddressHeaderCollectionElement Headers { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("identity", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("identity")]
         public System.ServiceModel.Configuration.IdentityElement Identity { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("isSystemEndpoint", DefaultValue=false)]
         public bool IsSystemEndpoint { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("kind", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Kind { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("listenUri", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("listenUri", DefaultValue=null)]
         public System.Uri ListenUri { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("listenUriMode", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Explicit")]
+        [System.Configuration.ConfigurationPropertyAttribute("listenUriMode", DefaultValue=(System.ServiceModel.Description.ListenUriMode)(0))]
         public System.ServiceModel.Description.ListenUriMode ListenUriMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceEndpointElement), AddItemName="endpoint", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.ServiceEndpointElement), AddItemName="endpoint")]
     public sealed partial class ServiceEndpointElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.ServiceEndpointElement>
     {
         public ServiceEndpointElementCollection() { }
         protected override bool ThrowOnDuplicate { get { throw null; } }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ServiceHostingEnvironmentSection : System.Configuration.ConfigurationSection
     {
         public ServiceHostingEnvironmentSection() { }
-        [System.Configuration.ConfigurationPropertyAttribute("aspNetCompatibilityEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("aspNetCompatibilityEnabled", DefaultValue=false)]
         public bool AspNetCompatibilityEnabled { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("baseAddressPrefixFilters", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.BaseAddressPrefixFilterElementCollection BaseAddressPrefixFilters { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("closeIdleServicesAtLowMemory", DefaultValue=false)]
         public bool CloseIdleServicesAtLowMemory { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("minFreeMemoryPercentageToActivateService", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="5")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=99, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("minFreeMemoryPercentageToActivateService", DefaultValue=5)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=99)]
         public int MinFreeMemoryPercentageToActivateService { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("multipleSiteBindingsEnabled", DefaultValue=false)]
         public bool MultipleSiteBindingsEnabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("serviceActivations", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
         public System.ServiceModel.Configuration.ServiceActivationElementCollection ServiceActivations { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.TransportConfigurationTypeElementCollection TransportConfigurationTypes { get { throw null; } }
         protected override void PostDeserialize() { }
     }
@@ -6760,7 +6846,7 @@ namespace System.ServiceModel.Configuration
     {
         public ServiceMetadataPublishingElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("externalMetadataLocation", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("externalMetadataLocation")]
         public System.Uri ExternalMetadataLocation { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("httpGetBinding", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
@@ -6768,9 +6854,9 @@ namespace System.ServiceModel.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("httpGetBindingConfiguration", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string HttpGetBindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpGetEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("httpGetEnabled", DefaultValue=false)]
         public bool HttpGetEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpGetUrl", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("httpGetUrl")]
         public System.Uri HttpGetUrl { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("httpsGetBinding", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
@@ -6778,9 +6864,9 @@ namespace System.ServiceModel.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("httpsGetBindingConfiguration", DefaultValue="")]
         [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string HttpsGetBindingConfiguration { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpsGetEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("httpsGetEnabled", DefaultValue=false)]
         public bool HttpsGetEnabled { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("httpsGetUrl", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("httpsGetUrl")]
         public System.Uri HttpsGetUrl { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.PolicyVersionConverter")]
         [System.Configuration.ConfigurationPropertyAttribute("policyVersion", DefaultValue="Default")]
@@ -6815,9 +6901,7 @@ namespace System.ServiceModel.Configuration
     public abstract partial class ServiceModelEnhancedConfigurationElementCollection<TConfigurationElement> : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<TConfigurationElement> where TConfigurationElement : System.Configuration.ConfigurationElement, new()
     {
         internal ServiceModelEnhancedConfigurationElementCollection() { }
-        [System.MonoTODOAttribute]
         protected override bool ThrowOnDuplicate { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override void BaseAdd(System.Configuration.ConfigurationElement element) { }
     }
     public abstract partial class ServiceModelExtensionCollectionElement<TServiceModelExtensionElement> : System.Configuration.ConfigurationElement, System.Collections.Generic.ICollection<TServiceModelExtensionElement>, System.Collections.Generic.IEnumerable<TServiceModelExtensionElement>, System.Collections.IEnumerable where TServiceModelExtensionElement : System.ServiceModel.Configuration.ServiceModelExtensionElement
@@ -6835,11 +6919,13 @@ namespace System.ServiceModel.Configuration
         public bool ContainsKey(string elementName) { throw null; }
         public bool ContainsKey(System.Type elementType) { throw null; }
         public void CopyTo(TServiceModelExtensionElement[] elements, int start) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
         public System.Collections.Generic.IEnumerator<TServiceModelExtensionElement> GetEnumerator() { throw null; }
         protected override bool IsModified() { throw null; }
         protected override bool OnDeserializeUnrecognizedElement(string elementName, System.Xml.XmlReader reader) { throw null; }
         public bool Remove(TServiceModelExtensionElement element) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
         protected override void ResetModified() { }
         protected void SetIsModified() { }
@@ -6847,13 +6933,14 @@ namespace System.ServiceModel.Configuration
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         protected override void Unmerge(System.Configuration.ConfigurationElement sourceElement, System.Configuration.ConfigurationElement parentElement, System.Configuration.ConfigurationSaveMode saveMode) { }
     }
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
     public abstract partial class ServiceModelExtensionElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         protected ServiceModelExtensionElement() { }
         public string ConfigurationElementName { get { throw null; } }
         public virtual void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected override bool IsModified() { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
         protected override bool SerializeElement(System.Xml.XmlWriter writer, bool serializeCollectionKey) { throw null; }
     }
@@ -6873,53 +6960,52 @@ namespace System.ServiceModel.Configuration
         public System.ServiceModel.Configuration.StandardEndpointsSection StandardEndpoints { get { throw null; } }
         public static System.ServiceModel.Configuration.ServiceModelSectionGroup GetSectionGroup(System.Configuration.Configuration config) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class ServicePrincipalNameElement : System.Configuration.ConfigurationElement
     {
         public ServicePrincipalNameElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("value", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Value { get { throw null; } set { } }
     }
     public sealed partial class ServiceSecurityAuditElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public ServiceSecurityAuditElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("auditLogLocation", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Default")]
+        [System.Configuration.ConfigurationPropertyAttribute("auditLogLocation", DefaultValue=(System.ServiceModel.AuditLogLocation)(0))]
         public System.ServiceModel.AuditLogLocation AuditLogLocation { get { throw null; } set { } }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageAuthenticationAuditLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="None")]
+        [System.Configuration.ConfigurationPropertyAttribute("messageAuthenticationAuditLevel", DefaultValue=(System.ServiceModel.AuditLevel)(0))]
         public System.ServiceModel.AuditLevel MessageAuthenticationAuditLevel { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("serviceAuthorizationAuditLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="None")]
+        [System.Configuration.ConfigurationPropertyAttribute("serviceAuthorizationAuditLevel", DefaultValue=(System.ServiceModel.AuditLevel)(0))]
         public System.ServiceModel.AuditLevel ServiceAuthorizationAuditLevel { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("suppressAuditFailure", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("suppressAuditFailure", DefaultValue=true)]
         public bool SuppressAuditFailure { get { throw null; } set { } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override object CreateBehavior() { throw null; }
     }
     public sealed partial class ServicesSection : System.Configuration.ConfigurationSection
     {
         public ServicesSection() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.ServiceElementCollection Services { get { throw null; } }
         protected override void PostDeserialize() { }
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
     }
     public sealed partial class ServiceThrottlingElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public ServiceThrottlingElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxConcurrentCalls", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="16")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxConcurrentCalls", DefaultValue=16)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxConcurrentCalls { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxConcurrentInstances", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=26)]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxConcurrentInstances", DefaultValue=116)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxConcurrentInstances { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxConcurrentSessions", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxConcurrentSessions", DefaultValue=100)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxConcurrentSessions { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -6930,7 +7016,8 @@ namespace System.ServiceModel.Configuration
         public ServiceTimeoutsElement() { }
         public override System.Type BehaviorType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transactionTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:00:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionTimeout", DefaultValue="00:00:00")]
         public System.TimeSpan TransactionTimeout { get { throw null; } set { } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected internal override object CreateBehavior() { throw null; }
@@ -6940,19 +7027,19 @@ namespace System.ServiceModel.Configuration
         public SslStreamSecurityElement() { }
         public override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("requireClientCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("requireClientCertificate", DefaultValue=false)]
         public bool RequireClientCertificate { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("sslProtocols", DefaultValue=(System.Security.Authentication.SslProtocols)(4032))]
         public System.Security.Authentication.SslProtocols SslProtocols { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
     public partial class StandardBindingCollectionElement<TStandardBinding, TBindingConfiguration> : System.ServiceModel.Configuration.BindingCollectionElement where TStandardBinding : System.ServiceModel.Channels.Binding where TBindingConfiguration : System.ServiceModel.Configuration.StandardBindingElement, new()
     {
         public StandardBindingCollectionElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1), IsDefaultCollection=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("", Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
         public System.ServiceModel.Configuration.StandardBindingElementCollection<TBindingConfiguration> Bindings { get { throw null; } }
         public override System.Type BindingType { get { throw null; } }
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.Configuration.IBindingConfigurationElement> ConfiguredBindings { get { throw null; } }
@@ -6966,28 +7053,28 @@ namespace System.ServiceModel.Configuration
         protected StandardBindingElement() { }
         protected StandardBindingElement(string name) { }
         protected abstract System.Type BindingElementType { get; }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("closeTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("closeTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan CloseTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Name { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("openTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("openTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan OpenTimeout { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("receiveTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:10:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("receiveTimeout", DefaultValue="00:10:00")]
         public System.TimeSpan ReceiveTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("sendTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:01:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("sendTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan SendTimeout { get { throw null; } set { } }
         public void ApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
         protected internal virtual void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected abstract void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding);
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class StandardBindingElementCollection<TBindingConfiguration> : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<TBindingConfiguration> where TBindingConfiguration : System.ServiceModel.Configuration.StandardBindingElement, new()
     {
         public StandardBindingElementCollection() { }
@@ -6996,20 +7083,19 @@ namespace System.ServiceModel.Configuration
     public sealed partial class StandardBindingOptionalReliableSessionElement : System.ServiceModel.Configuration.StandardBindingReliableSessionElement
     {
         public StandardBindingOptionalReliableSessionElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("enabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("enabled", DefaultValue=false)]
         public bool Enabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void ApplyConfiguration(System.ServiceModel.OptionalReliableSession optionalReliableSession) { }
         public void InitializeFrom(System.ServiceModel.OptionalReliableSession optionalReliableSession) { }
     }
-    [System.MonoTODOAttribute]
     public partial class StandardBindingReliableSessionElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public StandardBindingReliableSessionElement() { }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("inactivityTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:10:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("inactivityTimeout", DefaultValue="00:10:00")]
         public System.TimeSpan InactivityTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("ordered", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("ordered", DefaultValue=true)]
         public bool Ordered { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void ApplyConfiguration(System.ServiceModel.ReliableSession reliableSession) { }
@@ -7045,6 +7131,7 @@ namespace System.ServiceModel.Configuration
         protected abstract void OnApplyConfiguration(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement);
         protected abstract void OnInitializeAndValidate(System.ServiceModel.Configuration.ChannelEndpointElement channelEndpointElement);
         protected abstract void OnInitializeAndValidate(System.ServiceModel.Configuration.ServiceEndpointElement serviceEndpointElement);
+        [System.Security.SecurityCriticalAttribute]
         protected override void Reset(System.Configuration.ConfigurationElement parentElement) { }
     }
     public sealed partial class StandardEndpointElementCollection<TEndpointConfiguration> : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<TEndpointConfiguration> where TEndpointConfiguration : System.ServiceModel.Configuration.StandardEndpointElement, new()
@@ -7069,21 +7156,20 @@ namespace System.ServiceModel.Configuration
         public override System.Type BehaviorType { get { throw null; } }
         protected internal override object CreateBehavior() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class TcpConnectionPoolSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public TcpConnectionPoolSettingsElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("groupName", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="default")]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("groupName", DefaultValue="default")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string GroupName { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("idleTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:02:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("idleTimeout", DefaultValue="00:02:00")]
         public System.TimeSpan IdleTimeout { get { throw null; } set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.TimeSpanConverter))]
-        [System.Configuration.ConfigurationPropertyAttribute("leaseTimeout", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="00:05:00")]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("leaseTimeout", DefaultValue="00:05:00")]
         public System.TimeSpan LeaseTimeout { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxOutboundConnectionsPerEndpoint", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxOutboundConnectionsPerEndpoint", DefaultValue=10)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxOutboundConnectionsPerEndpoint { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -7091,52 +7177,54 @@ namespace System.ServiceModel.Configuration
     {
         public TcpTransportElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("connectionPoolSettings", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("connectionPoolSettings")]
         public System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement ConnectionPoolSettings { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy")]
         public System.Security.Authentication.ExtendedProtection.Configuration.ExtendedProtectionPolicyElement ExtendedProtectionPolicy { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("listenBacklog", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="10")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("listenBacklog", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int ListenBacklog { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("portSharingEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("portSharingEnabled", DefaultValue=false)]
         public bool PortSharingEnabled { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("teredoEnabled", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("teredoEnabled", DefaultValue=false)]
         public bool TeredoEnabled { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
         protected override System.ServiceModel.Channels.TransportBindingElement CreateDefaultBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class TcpTransportSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public TcpTransportSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Windows")]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.TcpClientCredentialType)(1))]
         public System.ServiceModel.TcpClientCredentialType ClientCredentialType { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy")]
         public System.Security.Authentication.ExtendedProtection.Configuration.ExtendedProtectionPolicyElement ExtendedProtectionPolicy { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="EncryptAndSign")]
+        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(2))]
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("sslProtocols", DefaultValue=(System.Security.Authentication.SslProtocols)(4032))]
         public System.Security.Authentication.SslProtocols SslProtocols { get { throw null; } }
     }
     public sealed partial class TextMessageEncodingElement : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         public TextMessageEncodingElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReadPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="64")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReadPoolSize", DefaultValue=64)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxReadPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxWritePoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="16")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxWritePoolSize", DefaultValue=16)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxWritePoolSize { get { throw null; } set { } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.MessageVersionConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("messageVersion", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="Soap12WSAddressing10")]
+        [System.Configuration.ConfigurationPropertyAttribute("messageVersion", DefaultValue="Soap12WSAddressing10")]
         public System.ServiceModel.Channels.MessageVersion MessageVersion { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("writeEncoding", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="utf-8")]
+        [System.Configuration.ConfigurationPropertyAttribute("writeEncoding", DefaultValue="utf-8")]
         public System.Text.Encoding WriteEncoding { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -7147,8 +7235,8 @@ namespace System.ServiceModel.Configuration
     {
         public TransactedBatchingElement() { }
         public override System.Type BehaviorType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBatchSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="0")]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBatchSize", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxBatchSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -7157,34 +7245,32 @@ namespace System.ServiceModel.Configuration
     public partial class TransactionFlowElement : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         public TransactionFlowElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("allowWildcardAction", DefaultValue=false)]
         public bool AllowWildcardAction { get { throw null; } set { } }
         public override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TransactionProtocolConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("transactionProtocol", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="OleTransactions")]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionProtocol", DefaultValue="OleTransactions")]
         public System.ServiceModel.TransactionProtocol TransactionProtocol { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class TransportConfigurationTypeElement : System.Configuration.ConfigurationElement
     {
         public TransportConfigurationTypeElement() { }
         public TransportConfigurationTypeElement(string name) { }
         public TransportConfigurationTypeElement(string name, string transportConfigurationTypeName) { }
-        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("name", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Name { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transportConfigurationType", Options=(System.Configuration.ConfigurationPropertyOptions)(2), IsRequired=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("transportConfigurationType", Options=(System.Configuration.ConfigurationPropertyOptions)(2))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string TransportConfigurationType { get { throw null; } set { } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.TransportConfigurationTypeElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.TransportConfigurationTypeElement))]
     public sealed partial class TransportConfigurationTypeElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.TransportConfigurationTypeElement>
     {
         public TransportConfigurationTypeElementCollection() { }
@@ -7193,13 +7279,13 @@ namespace System.ServiceModel.Configuration
     public abstract partial class TransportElement : System.ServiceModel.Configuration.BindingElementExtensionElement
     {
         protected TransportElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("manualAddressing", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("manualAddressing", DefaultValue=false)]
         public bool ManualAddressing { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="524288")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", Options=(System.Configuration.ConfigurationPropertyOptions)(0), DefaultValue="65536")]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
@@ -7212,13 +7298,13 @@ namespace System.ServiceModel.Configuration
     {
         public UseManagedPresentationElement() { }
         public override System.Type BindingElementType { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
     }
     public sealed partial class UseRequestHeadersForMetadataAddressElement : System.ServiceModel.Configuration.BehaviorExtensionElement
     {
         public UseRequestHeadersForMetadataAddressElement() { }
         public override System.Type BehaviorType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("defaultPorts")]
         public System.ServiceModel.Configuration.DefaultPortElementCollection DefaultPorts { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
@@ -7227,66 +7313,73 @@ namespace System.ServiceModel.Configuration
     public sealed partial class UserNameServiceElement : System.Configuration.ConfigurationElement
     {
         public UserNameServiceElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("cachedLogonTokenLifetime", DefaultValue="00:15:00", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("cachedLogonTokenLifetime", DefaultValue="00:15:00")]
         public System.TimeSpan CachedLogonTokenLifetime { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("cacheLogonTokens", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("cacheLogonTokens", DefaultValue=false)]
         public bool CacheLogonTokens { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("customUserNamePasswordValidatorType", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("customUserNamePasswordValidatorType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string CustomUserNamePasswordValidatorType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("includeWindowsGroups", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("includeWindowsGroups", DefaultValue=true)]
         public bool IncludeWindowsGroups { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxCachedLogonTokens", DefaultValue="128", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=1, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxCachedLogonTokens", DefaultValue=128)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=1)]
         public int MaxCachedLogonTokens { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("membershipProviderName", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("membershipProviderName", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string MembershipProviderName { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("userNamePasswordValidationMode", DefaultValue="Windows", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("userNamePasswordValidationMode", DefaultValue=(System.ServiceModel.Security.UserNamePasswordValidationMode)(0))]
         public System.ServiceModel.Security.UserNamePasswordValidationMode UserNamePasswordValidationMode { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.UserNameServiceElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class UserPrincipalNameElement : System.Configuration.ConfigurationElement
     {
         public UserPrincipalNameElement() { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("value", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Value { get { throw null; } set { } }
     }
     public partial class WebSocketTransportSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public WebSocketTransportSettingsElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("createNotificationOnConnection", DefaultValue=false)]
         public bool CreateNotificationOnConnection { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("disablePayloadMasking", DefaultValue=false)]
         public bool DisablePayloadMasking { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.TimeSpanOrInfiniteConverter")]
+        [System.Configuration.ConfigurationPropertyAttribute("keepAliveInterval", DefaultValue="00:00:00")]
         public System.TimeSpan KeepAliveInterval { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("maxPendingConnections", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxPendingConnections { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("subProtocol", DefaultValue=null)]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public virtual string SubProtocol { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("transportUsage", DefaultValue=(System.ServiceModel.Channels.WebSocketTransportUsage)(2))]
         public virtual System.ServiceModel.Channels.WebSocketTransportUsage TransportUsage { get { throw null; } set { } }
         public void ApplyConfiguration(System.ServiceModel.Channels.WebSocketTransportSettings settings) { }
         public void InitializeFrom(System.ServiceModel.Channels.WebSocketTransportSettings settings) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class WindowsClientElement : System.Configuration.ConfigurationElement
     {
         public WindowsClientElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("allowedImpersonationLevel", DefaultValue="Identification", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("allowedImpersonationLevel", DefaultValue=(System.Security.Principal.TokenImpersonationLevel)(2))]
         public System.Security.Principal.TokenImpersonationLevel AllowedImpersonationLevel { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("allowNtlm", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("allowNtlm", DefaultValue=true)]
         public bool AllowNtlm { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.WindowsClientElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class WindowsServiceElement : System.Configuration.ConfigurationElement
     {
         public WindowsServiceElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("allowAnonymousLogons", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("allowAnonymousLogons", DefaultValue=false)]
         public bool AllowAnonymousLogons { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("includeWindowsGroups", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("includeWindowsGroups", DefaultValue=true)]
         public bool IncludeWindowsGroups { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.WindowsServiceElement from) { }
@@ -7296,32 +7389,27 @@ namespace System.ServiceModel.Configuration
         public WindowsStreamSecurityElement() { }
         public override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", DefaultValue="EncryptAndSign", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("protectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(2))]
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
         public override void ApplyConfiguration(System.ServiceModel.Channels.BindingElement bindingElement) { }
         public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Channels.BindingElement CreateBindingElement() { throw null; }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.BindingElement bindingElement) { }
     }
-    [System.MonoTODOAttribute]
     public partial class WS2007FederationHttpBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.WS2007FederationHttpBinding, System.ServiceModel.Configuration.WS2007FederationHttpBindingElement>
     {
         public WS2007FederationHttpBindingCollectionElement() { }
     }
-    [System.MonoTODOAttribute]
     public partial class WS2007FederationHttpBindingElement : System.ServiceModel.Configuration.WSFederationHttpBindingElement
     {
         public WS2007FederationHttpBindingElement() { }
         public WS2007FederationHttpBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public partial class WS2007HttpBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.WS2007HttpBinding, System.ServiceModel.Configuration.WS2007HttpBindingElement>
     {
         public WS2007HttpBindingCollectionElement() { }
     }
-    [System.MonoTODOAttribute]
     public partial class WS2007HttpBindingElement : System.ServiceModel.Configuration.WSHttpBindingElement
     {
         public WS2007HttpBindingElement() { }
@@ -7334,67 +7422,64 @@ namespace System.ServiceModel.Configuration
         public WsdlImporterElement(string type) { }
         public WsdlImporterElement(System.Type type) { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=1, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("type", Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
         public string Type { get { throw null; } set { } }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.WsdlImporterElement), AddItemName="extension", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.WsdlImporterElement), AddItemName="extension")]
     public sealed partial class WsdlImporterElementCollection : System.ServiceModel.Configuration.ServiceModelEnhancedConfigurationElementCollection<System.ServiceModel.Configuration.WsdlImporterElement>
     {
         public WsdlImporterElementCollection() { }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class WSDualHttpBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.WSDualHttpBinding, System.ServiceModel.Configuration.WSDualHttpBindingElement>
     {
         public WSDualHttpBindingCollectionElement() { }
     }
-    [System.MonoTODOAttribute]
     public partial class WSDualHttpBindingElement : System.ServiceModel.Configuration.StandardBindingElement
     {
         public WSDualHttpBindingElement() { }
         public WSDualHttpBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("clientBaseAddress", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("clientBaseAddress", DefaultValue=null)]
         public System.Uri ClientBaseAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue="StrongWildcard", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue="524288", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue="65536", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue="Text", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue=(System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null)]
         public System.Uri ProxyAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("reliableSession", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("reliableSession")]
         public System.ServiceModel.Configuration.StandardBindingReliableSessionElement ReliableSession { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.WSDualHttpSecurityElement Security { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("textEncoding", DefaultValue="utf-8", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("textEncoding", DefaultValue="utf-8")]
         public System.Text.Encoding TextEncoding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", DefaultValue=false)]
         public bool TransactionFlow { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class WSDualHttpSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public WSDualHttpSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.MessageSecurityOverHttpElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue="Message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.WSDualHttpSecurityMode)(1))]
         public System.ServiceModel.WSDualHttpSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -7407,13 +7492,13 @@ namespace System.ServiceModel.Configuration
         public WSFederationHttpBindingElement() { }
         public WSFederationHttpBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("privacyNoticeAt", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("privacyNoticeAt", DefaultValue=null)]
         public System.Uri PrivacyNoticeAt { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("privacyNoticeVersion", DefaultValue="0", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("privacyNoticeVersion", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int PrivacyNoticeVersion { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.WSFederationHttpSecurityElement Security { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
@@ -7421,9 +7506,9 @@ namespace System.ServiceModel.Configuration
     public sealed partial class WSFederationHttpSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public WSFederationHttpSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.FederatedMessageSecurityOverHttpElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue="Message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.WSFederationHttpSecurityMode)(1))]
         public System.ServiceModel.WSFederationHttpSecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -7431,36 +7516,35 @@ namespace System.ServiceModel.Configuration
     {
         protected WSHttpBindingBaseElement() { }
         protected WSHttpBindingBaseElement(string name) { }
-        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("bypassProxyOnLocal", DefaultValue=false)]
         public bool BypassProxyOnLocal { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue="StrongWildcard", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("hostNameComparisonMode", DefaultValue=(System.ServiceModel.HostNameComparisonMode)(0))]
         public System.ServiceModel.HostNameComparisonMode HostNameComparisonMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue="524288", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)0, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBufferPoolSize", DefaultValue=(long)524288)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)0)]
         public long MaxBufferPoolSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue="65536", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.LongValidatorAttribute(MinValue=(long)1, MaxValue=(long)9223372036854775807, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxReceivedMessageSize", DefaultValue=(long)65536)]
+        [System.Configuration.LongValidatorAttribute(MinValue=(long)1)]
         public long MaxReceivedMessageSize { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue="Text", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("messageEncoding", DefaultValue=(System.ServiceModel.WSMessageEncoding)(0))]
         public System.ServiceModel.WSMessageEncoding MessageEncoding { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyAddress", DefaultValue=null)]
         public System.Uri ProxyAddress { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("readerQuotas")]
         public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("reliableSession", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("reliableSession")]
         public System.ServiceModel.Configuration.StandardBindingOptionalReliableSessionElement ReliableSession { get { throw null; } }
         [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.EncodingConverter")]
-        [System.Configuration.ConfigurationPropertyAttribute("textEncoding", DefaultValue="utf-8", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("textEncoding", DefaultValue="utf-8")]
         public System.Text.Encoding TextEncoding { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transactionFlow", DefaultValue=false)]
         public bool TransactionFlow { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("useDefaultWebProxy", DefaultValue=true)]
         public bool UseDefaultWebProxy { get { throw null; } set { } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public partial class WSHttpBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.WSHttpBinding, System.ServiceModel.Configuration.WSHttpBindingElement>
     {
         public WSHttpBindingCollectionElement() { }
@@ -7469,275 +7553,270 @@ namespace System.ServiceModel.Configuration
     {
         public WSHttpBindingElement() { }
         public WSHttpBindingElement(string name) { }
-        [System.Configuration.ConfigurationPropertyAttribute("allowCookies", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("allowCookies", DefaultValue=false)]
         public bool AllowCookies { get { throw null; } set { } }
         protected override System.Type BindingElementType { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("security", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("security")]
         public System.ServiceModel.Configuration.WSHttpSecurityElement Security { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class WSHttpContextBindingCollectionElement : System.ServiceModel.Configuration.StandardBindingCollectionElement<System.ServiceModel.WSHttpContextBinding, System.ServiceModel.Configuration.WSHttpContextBindingElement>
     {
         public WSHttpContextBindingCollectionElement() { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.WorkflowServices, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class WSHttpContextBindingElement : System.ServiceModel.Configuration.WSHttpBindingElement
     {
         public WSHttpContextBindingElement() { }
         public WSHttpContextBindingElement(string name) { }
         protected override System.Type BindingElementType { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("clientCallbackAddress", DefaultValue=null)]
         public System.Uri ClientCallbackAddress { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextManagementEnabled", DefaultValue=true)]
         public bool ContextManagementEnabled { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("contextProtectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel ContextProtectionLevel { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected internal override void InitializeFrom(System.ServiceModel.Channels.Binding binding) { }
         protected override void OnApplyConfiguration(System.ServiceModel.Channels.Binding binding) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class WSHttpSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public WSHttpSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("message")]
         public System.ServiceModel.Configuration.NonDualMessageSecurityOverHttpElement Message { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue="Message", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("mode", DefaultValue=(System.ServiceModel.SecurityMode)(2))]
         public System.ServiceModel.SecurityMode Mode { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("transport", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("transport")]
         public System.ServiceModel.Configuration.WSHttpTransportSecurityElement Transport { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class WSHttpTransportSecurityElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public WSHttpTransportSecurityElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue="Windows", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("clientCredentialType", DefaultValue=(System.ServiceModel.HttpClientCredentialType)(4))]
         public System.ServiceModel.HttpClientCredentialType ClientCredentialType { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("extendedProtectionPolicy")]
         public System.Security.Authentication.ExtendedProtection.Configuration.ExtendedProtectionPolicyElement ExtendedProtectionPolicy { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("proxyCredentialType", DefaultValue="None", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("proxyCredentialType", DefaultValue=(System.ServiceModel.HttpProxyCredentialType)(0))]
         public System.ServiceModel.HttpProxyCredentialType ProxyCredentialType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("realm", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("realm", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string Realm { get { throw null; } set { } }
     }
     public sealed partial class X509CertificateTrustedIssuerElement : System.Configuration.ConfigurationElement
     {
         public X509CertificateTrustedIssuerElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4), IsKey=true)]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="LocalMachine", Options=(System.Configuration.ConfigurationPropertyOptions)(4), IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2), Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(4), IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5), Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(4), IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2), Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509CertificateTrustedIssuerElement from) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.X509CertificateTrustedIssuerElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.X509CertificateTrustedIssuerElement))]
     public sealed partial class X509CertificateTrustedIssuerElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.X509CertificateTrustedIssuerElement>
     {
         public X509CertificateTrustedIssuerElementCollection() { }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509ClientCertificateAuthenticationElement : System.Configuration.ConfigurationElement
     {
         public X509ClientCertificateAuthenticationElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue="ChainTrust", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue=(System.ServiceModel.Security.X509CertificateValidationMode)(2))]
         public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string CustomCertificateValidatorType { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("includeWindowsGroups", DefaultValue=true, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("includeWindowsGroups", DefaultValue=true)]
         public bool IncludeWindowsGroups { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("mapClientCertificateToWindowsAccount", DefaultValue=false, Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("mapClientCertificateToWindowsAccount", DefaultValue=false)]
         public bool MapClientCertificateToWindowsAccount { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue="Online", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue=(System.Security.Cryptography.X509Certificates.X509RevocationMode)(1))]
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue="LocalMachine", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2))]
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509ClientCertificateAuthenticationElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509ClientCertificateCredentialsElement : System.Configuration.ConfigurationElement
     {
         public X509ClientCertificateCredentialsElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="LocalMachine", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509ClientCertificateCredentialsElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509DefaultServiceCertificateElement : System.Configuration.ConfigurationElement
     {
         public X509DefaultServiceCertificateElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="CurrentUser", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(1))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509DefaultServiceCertificateElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509InitiatorCertificateClientElement : System.Configuration.ConfigurationElement
     {
         public X509InitiatorCertificateClientElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="CurrentUser", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(1))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509InitiatorCertificateClientElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509InitiatorCertificateServiceElement : System.Configuration.ConfigurationElement
     {
         public X509InitiatorCertificateServiceElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("authentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("authentication")]
         public System.ServiceModel.Configuration.X509ClientCertificateAuthenticationElement Authentication { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("certificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificate")]
         public System.ServiceModel.Configuration.X509ClientCertificateCredentialsElement Certificate { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.X509InitiatorCertificateServiceElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509PeerCertificateAuthenticationElement : System.Configuration.ConfigurationElement
     {
         public X509PeerCertificateAuthenticationElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue="PeerOrChainTrust", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue=(System.ServiceModel.Security.X509CertificateValidationMode)(3))]
         public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string CustomCertificateValidatorType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue="Online", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue=(System.Security.Cryptography.X509Certificates.X509RevocationMode)(1))]
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue="CurrentUser", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(1))]
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509PeerCertificateAuthenticationElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509PeerCertificateElement : System.Configuration.ConfigurationElement
     {
         public X509PeerCertificateElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="CurrentUser", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(1))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509PeerCertificateElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509RecipientCertificateClientElement : System.Configuration.ConfigurationElement
     {
         public X509RecipientCertificateClientElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("authentication", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("authentication")]
         public System.ServiceModel.Configuration.X509ServiceCertificateAuthenticationElement Authentication { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("defaultCertificate", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("defaultCertificate")]
         public System.ServiceModel.Configuration.X509DefaultServiceCertificateElement DefaultCertificate { get { throw null; } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("scopedCertificates", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("scopedCertificates")]
         public System.ServiceModel.Configuration.X509ScopedServiceCertificateElementCollection ScopedCertificates { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("sslCertificateAuthentication")]
         public System.ServiceModel.Configuration.X509ServiceCertificateAuthenticationElement SslCertificateAuthentication { get { throw null; } }
         public void Copy(System.ServiceModel.Configuration.X509RecipientCertificateClientElement from) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509RecipientCertificateServiceElement : System.Configuration.ConfigurationElement
     {
         public X509RecipientCertificateServiceElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="LocalMachine", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(2))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509RecipientCertificateServiceElement from) { }
     }
     public sealed partial class X509ScopedServiceCertificateElement : System.Configuration.ConfigurationElement
     {
         public X509ScopedServiceCertificateElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("findValue", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string FindValue { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue="CurrentUser", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(1))]
         public System.Security.Cryptography.X509Certificates.StoreLocation StoreLocation { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue="My", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("storeName", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreName)(5))]
         public System.Security.Cryptography.X509Certificates.StoreName StoreName { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("targetUri", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("targetUri", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
         public System.Uri TargetUri { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue="FindBySubjectDistinguishedName", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("x509FindType", DefaultValue=(System.Security.Cryptography.X509Certificates.X509FindType)(2))]
         public System.Security.Cryptography.X509Certificates.X509FindType X509FindType { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509ScopedServiceCertificateElement from) { }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.X509ScopedServiceCertificateElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.X509ScopedServiceCertificateElement))]
     public sealed partial class X509ScopedServiceCertificateElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.X509ScopedServiceCertificateElement>
     {
         public X509ScopedServiceCertificateElementCollection() { }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509ServiceCertificateAuthenticationElement : System.Configuration.ConfigurationElement
     {
         public X509ServiceCertificateAuthenticationElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue="ChainTrust", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("certificateValidationMode", DefaultValue=(System.ServiceModel.Security.X509CertificateValidationMode)(2))]
         public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.StringValidatorAttribute(MinLength=0, MaxLength=2147483647, InvalidCharacters=null)]
+        [System.Configuration.ConfigurationPropertyAttribute("customCertificateValidatorType", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
         public string CustomCertificateValidatorType { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue="Online", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("revocationMode", DefaultValue=(System.Security.Cryptography.X509Certificates.X509RevocationMode)(1))]
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue="CurrentUser", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
+        [System.Configuration.ConfigurationPropertyAttribute("trustedStoreLocation", DefaultValue=(System.Security.Cryptography.X509Certificates.StoreLocation)(1))]
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.X509ServiceCertificateAuthenticationElement from) { }
     }
     public sealed partial class XmlDictionaryReaderQuotasElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement
     {
         public XmlDictionaryReaderQuotasElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("maxArrayLength", DefaultValue="0", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxArrayLength", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxArrayLength { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxBytesPerRead", DefaultValue="0", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxBytesPerRead", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxBytesPerRead { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxDepth", DefaultValue="0", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxDepth", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxDepth { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxNameTableCharCount", DefaultValue="0", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxNameTableCharCount", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxNameTableCharCount { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("maxStringContentLength", DefaultValue="0", Options=(System.Configuration.ConfigurationPropertyOptions)(0))]
-        [System.Configuration.IntegerValidatorAttribute(MinValue=0, MaxValue=2147483647, ExcludeRange=false)]
+        [System.Configuration.ConfigurationPropertyAttribute("maxStringContentLength", DefaultValue=0)]
+        [System.Configuration.IntegerValidatorAttribute(MinValue=0)]
         public int MaxStringContentLength { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -7746,41 +7825,38 @@ namespace System.ServiceModel.Configuration
         public XmlElementElement() { }
         public XmlElementElement(System.Xml.XmlElement element) { }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
-        [System.Configuration.ConfigurationPropertyAttribute("xmlElement", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(4), IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("xmlElement", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(4))]
         public System.Xml.XmlElement XmlElement { get { throw null; } set { } }
         public void Copy(System.ServiceModel.Configuration.XmlElementElement source) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
         protected override void PostDeserialize() { }
         protected override bool SerializeToXmlElement(System.Xml.XmlWriter writer, string elementName) { throw null; }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.XmlElementElement), AddItemName="xmlElement", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.XmlElementElement), AddItemName="xmlElement", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(0))]
     public sealed partial class XmlElementElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.XmlElementElement>
     {
         public XmlElementElementCollection() { }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool OnDeserializeUnrecognizedElement(string elementName, System.Xml.XmlReader reader) { throw null; }
         protected override void Unmerge(System.Configuration.ConfigurationElement sourceElement, System.Configuration.ConfigurationElement parentElement, System.Configuration.ConfigurationSaveMode saveMode) { }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class XPathMessageFilterElement : System.Configuration.ConfigurationElement
     {
         public XPathMessageFilterElement() { }
-        [System.Configuration.ConfigurationPropertyAttribute("filter", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(6), IsRequired=true, IsKey=true)]
+        [System.Configuration.ConfigurationPropertyAttribute("filter", DefaultValue=null, Options=(System.Configuration.ConfigurationPropertyOptions)(6))]
         public System.ServiceModel.Dispatcher.XPathMessageFilter Filter { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         protected override void DeserializeElement(System.Xml.XmlReader reader, bool serializeCollectionKey) { }
         protected override bool SerializeToXmlElement(System.Xml.XmlWriter writer, string elementName) { throw null; }
     }
-    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.XPathMessageFilterElement), AddItemName="add", RemoveItemName="remove", ClearItemsName="clear", CollectionType=(System.Configuration.ConfigurationElementCollectionType)(1))]
-    [System.MonoTODOAttribute]
+    [System.Configuration.ConfigurationCollectionAttribute(typeof(System.ServiceModel.Configuration.XPathMessageFilterElement))]
     public sealed partial class XPathMessageFilterElementCollection : System.ServiceModel.Configuration.ServiceModelConfigurationElementCollection<System.ServiceModel.Configuration.XPathMessageFilterElement>
     {
         public XPathMessageFilterElementCollection() { }
         public override System.ServiceModel.Configuration.XPathMessageFilterElement this[object key] { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         public override bool ContainsKey(object key) { throw null; }
-        [System.MonoTODOAttribute]
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
     public partial class XPathMessageFilterElementComparer : System.Collections.IComparer
@@ -7803,7 +7879,6 @@ namespace System.ServiceModel.Description
     public partial class ClientCredentials : System.ServiceModel.Security.SecurityCredentialsManager, System.ServiceModel.Description.IEndpointBehavior
     {
         public ClientCredentials() { }
-        [System.MonoTODOAttribute]
         protected ClientCredentials(System.ServiceModel.Description.ClientCredentials other) { }
         public System.ServiceModel.Security.X509CertificateInitiatorClientCredential ClientCertificate { get { throw null; } }
         public System.ServiceModel.Security.HttpDigestClientCredential HttpDigest { get { throw null; } }
@@ -7815,12 +7890,10 @@ namespace System.ServiceModel.Description
         public bool UseIdentityConfiguration { get { throw null; } set { } }
         public System.ServiceModel.Security.UserNamePasswordClientCredential UserName { get { throw null; } }
         public System.ServiceModel.Security.WindowsClientCredential Windows { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual void ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.ClientRuntime behavior) { }
         public System.ServiceModel.Description.ClientCredentials Clone() { throw null; }
         protected virtual System.ServiceModel.Description.ClientCredentials CloneCore() { throw null; }
         public override System.IdentityModel.Selectors.SecurityTokenManager CreateSecurityTokenManager() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal virtual System.IdentityModel.Tokens.SecurityToken GetInfoCardSecurityToken(bool requiresInfoCard, System.IdentityModel.Selectors.CardSpacePolicyElement[] chain, System.IdentityModel.Selectors.SecurityTokenSerializer tokenSerializer) { throw null; }
         void System.ServiceModel.Description.IEndpointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters) { }
         void System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher) { }
@@ -7840,10 +7913,11 @@ namespace System.ServiceModel.Description
     {
         public ContractDescription(string name) { }
         public ContractDescription(string name, string ns) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IContractBehavior> Behaviors { get { throw null; } }
         public System.Type CallbackContractType { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public string ConfigurationName { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.KeyedCollection<System.Type, System.ServiceModel.Description.IContractBehavior> ContractBehaviors { get { throw null; } }
         public System.Type ContractType { get { throw null; } set { } }
         public bool HasProtectionLevel { get { throw null; } }
@@ -7851,6 +7925,7 @@ namespace System.ServiceModel.Description
         public string Namespace { get { throw null; } set { } }
         public System.ServiceModel.Description.OperationDescriptionCollection Operations { get { throw null; } }
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.SessionMode)(0))]
         public System.ServiceModel.SessionMode SessionMode { get { throw null; } set { } }
         public static System.ServiceModel.Description.ContractDescription GetContract(System.Type contractType) { throw null; }
         public static System.ServiceModel.Description.ContractDescription GetContract(System.Type contractType, object serviceImplementation) { throw null; }
@@ -7871,10 +7946,10 @@ namespace System.ServiceModel.Description
         public DataContractSerializerOperationBehavior(System.ServiceModel.Description.OperationDescription operation) { }
         public DataContractSerializerOperationBehavior(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.DataContractFormatAttribute dataContractFormatAttribute) { }
         public System.ServiceModel.DataContractFormatAttribute DataContractFormatAttribute { get { throw null; } }
-        public System.Runtime.Serialization.DataContractResolver DataContractResolver { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Runtime.Serialization.IDataContractSurrogate DataContractSurrogate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IgnoreExtensionDataObject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int MaxItemsInObjectGraph { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Runtime.Serialization.DataContractResolver DataContractResolver { get { throw null; } set { } }
+        public System.Runtime.Serialization.IDataContractSurrogate DataContractSurrogate { get { throw null; } set { } }
+        public bool IgnoreExtensionDataObject { get { throw null; } set { } }
+        public int MaxItemsInObjectGraph { get { throw null; } set { } }
         public virtual System.Runtime.Serialization.XmlObjectSerializer CreateSerializer(System.Type type, string name, string ns, System.Collections.Generic.IList<System.Type> knownTypes) { throw null; }
         public virtual System.Runtime.Serialization.XmlObjectSerializer CreateSerializer(System.Type type, System.Xml.XmlDictionaryString name, System.Xml.XmlDictionaryString ns, System.Collections.Generic.IList<System.Type> knownTypes) { throw null; }
         void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
@@ -7888,8 +7963,8 @@ namespace System.ServiceModel.Description
     {
         public DispatcherSynchronizationBehavior() { }
         public DispatcherSynchronizationBehavior(bool asynchronousSendEnabled, int maxPendingReceives) { }
-        public bool AsynchronousSendEnabled { get { throw null; } set { } }
-        public int MaxPendingReceives { get { throw null; } set { } }
+        public bool AsynchronousSendEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int MaxPendingReceives { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         void System.ServiceModel.Description.IEndpointBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
         void System.ServiceModel.Description.IEndpointBehavior.ApplyClientBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.ClientRuntime behavior) { }
         void System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher) { }
@@ -7931,13 +8006,13 @@ namespace System.ServiceModel.Description
         void ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher);
         void Validate(System.ServiceModel.Description.ServiceEndpoint endpoint);
     }
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.microsoft.com/2006/04/mex", Name="IMetadataExchange")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IMetadataExchange", Name="IMetadataExchange", Namespace="http://schemas.microsoft.com/2006/04/mex")]
     public partial interface IMetadataExchange
     {
-        [System.ServiceModel.OperationContractAttribute(ReplyAction="http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse", Action="http://schemas.xmlsoap.org/ws/2004/09/transfer/Get", AsyncPattern=true)]
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.xmlsoap.org/ws/2004/09/transfer/Get", ReplyAction="http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse", AsyncPattern=true)]
         System.IAsyncResult BeginGet(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
         System.ServiceModel.Channels.Message EndGet(System.IAsyncResult result);
-        [System.ServiceModel.OperationContractAttribute(ReplyAction="http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse", Action="http://schemas.xmlsoap.org/ws/2004/09/transfer/Get", AsyncPattern=false)]
+        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.xmlsoap.org/ws/2004/09/transfer/Get", ReplyAction="http://schemas.xmlsoap.org/ws/2004/09/transfer/GetResponse")]
         System.ServiceModel.Channels.Message Get(System.ServiceModel.Channels.Message request);
     }
     public partial interface IOperationBehavior
@@ -7989,8 +8064,11 @@ namespace System.ServiceModel.Description
     {
         public MessageBodyDescription() { }
         public System.ServiceModel.Description.MessagePartDescriptionCollection Parts { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.ServiceModel.Description.MessagePartDescription ReturnValue { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public string WrapperName { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public string WrapperNamespace { get { throw null; } set { } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("Action={action}, Direction={direction}, MessageType={messageType}")]
@@ -8002,6 +8080,7 @@ namespace System.ServiceModel.Description
         public System.ServiceModel.Description.MessageDirection Direction { get { throw null; } }
         public bool HasProtectionLevel { get { throw null; } }
         public System.ServiceModel.Description.MessageHeaderDescriptionCollection Headers { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Type MessageType { get { throw null; } set { } }
         public System.ServiceModel.Description.MessagePropertyDescriptionCollection Properties { get { throw null; } }
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
@@ -8018,13 +8097,16 @@ namespace System.ServiceModel.Description
         Input = 0,
         Output = 1,
     }
-    [System.MonoTODOAttribute]
     public partial class MessageHeaderDescription : System.ServiceModel.Description.MessagePartDescription
     {
         public MessageHeaderDescription(string name, string ns) : base (default(string), default(string)) { }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public string Actor { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool MustUnderstand { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool Relay { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool TypedHeader { get { throw null; } set { } }
     }
     public partial class MessageHeaderDescriptionCollection : System.Collections.ObjectModel.KeyedCollection<System.Xml.XmlQualifiedName, System.ServiceModel.Description.MessageHeaderDescription>
@@ -8039,6 +8121,7 @@ namespace System.ServiceModel.Description
         public bool HasProtectionLevel { get { throw null; } }
         public int Index { get { throw null; } set { } }
         public System.Reflection.MemberInfo MemberInfo { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool Multiple { get { throw null; } set { } }
         public string Name { get { throw null; } }
         public string Namespace { get { throw null; } }
@@ -8050,7 +8133,6 @@ namespace System.ServiceModel.Description
         internal MessagePartDescriptionCollection() { }
         protected override System.Xml.XmlQualifiedName GetKeyForItem(System.ServiceModel.Description.MessagePartDescription item) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class MessagePropertyDescription : System.ServiceModel.Description.MessagePartDescription
     {
         public MessagePropertyDescription(string name) : base (default(string), default(string)) { }
@@ -8078,26 +8160,20 @@ namespace System.ServiceModel.Description
     }
     public partial class MetadataExchangeClient
     {
-        [System.MonoTODOAttribute("use empty configuration")]
         public MetadataExchangeClient() { }
         public MetadataExchangeClient(System.ServiceModel.Channels.Binding mexBinding) { }
         public MetadataExchangeClient(System.ServiceModel.EndpointAddress address) { }
         public MetadataExchangeClient(string endpointConfigurationName) { }
-        [System.MonoTODOAttribute("MetadataExchangeClientMode is not considered")]
         public MetadataExchangeClient(System.Uri address, System.ServiceModel.Description.MetadataExchangeClientMode mode) { }
-        [System.MonoTODOAttribute]
-        public System.Net.ICredentials HttpCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MaximumResolvedReferences { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Net.ICredentials HttpCredentials { get { throw null; } set { } }
+        public int MaximumResolvedReferences { get { throw null; } set { } }
         public System.TimeSpan OperationTimeout { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public bool ResolveMetadataReferences { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Description.ClientCredentials SoapCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool ResolveMetadataReferences { get { throw null; } set { } }
+        public System.ServiceModel.Description.ClientCredentials SoapCredentials { get { throw null; } set { } }
         public System.IAsyncResult BeginGetMetadata(System.AsyncCallback callback, object asyncState) { throw null; }
         public System.IAsyncResult BeginGetMetadata(System.ServiceModel.EndpointAddress address, System.AsyncCallback callback, object asyncState) { throw null; }
         public System.IAsyncResult BeginGetMetadata(System.Uri address, System.ServiceModel.Description.MetadataExchangeClientMode mode, System.AsyncCallback callback, object asyncState) { throw null; }
         public System.ServiceModel.Description.MetadataSet EndGetMetadata(System.IAsyncResult result) { throw null; }
-        [System.MonoTODOAttribute("use dialect and identifier (but how?)")]
         protected internal virtual System.ServiceModel.ChannelFactory<System.ServiceModel.Description.IMetadataExchange> GetChannelFactory(System.ServiceModel.EndpointAddress metadataAddress, string dialect, string identifier) { throw null; }
         public System.ServiceModel.Description.MetadataSet GetMetadata() { throw null; }
         public System.ServiceModel.Description.MetadataSet GetMetadata(System.ServiceModel.EndpointAddress address) { throw null; }
@@ -8107,7 +8183,6 @@ namespace System.ServiceModel.Description
         public System.Threading.Tasks.Task<System.ServiceModel.Description.MetadataSet> GetMetadataAsync(System.ServiceModel.EndpointAddress address) { throw null; }
         public System.Threading.Tasks.Task<System.ServiceModel.Description.MetadataSet> GetMetadataAsync(System.ServiceModel.EndpointAddress address, System.Uri via) { throw null; }
         public System.Threading.Tasks.Task<System.ServiceModel.Description.MetadataSet> GetMetadataAsync(System.Uri address, System.ServiceModel.Description.MetadataExchangeClientMode mode) { throw null; }
-        [System.MonoTODOAttribute]
         protected internal virtual System.Net.HttpWebRequest GetWebRequest(System.Uri location, string dialect, string identifier) { throw null; }
     }
     public enum MetadataExchangeClientMode
@@ -8115,7 +8190,6 @@ namespace System.ServiceModel.Description
         HttpGet = 1,
         MetadataExchange = 0,
     }
-    [System.MonoTODOAttribute]
     public abstract partial class MetadataExporter
     {
         internal MetadataExporter() { }
@@ -8127,7 +8201,6 @@ namespace System.ServiceModel.Description
         protected internal System.ServiceModel.Description.PolicyConversionContext ExportPolicy(System.ServiceModel.Description.ServiceEndpoint endpoint) { throw null; }
         public abstract System.ServiceModel.Description.MetadataSet GetGeneratedMetadata();
     }
-    [System.MonoTODOAttribute]
     public abstract partial class MetadataImporter
     {
         internal MetadataImporter() { }
@@ -8144,8 +8217,7 @@ namespace System.ServiceModel.Description
         public static System.ServiceModel.Description.MetadataImporterQuotas Defaults { get { throw null; } }
         public static System.ServiceModel.Description.MetadataImporterQuotas Max { get { throw null; } }
     }
-    [System.MonoTODOAttribute]
-    [System.Xml.Serialization.XmlRootAttribute("Location", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="Location", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
     public partial class MetadataLocation
     {
         public MetadataLocation() { }
@@ -8153,8 +8225,7 @@ namespace System.ServiceModel.Description
         [System.Xml.Serialization.XmlTextAttribute]
         public string Location { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
-    [System.Xml.Serialization.XmlRootAttribute("MetadataReference", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="MetadataReference", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
     public partial class MetadataReference : System.Xml.Serialization.IXmlSerializable
     {
         public MetadataReference() { }
@@ -8165,7 +8236,6 @@ namespace System.ServiceModel.Description
         void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
         void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
     }
-    [System.MonoTODOAttribute]
     public static partial class MetadataResolver
     {
         public static System.IAsyncResult BeginResolve(System.Collections.Generic.IEnumerable<System.ServiceModel.Description.ContractDescription> contracts, System.ServiceModel.EndpointAddress address, System.AsyncCallback callback, object asyncState) { throw null; }
@@ -8182,7 +8252,7 @@ namespace System.ServiceModel.Description
         public static System.ServiceModel.Description.ServiceEndpointCollection Resolve(System.Type contract, System.ServiceModel.EndpointAddress address) { throw null; }
         public static System.ServiceModel.Description.ServiceEndpointCollection Resolve(System.Type contract, System.Uri address, System.ServiceModel.Description.MetadataExchangeClientMode mode) { throw null; }
     }
-    [System.Xml.Serialization.XmlRootAttribute("MetadataSection", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="MetadataSection", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
     public partial class MetadataSection
     {
         public MetadataSection() { }
@@ -8194,11 +8264,11 @@ namespace System.ServiceModel.Description
         [System.Xml.Serialization.XmlAttributeAttribute]
         public string Identifier { get { throw null; } set { } }
         [System.Xml.Serialization.XmlAnyElementAttribute]
-        [System.Xml.Serialization.XmlElementAttribute("definitions", Namespace="http://schemas.xmlsoap.org/wsdl/", Type=typeof(System.Web.Services.Description.ServiceDescription), IsNullable=false)]
-        [System.Xml.Serialization.XmlElementAttribute("Location", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex", Type=typeof(System.ServiceModel.Description.MetadataLocation), IsNullable=false)]
-        [System.Xml.Serialization.XmlElementAttribute("Metadata", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex", Type=typeof(System.ServiceModel.Description.MetadataSet), IsNullable=false)]
-        [System.Xml.Serialization.XmlElementAttribute("MetadataReference", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex", Type=typeof(System.ServiceModel.Description.MetadataReference), IsNullable=false)]
-        [System.Xml.Serialization.XmlElementAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", Type=typeof(System.Xml.Schema.XmlSchema), IsNullable=false)]
+        [System.Xml.Serialization.XmlElementAttribute("definitions", typeof(System.Web.Services.Description.ServiceDescription), Namespace="http://schemas.xmlsoap.org/wsdl/")]
+        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(System.ServiceModel.Description.MetadataLocation), Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
+        [System.Xml.Serialization.XmlElementAttribute("Metadata", typeof(System.ServiceModel.Description.MetadataSet), Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
+        [System.Xml.Serialization.XmlElementAttribute("MetadataReference", typeof(System.ServiceModel.Description.MetadataReference), Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
+        [System.Xml.Serialization.XmlElementAttribute("schema", typeof(System.Xml.Schema.XmlSchema), Namespace="http://www.w3.org/2001/XMLSchema")]
         public object Metadata { get { throw null; } set { } }
         public static string MetadataExchangeDialect { get { throw null; } }
         public static string PolicyDialect { get { throw null; } }
@@ -8208,7 +8278,6 @@ namespace System.ServiceModel.Description
         public static System.ServiceModel.Description.MetadataSection CreateFromSchema(System.Xml.Schema.XmlSchema schema) { throw null; }
         public static System.ServiceModel.Description.MetadataSection CreateFromServiceDescription(System.Web.Services.Description.ServiceDescription serviceDescription) { throw null; }
     }
-    [System.MonoTODOAttribute]
     [System.Xml.Serialization.XmlRootAttribute("Metadata", Namespace="http://schemas.xmlsoap.org/ws/2004/09/mex")]
     public partial class MetadataSet : System.Xml.Serialization.IXmlSerializable
     {
@@ -8233,7 +8302,6 @@ namespace System.ServiceModel.Description
         void System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher) { }
         void System.ServiceModel.Description.IEndpointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint) { }
     }
-    [System.MonoTODOAttribute]
     public partial class OperationContractGenerationContext
     {
         public OperationContractGenerationContext(System.ServiceModel.Description.ServiceContractGenerator serviceContractGenerator, System.ServiceModel.Description.ServiceContractGenerationContext contract, System.ServiceModel.Description.OperationDescription operation, System.CodeDom.CodeTypeDeclaration declaringType, System.CodeDom.CodeMemberMethod method) { }
@@ -8256,22 +8324,23 @@ namespace System.ServiceModel.Description
     {
         public OperationDescription(string name, System.ServiceModel.Description.ContractDescription declaringContract) { }
         public System.Reflection.MethodInfo BeginMethod { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IOperationBehavior> Behaviors { get { throw null; } }
         public System.ServiceModel.Description.ContractDescription DeclaringContract { get { throw null; } set { } }
         public System.Reflection.MethodInfo EndMethod { get { throw null; } set { } }
         public System.ServiceModel.Description.FaultDescriptionCollection Faults { get { throw null; } }
         public bool HasProtectionLevel { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool IsInitiating { get { throw null; } set { } }
         public bool IsOneWay { get { throw null; } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool IsTerminating { get { throw null; } set { } }
         public System.Collections.ObjectModel.Collection<System.Type> KnownTypes { get { throw null; } }
         public System.ServiceModel.Description.MessageDescriptionCollection Messages { get { throw null; } }
         public string Name { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.KeyedCollection<System.Type, System.ServiceModel.Description.IOperationBehavior> OperationBehaviors { get { throw null; } }
         public System.Net.Security.ProtectionLevel ProtectionLevel { get { throw null; } set { } }
         public System.Reflection.MethodInfo SyncMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Reflection.MethodInfo TaskMethod { get { throw null; } set { } }
         public bool ShouldSerializeProtectionLevel() { throw null; }
     }
@@ -8291,19 +8360,12 @@ namespace System.ServiceModel.Description
     {
         public PolicyAssertionCollection() { }
         public PolicyAssertionCollection(System.Collections.Generic.IEnumerable<System.Xml.XmlElement> elements) { }
-        [System.MonoTODOAttribute]
         public bool Contains(string localName, string namespaceUri) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Xml.XmlElement Find(string localName, string namespaceUri) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> FindAll(string localName, string namespaceUri) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void InsertItem(int index, System.Xml.XmlElement item) { }
-        [System.MonoTODOAttribute]
         public System.Xml.XmlElement Remove(string localName, string namespaceUri) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> RemoveAll(string localName, string namespaceUri) { throw null; }
-        [System.MonoTODOAttribute]
         protected override void SetItem(int index, System.Xml.XmlElement item) { }
     }
     public abstract partial class PolicyConversionContext
@@ -8348,16 +8410,19 @@ namespace System.ServiceModel.Description
     {
         public ServiceAuthorizationBehavior() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ExternalAuthorizationPolicies { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool ImpersonateCallerForAllOperations { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
         public bool ImpersonateOnSerializingReply { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.Description.PrincipalPermissionMode)(1))]
         public System.ServiceModel.Description.PrincipalPermissionMode PrincipalPermissionMode { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
         public System.Web.Security.RoleProvider RoleProvider { get { throw null; } set { } }
         public System.ServiceModel.ServiceAuthorizationManager ServiceAuthorizationManager { get { throw null; } set { } }
         public bool ShouldSerializeExternalAuthorizationPolicies() { throw null; }
         public bool ShouldSerializeServiceAuthorizationManager() { throw null; }
         void System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
     public partial class ServiceContractGenerationContext
@@ -8395,7 +8460,6 @@ namespace System.ServiceModel.Description
         public System.Collections.Generic.Dictionary<System.ServiceModel.Description.ContractDescription, System.Type> ReferencedTypes { get { throw null; } }
         public System.CodeDom.CodeCompileUnit TargetCompileUnit { get { throw null; } }
         public void GenerateBinding(System.ServiceModel.Channels.Binding binding, out string bindingSectionName, out string configurationName) { bindingSectionName = default(string); configurationName = default(string); }
-        [System.MonoTODOAttribute]
         public System.CodeDom.CodeTypeReference GenerateServiceContractType(System.ServiceModel.Description.ContractDescription contractDescription) { throw null; }
         public System.CodeDom.CodeTypeReference GenerateServiceEndpoint(System.ServiceModel.Description.ServiceEndpoint endpoint, out System.ServiceModel.Configuration.ChannelEndpointElement channelElement) { channelElement = default(System.ServiceModel.Configuration.ChannelEndpointElement); throw null; }
     }
@@ -8418,24 +8482,30 @@ namespace System.ServiceModel.Description
         public override System.IdentityModel.Selectors.SecurityTokenManager CreateSecurityTokenManager() { throw null; }
         void System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
     public partial class ServiceDebugBehavior : System.ServiceModel.Description.IServiceBehavior
     {
         public ServiceDebugBehavior() { }
-        public System.ServiceModel.Channels.Binding HttpHelpPageBinding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool HttpHelpPageEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri HttpHelpPageUrl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Channels.Binding HttpsHelpPageBinding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool HttpsHelpPageEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri HttpsHelpPageUrl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IncludeExceptionDetailInFaults { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.Channels.Binding HttpHelpPageBinding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool HttpHelpPageEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri HttpHelpPageUrl { get { throw null; } set { } }
+        public System.ServiceModel.Channels.Binding HttpsHelpPageBinding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool HttpsHelpPageEnabled { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri HttpsHelpPageUrl { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool IncludeExceptionDetailInFaults { get { throw null; } set { } }
         void System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("ServiceType={serviceType}")]
     public partial class ServiceDescription
     {
         public ServiceDescription() { }
@@ -8456,10 +8526,10 @@ namespace System.ServiceModel.Description
         public ServiceEndpoint(System.ServiceModel.Description.ContractDescription contract) { }
         public ServiceEndpoint(System.ServiceModel.Description.ContractDescription contract, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress address) { }
         public System.ServiceModel.EndpointAddress Address { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IEndpointBehavior> Behaviors { get { throw null; } }
         public System.ServiceModel.Channels.Binding Binding { get { throw null; } set { } }
         public System.ServiceModel.Description.ContractDescription Contract { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.KeyedCollection<System.Type, System.ServiceModel.Description.IEndpointBehavior> EndpointBehaviors { get { throw null; } }
         public bool IsSystemEndpoint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public System.Uri ListenUri { get { throw null; } set { } }
@@ -8479,22 +8549,23 @@ namespace System.ServiceModel.Description
         protected override void InsertItem(int index, System.ServiceModel.Description.ServiceEndpoint item) { }
         protected override void SetItem(int index, System.ServiceModel.Description.ServiceEndpoint item) { }
     }
-    [System.MonoTODOAttribute]
     public partial class ServiceMetadataBehavior : System.ServiceModel.Description.IServiceBehavior
     {
         public const string MexContractName = "IMetadataExchange";
         public ServiceMetadataBehavior() { }
-        public System.Uri ExternalMetadataLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Channels.Binding HttpGetBinding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool HttpGetEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri HttpGetUrl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Channels.Binding HttpsGetBinding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool HttpsGetEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri HttpsGetUrl { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri ExternalMetadataLocation { get { throw null; } set { } }
+        public System.ServiceModel.Channels.Binding HttpGetBinding { get { throw null; } set { } }
+        public bool HttpGetEnabled { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri HttpGetUrl { get { throw null; } set { } }
+        public System.ServiceModel.Channels.Binding HttpsGetBinding { get { throw null; } set { } }
+        public bool HttpsGetEnabled { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri HttpsGetUrl { get { throw null; } set { } }
         public System.ServiceModel.Description.MetadataExporter MetadataExporter { get { throw null; } set { } }
         void System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
-        [System.MonoTODOAttribute]
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
     public sealed partial class ServiceMetadataContractBehavior : System.ServiceModel.Description.IContractBehavior
@@ -8507,6 +8578,8 @@ namespace System.ServiceModel.Description
         void System.ServiceModel.Description.IContractBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ContractDescription description, System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.DispatchRuntime dispatch) { }
         void System.ServiceModel.Description.IContractBehavior.Validate(System.ServiceModel.Description.ContractDescription description, System.ServiceModel.Description.ServiceEndpoint endpoint) { }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Address={address}")]
+    [System.Diagnostics.DebuggerDisplayAttribute("Name={name}")]
     public partial class ServiceMetadataEndpoint : System.ServiceModel.Description.ServiceEndpoint
     {
         public ServiceMetadataEndpoint() : base (default(System.ServiceModel.Description.ContractDescription)) { }
@@ -8516,7 +8589,6 @@ namespace System.ServiceModel.Description
     public partial class ServiceMetadataExtension : System.ServiceModel.IExtension<System.ServiceModel.ServiceHostBase>
     {
         public ServiceMetadataExtension() { }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.Description.MetadataSet Metadata { get { throw null; } }
         public System.Web.Services.Description.ServiceDescription SingleWsdl { get { throw null; } }
         void System.ServiceModel.IExtension<System.ServiceModel.ServiceHostBase>.Attach(System.ServiceModel.ServiceHostBase owner) { }
@@ -8543,7 +8615,6 @@ namespace System.ServiceModel.Description
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
-    [System.MonoTODOAttribute]
     public partial class SynchronousReceiveBehavior : System.ServiceModel.Description.IEndpointBehavior
     {
         public SynchronousReceiveBehavior() { }
@@ -8552,7 +8623,6 @@ namespace System.ServiceModel.Description
         void System.ServiceModel.Description.IEndpointBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher) { }
         void System.ServiceModel.Description.IEndpointBehavior.Validate(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint) { }
     }
-    [System.MonoTODOAttribute]
     public partial class TransactedBatchingBehavior : System.ServiceModel.Description.IEndpointBehavior
     {
         public TransactedBatchingBehavior(int maxBatchSize) { }
@@ -8583,7 +8653,6 @@ namespace System.ServiceModel.Description
         void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription serviceDescription, System.ServiceModel.ServiceHostBase serviceHostBase) { }
         void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription serviceDescription, System.ServiceModel.ServiceHostBase serviceHostBase) { }
     }
-    [System.MonoTODOAttribute]
     public partial class WsdlContractConversionContext
     {
         internal WsdlContractConversionContext() { }
@@ -8596,7 +8665,6 @@ namespace System.ServiceModel.Description
         public System.Web.Services.Description.OperationFault GetOperationFault(System.ServiceModel.Description.FaultDescription fault) { throw null; }
         public System.Web.Services.Description.OperationMessage GetOperationMessage(System.ServiceModel.Description.MessageDescription message) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class WsdlEndpointConversionContext
     {
         internal WsdlEndpointConversionContext() { }
@@ -8611,7 +8679,6 @@ namespace System.ServiceModel.Description
         public System.Web.Services.Description.OperationBinding GetOperationBinding(System.ServiceModel.Description.OperationDescription operation) { throw null; }
         public System.ServiceModel.Description.OperationDescription GetOperationDescription(System.Web.Services.Description.OperationBinding operationBinding) { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class WsdlExporter : System.ServiceModel.Description.MetadataExporter
     {
         public WsdlExporter() { }
@@ -8622,7 +8689,6 @@ namespace System.ServiceModel.Description
         public void ExportEndpoints(System.Collections.Generic.IEnumerable<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.Xml.XmlQualifiedName wsdlServiceQName) { }
         public override System.ServiceModel.Description.MetadataSet GetGeneratedMetadata() { throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class WsdlImporter : System.ServiceModel.Description.MetadataImporter
     {
         public WsdlImporter(System.ServiceModel.Description.MetadataSet metadata) { }
@@ -8653,7 +8719,6 @@ namespace System.ServiceModel.Description
         public XmlSerializerOperationBehavior(System.ServiceModel.Description.OperationDescription operation) { }
         public XmlSerializerOperationBehavior(System.ServiceModel.Description.OperationDescription operation, System.ServiceModel.XmlSerializerFormatAttribute attribute) { }
         public System.ServiceModel.XmlSerializerFormatAttribute XmlSerializerFormatAttribute { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.ObjectModel.Collection<System.Xml.Serialization.XmlMapping> GetXmlMappings() { throw null; }
         void System.ServiceModel.Description.IOperationBehavior.AddBindingParameters(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
         void System.ServiceModel.Description.IOperationBehavior.ApplyClientBehavior(System.ServiceModel.Description.OperationDescription description, System.ServiceModel.Dispatcher.ClientOperation proxy) { }
@@ -8686,7 +8751,6 @@ namespace System.ServiceModel.Dispatcher
     }
     public partial class ChannelDispatcher : System.ServiceModel.Dispatcher.ChannelDispatcherBase
     {
-        [System.MonoTODOAttribute("get binding info from config")]
         public ChannelDispatcher(System.ServiceModel.Channels.IChannelListener listener) { }
         public ChannelDispatcher(System.ServiceModel.Channels.IChannelListener listener, string bindingName) { }
         public ChannelDispatcher(System.ServiceModel.Channels.IChannelListener listener, string bindingName, System.ServiceModel.IDefaultCommunicationTimeouts timeouts) { }
@@ -8699,7 +8763,6 @@ namespace System.ServiceModel.Dispatcher
         public System.Collections.ObjectModel.Collection<System.ServiceModel.Dispatcher.IErrorHandler> ErrorHandlers { get { throw null; } }
         public override System.ServiceModel.ServiceHostBase Host { get { throw null; } }
         public bool IncludeExceptionDetailInFaults { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IsTransactedAccept { get { throw null; } }
         public bool IsTransactedReceive { get { throw null; } set { } }
         public override System.ServiceModel.Channels.IChannelListener Listener { get { throw null; } }
@@ -8750,7 +8813,6 @@ namespace System.ServiceModel.Dispatcher
         public ClientOperation(System.ServiceModel.Dispatcher.ClientRuntime parent, string name, string action, string replyAction) { }
         public string Action { get { throw null; } }
         public System.Reflection.MethodInfo BeginMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.IParameterInspector> ClientParameterInspectors { get { throw null; } }
         public bool DeserializeReply { get { throw null; } set { } }
         public System.Reflection.MethodInfo EndMethod { get { throw null; } set { } }
@@ -8760,51 +8822,56 @@ namespace System.ServiceModel.Dispatcher
         public bool IsOneWay { get { throw null; } set { } }
         public bool IsTerminating { get { throw null; } set { } }
         public string Name { get { throw null; } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IParameterInspector> ParameterInspectors { get { throw null; } }
         public System.ServiceModel.Dispatcher.ClientRuntime Parent { get { throw null; } }
         public string ReplyAction { get { throw null; } }
         public bool SerializeRequest { get { throw null; } set { } }
         public System.Reflection.MethodInfo SyncMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Reflection.MethodInfo TaskMethod { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Type TaskTResult { get { throw null; } set { } }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public partial class ClientOperationCompatBase
     {
         internal ClientOperationCompatBase() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.Collections.Generic.IList<System.ServiceModel.Dispatcher.IParameterInspector> ParameterInspectors { get { throw null; } }
     }
     public sealed partial class ClientRuntime : System.ServiceModel.Dispatcher.ClientRuntimeCompatBase
     {
         internal ClientRuntime() { }
-        public System.Type CallbackClientType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Dispatcher.DispatchRuntime CallbackDispatchRuntime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Type CallbackClientType { get { throw null; } set { } }
+        public System.ServiceModel.Dispatcher.DispatchRuntime CallbackDispatchRuntime { get { throw null; } }
         public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IChannelInitializer> ChannelInitializers { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.IClientMessageInspector> ClientMessageInspectors { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.ClientOperation> ClientOperations { get { throw null; } }
-        public System.Type ContractClientType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Type ContractClientType { get { throw null; } set { } }
         public string ContractName { get { throw null; } }
         public string ContractNamespace { get { throw null; } }
         public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IInteractiveChannelInitializer> InteractiveChannelInitializers { get { throw null; } }
         public bool ManualAddressing { get { throw null; } set { } }
         public int MaxFaultSize { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IClientMessageInspector> MessageInspectors { get { throw null; } }
-        [System.MonoTODOAttribute]
         public bool MessageVersionNoneFaultsEnabled { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public new System.Collections.Generic.SynchronizedKeyedCollection<string, System.ServiceModel.Dispatcher.ClientOperation> Operations { get { throw null; } }
         public System.ServiceModel.Dispatcher.IClientOperationSelector OperationSelector { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.Dispatcher.ClientOperation UnhandledClientOperation { get { throw null; } }
         public bool ValidateMustUnderstand { get { throw null; } set { } }
         public System.Uri Via { get { throw null; } set { } }
     }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public partial class ClientRuntimeCompatBase
     {
         internal ClientRuntimeCompatBase() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.Collections.Generic.IList<System.ServiceModel.Dispatcher.IClientMessageInspector> MessageInspectors { get { throw null; } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.ObsoleteAttribute("This API supports the .NET Framework infrastructure and is not intended to be used directly from your code.", true)]
         public System.Collections.ObjectModel.KeyedCollection<string, System.ServiceModel.Dispatcher.ClientOperation> Operations { get { throw null; } }
     }
     public sealed partial class DispatchOperation
@@ -8817,7 +8884,6 @@ namespace System.ServiceModel.Dispatcher
         public bool DeserializeRequest { get { throw null; } set { } }
         public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.FaultContractInfo> FaultContractInfos { get { throw null; } }
         public System.ServiceModel.Dispatcher.IDispatchMessageFormatter Formatter { get { throw null; } set { } }
-        [System.MonoTODOAttribute("not considered")]
         public System.ServiceModel.ImpersonationOption Impersonation { get { throw null; } set { } }
         public System.ServiceModel.Dispatcher.IOperationInvoker Invoker { get { throw null; } set { } }
         public bool IsInsideTransactedReceiveScope { get { throw null; } set { } }
@@ -8836,56 +8902,39 @@ namespace System.ServiceModel.Dispatcher
     public sealed partial class DispatchRuntime
     {
         internal DispatchRuntime() { }
-        [System.MonoTODOAttribute]
-        public bool AutomaticInputSessionShutdown { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Dispatcher.ClientRuntime CallbackClientRuntime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool AutomaticInputSessionShutdown { get { throw null; } set { } }
+        public System.ServiceModel.Dispatcher.ClientRuntime CallbackClientRuntime { get { throw null; } }
         public System.ServiceModel.Dispatcher.ChannelDispatcher ChannelDispatcher { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.ConcurrencyMode ConcurrencyMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Dispatcher.EndpointDispatcher EndpointDispatcher { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.ConcurrencyMode ConcurrencyMode { get { throw null; } set { } }
+        public System.ServiceModel.Dispatcher.EndpointDispatcher EndpointDispatcher { get { throw null; } }
         public bool EnsureOrderedDispatch { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ExternalAuthorizationPolicies { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool IgnoreTransactionMessageProperty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool ImpersonateCallerForAllOperations { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ExternalAuthorizationPolicies { get { throw null; } set { } }
+        public bool IgnoreTransactionMessageProperty { get { throw null; } set { } }
+        public bool ImpersonateCallerForAllOperations { get { throw null; } set { } }
         public bool ImpersonateOnSerializingReply { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IInputSessionShutdown> InputSessionShutdownHandlers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IInstanceContextInitializer> InstanceContextInitializers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.ServiceModel.Dispatcher.IInstanceContextProvider InstanceContextProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Dispatcher.IInstanceProvider InstanceProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.AuditLevel MessageAuthenticationAuditLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IDispatchMessageInspector> MessageInspectors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IInputSessionShutdown> InputSessionShutdownHandlers { get { throw null; } }
+        public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IInstanceContextInitializer> InstanceContextInitializers { get { throw null; } }
+        public System.ServiceModel.Dispatcher.IInstanceContextProvider InstanceContextProvider { get { throw null; } set { } }
+        public System.ServiceModel.Dispatcher.IInstanceProvider InstanceProvider { get { throw null; } set { } }
+        public System.ServiceModel.AuditLevel MessageAuthenticationAuditLevel { get { throw null; } set { } }
+        public System.Collections.Generic.SynchronizedCollection<System.ServiceModel.Dispatcher.IDispatchMessageInspector> MessageInspectors { get { throw null; } }
         public System.Collections.Generic.SynchronizedKeyedCollection<string, System.ServiceModel.Dispatcher.DispatchOperation> Operations { get { throw null; } }
-        public System.ServiceModel.Dispatcher.IDispatchOperationSelector OperationSelector { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.Dispatcher.IDispatchOperationSelector OperationSelector { get { throw null; } set { } }
         public bool PreserveMessage { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.Description.PrincipalPermissionMode PrincipalPermissionMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool ReleaseServiceInstanceOnTransactionComplete { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Web.Security.RoleProvider RoleProvider { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.AuditLogLocation SecurityAuditLogLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.Description.PrincipalPermissionMode PrincipalPermissionMode { get { throw null; } set { } }
+        public bool ReleaseServiceInstanceOnTransactionComplete { get { throw null; } set { } }
+        public System.Web.Security.RoleProvider RoleProvider { get { throw null; } set { } }
+        public System.ServiceModel.AuditLogLocation SecurityAuditLogLocation { get { throw null; } set { } }
         public System.ServiceModel.ServiceAuthenticationManager ServiceAuthenticationManager { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.AuditLevel ServiceAuthorizationAuditLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.ServiceModel.ServiceAuthorizationManager ServiceAuthorizationManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.InstanceContext SingletonInstanceContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool SuppressAuditFailure { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Threading.SynchronizationContext SynchronizationContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool TransactionAutoCompleteOnSessionClose { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Type Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Dispatcher.DispatchOperation UnhandledDispatchOperation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool ValidateMustUnderstand { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.AuditLevel ServiceAuthorizationAuditLevel { get { throw null; } set { } }
+        public System.ServiceModel.ServiceAuthorizationManager ServiceAuthorizationManager { get { throw null; } set { } }
+        public System.ServiceModel.InstanceContext SingletonInstanceContext { get { throw null; } set { } }
+        public bool SuppressAuditFailure { get { throw null; } set { } }
+        public System.Threading.SynchronizationContext SynchronizationContext { get { throw null; } set { } }
+        public bool TransactionAutoCompleteOnSessionClose { get { throw null; } set { } }
+        public System.Type Type { get { throw null; } set { } }
+        public System.ServiceModel.Dispatcher.DispatchOperation UnhandledDispatchOperation { get { throw null; } set { } }
+        public bool ValidateMustUnderstand { get { throw null; } set { } }
     }
     public partial class EndpointAddressMessageFilter : System.ServiceModel.Dispatcher.MessageFilter
     {
@@ -8893,7 +8942,6 @@ namespace System.ServiceModel.Dispatcher
         public EndpointAddressMessageFilter(System.ServiceModel.EndpointAddress address, bool includeHostNameInComparison) { }
         public System.ServiceModel.EndpointAddress Address { get { throw null; } }
         public bool IncludeHostNameInComparison { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Dispatcher.IMessageFilterTable<FilterData> CreateFilterTable<FilterData>() { throw null; }
         public override bool Match(System.ServiceModel.Channels.Message message) { throw null; }
         public override bool Match(System.ServiceModel.Channels.MessageBuffer messageBuffer) { throw null; }
@@ -8910,21 +8958,21 @@ namespace System.ServiceModel.Dispatcher
         public System.ServiceModel.Dispatcher.DispatchRuntime DispatchRuntime { get { throw null; } }
         public System.ServiceModel.EndpointAddress EndpointAddress { get { throw null; } }
         public int FilterPriority { get { throw null; } set { } }
-        public bool IsSystemEndpoint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool IsSystemEndpoint { get { throw null; } }
     }
     public abstract partial class ExceptionHandler
     {
         protected ExceptionHandler() { }
         public static System.ServiceModel.Dispatcher.ExceptionHandler AlwaysHandle { get { throw null; } }
-        public static System.ServiceModel.Dispatcher.ExceptionHandler AsynchronousThreadExceptionHandler { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } set { } }
+        public static System.ServiceModel.Dispatcher.ExceptionHandler AsynchronousThreadExceptionHandler { [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]get { throw null; } [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, UnmanagedCode=true)]set { } }
         public static System.ServiceModel.Dispatcher.ExceptionHandler TransportExceptionHandler { get { throw null; } set { } }
         public abstract bool HandleException(System.Exception exception);
     }
     public partial class FaultContractInfo
     {
         public FaultContractInfo(string action, System.Type detail) { }
-        public string Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Type Detail { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Action { get { throw null; } }
+        public System.Type Detail { get { throw null; } }
     }
     [System.SerializableAttribute]
     public partial class FilterInvalidBodyAccessException : System.ServiceModel.Dispatcher.InvalidBodyAccessException
@@ -9099,10 +9147,8 @@ namespace System.ServiceModel.Dispatcher
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter, TFilterData>> GetEnumerator() { throw null; }
         public bool GetMatchingFilter(System.ServiceModel.Channels.Message message, out System.ServiceModel.Dispatcher.MessageFilter filter) { filter = default(System.ServiceModel.Dispatcher.MessageFilter); throw null; }
         public bool GetMatchingFilter(System.ServiceModel.Channels.MessageBuffer buffer, out System.ServiceModel.Dispatcher.MessageFilter filter) { filter = default(System.ServiceModel.Dispatcher.MessageFilter); throw null; }
-        [System.MonoTODOAttribute("Consider priority")]
         public bool GetMatchingFilters(System.ServiceModel.Channels.Message message, System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> results) { throw null; }
         public bool GetMatchingFilters(System.ServiceModel.Channels.MessageBuffer buffer, System.Collections.Generic.ICollection<System.ServiceModel.Dispatcher.MessageFilter> results) { throw null; }
-        [System.MonoTODOAttribute("Consider priority")]
         public bool GetMatchingValue(System.ServiceModel.Channels.Message message, out TFilterData data) { data = default(TFilterData); throw null; }
         public bool GetMatchingValue(System.ServiceModel.Channels.MessageBuffer buffer, out TFilterData data) { data = default(TFilterData); throw null; }
         public bool GetMatchingValues(System.ServiceModel.Channels.Message message, System.Collections.Generic.ICollection<TFilterData> results) { throw null; }
@@ -9173,9 +9219,7 @@ namespace System.ServiceModel.Dispatcher
         public PrefixEndpointAddressMessageFilter(System.ServiceModel.EndpointAddress address, bool includeHostNameInComparison) { }
         public System.ServiceModel.EndpointAddress Address { get { throw null; } }
         public bool IncludeHostNameInComparison { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override System.ServiceModel.Dispatcher.IMessageFilterTable<FilterData> CreateFilterTable<FilterData>() { throw null; }
-        [System.MonoTODOAttribute]
         public override bool Match(System.ServiceModel.Channels.Message message) { throw null; }
         public override bool Match(System.ServiceModel.Channels.MessageBuffer messageBuffer) { throw null; }
     }
@@ -9197,6 +9241,7 @@ namespace System.ServiceModel.Dispatcher
         public int MaxConcurrentInstances { get { throw null; } set { } }
         public int MaxConcurrentSessions { get { throw null; } set { } }
     }
+    [System.ComponentModel.TypeConverterAttribute(typeof(System.ServiceModel.XamlIntegration.XPathMessageContextTypeConverter))]
     public partial class XPathMessageContext : System.Xml.Xsl.XsltContext
     {
         public XPathMessageContext() { }
@@ -9207,8 +9252,7 @@ namespace System.ServiceModel.Dispatcher
         public override System.Xml.Xsl.IXsltContextFunction ResolveFunction(string prefix, string name, System.Xml.XPath.XPathResultType[] argTypes) { throw null; }
         public override System.Xml.Xsl.IXsltContextVariable ResolveVariable(string prefix, string name) { throw null; }
     }
-    [System.MonoTODOAttribute]
-    [System.Xml.Serialization.XmlRootAttribute("XPathMessageFilter", Namespace="http://schemas.microsoft.com/serviceModel/2004/05/xpathfilter")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="XPathMessageFilter", Namespace="http://schemas.microsoft.com/serviceModel/2004/05/xpathfilter")]
     [System.Xml.Serialization.XmlSchemaProviderAttribute("StaticGetSchema")]
     public partial class XPathMessageFilter : System.ServiceModel.Dispatcher.MessageFilter, System.Xml.Serialization.IXmlSerializable
     {
@@ -9216,11 +9260,8 @@ namespace System.ServiceModel.Dispatcher
         public XPathMessageFilter(string xpath) { }
         public XPathMessageFilter(string xpath, System.Xml.XmlNamespaceManager namespaces) { }
         public XPathMessageFilter(string xpath, System.Xml.Xsl.XsltContext context) { }
-        [System.MonoTODOAttribute]
         public XPathMessageFilter(System.Xml.XmlReader reader) { }
-        [System.MonoTODOAttribute]
         public XPathMessageFilter(System.Xml.XmlReader reader, System.Xml.XmlNamespaceManager namespaces) { }
-        [System.MonoTODOAttribute]
         public XPathMessageFilter(System.Xml.XmlReader reader, System.Xml.Xsl.XsltContext context) { }
         public System.Xml.XmlNamespaceManager Namespaces { get { throw null; } }
         public int NodeQuota { get { throw null; } set { } }
@@ -9245,7 +9286,6 @@ namespace System.ServiceModel.Dispatcher
     [System.Runtime.Serialization.DataContractAttribute]
     public partial class XPathMessageFilterTable<TFilterData> : System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter, TFilterData>>, System.Collections.Generic.IDictionary<System.ServiceModel.Dispatcher.MessageFilter, TFilterData>, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter, TFilterData>>, System.Collections.IEnumerable, System.ServiceModel.Dispatcher.IMessageFilterTable<TFilterData>
     {
-        [System.MonoTODOAttribute]
         public XPathMessageFilterTable() { }
         public XPathMessageFilterTable(int capacity) { }
         public int Count { get { throw null; } }
@@ -9257,7 +9297,6 @@ namespace System.ServiceModel.Dispatcher
         public System.Collections.Generic.ICollection<TFilterData> Values { get { throw null; } }
         public void Add(System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter, TFilterData> item) { }
         public void Add(System.ServiceModel.Dispatcher.MessageFilter filter, TFilterData data) { }
-        [System.MonoTODOAttribute]
         public void Add(System.ServiceModel.Dispatcher.XPathMessageFilter filter, TFilterData data) { }
         public void Clear() { }
         public bool Contains(System.Collections.Generic.KeyValuePair<System.ServiceModel.Dispatcher.MessageFilter, TFilterData> item) { throw null; }
@@ -9322,12 +9361,12 @@ namespace System.ServiceModel.MsmqIntegration
     {
         public MsmqIntegrationBinding() { }
         public MsmqIntegrationBinding(System.ServiceModel.MsmqIntegration.MsmqIntegrationSecurityMode securityMode) { }
-        [System.MonoTODOAttribute]
         public MsmqIntegrationBinding(string configurationName) { }
         public System.ServiceModel.MsmqIntegration.MsmqIntegrationSecurity Security { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat)(0))]
         public System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat SerializationFormat { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.BindingElementCollection CreateBindingElements() { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public bool ShouldSerializeSecurity() { throw null; }
     }
     public sealed partial class MsmqIntegrationBindingElement : System.ServiceModel.Channels.MsmqBindingElementBase
@@ -9336,9 +9375,7 @@ namespace System.ServiceModel.MsmqIntegration
         public override string Scheme { get { throw null; } }
         public System.ServiceModel.MsmqIntegration.MsmqMessageSerializationFormat SerializationFormat { get { throw null; } set { } }
         public System.Type[] TargetSerializationTypes { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelFactory<TChannel> BuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.Channels.IChannelListener<TChannel> BuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelFactory<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
         public override bool CanBuildChannelListener<TChannel>(System.ServiceModel.Channels.BindingContext context) { throw null; }
@@ -9349,31 +9386,31 @@ namespace System.ServiceModel.MsmqIntegration
     {
         public const string Name = "MsmqIntegrationMessageProperty";
         public MsmqIntegrationMessageProperty() { }
-        public System.Nullable<System.Messaging.AcknowledgeTypes> AcknowledgeType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<System.Messaging.Acknowledgment> Acknowledgment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Uri AdministrationQueue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<int> AppSpecific { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<System.DateTime> ArrivedTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Nullable<bool> Authenticated { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public object Body { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<int> BodyType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string CorrelationId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri DestinationQueue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public byte[] Extension { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Label { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Nullable<System.Messaging.MessageType> MessageType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Nullable<System.Messaging.MessagePriority> Priority { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Uri ResponseQueue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public byte[] SenderId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Nullable<System.DateTime> SentTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Nullable<System.TimeSpan> TimeToReachQueue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public System.Nullable<System.Messaging.AcknowledgeTypes> AcknowledgeType { get { throw null; } set { } }
+        public System.Nullable<System.Messaging.Acknowledgment> Acknowledgment { get { throw null; } }
+        public System.Uri AdministrationQueue { get { throw null; } set { } }
+        public System.Nullable<int> AppSpecific { get { throw null; } set { } }
+        public System.Nullable<System.DateTime> ArrivedTime { get { throw null; } }
+        public System.Nullable<bool> Authenticated { get { throw null; } }
+        public object Body { get { throw null; } set { } }
+        public System.Nullable<int> BodyType { get { throw null; } set { } }
+        public string CorrelationId { get { throw null; } set { } }
+        public System.Uri DestinationQueue { get { throw null; } }
+        public byte[] Extension { get { throw null; } set { } }
+        public string Id { get { throw null; } }
+        public string Label { get { throw null; } set { } }
+        public System.Nullable<System.Messaging.MessageType> MessageType { get { throw null; } }
+        public System.Nullable<System.Messaging.MessagePriority> Priority { get { throw null; } set { } }
+        public System.Uri ResponseQueue { get { throw null; } set { } }
+        public byte[] SenderId { get { throw null; } }
+        public System.Nullable<System.DateTime> SentTime { get { throw null; } }
+        public System.Nullable<System.TimeSpan> TimeToReachQueue { get { throw null; } set { } }
         public static System.ServiceModel.MsmqIntegration.MsmqIntegrationMessageProperty Get(System.ServiceModel.Channels.Message message) { throw null; }
     }
     public sealed partial class MsmqIntegrationSecurity
     {
         public MsmqIntegrationSecurity() { }
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqIntegration.MsmqIntegrationSecurityMode)(1))]
         public System.ServiceModel.MsmqIntegration.MsmqIntegrationSecurityMode Mode { get { throw null; } set { } }
         public System.ServiceModel.MsmqTransportSecurity Transport { get { throw null; } set { } }
     }
@@ -9390,7 +9427,7 @@ namespace System.ServiceModel.MsmqIntegration
         Stream = 4,
         Xml = 0,
     }
-    [System.ServiceModel.MessageContractAttribute]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public sealed partial class MsmqMessage<T>
     {
         public MsmqMessage(T body) { }
@@ -9417,15 +9454,14 @@ namespace System.ServiceModel.MsmqIntegration
 }
 namespace System.ServiceModel.PeerResolvers
 {
-    [System.MonoTODOAttribute("Implement cleanup and refresh")]
-    [System.ServiceModel.ServiceBehaviorAttribute(ConcurrencyMode=(System.ServiceModel.ConcurrencyMode)(2), InstanceContextMode=(System.ServiceModel.InstanceContextMode)(2), UseSynchronizationContext=false)]
+    [System.ObsoleteAttribute("PeerChannel feature is obsolete and will be removed in the future.", false)]
+    [System.ServiceModel.ServiceBehaviorAttribute(UseSynchronizationContext=false, InstanceContextMode=(System.ServiceModel.InstanceContextMode)(2), ConcurrencyMode=(System.ServiceModel.ConcurrencyMode)(2))]
     public partial class CustomPeerResolverService : System.ServiceModel.PeerResolvers.IPeerResolverContract
     {
         public CustomPeerResolverService() { }
         public System.TimeSpan CleanupInterval { get { throw null; } set { } }
         public bool ControlShape { get { throw null; } set { } }
         public System.TimeSpan RefreshInterval { get { throw null; } set { } }
-        [System.MonoTODOAttribute("Do we have to unregister nodes here?")]
         public virtual void Close() { }
         public virtual System.ServiceModel.PeerResolvers.ServiceSettingsResponseInfo GetServiceSettings() { throw null; }
         public virtual void Open() { }
@@ -9455,10 +9491,10 @@ namespace System.ServiceModel.PeerResolvers
     public partial class PeerCustomResolverSettings
     {
         public PeerCustomResolverSettings() { }
-        public System.ServiceModel.EndpointAddress Address { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Channels.Binding Binding { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.EndpointAddress Address { get { throw null; } set { } }
+        public System.ServiceModel.Channels.Binding Binding { get { throw null; } set { } }
         public bool IsBindingSpecified { get { throw null; } }
-        public System.ServiceModel.PeerResolver Resolver { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.PeerResolver Resolver { get { throw null; } set { } }
     }
     public enum PeerReferralPolicy
     {
@@ -9476,8 +9512,8 @@ namespace System.ServiceModel.PeerResolvers
     {
         public PeerResolverSettings() { }
         public System.ServiceModel.PeerResolvers.PeerCustomResolverSettings Custom { get { throw null; } }
-        public System.ServiceModel.PeerResolvers.PeerResolverMode Mode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.PeerResolvers.PeerResolverMode Mode { get { throw null; } set { } }
+        public System.ServiceModel.PeerResolvers.PeerReferralPolicy ReferralPolicy { get { throw null; } set { } }
     }
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class RefreshInfo
@@ -9649,7 +9685,6 @@ namespace System.ServiceModel.Security
         protected internal override byte[] DecodeSecurityState(byte[] data) { throw null; }
         protected internal override byte[] EncodeSecurityState(byte[] data) { throw null; }
         public byte[] GetEntropy() { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class DispatchContext
@@ -9677,12 +9712,10 @@ namespace System.ServiceModel.Security
         public System.Security.Principal.TokenImpersonationLevel AllowedImpersonationLevel { get { throw null; } set { } }
         public System.Net.NetworkCredential ClientCredential { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public abstract partial class IdentityVerifier
     {
         protected IdentityVerifier() { }
         public abstract bool CheckAccess(System.ServiceModel.EndpointIdentity identity, System.IdentityModel.Policy.AuthorizationContext authContext);
-        [System.MonoTODOAttribute]
         public static System.ServiceModel.Security.IdentityVerifier CreateDefault() { throw null; }
         public abstract bool TryGetIdentity(System.ServiceModel.EndpointAddress reference, out System.ServiceModel.EndpointIdentity identity);
     }
@@ -9695,20 +9728,18 @@ namespace System.ServiceModel.Security
         internal ImpersonateOnSerializingReplyMessageProperty() { }
         public static string Name { get { throw null; } }
         public System.ServiceModel.Channels.IMessageProperty CreateCopy() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void StartImpersonation(out System.IDisposable impersonationContext, out System.Security.Principal.IPrincipal originalPrincipal, out bool isThreadPrincipalSet) { impersonationContext = default(System.IDisposable); originalPrincipal = default(System.Security.Principal.IPrincipal); isThreadPrincipalSet = default(bool); }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void StopImpersonation(System.IDisposable impersonationContext, System.Security.Principal.IPrincipal originalPrincipal, bool isThreadPrincipalSet) { }
         public static bool TryGet(System.ServiceModel.Channels.Message message, out System.ServiceModel.Security.ImpersonateOnSerializingReplyMessageProperty property) { property = default(System.ServiceModel.Security.ImpersonateOnSerializingReplyMessageProperty); throw null; }
         public static bool TryGet(System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Security.ImpersonateOnSerializingReplyMessageProperty property) { property = default(System.ServiceModel.Security.ImpersonateOnSerializingReplyMessageProperty); throw null; }
     }
-    [System.MonoTODOAttribute]
     public partial class InfocardInteractiveChannelInitializer : System.ServiceModel.Dispatcher.IInteractiveChannelInitializer
     {
-        [System.MonoTODOAttribute]
         public InfocardInteractiveChannelInitializer(System.ServiceModel.Description.ClientCredentials credentials, System.ServiceModel.Channels.Binding binding) { }
         public System.ServiceModel.Channels.Binding Binding { get { throw null; } }
-        [System.MonoTODOAttribute]
         public virtual System.IAsyncResult BeginDisplayInitializationUI(System.ServiceModel.IClientChannel channel, System.AsyncCallback callback, object state) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual void EndDisplayInitializationUI(System.IAsyncResult result) { }
     }
     public partial interface ISecureConversationSession : System.ServiceModel.Channels.ISession, System.ServiceModel.Security.ISecuritySession
@@ -9720,7 +9751,6 @@ namespace System.ServiceModel.Security
     {
         System.ServiceModel.EndpointIdentity RemoteIdentity { get; }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class IssuedTokenClientCredential
     {
         internal IssuedTokenClientCredential() { }
@@ -9733,38 +9763,37 @@ namespace System.ServiceModel.Security
         public System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IEndpointBehavior> LocalIssuerChannelBehaviors { get { throw null; } }
         public System.TimeSpan MaxIssuedTokenCachingTime { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public partial class IssuedTokenServiceCredential
     {
         internal IssuedTokenServiceCredential() { }
-        [System.MonoTODOAttribute]
-        public System.Collections.Generic.IList<string> AllowedAudienceUris { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
+        public System.Collections.Generic.IList<string> AllowedAudienceUris { get { throw null; } }
         public bool AllowUntrustedRsaIssuers { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public System.IdentityModel.Selectors.AudienceUriMode AudienceUriMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public System.IdentityModel.Selectors.AudienceUriMode AudienceUriMode { get { throw null; } set { } }
         public System.ServiceModel.Security.X509CertificateValidationMode CertificateValidationMode { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Selectors.X509CertificateValidator CustomCertificateValidator { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.IList<System.Security.Cryptography.X509Certificates.X509Certificate2> KnownCertificates { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.IdentityModel.Tokens.SamlSerializer SamlSerializer { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
     }
+    [System.ServiceModel.ServiceContractAttribute(Name="IWSTrust13Async", Namespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice")]
     public partial interface IWSTrust13AsyncContract
     {
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13CancelAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Cancel", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/CancelFinal")]
         System.IAsyncResult BeginTrust13Cancel(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13CancelResponseAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Cancel", ReplyAction="*")]
         System.IAsyncResult BeginTrust13CancelResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13IssueAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal")]
         System.IAsyncResult BeginTrust13Issue(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13IssueResponseAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Issue", ReplyAction="*")]
         System.IAsyncResult BeginTrust13IssueResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13RenewAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Renew", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/RenewFinal")]
         System.IAsyncResult BeginTrust13Renew(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13RenewResponseAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Renew", ReplyAction="*")]
         System.IAsyncResult BeginTrust13RenewResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13ValidateAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Validate", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/ValidateFinal")]
         System.IAsyncResult BeginTrust13Validate(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13ValidateResponseAsync", AsyncPattern=true, Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Validate", ReplyAction="*")]
         System.IAsyncResult BeginTrust13ValidateResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
         System.ServiceModel.Channels.Message EndTrust13Cancel(System.IAsyncResult ar);
         System.ServiceModel.Channels.Message EndTrust13CancelResponse(System.IAsyncResult ar);
@@ -9775,17 +9804,28 @@ namespace System.ServiceModel.Security
         System.ServiceModel.Channels.Message EndTrust13Validate(System.IAsyncResult ar);
         System.ServiceModel.Channels.Message EndTrust13ValidateResponse(System.IAsyncResult ar);
     }
+    [System.ServiceModel.ServiceContractAttribute(Name="IWSTrust13Sync", Namespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice")]
     public partial interface IWSTrust13SyncContract
     {
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13Cancel", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Cancel", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/CancelFinal")]
         System.ServiceModel.Channels.Message ProcessTrust13Cancel(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13CancelResponse", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Cancel", ReplyAction="*")]
         System.ServiceModel.Channels.Message ProcessTrust13CancelResponse(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13Issue", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Issue", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTRC/IssueFinal")]
         System.ServiceModel.Channels.Message ProcessTrust13Issue(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13IssueResponse", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Issue", ReplyAction="*")]
         System.ServiceModel.Channels.Message ProcessTrust13IssueResponse(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13Renew", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Renew", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/RenewFinal")]
         System.ServiceModel.Channels.Message ProcessTrust13Renew(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13RenewResponse", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Renew", ReplyAction="*")]
         System.ServiceModel.Channels.Message ProcessTrust13RenewResponse(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13Validate", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RST/Validate", ReplyAction="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/ValidateFinal")]
         System.ServiceModel.Channels.Message ProcessTrust13Validate(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Trust13ValidateResponse", Action="http://docs.oasis-open.org/ws-sx/ws-trust/200512/RSTR/Validate", ReplyAction="*")]
         System.ServiceModel.Channels.Message ProcessTrust13ValidateResponse(System.ServiceModel.Channels.Message message);
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+    [System.ServiceModel.ServiceContractAttribute]
     public partial interface IWSTrustChannelContract : System.ServiceModel.Security.IWSTrustContract
     {
         System.IAsyncResult BeginCancel(System.IdentityModel.Protocols.WSTrust.RequestSecurityToken request, System.AsyncCallback callback, object state);
@@ -9802,30 +9842,48 @@ namespace System.ServiceModel.Security
         System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse Renew(System.IdentityModel.Protocols.WSTrust.RequestSecurityToken request);
         System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse Validate(System.IdentityModel.Protocols.WSTrust.RequestSecurityToken request);
     }
+    [System.ServiceModel.ServiceContractAttribute]
     public partial interface IWSTrustContract
     {
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Name="Cancel", Action="*", ReplyAction="*")]
         System.IAsyncResult BeginCancel(System.ServiceModel.Channels.Message message, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Name="Issue", Action="*", ReplyAction="*")]
         System.IAsyncResult BeginIssue(System.ServiceModel.Channels.Message message, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Name="Renew", Action="*", ReplyAction="*")]
         System.IAsyncResult BeginRenew(System.ServiceModel.Channels.Message message, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Name="Validate", Action="*", ReplyAction="*")]
         System.IAsyncResult BeginValidate(System.ServiceModel.Channels.Message message, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(Name="Cancel", Action="*", ReplyAction="*")]
         System.ServiceModel.Channels.Message Cancel(System.ServiceModel.Channels.Message message);
         System.ServiceModel.Channels.Message EndCancel(System.IAsyncResult asyncResult);
         System.ServiceModel.Channels.Message EndIssue(System.IAsyncResult asyncResult);
         System.ServiceModel.Channels.Message EndRenew(System.IAsyncResult asyncResult);
         System.ServiceModel.Channels.Message EndValidate(System.IAsyncResult asyncResult);
+        [System.ServiceModel.OperationContractAttribute(Name="Issue", Action="*", ReplyAction="*")]
         System.ServiceModel.Channels.Message Issue(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Renew", Action="*", ReplyAction="*")]
         System.ServiceModel.Channels.Message Renew(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="Validate", Action="*", ReplyAction="*")]
         System.ServiceModel.Channels.Message Validate(System.ServiceModel.Channels.Message message);
     }
+    [System.ServiceModel.ServiceContractAttribute(Name="IWSTrustFeb2005Async", Namespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice")]
     public partial interface IWSTrustFeb2005AsyncContract
     {
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005CancelAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Cancel", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Cancel")]
         System.IAsyncResult BeginTrustFeb2005Cancel(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005CancelResponseAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Cancel", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Cancel")]
         System.IAsyncResult BeginTrustFeb2005CancelResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005IssueAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue")]
         System.IAsyncResult BeginTrustFeb2005Issue(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005IssueResponseAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue")]
         System.IAsyncResult BeginTrustFeb2005IssueResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005RenewAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Renew", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Renew")]
         System.IAsyncResult BeginTrustFeb2005Renew(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005RenewResponseAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Renew", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Renew")]
         System.IAsyncResult BeginTrustFeb2005RenewResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005ValidateAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Validate", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Validate")]
         System.IAsyncResult BeginTrustFeb2005Validate(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005ValidateResponseAsync", AsyncPattern=true, Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Validate", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Validate")]
         System.IAsyncResult BeginTrustFeb2005ValidateResponse(System.ServiceModel.Channels.Message request, System.AsyncCallback callback, object state);
         System.ServiceModel.Channels.Message EndTrustFeb2005Cancel(System.IAsyncResult ar);
         System.ServiceModel.Channels.Message EndTrustFeb2005CancelResponse(System.IAsyncResult ar);
@@ -9836,15 +9894,24 @@ namespace System.ServiceModel.Security
         System.ServiceModel.Channels.Message EndTrustFeb2005Validate(System.IAsyncResult ar);
         System.ServiceModel.Channels.Message EndTrustFeb2005ValidateResponse(System.IAsyncResult ar);
     }
+    [System.ServiceModel.ServiceContractAttribute(Name="IWSTrustFeb2005Sync", Namespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice")]
     public partial interface IWSTrustFeb2005SyncContract
     {
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005Cancel", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Cancel", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Cancel")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005Cancel(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005CancelResponse", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Cancel", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Cancel")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005CancelResponse(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005Issue", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Issue", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005Issue(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005IssueResponse", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Issue")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005IssueResponse(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005Renew", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Renew", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Renew")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005Renew(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005RenewResponse", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Renew", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Renew")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005RenewResponse(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005Validate", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RST/Validate", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Validate")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005Validate(System.ServiceModel.Channels.Message message);
+        [System.ServiceModel.OperationContractAttribute(Name="TrustFeb2005ValidateResponse", Action="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Validate", ReplyAction="http://schemas.xmlsoap.org/ws/2005/02/trust/RSTR/Validate")]
         System.ServiceModel.Channels.Message ProcessTrustFeb2005ValidateResponse(System.ServiceModel.Channels.Message message);
     }
     public partial class MessagePartSpecification
@@ -9890,9 +9957,7 @@ namespace System.ServiceModel.Security
         public string MeshPassword { get { throw null; } set { } }
         public System.ServiceModel.Security.X509PeerCertificateAuthentication MessageSenderAuthentication { get { throw null; } set { } }
         public System.ServiceModel.Security.X509PeerCertificateAuthentication PeerAuthentication { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public void SetCertificate(System.Security.Cryptography.X509Certificates.StoreLocation storeLocation, System.Security.Cryptography.X509Certificates.StoreName storeName, System.Security.Cryptography.X509Certificates.X509FindType findType, object findValue) { }
-        [System.MonoTODOAttribute]
         public void SetCertificate(string subjectName, System.Security.Cryptography.X509Certificates.StoreLocation storeLocation, System.Security.Cryptography.X509Certificates.StoreName storeName) { }
     }
     public partial class ScopedMessagePartSpecification
@@ -9917,11 +9982,11 @@ namespace System.ServiceModel.Security
     public abstract partial class SecureConversationVersion
     {
         internal SecureConversationVersion() { }
-        public static System.ServiceModel.Security.SecureConversationVersion Default { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xml.XmlDictionaryString Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xml.XmlDictionaryString Prefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Security.SecureConversationVersion WSSecureConversation13 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Security.SecureConversationVersion WSSecureConversationFeb2005 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.ServiceModel.Security.SecureConversationVersion Default { get { throw null; } }
+        public System.Xml.XmlDictionaryString Namespace { get { throw null; } }
+        public System.Xml.XmlDictionaryString Prefix { get { throw null; } }
+        public static System.ServiceModel.Security.SecureConversationVersion WSSecureConversation13 { get { throw null; } }
+        public static System.ServiceModel.Security.SecureConversationVersion WSSecureConversationFeb2005 { get { throw null; } }
     }
     [System.SerializableAttribute]
     public partial class SecurityAccessDeniedException : System.ServiceModel.CommunicationException
@@ -9931,6 +9996,7 @@ namespace System.ServiceModel.Security
         public SecurityAccessDeniedException(string message) { }
         public SecurityAccessDeniedException(string message, System.Exception innerException) { }
     }
+    [System.ComponentModel.TypeConverterAttribute("System.ServiceModel.Configuration.SecurityAlgorithmSuiteConverter")]
     public abstract partial class SecurityAlgorithmSuite
     {
         protected SecurityAlgorithmSuite() { }
@@ -9964,20 +10030,13 @@ namespace System.ServiceModel.Security
         public abstract bool IsAsymmetricKeyLengthSupported(int length);
         public virtual bool IsAsymmetricKeyWrapAlgorithmSupported(string algorithm) { throw null; }
         public virtual bool IsAsymmetricSignatureAlgorithmSupported(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool IsCanonicalizationAlgorithmSupported(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool IsDigestAlgorithmSupported(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool IsEncryptionAlgorithmSupported(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool IsEncryptionKeyDerivationAlgorithmSupported(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool IsSignatureKeyDerivationAlgorithmSupported(string algorithm) { throw null; }
         public abstract bool IsSymmetricKeyLengthSupported(int length);
-        [System.MonoTODOAttribute]
         public virtual bool IsSymmetricKeyWrapAlgorithmSupported(string algorithm) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual bool IsSymmetricSignatureAlgorithmSupported(string algorithm) { throw null; }
     }
     public abstract partial class SecurityCredentialsManager
@@ -10019,10 +10078,10 @@ namespace System.ServiceModel.Security
     public abstract partial class SecurityPolicyVersion
     {
         internal SecurityPolicyVersion() { }
-        public string Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Prefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Security.SecurityPolicyVersion WSSecurityPolicy11 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Security.SecurityPolicyVersion WSSecurityPolicy12 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Namespace { get { throw null; } }
+        public string Prefix { get { throw null; } }
+        public static System.ServiceModel.Security.SecurityPolicyVersion WSSecurityPolicy11 { get { throw null; } }
+        public static System.ServiceModel.Security.SecurityPolicyVersion WSSecurityPolicy12 { get { throw null; } }
     }
     public abstract partial class SecurityStateEncoder
     {
@@ -10054,13 +10113,9 @@ namespace System.ServiceModel.Security
         public ServiceCredentialsSecurityTokenManager(System.ServiceModel.Description.ServiceCredentials parent) { }
         public System.ServiceModel.Description.ServiceCredentials ServiceCredentials { get { throw null; } }
         protected System.IdentityModel.Selectors.SecurityTokenAuthenticator CreateSecureConversationTokenAuthenticator(System.ServiceModel.Security.Tokens.RecipientServiceModelSecurityTokenRequirement recipientRequirement, bool preserveBootstrapTokens, out System.IdentityModel.Selectors.SecurityTokenResolver sctResolver) { sctResolver = default(System.IdentityModel.Selectors.SecurityTokenResolver); throw null; }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Selectors.SecurityTokenAuthenticator CreateSecurityTokenAuthenticator(System.IdentityModel.Selectors.SecurityTokenRequirement tokenRequirement, out System.IdentityModel.Selectors.SecurityTokenResolver outOfBandTokenResolver) { outOfBandTokenResolver = default(System.IdentityModel.Selectors.SecurityTokenResolver); throw null; }
-        [System.MonoTODOAttribute]
         public override System.IdentityModel.Selectors.SecurityTokenProvider CreateSecurityTokenProvider(System.IdentityModel.Selectors.SecurityTokenRequirement requirement) { throw null; }
-        [System.MonoTODOAttribute("pass correct arguments to WSSecurityTokenSerializer..ctor()")]
         public override System.IdentityModel.Selectors.SecurityTokenSerializer CreateSecurityTokenSerializer(System.IdentityModel.Selectors.SecurityTokenVersion version) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.ServiceModel.EndpointIdentity GetIdentityOfSelf(System.IdentityModel.Selectors.SecurityTokenRequirement tokenRequirement) { throw null; }
         protected bool IsIssuedSecurityTokenRequirement(System.IdentityModel.Selectors.SecurityTokenRequirement requirement) { throw null; }
     }
@@ -10071,10 +10126,8 @@ namespace System.ServiceModel.Security
     }
     public partial class SspiSecurityTokenProvider : System.IdentityModel.Selectors.SecurityTokenProvider
     {
-        [System.MonoTODOAttribute]
         public SspiSecurityTokenProvider(System.Net.NetworkCredential credential, bool extractGroupsForWindowsAccounts, bool allowUnauthenticatedCallers) { }
         public SspiSecurityTokenProvider(System.Net.NetworkCredential credential, bool allowNtlm, System.Security.Principal.TokenImpersonationLevel impersonationLevel) { }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityToken GetTokenCore(System.TimeSpan timeout) { throw null; }
     }
     public partial class SupportingTokenSpecification : System.ServiceModel.Security.SecurityTokenSpecification
@@ -10103,11 +10156,11 @@ namespace System.ServiceModel.Security
     public abstract partial class TrustVersion
     {
         internal TrustVersion() { }
-        public static System.ServiceModel.Security.TrustVersion Default { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xml.XmlDictionaryString Namespace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Xml.XmlDictionaryString Prefix { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Security.TrustVersion WSTrust13 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public static System.ServiceModel.Security.TrustVersion WSTrustFeb2005 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.ServiceModel.Security.TrustVersion Default { get { throw null; } }
+        public System.Xml.XmlDictionaryString Namespace { get { throw null; } }
+        public System.Xml.XmlDictionaryString Prefix { get { throw null; } }
+        public static System.ServiceModel.Security.TrustVersion WSTrust13 { get { throw null; } }
+        public static System.ServiceModel.Security.TrustVersion WSTrustFeb2005 { get { throw null; } }
     }
     public sealed partial class UserNamePasswordClientCredential
     {
@@ -10118,17 +10171,12 @@ namespace System.ServiceModel.Security
     public sealed partial class UserNamePasswordServiceCredential
     {
         internal UserNamePasswordServiceCredential() { }
-        [System.MonoTODOAttribute]
         public System.TimeSpan CachedLogonTokenLifetime { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool CacheLogonTokens { get { throw null; } set { } }
         public System.IdentityModel.Selectors.UserNamePasswordValidator CustomUserNamePasswordValidator { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool IncludeWindowsGroups { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public int MaxCachedLogonTokens { get { throw null; } set { } }
         public System.Web.Security.MembershipProvider MembershipProvider { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.Security.UserNamePasswordValidationMode UserNamePasswordValidationMode { get { throw null; } set { } }
     }
     public enum UserNamePasswordValidationMode
@@ -10141,8 +10189,8 @@ namespace System.ServiceModel.Security
     {
         internal WindowsClientCredential() { }
         public System.Security.Principal.TokenImpersonationLevel AllowedImpersonationLevel { get { throw null; } set { } }
+        [System.ObsoleteAttribute("This property is deprecated and is maintained for backward compatibility only. The local machine policy will be used to determine if NTLM should be used.")]
         public bool AllowNtlm { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public System.Net.NetworkCredential ClientCredential { get { throw null; } set { } }
     }
     public sealed partial class WindowsServiceCredential
@@ -10164,40 +10212,24 @@ namespace System.ServiceModel.Security
         public WSSecurityTokenSerializer(System.ServiceModel.Security.SecurityVersion securityVersion, System.ServiceModel.Security.TrustVersion trustVersion, System.ServiceModel.Security.SecureConversationVersion secureConversationVersion, bool emitBspRequiredAttributes, System.IdentityModel.Tokens.SamlSerializer samlSerializer, System.ServiceModel.Security.SecurityStateEncoder securityStateEncoder, System.Collections.Generic.IEnumerable<System.Type> knownTypes, int maximumKeyDerivationOffset, int maximumKeyDerivationLabelLength, int maximumKeyDerivationNonceLength) { }
         public static System.ServiceModel.Security.WSSecurityTokenSerializer DefaultInstance { get { throw null; } }
         public bool EmitBspRequiredAttributes { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int MaximumKeyDerivationLabelLength { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int MaximumKeyDerivationNonceLength { get { throw null; } }
-        [System.MonoTODOAttribute]
         public int MaximumKeyDerivationOffset { get { throw null; } }
         public System.ServiceModel.Security.SecurityVersion SecurityVersion { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected override bool CanReadKeyIdentifierClauseCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool CanReadKeyIdentifierCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool CanReadTokenCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool CanWriteKeyIdentifierClauseCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool CanWriteKeyIdentifierCore(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool CanWriteTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual System.IdentityModel.Tokens.SecurityKeyIdentifierClause CreateKeyIdentifierClauseFromTokenXml(System.Xml.XmlElement element, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle tokenReferenceStyle) { throw null; }
         protected internal virtual string GetTokenTypeUri(System.Type tokenType) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityKeyIdentifierClause ReadKeyIdentifierClauseCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityKeyIdentifier ReadKeyIdentifierCore(System.Xml.XmlReader reader) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityToken ReadTokenCore(System.Xml.XmlReader reader, System.IdentityModel.Selectors.SecurityTokenResolver tokenResolver) { throw null; }
         public virtual bool TryCreateKeyIdentifierClauseFromTokenXml(System.Xml.XmlElement element, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle tokenReferenceStyle, out System.IdentityModel.Tokens.SecurityKeyIdentifierClause securityKeyIdentifierClause) { securityKeyIdentifierClause = default(System.IdentityModel.Tokens.SecurityKeyIdentifierClause); throw null; }
-        [System.MonoTODOAttribute]
         protected override void WriteKeyIdentifierClauseCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { }
-        [System.MonoTODOAttribute]
         protected override void WriteKeyIdentifierCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier) { }
-        [System.MonoTODOAttribute]
         protected override void WriteTokenCore(System.Xml.XmlWriter writer, System.IdentityModel.Tokens.SecurityToken token) { }
     }
     public partial class WSTrustChannel : System.ServiceModel.Channels.IChannel, System.ServiceModel.ICommunicationObject, System.ServiceModel.Security.IWSTrustChannelContract, System.ServiceModel.Security.IWSTrustContract
@@ -10258,6 +10290,7 @@ namespace System.ServiceModel.Security
         public virtual System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse Validate(System.IdentityModel.Protocols.WSTrust.RequestSecurityToken rst) { throw null; }
         public System.ServiceModel.Channels.Message Validate(System.ServiceModel.Channels.Message message) { throw null; }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public partial class WSTrustChannelFactory : System.ServiceModel.ChannelFactory<System.ServiceModel.Security.IWSTrustChannelContract>
     {
         public WSTrustChannelFactory() { }
@@ -10293,6 +10326,8 @@ namespace System.ServiceModel.Security
         public WSTrustResponseBodyWriter(System.IdentityModel.Protocols.WSTrust.RequestSecurityTokenResponse requestSecurityTokenResponse, System.IdentityModel.Protocols.WSTrust.WSTrustResponseSerializer serializer, System.IdentityModel.Protocols.WSTrust.WSTrustSerializationContext context) : base (default(bool)) { }
         protected override void OnWriteBodyContents(System.Xml.XmlDictionaryWriter writer) { }
     }
+    [System.ServiceModel.Activation.AspNetCompatibilityRequirementsAttribute(RequirementsMode=(System.ServiceModel.Activation.AspNetCompatibilityRequirementsMode)(1))]
+    [System.ServiceModel.ServiceBehaviorAttribute(Name="SecurityTokenService", Namespace="http://schemas.microsoft.com/ws/2008/06/identity/securitytokenservice", InstanceContextMode=(System.ServiceModel.InstanceContextMode)(2), ConcurrencyMode=(System.ServiceModel.ConcurrencyMode)(2))]
     public partial class WSTrustServiceContract : System.ServiceModel.Description.IContractBehavior, System.ServiceModel.Description.IWsdlExportExtension, System.ServiceModel.Security.IWSTrust13AsyncContract, System.ServiceModel.Security.IWSTrust13SyncContract, System.ServiceModel.Security.IWSTrustFeb2005AsyncContract, System.ServiceModel.Security.IWSTrustFeb2005SyncContract
     {
         public WSTrustServiceContract(System.IdentityModel.Configuration.SecurityTokenServiceConfiguration securityTokenServiceConfiguration) { }
@@ -10400,7 +10435,6 @@ namespace System.ServiceModel.Security
         public System.ServiceModel.Security.X509ServiceCertificateAuthentication Authentication { get { throw null; } }
         public System.Security.Cryptography.X509Certificates.X509Certificate2 DefaultCertificate { get { throw null; } set { } }
         public System.Collections.Generic.Dictionary<System.Uri, System.Security.Cryptography.X509Certificates.X509Certificate2> ScopedCertificates { get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.ServiceModel.Security.X509ServiceCertificateAuthentication SslCertificateAuthentication { get { throw null; } set { } }
         public void SetDefaultCertificate(System.Security.Cryptography.X509Certificates.StoreLocation storeLocation, System.Security.Cryptography.X509Certificates.StoreName storeName, System.Security.Cryptography.X509Certificates.X509FindType findType, object findValue) { }
         public void SetDefaultCertificate(string subjectName, System.Security.Cryptography.X509Certificates.StoreLocation storeLocation, System.Security.Cryptography.X509Certificates.StoreName storeName) { }
@@ -10415,7 +10449,6 @@ namespace System.ServiceModel.Security
         public void SetCertificate(string subjectName) { }
         public void SetCertificate(string subjectName, System.Security.Cryptography.X509Certificates.StoreLocation storeLocation, System.Security.Cryptography.X509Certificates.StoreName storeName) { }
     }
-    [System.MonoTODOAttribute]
     public partial class X509ClientCertificateAuthentication
     {
         internal X509ClientCertificateAuthentication() { }
@@ -10426,7 +10459,6 @@ namespace System.ServiceModel.Security
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public partial class X509PeerCertificateAuthentication
     {
         internal X509PeerCertificateAuthentication() { }
@@ -10435,7 +10467,6 @@ namespace System.ServiceModel.Security
         public System.Security.Cryptography.X509Certificates.X509RevocationMode RevocationMode { get { throw null; } set { } }
         public System.Security.Cryptography.X509Certificates.StoreLocation TrustedStoreLocation { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute]
     public sealed partial class X509ServiceCertificateAuthentication
     {
         public X509ServiceCertificateAuthentication() { }
@@ -10505,7 +10536,6 @@ namespace System.ServiceModel.Security.Tokens
         public string TokenType { get { throw null; } set { } }
         public bool UseStrTransform { get { throw null; } set { } }
         protected override System.ServiceModel.Security.Tokens.SecurityTokenParameters CloneCore() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override System.IdentityModel.Tokens.SecurityKeyIdentifierClause CreateKeyIdentifierClause(System.IdentityModel.Tokens.SecurityToken token, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle referenceStyle) { throw null; }
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> CreateRequestParameters(System.ServiceModel.MessageSecurityVersion messageSecurityVersion, System.IdentityModel.Selectors.SecurityTokenSerializer securityTokenSerializer) { throw null; }
         protected internal override void InitializeSecurityTokenRequirement(System.IdentityModel.Selectors.SecurityTokenRequirement requirement) { }
@@ -10528,7 +10558,6 @@ namespace System.ServiceModel.Security.Tokens
         public System.ServiceModel.Security.SecurityAlgorithmSuite SecurityAlgorithmSuite { get { throw null; } set { } }
         public System.IdentityModel.Selectors.SecurityTokenSerializer SecurityTokenSerializer { get { throw null; } set { } }
         public System.ServiceModel.CommunicationState State { get { throw null; } }
-        [System.MonoTODOAttribute("support it then")]
         public override bool SupportsTokenCancellation { get { throw null; } }
         public System.ServiceModel.EndpointAddress TargetAddress { get { throw null; } set { } }
         public System.Collections.ObjectModel.Collection<System.Xml.XmlElement> TokenRequestParameters { get { throw null; } }
@@ -10537,46 +10566,31 @@ namespace System.ServiceModel.Security.Tokens
         public event System.EventHandler Faulted { add { } remove { } }
         public event System.EventHandler Opened { add { } remove { } }
         public event System.EventHandler Opening { add { } remove { } }
-        [System.MonoTODOAttribute]
         public void Abort() { }
         public System.IAsyncResult BeginClose(System.AsyncCallback callback, object state) { throw null; }
-        [System.MonoTODOAttribute]
         public System.IAsyncResult BeginClose(System.TimeSpan timeout, System.AsyncCallback callback, object state) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.IAsyncResult BeginGetTokenCore(System.TimeSpan timeout, System.AsyncCallback callback, object state) { throw null; }
         public System.IAsyncResult BeginOpen(System.AsyncCallback callback, object state) { throw null; }
-        [System.MonoTODOAttribute]
         public System.IAsyncResult BeginOpen(System.TimeSpan timeout, System.AsyncCallback callback, object state) { throw null; }
         public void Close() { }
-        [System.MonoTODOAttribute]
         public void Close(System.TimeSpan timeout) { }
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         public void EndClose(System.IAsyncResult result) { }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityToken EndGetTokenCore(System.IAsyncResult result) { throw null; }
-        [System.MonoTODOAttribute]
         public void EndOpen(System.IAsyncResult result) { }
-        [System.MonoTODOAttribute]
         protected override System.IdentityModel.Tokens.SecurityToken GetTokenCore(System.TimeSpan timeout) { throw null; }
         public void Open() { }
-        [System.MonoTODOAttribute]
         public void Open(System.TimeSpan timeout) { }
     }
     public partial class KerberosSecurityTokenParameters : System.ServiceModel.Security.Tokens.SecurityTokenParameters
     {
         public KerberosSecurityTokenParameters() { }
         protected KerberosSecurityTokenParameters(System.ServiceModel.Security.Tokens.KerberosSecurityTokenParameters other) { }
-        [System.MonoTODOAttribute]
         protected internal override bool HasAsymmetricKey { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override bool SupportsClientAuthentication { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override bool SupportsClientWindowsIdentity { get { throw null; } }
-        [System.MonoTODOAttribute]
         protected internal override bool SupportsServerAuthentication { get { throw null; } }
         protected override System.ServiceModel.Security.Tokens.SecurityTokenParameters CloneCore() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override System.IdentityModel.Tokens.SecurityKeyIdentifierClause CreateKeyIdentifierClause(System.IdentityModel.Tokens.SecurityToken token, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle referenceStyle) { throw null; }
         protected internal override void InitializeSecurityTokenRequirement(System.IdentityModel.Selectors.SecurityTokenRequirement requirement) { }
     }
@@ -10620,9 +10634,7 @@ namespace System.ServiceModel.Security.Tokens
         protected internal override bool SupportsClientWindowsIdentity { get { throw null; } }
         protected internal override bool SupportsServerAuthentication { get { throw null; } }
         protected override System.ServiceModel.Security.Tokens.SecurityTokenParameters CloneCore() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override System.IdentityModel.Tokens.SecurityKeyIdentifierClause CreateKeyIdentifierClause(System.IdentityModel.Tokens.SecurityToken token, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle referenceStyle) { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void InitializeSecurityTokenRequirement(System.IdentityModel.Selectors.SecurityTokenRequirement requirement) { }
         public override string ToString() { throw null; }
     }
@@ -10649,15 +10661,12 @@ namespace System.ServiceModel.Security.Tokens
         public override T CreateKeyIdentifierClause<T>() { throw null; }
         public void Dispose() { }
         public override bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause) { throw null; }
-        [System.MonoTODOAttribute]
         public override string ToString() { throw null; }
     }
     public partial class SecurityContextSecurityTokenAuthenticator : System.IdentityModel.Selectors.SecurityTokenAuthenticator
     {
         public SecurityContextSecurityTokenAuthenticator() { }
-        [System.MonoTODOAttribute]
         protected override bool CanValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         protected override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> ValidateTokenCore(System.IdentityModel.Tokens.SecurityToken token) { throw null; }
     }
     public partial class SecurityContextSecurityTokenResolver : System.IdentityModel.Selectors.SecurityTokenResolver, System.ServiceModel.Security.Tokens.ISecurityContextSecurityTokenCache
@@ -10674,13 +10683,9 @@ namespace System.ServiceModel.Security.Tokens
         public void RemoveAllContexts(System.Xml.UniqueId contextId) { }
         public void RemoveContext(System.Xml.UniqueId contextId, System.Xml.UniqueId generation) { }
         public bool TryAddContext(System.ServiceModel.Security.Tokens.SecurityContextSecurityToken token) { throw null; }
-        [System.MonoTODOAttribute]
         protected override bool TryResolveSecurityKeyCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, out System.IdentityModel.Tokens.SecurityKey key) { key = default(System.IdentityModel.Tokens.SecurityKey); throw null; }
-        [System.MonoTODOAttribute]
         protected override bool TryResolveTokenCore(System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier, out System.IdentityModel.Tokens.SecurityToken token) { token = default(System.IdentityModel.Tokens.SecurityToken); throw null; }
-        [System.MonoTODOAttribute]
         protected override bool TryResolveTokenCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, out System.IdentityModel.Tokens.SecurityToken token) { token = default(System.IdentityModel.Tokens.SecurityToken); throw null; }
-        [System.MonoTODOAttribute]
         public void UpdateContextCachingTime(System.ServiceModel.Security.Tokens.SecurityContextSecurityToken context, System.DateTime expirationTime) { }
     }
     public enum SecurityTokenInclusionMode
@@ -10705,7 +10710,6 @@ namespace System.ServiceModel.Security.Tokens
         protected abstract System.ServiceModel.Security.Tokens.SecurityTokenParameters CloneCore();
         protected internal abstract System.IdentityModel.Tokens.SecurityKeyIdentifierClause CreateKeyIdentifierClause(System.IdentityModel.Tokens.SecurityToken token, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle referenceStyle);
         protected internal abstract void InitializeSecurityTokenRequirement(System.IdentityModel.Selectors.SecurityTokenRequirement requirement);
-        [System.MonoTODOAttribute]
         protected internal virtual bool MatchesKeyIdentifierClause(System.IdentityModel.Tokens.SecurityToken token, System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle referenceStyle) { throw null; }
         public override string ToString() { throw null; }
     }
@@ -10783,21 +10787,16 @@ namespace System.ServiceModel.Security.Tokens
     }
     public partial class SspiSecurityToken : System.IdentityModel.Tokens.SecurityToken
     {
-        [System.MonoTODOAttribute]
         public SspiSecurityToken(System.Net.NetworkCredential networkCredential, bool extractGroupsForWindowsAccounts, bool allowUnauthenticatedCallers) { }
-        [System.MonoTODOAttribute]
         public SspiSecurityToken(System.Security.Principal.TokenImpersonationLevel impersonationLevel, bool allowNtlm, System.Net.NetworkCredential networkCredential) { }
-        [System.MonoTODOAttribute]
         public bool AllowNtlm { get { throw null; } }
         public bool AllowUnauthenticatedCallers { get { throw null; } }
         public bool ExtractGroupsForWindowsAccounts { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override string Id { get { throw null; } }
         public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get { throw null; } }
         public System.Net.NetworkCredential NetworkCredential { get { throw null; } }
         public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get { throw null; } }
         public override System.DateTime ValidFrom { get { throw null; } }
-        [System.MonoTODOAttribute]
         public override System.DateTime ValidTo { get { throw null; } }
     }
     public partial class SspiSecurityTokenParameters : System.ServiceModel.Security.Tokens.SecurityTokenParameters
@@ -10811,9 +10810,7 @@ namespace System.ServiceModel.Security.Tokens
         protected internal override bool SupportsClientWindowsIdentity { get { throw null; } }
         protected internal override bool SupportsServerAuthentication { get { throw null; } }
         protected override System.ServiceModel.Security.Tokens.SecurityTokenParameters CloneCore() { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override System.IdentityModel.Tokens.SecurityKeyIdentifierClause CreateKeyIdentifierClause(System.IdentityModel.Tokens.SecurityToken token, System.ServiceModel.Security.Tokens.SecurityTokenReferenceStyle referenceStyle) { throw null; }
-        [System.MonoTODOAttribute]
         protected internal override void InitializeSecurityTokenRequirement(System.IdentityModel.Selectors.SecurityTokenRequirement requirement) { }
         public override string ToString() { throw null; }
     }
@@ -10868,7 +10865,8 @@ namespace System.ServiceModel.Security.Tokens
 }
 namespace System.ServiceModel.Syndication
 {
-    [System.Xml.Serialization.XmlRootAttribute("feed", Namespace="http://www.w3.org/2005/Atom")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="feed", Namespace="http://www.w3.org/2005/Atom")]
     public partial class Atom10FeedFormatter : System.ServiceModel.Syndication.SyndicationFeedFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Atom10FeedFormatter() { }
@@ -10886,19 +10884,20 @@ namespace System.ServiceModel.Syndication
         System.Xml.Schema.XmlSchema System.Xml.Serialization.IXmlSerializable.GetSchema() { throw null; }
         void System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader reader) { }
         void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
-        [System.MonoTODOAttribute("Find out how feedBaseUri is used")]
         protected virtual void WriteItem(System.Xml.XmlWriter writer, System.ServiceModel.Syndication.SyndicationItem item, System.Uri feedBaseUri) { }
         protected virtual void WriteItems(System.Xml.XmlWriter writer, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.SyndicationItem> items, System.Uri feedBaseUri) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("feed", Namespace="http://www.w3.org/2005/Atom")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="feed", Namespace="http://www.w3.org/2005/Atom")]
     public partial class Atom10FeedFormatter<TSyndicationFeed> : System.ServiceModel.Syndication.Atom10FeedFormatter where TSyndicationFeed : System.ServiceModel.Syndication.SyndicationFeed, new()
     {
         public Atom10FeedFormatter() { }
         public Atom10FeedFormatter(TSyndicationFeed feedToWrite) { }
         protected override System.ServiceModel.Syndication.SyndicationFeed CreateFeedInstance() { throw null; }
     }
-    [System.Xml.Serialization.XmlRootAttribute("entry", Namespace="http://www.w3.org/2005/Atom")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="entry", Namespace="http://www.w3.org/2005/Atom")]
     public partial class Atom10ItemFormatter : System.ServiceModel.Syndication.SyndicationItemFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Atom10ItemFormatter() { }
@@ -10916,14 +10915,16 @@ namespace System.ServiceModel.Syndication
         void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("entry", Namespace="http://www.w3.org/2005/Atom")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="entry", Namespace="http://www.w3.org/2005/Atom")]
     public partial class Atom10ItemFormatter<TSyndicationItem> : System.ServiceModel.Syndication.Atom10ItemFormatter where TSyndicationItem : System.ServiceModel.Syndication.SyndicationItem, new()
     {
         public Atom10ItemFormatter() { }
         public Atom10ItemFormatter(TSyndicationItem itemToWrite) { }
         protected override System.ServiceModel.Syndication.SyndicationItem CreateItemInstance() { throw null; }
     }
-    [System.Xml.Serialization.XmlRootAttribute("categories", Namespace="http://www.w3.org/2007/app")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="categories", Namespace="http://www.w3.org/2007/app")]
     public partial class AtomPub10CategoriesDocumentFormatter : System.ServiceModel.Syndication.CategoriesDocumentFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public AtomPub10CategoriesDocumentFormatter() { }
@@ -10939,7 +10940,8 @@ namespace System.ServiceModel.Syndication
         void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("service", Namespace="http://www.w3.org/2007/app")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="service", Namespace="http://www.w3.org/2007/app")]
     public partial class AtomPub10ServiceDocumentFormatter : System.ServiceModel.Syndication.ServiceDocumentFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public AtomPub10ServiceDocumentFormatter() { }
@@ -10954,20 +10956,22 @@ namespace System.ServiceModel.Syndication
         void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("service", Namespace="http://www.w3.org/2007/app")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="service", Namespace="http://www.w3.org/2007/app")]
     public partial class AtomPub10ServiceDocumentFormatter<TServiceDocument> : System.ServiceModel.Syndication.AtomPub10ServiceDocumentFormatter where TServiceDocument : System.ServiceModel.Syndication.ServiceDocument, new()
     {
         public AtomPub10ServiceDocumentFormatter() { }
         public AtomPub10ServiceDocumentFormatter(TServiceDocument documentToWrite) { }
         protected override System.ServiceModel.Syndication.ServiceDocument CreateDocumentInstance() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public abstract partial class CategoriesDocument
     {
         internal CategoriesDocument() { }
         public System.Collections.Generic.Dictionary<System.Xml.XmlQualifiedName, string> AttributeExtensions { get { throw null; } }
-        public System.Uri BaseUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Uri BaseUri { get { throw null; } set { } }
         public System.ServiceModel.Syndication.SyndicationElementExtensionCollection ElementExtensions { get { throw null; } }
-        public string Language { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Language { get { throw null; } set { } }
         public static System.ServiceModel.Syndication.InlineCategoriesDocument Create(System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationCategory> categories) { throw null; }
         public static System.ServiceModel.Syndication.InlineCategoriesDocument Create(System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationCategory> categories, bool isFixed, string scheme) { throw null; }
         public static System.ServiceModel.Syndication.ReferencedCategoriesDocument Create(System.Uri linkToCategoriesDocument) { throw null; }
@@ -10979,12 +10983,13 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     [System.Runtime.Serialization.DataContractAttribute]
     public abstract partial class CategoriesDocumentFormatter
     {
         protected CategoriesDocumentFormatter() { }
         protected CategoriesDocumentFormatter(System.ServiceModel.Syndication.CategoriesDocument documentToWrite) { }
-        public System.ServiceModel.Syndication.CategoriesDocument Document { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Syndication.CategoriesDocument Document { get { throw null; } }
         public abstract string Version { get; }
         public abstract bool CanRead(System.Xml.XmlReader reader);
         protected virtual System.ServiceModel.Syndication.InlineCategoriesDocument CreateInlineCategoriesDocument() { throw null; }
@@ -10993,22 +10998,25 @@ namespace System.ServiceModel.Syndication
         protected virtual void SetDocument(System.ServiceModel.Syndication.CategoriesDocument document) { }
         public abstract void WriteTo(System.Xml.XmlWriter writer);
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class InlineCategoriesDocument : System.ServiceModel.Syndication.CategoriesDocument
     {
         public InlineCategoriesDocument() { }
         public InlineCategoriesDocument(System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.SyndicationCategory> categories) { }
         public InlineCategoriesDocument(System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.SyndicationCategory> categories, bool isFixed, string scheme) { }
-        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationCategory> Categories { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool IsFixed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Scheme { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationCategory> Categories { get { throw null; } }
+        public bool IsFixed { get { throw null; } set { } }
+        public string Scheme { get { throw null; } set { } }
         protected internal virtual System.ServiceModel.Syndication.SyndicationCategory CreateCategory() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class ReferencedCategoriesDocument : System.ServiceModel.Syndication.CategoriesDocument
     {
         public ReferencedCategoriesDocument() { }
         public ReferencedCategoriesDocument(System.Uri link) { }
-        public System.Uri Link { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Uri Link { get { throw null; } set { } }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class ResourceCollectionInfo
     {
         public ResourceCollectionInfo() { }
@@ -11016,13 +11024,13 @@ namespace System.ServiceModel.Syndication
         public ResourceCollectionInfo(System.ServiceModel.Syndication.TextSyndicationContent title, System.Uri link, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.CategoriesDocument> categories, bool allowsNewEntries) { }
         public ResourceCollectionInfo(System.ServiceModel.Syndication.TextSyndicationContent title, System.Uri link, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.CategoriesDocument> categories, System.Collections.Generic.IEnumerable<string> accepts) { }
         public ResourceCollectionInfo(string title, System.Uri link) { }
-        public System.Collections.ObjectModel.Collection<string> Accepts { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.ObjectModel.Collection<string> Accepts { get { throw null; } }
         public System.Collections.Generic.Dictionary<System.Xml.XmlQualifiedName, string> AttributeExtensions { get { throw null; } }
-        public System.Uri BaseUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.CategoriesDocument> Categories { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Uri BaseUri { get { throw null; } set { } }
+        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.CategoriesDocument> Categories { get { throw null; } }
         public System.ServiceModel.Syndication.SyndicationElementExtensionCollection ElementExtensions { get { throw null; } }
-        public System.Uri Link { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.ServiceModel.Syndication.TextSyndicationContent Title { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Uri Link { get { throw null; } set { } }
+        public System.ServiceModel.Syndication.TextSyndicationContent Title { get { throw null; } set { } }
         protected internal virtual System.ServiceModel.Syndication.InlineCategoriesDocument CreateInlineCategoriesDocument() { throw null; }
         protected internal virtual System.ServiceModel.Syndication.ReferencedCategoriesDocument CreateReferencedCategoriesDocument() { throw null; }
         protected internal virtual bool TryParseAttribute(string name, string ns, string value, string version) { throw null; }
@@ -11030,7 +11038,8 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("rss", Namespace="")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="rss", Namespace="")]
     public partial class Rss20FeedFormatter : System.ServiceModel.Syndication.SyndicationFeedFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Rss20FeedFormatter() { }
@@ -11055,7 +11064,8 @@ namespace System.ServiceModel.Syndication
         protected virtual void WriteItems(System.Xml.XmlWriter writer, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.SyndicationItem> items, System.Uri feedBaseUri) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("rss", Namespace="")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="rss", Namespace="")]
     public partial class Rss20FeedFormatter<TSyndicationFeed> : System.ServiceModel.Syndication.Rss20FeedFormatter where TSyndicationFeed : System.ServiceModel.Syndication.SyndicationFeed, new()
     {
         public Rss20FeedFormatter() { }
@@ -11063,7 +11073,8 @@ namespace System.ServiceModel.Syndication
         public Rss20FeedFormatter(TSyndicationFeed feedToWrite, bool serializeExtensionsAsAtom) { }
         protected override System.ServiceModel.Syndication.SyndicationFeed CreateFeedInstance() { throw null; }
     }
-    [System.Xml.Serialization.XmlRootAttribute("item", Namespace="")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="item", Namespace="")]
     public partial class Rss20ItemFormatter : System.ServiceModel.Syndication.SyndicationItemFormatter, System.Xml.Serialization.IXmlSerializable
     {
         public Rss20ItemFormatter() { }
@@ -11083,7 +11094,8 @@ namespace System.ServiceModel.Syndication
         void System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter writer) { }
         public override void WriteTo(System.Xml.XmlWriter writer) { }
     }
-    [System.Xml.Serialization.XmlRootAttribute("item", Namespace="")]
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
+    [System.Xml.Serialization.XmlRootAttribute(ElementName="item", Namespace="")]
     public partial class Rss20ItemFormatter<TSyndicationItem> : System.ServiceModel.Syndication.Rss20ItemFormatter, System.Xml.Serialization.IXmlSerializable where TSyndicationItem : System.ServiceModel.Syndication.SyndicationItem, new()
     {
         public Rss20ItemFormatter() { }
@@ -11091,15 +11103,16 @@ namespace System.ServiceModel.Syndication
         public Rss20ItemFormatter(TSyndicationItem itemToWrite, bool serializeExtensionsAsAtom) { }
         protected override System.ServiceModel.Syndication.SyndicationItem CreateItemInstance() { throw null; }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class ServiceDocument
     {
         public ServiceDocument() { }
         public ServiceDocument(System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.Workspace> workspaces) { }
         public System.Collections.Generic.Dictionary<System.Xml.XmlQualifiedName, string> AttributeExtensions { get { throw null; } }
-        public System.Uri BaseUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Uri BaseUri { get { throw null; } set { } }
         public System.ServiceModel.Syndication.SyndicationElementExtensionCollection ElementExtensions { get { throw null; } }
-        public string Language { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.Workspace> Workspaces { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Language { get { throw null; } set { } }
+        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.Workspace> Workspaces { get { throw null; } }
         protected internal virtual System.ServiceModel.Syndication.Workspace CreateWorkspace() { throw null; }
         public System.ServiceModel.Syndication.ServiceDocumentFormatter GetFormatter() { throw null; }
         public static System.ServiceModel.Syndication.ServiceDocument Load(System.Xml.XmlReader reader) { throw null; }
@@ -11110,12 +11123,13 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     [System.Runtime.Serialization.DataContractAttribute]
     public abstract partial class ServiceDocumentFormatter
     {
         protected ServiceDocumentFormatter() { }
         protected ServiceDocumentFormatter(System.ServiceModel.Syndication.ServiceDocument documentToWrite) { }
-        public System.ServiceModel.Syndication.ServiceDocument Document { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.ServiceModel.Syndication.ServiceDocument Document { get { throw null; } }
         public abstract string Version { get; }
         public abstract bool CanRead(System.Xml.XmlReader reader);
         protected static System.ServiceModel.Syndication.SyndicationCategory CreateCategory(System.ServiceModel.Syndication.InlineCategoriesDocument inlineCategories) { throw null; }
@@ -11124,13 +11138,9 @@ namespace System.ServiceModel.Syndication
         protected static System.ServiceModel.Syndication.InlineCategoriesDocument CreateInlineCategories(System.ServiceModel.Syndication.ResourceCollectionInfo collection) { throw null; }
         protected static System.ServiceModel.Syndication.ReferencedCategoriesDocument CreateReferencedCategories(System.ServiceModel.Syndication.ResourceCollectionInfo collection) { throw null; }
         protected static System.ServiceModel.Syndication.Workspace CreateWorkspace(System.ServiceModel.Syndication.ServiceDocument document) { throw null; }
-        [System.MonoTODOAttribute("Use maxExtensionSize somewhere")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.CategoriesDocument categories, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("Use maxExtensionSize somewhere")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.ResourceCollectionInfo collection, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("Use maxExtensionSize somewhere")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.ServiceDocument document, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("Use maxExtensionSize somewhere")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.Workspace workspace, int maxExtensionSize) { }
         public abstract void ReadFrom(System.Xml.XmlReader reader);
         protected virtual void SetDocument(System.ServiceModel.Syndication.ServiceDocument document) { }
@@ -11152,6 +11162,7 @@ namespace System.ServiceModel.Syndication
         protected static void WriteElementExtensions(System.Xml.XmlWriter writer, System.ServiceModel.Syndication.Workspace workspace, string version) { }
         public abstract void WriteTo(System.Xml.XmlWriter writer);
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class SyndicationCategory
     {
         public SyndicationCategory() { }
@@ -11169,6 +11180,7 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public abstract partial class SyndicationContent
     {
         protected SyndicationContent() { }
@@ -11187,6 +11199,7 @@ namespace System.ServiceModel.Syndication
         protected abstract void WriteContentsTo(System.Xml.XmlWriter writer);
         public void WriteTo(System.Xml.XmlWriter writer, string outerElementName, string outerElementNamespace) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class SyndicationElementExtension
     {
         public SyndicationElementExtension(object dataContractExtension) { }
@@ -11203,6 +11216,7 @@ namespace System.ServiceModel.Syndication
         public System.Xml.XmlReader GetReader() { throw null; }
         public void WriteTo(System.Xml.XmlWriter writer) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public sealed partial class SyndicationElementExtensionCollection : System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.SyndicationElementExtension>
     {
         internal SyndicationElementExtensionCollection() { }
@@ -11212,18 +11226,16 @@ namespace System.ServiceModel.Syndication
         public void Add(string outerName, string outerNamespace, object dataContractExtension) { }
         public void Add(string outerName, string outerNamespace, object dataContractExtension, System.Runtime.Serialization.XmlObjectSerializer dataContractSerializer) { }
         public void Add(System.Xml.XmlReader xmlReader) { }
-        [System.MonoTODOAttribute("Find out what is expected here")]
         protected override void ClearItems() { }
-        [System.MonoTODOAttribute]
         public System.Xml.XmlReader GetReaderAtElementExtensions() { throw null; }
         protected override void InsertItem(int index, System.ServiceModel.Syndication.SyndicationElementExtension item) { }
         public System.Collections.ObjectModel.Collection<TExtension> ReadElementExtensions<TExtension>(string extensionName, string extensionNamespace) { throw null; }
         public System.Collections.ObjectModel.Collection<TExtension> ReadElementExtensions<TExtension>(string extensionName, string extensionNamespace, System.Runtime.Serialization.XmlObjectSerializer serializer) { throw null; }
         public System.Collections.ObjectModel.Collection<TExtension> ReadElementExtensions<TExtension>(string extensionName, string extensionNamespace, System.Xml.Serialization.XmlSerializer serializer) { throw null; }
-        [System.MonoTODOAttribute("Find out what is expected here")]
         protected override void RemoveItem(int index) { }
         protected override void SetItem(int index, System.ServiceModel.Syndication.SyndicationElementExtension item) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class SyndicationFeed
     {
         public SyndicationFeed() { }
@@ -11266,6 +11278,7 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     [System.Runtime.Serialization.DataContractAttribute]
     public abstract partial class SyndicationFeedFormatter
     {
@@ -11282,15 +11295,10 @@ namespace System.ServiceModel.Syndication
         protected internal static System.ServiceModel.Syndication.SyndicationLink CreateLink(System.ServiceModel.Syndication.SyndicationItem item) { throw null; }
         protected internal static System.ServiceModel.Syndication.SyndicationPerson CreatePerson(System.ServiceModel.Syndication.SyndicationFeed feed) { throw null; }
         protected internal static System.ServiceModel.Syndication.SyndicationPerson CreatePerson(System.ServiceModel.Syndication.SyndicationItem item) { throw null; }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected internal static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationCategory category, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected internal static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationFeed feed, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected internal static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationItem item, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected internal static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationLink link, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected internal static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationPerson person, int maxExtensionSize) { }
         public abstract void ReadFrom(System.Xml.XmlReader reader);
         protected internal virtual void SetFeed(System.ServiceModel.Syndication.SyndicationFeed feed) { }
@@ -11318,6 +11326,7 @@ namespace System.ServiceModel.Syndication
         protected internal static void WriteElementExtensions(System.Xml.XmlWriter writer, System.ServiceModel.Syndication.SyndicationPerson person, string version) { }
         public abstract void WriteTo(System.Xml.XmlWriter writer);
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class SyndicationItem
     {
         public SyndicationItem() { }
@@ -11358,6 +11367,7 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     [System.Runtime.Serialization.DataContractAttribute]
     public abstract partial class SyndicationItemFormatter
     {
@@ -11370,13 +11380,9 @@ namespace System.ServiceModel.Syndication
         protected abstract System.ServiceModel.Syndication.SyndicationItem CreateItemInstance();
         protected static System.ServiceModel.Syndication.SyndicationLink CreateLink(System.ServiceModel.Syndication.SyndicationItem item) { throw null; }
         protected static System.ServiceModel.Syndication.SyndicationPerson CreatePerson(System.ServiceModel.Syndication.SyndicationItem item) { throw null; }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationCategory category, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationItem item, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationLink link, int maxExtensionSize) { }
-        [System.MonoTODOAttribute("use maxExtensionsSize parameter")]
         protected static void LoadElementExtensions(System.Xml.XmlReader reader, System.ServiceModel.Syndication.SyndicationPerson person, int maxExtensionSize) { }
         public abstract void ReadFrom(System.Xml.XmlReader reader);
         protected internal virtual void SetItem(System.ServiceModel.Syndication.SyndicationItem item) { }
@@ -11400,6 +11406,7 @@ namespace System.ServiceModel.Syndication
         protected void WriteElementExtensions(System.Xml.XmlWriter writer, System.ServiceModel.Syndication.SyndicationPerson person, string version) { }
         public abstract void WriteTo(System.Xml.XmlWriter writer);
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class SyndicationLink
     {
         public SyndicationLink() { }
@@ -11426,6 +11433,7 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class SyndicationPerson
     {
         public SyndicationPerson() { }
@@ -11443,11 +11451,13 @@ namespace System.ServiceModel.Syndication
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public static partial class SyndicationVersions
     {
         public const string Atom10 = "Atom10";
         public const string Rss20 = "Rss20";
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class TextSyndicationContent : System.ServiceModel.Syndication.SyndicationContent
     {
         protected TextSyndicationContent(System.ServiceModel.Syndication.TextSyndicationContent source) { }
@@ -11458,12 +11468,14 @@ namespace System.ServiceModel.Syndication
         public override System.ServiceModel.Syndication.SyndicationContent Clone() { throw null; }
         protected override void WriteContentsTo(System.Xml.XmlWriter writer) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public enum TextSyndicationContentKind
     {
         Html = 1,
         Plaintext = 0,
         XHtml = 2,
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class UrlSyndicationContent : System.ServiceModel.Syndication.SyndicationContent
     {
         protected UrlSyndicationContent(System.ServiceModel.Syndication.UrlSyndicationContent source) { }
@@ -11473,22 +11485,24 @@ namespace System.ServiceModel.Syndication
         public override System.ServiceModel.Syndication.SyndicationContent Clone() { throw null; }
         protected override void WriteContentsTo(System.Xml.XmlWriter writer) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class Workspace
     {
         public Workspace() { }
         public Workspace(System.ServiceModel.Syndication.TextSyndicationContent title, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.ResourceCollectionInfo> collections) { }
         public Workspace(string title, System.Collections.Generic.IEnumerable<System.ServiceModel.Syndication.ResourceCollectionInfo> collections) { }
         public System.Collections.Generic.Dictionary<System.Xml.XmlQualifiedName, string> AttributeExtensions { get { throw null; } }
-        public System.Uri BaseUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.ResourceCollectionInfo> Collections { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Uri BaseUri { get { throw null; } set { } }
+        public System.Collections.ObjectModel.Collection<System.ServiceModel.Syndication.ResourceCollectionInfo> Collections { get { throw null; } }
         public System.ServiceModel.Syndication.SyndicationElementExtensionCollection ElementExtensions { get { throw null; } }
-        public System.ServiceModel.Syndication.TextSyndicationContent Title { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.Syndication.TextSyndicationContent Title { get { throw null; } set { } }
         protected internal virtual System.ServiceModel.Syndication.ResourceCollectionInfo CreateResourceCollection() { throw null; }
         protected internal virtual bool TryParseAttribute(string name, string ns, string value, string version) { throw null; }
         protected internal virtual bool TryParseElement(System.Xml.XmlReader reader, string version) { throw null; }
         protected internal virtual void WriteAttributeExtensions(System.Xml.XmlWriter writer, string version) { }
         protected internal virtual void WriteElementExtensions(System.Xml.XmlWriter writer, string version) { }
     }
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel.Web, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35")]
     public partial class XmlSyndicationContent : System.ServiceModel.Syndication.SyndicationContent
     {
         protected XmlSyndicationContent(System.ServiceModel.Syndication.XmlSyndicationContent source) { }
@@ -11508,6 +11522,7 @@ namespace System.ServiceModel.Syndication
 }
 namespace System.ServiceModel.XamlIntegration
 {
+    [System.Windows.Markup.ContentPropertyAttribute("Namespaces")]
     public partial class XPathMessageContextMarkupExtension : System.Windows.Markup.MarkupExtension
     {
         public XPathMessageContextMarkupExtension() { }

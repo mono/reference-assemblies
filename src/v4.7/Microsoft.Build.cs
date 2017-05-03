@@ -9,24 +9,30 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.Build.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.Build.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.Build.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(4096))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Flags=(System.Security.Permissions.SecurityPermissionFlag)(8))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace Microsoft.Build.Construction
 {
     [System.SerializableAttribute]
     public abstract partial class ElementLocation
     {
         protected ElementLocation() { }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
         public abstract int Column { get; }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
         public abstract string File { get; }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
         public abstract int Line { get; }
         public string LocationString { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
@@ -46,25 +52,25 @@ namespace Microsoft.Build.Construction
     {
         internal ProjectElement() { }
         public System.Collections.Generic.IEnumerable<Microsoft.Build.Construction.ProjectElementContainer> AllParents { get { throw null; } }
-        public virtual string Condition { get { throw null; } set { } }
-        public virtual Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ProjectRootElement ContainingProject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Label { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation LabelLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation Location { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ProjectElement NextSibling { get { throw null; } }
-        public Microsoft.Build.Construction.ProjectElementContainer Parent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ProjectElement PreviousSibling { get { throw null; } }
+        public virtual string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public virtual Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
+        public Microsoft.Build.Construction.ProjectRootElement ContainingProject { get { throw null; } }
+        public string Label { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public Microsoft.Build.Construction.ElementLocation LabelLocation { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
+        public Microsoft.Build.Construction.ProjectElement NextSibling { [System.Diagnostics.DebuggerStepThroughAttribute, System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ProjectElementContainer Parent { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ProjectElement PreviousSibling { [System.Diagnostics.DebuggerStepThroughAttribute, System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     public abstract partial class ProjectElementContainer : Microsoft.Build.Construction.ProjectElement
     {
         internal ProjectElementContainer() { }
         public System.Collections.Generic.IEnumerable<Microsoft.Build.Construction.ProjectElement> AllChildren { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectElement> Children { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectElement> ChildrenReversed { get { throw null; } }
-        public int Count { get { throw null; } }
-        public Microsoft.Build.Construction.ProjectElement FirstChild { get { throw null; } }
-        public Microsoft.Build.Construction.ProjectElement LastChild { get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectElement> Children { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectElement> ChildrenReversed { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public int Count { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ProjectElement FirstChild { [System.Diagnostics.DebuggerStepThroughAttribute, System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ProjectElement LastChild { [System.Diagnostics.DebuggerStepThroughAttribute, System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public void AppendChild(Microsoft.Build.Construction.ProjectElement child) { }
         public void InsertAfterChild(Microsoft.Build.Construction.ProjectElement child, Microsoft.Build.Construction.ProjectElement reference) { }
         public void InsertBeforeChild(Microsoft.Build.Construction.ProjectElement child, Microsoft.Build.Construction.ProjectElement reference) { }
@@ -77,7 +83,7 @@ namespace Microsoft.Build.Construction
         internal ProjectExtensionsElement() { }
         public override string Condition { get { throw null; } set { } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string Content { get { throw null; } set { } }
+        public string Content { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
         public string this[string name] { get { throw null; } set { } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("Project={Project} Condition={Condition}")]
@@ -98,7 +104,7 @@ namespace Microsoft.Build.Construction
     public partial class ProjectItemDefinitionElement : Microsoft.Build.Construction.ProjectElementContainer
     {
         internal ProjectItemDefinitionElement() { }
-        public string ItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ItemType { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectMetadataElement> Metadata { get { throw null; } }
         public Microsoft.Build.Construction.ProjectMetadataElement AddMetadata(string name, string unevaluatedValue) { throw null; }
     }
@@ -113,21 +119,21 @@ namespace Microsoft.Build.Construction
     public partial class ProjectItemElement : Microsoft.Build.Construction.ProjectElementContainer
     {
         internal ProjectItemElement() { }
-        public string Exclude { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation ExcludeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Exclude { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation ExcludeLocation { get { throw null; } }
         public bool HasMetadata { get { throw null; } }
-        public string Include { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation IncludeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ItemType { get { throw null; } set { } }
-        public string KeepDuplicates { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation KeepDuplicatesLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string KeepMetadata { get { throw null; } set { } }
+        public string Include { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation IncludeLocation { get { throw null; } }
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public string KeepDuplicates { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation KeepDuplicatesLocation { get { throw null; } }
+        public string KeepMetadata { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
         public Microsoft.Build.Construction.ElementLocation KeepMetadataLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectMetadataElement> Metadata { get { throw null; } }
-        public string Remove { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation RemoveLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string RemoveMetadata { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation RemoveMetadataLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Remove { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation RemoveLocation { get { throw null; } }
+        public string RemoveMetadata { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation RemoveMetadataLocation { get { throw null; } }
         public Microsoft.Build.Construction.ProjectMetadataElement AddMetadata(string name, string unevaluatedValue) { throw null; }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("#Items={Count} Condition={Condition} Label={Label}")]
@@ -149,8 +155,8 @@ namespace Microsoft.Build.Construction
     public partial class ProjectOnErrorElement : Microsoft.Build.Construction.ProjectElement
     {
         internal ProjectOnErrorElement() { }
-        public string ExecuteTargetsAttribute { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Build.Construction.ElementLocation ExecuteTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ExecuteTargetsAttribute { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation ExecuteTargetsLocation { get { throw null; } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("#Children={Count}")]
     public partial class ProjectOtherwiseElement : Microsoft.Build.Construction.ProjectElementContainer
@@ -168,11 +174,11 @@ namespace Microsoft.Build.Construction
         internal ProjectOutputElement() { }
         public bool IsOutputItem { get { throw null; } }
         public bool IsOutputProperty { get { throw null; } }
-        public string ItemType { get { throw null; } set { } }
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
         public Microsoft.Build.Construction.ElementLocation ItemTypeLocation { get { throw null; } }
-        public string PropertyName { get { throw null; } set { } }
+        public string PropertyName { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
         public Microsoft.Build.Construction.ElementLocation PropertyNameLocation { get { throw null; } }
-        public string TaskParameter { get { throw null; } set { } }
+        public string TaskParameter { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
         public Microsoft.Build.Construction.ElementLocation TaskParameterLocation { get { throw null; } }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("{Name} Value={Value} Condition={Condition}")]
@@ -191,23 +197,23 @@ namespace Microsoft.Build.Construction
         public Microsoft.Build.Construction.ProjectPropertyElement AddProperty(string name, string unevaluatedValue) { throw null; }
         public Microsoft.Build.Construction.ProjectPropertyElement SetProperty(string name, string unevaluatedValue) { throw null; }
     }
-    [System.Diagnostics.DebuggerDisplayAttribute("{FullPath} #Children={Count} DefaultTargets={DefaultTargets} ToolsVersion={ToolsVersion} InitialTargets={InitialTargets}")]
+    [System.Diagnostics.DebuggerDisplayAttribute("{FullPath} #Children={Count} DefaultTargets={DefaultTargets} ToolsVersion={ToolsVersion} InitialTargets={InitialTargets} ExplicitlyLoaded={IsExplicitlyLoaded}")]
     public partial class ProjectRootElement : Microsoft.Build.Construction.ProjectElementContainer
     {
         internal ProjectRootElement() { }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectChooseElement> ChooseElements { get { throw null; } }
         public override string Condition { get { throw null; } set { } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string DefaultTargets { get { throw null; } set { } }
+        public string DefaultTargets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
         public Microsoft.Build.Construction.ElementLocation DefaultTargetsLocation { get { throw null; } }
-        public string DirectoryPath { get { throw null; } }
+        public string DirectoryPath { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Text.Encoding Encoding { get { throw null; } }
         public string FullPath { get { throw null; } set { } }
         public bool HasUnsavedChanges { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectImportGroupElement> ImportGroups { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectImportGroupElement> ImportGroupsReversed { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectImportElement> Imports { get { throw null; } }
-        public string InitialTargets { get { throw null; } set { } }
+        public string InitialTargets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
         public Microsoft.Build.Construction.ElementLocation InitialTargetsLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectItemDefinitionGroupElement> ItemDefinitionGroups { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectItemDefinitionGroupElement> ItemDefinitionGroupsReversed { get { throw null; } }
@@ -215,17 +221,17 @@ namespace Microsoft.Build.Construction
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectItemGroupElement> ItemGroups { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectItemGroupElement> ItemGroupsReversed { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectItemElement> Items { get { throw null; } }
-        public System.DateTime LastWriteTimeWhenRead { get { throw null; } }
+        public System.DateTime LastWriteTimeWhenRead { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Construction.ElementLocation ProjectFileLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectPropertyElement> Properties { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectPropertyGroupElement> PropertyGroups { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectPropertyGroupElement> PropertyGroupsReversed { get { throw null; } }
         public string RawXml { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectTargetElement> Targets { get { throw null; } }
-        public System.DateTime TimeLastChanged { get { throw null; } }
-        public string ToolsVersion { get { throw null; } set { } }
+        public System.DateTime TimeLastChanged { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string ToolsVersion { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
         public Microsoft.Build.Construction.ElementLocation ToolsVersionLocation { get { throw null; } }
-        public string TreatAsLocalProperty { get { throw null; } set { } }
+        public string TreatAsLocalProperty { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
         public Microsoft.Build.Construction.ElementLocation TreatAsLocalPropertyLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectUsingTaskElement> UsingTasks { get { throw null; } }
         public int Version { get { throw null; } }
@@ -284,40 +290,40 @@ namespace Microsoft.Build.Construction
     public partial class ProjectTargetElement : Microsoft.Build.Construction.ProjectElementContainer
     {
         internal ProjectTargetElement() { }
-        public string AfterTargets { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation AfterTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string BeforeTargets { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation BeforeTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string DependsOnTargets { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation DependsOnTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Inputs { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation InputsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string AfterTargets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation AfterTargetsLocation { get { throw null; } }
+        public string BeforeTargets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation BeforeTargetsLocation { get { throw null; } }
+        public string DependsOnTargets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation DependsOnTargetsLocation { get { throw null; } }
+        public string Inputs { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation InputsLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectItemGroupElement> ItemGroups { get { throw null; } }
-        public string KeepDuplicateOutputs { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation KeepDuplicateOutputsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation NameLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string KeepDuplicateOutputs { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation KeepDuplicateOutputsLocation { get { throw null; } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation NameLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectOnErrorElement> OnErrors { get { throw null; } }
-        public string Outputs { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation OutputsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Outputs { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation OutputsLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectPropertyGroupElement> PropertyGroups { get { throw null; } }
-        public string Returns { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation ReturnsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Returns { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public Microsoft.Build.Construction.ElementLocation ReturnsLocation { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectTaskElement> Tasks { get { throw null; } }
         public Microsoft.Build.Construction.ProjectItemGroupElement AddItemGroup() { throw null; }
         public Microsoft.Build.Construction.ProjectPropertyGroupElement AddPropertyGroup() { throw null; }
         public Microsoft.Build.Construction.ProjectTaskElement AddTask(string taskName) { throw null; }
     }
-    [System.Diagnostics.DebuggerDisplayAttribute("{Name} Condition={Condition} ContinueOnError={ContinueOnError} #Outputs={Count}")]
+    [System.Diagnostics.DebuggerDisplayAttribute("{Name} Condition={Condition} ContinueOnError={ContinueOnError} MSBuildRuntime={MSBuildRuntime} MSBuildArchitecture={MSBuildArchitecture} #Outputs={Count}")]
     public partial class ProjectTaskElement : Microsoft.Build.Construction.ProjectElementContainer
     {
         internal ProjectTaskElement() { }
-        public string ContinueOnError { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ElementLocation ContinueOnErrorLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MSBuildArchitecture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Build.Construction.ElementLocation MSBuildArchitectureLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MSBuildRuntime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Build.Construction.ElementLocation MSBuildRuntimeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ContinueOnError { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public Microsoft.Build.Construction.ElementLocation ContinueOnErrorLocation { get { throw null; } }
+        public string MSBuildArchitecture { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public Microsoft.Build.Construction.ElementLocation MSBuildArchitectureLocation { get { throw null; } }
+        public string MSBuildRuntime { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public Microsoft.Build.Construction.ElementLocation MSBuildRuntimeLocation { get { throw null; } }
         public string Name { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Construction.ProjectOutputElement> Outputs { get { throw null; } }
         public System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Microsoft.Build.Construction.ElementLocation>> ParameterLocations { get { throw null; } }
@@ -341,7 +347,7 @@ namespace Microsoft.Build.Construction
         public Microsoft.Build.Construction.ElementLocation EvaluateLocation { get { throw null; } }
         public string TaskBody { get { throw null; } set { } }
     }
-    [System.Diagnostics.DebuggerDisplayAttribute("TaskName={TaskName} AssemblyName={AssemblyName} AssemblyFile={AssemblyFile} Condition={Condition} Runtime={RequiredRuntime} Platform={RequiredPlatform}")]
+    [System.Diagnostics.DebuggerDisplayAttribute("TaskName={TaskName} AssemblyName={AssemblyName} AssemblyFile={AssemblyFile} Condition={Condition} Runtime={Runtime} Architecture={Architecture}")]
     public partial class ProjectUsingTaskElement : Microsoft.Build.Construction.ProjectElementContainer
     {
         internal ProjectUsingTaskElement() { }
@@ -362,13 +368,13 @@ namespace Microsoft.Build.Construction
         public Microsoft.Build.Construction.UsingTaskParameterGroupElement AddParameterGroup() { throw null; }
         public Microsoft.Build.Construction.ProjectUsingTaskBodyElement AddUsingTaskBody(string evaluate, string taskBody) { throw null; }
     }
-    [System.Diagnostics.DebuggerDisplayAttribute("Name={Name} ParameterType={ParameterType} Output={Output}")]
+    [System.Diagnostics.DebuggerDisplayAttribute("Name={Name} ParameterType={ParameterType} Output={Output} Required={Required}")]
     public partial class ProjectUsingTaskParameterElement : Microsoft.Build.Construction.ProjectElement
     {
         internal ProjectUsingTaskParameterElement() { }
         public override string Condition { get { throw null; } set { } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string Name { get { throw null; } set { } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
         public string Output { get { throw null; } set { } }
         public Microsoft.Build.Construction.ElementLocation OutputLocation { get { throw null; } }
         public string ParameterType { get { throw null; } set { } }
@@ -433,30 +439,28 @@ namespace Microsoft.Build.Evaluation
         public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectMetadata> AllEvaluatedItemDefinitionMetadata { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> AllEvaluatedItems { get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectProperty> AllEvaluatedProperties { get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.List<string>> ConditionedProperties { get { throw null; } }
-        public string DirectoryPath { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, System.Collections.Generic.List<string>> ConditionedProperties { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string DirectoryPath { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public bool DisableMarkDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int EvaluationCounter { get { throw null; } }
-        public string FullPath { get { throw null; } set { } }
-        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string FullPath { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ResolvedImport> Imports { get { throw null; } }
         public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ResolvedImport> ImportsIncludingDuplicates { get { throw null; } }
         public bool IsBuildEnabled { get { throw null; } set { } }
         public bool IsDirty { get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Evaluation.ProjectItemDefinition> ItemDefinitions { get { throw null; } }
-        [System.MonoTODOAttribute("should be different from AllEvaluatedItems")]
-        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> Items { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> ItemsIgnoringCondition { get { throw null; } }
-        public System.Collections.Generic.ICollection<string> ItemTypes { get { throw null; } }
-        public Microsoft.Build.Evaluation.ProjectCollection ProjectCollection { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Evaluation.ProjectItemDefinition> ItemDefinitions { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> Items { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> ItemsIgnoringCondition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<string> ItemTypes { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Evaluation.ProjectCollection ProjectCollection { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Construction.ElementLocation ProjectFileLocation { get { throw null; } }
-        [System.MonoTODOAttribute("should be different from AllEvaluatedProperties")]
-        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectProperty> Properties { get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectProperty> Properties { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public bool SkipEvaluation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string SubToolsetVersion { get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectTargetInstance> Targets { get { throw null; } }
-        public string ToolsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ProjectRootElement Xml { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectTargetInstance> Targets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string ToolsVersion { get { throw null; } }
+        public Microsoft.Build.Construction.ProjectRootElement Xml { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItem(string itemType, string unevaluatedInclude) { throw null; }
         public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItem(string itemType, string unevaluatedInclude, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, string>> metadata) { throw null; }
         public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItemFast(string itemType, string unevaluatedInclude) { throw null; }
@@ -483,6 +487,7 @@ namespace Microsoft.Build.Evaluation
         public static string GetMetadataValueEscaped(Microsoft.Build.Evaluation.ProjectItem item, string name) { throw null; }
         public static string GetMetadataValueEscaped(Microsoft.Build.Evaluation.ProjectItemDefinition item, string name) { throw null; }
         public static string GetMetadataValueEscaped(Microsoft.Build.Evaluation.ProjectMetadata metadatum) { throw null; }
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public Microsoft.Build.Evaluation.ProjectProperty GetProperty(string name) { throw null; }
         public string GetPropertyValue(string name) { throw null; }
         public static string GetPropertyValueEscaped(Microsoft.Build.Evaluation.ProjectProperty property) { throw null; }
@@ -515,32 +520,22 @@ namespace Microsoft.Build.Evaluation
         public ProjectCollection(System.Collections.Generic.IDictionary<string, string> globalProperties, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers, System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers, Microsoft.Build.Evaluation.ToolsetDefinitionLocations toolsetDefinitionLocations, int maxNodeCount, bool onlyLogCriticalEvents) { }
         public int Count { get { throw null; } }
         public string DefaultToolsVersion { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public bool DisableMarkDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool DisableMarkDirty { get { throw null; } set { } }
         public static Microsoft.Build.Evaluation.ProjectCollection GlobalProjectCollection { get { throw null; } }
         public System.Collections.Generic.IDictionary<string, string> GlobalProperties { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public Microsoft.Build.Execution.HostServices HostServices { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool IsBuildEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Execution.HostServices HostServices { get { throw null; } set { } }
+        public bool IsBuildEnabled { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.Project> LoadedProjects { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Framework.ILogger> Loggers { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public bool OnlyLogCriticalEvents { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool SkipEvaluation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Build.Evaluation.ToolsetDefinitionLocations ToolsetLocations { get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Framework.ILogger> Loggers { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public bool OnlyLogCriticalEvents { get { throw null; } set { } }
+        public bool SkipEvaluation { get { throw null; } set { } }
+        public Microsoft.Build.Evaluation.ToolsetDefinitionLocations ToolsetLocations { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.Toolset> Toolsets { get { throw null; } }
         public static System.Version Version { get { throw null; } }
-        [System.MonoTODOAttribute("not fired yet")]
         public event Microsoft.Build.Evaluation.ProjectCollection.ProjectAddedEventHandler ProjectAdded { add { } remove { } }
-        [System.MonoTODOAttribute("not fired yet")]
         public event System.EventHandler<Microsoft.Build.Evaluation.ProjectChangedEventArgs> ProjectChanged { add { } remove { } }
-        [System.MonoTODOAttribute("not fired yet")]
         public event System.EventHandler<Microsoft.Build.Evaluation.ProjectCollectionChangedEventArgs> ProjectCollectionChanged { add { } remove { } }
-        [System.MonoTODOAttribute("not fired yet")]
         public event System.EventHandler<Microsoft.Build.Evaluation.ProjectXmlChangedEventArgs> ProjectXmlChanged { add { } remove { } }
-        [System.MonoTODOAttribute("not verified at all")]
         public void AddToolset(Microsoft.Build.Evaluation.Toolset toolset) { }
         public bool ContainsToolset(string toolsVersion) { throw null; }
         public void Dispose() { }
@@ -558,7 +553,6 @@ namespace Microsoft.Build.Evaluation
         public void RegisterForwardingLoggers(System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers) { }
         public void RegisterLogger(Microsoft.Build.Framework.ILogger logger) { }
         public void RegisterLoggers(System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers) { }
-        [System.MonoTODOAttribute("not verified at all")]
         public void RemoveAllToolsets() { }
         public bool RemoveGlobalProperty(string name) { throw null; }
         public bool RemoveToolset(string toolsVersion) { throw null; }
@@ -566,22 +560,20 @@ namespace Microsoft.Build.Evaluation
         public bool TryUnloadProject(Microsoft.Build.Construction.ProjectRootElement projectRootElement) { throw null; }
         public static string Unescape(string escapedString) { throw null; }
         public void UnloadAllProjects() { }
-        [System.MonoTODOAttribute("Not verified at all")]
         public void UnloadProject(Microsoft.Build.Construction.ProjectRootElement projectRootElement) { }
-        [System.MonoTODOAttribute("Not verified at all")]
         public void UnloadProject(Microsoft.Build.Evaluation.Project project) { }
         public void UnregisterAllLoggers() { }
         public delegate void ProjectAddedEventHandler(object sender, Microsoft.Build.Evaluation.ProjectCollection.ProjectAddedToProjectCollectionEventArgs e);
         public partial class ProjectAddedToProjectCollectionEventArgs : System.EventArgs
         {
             public ProjectAddedToProjectCollectionEventArgs(Microsoft.Build.Construction.ProjectRootElement element) { }
-            public Microsoft.Build.Construction.ProjectRootElement ProjectRootElement { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            public Microsoft.Build.Construction.ProjectRootElement ProjectRootElement { get { throw null; } }
         }
     }
     public partial class ProjectCollectionChangedEventArgs : System.EventArgs
     {
         internal ProjectCollectionChangedEventArgs() { }
-        public Microsoft.Build.Evaluation.ProjectCollectionChangedState Changed { get { throw null; } }
+        public Microsoft.Build.Evaluation.ProjectCollectionChangedState Changed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     public enum ProjectCollectionChangedState
     {
@@ -600,15 +592,17 @@ namespace Microsoft.Build.Evaluation
     {
         internal ProjectItem() { }
         public System.Collections.Generic.IEnumerable<Microsoft.Build.Evaluation.ProjectMetadata> DirectMetadata { get { throw null; } }
-        public int DirectMetadataCount { get { throw null; } }
-        public string EvaluatedInclude { get { throw null; } }
+        public int DirectMetadataCount { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string EvaluatedInclude { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public bool IsImported { get { throw null; } }
-        public string ItemType { get { throw null; } set { } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectMetadata> Metadata { get { throw null; } }
-        public int MetadataCount { get { throw null; } }
-        public Microsoft.Build.Evaluation.Project Project { get { throw null; } }
-        public string UnevaluatedInclude { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ProjectItemElement Xml { get { throw null; } }
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectMetadata> Metadata { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public int MetadataCount { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public Microsoft.Build.Evaluation.Project Project { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string UnevaluatedInclude { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public Microsoft.Build.Construction.ProjectItemElement Xml { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Evaluation.ProjectMetadata GetMetadata(string name) { throw null; }
         public string GetMetadataValue(string name) { throw null; }
         public bool HasMetadata(string name) { throw null; }
@@ -616,13 +610,17 @@ namespace Microsoft.Build.Evaluation
         public void Rename(string name) { }
         public Microsoft.Build.Evaluation.ProjectMetadata SetMetadataValue(string name, string unevaluatedValue) { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{itemType} #Metadata={MetadataCount}")]
     public partial class ProjectItemDefinition
     {
         internal ProjectItemDefinition() { }
-        public string ItemType { get { throw null; } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.IEnumerable<Microsoft.Build.Evaluation.ProjectMetadata> Metadata { get { throw null; } }
         public int MetadataCount { get { throw null; } }
-        public Microsoft.Build.Evaluation.Project Project { get { throw null; } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public Microsoft.Build.Evaluation.Project Project { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public Microsoft.Build.Evaluation.ProjectMetadata GetMetadata(string name) { throw null; }
         public string GetMetadataValue(string name) { throw null; }
         public Microsoft.Build.Evaluation.ProjectMetadata SetMetadataValue(string name, string unevaluatedValue) { throw null; }
@@ -640,39 +638,42 @@ namespace Microsoft.Build.Evaluation
     {
         internal ProjectMetadata() { }
         public Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string EvaluatedValue { get { throw null; } }
+        public string EvaluatedValue { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public bool IsImported { get { throw null; } }
         public string ItemType { get { throw null; } }
         public Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
-        public string Name { get { throw null; } }
-        public Microsoft.Build.Evaluation.ProjectMetadata Predecessor { get { throw null; } }
-        public Microsoft.Build.Evaluation.Project Project { get { throw null; } }
-        public string UnevaluatedValue { get { throw null; } set { } }
-        public Microsoft.Build.Construction.ProjectMetadataElement Xml { get { throw null; } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Evaluation.ProjectMetadata Predecessor { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Evaluation.Project Project { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string UnevaluatedValue { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public Microsoft.Build.Construction.ProjectMetadataElement Xml { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         bool System.IEquatable<Microsoft.Build.Evaluation.ProjectMetadata>.Equals(Microsoft.Build.Evaluation.ProjectMetadata other) { throw null; }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("{Name}={EvaluatedValue} [{UnevaluatedValue}]")]
     public abstract partial class ProjectProperty : System.IEquatable<Microsoft.Build.Evaluation.ProjectProperty>
     {
         internal ProjectProperty() { }
-        public string EvaluatedValue { get { throw null; } }
-        public abstract bool IsEnvironmentProperty { get; }
-        public abstract bool IsGlobalProperty { get; }
-        [System.MonoTODOAttribute]
+        public string EvaluatedValue { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public abstract bool IsEnvironmentProperty { [System.Diagnostics.DebuggerStepThroughAttribute]get; }
+        public abstract bool IsGlobalProperty { [System.Diagnostics.DebuggerStepThroughAttribute]get; }
         public abstract bool IsImported { get; }
-        public abstract bool IsReservedProperty { get; }
-        public abstract string Name { get; }
-        public abstract Microsoft.Build.Evaluation.ProjectProperty Predecessor { get; }
-        public Microsoft.Build.Evaluation.Project Project { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public abstract string UnevaluatedValue { get; set; }
-        public abstract Microsoft.Build.Construction.ProjectPropertyElement Xml { get; }
+        public abstract bool IsReservedProperty { [System.Diagnostics.DebuggerStepThroughAttribute]get; }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public abstract string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get; }
+        public abstract Microsoft.Build.Evaluation.ProjectProperty Predecessor { [System.Diagnostics.DebuggerStepThroughAttribute]get; }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public Microsoft.Build.Evaluation.Project Project { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public abstract string UnevaluatedValue { [System.Diagnostics.DebuggerStepThroughAttribute]get; set; }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public abstract Microsoft.Build.Construction.ProjectPropertyElement Xml { [System.Diagnostics.DebuggerStepThroughAttribute]get; }
         bool System.IEquatable<Microsoft.Build.Evaluation.ProjectProperty>.Equals(Microsoft.Build.Evaluation.ProjectProperty other) { throw null; }
     }
     public partial class ProjectXmlChangedEventArgs : System.EventArgs
     {
         internal ProjectXmlChangedEventArgs() { }
         public Microsoft.Build.Construction.ProjectRootElement ProjectXml { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Reason { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Reason { get { throw null; } }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ResolvedImport
@@ -681,22 +682,24 @@ namespace Microsoft.Build.Evaluation
         public Microsoft.Build.Construction.ProjectImportElement ImportingElement { get { throw null; } }
         public bool IsImported { get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("SubToolsetVersion={SubToolsetVersion} #Properties={properties.Count}")]
     public partial class SubToolset
     {
         internal SubToolset() { }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectPropertyInstance> Properties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string SubToolsetVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectPropertyInstance> Properties { get { throw null; } }
+        public string SubToolsetVersion { get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("ToolsVersion={ToolsVersion} ToolsPath={ToolsPath} #Properties={properties.Count}")]
     public partial class Toolset
     {
         public Toolset(string toolsVersion, string toolsPath, Microsoft.Build.Evaluation.ProjectCollection projectCollection, string msbuildOverrideTasksPath) { }
         public Toolset(string toolsVersion, string toolsPath, System.Collections.Generic.IDictionary<string, string> buildProperties, Microsoft.Build.Evaluation.ProjectCollection projectCollection, System.Collections.Generic.IDictionary<string, Microsoft.Build.Evaluation.SubToolset> subToolsets, string msbuildOverrideTasksPath) { }
         public Toolset(string toolsVersion, string toolsPath, System.Collections.Generic.IDictionary<string, string> buildProperties, Microsoft.Build.Evaluation.ProjectCollection projectCollection, string msbuildOverrideTasksPath) { }
-        public string DefaultSubToolsetVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectPropertyInstance> Properties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Evaluation.SubToolset> SubToolsets { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ToolsPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ToolsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string DefaultSubToolsetVersion { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectPropertyInstance> Properties { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Evaluation.SubToolset> SubToolsets { get { throw null; } }
+        public string ToolsPath { get { throw null; } }
+        public string ToolsVersion { get { throw null; } }
         public string GenerateSubToolsetVersion() { throw null; }
         public string GenerateSubToolsetVersion(System.Collections.Generic.IDictionary<string, string> overrideGlobalProperties, int solutionVersion) { throw null; }
         public Microsoft.Build.Execution.ProjectPropertyInstance GetProperty(string propertyName, string subToolsetVersion) { throw null; }
@@ -711,6 +714,7 @@ namespace Microsoft.Build.Evaluation
 }
 namespace Microsoft.Build.Exceptions
 {
+    [System.SerializableAttribute]
     public partial class BuildAbortedException : System.Exception
     {
         public BuildAbortedException() { }
@@ -718,17 +722,20 @@ namespace Microsoft.Build.Exceptions
         public BuildAbortedException(string message) { }
         public BuildAbortedException(string message, System.Exception innerException) { }
         public string ErrorCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+    [System.SerializableAttribute]
     public sealed partial class InternalLoggerException : System.Exception
     {
         public InternalLoggerException() { }
         public InternalLoggerException(string message) { }
         public InternalLoggerException(string message, System.Exception innerException) { }
-        public Microsoft.Build.Framework.BuildEventArgs BuildEventArgs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ErrorCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string HelpKeyword { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool InitializationException { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.Framework.BuildEventArgs BuildEventArgs { get { throw null; } }
+        public string ErrorCode { get { throw null; } }
+        public string HelpKeyword { get { throw null; } }
+        public bool InitializationException { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.SerializableAttribute]
@@ -739,18 +746,20 @@ namespace Microsoft.Build.Exceptions
         public InvalidProjectFileException(string message, System.Exception innerException) { }
         public InvalidProjectFileException(string projectFile, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, string errorSubcategory, string errorCode, string helpKeyword) { }
         public string BaseMessage { get { throw null; } }
-        public int ColumnNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int EndColumnNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int EndLineNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ErrorCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ErrorSubcategory { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public bool HasBeenLogged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string HelpKeyword { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int LineNumber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int ColumnNumber { get { throw null; } }
+        public int EndColumnNumber { get { throw null; } }
+        public int EndLineNumber { get { throw null; } }
+        public string ErrorCode { get { throw null; } }
+        public string ErrorSubcategory { get { throw null; } }
+        public bool HasBeenLogged { get { throw null; } }
+        public string HelpKeyword { get { throw null; } }
+        public int LineNumber { get { throw null; } }
         public override string Message { get { throw null; } }
-        public string ProjectFile { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ProjectFile { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
+    [System.SerializableAttribute]
     public partial class InvalidToolsetDefinitionException : System.Exception
     {
         public InvalidToolsetDefinitionException() { }
@@ -759,7 +768,8 @@ namespace Microsoft.Build.Exceptions
         public InvalidToolsetDefinitionException(string message, System.Exception innerException) { }
         public InvalidToolsetDefinitionException(string message, string errorCode) { }
         public InvalidToolsetDefinitionException(string message, string errorCode, System.Exception innerException) { }
-        public string ErrorCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ErrorCode { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
 }
@@ -786,49 +796,31 @@ namespace Microsoft.Build.Execution
         public BuildParameters() { }
         public BuildParameters(Microsoft.Build.Evaluation.ProjectCollection projectCollection) { }
         public System.Collections.Generic.IDictionary<string, string> BuildProcessEnvironment { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.Threading.ThreadPriority BuildThreadPriority { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Globalization.CultureInfo Culture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string DefaultToolsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool DetailedSummary { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Threading.ThreadPriority BuildThreadPriority { get { throw null; } set { } }
+        public System.Globalization.CultureInfo Culture { get { throw null; } set { } }
+        public string DefaultToolsVersion { get { throw null; } set { } }
+        public bool DetailedSummary { get { throw null; } set { } }
         public bool DisableInProcNode { get { throw null; } set { } }
-        public bool EnableNodeReuse { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public bool EnableNodeReuse { get { throw null; } set { } }
         public System.Collections.Generic.IDictionary<string, string> EnvironmentProperties { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> ForwardingLoggers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Build.Execution.HostServices HostServices { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> ForwardingLoggers { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { get { throw null; } set { } }
+        public Microsoft.Build.Execution.HostServices HostServices { get { throw null; } set { } }
         public bool LegacyThreadingSemantics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> Loggers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> Loggers { get { throw null; } set { } }
         public bool LogInitialPropertiesAndItems { get { throw null; } set { } }
         public bool LogTaskInputs { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public int MaxNodeCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public int MemoryUseLimit { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public string NodeExeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool OnlyLogCriticalEvents { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public int MaxNodeCount { get { throw null; } set { } }
+        public int MemoryUseLimit { get { throw null; } set { } }
+        public string NodeExeLocation { get { throw null; } set { } }
+        public bool OnlyLogCriticalEvents { get { throw null; } set { } }
         public bool ResetCaches { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool SaveOperatingEnvironment { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SaveOperatingEnvironment { get { throw null; } set { } }
         public bool ShutdownInProcNodeOnBuildFinish { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
-        public Microsoft.Build.Evaluation.ToolsetDefinitionLocations ToolsetDefinitionLocations { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public Microsoft.Build.Evaluation.ToolsetDefinitionLocations ToolsetDefinitionLocations { get { throw null; } set { } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.Toolset> Toolsets { get { throw null; } }
-        [System.MonoTODOAttribute]
-        public System.Globalization.CultureInfo UICulture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.MonoTODOAttribute]
-        public bool UseSynchronousLogging { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.Globalization.CultureInfo UICulture { get { throw null; } set { } }
+        public bool UseSynchronousLogging { get { throw null; } set { } }
         public Microsoft.Build.Execution.BuildParameters Clone() { throw null; }
         public Microsoft.Build.Evaluation.Toolset GetToolset(string toolsVersion) { throw null; }
     }
@@ -841,17 +833,12 @@ namespace Microsoft.Build.Execution
         public BuildRequestData(string projectFullPath, System.Collections.Generic.IDictionary<string, string> globalProperties, string toolsVersion, string[] targetsToBuild, Microsoft.Build.Execution.HostServices hostServices) { }
         public BuildRequestData(string projectFullPath, System.Collections.Generic.IDictionary<string, string> globalProperties, string toolsVersion, string[] targetsToBuild, Microsoft.Build.Execution.HostServices hostServices, Microsoft.Build.Execution.BuildRequestDataFlags flags) { }
         public string ExplicitlySpecifiedToolsVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute("unused")]
         public Microsoft.Build.Execution.BuildRequestDataFlags Flags { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectPropertyInstance> GlobalProperties { get { throw null; } }
-        [System.MonoTODOAttribute("unused")]
         public Microsoft.Build.Execution.HostServices HostServices { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ProjectFullPath { get { throw null; } }
-        [System.MonoTODOAttribute("unused")]
+        public string ProjectFullPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public Microsoft.Build.Execution.ProjectInstance ProjectInstance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.IEnumerable<string> PropertiesToTransfer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
         public System.Collections.Generic.ICollection<string> TargetNames { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     [System.FlagsAttribute]
@@ -865,17 +852,17 @@ namespace Microsoft.Build.Execution
     public partial class BuildResult
     {
         public BuildResult() { }
-        public bool CircularDependency { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int ConfigurationId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Exception Exception { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int GlobalRequestId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Execution.ITargetResult this[string target] { get { throw null; } }
-        public int NodeRequestId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public bool CircularDependency { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public int ConfigurationId { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Exception Exception { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public int GlobalRequestId { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Execution.ITargetResult this[string target] { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public int NodeRequestId { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Execution.BuildResultCode OverallResult { get { throw null; } }
-        public int ParentGlobalRequestId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int ParentGlobalRequestId { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Execution.ProjectInstance ProjectStateAfterBuild { get { throw null; } set { } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.TargetResult> ResultsByTarget { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int SubmissionId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.TargetResult> ResultsByTarget { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public int SubmissionId { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public void AddResultsForTarget(string target, Microsoft.Build.Execution.TargetResult result) { }
         public bool HasResultsForTarget(string target) { throw null; }
         public void MergeResults(Microsoft.Build.Execution.BuildResult results) { }
@@ -890,7 +877,7 @@ namespace Microsoft.Build.Execution
         internal BuildSubmission() { }
         public object AsyncContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public Microsoft.Build.Execution.BuildManager BuildManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Execution.BuildResult BuildResult { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Execution.BuildResult BuildResult { get { throw null; } set { } }
         public bool IsCompleted { get { throw null; } }
         public int SubmissionId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public System.Threading.WaitHandle WaitHandle { get { throw null; } }
@@ -898,6 +885,7 @@ namespace Microsoft.Build.Execution
         public void ExecuteAsync(Microsoft.Build.Execution.BuildSubmissionCompleteCallback callback, object context) { }
     }
     public delegate void BuildSubmissionCompleteCallback(Microsoft.Build.Execution.BuildSubmission submission);
+    [System.Diagnostics.DebuggerDisplayAttribute("#Entries={hostObjectMap.Count}")]
     public partial class HostServices
     {
         public HostServices() { }
@@ -932,6 +920,7 @@ namespace Microsoft.Build.Execution
         public OutOfProcNode() { }
         public Microsoft.Build.Execution.NodeEngineShutdownReason Run(out System.Exception shutdownException) { shutdownException = default(System.Exception); throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{FullPath} #Targets={TargetsCount} DefaultTargets={(DefaultTargets == null) ? System.String.Empty : System.String.Join(\";\", DefaultTargets.ToArray())} ToolsVersion={Toolset.ToolsVersion} InitialTargets={(InitialTargets == null) ? System.String.Empty : System.String.Join(\";\", InitialTargets.ToArray())} #GlobalProperties={globalProperties.Count} #Properties={properties.Count} #ItemTypes={items.ItemTypes.Count} #Items={items.Count}")]
     public partial class ProjectInstance
     {
         public ProjectInstance(Microsoft.Build.Construction.ProjectRootElement xml) { }
@@ -942,17 +931,17 @@ namespace Microsoft.Build.Execution
         public ProjectInstance(string projectFile, System.Collections.Generic.IDictionary<string, string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection) { }
         public ProjectInstance(string projectFile, System.Collections.Generic.IDictionary<string, string> globalProperties, string toolsVersion, string subToolsetVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection) { }
         public System.Collections.Generic.List<string> DefaultTargets { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Directory { get { throw null; } }
-        public string FullPath { get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { get { throw null; } }
+        public string Directory { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string FullPath { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> GlobalProperties { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.List<string> InitialTargets { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public bool IsImmutable { get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectItemDefinitionInstance> ItemDefinitions { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectItemInstance> Items { get { throw null; } }
-        public System.Collections.Generic.ICollection<string> ItemTypes { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectItemDefinitionInstance> ItemDefinitions { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectItemInstance> Items { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<string> ItemTypes { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Construction.ElementLocation ProjectFileLocation { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectPropertyInstance> Properties { get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectTargetInstance> Targets { get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectPropertyInstance> Properties { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, Microsoft.Build.Execution.ProjectTargetInstance> Targets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public string ToolsVersion { get { throw null; } }
         public Microsoft.Build.Execution.ProjectItemInstance AddItem(string itemType, string evaluatedInclude) { throw null; }
         public Microsoft.Build.Execution.ProjectItemInstance AddItem(string itemType, string evaluatedInclude, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, string>> metadata) { throw null; }
@@ -976,6 +965,7 @@ namespace Microsoft.Build.Execution
         public static string GetMetadataValueEscaped(Microsoft.Build.Execution.ProjectItemDefinitionInstance item, string name) { throw null; }
         public static string GetMetadataValueEscaped(Microsoft.Build.Execution.ProjectItemInstance item, string name) { throw null; }
         public static string GetMetadataValueEscaped(Microsoft.Build.Execution.ProjectMetadataInstance metadatum) { throw null; }
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public Microsoft.Build.Execution.ProjectPropertyInstance GetProperty(string name) { throw null; }
         public string GetPropertyValue(string name) { throw null; }
         public static string GetPropertyValueEscaped(Microsoft.Build.Execution.ProjectPropertyInstance property) { throw null; }
@@ -985,71 +975,81 @@ namespace Microsoft.Build.Execution
         public Microsoft.Build.Construction.ProjectRootElement ToProjectRootElement() { throw null; }
         public void UpdateStateFrom(Microsoft.Build.Execution.ProjectInstance projectState) { }
     }
+    [System.FlagsAttribute]
     public enum ProjectInstanceSettings
     {
         Immutable = 1,
         ImmutableWithFastItemLookup = 3,
         None = 0,
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{itemType} #Metadata={MetadataCount}")]
     public partial class ProjectItemDefinitionInstance
     {
         internal ProjectItemDefinitionInstance() { }
-        public string ItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectMetadataInstance> Metadata { get { throw null; } }
         public int MetadataCount { get { throw null; } }
         public System.Collections.Generic.IEnumerable<string> MetadataNames { get { throw null; } }
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public Microsoft.Build.Execution.ProjectMetadataInstance GetMetadata(string name) { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Condition={condition}")]
     public partial class ProjectItemGroupTaskInstance : Microsoft.Build.Execution.ProjectTargetInstanceChild
     {
         internal ProjectItemGroupTaskInstance() { }
-        public override string Condition { get { throw null; } }
+        public override string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectItemGroupTaskItemInstance> Items { get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectItemGroupTaskItemInstance> Items { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{itemType} Include={include} Exclude={exclude} Remove={remove} Condition={condition}")]
     public partial class ProjectItemGroupTaskItemInstance
     {
         internal ProjectItemGroupTaskItemInstance() { }
-        public string Condition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Exclude { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ExcludeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Include { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation IncludeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string ItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string KeepDuplicates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation KeepDuplicatesLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string KeepMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation KeepMetadataLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation Location { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectItemGroupTaskMetadataInstance> Metadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Remove { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation RemoveLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string RemoveMetadata { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation RemoveMetadataLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Exclude { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ExcludeLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Include { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation IncludeLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string KeepDuplicates { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation KeepDuplicatesLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string KeepMetadata { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation KeepMetadataLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation Location { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectItemGroupTaskMetadataInstance> Metadata { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Remove { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation RemoveLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string RemoveMetadata { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation RemoveMetadataLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{name} Value={value} Condition={condition}")]
     public partial class ProjectItemGroupTaskMetadataInstance
     {
         internal ProjectItemGroupTaskMetadataInstance() { }
-        public string Condition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation Location { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation Location { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Value { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{ItemType}={EvaluatedInclude} #DirectMetadata={DirectMetadataCount})")]
     public partial class ProjectItemInstance : Microsoft.Build.Framework.ITaskItem, Microsoft.Build.Framework.ITaskItem2
     {
         internal ProjectItemInstance() { }
         public int DirectMetadataCount { get { throw null; } }
-        public string EvaluatedInclude { get { throw null; } set { } }
-        public string ItemType { get { throw null; } }
+        public string EvaluatedInclude { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public string ItemType { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public System.Collections.Generic.IEnumerable<Microsoft.Build.Execution.ProjectMetadataInstance> Metadata { get { throw null; } }
         public int MetadataCount { get { throw null; } }
         public System.Collections.Generic.ICollection<string> MetadataNames { get { throw null; } }
         string Microsoft.Build.Framework.ITaskItem.ItemSpec { get { throw null; } set { } }
         System.Collections.ICollection Microsoft.Build.Framework.ITaskItem.MetadataNames { get { throw null; } }
-        string Microsoft.Build.Framework.ITaskItem2.EvaluatedIncludeEscaped { get { throw null; } set { } }
+        string Microsoft.Build.Framework.ITaskItem2.EvaluatedIncludeEscaped { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } set { } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
         public Microsoft.Build.Execution.ProjectInstance Project { get { throw null; } }
         public Microsoft.Build.Execution.ProjectMetadataInstance GetMetadata(string name) { throw null; }
         public string GetMetadataValue(string name) { throw null; }
@@ -1066,97 +1066,106 @@ namespace Microsoft.Build.Execution
         public Microsoft.Build.Execution.ProjectMetadataInstance SetMetadata(string name, string evaluatedValue) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{name}={EvaluatedValue}")]
     public partial class ProjectMetadataInstance : System.IEquatable<Microsoft.Build.Execution.ProjectMetadataInstance>
     {
         internal ProjectMetadataInstance() { }
-        public string EvaluatedValue { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string EvaluatedValue { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public Microsoft.Build.Execution.ProjectMetadataInstance DeepClone() { throw null; }
         bool System.IEquatable<Microsoft.Build.Execution.ProjectMetadataInstance>.Equals(Microsoft.Build.Execution.ProjectMetadataInstance other) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("ExecuteTargets={executeTargets} Condition={condition}")]
     public sealed partial class ProjectOnErrorInstance : Microsoft.Build.Execution.ProjectTargetInstanceChild
     {
         internal ProjectOnErrorInstance() { }
         public override string Condition { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string ExecuteTargets { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ExecuteTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ExecuteTargets { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ExecuteTargetsLocation { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Condition={condition}")]
     public partial class ProjectPropertyGroupTaskInstance : Microsoft.Build.Execution.ProjectTargetInstanceChild
     {
         internal ProjectPropertyGroupTaskInstance() { }
-        public override string Condition { get { throw null; } }
+        public override string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectPropertyGroupTaskPropertyInstance> Properties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectPropertyGroupTaskPropertyInstance> Properties { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{name}={Value} Condition={condition}")]
     public partial class ProjectPropertyGroupTaskPropertyInstance
     {
         internal ProjectPropertyGroupTaskPropertyInstance() { }
-        public string Condition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation Location { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Value { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{name}={escapedValue}")]
     public partial class ProjectPropertyInstance : System.IEquatable<Microsoft.Build.Execution.ProjectPropertyInstance>
     {
         internal ProjectPropertyInstance() { }
-        public string EvaluatedValue { get { throw null; } set { } }
-        public virtual bool IsImmutable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string EvaluatedValue { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } [System.Diagnostics.DebuggerStepThroughAttribute]set { } }
+        public virtual bool IsImmutable { get { throw null; } }
+        [System.Diagnostics.DebuggerBrowsableAttribute((System.Diagnostics.DebuggerBrowsableState)(0))]
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
         bool System.IEquatable<Microsoft.Build.Execution.ProjectPropertyInstance>.Equals(Microsoft.Build.Execution.ProjectPropertyInstance other) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Name={name} Count={children.Count} Condition={condition} Inputs={inputs} Outputs={outputs} DependsOnTargets={dependsOnTargets}")]
     public sealed partial class ProjectTargetInstance
     {
         internal ProjectTargetInstance() { }
-        public Microsoft.Build.Construction.ElementLocation AfterTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation BeforeTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.Build.Execution.ProjectTargetInstanceChild> Children { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Condition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string DependsOnTargets { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation DependsOnTargetsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string FullPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Inputs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation InputsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string KeepDuplicateOutputs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation KeepDuplicateOutputsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation Location { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.Build.Execution.ProjectOnErrorInstance> OnErrorChildren { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Outputs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation OutputsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Returns { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ReturnsLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectTaskInstance> Tasks { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation AfterTargetsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation BeforeTargetsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.Build.Execution.ProjectTargetInstanceChild> Children { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Condition { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ConditionLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string DependsOnTargets { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation DependsOnTargetsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string FullPath { get { throw null; } }
+        public string Inputs { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation InputsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string KeepDuplicateOutputs { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation KeepDuplicateOutputsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation Location { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Name { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.Build.Execution.ProjectOnErrorInstance> OnErrorChildren { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Outputs { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation OutputsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public string Returns { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ReturnsLocation { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public System.Collections.Generic.ICollection<Microsoft.Build.Execution.ProjectTaskInstance> Tasks { get { throw null; } }
     }
     public abstract partial class ProjectTargetInstanceChild
     {
         protected ProjectTargetInstanceChild() { }
         public abstract string Condition { get; }
         public abstract Microsoft.Build.Construction.ElementLocation ConditionLocation { get; }
-        public string FullPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string FullPath { get { throw null; } }
         public abstract Microsoft.Build.Construction.ElementLocation Location { get; }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("Name={name} Condition={condition} ContinueOnError={continueOnError} MSBuildRuntime={MSBuildRuntime} MSBuildArchitecture={MSBuildArchitecture} #Parameters={parameters.Count} #Outputs={outputs.Count}")]
     public sealed partial class ProjectTaskInstance : Microsoft.Build.Execution.ProjectTargetInstanceChild
     {
         internal ProjectTaskInstance() { }
         public override string Condition { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string ContinueOnError { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ContinueOnErrorLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ContinueOnError { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ContinueOnErrorLocation { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
-        public string MSBuildArchitecture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation MSBuildArchitectureLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string MSBuildRuntime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation MSBuildRuntimeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IList<Microsoft.Build.Execution.ProjectTaskInstanceChild> Outputs { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public System.Collections.Generic.IDictionary<string, string> Parameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string MSBuildArchitecture { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation MSBuildArchitectureLocation { get { throw null; } }
+        public string MSBuildRuntime { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation MSBuildRuntimeLocation { get { throw null; } }
+        public string Name { get { throw null; } }
+        public System.Collections.Generic.IList<Microsoft.Build.Execution.ProjectTaskInstanceChild> Outputs { get { throw null; } }
+        public System.Collections.Generic.IDictionary<string, string> Parameters { get { throw null; } }
     }
     public abstract partial class ProjectTaskInstanceChild
     {
@@ -1171,10 +1180,10 @@ namespace Microsoft.Build.Execution
         internal ProjectTaskOutputItemInstance() { }
         public override string Condition { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
-        public string ItemType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation ItemTypeLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ItemType { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation ItemTypeLocation { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
-        public string TaskParameter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string TaskParameter { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation TaskParameterLocation { get { throw null; } }
     }
     public sealed partial class ProjectTaskOutputPropertyInstance : Microsoft.Build.Execution.ProjectTaskInstanceChild
@@ -1183,17 +1192,17 @@ namespace Microsoft.Build.Execution
         public override string Condition { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation ConditionLocation { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation Location { get { throw null; } }
-        public string PropertyName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Construction.ElementLocation PropertyNameLocation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public string TaskParameter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string PropertyName { get { throw null; } }
+        public Microsoft.Build.Construction.ElementLocation PropertyNameLocation { get { throw null; } }
+        public string TaskParameter { get { throw null; } }
         public override Microsoft.Build.Construction.ElementLocation TaskParameterLocation { get { throw null; } }
     }
     public partial class TargetResult : Microsoft.Build.Execution.ITargetResult
     {
         internal TargetResult() { }
-        public System.Exception Exception { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Framework.ITaskItem[] Items { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Execution.TargetResultCode ResultCode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Exception Exception { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Framework.ITaskItem[] Items { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
+        public Microsoft.Build.Execution.TargetResultCode ResultCode { [System.Diagnostics.DebuggerStepThroughAttribute]get { throw null; } }
     }
     public enum TargetResultCode : byte
     {
@@ -1209,10 +1218,10 @@ namespace Microsoft.Build.Logging
     public partial class ConfigurableForwardingLogger : Microsoft.Build.Framework.IForwardingLogger, Microsoft.Build.Framework.ILogger, Microsoft.Build.Framework.INodeLogger
     {
         public ConfigurableForwardingLogger() { }
-        public Microsoft.Build.Framework.IEventRedirector BuildEventRedirector { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int NodeId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string Parameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Build.Framework.LoggerVerbosity Verbosity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Framework.IEventRedirector BuildEventRedirector { get { throw null; } set { } }
+        public int NodeId { get { throw null; } set { } }
+        public string Parameters { get { throw null; } set { } }
+        public Microsoft.Build.Framework.LoggerVerbosity Verbosity { get { throw null; } set { } }
         protected virtual void ForwardToCentralLogger(Microsoft.Build.Framework.BuildEventArgs e) { }
         public virtual void Initialize(Microsoft.Build.Framework.IEventSource eventSource) { }
         public void Initialize(Microsoft.Build.Framework.IEventSource eventSource, int nodeCount) { }
@@ -1231,7 +1240,6 @@ namespace Microsoft.Build.Logging
         public void ApplyParameter(string parameterName, string parameterValue) { }
         public void BuildFinishedHandler(object sender, Microsoft.Build.Framework.BuildFinishedEventArgs e) { }
         public void BuildStartedHandler(object sender, Microsoft.Build.Framework.BuildStartedEventArgs e) { }
-        [System.MonoTODOAttribute]
         public void CustomEventHandler(object sender, Microsoft.Build.Framework.CustomBuildEventArgs e) { }
         public void ErrorHandler(object sender, Microsoft.Build.Framework.BuildErrorEventArgs e) { }
         public virtual void Initialize(Microsoft.Build.Framework.IEventSource eventSource) { }
@@ -1273,44 +1281,9 @@ namespace Microsoft.Build.Logging
     public partial class LoggerDescription
     {
         public LoggerDescription(string loggerClassName, string loggerAssemblyName, string loggerAssemblyFile, string loggerSwitchParameters, Microsoft.Build.Framework.LoggerVerbosity verbosity) { }
-        public string LoggerSwitchParameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public Microsoft.Build.Framework.LoggerVerbosity Verbosity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string LoggerSwitchParameters { get { throw null; } }
+        public Microsoft.Build.Framework.LoggerVerbosity Verbosity { get { throw null; } }
         public Microsoft.Build.Framework.ILogger CreateLogger() { throw null; }
     }
     public delegate void WriteHandler(string message);
-}
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
 }

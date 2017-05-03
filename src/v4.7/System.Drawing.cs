@@ -5,59 +5,28 @@
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
+[assembly:System.Drawing.BitmapSuffixInSatelliteAssemblyAttribute]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Drawing.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Drawing.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Drawing.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.DependencyAttribute("System,", (System.Runtime.CompilerServices.LoadHint)(1))]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComCompatibleVersionAttribute(1, 0, 3300, 0)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Runtime.InteropServices.TypeLibVersionAttribute(2, 4)]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
 namespace System.Drawing
 {
     [System.ComponentModel.EditorAttribute("System.Drawing.Design.BitmapEditor, System.Drawing.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
@@ -82,18 +51,24 @@ namespace System.Drawing
         public static System.Drawing.Bitmap FromHicon(System.IntPtr hicon) { throw null; }
         public static System.Drawing.Bitmap FromResource(System.IntPtr hinstance, string bitmapName) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.IntPtr GetHbitmap() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.IntPtr GetHbitmap(System.Drawing.Color background) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.IntPtr GetHicon() { throw null; }
         public System.Drawing.Color GetPixel(int x, int y) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.Drawing.Imaging.BitmapData LockBits(System.Drawing.Rectangle rect, System.Drawing.Imaging.ImageLockMode flags, System.Drawing.Imaging.PixelFormat format) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.Drawing.Imaging.BitmapData LockBits(System.Drawing.Rectangle rect, System.Drawing.Imaging.ImageLockMode flags, System.Drawing.Imaging.PixelFormat format, System.Drawing.Imaging.BitmapData bitmapData) { throw null; }
         public void MakeTransparent() { }
         public void MakeTransparent(System.Drawing.Color transparentColor) { }
         public void SetPixel(int x, int y, System.Drawing.Color color) { }
         public void SetResolution(float xDpi, float yDpi) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public void UnlockBits(System.Drawing.Imaging.BitmapData bitmapdata) { }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(1))]
@@ -268,15 +243,14 @@ namespace System.Drawing
         ~BufferedGraphics() { }
         public void Render() { }
         public void Render(System.Drawing.Graphics target) { }
-        [System.MonoTODOAttribute("The targetDC parameter has no equivalent in libgdiplus.")]
         public void Render(System.IntPtr targetDC) { }
     }
     public sealed partial class BufferedGraphicsContext : System.IDisposable
     {
         public BufferedGraphicsContext() { }
-        public System.Drawing.Size MaximumBuffer { get { throw null; } set { } }
+        public System.Drawing.Size MaximumBuffer { get { throw null; } [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Window=(System.Security.Permissions.UIPermissionWindow)(3))]set { } }
         public System.Drawing.BufferedGraphics Allocate(System.Drawing.Graphics targetGraphics, System.Drawing.Rectangle targetRectangle) { throw null; }
-        [System.MonoTODOAttribute("The targetDC parameter has no equivalent in libgdiplus.")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.Drawing.BufferedGraphics Allocate(System.IntPtr targetDC, System.Drawing.Rectangle targetRectangle) { throw null; }
         public void Dispose() { }
         ~BufferedGraphicsContext() { }
@@ -300,6 +274,7 @@ namespace System.Drawing
     }
     [System.ComponentModel.EditorAttribute("System.Drawing.Design.ColorEditor, System.Drawing.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.ColorConverter))]
+    [System.Diagnostics.DebuggerDisplayAttribute("{NameAndARGBValue}")]
     [System.SerializableAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Color
@@ -582,16 +557,15 @@ namespace System.Drawing
         public void Dispose() { }
         public override bool Equals(object obj) { throw null; }
         ~Font() { }
-        [System.MonoTODOAttribute("The hdc parameter has no direct equivalent in libgdiplus.")]
         public static System.Drawing.Font FromHdc(System.IntPtr hdc) { throw null; }
         public static System.Drawing.Font FromHfont(System.IntPtr hfont) { throw null; }
         public static System.Drawing.Font FromLogFont(object lf) { throw null; }
-        [System.MonoTODOAttribute("The returned font may not have all it's properties initialized correctly.")]
         public static System.Drawing.Font FromLogFont(object lf, System.IntPtr hdc) { throw null; }
         public override int GetHashCode() { throw null; }
         public float GetHeight() { throw null; }
         public float GetHeight(System.Drawing.Graphics graphics) { throw null; }
         public float GetHeight(float dpi) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public System.IntPtr ToHfont() { throw null; }
         public void ToLogFont(object logFont) { }
@@ -642,12 +616,11 @@ namespace System.Drawing
         public int GetCellAscent(System.Drawing.FontStyle style) { throw null; }
         public int GetCellDescent(System.Drawing.FontStyle style) { throw null; }
         public int GetEmHeight(System.Drawing.FontStyle style) { throw null; }
+        [System.ObsoleteAttribute("Do not use method GetFamilies, use property Families instead")]
         public static System.Drawing.FontFamily[] GetFamilies(System.Drawing.Graphics graphics) { throw null; }
         public override int GetHashCode() { throw null; }
         public int GetLineSpacing(System.Drawing.FontStyle style) { throw null; }
-        [System.MonoLimitationAttribute("The language parameter is ignored. We always return the name using the default system language.")]
         public string GetName(int language) { throw null; }
-        [System.MonoDocumentationNoteAttribute("When used with libgdiplus this method always return true (styles are created on demand).")]
         public bool IsStyleAvailable(System.Drawing.FontStyle style) { throw null; }
         public override string ToString() { throw null; }
     }
@@ -674,30 +647,21 @@ namespace System.Drawing
         public bool IsVisibleClipEmpty { get { throw null; } }
         public float PageScale { get { throw null; } set { } }
         public System.Drawing.GraphicsUnit PageUnit { get { throw null; } set { } }
-        [System.MonoTODOAttribute("This property does not do anything when used with libgdiplus.")]
         public System.Drawing.Drawing2D.PixelOffsetMode PixelOffsetMode { get { throw null; } set { } }
         public System.Drawing.Point RenderingOrigin { get { throw null; } set { } }
         public System.Drawing.Drawing2D.SmoothingMode SmoothingMode { get { throw null; } set { } }
-        [System.MonoTODOAttribute("This property does not do anything when used with libgdiplus.")]
         public int TextContrast { get { throw null; } set { } }
         public System.Drawing.Text.TextRenderingHint TextRenderingHint { get { throw null; } set { } }
         public System.Drawing.Drawing2D.Matrix Transform { get { throw null; } set { } }
         public System.Drawing.RectangleF VisibleClipBounds { get { throw null; } }
-        [System.MonoTODOAttribute("Metafiles, both WMF and EMF formats, aren't supported.")]
         public void AddMetafileComment(byte[] data) { }
         public System.Drawing.Drawing2D.GraphicsContainer BeginContainer() { throw null; }
-        [System.MonoTODOAttribute("The rectangles and unit parameters aren't supported in libgdiplus")]
         public System.Drawing.Drawing2D.GraphicsContainer BeginContainer(System.Drawing.Rectangle dstrect, System.Drawing.Rectangle srcrect, System.Drawing.GraphicsUnit unit) { throw null; }
-        [System.MonoTODOAttribute("The rectangles and unit parameters aren't supported in libgdiplus")]
         public System.Drawing.Drawing2D.GraphicsContainer BeginContainer(System.Drawing.RectangleF dstrect, System.Drawing.RectangleF srcrect, System.Drawing.GraphicsUnit unit) { throw null; }
         public void Clear(System.Drawing.Color color) { }
-        [System.MonoLimitationAttribute("Works on Win32 and on X11 (but not on Cocoa and Quartz)")]
         public void CopyFromScreen(System.Drawing.Point upperLeftSource, System.Drawing.Point upperLeftDestination, System.Drawing.Size blockRegionSize) { }
-        [System.MonoLimitationAttribute("Works on Win32 and (for CopyPixelOperation.SourceCopy only) on X11 but not on Cocoa and Quartz")]
         public void CopyFromScreen(System.Drawing.Point upperLeftSource, System.Drawing.Point upperLeftDestination, System.Drawing.Size blockRegionSize, System.Drawing.CopyPixelOperation copyPixelOperation) { }
-        [System.MonoLimitationAttribute("Works on Win32 and on X11 (but not on Cocoa and Quartz)")]
         public void CopyFromScreen(int sourceX, int sourceY, int destinationX, int destinationY, System.Drawing.Size blockRegionSize) { }
-        [System.MonoLimitationAttribute("Works on Win32 and (for CopyPixelOperation.SourceCopy only) on X11 but not on Cocoa and Quartz")]
         public void CopyFromScreen(int sourceX, int sourceY, int destinationX, int destinationY, System.Drawing.Size blockRegionSize, System.Drawing.CopyPixelOperation copyPixelOperation) { }
         public void Dispose() { }
         public void DrawArc(System.Drawing.Pen pen, System.Drawing.Rectangle rect, float startAngle, float sweepAngle) { }
@@ -787,77 +751,41 @@ namespace System.Drawing
         public void DrawString(string s, System.Drawing.Font font, System.Drawing.Brush brush, float x, float y) { }
         public void DrawString(string s, System.Drawing.Font font, System.Drawing.Brush brush, float x, float y, System.Drawing.StringFormat format) { }
         public void EndContainer(System.Drawing.Drawing2D.GraphicsContainer container) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point destPoint, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point destPoint, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point destPoint, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point destPoint, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point destPoint, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point destPoint, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit unit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF destPoint, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF destPoint, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF destPoint, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF destPoint, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF destPoint, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF destPoint, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit unit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF[] destPoints, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF[] destPoints, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF[] destPoints, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit unit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point[] destPoints, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point[] destPoints, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point[] destPoints, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point[] destPoints, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point[] destPoints, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Point[] destPoints, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit unit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Rectangle destRect, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Rectangle destRect, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Rectangle destRect, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Rectangle destRect, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Rectangle destRect, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.Rectangle destRect, System.Drawing.Rectangle srcRect, System.Drawing.GraphicsUnit unit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.RectangleF destRect, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.RectangleF destRect, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.RectangleF destRect, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.RectangleF destRect, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.RectangleF destRect, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit srcUnit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData) { }
-        [System.MonoTODOAttribute("Metafiles enumeration, for both WMF and EMF formats, isn't supported.")]
         public void EnumerateMetafile(System.Drawing.Imaging.Metafile metafile, System.Drawing.RectangleF destRect, System.Drawing.RectangleF srcRect, System.Drawing.GraphicsUnit unit, System.Drawing.Graphics.EnumerateMetafileProc callback, System.IntPtr callbackData, System.Drawing.Imaging.ImageAttributes imageAttr) { }
         public void ExcludeClip(System.Drawing.Rectangle rect) { }
         public void ExcludeClip(System.Drawing.Region region) { }
@@ -892,20 +820,21 @@ namespace System.Drawing
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public static System.Drawing.Graphics FromHdc(System.IntPtr hdc) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
-        [System.MonoTODOAttribute]
         public static System.Drawing.Graphics FromHdc(System.IntPtr hdc, System.IntPtr hdevice) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static System.Drawing.Graphics FromHdcInternal(System.IntPtr hdc) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public static System.Drawing.Graphics FromHwnd(System.IntPtr hwnd) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static System.Drawing.Graphics FromHwndInternal(System.IntPtr hwnd) { throw null; }
         public static System.Drawing.Graphics FromImage(System.Drawing.Image image) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.MonoTODOAttribute]
+        [System.Security.Permissions.StrongNameIdentityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="System.Windows.Forms", PublicKey="0x00000000000000000400000000000000")]
         public object GetContextInfo() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.IntPtr GetHalftonePalette() { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.IntPtr GetHdc() { throw null; }
         public System.Drawing.Color GetNearestColor(System.Drawing.Color color) { throw null; }
         public void IntersectClip(System.Drawing.Rectangle rect) { }
@@ -929,11 +858,12 @@ namespace System.Drawing
         public System.Drawing.SizeF MeasureString(string text, System.Drawing.Font font, int width, System.Drawing.StringFormat format) { throw null; }
         public void MultiplyTransform(System.Drawing.Drawing2D.Matrix matrix) { }
         public void MultiplyTransform(System.Drawing.Drawing2D.Matrix matrix, System.Drawing.Drawing2D.MatrixOrder order) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public void ReleaseHdc() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public void ReleaseHdc(System.IntPtr hdc) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
-        [System.MonoLimitationAttribute("Can only be used when hdc was provided by Graphics.GetHdc() method")]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public void ReleaseHdcInternal(System.IntPtr hdc) { }
         public void ResetClip() { }
         public void ResetTransform() { }
@@ -994,11 +924,11 @@ namespace System.Drawing
         public int Width { get { throw null; } }
         public object Clone() { throw null; }
         public void Dispose() { }
-        [System.MonoLimitationAttribute("The same icon, SystemIcons.WinLogo, is returned for all file types.")]
         public static System.Drawing.Icon ExtractAssociatedIcon(string filePath) { throw null; }
         ~Icon() { }
         public static System.Drawing.Icon FromHandle(System.IntPtr handle) { throw null; }
         public void Save(System.IO.Stream outputStream) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public System.Drawing.Bitmap ToBitmap() { throw null; }
         public override string ToString() { throw null; }
@@ -1013,7 +943,11 @@ namespace System.Drawing
     }
     public partial interface IDeviceContext : System.IDisposable
     {
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         System.IntPtr GetHdc();
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         void ReleaseHdc();
     }
     [System.ComponentModel.EditorAttribute("System.Drawing.Design.ImageEditor, System.Drawing.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
@@ -1062,9 +996,7 @@ namespace System.Drawing
         public static System.Drawing.Bitmap FromHbitmap(System.IntPtr hbitmap) { throw null; }
         public static System.Drawing.Bitmap FromHbitmap(System.IntPtr hbitmap, System.IntPtr hpalette) { throw null; }
         public static System.Drawing.Image FromStream(System.IO.Stream stream) { throw null; }
-        [System.MonoLimitationAttribute("useEmbeddedColorManagement  isn't supported.")]
         public static System.Drawing.Image FromStream(System.IO.Stream stream, bool useEmbeddedColorManagement) { throw null; }
-        [System.MonoLimitationAttribute("useEmbeddedColorManagement  and validateImageData aren't supported.")]
         public static System.Drawing.Image FromStream(System.IO.Stream stream, bool useEmbeddedColorManagement, bool validateImageData) { throw null; }
         public System.Drawing.RectangleF GetBounds(ref System.Drawing.GraphicsUnit pageUnit) { throw null; }
         public System.Drawing.Imaging.EncoderParameters GetEncoderParameterList(System.Guid encoder) { throw null; }
@@ -1086,6 +1018,7 @@ namespace System.Drawing
         public void SaveAdd(System.Drawing.Imaging.EncoderParameters encoderParams) { }
         public int SelectActiveFrame(System.Drawing.Imaging.FrameDimension dimension, int frameIndex) { throw null; }
         public void SetPropertyItem(System.Drawing.Imaging.PropertyItem propitem) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(128))]
         void System.Runtime.Serialization.ISerializable.GetObjectData(System.Runtime.Serialization.SerializationInfo si, System.Runtime.Serialization.StreamingContext context) { }
         public delegate bool GetThumbnailImageAbort();
     }
@@ -1301,7 +1234,6 @@ namespace System.Drawing
         public Pen(System.Drawing.Brush brush, float width) { }
         public Pen(System.Drawing.Color color) { }
         public Pen(System.Drawing.Color color, float width) { }
-        [System.MonoLimitationAttribute("Libgdiplus doesn't use this property for rendering")]
         public System.Drawing.Drawing2D.PenAlignment Alignment { get { throw null; } set { } }
         public System.Drawing.Brush Brush { get { throw null; } set { } }
         public System.Drawing.Color Color { get { throw null; } set { } }
@@ -2034,10 +1966,8 @@ namespace System.Drawing
         public TextureBrush(System.Drawing.Image image, System.Drawing.Drawing2D.WrapMode wrapMode, System.Drawing.Rectangle dstRect) { }
         public TextureBrush(System.Drawing.Image image, System.Drawing.Drawing2D.WrapMode wrapMode, System.Drawing.RectangleF dstRect) { }
         public TextureBrush(System.Drawing.Image image, System.Drawing.Rectangle dstRect) { }
-        [System.MonoLimitationAttribute("ImageAttributes are ignored when using libgdiplus")]
         public TextureBrush(System.Drawing.Image image, System.Drawing.Rectangle dstRect, System.Drawing.Imaging.ImageAttributes imageAttr) { }
         public TextureBrush(System.Drawing.Image image, System.Drawing.RectangleF dstRect) { }
-        [System.MonoLimitationAttribute("ImageAttributes are ignored when using libgdiplus")]
         public TextureBrush(System.Drawing.Image image, System.Drawing.RectangleF dstRect, System.Drawing.Imaging.ImageAttributes imageAttr) { }
         public System.Drawing.Image Image { get { throw null; } }
         public System.Drawing.Drawing2D.Matrix Transform { get { throw null; } set { } }
@@ -2076,6 +2006,7 @@ namespace System.Drawing.Configuration
     public sealed partial class SystemDrawingSection : System.Configuration.ConfigurationSection
     {
         public SystemDrawingSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("bitmapSuffix")]
         public string BitmapSuffix { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
@@ -2083,6 +2014,7 @@ namespace System.Drawing.Configuration
 #endif
 namespace System.Drawing.Design
 {
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class CategoryNameCollection : System.Collections.ReadOnlyCollectionBase
     {
         public CategoryNameCollection(System.Drawing.Design.CategoryNameCollection value) { }
@@ -2143,6 +2075,8 @@ namespace System.Drawing.Design
         bool GetToolSupported(System.Drawing.Design.ToolboxItem tool);
         void ToolPicked(System.Drawing.Design.ToolboxItem tool);
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class PaintValueEventArgs : System.EventArgs
     {
         public PaintValueEventArgs(System.ComponentModel.ITypeDescriptorContext context, object value, System.Drawing.Graphics graphics, System.Drawing.Rectangle bounds) { }
@@ -2152,6 +2086,8 @@ namespace System.Drawing.Design
         public object Value { get { throw null; } }
     }
     public delegate void PropertyValueUIHandler(System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor propDesc, System.Collections.ArrayList valueUIItemList);
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class PropertyValueUIItem
     {
         public PropertyValueUIItem(System.Drawing.Image uiItemImage, System.Drawing.Design.PropertyValueUIItemInvokeHandler handler, string tooltip) { }
@@ -2161,23 +2097,24 @@ namespace System.Drawing.Design
         public virtual void Reset() { }
     }
     public delegate void PropertyValueUIItemInvokeHandler(System.ComponentModel.ITypeDescriptorContext context, System.ComponentModel.PropertyDescriptor descriptor, System.Drawing.Design.PropertyValueUIItem invokedItem);
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ToolboxComponentsCreatedEventArgs : System.EventArgs
     {
         public ToolboxComponentsCreatedEventArgs(System.ComponentModel.IComponent[] components) { }
         public System.ComponentModel.IComponent[] Components { get { throw null; } }
     }
     public delegate void ToolboxComponentsCreatedEventHandler(object sender, System.Drawing.Design.ToolboxComponentsCreatedEventArgs e);
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class ToolboxComponentsCreatingEventArgs : System.EventArgs
     {
         public ToolboxComponentsCreatingEventArgs(System.ComponentModel.Design.IDesignerHost host) { }
         public System.ComponentModel.Design.IDesignerHost DesignerHost { get { throw null; } }
     }
     public delegate void ToolboxComponentsCreatingEventHandler(object sender, System.Drawing.Design.ToolboxComponentsCreatingEventArgs e);
-    [System.MonoTODOAttribute("Implementation is incomplete.")]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     [System.SerializableAttribute]
     public partial class ToolboxItem : System.Runtime.Serialization.ISerializable
     {
@@ -2221,7 +2158,7 @@ namespace System.Drawing.Design
         protected void ValidatePropertyType(string propertyName, object value, System.Type expectedType, bool allowNull) { }
         protected virtual object ValidatePropertyValue(string propertyName, object value) { throw null; }
     }
-    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public sealed partial class ToolboxItemCollection : System.Collections.ReadOnlyCollectionBase
     {
         public ToolboxItemCollection(System.Drawing.Design.ToolboxItemCollection value) { }
@@ -2232,6 +2169,8 @@ namespace System.Drawing.Design
         public int IndexOf(System.Drawing.Design.ToolboxItem value) { throw null; }
     }
     public delegate System.Drawing.Design.ToolboxItem ToolboxItemCreatorCallback(object serializedObject, string format);
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class UITypeEditor
     {
         public UITypeEditor() { }
@@ -2404,13 +2343,9 @@ namespace System.Drawing.Drawing2D
         public void AddRectangle(System.Drawing.RectangleF rect) { }
         public void AddRectangles(System.Drawing.RectangleF[] rects) { }
         public void AddRectangles(System.Drawing.Rectangle[] rects) { }
-        [System.MonoTODOAttribute("The StringFormat parameter is ignored when using libgdiplus.")]
         public void AddString(string s, System.Drawing.FontFamily family, int style, float emSize, System.Drawing.Point origin, System.Drawing.StringFormat format) { }
-        [System.MonoTODOAttribute("The StringFormat parameter is ignored when using libgdiplus.")]
         public void AddString(string s, System.Drawing.FontFamily family, int style, float emSize, System.Drawing.PointF origin, System.Drawing.StringFormat format) { }
-        [System.MonoTODOAttribute("The layoutRect and StringFormat parameters are ignored when using libgdiplus.")]
         public void AddString(string s, System.Drawing.FontFamily family, int style, float emSize, System.Drawing.Rectangle layoutRect, System.Drawing.StringFormat format) { }
-        [System.MonoTODOAttribute("The layoutRect and StringFormat parameters are ignored when using libgdiplus.")]
         public void AddString(string s, System.Drawing.FontFamily family, int style, float emSize, System.Drawing.RectangleF layoutRect, System.Drawing.StringFormat format) { }
         public void ClearMarkers() { }
         public object Clone() { throw null; }
@@ -2446,19 +2381,12 @@ namespace System.Drawing.Drawing2D
         public void SetMarkers() { }
         public void StartFigure() { }
         public void Transform(System.Drawing.Drawing2D.Matrix matrix) { }
-        [System.MonoTODOAttribute("GdipWarpPath isn't implemented in libgdiplus")]
         public void Warp(System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect) { }
-        [System.MonoTODOAttribute("GdipWarpPath isn't implemented in libgdiplus")]
         public void Warp(System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect, System.Drawing.Drawing2D.Matrix matrix) { }
-        [System.MonoTODOAttribute("GdipWarpPath isn't implemented in libgdiplus")]
         public void Warp(System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect, System.Drawing.Drawing2D.Matrix matrix, System.Drawing.Drawing2D.WarpMode warpMode) { }
-        [System.MonoTODOAttribute("GdipWarpPath isn't implemented in libgdiplus")]
         public void Warp(System.Drawing.PointF[] destPoints, System.Drawing.RectangleF srcRect, System.Drawing.Drawing2D.Matrix matrix, System.Drawing.Drawing2D.WarpMode warpMode, float flatness) { }
-        [System.MonoTODOAttribute("GdipWidenPath isn't implemented in libgdiplus")]
         public void Widen(System.Drawing.Pen pen) { }
-        [System.MonoTODOAttribute("GdipWidenPath isn't implemented in libgdiplus")]
         public void Widen(System.Drawing.Pen pen, System.Drawing.Drawing2D.Matrix matrix) { }
-        [System.MonoTODOAttribute("GdipWidenPath isn't implemented in libgdiplus")]
         public void Widen(System.Drawing.Pen pen, System.Drawing.Drawing2D.Matrix matrix, float flatness) { }
     }
     public sealed partial class GraphicsPathIterator : System.MarshalByRefObject, System.IDisposable
@@ -2573,7 +2501,6 @@ namespace System.Drawing.Drawing2D
         public LinearGradientBrush(System.Drawing.RectangleF rect, System.Drawing.Color color1, System.Drawing.Color color2, float angle) { }
         public LinearGradientBrush(System.Drawing.RectangleF rect, System.Drawing.Color color1, System.Drawing.Color color2, float angle, bool isAngleScaleable) { }
         public System.Drawing.Drawing2D.Blend Blend { get { throw null; } set { } }
-        [System.MonoTODOAttribute("The GammaCorrection value is ignored when using libgdiplus.")]
         public bool GammaCorrection { get { throw null; } set { } }
         public System.Drawing.Drawing2D.ColorBlend InterpolationColors { get { throw null; } set { } }
         public System.Drawing.Color[] LinearColors { get { throw null; } set { } }
@@ -2670,7 +2597,6 @@ namespace System.Drawing.Drawing2D
         public System.Drawing.PointF[] Points { get { throw null; } set { } }
         public byte[] Types { get { throw null; } set { } }
     }
-    [System.MonoTODOAttribute("libgdiplus/cairo doesn't support path gradients - unless it can be mapped to a radial gradient")]
     public sealed partial class PathGradientBrush : System.Drawing.Brush
     {
         public PathGradientBrush(System.Drawing.Drawing2D.GraphicsPath path) { }
@@ -3153,6 +3079,7 @@ namespace System.Drawing.Imaging
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, short[] value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numberValues, System.Drawing.Imaging.EncoderParameterValueType type, System.IntPtr value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator, int denominator) { }
+        [System.ObsoleteAttribute("This constructor has been deprecated. Use EncoderParameter(Encoder encoder, int numberValues, EncoderParameterValueType type, IntPtr value) instead.  http://go.microsoft.com/fwlink/?linkid=14202")]
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int NumberOfValues, int Type, int Value) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int numerator1, int demoninator1, int numerator2, int demoninator2) { }
         public EncoderParameter(System.Drawing.Imaging.Encoder encoder, int[] numerator, int[] denominator) { }
@@ -3249,7 +3176,6 @@ namespace System.Drawing.Imaging
         public object Clone() { throw null; }
         public void Dispose() { }
         ~ImageAttributes() { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void GetAdjustedPalette(System.Drawing.Imaging.ColorPalette palette, System.Drawing.Imaging.ColorAdjustType type) { }
         public void SetBrushRemapTable(System.Drawing.Imaging.ColorMap[] map) { }
         public void SetColorKey(System.Drawing.Color colorLow, System.Drawing.Color colorHigh) { }
@@ -3264,19 +3190,13 @@ namespace System.Drawing.Imaging
         public void SetGamma(float gamma, System.Drawing.Imaging.ColorAdjustType type) { }
         public void SetNoOp() { }
         public void SetNoOp(System.Drawing.Imaging.ColorAdjustType type) { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void SetOutputChannel(System.Drawing.Imaging.ColorChannelFlag flags) { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void SetOutputChannel(System.Drawing.Imaging.ColorChannelFlag flags, System.Drawing.Imaging.ColorAdjustType type) { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void SetOutputChannelColorProfile(string colorProfileFilename) { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void SetOutputChannelColorProfile(string colorProfileFilename, System.Drawing.Imaging.ColorAdjustType type) { }
         public void SetRemapTable(System.Drawing.Imaging.ColorMap[] map) { }
         public void SetRemapTable(System.Drawing.Imaging.ColorMap[] map, System.Drawing.Imaging.ColorAdjustType type) { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void SetThreshold(float threshold) { }
-        [System.MonoTODOAttribute("Not supported by libgdiplus")]
         public void SetThreshold(float threshold, System.Drawing.Imaging.ColorAdjustType type) { }
         public void SetWrapMode(System.Drawing.Drawing2D.WrapMode mode) { }
         public void SetWrapMode(System.Drawing.Drawing2D.WrapMode mode, System.Drawing.Color color) { }
@@ -3359,7 +3279,6 @@ namespace System.Drawing.Imaging
         WriteOnly = 2,
     }
     [System.ComponentModel.EditorAttribute("System.Drawing.Design.MetafileEditor, System.Drawing.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
-    [System.MonoTODOAttribute("Metafiles, both WMF and EMF formats, are only partially supported.")]
     [System.SerializableAttribute]
     public sealed partial class Metafile : System.Drawing.Image
     {
@@ -3403,17 +3322,11 @@ namespace System.Drawing.Imaging
         public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, System.Drawing.Imaging.EmfType type, string description) { }
         public Metafile(string fileName, System.IntPtr referenceHdc, System.Drawing.RectangleF frameRect, System.Drawing.Imaging.MetafileFrameUnit frameUnit, string desc) { }
         public System.IntPtr GetHenhmetafile() { throw null; }
-        [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public System.Drawing.Imaging.MetafileHeader GetMetafileHeader() { throw null; }
-        [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IntPtr henhmetafile) { throw null; }
-        [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IntPtr hmetafile, System.Drawing.Imaging.WmfPlaceableFileHeader wmfHeader) { throw null; }
-        [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(System.IO.Stream stream) { throw null; }
-        [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public static System.Drawing.Imaging.MetafileHeader GetMetafileHeader(string fileName) { throw null; }
-        [System.MonoLimitationAttribute("Metafiles aren't only partially supported by libgdiplus.")]
         public void PlayRecord(System.Drawing.Imaging.EmfPlusRecordType recordType, int flags, int dataSize, byte[] data) { }
     }
     public enum MetafileFrameUnit
@@ -3425,7 +3338,6 @@ namespace System.Drawing.Imaging
         Pixel = 2,
         Point = 3,
     }
-    [System.MonoTODOAttribute("Metafiles, both WMF and EMF formats, aren't supported.")]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class MetafileHeader
     {
@@ -3440,7 +3352,6 @@ namespace System.Drawing.Imaging
         public System.Drawing.Imaging.MetafileType Type { get { throw null; } }
         public int Version { get { throw null; } }
         public System.Drawing.Imaging.MetaHeader WmfHeader { get { throw null; } }
-        [System.MonoTODOAttribute("always returns false")]
         public bool IsDisplay() { throw null; }
         public bool IsEmf() { throw null; }
         public bool IsEmfOrEmfPlus() { throw null; }
@@ -3459,7 +3370,7 @@ namespace System.Drawing.Imaging
         Wmf = 1,
         WmfPlaceable = 2,
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Pack=2)]
     public sealed partial class MetaHeader
     {
         public MetaHeader() { }
@@ -3513,7 +3424,7 @@ namespace System.Drawing.Imaging
         public short Type { get { throw null; } set { } }
         public byte[] Value { get { throw null; } set { } }
     }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Pack=2)]
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public sealed partial class WmfPlaceableFileHeader
     {
         public WmfPlaceableFileHeader() { }
@@ -3543,6 +3454,7 @@ namespace System.Drawing.Printing
     {
         public InvalidPrinterException(System.Drawing.Printing.PrinterSettings settings) { }
         protected InvalidPrinterException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.Printing.MarginsConverter))]
@@ -3589,9 +3501,7 @@ namespace System.Drawing.Printing
         public System.Drawing.Printing.PrinterResolution PrinterResolution { get { throw null; } set { } }
         public System.Drawing.Printing.PrinterSettings PrinterSettings { get { throw null; } set { } }
         public object Clone() { throw null; }
-        [System.MonoTODOAttribute("PageSettings.CopyToHdevmode")]
         public void CopyToHdevmode(System.IntPtr hdevmode) { }
-        [System.MonoTODOAttribute("PageSettings.SetHdevmode")]
         public void SetHdevmode(System.IntPtr hdevmode) { }
         public override string ToString() { throw null; }
     }
@@ -3767,13 +3677,9 @@ namespace System.Drawing.Printing
         public override bool IsPreview { get { throw null; } }
         public virtual bool UseAntiAlias { get { throw null; } set { } }
         public System.Drawing.Printing.PreviewPageInfo[] GetPreviewPageInfo() { throw null; }
-        [System.MonoTODOAttribute]
         public override void OnEndPage(System.Drawing.Printing.PrintDocument document, System.Drawing.Printing.PrintPageEventArgs e) { }
-        [System.MonoTODOAttribute]
         public override void OnEndPrint(System.Drawing.Printing.PrintDocument document, System.Drawing.Printing.PrintEventArgs e) { }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Graphics OnStartPage(System.Drawing.Printing.PrintDocument document, System.Drawing.Printing.PrintPageEventArgs e) { throw null; }
-        [System.MonoTODOAttribute]
         public override void OnStartPrint(System.Drawing.Printing.PrintDocument document, System.Drawing.Printing.PrintEventArgs e) { }
     }
     public enum PrintAction
@@ -3793,7 +3699,7 @@ namespace System.Drawing.Printing
     }
     [System.ComponentModel.DefaultEventAttribute("PrintPage")]
     [System.ComponentModel.DefaultPropertyAttribute("DocumentName")]
-    [System.ComponentModel.ToolboxItemFilterAttribute("System.Drawing.Printing", (System.ComponentModel.ToolboxItemFilterType)(0))]
+    [System.ComponentModel.ToolboxItemFilterAttribute("System.Drawing.Printing")]
     public partial class PrintDocument : System.ComponentModel.Component
     {
         public PrintDocument() { }
@@ -3867,27 +3773,16 @@ namespace System.Drawing.Printing
         public bool SupportsColor { get { throw null; } }
         public int ToPage { get { throw null; } set { } }
         public object Clone() { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.CreateMeasurementGraphics")]
         public System.Drawing.Graphics CreateMeasurementGraphics() { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.CreateMeasurementGraphics")]
         public System.Drawing.Graphics CreateMeasurementGraphics(bool honorOriginAtMargins) { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.CreateMeasurementGraphics")]
         public System.Drawing.Graphics CreateMeasurementGraphics(System.Drawing.Printing.PageSettings pageSettings) { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.CreateMeasurementGraphics")]
         public System.Drawing.Graphics CreateMeasurementGraphics(System.Drawing.Printing.PageSettings pageSettings, bool honorOriginAtMargins) { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.GetHdevmode")]
         public System.IntPtr GetHdevmode() { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.GetHdevmode")]
         public System.IntPtr GetHdevmode(System.Drawing.Printing.PageSettings pageSettings) { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.GetHdevname")]
         public System.IntPtr GetHdevnames() { throw null; }
-        [System.MonoTODOAttribute("IsDirectPrintingSupported")]
         public bool IsDirectPrintingSupported(System.Drawing.Image image) { throw null; }
-        [System.MonoTODOAttribute("IsDirectPrintingSupported")]
         public bool IsDirectPrintingSupported(System.Drawing.Imaging.ImageFormat imageFormat) { throw null; }
-        [System.MonoTODOAttribute("PrinterSettings.SetHdevmode")]
         public void SetHdevmode(System.IntPtr hdevmode) { }
-        [System.MonoTODOAttribute("PrinterSettings.SetHdevnames")]
         public void SetHdevnames(System.IntPtr hdevnames) { }
         public override string ToString() { throw null; }
         public partial class PaperSizeCollection : System.Collections.ICollection, System.Collections.IEnumerable

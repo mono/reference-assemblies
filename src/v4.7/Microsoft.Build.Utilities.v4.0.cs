@@ -7,22 +7,24 @@
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
-[assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.Build.Utilities.dll")]
-[assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.Build.Utilities.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.Build.Utilities.v4.0.dll")]
+[assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.Build.Utilities.v4.0.dll")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
-[assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.Build.Utilities.dll")]
+[assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.Build.Utilities.v4.0.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
 [assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(4096))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Flags=(System.Security.Permissions.SecurityPermissionFlag)(8))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace Microsoft.Build.Utilities
 {
     [Microsoft.Build.Framework.LoadInSeparateAppDomainAttribute]
-    [System.MonoTODOAttribute]
     public abstract partial class AppDomainIsolatedTask : System.MarshalByRefObject, Microsoft.Build.Framework.ITask
     {
         protected AppDomainIsolatedTask() { }
@@ -34,16 +36,17 @@ namespace Microsoft.Build.Utilities
         public Microsoft.Build.Utilities.TaskLoggingHelper Log { get { throw null; } }
         protected System.Resources.ResourceManager TaskResources { get { throw null; } set { } }
         public abstract bool Execute();
+        [System.Security.SecurityCriticalAttribute]
         public override object InitializeLifetimeService() { throw null; }
     }
     public partial class AssemblyFoldersExInfo
     {
         public AssemblyFoldersExInfo(Microsoft.Win32.RegistryHive hive, Microsoft.Win32.RegistryView view, string registryKey, string directoryPath, System.Version targetFrameworkVersion) { }
-        public string DirectoryPath { get { throw null; } }
-        public Microsoft.Win32.RegistryHive Hive { get { throw null; } }
-        public string Key { get { throw null; } }
-        public System.Version TargetFrameworkVersion { get { throw null; } }
-        public Microsoft.Win32.RegistryView View { get { throw null; } }
+        public string DirectoryPath { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Win32.RegistryHive Hive { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Version TargetFrameworkVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public Microsoft.Win32.RegistryView View { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     public partial class CanonicalTrackedInputFiles
     {
@@ -225,15 +228,14 @@ namespace Microsoft.Build.Utilities
         public virtual string FormatErrorEvent(Microsoft.Build.Framework.BuildErrorEventArgs args) { throw null; }
         public virtual string FormatWarningEvent(Microsoft.Build.Framework.BuildWarningEventArgs args) { throw null; }
         public abstract void Initialize(Microsoft.Build.Framework.IEventSource eventSource);
-        [System.MonoTODOAttribute]
         public bool IsVerbosityAtLeast(Microsoft.Build.Framework.LoggerVerbosity checkVerbosity) { throw null; }
         public virtual void Shutdown() { }
     }
     public partial class MuxLogger : Microsoft.Build.Framework.ILogger, Microsoft.Build.Framework.INodeLogger
     {
         public MuxLogger() { }
-        public string Parameters { get { throw null; } set { } }
-        public Microsoft.Build.Framework.LoggerVerbosity Verbosity { get { throw null; } set { } }
+        public string Parameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Build.Framework.LoggerVerbosity Verbosity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void Initialize(Microsoft.Build.Framework.IEventSource eventSource) { }
         public void Initialize(Microsoft.Build.Framework.IEventSource eventSource, int maxNodeCount) { }
         public void RegisterLogger(int submissionId, Microsoft.Build.Framework.ILogger logger) { }
@@ -263,8 +265,8 @@ namespace Microsoft.Build.Utilities
     {
         public TargetPlatformSDK(string targetPlatformIdentifier, System.Version targetPlatformVersion, string path) { }
         public string Path { get { throw null; } set { } }
-        public string TargetPlatformIdentifier { get { throw null; } }
-        public System.Version TargetPlatformVersion { get { throw null; } }
+        public string TargetPlatformIdentifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Version TargetPlatformVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public bool Equals(Microsoft.Build.Utilities.TargetPlatformSDK other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
@@ -297,6 +299,7 @@ namespace Microsoft.Build.Utilities
         public System.Collections.IDictionary CloneCustomMetadata() { throw null; }
         public void CopyMetadataTo(Microsoft.Build.Framework.ITaskItem destinationItem) { }
         public string GetMetadata(string metadataName) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
         public override object InitializeLifetimeService() { throw null; }
         System.Collections.IDictionary Microsoft.Build.Framework.ITaskItem2.CloneCustomMetadataEscaped() { throw null; }
         string Microsoft.Build.Framework.ITaskItem2.GetMetadataValueEscaped(string metadataName) { throw null; }
@@ -315,32 +318,24 @@ namespace Microsoft.Build.Utilities
         public string HelpKeywordPrefix { get { throw null; } set { } }
         protected string TaskName { get { throw null; } }
         public System.Resources.ResourceManager TaskResources { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public string ExtractMessageCode(string message, out string messageWithoutCodePrefix) { messageWithoutCodePrefix = default(string); throw null; }
-        [System.MonoTODOAttribute]
         public virtual string FormatResourceString(string resourceName, params object[] args) { throw null; }
-        [System.MonoTODOAttribute]
         public virtual string FormatString(string unformatted, params object[] args) { throw null; }
         public virtual string GetResourceMessage(string resourceName) { throw null; }
         public override object InitializeLifetimeService() { throw null; }
-        [System.MonoTODOAttribute]
         public void LogCommandLine(Microsoft.Build.Framework.MessageImportance importance, string commandLine) { }
-        [System.MonoTODOAttribute]
         public void LogCommandLine(string commandLine) { }
         public void LogCriticalMessage(string subcategory, string code, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, params object[] messageArgs) { }
         public void LogError(string message, params object[] messageArgs) { }
         public void LogError(string subcategory, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, params object[] messageArgs) { }
         public void LogErrorFromException(System.Exception exception) { }
         public void LogErrorFromException(System.Exception exception, bool showStackTrace) { }
-        [System.MonoTODOAttribute("Arguments @showDetail and @file are not honored")]
         public void LogErrorFromException(System.Exception exception, bool showStackTrace, bool showDetail, string file) { }
         public void LogErrorFromResources(string messageResourceName, params object[] messageArgs) { }
         public void LogErrorFromResources(string subcategoryResourceName, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, params object[] messageArgs) { }
         public void LogErrorWithCodeFromResources(string messageResourceName, params object[] messageArgs) { }
         public void LogErrorWithCodeFromResources(string subcategoryResourceName, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, params object[] messageArgs) { }
-        [System.MonoTODOAttribute]
         public void LogExternalProjectFinished(string message, string helpKeyword, string projectFile, bool succeeded) { }
-        [System.MonoTODOAttribute]
         public void LogExternalProjectStarted(string message, string helpKeyword, string projectFile, string targetNames) { }
         public void LogMessage(Microsoft.Build.Framework.MessageImportance importance, string message, params object[] messageArgs) { }
         public void LogMessage(string message, params object[] messageArgs) { }
@@ -363,19 +358,15 @@ namespace Microsoft.Build.Utilities
     }
     public static partial class ToolLocationHelper
     {
-        [System.MonoTODOAttribute]
         public static string PathToSystem { get { throw null; } }
         public static void ClearSDKStaticCache() { }
         public static System.Collections.Generic.IList<Microsoft.Build.Utilities.AssemblyFoldersExInfo> GetAssemblyFoldersExInfo(string registryRoot, string targetFrameworkVersion, string registryKeySuffix, string osVersion, string platform, System.Reflection.ProcessorArchitecture targetProcessorArchitecture) { throw null; }
         public static string GetDisplayNameForTargetFrameworkDirectory(string targetFrameworkDirectory, System.Runtime.Versioning.FrameworkName frameworkName) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetDotNetFrameworkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetDotNetFrameworkSdkInstallKeyValue(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetDotNetFrameworkSdkInstallKeyValue(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion) { throw null; }
         public static string GetDotNetFrameworkSdkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetDotNetFrameworkSdkRootRegistryKey(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetDotNetFrameworkVersionFolderPrefix(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetPathToDotNetFramework(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetPathToDotNetFramework(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture) { throw null; }
@@ -384,7 +375,6 @@ namespace Microsoft.Build.Utilities
         public static string GetPathToDotNetFrameworkReferenceAssemblies(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetPathToDotNetFrameworkSdk(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetPathToDotNetFrameworkSdk(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetPathToDotNetFrameworkSdkFile(string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version) { throw null; }
         public static string GetPathToDotNetFrameworkSdkFile(string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture) { throw null; }
         public static string GetPathToDotNetFrameworkSdkFile(string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion) { throw null; }
@@ -394,7 +384,6 @@ namespace Microsoft.Build.Utilities
         public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies(string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile) { throw null; }
         public static string GetPathToStandardLibraries(string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile) { throw null; }
         public static string GetPathToStandardLibraries(string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile, string platformTarget) { throw null; }
-        [System.MonoTODOAttribute]
         public static string GetPathToSystemFile(string fileName) { throw null; }
         public static string GetPathToWindowsSdk(Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion) { throw null; }
         public static string GetPathToWindowsSdkFile(string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion) { throw null; }
@@ -426,31 +415,31 @@ namespace Microsoft.Build.Utilities
         protected ToolTask() { }
         protected ToolTask(System.Resources.ResourceManager taskResources) { }
         protected ToolTask(System.Resources.ResourceManager taskResources, string helpKeywordPrefix) { }
-        public bool EchoOff { get { throw null; } set { } }
+        public bool EchoOff { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ObsoleteAttribute("Use EnvironmentVariables property")]
         protected virtual System.Collections.Specialized.StringDictionary EnvironmentOverride { get { throw null; } }
         public string[] EnvironmentVariables { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [Microsoft.Build.Framework.OutputAttribute]
         public int ExitCode { get { throw null; } }
         protected virtual bool HasLoggedErrors { get { throw null; } }
-        public bool LogStandardErrorAsError { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool LogStandardErrorAsError { get { throw null; } set { } }
         protected virtual System.Text.Encoding ResponseFileEncoding { get { throw null; } }
         protected virtual System.Text.Encoding StandardErrorEncoding { get { throw null; } }
         public string StandardErrorImportance { get { throw null; } set { } }
         protected Microsoft.Build.Framework.MessageImportance StandardErrorImportanceToUse { get { throw null; } }
         protected virtual Microsoft.Build.Framework.MessageImportance StandardErrorLoggingImportance { get { throw null; } }
         protected virtual System.Text.Encoding StandardOutputEncoding { get { throw null; } }
-        public string StandardOutputImportance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string StandardOutputImportance { get { throw null; } set { } }
         protected Microsoft.Build.Framework.MessageImportance StandardOutputImportanceToUse { get { throw null; } }
         protected virtual Microsoft.Build.Framework.MessageImportance StandardOutputLoggingImportance { get { throw null; } }
-        protected int TaskProcessTerminationTimeout { get { throw null; } set { } }
+        protected int TaskProcessTerminationTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual int Timeout { get { throw null; } set { } }
-        protected System.Threading.ManualResetEvent ToolCanceled { get { throw null; } }
+        protected System.Threading.ManualResetEvent ToolCanceled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public virtual string ToolExe { get { throw null; } set { } }
         protected abstract string ToolName { get; }
         public string ToolPath { get { throw null; } set { } }
-        public bool UseCommandProcessor { get { throw null; } set { } }
-        public bool YieldDuringToolExecution { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        public bool UseCommandProcessor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool YieldDuringToolExecution { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected virtual bool CallHostObjectToExecute() { throw null; }
         public virtual void Cancel() { }
         protected void DeleteTempFile(string fileName) { }
@@ -461,12 +450,10 @@ namespace Microsoft.Build.Utilities
         protected virtual string GenerateResponseFileCommands() { throw null; }
         protected System.Diagnostics.ProcessStartInfo GetProcessStartInfo(string pathToTool, string commandLineCommands, string responseFileSwitch) { throw null; }
         protected virtual string GetResponseFileSwitch(string responseFilePath) { throw null; }
-        [System.MonoTODOAttribute]
         protected virtual string GetWorkingDirectory() { throw null; }
         protected virtual bool HandleTaskExecutionErrors() { throw null; }
         protected virtual Microsoft.Build.Utilities.HostObjectInitializationStatus InitializeHostObject() { throw null; }
         protected virtual void LogEventsFromTextOutput(string singleLine, Microsoft.Build.Framework.MessageImportance messageImportance) { }
-        [System.MonoTODOAttribute]
         protected virtual void LogPathToTool(string toolName, string pathToTool) { }
         protected virtual void LogToolCommand(string message) { }
         protected virtual string ResponseFileEscape(string responseString) { throw null; }
@@ -488,40 +475,5 @@ namespace Microsoft.Build.Utilities
         Version100 = 0,
         Version110 = 1,
         VersionLatest = 1,
-    }
-}
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
     }
 }

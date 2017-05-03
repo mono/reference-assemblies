@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.ServiceModel.Activation.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.ServiceModel.Activation.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.ServiceModel.Activation.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -20,64 +20,41 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Execution=true)]
 namespace System.ServiceModel
 {
     [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public static partial class ServiceHostingEnvironment
     {
-        public static bool AspNetCompatibilityEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static bool AspNetCompatibilityEnabled { get { throw null; } }
         public static bool MultipleSiteBindingsEnabled { get { throw null; } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public static void EnsureInitialized() { }
         public static void EnsureServiceAvailable(string virtualPath) { }
     }
 }
 namespace System.ServiceModel.Activation
 {
+    [System.Runtime.CompilerServices.TypeForwardedFromAttribute("System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
     public abstract partial class HostedTransportConfiguration
     {
         protected HostedTransportConfiguration() { }
         public abstract System.Uri[] GetBaseAddresses(string virtualPath);
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
     public sealed partial class ServiceActivationBuildProviderAttribute : System.Attribute
     {
         public ServiceActivationBuildProviderAttribute() { }
     }
+    [System.Security.SecurityCriticalAttribute((System.Security.SecurityCriticalScope)(1))]
+#if SERVICEMODEL_DEP
+    [System.ServiceModel.Activation.ServiceActivationBuildProviderAttribute]
+#endif
 #if WEB_DEP
+    [System.Web.Compilation.BuildProviderAppliesToAttribute((System.Web.Compilation.BuildProviderAppliesTo)(1))]
     public sealed partial class ServiceBuildProvider : System.Web.Compilation.BuildProvider
 #else
     public sealed partial class ServiceBuildProvider
@@ -102,9 +79,7 @@ namespace System.ServiceModel.Activation
     {
         public ServiceHostFactory() { }
 #if SERVICEMODEL_DEP
-        [System.MonoTODOAttribute]
         public override System.ServiceModel.ServiceHostBase CreateServiceHost(string constructorString, System.Uri[] baseAddresses) { throw null; }
-        [System.MonoTODOAttribute("untested")]
         protected virtual System.ServiceModel.ServiceHost CreateServiceHost(System.Type serviceType, System.Uri[] baseAddresses) { throw null; }
 #endif
     }

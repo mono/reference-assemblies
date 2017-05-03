@@ -4,22 +4,21 @@
 
 [assembly:System.Reflection.AssemblyVersionAttribute("10.0.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
-[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(3))]
-[assembly:System.Reflection.AssemblyCompanyAttribute("Ximian")]
-[assembly:System.Reflection.AssemblyCopyrightAttribute("Copyright © Ximian 2006")]
+[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
+[assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
+[assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.VisualBasic.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.VisualBasic.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("10.0.30319.17020")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("10.0.30319.17020")]
-[assembly:System.Reflection.AssemblyProductAttribute("vbruntime")]
+[assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.VisualBasic.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
-[assembly:System.Resources.SatelliteContractVersionAttribute("10.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(true)]
+[assembly:System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.5", FrameworkDisplayName="")]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(2))]
 namespace Microsoft.VisualBasic
 {
     public enum AppWinStyle : short
@@ -50,11 +49,11 @@ namespace Microsoft.VisualBasic
     public sealed partial class Collection : System.Collections.ICollection, System.Collections.IList, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.Serialization.ISerializable
     {
         public Collection() { }
-        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)]
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public object this[object Index] { get { throw null; } }
         public object this[string Key] { get { throw null; } }
         public object this[int Index] { get { throw null; } }
-        public void Add(object Item, string Key = null, object Before = null, object After = null) { }
+        public void Add(object Item, string Key=null, object Before=null, object After=null) { }
         public bool Contains(string Key) { throw null; }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public void Remove(int Index) { }
@@ -271,12 +270,12 @@ namespace Microsoft.VisualBasic
     public sealed partial class DateAndTime
     {
         internal DateAndTime() { }
-        public static string DateString { get { throw null; } set { } }
+        public static string DateString { get { throw null; } [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]set { } }
         public static System.DateTime Now { get { throw null; } }
-        public static System.DateTime TimeOfDay { get { throw null; } set { } }
+        public static System.DateTime TimeOfDay { get { throw null; } [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]set { } }
         public static double Timer { get { throw null; } }
-        public static string TimeString { get { throw null; } set { } }
-        public static System.DateTime Today { get { throw null; } set { } }
+        public static string TimeString { get { throw null; } [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]set { } }
+        public static System.DateTime Today { get { throw null; } [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]set { } }
         public static System.DateTime DateAdd(Microsoft.VisualBasic.DateInterval Interval, double Number, System.DateTime DateValue) { throw null; }
         public static System.DateTime DateAdd(string Interval, double Number, object DateValue) { throw null; }
         public static long DateDiff(Microsoft.VisualBasic.DateInterval Interval, System.DateTime Date1, System.DateTime Date2, Microsoft.VisualBasic.FirstDayOfWeek DayOfWeek=(Microsoft.VisualBasic.FirstDayOfWeek)(1), Microsoft.VisualBasic.FirstWeekOfYear WeekOfYear=(Microsoft.VisualBasic.FirstWeekOfYear)(1)) { throw null; }
@@ -330,13 +329,14 @@ namespace Microsoft.VisualBasic
         public int Erl { get { throw null; } }
         public int HelpContext { get { throw null; } set { } }
         public string HelpFile { get { throw null; } set { } }
-        public int LastDllError { get { throw null; } }
+        public int LastDllError { [System.Security.SecurityCriticalAttribute]get { throw null; } }
         public int Number { get { throw null; } set { } }
         public string Source { get { throw null; } set { } }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public void Clear() { }
         public System.Exception GetException() { throw null; }
-        public void Raise(int Number, object Source=null, object Description=null, object HelpFile=null, object HelpContext=null) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public void Raise(int Number, object Source=null, object Description=null, object HelpFile=null, object HelpContext=null) { }
     }
     [System.FlagsAttribute]
     public enum FileAttribute
@@ -350,6 +350,8 @@ namespace Microsoft.VisualBasic
         Volume = 8,
     }
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
+    [System.Security.SecurityCriticalAttribute]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public sealed partial class FileSystem
     {
         internal FileSystem() { }
@@ -358,85 +360,85 @@ namespace Microsoft.VisualBasic
         public static void ChDrive(string Drive) { }
         public static string CurDir() { throw null; }
         public static string CurDir(char Drive) { throw null; }
-        public static string Dir() { throw null; }
-        public static string Dir(string PathName, Microsoft.VisualBasic.FileAttribute Attributes=(Microsoft.VisualBasic.FileAttribute)(0)) { throw null; }
-        public static bool EOF(int FileNumber) { throw null; }
-        public static Microsoft.VisualBasic.OpenMode FileAttr(int FileNumber) { throw null; }
-        public static void FileClose(params int[] FileNumbers) { }
-        public static void FileCopy(string Source, string Destination) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string Dir() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string Dir(string PathName, Microsoft.VisualBasic.FileAttribute Attributes=(Microsoft.VisualBasic.FileAttribute)(0)) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static bool EOF(int FileNumber) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static Microsoft.VisualBasic.OpenMode FileAttr(int FileNumber) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileClose(params int[] FileNumbers) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileCopy(string Source, string Destination) { }
         public static System.DateTime FileDateTime(string PathName) { throw null; }
-        public static void FileGet(int FileNumber, ref System.Array Value, long RecordNumber=(long)-1, bool ArrayIsDynamic=false, bool StringIsFixedLength=false) { }
-        public static void FileGet(int FileNumber, ref bool Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref byte Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref char Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref System.DateTime Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref decimal Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref double Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref short Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref int Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref long Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref float Value, long RecordNumber=(long)-1) { }
-        public static void FileGet(int FileNumber, ref string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
-        public static void FileGet(int FileNumber, ref System.ValueType Value, long RecordNumber=(long)-1) { }
-        public static void FileGetObject(int FileNumber, ref object Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.Array Value, long RecordNumber=(long)-1, bool ArrayIsDynamic=false, bool StringIsFixedLength=false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref bool Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref byte Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref char Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.DateTime Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref decimal Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref double Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref short Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref int Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref long Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref float Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.ValueType Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGetObject(int FileNumber, ref object Value, long RecordNumber=(long)-1) { }
         public static long FileLen(string PathName) { throw null; }
-        public static void FileOpen(int FileNumber, string FileName, Microsoft.VisualBasic.OpenMode Mode, Microsoft.VisualBasic.OpenAccess Access=(Microsoft.VisualBasic.OpenAccess)(-1), Microsoft.VisualBasic.OpenShare Share=(Microsoft.VisualBasic.OpenShare)(-1), int RecordLength=-1) { }
-        public static void FilePut(int FileNumber, System.Array Value, long RecordNumber=(long)-1, bool ArrayIsDynamic=false, bool StringIsFixedLength=false) { }
-        public static void FilePut(int FileNumber, bool Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, byte Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, char Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, System.DateTime Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, decimal Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, double Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, short Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, int Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, long Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, float Value, long RecordNumber=(long)-1) { }
-        public static void FilePut(int FileNumber, string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
-        public static void FilePut(int FileNumber, System.ValueType Value, long RecordNumber=(long)-1) { }
-        [System.ObsoleteAttribute("This member has been deprectated. Try FilePutObject.")]
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileOpen(int FileNumber, string FileName, Microsoft.VisualBasic.OpenMode Mode, Microsoft.VisualBasic.OpenAccess Access=(Microsoft.VisualBasic.OpenAccess)(-1), Microsoft.VisualBasic.OpenShare Share=(Microsoft.VisualBasic.OpenShare)(-1), int RecordLength=-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.Array Value, long RecordNumber=(long)-1, bool ArrayIsDynamic=false, bool StringIsFixedLength=false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, bool Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, byte Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, char Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.DateTime Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, decimal Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, double Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, short Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, int Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, long Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, float Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.ValueType Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This member has been deprecated. Please use FilePutObject to write Object types, or coerce FileNumber and RecordNumber to Integer for writing non-Object types. http://go.microsoft.com/fwlink/?linkid=14202")]
         public static void FilePut(object FileNumber, object Value, object RecordNumber=null) { }
-        public static void FilePutObject(int FileNumber, object Value, long RecordNumber=(long)-1) { }
-        public static void FileWidth(int FileNumber, int RecordWidth) { }
-        public static int FreeFile() { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePutObject(int FileNumber, object Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileWidth(int FileNumber, int RecordWidth) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static int FreeFile() { throw null; }
         public static Microsoft.VisualBasic.FileAttribute GetAttr(string PathName) { throw null; }
-        public static void Input(int FileNumber, ref bool Value) { }
-        public static void Input(int FileNumber, ref byte Value) { }
-        public static void Input(int FileNumber, ref char Value) { }
-        public static void Input(int FileNumber, ref System.DateTime Value) { }
-        public static void Input(int FileNumber, ref decimal Value) { }
-        public static void Input(int FileNumber, ref double Value) { }
-        public static void Input(int FileNumber, ref short Value) { }
-        public static void Input(int FileNumber, ref int Value) { }
-        public static void Input(int FileNumber, ref long Value) { }
-        public static void Input(int FileNumber, ref object Value) { }
-        public static void Input(int FileNumber, ref float Value) { }
-        public static void Input(int FileNumber, ref string Value) { }
-        public static string InputString(int FileNumber, int CharCount) { throw null; }
-        public static void Kill(string PathName) { }
-        public static string LineInput(int FileNumber) { throw null; }
-        public static long Loc(int FileNumber) { throw null; }
-        public static void Lock(int FileNumber) { }
-        public static void Lock(int FileNumber, long Record) { }
-        public static void Lock(int FileNumber, long FromRecord, long ToRecord) { }
-        public static long LOF(int FileNumber) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref bool Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref byte Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref char Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref System.DateTime Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref decimal Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref double Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref short Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref int Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref long Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref object Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref float Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Input(int FileNumber, ref string Value) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string InputString(int FileNumber, int CharCount) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Kill(string PathName) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string LineInput(int FileNumber) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static long Loc(int FileNumber) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Lock(int FileNumber) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Lock(int FileNumber, long Record) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Lock(int FileNumber, long FromRecord, long ToRecord) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static long LOF(int FileNumber) { throw null; }
         public static void MkDir(string Path) { }
-        public static void Print(int FileNumber, params object[] Output) { }
-        public static void PrintLine(int FileNumber, params object[] Output) { }
-        public static void Rename(string OldPath, string NewPath) { }
-        public static void Reset() { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Print(int FileNumber, params object[] Output) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void PrintLine(int FileNumber, params object[] Output) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Rename(string OldPath, string NewPath) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Reset() { }
         public static void RmDir(string Path) { }
-        public static long Seek(int FileNumber) { throw null; }
-        public static void Seek(int FileNumber, long Position) { }
-        public static void SetAttr(string PathName, Microsoft.VisualBasic.FileAttribute Attributes) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static long Seek(int FileNumber) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Seek(int FileNumber, long Position) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void SetAttr(string PathName, Microsoft.VisualBasic.FileAttribute Attributes) { }
         public static Microsoft.VisualBasic.SpcInfo SPC(short Count) { throw null; }
         public static Microsoft.VisualBasic.TabInfo TAB() { throw null; }
         public static Microsoft.VisualBasic.TabInfo TAB(short Column) { throw null; }
-        public static void Unlock(int FileNumber) { }
-        public static void Unlock(int FileNumber, long Record) { }
-        public static void Unlock(int FileNumber, long FromRecord, long ToRecord) { }
-        public static void Write(int FileNumber, params object[] Output) { }
-        public static void WriteLine(int FileNumber, params object[] Output) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Unlock(int FileNumber) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Unlock(int FileNumber, long Record) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Unlock(int FileNumber, long FromRecord, long ToRecord) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void Write(int FileNumber, params object[] Output) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void WriteLine(int FileNumber, params object[] Output) { }
     }
     [Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute]
     public sealed partial class Financial
@@ -515,25 +517,42 @@ namespace Microsoft.VisualBasic
     public sealed partial class Interaction
     {
         internal Interaction() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void AppActivate(int ProcessId) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static void AppActivate(string Title) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void Beep() { }
         public static object CallByName(object ObjectRef, string ProcName, Microsoft.VisualBasic.CallType UseCallType, params object[] Args) { throw null; }
         public static object Choose(double Index, params object[] Choice) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string Command() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public static object CreateObject(string ProgId, string ServerName="") { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public static void DeleteSetting(string AppName, string Section=null, string Key=null) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static string Environ(int Expression) { throw null; }
         public static string Environ(string Expression) { throw null; }
-        [System.MonoLimitationAttribute("If this function is used the assembly have to be recompiled when you switch platforms.")]
         public static string[,] GetAllSettings(string AppName, string Section) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public static object GetObject(string PathName=null, string Class=null) { throw null; }
         public static string GetSetting(string AppName, string Section, string Key, string Default="") { throw null; }
         public static object IIf(bool Expression, object TruePart, object FalsePart) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(128))]
         public static string InputBox(string Prompt, string Title="", string DefaultResponse="", int XPos=-1, int YPos=-1) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(128))]
         public static Microsoft.VisualBasic.MsgBoxResult MsgBox(object Prompt, Microsoft.VisualBasic.MsgBoxStyle Buttons=(Microsoft.VisualBasic.MsgBoxStyle)(0), object Title=null) { throw null; }
         public static string Partition(long Number, long Start, long Stop, long Interval) { throw null; }
         public static void SaveSetting(string AppName, string Section, string Key, string Setting) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public static int Shell(string PathName, Microsoft.VisualBasic.AppWinStyle Style=(Microsoft.VisualBasic.AppWinStyle)(2), bool Wait=false, int Timeout=-1) { throw null; }
         public static object Switch(params object[] VarExpr) { throw null; }
     }
@@ -644,6 +663,7 @@ namespace Microsoft.VisualBasic
         public static int Len(short Expression) { throw null; }
         public static int Len(int Expression) { throw null; }
         public static int Len(long Expression) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static int Len(object Expression) { throw null; }
         [System.CLSCompliantAttribute(false)]
         public static int Len(sbyte Expression) { throw null; }
@@ -751,17 +771,20 @@ namespace Microsoft.VisualBasic
 }
 namespace Microsoft.VisualBasic.ApplicationServices
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class ApplicationBase
     {
         public ApplicationBase() { }
         public System.Globalization.CultureInfo Culture { get { throw null; } }
-        public Microsoft.VisualBasic.ApplicationServices.AssemblyInfo Info { get { throw null; } }
+        public Microsoft.VisualBasic.ApplicationServices.AssemblyInfo Info { [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))][System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]get { throw null; } }
         public Microsoft.VisualBasic.Logging.Log Log { get { throw null; } }
         public System.Globalization.CultureInfo UICulture { get { throw null; } }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public void ChangeCulture(string cultureName) { }
         public void ChangeUICulture(string cultureName) { }
         public string GetEnvironmentVariable(string name) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class AssemblyInfo
     {
         public AssemblyInfo(System.Reflection.Assembly currentAssembly) { }
@@ -796,6 +819,7 @@ namespace Microsoft.VisualBasic.ApplicationServices
         SystemOperator = 549,
         User = 545,
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true)]
     public partial class BuiltInRoleConverter : System.ComponentModel.TypeConverter
     {
         public BuiltInRoleConverter() { }
@@ -812,10 +836,14 @@ namespace Microsoft.VisualBasic.ApplicationServices
         public CantStartSingleInstanceException(string message) { }
         public CantStartSingleInstanceException(string message, System.Exception inner) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class ConsoleApplicationBase : Microsoft.VisualBasic.ApplicationServices.ApplicationBase
     {
         public ConsoleApplicationBase() { }
         public System.Collections.ObjectModel.ReadOnlyCollection<string> CommandLineArgs { get { throw null; } }
+#if false
+        public System.Deployment.Application.ApplicationDeployment Deployment { get { throw null; } }
+#endif
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected System.Collections.ObjectModel.ReadOnlyCollection<string> InternalCommandLine { set { } }
         public bool IsNetworkDeployed { get { throw null; } }
@@ -864,6 +892,7 @@ namespace Microsoft.VisualBasic.ApplicationServices
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
     public delegate void UnhandledExceptionEventHandler(object sender, Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs e);
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class User
     {
         public User() { }
@@ -877,14 +906,17 @@ namespace Microsoft.VisualBasic.ApplicationServices
         public bool IsInRole(Microsoft.VisualBasic.ApplicationServices.BuiltInRole role) { throw null; }
         public bool IsInRole(string role) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class WebUser : Microsoft.VisualBasic.ApplicationServices.User
     {
         public WebUser() { }
         protected override System.Security.Principal.IPrincipal InternalPrincipal { get { throw null; } set { } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class WindowsFormsApplicationBase : Microsoft.VisualBasic.ApplicationServices.ConsoleApplicationBase
     {
         public WindowsFormsApplicationBase() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public WindowsFormsApplicationBase(Microsoft.VisualBasic.ApplicationServices.AuthenticationMode authenticationMode) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Windows.Forms.ApplicationContext ApplicationContext { get { throw null; } }
@@ -906,6 +938,7 @@ namespace Microsoft.VisualBasic.ApplicationServices
         public event Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventHandler UnhandledException { add { } remove { } }
         public void DoEvents() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected void HideSplashScreen() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnCreateMainForm() { }
@@ -915,15 +948,18 @@ namespace Microsoft.VisualBasic.ApplicationServices
         [System.STAThreadAttribute]
         protected virtual bool OnInitialize(System.Collections.ObjectModel.ReadOnlyCollection<string> commandLineArgs) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void OnRun() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnShutdown() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual bool OnStartup(Microsoft.VisualBasic.ApplicationServices.StartupEventArgs eventArgs) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         protected virtual void OnStartupNextInstance(Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventArgs eventArgs) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual bool OnUnhandledException(Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs e) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public void Run(string[] commandLine) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected void ShowSplashScreen() { }
@@ -964,6 +1000,9 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal Conversions() { }
         public static object ChangeType(object Expression, System.Type TargetType) { throw null; }
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static object FallbackUserDefinedConversion(object Expression, System.Type TargetType) { throw null; }
         public static string FromCharAndCount(char Value, int Count) { throw null; }
         public static string FromCharArray(char[] Value) { throw null; }
@@ -1083,6 +1122,7 @@ namespace Microsoft.VisualBasic.CompilerServices
         public static bool ForNextCheckR8(double count, double limit, double StepValue) { throw null; }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(2))]
     public sealed partial class HostServices
     {
         public HostServices() { }
@@ -1115,6 +1155,31 @@ namespace Microsoft.VisualBasic.CompilerServices
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public InternalErrorException(string message, System.Exception innerException) { }
     }
+#if false
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
+    public sealed partial class InternalXmlHelper
+    {
+        internal InternalXmlHelper() { }
+        [System.Runtime.CompilerServices.IndexerName("AttributeValue")]
+        public static string this[System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> source, System.Xml.Linq.XName name] { get { throw null; } set { } }
+        [System.Runtime.CompilerServices.IndexerName("AttributeValue")]
+        public static string this[System.Xml.Linq.XElement source, System.Xml.Linq.XName name] { get { throw null; } set { } }
+        [System.Runtime.CompilerServices.IndexerName("Value")]
+        public static string this[System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> source] { get { throw null; } set { } }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static System.Xml.Linq.XAttribute CreateAttribute(System.Xml.Linq.XName name, object value) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static System.Xml.Linq.XAttribute CreateNamespaceAttribute(System.Xml.Linq.XName name, System.Xml.Linq.XNamespace ns) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static System.Collections.IEnumerable RemoveNamespaceAttributes(string[] inScopePrefixes, System.Xml.Linq.XNamespace[] inScopeNs, System.Collections.Generic.List<System.Xml.Linq.XAttribute> attributes, System.Collections.IEnumerable obj) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static object RemoveNamespaceAttributes(string[] inScopePrefixes, System.Xml.Linq.XNamespace[] inScopeNs, System.Collections.Generic.List<System.Xml.Linq.XAttribute> attributes, object obj) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static System.Xml.Linq.XElement RemoveNamespaceAttributes(string[] inScopePrefixes, System.Xml.Linq.XNamespace[] inScopeNs, System.Collections.Generic.List<System.Xml.Linq.XAttribute> attributes, System.Xml.Linq.XElement e) { throw null; }
+    }
+#endif
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
     public partial interface IVbHost
     {
@@ -1165,17 +1230,52 @@ namespace Microsoft.VisualBasic.CompilerServices
     public sealed partial class NewLateBinding
     {
         internal NewLateBinding() { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static object FallbackCall(object Instance, string MemberName, object[] Arguments, string[] ArgumentNames, bool IgnoreReturn) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static object FallbackGet(object Instance, string MemberName, object[] Arguments, string[] ArgumentNames) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static void FallbackIndexSet(object Instance, object[] Arguments, string[] ArgumentNames) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static void FallbackIndexSetComplex(object Instance, object[] Arguments, string[] ArgumentNames, bool OptimisticSet, bool RValueBase) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static object FallbackInvokeDefault1(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static object FallbackInvokeDefault2(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static void FallbackSet(object Instance, string MemberName, object[] Arguments) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static void FallbackSetComplex(object Instance, string MemberName, object[] Arguments, bool OptimisticSet, bool RValueBase) { }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateCall(object Instance, System.Type Type, string MemberName, object[] Arguments, string[] ArgumentNames, System.Type[] TypeArguments, bool[] CopyBack, bool IgnoreReturn) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateCallInvokeDefault(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
@@ -1183,6 +1283,9 @@ namespace Microsoft.VisualBasic.CompilerServices
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateGet(object Instance, System.Type Type, string MemberName, object[] Arguments, string[] ArgumentNames, System.Type[] TypeArguments, bool[] CopyBack) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
         public static object LateGetInvokeDefault(object Instance, object[] Arguments, string[] ArgumentNames, bool ReportErrors) { throw null; }
         [System.Diagnostics.DebuggerHiddenAttribute]
         [System.Diagnostics.DebuggerStepThroughAttribute]
@@ -1267,6 +1370,9 @@ namespace Microsoft.VisualBasic.CompilerServices
         public static bool ConditionalCompareObjectNotEqual(object Left, object Right, bool TextCompare) { throw null; }
         public static object DivideObject(object Left, object Right) { throw null; }
         public static object ExponentObject(object Left, object Right) { throw null; }
+        [System.Diagnostics.DebuggerHiddenAttribute]
+        [System.Diagnostics.DebuggerStepThroughAttribute]
+        [System.ObsoleteAttribute("do not use this method", true)]
         public static object FallbackInvokeUserDefinedOperator(object vbOp, object[] Arguments) { throw null; }
         public static object IntDivideObject(object Left, object Right) { throw null; }
         public static object LeftShiftObject(object Operand, object Amount) { throw null; }
@@ -1299,12 +1405,18 @@ namespace Microsoft.VisualBasic.CompilerServices
     {
         internal ProjectData() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void ClearProjectError() { }
         public static System.Exception CreateProjectError(int hr) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(8))]
         public static void EndApp() { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetProjectError(System.Exception ex) { }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
+        [System.Security.SecuritySafeCriticalAttribute]
         public static void SetProjectError(System.Exception ex, int lErl) { }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -1367,6 +1479,7 @@ namespace Microsoft.VisualBasic.CompilerServices
         public static System.Array CopyArray(System.Array arySrc, System.Array aryDest) { throw null; }
         public static string GetResourceString(string ResourceKey, params string[] Args) { throw null; }
         public static string MethodToString(System.Reflection.MethodBase Method) { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(32))]
         public static object SetCultureInfo(System.Globalization.CultureInfo Culture) { throw null; }
         public static void ThrowException(int hr) { }
     }
@@ -1374,7 +1487,6 @@ namespace Microsoft.VisualBasic.CompilerServices
     public sealed partial class Versioned
     {
         internal Versioned() { }
-        [System.MonoLimitationAttribute("CallType.Let options is not supported.")]
         public static object CallByName(object Instance, string MethodName, Microsoft.VisualBasic.CallType UseCallType, params object[] Arguments) { throw null; }
         public static bool IsNumeric(object Expression) { throw null; }
         public static string SystemTypeName(string VbName) { throw null; }
@@ -1384,6 +1496,7 @@ namespace Microsoft.VisualBasic.CompilerServices
 }
 namespace Microsoft.VisualBasic.Devices
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Audio
     {
         public Audio() { }
@@ -1394,6 +1507,7 @@ namespace Microsoft.VisualBasic.Devices
         public void PlaySystemSound(System.Media.SystemSound systemSound) { }
         public void Stop() { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Clock
     {
         public Clock() { }
@@ -1401,6 +1515,7 @@ namespace Microsoft.VisualBasic.Devices
         public System.DateTime LocalTime { get { throw null; } }
         public int TickCount { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Computer : Microsoft.VisualBasic.Devices.ServerComputer
     {
         public Computer() { }
@@ -1412,34 +1527,38 @@ namespace Microsoft.VisualBasic.Devices
         public System.Windows.Forms.Screen Screen { get { throw null; } }
     }
     [System.Diagnostics.DebuggerTypeProxyAttribute("Microsoft.VisualBasic.Devices.ComputerInfo.ComputerInfoDebugView")]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class ComputerInfo
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public ComputerInfo() { }
         [System.CLSCompliantAttribute(false)]
-        public ulong AvailablePhysicalMemory { get { throw null; } }
+        public ulong AvailablePhysicalMemory { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        public ulong AvailableVirtualMemory { get { throw null; } }
+        public ulong AvailableVirtualMemory { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Globalization.CultureInfo InstalledUICulture { get { throw null; } }
-        public string OSFullName { get { throw null; } }
+        public string OSFullName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public string OSPlatform { get { throw null; } }
         public string OSVersion { get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        public ulong TotalPhysicalMemory { get { throw null; } }
+        public ulong TotalPhysicalMemory { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.CLSCompliantAttribute(false)]
-        public ulong TotalVirtualMemory { get { throw null; } }
+        public ulong TotalVirtualMemory { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Keyboard
     {
         public Keyboard() { }
         public bool AltKeyDown { get { throw null; } }
-        public bool CapsLock { get { throw null; } }
+        public bool CapsLock { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public bool CtrlKeyDown { get { throw null; } }
-        public bool NumLock { get { throw null; } }
-        public bool ScrollLock { get { throw null; } }
+        public bool NumLock { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool ScrollLock { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public bool ShiftKeyDown { get { throw null; } }
         public void SendKeys(string keys) { }
         public void SendKeys(string keys, bool wait) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Mouse
     {
         public Mouse() { }
@@ -1447,6 +1566,7 @@ namespace Microsoft.VisualBasic.Devices
         public bool WheelExists { get { throw null; } }
         public int WheelScrollLines { get { throw null; } }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Network
     {
         public Network() { }
@@ -1458,17 +1578,14 @@ namespace Microsoft.VisualBasic.Devices
         public void DownloadFile(string address, string destinationFileName, string userName, string password, bool showUI, int connectionTimeout, bool overwrite, Microsoft.VisualBasic.FileIO.UICancelOption onUserCancel) { }
         public void DownloadFile(System.Uri address, string destinationFileName) { }
         public void DownloadFile(System.Uri address, string destinationFileName, System.Net.ICredentials networkCredentials, bool showUI, int connectionTimeout, bool overwrite) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public void DownloadFile(System.Uri address, string destinationFileName, System.Net.ICredentials networkCredentials, bool showUI, int connectionTimeout, bool overwrite, Microsoft.VisualBasic.FileIO.UICancelOption onUserCancel) { }
         public void DownloadFile(System.Uri address, string destinationFileName, string userName, string password) { }
         public void DownloadFile(System.Uri address, string destinationFileName, string userName, string password, bool showUI, int connectionTimeout, bool overwrite) { }
         public void DownloadFile(System.Uri address, string destinationFileName, string userName, string password, bool showUI, int connectionTimeout, bool overwrite, Microsoft.VisualBasic.FileIO.UICancelOption onUserCancel) { }
-        [System.MonoNotSupportedAttribute("")]
         public bool Ping(string hostNameOrAddress) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public bool Ping(string hostNameOrAddress, int timeout) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public bool Ping(System.Uri address) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         public bool Ping(System.Uri address, int timeout) { throw null; }
         public void UploadFile(string sourceFileName, string address) { }
         public void UploadFile(string sourceFileName, string address, string userName, string password) { }
@@ -1488,6 +1605,7 @@ namespace Microsoft.VisualBasic.Devices
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
     public delegate void NetworkAvailableEventHandler(object sender, Microsoft.VisualBasic.Devices.NetworkAvailableEventArgs e);
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Ports
     {
         public Ports() { }
@@ -1498,6 +1616,7 @@ namespace Microsoft.VisualBasic.Devices
         public System.IO.Ports.SerialPort OpenSerialPort(string portName, int baudRate, System.IO.Ports.Parity parity, int dataBits) { throw null; }
         public System.IO.Ports.SerialPort OpenSerialPort(string portName, int baudRate, System.IO.Ports.Parity parity, int dataBits, System.IO.Ports.StopBits stopBits) { throw null; }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class ServerComputer
     {
         public ServerComputer() { }
@@ -1521,6 +1640,7 @@ namespace Microsoft.VisualBasic.FileIO
         Delimited = 0,
         FixedWidth = 1,
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class FileSystem
     {
         public FileSystem() { }
@@ -1608,6 +1728,7 @@ namespace Microsoft.VisualBasic.FileIO
         SearchAllSubDirectories = 3,
         SearchTopLevelOnly = 2,
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class SpecialDirectories
     {
         public SpecialDirectories() { }
@@ -1623,13 +1744,21 @@ namespace Microsoft.VisualBasic.FileIO
     }
     public partial class TextFieldParser : System.IDisposable
     {
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(System.IO.Stream stream) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(System.IO.Stream stream, System.Text.Encoding defaultEncoding) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(System.IO.Stream stream, System.Text.Encoding defaultEncoding, bool detectEncoding) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(System.IO.Stream stream, System.Text.Encoding defaultEncoding, bool detectEncoding, bool leaveOpen) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(System.IO.TextReader reader) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(string path) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(string path, System.Text.Encoding defaultEncoding) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public TextFieldParser(string path, System.Text.Encoding defaultEncoding, bool detectEncoding) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public string[] CommentTokens { get { throw null; } set { } }
@@ -1670,10 +1799,13 @@ namespace Microsoft.VisualBasic.FileIO
 }
 namespace Microsoft.VisualBasic.Logging
 {
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class AspLog : Microsoft.VisualBasic.Logging.Log
     {
         public AspLog() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public AspLog(string name) { }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected internal override void InitializeWithDefaultsSinceNoConfigExists() { }
     }
     public enum DiskSpaceExhaustedOption
@@ -1684,39 +1816,55 @@ namespace Microsoft.VisualBasic.Logging
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public partial class FileLogTraceListener : System.Diagnostics.TraceListener
     {
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public FileLogTraceListener() { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
         public FileLogTraceListener(string name) { }
-        public bool Append { get { throw null; } set { } }
-        public bool AutoFlush { get { throw null; } set { } }
+        public bool Append { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public bool AutoFlush { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         public string BaseFileName { get { throw null; } set { } }
-        public string CustomLocation { get { throw null; } set { } }
+        public string CustomLocation { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
         public string Delimiter { get { throw null; } set { } }
-        public Microsoft.VisualBasic.Logging.DiskSpaceExhaustedOption DiskSpaceExhaustedBehavior { get { throw null; } set { } }
+        public Microsoft.VisualBasic.Logging.DiskSpaceExhaustedOption DiskSpaceExhaustedBehavior { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         public System.Text.Encoding Encoding { get { throw null; } set { } }
-        public string FullLogFileName { get { throw null; } }
-        public bool IncludeHostName { get { throw null; } set { } }
+        public string FullLogFileName { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public bool IncludeHostName { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
         public Microsoft.VisualBasic.Logging.LogFileLocation Location { get { throw null; } set { } }
         public Microsoft.VisualBasic.Logging.LogFileCreationScheduleOption LogFileCreationSchedule { get { throw null; } set { } }
-        public long MaxFileSize { get { throw null; } set { } }
-        public long ReserveDiskSpace { get { throw null; } set { } }
+        public long MaxFileSize { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public long ReserveDiskSpace { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void Close() { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         protected override void Dispose(bool disposing) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void Flush() { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         protected override string[] GetSupportedAttributes() { throw null; }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void TraceData(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object data) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void TraceData(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, params object[] data) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string message) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void TraceEvent(System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string format, params object[] args) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void Write(string message) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true)]
         public override void WriteLine(string message) { }
     }
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class Log
     {
+        [System.Security.SecuritySafeCriticalAttribute]
         public Log() { }
+        [System.Security.SecuritySafeCriticalAttribute]
         public Log(string name) { }
-        public Microsoft.VisualBasic.Logging.FileLogTraceListener DefaultFileLogWriter { get { throw null; } }
+        public Microsoft.VisualBasic.Logging.FileLogTraceListener DefaultFileLogWriter { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public System.Diagnostics.TraceSource TraceSource { get { throw null; } }
+        [System.Security.SecuritySafeCriticalAttribute]
         protected internal virtual void InitializeWithDefaultsSinceNoConfigExists() { }
         public void WriteEntry(string message) { }
         public void WriteEntry(string message, System.Diagnostics.TraceEventType severity) { }
@@ -1743,6 +1891,7 @@ namespace Microsoft.VisualBasic.Logging
 namespace Microsoft.VisualBasic.MyServices
 {
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class ClipboardProxy
     {
         internal ClipboardProxy() { }
@@ -1772,6 +1921,7 @@ namespace Microsoft.VisualBasic.MyServices
         public void SetText(string text, System.Windows.Forms.TextDataFormat format) { }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class FileSystemProxy
     {
         internal FileSystemProxy() { }
@@ -1833,12 +1983,14 @@ namespace Microsoft.VisualBasic.MyServices
         public void WriteAllText(string file, string text, bool append, System.Text.Encoding encoding) { }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class RegistryProxy
     {
         internal RegistryProxy() { }
         public Microsoft.Win32.RegistryKey ClassesRoot { get { throw null; } }
         public Microsoft.Win32.RegistryKey CurrentConfig { get { throw null; } }
         public Microsoft.Win32.RegistryKey CurrentUser { get { throw null; } }
+        [System.ObsoleteAttribute("The DynData registry key works only on Win9x, which is not supported by this version of the .NET Framework.  Use the PerformanceData registry key instead.  This property will be removed from a future version of the framework.")]
         public Microsoft.Win32.RegistryKey DynData { get { throw null; } }
         public Microsoft.Win32.RegistryKey LocalMachine { get { throw null; } }
         public Microsoft.Win32.RegistryKey PerformanceData { get { throw null; } }
@@ -1848,6 +2000,7 @@ namespace Microsoft.VisualBasic.MyServices
         public void SetValue(string keyName, string valueName, object value, Microsoft.Win32.RegistryValueKind valueKind) { }
     }
     [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=(System.Security.Permissions.HostProtectionResource)(4))]
     public partial class SpecialDirectoriesProxy
     {
         internal SpecialDirectoriesProxy() { }
@@ -1868,41 +2021,6 @@ namespace Microsoft.VisualBasic.MyServices.Internal
     public partial class ContextValue<T>
     {
         public ContextValue() { }
-        public T Value { get { throw null; } set { } }
-    }
-}
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
+        public T Value { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
     }
 }

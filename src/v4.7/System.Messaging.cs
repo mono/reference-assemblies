@@ -9,68 +9,31 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Messaging.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Messaging.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Messaging.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
 [assembly:System.Resources.SatelliteContractVersionAttribute("4.0.0.0")]
-[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute((System.Runtime.CompilerServices.CompilationRelaxations)(8))]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.Messaging
 {
     public partial class AccessControlEntry
     {
-        [System.MonoTODOAttribute]
         public AccessControlEntry() { }
-        [System.MonoTODOAttribute]
         public AccessControlEntry(System.Messaging.Trustee trustee) { }
-        [System.MonoTODOAttribute]
         public AccessControlEntry(System.Messaging.Trustee trustee, System.Messaging.GenericAccessRights genericAccessRights, System.Messaging.StandardAccessRights standardAccessRights, System.Messaging.AccessControlEntryType entryType) { }
-        protected int CustomAccessRights { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public System.Messaging.AccessControlEntryType EntryType { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public System.Messaging.GenericAccessRights GenericAccessRights { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public System.Messaging.StandardAccessRights StandardAccessRights { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        public System.Messaging.Trustee Trustee { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        protected int CustomAccessRights { get { throw null; } set { } }
+        public System.Messaging.AccessControlEntryType EntryType { get { throw null; } set { } }
+        public System.Messaging.GenericAccessRights GenericAccessRights { get { throw null; } set { } }
+        public System.Messaging.StandardAccessRights StandardAccessRights { get { throw null; } set { } }
+        public System.Messaging.Trustee Trustee { get { throw null; } set { } }
     }
-    [System.SerializableAttribute]
     public enum AccessControlEntryType
     {
         Allow = 1,
@@ -80,23 +43,15 @@ namespace System.Messaging
     }
     public partial class AccessControlList : System.Collections.CollectionBase
     {
-        [System.MonoTODOAttribute]
         public AccessControlList() { }
-        [System.MonoTODOAttribute]
         public int Add(System.Messaging.AccessControlEntry entry) { throw null; }
-        [System.MonoTODOAttribute]
         public bool Contains(System.Messaging.AccessControlEntry entry) { throw null; }
-        [System.MonoTODOAttribute]
         public void CopyTo(System.Messaging.AccessControlEntry[] array, int index) { }
-        [System.MonoTODOAttribute]
         public int IndexOf(System.Messaging.AccessControlEntry entry) { throw null; }
-        [System.MonoTODOAttribute]
         public void Insert(int index, System.Messaging.AccessControlEntry entry) { }
-        [System.MonoTODOAttribute]
         public void Remove(System.Messaging.AccessControlEntry entry) { }
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum AcknowledgeTypes
     {
         FullReachQueue = 5,
@@ -108,7 +63,6 @@ namespace System.Messaging
         PositiveArrival = 1,
         PositiveReceive = 2,
     }
-    [System.SerializableAttribute]
     public enum Acknowledgment
     {
         AccessDenied = 32772,
@@ -131,38 +85,28 @@ namespace System.Messaging
     }
     public partial class ActiveXMessageFormatter : System.ICloneable, System.Messaging.IMessageFormatter
     {
-        [System.MonoTODOAttribute]
         public ActiveXMessageFormatter() { }
-        [System.MonoTODOAttribute]
         public bool CanRead(System.Messaging.Message message) { throw null; }
-        [System.MonoTODOAttribute]
         public object Clone() { throw null; }
-        [System.MonoTODOAttribute]
         public static void InitStreamedObject(object streamedObject) { }
-        [System.MonoTODOAttribute]
         public object Read(System.Messaging.Message message) { throw null; }
-        [System.MonoTODOAttribute]
         public void Write(System.Messaging.Message message, object obj) { }
     }
     public partial class BinaryMessageFormatter : System.ICloneable, System.Messaging.IMessageFormatter
     {
         public BinaryMessageFormatter() { }
         public BinaryMessageFormatter(System.Runtime.Serialization.Formatters.FormatterAssemblyStyle topObjectFormat, System.Runtime.Serialization.Formatters.FormatterTypeStyle typeFormat) { }
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [System.ComponentModel.DefaultValueAttribute((System.Runtime.Serialization.Formatters.FormatterAssemblyStyle)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MsgTopObjectFormat")]
         public System.Runtime.Serialization.Formatters.FormatterAssemblyStyle TopObjectFormat { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute(0)]
+        [System.ComponentModel.DefaultValueAttribute((System.Runtime.Serialization.Formatters.FormatterTypeStyle)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MsgTypeFormat")]
         public System.Runtime.Serialization.Formatters.FormatterTypeStyle TypeFormat { get { throw null; } set { } }
-        [System.MonoTODOAttribute("only return true if body type is binary")]
         public bool CanRead(System.Messaging.Message message) { throw null; }
         public object Clone() { throw null; }
-        [System.MonoTODOAttribute("throw InvalidOperationException if message body is not binary")]
         public object Read(System.Messaging.Message message) { throw null; }
-        [System.MonoTODOAttribute("throw InvalidOperationException if message body is not binary")]
         public void Write(System.Messaging.Message message, object obj) { }
     }
-    [System.SerializableAttribute]
     public enum CryptographicProviderType
     {
         Dss = 3,
@@ -187,74 +131,71 @@ namespace System.Messaging
     [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
     public partial class DefaultPropertiesToSend
     {
-        [System.MonoTODOAttribute]
         public DefaultPropertiesToSend() { }
         [System.ComponentModel.DefaultValueAttribute((System.Messaging.AcknowledgeTypes)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MsgAcknowledgeType")]
-        public System.Messaging.AcknowledgeTypes AcknowledgeType { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.AcknowledgeTypes AcknowledgeType { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.Messaging.MessagingDescriptionAttribute("MsgAdministrationQueue")]
-        public System.Messaging.MessageQueue AdministrationQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.MessageQueue AdministrationQueue { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.Messaging.MessagingDescriptionAttribute("MsgAppSpecific")]
-        public int AppSpecific { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public int AppSpecific { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgAttachSenderId")]
-        public bool AttachSenderId { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool AttachSenderId { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Messaging.EncryptionAlgorithm)(26114))]
         [System.Messaging.MessagingDescriptionAttribute("MsgEncryptionAlgorithm")]
-        public System.Messaging.EncryptionAlgorithm EncryptionAlgorithm { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.EncryptionAlgorithm EncryptionAlgorithm { get { throw null; } set { } }
         [System.ComponentModel.EditorAttribute("System.ComponentModel.Design.ArrayEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.Messaging.MessagingDescriptionAttribute("MsgExtension")]
-        public byte[] Extension { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public byte[] Extension { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Messaging.HashAlgorithm)(32771))]
         [System.Messaging.MessagingDescriptionAttribute("MsgHashAlgorithm")]
-        public System.Messaging.HashAlgorithm HashAlgorithm { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.HashAlgorithm HashAlgorithm { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.Messaging.MessagingDescriptionAttribute("MsgLabel")]
-        public string Label { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string Label { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Messaging.MessagePriority)(3))]
         [System.Messaging.MessagingDescriptionAttribute("MsgPriority")]
-        public System.Messaging.MessagePriority Priority { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.MessagePriority Priority { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgRecoverable")]
-        public bool Recoverable { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool Recoverable { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.Messaging.MessagingDescriptionAttribute("MsgResponseQueue")]
-        public System.Messaging.MessageQueue ResponseQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.ComponentModel.TypeConverterAttribute("System.Messaging.TimeoutConverter")]
+        public System.Messaging.MessageQueue ResponseQueue { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.TimeoutConverter")]
         [System.Messaging.MessagingDescriptionAttribute("MsgTimeToBeReceived")]
-        public System.TimeSpan TimeToBeReceived { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.ComponentModel.TypeConverterAttribute("System.Messaging.TimeoutConverter")]
+        public System.TimeSpan TimeToBeReceived { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.TimeoutConverter")]
         [System.Messaging.MessagingDescriptionAttribute("MsgTimeToReachQueue")]
-        public System.TimeSpan TimeToReachQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.TimeSpan TimeToReachQueue { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.Messaging.MessagingDescriptionAttribute("MsgTransactionStatusQueue")]
-        public System.Messaging.MessageQueue TransactionStatusQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.MessageQueue TransactionStatusQueue { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgUseAuthentication")]
-        public bool UseAuthentication { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool UseAuthentication { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgUseDeadLetterQueue")]
-        public bool UseDeadLetterQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool UseDeadLetterQueue { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgUseEncryption")]
-        public bool UseEncryption { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool UseEncryption { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgUseJournalQueue")]
-        public bool UseJournalQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool UseJournalQueue { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgUseTracing")]
-        public bool UseTracing { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool UseTracing { get { throw null; } set { } }
     }
-    [System.SerializableAttribute]
     public enum EncryptionAlgorithm
     {
         None = 0,
         Rc2 = 26114,
         Rc4 = 26625,
     }
-    [System.SerializableAttribute]
     public enum EncryptionRequired
     {
         Body = 2,
@@ -262,7 +203,6 @@ namespace System.Messaging
         Optional = 1,
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum GenericAccessRights
     {
         All = 268435456,
@@ -271,7 +211,6 @@ namespace System.Messaging
         Read = -2147483648,
         Write = 1073741824,
     }
-    [System.SerializableAttribute]
     public enum HashAlgorithm
     {
         Mac = 32773,
@@ -291,7 +230,6 @@ namespace System.Messaging
     [System.ComponentModel.DesignerAttribute("System.Messaging.Design.MessageDesigner, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     public partial class Message : System.ComponentModel.Component
     {
-        [System.MonoTODOAttribute]
         public static readonly System.TimeSpan InfiniteTimeout;
         public Message() { }
         public Message(object body) { }
@@ -406,6 +344,8 @@ namespace System.Messaging
         [System.ComponentModel.ReadOnlyAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgResponseQueue")]
         public System.Messaging.MessageQueue ResponseQueue { get { throw null; } set { } }
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.ComponentModel.ReadOnlyAttribute(true)]
         public System.Messaging.SecurityContext SecurityContext { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.ReadOnlyAttribute(true)]
@@ -427,12 +367,12 @@ namespace System.Messaging
         public string SourceMachine { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.ReadOnlyAttribute(true)]
-        [System.ComponentModel.TypeConverterAttribute("System.Messaging.TimeoutConverter")]
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.TimeoutConverter")]
         [System.Messaging.MessagingDescriptionAttribute("MsgTimeToBeReceived")]
         public System.TimeSpan TimeToBeReceived { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.ReadOnlyAttribute(true)]
-        [System.ComponentModel.TypeConverterAttribute("System.Messaging.TimeoutConverter")]
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.TimeoutConverter")]
         [System.Messaging.MessagingDescriptionAttribute("MsgTimeToReachQueue")]
         public System.TimeSpan TimeToReachQueue { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -490,7 +430,6 @@ namespace System.Messaging
         Next = 1,
         Previous = 2,
     }
-    [System.SerializableAttribute]
     public enum MessagePriority
     {
         AboveNormal = 4,
@@ -505,7 +444,6 @@ namespace System.Messaging
     [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
     public partial class MessagePropertyFilter : System.ICloneable
     {
-        [System.MonoTODOAttribute]
         public MessagePropertyFilter() { }
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgAcknowledgeType")]
@@ -570,7 +508,7 @@ namespace System.Messaging
         [System.ComponentModel.DefaultValueAttribute(false)]
         [System.Messaging.MessagingDescriptionAttribute("MsgHashAlgorithm")]
         public bool HashAlgorithm { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgId")]
         public bool Id { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
@@ -582,6 +520,8 @@ namespace System.Messaging
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgLabel")]
         public bool Label { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        [System.Messaging.MessagingDescriptionAttribute("MsgLookupId")]
         public bool LookupId { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.Messaging.MessagingDescriptionAttribute("MsgMessageType")]
@@ -640,13 +580,13 @@ namespace System.Messaging
         public void ClearAll() { }
         public virtual object Clone() { throw null; }
         public void SetAll() { }
-        [System.MonoTODOAttribute]
         public void SetDefaults() { }
     }
     [System.ComponentModel.DefaultEventAttribute("ReceiveCompleted")]
     [System.ComponentModel.EditorAttribute("System.Messaging.Design.QueuePathEditor", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.ComponentModel.InstallerTypeAttribute(typeof(System.Messaging.MessageQueueInstaller))]
     [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.MessageQueueConverter")]
+    [System.Messaging.MessagingDescriptionAttribute("MessageQueueDesc")]
     public partial class MessageQueue : System.ComponentModel.Component, System.Collections.IEnumerable
     {
         public static readonly long InfiniteQueueSize;
@@ -704,7 +644,7 @@ namespace System.Messaging
         public System.Guid Id { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MQ_Label")]
-        public string Label { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string Label { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.Messaging.MessagingDescriptionAttribute("MQ_LastModifyTime")]
         public System.DateTime LastModifyTime { get { throw null; } }
@@ -713,21 +653,26 @@ namespace System.Messaging
         [System.Messaging.MessagingDescriptionAttribute("MQ_MachineName")]
         public string MachineName { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.SizeConverter))]
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.SizeConverter")]
         [System.Messaging.MessagingDescriptionAttribute("MQ_MaximumJournalSize")]
         public long MaximumJournalSize { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.SizeConverter))]
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.SizeConverter")]
         [System.Messaging.MessagingDescriptionAttribute("MQ_MaximumQueueSize")]
         public long MaximumQueueSize { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         [System.Messaging.MessagingDescriptionAttribute("MQ_MessageReadPropertyFilter")]
         public System.Messaging.MessagePropertyFilter MessageReadPropertyFilter { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute("")]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.Messaging.MessagingDescriptionAttribute("MQ_MulticastAddress")]
         public string MulticastAddress { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.EditorAttribute("System.Messaging.Design.QueuePathEditor", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
+        [System.ComponentModel.SettingsBindableAttribute(true)]
         [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.Messaging.MessagingDescriptionAttribute("MQ_Path")]
         public string Path { get { throw null; } set { } }
@@ -747,7 +692,7 @@ namespace System.Messaging
         [System.Messaging.MessagingDescriptionAttribute("MQ_Transactional")]
         public bool Transactional { get { throw null; } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.Messaging.MessagingDescriptionAttribute("MQ_WriteHandle")]
+        [System.Messaging.MessagingDescriptionAttribute("MQ_UseJournalQueue")]
         public bool UseJournalQueue { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -767,41 +712,31 @@ namespace System.Messaging
         public System.IAsyncResult BeginReceive(System.TimeSpan timeout, System.Messaging.Cursor cursor, object state, System.AsyncCallback callback) { throw null; }
         public System.IAsyncResult BeginReceive(System.TimeSpan timeout, object stateObject) { throw null; }
         public System.IAsyncResult BeginReceive(System.TimeSpan timeout, object stateObject, System.AsyncCallback callback) { throw null; }
-        [System.MonoTODOAttribute]
         public static void ClearConnectionCache() { }
         public void Close() { }
         public static System.Messaging.MessageQueue Create(string path) { throw null; }
         public static System.Messaging.MessageQueue Create(string path, bool transactional) { throw null; }
         public System.Messaging.Cursor CreateCursor() { throw null; }
         public static void Delete(string path) { }
+        [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true)]
         protected override void Dispose(bool disposing) { }
         public System.Messaging.Message EndPeek(System.IAsyncResult asyncResult) { throw null; }
         public System.Messaging.Message EndReceive(System.IAsyncResult asyncResult) { throw null; }
         public static bool Exists(string path) { throw null; }
-        [System.MonoTODOAttribute]
         public System.Messaging.Message[] GetAllMessages() { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method returns a MessageEnumerator that implements RemoveCurrent family of methods incorrectly. Please use GetMessageEnumerator2 instead.")]
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Guid GetMachineId(string machineName) { throw null; }
-        [System.ObsoleteAttribute]
+        [System.ObsoleteAttribute("This method returns a MessageEnumerator that implements RemoveCurrent family of methods incorrectly. Please use GetMessageEnumerator2 instead.")]
         public System.Messaging.MessageEnumerator GetMessageEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public System.Messaging.MessageEnumerator GetMessageEnumerator2() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueueEnumerator GetMessageQueueEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueueEnumerator GetMessageQueueEnumerator(System.Messaging.MessageQueueCriteria criteria) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueue[] GetPrivateQueuesByMachine(string machineName) { throw null; }
         public static System.Messaging.MessageQueue[] GetPublicQueues() { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueue[] GetPublicQueues(System.Messaging.MessageQueueCriteria criteria) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueue[] GetPublicQueuesByCategory(System.Guid category) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueue[] GetPublicQueuesByLabel(string label) { throw null; }
-        [System.MonoTODOAttribute]
         public static System.Messaging.MessageQueue[] GetPublicQueuesByMachine(string machineName) { throw null; }
         public static System.Messaging.SecurityContext GetSecurityContext() { throw null; }
         public System.Messaging.Message Peek() { throw null; }
@@ -838,9 +773,7 @@ namespace System.Messaging
         public System.Messaging.Message ReceiveByLookupId(long lookupId) { throw null; }
         public System.Messaging.Message ReceiveByLookupId(System.Messaging.MessageLookupAction action, long lookupId, System.Messaging.MessageQueueTransaction transaction) { throw null; }
         public System.Messaging.Message ReceiveByLookupId(System.Messaging.MessageLookupAction action, long lookupId, System.Messaging.MessageQueueTransactionType transactionType) { throw null; }
-        [System.MonoTODOAttribute]
         public void Refresh() { }
-        [System.MonoTODOAttribute]
         public void ResetPermissions() { }
         public void Send(object obj) { }
         public void Send(object obj, System.Messaging.MessageQueueTransaction transaction) { }
@@ -848,25 +781,18 @@ namespace System.Messaging
         public void Send(object obj, string label) { }
         public void Send(object obj, string label, System.Messaging.MessageQueueTransaction transaction) { }
         public void Send(object obj, string label, System.Messaging.MessageQueueTransactionType transactionType) { }
-        [System.MonoTODOAttribute]
         public void SetPermissions(System.Messaging.AccessControlList dacl) { }
-        [System.MonoTODOAttribute]
         public void SetPermissions(System.Messaging.MessageQueueAccessControlEntry ace) { }
-        [System.MonoTODOAttribute]
         public void SetPermissions(string user, System.Messaging.MessageQueueAccessRights rights) { }
-        [System.MonoTODOAttribute]
         public void SetPermissions(string user, System.Messaging.MessageQueueAccessRights rights, System.Messaging.AccessControlEntryType entryType) { }
     }
     public partial class MessageQueueAccessControlEntry : System.Messaging.AccessControlEntry
     {
-        [System.MonoTODOAttribute]
         public MessageQueueAccessControlEntry(System.Messaging.Trustee trustee, System.Messaging.MessageQueueAccessRights rights) { }
-        [System.MonoTODOAttribute]
         public MessageQueueAccessControlEntry(System.Messaging.Trustee trustee, System.Messaging.MessageQueueAccessRights rights, System.Messaging.AccessControlEntryType entryType) { }
-        public System.Messaging.MessageQueueAccessRights MessageQueueAccessRights { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.MessageQueueAccessRights MessageQueueAccessRights { get { throw null; } set { } }
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum MessageQueueAccessRights
     {
         ChangeQueuePermissions = 262144,
@@ -901,16 +827,14 @@ namespace System.Messaging
     {
         internal MessageQueueEnumerator() { }
         public System.Messaging.MessageQueue Current { get { throw null; } }
-        public System.IntPtr LocatorHandle { [System.MonoTODOAttribute]get { throw null; } }
+        public System.IntPtr LocatorHandle { get { throw null; } }
         object System.Collections.IEnumerator.Current { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void Close() { }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         public bool MoveNext() { throw null; }
         public void Reset() { }
     }
-    [System.SerializableAttribute]
     public enum MessageQueueErrorCode
     {
         AccessDenied = -1072824283,
@@ -1030,53 +954,47 @@ namespace System.Messaging
         protected MessageQueueException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public override string Message { get { throw null; } }
         public System.Messaging.MessageQueueErrorCode MessageQueueErrorCode { get { throw null; } }
+        [System.Security.SecurityCriticalAttribute]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
     }
     public partial class MessageQueueInstaller : System.Configuration.Install.ComponentInstaller
     {
-        [System.MonoTODOAttribute]
         public MessageQueueInstaller() { }
-        [System.MonoTODOAttribute]
         public MessageQueueInstaller(System.Messaging.MessageQueue componentToCopy) { }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool Authenticate { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool Authenticate { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
-        public short BasePriority { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.GuidConverter))]
-        public System.Guid Category { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.ComponentModel.DefaultValueAttribute((System.Messaging.EncryptionRequired)(0))]
-        public System.Messaging.EncryptionRequired EncryptionRequired { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public short BasePriority { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.ComponentModel.GuidConverter, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089")]
+        public System.Guid Category { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.Messaging.EncryptionRequired)(1))]
+        public System.Messaging.EncryptionRequired EncryptionRequired { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        public string Label { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.SizeConverter))]
-        public long MaximumJournalSize { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.ComponentModel.TypeConverterAttribute(typeof(System.Drawing.SizeConverter))]
-        public long MaximumQueueSize { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string Label { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.SizeConverter")]
+        public long MaximumJournalSize { get { throw null; } set { } }
+        [System.ComponentModel.TypeConverterAttribute("System.Messaging.Design.SizeConverter")]
+        public long MaximumQueueSize { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute("")]
         public string MulticastAddress { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
         [System.ComponentModel.EditorAttribute("System.Messaging.Design.QueuePathEditor", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
         [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        public string Path { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public string Path { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        public System.Messaging.AccessControlList Permissions { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Messaging.AccessControlList Permissions { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool Transactional { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public bool Transactional { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Configuration.Install.UninstallAction)(0))]
-        public System.Configuration.Install.UninstallAction UninstallAction { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        public System.Configuration.Install.UninstallAction UninstallAction { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        public bool UseJournalQueue { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        public bool UseJournalQueue { get { throw null; } set { } }
         public override void Commit(System.Collections.IDictionary savedState) { }
-        [System.MonoTODOAttribute]
         public override void CopyFromComponent(System.ComponentModel.IComponent component) { }
-        [System.MonoTODOAttribute]
         public override void Install(System.Collections.IDictionary stateSaver) { }
-        [System.MonoTODOAttribute]
         public override bool IsEquivalentInstaller(System.Configuration.Install.ComponentInstaller otherInstaller) { throw null; }
-        [System.MonoTODOAttribute]
         public override void Rollback(System.Collections.IDictionary savedState) { }
-        [System.MonoTODOAttribute]
         public override void Uninstall(System.Collections.IDictionary savedState) { }
     }
     [System.SerializableAttribute]
@@ -1089,16 +1007,11 @@ namespace System.Messaging
         public MessageQueuePermission(System.Security.Permissions.PermissionState state) { }
         public System.Messaging.MessageQueuePermissionEntryCollection PermissionEntries { get { throw null; } }
         public override System.Security.IPermission Copy() { throw null; }
-        [System.MonoTODOAttribute]
         public override void FromXml(System.Security.SecurityElement securityElement) { }
-        [System.MonoTODOAttribute]
         public override System.Security.IPermission Intersect(System.Security.IPermission target) { throw null; }
-        [System.MonoTODOAttribute]
         public override bool IsSubsetOf(System.Security.IPermission target) { throw null; }
         public bool IsUnrestricted() { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Security.SecurityElement ToXml() { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Security.IPermission Union(System.Security.IPermission target) { throw null; }
     }
     [System.FlagsAttribute]
@@ -1145,16 +1058,11 @@ namespace System.Messaging
         public void AddRange(System.Messaging.MessageQueuePermissionEntry[] value) { }
         public bool Contains(System.Messaging.MessageQueuePermissionEntry value) { throw null; }
         public void CopyTo(System.Messaging.MessageQueuePermissionEntry[] array, int index) { }
-        [System.MonoTODOAttribute]
         public int IndexOf(System.Messaging.MessageQueuePermissionEntry value) { throw null; }
         public void Insert(int index, System.Messaging.MessageQueuePermissionEntry value) { }
-        [System.MonoTODOAttribute]
         protected override void OnClear() { }
-        [System.MonoTODOAttribute]
         protected override void OnInsert(int index, object value) { }
-        [System.MonoTODOAttribute]
         protected override void OnRemove(int index, object value) { }
-        [System.MonoTODOAttribute]
         protected override void OnSet(int index, object oldValue, object newValue) { }
         public void Remove(System.Messaging.MessageQueuePermissionEntry value) { }
     }
@@ -1169,7 +1077,6 @@ namespace System.Messaging
         protected virtual void Dispose(bool disposing) { }
         ~MessageQueueTransaction() { }
     }
-    [System.SerializableAttribute]
     public enum MessageQueueTransactionStatus
     {
         Aborted = 0,
@@ -1177,14 +1084,12 @@ namespace System.Messaging
         Initialized = 2,
         Pending = 3,
     }
-    [System.SerializableAttribute]
     public enum MessageQueueTransactionType
     {
         Automatic = 1,
         None = 0,
         Single = 3,
     }
-    [System.SerializableAttribute]
     public enum MessageType
     {
         Acknowledgment = 1,
@@ -1194,10 +1099,8 @@ namespace System.Messaging
     [System.AttributeUsageAttribute((System.AttributeTargets)(32767))]
     public partial class MessagingDescriptionAttribute : System.ComponentModel.DescriptionAttribute
     {
-        [System.MonoTODOAttribute("localization")]
         public MessagingDescriptionAttribute(string description) { }
-        [System.MonoTODOAttribute("localization")]
-        public override string Description { get { throw null; } }
+        public override string Description { [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SharedState=true)]get { throw null; } }
     }
     public enum PeekAction
     {
@@ -1210,7 +1113,6 @@ namespace System.Messaging
         public System.IAsyncResult AsyncResult { get { throw null; } set { } }
         public System.Messaging.Message Message { get { throw null; } }
     }
-    [System.SerializableAttribute]
     public delegate void PeekCompletedEventHandler(object sender, System.Messaging.PeekCompletedEventArgs e);
     public enum QueueAccessMode
     {
@@ -1227,7 +1129,6 @@ namespace System.Messaging
         public System.IAsyncResult AsyncResult { get { throw null; } set { } }
         public System.Messaging.Message Message { get { throw null; } }
     }
-    [System.SerializableAttribute]
     public delegate void ReceiveCompletedEventHandler(object sender, System.Messaging.ReceiveCompletedEventArgs e);
     public sealed partial class SecurityContext : System.IDisposable
     {
@@ -1235,7 +1136,6 @@ namespace System.Messaging
         public void Dispose() { }
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum StandardAccessRights
     {
         All = 2031616,
@@ -1252,9 +1152,7 @@ namespace System.Messaging
     }
     public partial class Trustee
     {
-        [System.MonoTODOAttribute]
         public Trustee() { }
-        [System.MonoTODOAttribute("What about systemName?")]
         public Trustee(string name) { }
         public Trustee(string name, string systemName) { }
         public Trustee(string name, string systemName, System.Messaging.TrusteeType trusteeType) { }
@@ -1262,7 +1160,6 @@ namespace System.Messaging
         public string SystemName { get { throw null; } set { } }
         public System.Messaging.TrusteeType TrusteeType { get { throw null; } set { } }
     }
-    [System.SerializableAttribute]
     public enum TrusteeType
     {
         Alias = 4,
@@ -1283,7 +1180,6 @@ namespace System.Messaging
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.Messaging.MessagingDescriptionAttribute("XmlMsgTargetTypes")]
         public System.Type[] TargetTypes { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         public bool CanRead(System.Messaging.Message message) { throw null; }
         public object Clone() { throw null; }
         public object Read(System.Messaging.Message message) { throw null; }
@@ -1292,31 +1188,23 @@ namespace System.Messaging
 }
 namespace System.Messaging.Design
 {
-    [System.MonoTODOAttribute]
     public partial class QueuePathDialog : System.Windows.Forms.Form
     {
-        [System.MonoTODOAttribute]
         public QueuePathDialog(System.IServiceProvider provider) { }
-        [System.MonoTODOAttribute]
         public QueuePathDialog(System.Windows.Forms.Design.IUIService uiService) { }
-        [System.MonoTODOAttribute]
         public string Path { get { throw null; } }
-        [System.MonoTODOAttribute]
         public void ChoosePath() { }
-        [System.MonoTODOAttribute]
         public void DoubleClicked(object source, System.EventArgs e) { }
         protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e) { }
         protected override void OnHandleCreated(System.EventArgs e) { }
-        [System.MonoTODOAttribute]
         public void SelectQueue(System.Messaging.MessageQueue queue) { }
     }
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Name="FullTrust")]
+    [System.Security.Permissions.PermissionSetAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Name="FullTrust")]
     public partial class QueuePathEditor : System.Drawing.Design.UITypeEditor
     {
-        [System.MonoTODOAttribute]
         public QueuePathEditor() { }
-        [System.MonoTODOAttribute]
         public override object EditValue(System.ComponentModel.ITypeDescriptorContext context, System.IServiceProvider provider, object value) { throw null; }
-        [System.MonoTODOAttribute]
         public override System.Drawing.Design.UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context) { throw null; }
     }
 }

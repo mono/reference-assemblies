@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.DirectoryServices.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.DirectoryServices.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.DirectoryServices.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -19,42 +19,15 @@
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
 [assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Security.AllowPartiallyTrustedCallersAttribute]
-namespace System
-{
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoDocumentationNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoDocumentationNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoExtensionAttribute : System.MonoTODOAttribute
-    {
-        public MonoExtensionAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoInternalNoteAttribute : System.MonoTODOAttribute
-    {
-        public MonoInternalNoteAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoLimitationAttribute : System.MonoTODOAttribute
-    {
-        public MonoLimitationAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoNotSupportedAttribute : System.MonoTODOAttribute
-    {
-        public MonoNotSupportedAttribute(string comment) { }
-    }
-    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), AllowMultiple=true)]
-    internal partial class MonoTODOAttribute : System.Attribute
-    {
-        public MonoTODOAttribute() { }
-        public MonoTODOAttribute(string comment) { }
-        public string Comment { get { throw null; } }
-    }
-}
+[assembly:System.Security.SecurityRulesAttribute((System.Security.SecurityRuleSet)(1), SkipVerificationInFullTrust=true)]
+[assembly:System.Security.Permissions.FileIOPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, AllFiles=(System.Security.Permissions.FileIOPermissionAccess)(8))]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, UnmanagedCode=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
+[assembly:System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Unrestricted=true)]
+[assembly:System.Net.DnsPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Unrestricted=true)]
+[assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
 namespace System.DirectoryServices
 {
     public partial class ActiveDirectoryAccessRule : System.Security.AccessControl.ObjectAccessRule
@@ -137,7 +110,6 @@ namespace System.DirectoryServices
         SelfAndChildren = 3,
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum AuthenticationTypes
     {
         Anonymous = 16,
@@ -183,10 +155,11 @@ namespace System.DirectoryServices
         InSearching = 1,
         Never = 0,
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class DirectoryEntries : System.Collections.IEnumerable
     {
         internal DirectoryEntries() { }
-        public System.DirectoryServices.SchemaNameCollection SchemaFilter { [System.MonoTODOAttribute]get { throw null; } }
+        public System.DirectoryServices.SchemaNameCollection SchemaFilter { get { throw null; } }
         public System.DirectoryServices.DirectoryEntry Add(string name, string schemaClassName) { throw null; }
         public System.DirectoryServices.DirectoryEntry Find(string name) { throw null; }
         public System.DirectoryServices.DirectoryEntry Find(string name, string schemaClassName) { throw null; }
@@ -194,94 +167,97 @@ namespace System.DirectoryServices
         public void Remove(System.DirectoryServices.DirectoryEntry entry) { }
     }
     [System.ComponentModel.TypeConverterAttribute("System.DirectoryServices.Design.DirectoryEntryConverter")]
+    [System.DirectoryServices.DSDescriptionAttribute("DirectoryEntryDesc")]
+    [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
+    [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class DirectoryEntry : System.ComponentModel.Component
     {
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectoryEntry() { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectoryEntry(object adsObject) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectoryEntry(string path) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectoryEntry(string path, string username, string password) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectoryEntry(string path, string username, string password, System.DirectoryServices.AuthenticationTypes authenticationType) { }
-        [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.AuthenticationTypes)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("Type of authentication to use while Binding to Ldap server")]
+        [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.AuthenticationTypes)(1))]
+        [System.DirectoryServices.DSDescriptionAttribute("DSAuthenticationType")]
         public System.DirectoryServices.AuthenticationTypes AuthenticationType { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("Child entries of this node")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSChildren")]
         public System.DirectoryServices.DirectoryEntries Children { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("A globally unique identifier for this DirectoryEntry")]
-        [System.MonoTODOAttribute]
+        [System.DirectoryServices.DSDescriptionAttribute("DSGuid")]
         public System.Guid Guid { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("The name of the object as named with the underlying directory")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSName")]
         public string Name { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("The globally unique identifier of the DirectoryEntry, as returned from the provider")]
-        [System.MonoTODOAttribute]
+        [System.DirectoryServices.DSDescriptionAttribute("DSNativeGuid")]
         public string NativeGuid { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("The native Active Directory Service Interfaces (ADSI) object.")]
-        public object NativeObject { [System.MonoTODOAttribute]get { throw null; } }
+        [System.DirectoryServices.DSDescriptionAttribute("DSNativeObject")]
+        public object NativeObject { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("An ActiveDirectorySecurity object that represents the security descriptor for this directory entry.")]
-        public System.DirectoryServices.ActiveDirectorySecurity ObjectSecurity { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        [System.DirectoryServices.DSDescriptionAttribute("DSObjectSecurity")]
+        public System.DirectoryServices.ActiveDirectorySecurity ObjectSecurity { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
-        [System.DirectoryServices.DSDescriptionAttribute("The provider-specific options for this entry.")]
-        [System.MonoTODOAttribute]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
+        [System.DirectoryServices.DSDescriptionAttribute("DSOptions")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.DirectoryServices.DirectoryEntryConfiguration Options { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("This entry's parent in the Ldap Directory hierarchy.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSParent")]
         public System.DirectoryServices.DirectoryEntry Parent { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.DirectoryServices.DSDescriptionAttribute("The password to use when authenticating the client.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSPassword")]
         public string Password { set { } }
         [System.ComponentModel.DefaultValueAttribute("")]
-        [System.ComponentModel.RecommendedAsConfigurableAttribute(true)]
+        [System.ComponentModel.SettingsBindableAttribute(true)]
         [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        [System.DirectoryServices.DSDescriptionAttribute("The path for this DirectoryEntry.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSPath")]
         public string Path { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("Properties set on this object.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSProperties")]
         public System.DirectoryServices.PropertyCollection Properties { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("The name of the schema used for this DirectoryEntry.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSchemaClassName")]
         public string SchemaClassName { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("The current schema directory entry.")]
-        public System.DirectoryServices.DirectoryEntry SchemaEntry { [System.MonoTODOAttribute]get { throw null; } }
+        [System.DirectoryServices.DSDescriptionAttribute("DSSchemaEntry")]
+        public System.DirectoryServices.DirectoryEntry SchemaEntry { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
-        [System.DirectoryServices.DSDescriptionAttribute("Determines if a cache should be used.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSUsePropertyCache")]
         public bool UsePropertyCache { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DefaultValueAttribute(null)]
         [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        [System.DirectoryServices.DSDescriptionAttribute("The user name to use when authenticating the client.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSUsername")]
         public string Username { get { throw null; } set { } }
         public void Close() { }
         public void CommitChanges() { }
-        [System.MonoTODOAttribute]
         public System.DirectoryServices.DirectoryEntry CopyTo(System.DirectoryServices.DirectoryEntry newParent) { throw null; }
-        [System.MonoTODOAttribute]
         public System.DirectoryServices.DirectoryEntry CopyTo(System.DirectoryServices.DirectoryEntry newParent, string newName) { throw null; }
         public void DeleteTree() { }
         protected override void Dispose(bool disposing) { }
         public static bool Exists(string path) { throw null; }
-        [System.MonoTODOAttribute]
         public object Invoke(string methodName, params object[] args) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public object InvokeGet(string propertyName) { throw null; }
-        [System.MonoNotSupportedAttribute("")]
         [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public void InvokeSet(string propertyName, params object[] args) { }
         public void MoveTo(System.DirectoryServices.DirectoryEntry newParent) { }
@@ -303,66 +279,102 @@ namespace System.DirectoryServices
         public bool IsMutuallyAuthenticated() { throw null; }
         public void SetUserNameQueryQuota(string accountName) { }
     }
+    [System.DirectoryServices.DSDescriptionAttribute("DirectorySearcherDesc")]
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class DirectorySearcher : System.ComponentModel.Component
     {
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher() { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(System.DirectoryServices.DirectoryEntry searchRoot) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(System.DirectoryServices.DirectoryEntry searchRoot, string filter) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(System.DirectoryServices.DirectoryEntry searchRoot, string filter, string[] propertiesToLoad) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(System.DirectoryServices.DirectoryEntry searchRoot, string filter, string[] propertiesToLoad, System.DirectoryServices.SearchScope scope) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(string filter) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(string filter, string[] propertiesToLoad) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public DirectorySearcher(string filter, string[] propertiesToLoad, System.DirectoryServices.SearchScope scope) { }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        [System.DirectoryServices.DSDescriptionAttribute("DSAsynchronous")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public bool Asynchronous { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute("")]
+        [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSAttributeQuery")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string AttributeScopeQuery { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
-        [System.DirectoryServices.DSDescriptionAttribute("The cacheability of results.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSCacheResults")]
         public bool CacheResults { get { throw null; } set { } }
-        [System.DirectoryServices.DSDescriptionAttribute("The maximum amount of time that the client waits for the server to return results.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSClientTimeout")]
         public System.TimeSpan ClientTimeout { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.DereferenceAlias)(0))]
+        [System.DirectoryServices.DSDescriptionAttribute("DSDerefAlias")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.DirectoryServices.DereferenceAlias DerefAlias { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.DirectoryServices.DSDescriptionAttribute("DSDirectorySynchronization")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.DirectoryServices.DirectorySynchronization DirectorySynchronization { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.ExtendedDN)(-1))]
+        [System.DirectoryServices.DSDescriptionAttribute("DSExtendedDn")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.DirectoryServices.ExtendedDN ExtendedDN { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute("(objectClass=*)")]
-        [System.ComponentModel.RecommendedAsConfigurableAttribute(true)]
+        [System.ComponentModel.SettingsBindableAttribute(true)]
         [System.ComponentModel.TypeConverterAttribute("System.Diagnostics.Design.StringValueConverter, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        [System.DirectoryServices.DSDescriptionAttribute("The Lightweight Directory Access Protocol (Ldap) format filter string.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSFilter")]
         public string Filter { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
-        [System.DirectoryServices.DSDescriptionAttribute("The page size in a paged search.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSPageSize")]
         public int PageSize { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", "System.Drawing.Design.UITypeEditor, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-        [System.DirectoryServices.DSDescriptionAttribute("The set of properties retrieved during the search.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSPropertiesToLoad")]
         public System.Collections.Specialized.StringCollection PropertiesToLoad { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(false)]
-        [System.DirectoryServices.DSDescriptionAttribute("A value indicating whether the search retrieves only the names of attributes to which values have been assigned.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSPropertyNamesOnly")]
         public bool PropertyNamesOnly { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.ReferralChasingOption)(64))]
-        [System.DirectoryServices.DSDescriptionAttribute("How referrals are chased.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSReferralChasing")]
         public System.DirectoryServices.ReferralChasingOption ReferralChasing { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.DirectoryServices.DSDescriptionAttribute("The node in the Ldap Directory hierarchy where the search starts.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSearchRoot")]
         public System.DirectoryServices.DirectoryEntry SearchRoot { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.SearchScope)(2))]
-        [System.ComponentModel.RecommendedAsConfigurableAttribute(true)]
-        [System.DirectoryServices.DSDescriptionAttribute("The scope of the search that is observed by the server.")]
+        [System.ComponentModel.SettingsBindableAttribute(true)]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSearchScope")]
         public System.DirectoryServices.SearchScope SearchScope { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.SecurityMasks)(0))]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSecurityMasks")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.DirectoryServices.SecurityMasks SecurityMasks { get { throw null; } set { } }
-        [System.DirectoryServices.DSDescriptionAttribute("The time limit the server should observe to search an individual page of results.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSServerPageTimeLimit")]
         public System.TimeSpan ServerPageTimeLimit { get { throw null; } set { } }
-        [System.DirectoryServices.DSDescriptionAttribute("The time limit the server should observe to search.")]
-        public System.TimeSpan ServerTimeLimit { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        [System.DirectoryServices.DSDescriptionAttribute("DSServerTimeLimit")]
+        public System.TimeSpan ServerTimeLimit { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(0)]
-        [System.DirectoryServices.DSDescriptionAttribute("The maximum number of objects the server returns in a search.")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSizeLimit")]
         public int SizeLimit { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         [System.ComponentModel.TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
-        [System.DirectoryServices.DSDescriptionAttribute("An object that defines how the data should be sorted.")]
-        public System.DirectoryServices.SortOption Sort { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
+        [System.DirectoryServices.DSDescriptionAttribute("DSSort")]
+        public System.DirectoryServices.SortOption Sort { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        [System.DirectoryServices.DSDescriptionAttribute("DSTombstone")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public bool Tombstone { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(false)]
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.DirectoryServices.DSDescriptionAttribute("DSVirtualListView")]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public System.DirectoryServices.DirectoryVirtualListView VirtualListView { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
         protected override void Dispose(bool disposing) { }
         public System.DirectoryServices.SearchResultCollection FindAll() { throw null; }
         public System.DirectoryServices.SearchResult FindOne() { throw null; }
@@ -376,7 +388,7 @@ namespace System.DirectoryServices
         public DirectoryServicesCOMException(string message, System.Exception inner) { }
         public int ExtendedError { get { throw null; } }
         public string ExtendedErrorMessage { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.SerializableAttribute]
@@ -389,7 +401,6 @@ namespace System.DirectoryServices
         public System.DirectoryServices.DirectoryServicesPermissionEntryCollection PermissionEntries { get { throw null; } }
     }
     [System.FlagsAttribute]
-    [System.SerializableAttribute]
     public enum DirectoryServicesPermissionAccess
     {
         Browse = 2,
@@ -412,7 +423,6 @@ namespace System.DirectoryServices
         public string Path { get { throw null; } }
         public System.DirectoryServices.DirectoryServicesPermissionAccess PermissionAccess { get { throw null; } }
     }
-    [System.MonoTODOAttribute("Fix serialization compatibility with MS.NET")]
     [System.SerializableAttribute]
     public partial class DirectoryServicesPermissionEntryCollection : System.Collections.CollectionBase
     {
@@ -537,6 +547,7 @@ namespace System.DirectoryServices
         public PropertyAccessRule(System.Security.Principal.IdentityReference identity, System.Security.AccessControl.AccessControlType type, System.DirectoryServices.PropertyAccess access, System.Guid propertyType, System.DirectoryServices.ActiveDirectorySecurityInheritance inheritanceType) : base (default(System.Security.Principal.IdentityReference), default(System.DirectoryServices.ActiveDirectoryRights), default(System.Security.AccessControl.AccessControlType)) { }
         public PropertyAccessRule(System.Security.Principal.IdentityReference identity, System.Security.AccessControl.AccessControlType type, System.DirectoryServices.PropertyAccess access, System.Guid propertyType, System.DirectoryServices.ActiveDirectorySecurityInheritance inheritanceType, System.Guid inheritedObjectType) : base (default(System.Security.Principal.IdentityReference), default(System.DirectoryServices.ActiveDirectoryRights), default(System.Security.AccessControl.AccessControlType)) { }
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class PropertyCollection : System.Collections.ICollection, System.Collections.IDictionary, System.Collections.IEnumerable
     {
         internal PropertyCollection() { }
@@ -566,11 +577,12 @@ namespace System.DirectoryServices
         public PropertySetAccessRule(System.Security.Principal.IdentityReference identity, System.Security.AccessControl.AccessControlType type, System.DirectoryServices.PropertyAccess access, System.Guid propertySetType, System.DirectoryServices.ActiveDirectorySecurityInheritance inheritanceType) : base (default(System.Security.Principal.IdentityReference), default(System.DirectoryServices.ActiveDirectoryRights), default(System.Security.AccessControl.AccessControlType)) { }
         public PropertySetAccessRule(System.Security.Principal.IdentityReference identity, System.Security.AccessControl.AccessControlType type, System.DirectoryServices.PropertyAccess access, System.Guid propertySetType, System.DirectoryServices.ActiveDirectorySecurityInheritance inheritanceType, System.Guid inheritedObjectType) : base (default(System.Security.Principal.IdentityReference), default(System.DirectoryServices.ActiveDirectoryRights), default(System.Security.AccessControl.AccessControlType)) { }
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class PropertyValueCollection : System.Collections.CollectionBase
     {
         internal PropertyValueCollection() { }
         public object this[int index] { get { throw null; } set { } }
-        [System.MonoTODOAttribute]
+        [System.Runtime.InteropServices.ComVisibleAttribute(false)]
         public string PropertyName { get { throw null; } }
         public object Value { get { throw null; } set { } }
         public int Add(object value) { throw null; }
@@ -580,17 +592,12 @@ namespace System.DirectoryServices
         public void CopyTo(object[] array, int index) { }
         public int IndexOf(object value) { throw null; }
         public void Insert(int index, object value) { }
-        [System.MonoTODOAttribute]
         protected override void OnClearComplete() { }
-        [System.MonoTODOAttribute]
         protected override void OnInsertComplete(int index, object value) { }
-        [System.MonoTODOAttribute]
         protected override void OnRemoveComplete(int index, object value) { }
-        [System.MonoTODOAttribute]
         protected override void OnSetComplete(int index, object oldValue, object newValue) { }
         public void Remove(object value) { }
     }
-    [System.SerializableAttribute]
     public enum ReferralChasingOption
     {
         All = 96,
@@ -619,74 +626,59 @@ namespace System.DirectoryServices
     {
         internal SchemaNameCollection() { }
         public int Count { get { throw null; } }
-        public string this[int index] { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        bool System.Collections.ICollection.IsSynchronized { [System.MonoTODOAttribute]get { throw null; } }
-        object System.Collections.ICollection.SyncRoot { [System.MonoTODOAttribute]get { throw null; } }
+        public string this[int index] { get { throw null; } set { } }
+        bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
+        object System.Collections.ICollection.SyncRoot { get { throw null; } }
         bool System.Collections.IList.IsFixedSize { get { throw null; } }
         bool System.Collections.IList.IsReadOnly { get { throw null; } }
-        object System.Collections.IList.this[int index] { [System.MonoTODOAttribute]get { throw null; } [System.MonoTODOAttribute]set { } }
-        [System.MonoTODOAttribute]
+        object System.Collections.IList.this[int index] { get { throw null; } set { } }
         public int Add(string value) { throw null; }
-        [System.MonoTODOAttribute]
         public void AddRange(System.DirectoryServices.SchemaNameCollection value) { }
-        [System.MonoTODOAttribute]
         public void AddRange(string[] value) { }
-        [System.MonoTODOAttribute]
         public void Clear() { }
-        [System.MonoTODOAttribute]
         public bool Contains(string value) { throw null; }
-        [System.MonoTODOAttribute]
         public void CopyTo(string[] stringArray, int index) { }
-        [System.MonoTODOAttribute]
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
-        [System.MonoTODOAttribute]
         public int IndexOf(string value) { throw null; }
-        [System.MonoTODOAttribute]
         public void Insert(int index, string value) { }
-        [System.MonoTODOAttribute]
         public void Remove(string value) { }
-        [System.MonoTODOAttribute]
         public void RemoveAt(int index) { }
-        [System.MonoTODOAttribute]
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
-        [System.MonoTODOAttribute]
         int System.Collections.IList.Add(object value) { throw null; }
-        [System.MonoTODOAttribute]
         bool System.Collections.IList.Contains(object value) { throw null; }
-        [System.MonoTODOAttribute]
         int System.Collections.IList.IndexOf(object value) { throw null; }
-        [System.MonoTODOAttribute]
         void System.Collections.IList.Insert(int index, object value) { }
-        [System.MonoTODOAttribute]
         void System.Collections.IList.Remove(object value) { }
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class SearchResult
     {
         internal SearchResult() { }
         public string Path { get { throw null; } }
         public System.DirectoryServices.ResultPropertyCollection Properties { get { throw null; } }
+        [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         public System.DirectoryServices.DirectoryEntry GetDirectoryEntry() { throw null; }
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class SearchResultCollection : System.MarshalByRefObject, System.Collections.ICollection, System.Collections.IEnumerable, System.IDisposable
     {
         internal SearchResultCollection() { }
         public int Count { get { throw null; } }
-        public System.IntPtr Handle { [System.MonoTODOAttribute]get { throw null; } }
+        public System.IntPtr Handle { get { throw null; } }
         public System.DirectoryServices.SearchResult this[int index] { get { throw null; } }
-        public string[] PropertiesLoaded { [System.MonoTODOAttribute]get { throw null; } }
+        public string[] PropertiesLoaded { get { throw null; } }
         bool System.Collections.ICollection.IsSynchronized { get { throw null; } }
         object System.Collections.ICollection.SyncRoot { get { throw null; } }
         public bool Contains(System.DirectoryServices.SearchResult result) { throw null; }
         public void CopyTo(System.DirectoryServices.SearchResult[] results, int index) { }
         public void Dispose() { }
-        [System.MonoTODOAttribute]
         protected virtual void Dispose(bool disposing) { }
         ~SearchResultCollection() { }
         public System.Collections.IEnumerator GetEnumerator() { throw null; }
         public int IndexOf(System.DirectoryServices.SearchResult result) { throw null; }
         void System.Collections.ICollection.CopyTo(System.Array array, int index) { }
     }
-    [System.SerializableAttribute]
     public enum SearchScope
     {
         Base = 0,
@@ -702,7 +694,6 @@ namespace System.DirectoryServices
         Owner = 1,
         Sacl = 8,
     }
-    [System.SerializableAttribute]
     public enum SortDirection
     {
         Ascending = 0,
@@ -714,15 +705,16 @@ namespace System.DirectoryServices
         public SortOption() { }
         public SortOption(string propertyName, System.DirectoryServices.SortDirection direction) { }
         [System.ComponentModel.DefaultValueAttribute((System.DirectoryServices.SortDirection)(0))]
-        [System.DirectoryServices.DSDescriptionAttribute("Whether the sort is ascending or descending")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSortDirection")]
         public System.DirectoryServices.SortDirection Direction { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(null)]
-        [System.DirectoryServices.DSDescriptionAttribute("Name of propertion to be sorted on")]
+        [System.DirectoryServices.DSDescriptionAttribute("DSSortName")]
         public string PropertyName { get { throw null; } set { } }
     }
 }
 namespace System.DirectoryServices.ActiveDirectory
 {
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class ActiveDirectoryInterSiteTransport : System.IDisposable
     {
         internal ActiveDirectoryInterSiteTransport() { }
@@ -738,6 +730,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public void Save() { }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     public partial class ActiveDirectoryObjectExistsException : System.Exception
     {
         public ActiveDirectoryObjectExistsException() { }
@@ -748,20 +741,14 @@ namespace System.DirectoryServices.ActiveDirectory
     [System.SerializableAttribute]
     public partial class ActiveDirectoryObjectNotFoundException : System.Exception, System.Runtime.Serialization.ISerializable
     {
-        [System.MonoTODOAttribute]
         public ActiveDirectoryObjectNotFoundException() { }
-        [System.MonoTODOAttribute]
         protected ActiveDirectoryObjectNotFoundException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
-        [System.MonoTODOAttribute]
         public ActiveDirectoryObjectNotFoundException(string message) { }
-        [System.MonoTODOAttribute]
         public ActiveDirectoryObjectNotFoundException(string message, System.Exception inner) { }
-        [System.MonoTODOAttribute]
         public ActiveDirectoryObjectNotFoundException(string message, System.Type type, string name) { }
-        public string Name { [System.MonoTODOAttribute]get { throw null; } }
-        public System.Type Type { [System.MonoTODOAttribute]get { throw null; } }
-        [System.MonoTODOAttribute]
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        public string Name { get { throw null; } }
+        public System.Type Type { get { throw null; } }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.SerializableAttribute]
@@ -774,7 +761,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public ActiveDirectoryOperationException(string message, System.Exception inner, int errorCode) { }
         public ActiveDirectoryOperationException(string message, int errorCode) { }
         public int ErrorCode { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     public abstract partial class ActiveDirectoryPartition : System.IDisposable
@@ -950,7 +937,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public int ErrorCode { get { throw null; } }
         public override string Message { get { throw null; } }
         public string Name { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
@@ -1138,37 +1125,58 @@ namespace System.DirectoryServices.ActiveDirectory
         Rpc = 0,
         Smtp = 1,
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class AdamInstance : System.DirectoryServices.ActiveDirectory.DirectoryServer
     {
         internal AdamInstance() { }
         public System.DirectoryServices.ActiveDirectory.ConfigurationSet ConfigurationSet { get { throw null; } }
         public string DefaultPartition { get { throw null; } set { } }
         public string HostName { get { throw null; } }
-        public override System.DirectoryServices.ActiveDirectory.ReplicationConnectionCollection InboundConnections { get { throw null; } }
-        public override string IPAddress { get { throw null; } }
+        public override System.DirectoryServices.ActiveDirectory.ReplicationConnectionCollection InboundConnections { [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]get { throw null; } }
+        public override string IPAddress { [System.Net.DnsPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]get { throw null; } }
         public int LdapPort { get { throw null; } }
-        public override System.DirectoryServices.ActiveDirectory.ReplicationConnectionCollection OutboundConnections { get { throw null; } }
+        public override System.DirectoryServices.ActiveDirectory.ReplicationConnectionCollection OutboundConnections { [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]get { throw null; } }
         public System.DirectoryServices.ActiveDirectory.AdamRoleCollection Roles { get { throw null; } }
-        public override string SiteName { get { throw null; } }
+        public override string SiteName { [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]get { throw null; } }
         public int SslPort { get { throw null; } }
-        public override System.DirectoryServices.ActiveDirectory.SyncUpdateCallback SyncFromAllServersCallback { get { throw null; } set { } }
+        public override System.DirectoryServices.ActiveDirectory.SyncUpdateCallback SyncFromAllServersCallback { [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]get { throw null; } [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true), System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]set { } }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override void CheckReplicationConsistency() { }
         protected override void Dispose(bool disposing) { }
         ~AdamInstance() { }
         public static System.DirectoryServices.ActiveDirectory.AdamInstanceCollection FindAll(System.DirectoryServices.ActiveDirectory.DirectoryContext context, string partitionName) { throw null; }
         public static System.DirectoryServices.ActiveDirectory.AdamInstance FindOne(System.DirectoryServices.ActiveDirectory.DirectoryContext context, string partitionName) { throw null; }
         public static System.DirectoryServices.ActiveDirectory.AdamInstance GetAdamInstance(System.DirectoryServices.ActiveDirectory.DirectoryContext context) { throw null; }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override System.DirectoryServices.ActiveDirectory.ReplicationNeighborCollection GetAllReplicationNeighbors() { throw null; }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override System.DirectoryServices.ActiveDirectory.ReplicationFailureCollection GetReplicationConnectionFailures() { throw null; }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override System.DirectoryServices.ActiveDirectory.ReplicationCursorCollection GetReplicationCursors(string partition) { throw null; }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override System.DirectoryServices.ActiveDirectory.ActiveDirectoryReplicationMetadata GetReplicationMetadata(string objectPath) { throw null; }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override System.DirectoryServices.ActiveDirectory.ReplicationNeighborCollection GetReplicationNeighbors(string partition) { throw null; }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override System.DirectoryServices.ActiveDirectory.ReplicationOperationInformation GetReplicationOperationInformation() { throw null; }
         public void Save() { }
         public void SeizeRoleOwnership(System.DirectoryServices.ActiveDirectory.AdamRole role) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override void SyncReplicaFromAllServers(string partition, System.DirectoryServices.ActiveDirectory.SyncFromAllServersOptions options) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override void SyncReplicaFromServer(string partition, string sourceServer) { }
         public void TransferRoleOwnership(System.DirectoryServices.ActiveDirectory.AdamRole role) { }
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
+        [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         public override void TriggerSyncReplicaFromNeighbors(string partition) { }
     }
     public partial class AdamInstanceCollection : System.Collections.ReadOnlyCollectionBase
@@ -1243,6 +1251,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public void CopyTo(System.DirectoryServices.ActiveDirectory.AttributeMetadata[] metadata, int index) { }
         public int IndexOf(System.DirectoryServices.ActiveDirectory.AttributeMetadata metadata) { throw null; }
     }
+    [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
     public partial class ConfigurationSet
     {
         internal ConfigurationSet() { }
@@ -1267,7 +1276,6 @@ namespace System.DirectoryServices.ActiveDirectory
         public void SetSecurityLevel(System.DirectoryServices.ActiveDirectory.ReplicationSecurityLevel securityLevel) { }
         public override string ToString() { throw null; }
     }
-    [System.Security.Permissions.EnvironmentPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
     public partial class DirectoryContext
     {
         [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
@@ -1572,7 +1580,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public ForestTrustCollisionException(string message, System.Exception inner) { }
         public ForestTrustCollisionException(string message, System.Exception inner, System.DirectoryServices.ActiveDirectory.ForestTrustRelationshipCollisionCollection collisions) { }
         public System.DirectoryServices.ActiveDirectory.ForestTrustRelationshipCollisionCollection Collisions { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     public enum ForestTrustCollisionType
@@ -1967,7 +1975,7 @@ namespace System.DirectoryServices.ActiveDirectory
         public SyncFromAllServersOperationException(string message, System.Exception inner) { }
         public SyncFromAllServersOperationException(string message, System.Exception inner, System.DirectoryServices.ActiveDirectory.SyncFromAllServersErrorInformation[] errors) { }
         public System.DirectoryServices.ActiveDirectory.SyncFromAllServersErrorInformation[] ErrorInformation { get { throw null; } }
-        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, SerializationFormatter=true)]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, SerializationFormatter=true)]
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext) { }
     }
     [System.FlagsAttribute]

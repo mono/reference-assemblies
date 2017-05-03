@@ -11,7 +11,7 @@
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Json.Microsoft.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("")]
 [assembly:System.Reflection.AssemblyFileVersionAttribute("4.0.0.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Microsoft ASP.NET MVC")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Json")]
 [assembly:System.Reflection.AssemblyTrademarkAttribute("")]
