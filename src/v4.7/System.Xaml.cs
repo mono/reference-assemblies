@@ -185,6 +185,12 @@ namespace System.Windows.Markup
         protected MarkupExtension() { }
         public abstract object ProvideValue(System.IServiceProvider serviceProvider);
     }
+    public sealed partial class MarkupExtensionBracketCharactersAttribute : System.Attribute
+    {
+        public MarkupExtensionBracketCharactersAttribute(char openingBracket, char closingBracket) { }
+        public char ClosingBracket { get { throw null; } }
+        public char OpeningBracket { get { throw null; } }
+    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(4), AllowMultiple=false, Inherited=true)]
     public sealed partial class MarkupExtensionReturnTypeAttribute : System.Attribute
     {
@@ -682,6 +688,7 @@ namespace System.Xaml
         public bool IsUnknown { get { throw null; } }
         public bool IsWriteOnly { get { throw null; } }
         public bool IsWritePublic { get { throw null; } }
+        public System.Collections.Generic.IReadOnlyDictionary<char, char> MarkupExtensionBracketCharacters { get { throw null; } }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         public string PreferredXamlNamespace { get { throw null; } }
         public System.ComponentModel.DesignerSerializationVisibility SerializationVisibility { get { throw null; } }
@@ -705,6 +712,7 @@ namespace System.Xaml
         protected virtual bool LookupIsUnknown() { throw null; }
         protected virtual bool LookupIsWriteOnly() { throw null; }
         protected virtual bool LookupIsWritePublic() { throw null; }
+        protected virtual System.Collections.Generic.IReadOnlyDictionary<char, char> LookupMarkupExtensionBracketCharacters() { throw null; }
         protected virtual System.Xaml.XamlType LookupTargetType() { throw null; }
         protected virtual System.Xaml.XamlType LookupType() { throw null; }
         protected virtual System.Xaml.Schema.XamlValueConverter<System.ComponentModel.TypeConverter> LookupTypeConverter() { throw null; }

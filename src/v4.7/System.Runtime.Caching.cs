@@ -158,6 +158,7 @@ namespace System.Runtime.Caching
     public partial class MemoryCache : System.Runtime.Caching.ObjectCache, System.Collections.IEnumerable, System.IDisposable
     {
         public MemoryCache(string name, System.Collections.Specialized.NameValueCollection config=null) { }
+        public MemoryCache(string name, System.Collections.Specialized.NameValueCollection config, bool ignoreConfigSection) { }
         public long CacheMemoryLimit { get { throw null; } }
         public static System.Runtime.Caching.MemoryCache Default { get { throw null; } }
         public override System.Runtime.Caching.DefaultCacheCapabilities DefaultCacheCapabilities { get { throw null; } }
@@ -176,7 +177,9 @@ namespace System.Runtime.Caching
         public override System.Runtime.Caching.CacheItem GetCacheItem(string key, string regionName=null) { throw null; }
         public override long GetCount(string regionName=null) { throw null; }
         protected override System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string, object>> GetEnumerator() { throw null; }
+        public long GetLastSize(string regionName=null) { throw null; }
         public override System.Collections.Generic.IDictionary<string, object> GetValues(System.Collections.Generic.IEnumerable<string> keys, string regionName=null) { throw null; }
+        public object Remove(string key, System.Runtime.Caching.CacheEntryRemovedReason reason, string regionName=null) { throw null; }
         public override object Remove(string key, string regionName=null) { throw null; }
         public override void Set(System.Runtime.Caching.CacheItem item, System.Runtime.Caching.CacheItemPolicy policy) { }
         public override void Set(string key, object value, System.DateTimeOffset absoluteExpiration, string regionName=null) { }

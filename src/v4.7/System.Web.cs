@@ -157,46 +157,6 @@ namespace System
         public string Comment { get { throw null; } }
     }
 }
-namespace System.Data.Design
-{
-    public sealed partial class TypedDataSetGenerator
-    {
-        internal TypedDataSetGenerator() { }
-        [System.MonoTODOAttribute]
-        public static System.Collections.Generic.ICollection<System.Reflection.Assembly> ReferencedAssemblies { get { throw null; } }
-        public static string Generate(System.Data.DataSet dataSet, System.CodeDom.CodeNamespace codeNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
-        public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider) { throw null; }
-        [System.MonoTODOAttribute]
-        public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders) { }
-        [System.MonoTODOAttribute]
-        public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Collections.Hashtable customDBProviders, System.Data.Design.TypedDataSetGenerator.GenerateOption option) { }
-        [System.MonoTODOAttribute]
-        public static void Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Common.DbProviderFactory specifiedFactory) { }
-        [System.MonoTODOAttribute]
-        public static string Generate(string inputFileContent, System.CodeDom.CodeCompileUnit compileUnit, System.CodeDom.CodeNamespace mainNamespace, System.CodeDom.Compiler.CodeDomProvider codeProvider, System.Data.Design.TypedDataSetGenerator.GenerateOption option) { throw null; }
-        [System.MonoTODOAttribute]
-        public static string GetProviderName(string inputFileContent) { throw null; }
-        [System.MonoTODOAttribute]
-        public static string GetProviderName(string inputFileContent, string tableName) { throw null; }
-        [System.FlagsAttribute]
-        public enum GenerateOption
-        {
-            HierarchicalUpdate = 1,
-            LinqOverTypedDatasets = 2,
-            None = 0,
-        }
-    }
-}
-namespace System.Resources
-{
-    public partial class ResXResourceSet : System.Resources.ResourceSet
-    {
-        public ResXResourceSet(System.IO.Stream stream) { }
-        public ResXResourceSet(string fileName) { }
-        public override System.Type GetDefaultReader() { throw null; }
-        public override System.Type GetDefaultWriter() { throw null; }
-    }
-}
 namespace System.Web
 {
     public enum ApplicationShutdownReason
@@ -2678,8 +2638,21 @@ namespace System.Web.Caching
         protected internal void FinishInit() { }
         public virtual string[] GetFileDependencies() { throw null; }
         public virtual string GetUniqueID() { throw null; }
+        public void ItemRemoved() { }
+        public void KeepDependenciesAlive() { }
         protected void NotifyDependencyChanged(object sender, System.EventArgs e) { }
+        public void SetCacheDependencyChanged(System.Action<object, System.EventArgs> dependencyChangedAction) { }
         protected void SetUtcLastModified(System.DateTime utcLastModified) { }
+        public bool TakeOwnership() { throw null; }
+    }
+    public partial class CacheInsertOptions
+    {
+        public CacheInsertOptions() { }
+        public System.DateTime AbsoluteExpiration { get { throw null; } set { } }
+        public System.Web.Caching.CacheDependency Dependencies { get { throw null; } set { } }
+        public System.Web.Caching.CacheItemRemovedCallback OnRemovedCallback { get { throw null; } set { } }
+        public System.Web.Caching.CacheItemPriority Priority { get { throw null; } set { } }
+        public System.TimeSpan SlidingExpiration { get { throw null; } set { } }
     }
     public enum CacheItemPriority
     {
@@ -2704,6 +2677,23 @@ namespace System.Web.Caching
     {
         DependencyChanged = 2,
         Expired = 1,
+    }
+    public abstract partial class CacheStoreProvider : System.Configuration.Provider.ProviderBase, System.IDisposable
+    {
+        protected CacheStoreProvider() { }
+        public abstract long ItemCount { get; }
+        public abstract long SizeInBytes { get; }
+        public abstract object Add(string key, object item, System.Web.Caching.CacheInsertOptions options);
+        public abstract bool AddDependent(string key, System.Web.Caching.CacheDependency dependency, out System.DateTime utcLastUpdated);
+        public abstract void Dispose();
+        public abstract object Get(string key);
+        public abstract System.Collections.IDictionaryEnumerator GetEnumerator();
+        public abstract new void Initialize(string name, System.Collections.Specialized.NameValueCollection config);
+        public abstract void Insert(string key, object item, System.Web.Caching.CacheInsertOptions options);
+        public abstract object Remove(string key);
+        public abstract object Remove(string key, System.Web.Caching.CacheItemRemovedReason reason);
+        public abstract void RemoveDependent(string key, System.Web.Caching.CacheDependency dependency);
+        public abstract long Trim(int percent);
     }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]
     [System.SerializableAttribute]
@@ -2777,6 +2767,7 @@ namespace System.Web.Caching
     public static partial class OutputCacheUtility
     {
         public static System.Web.Caching.CacheDependency CreateCacheDependency(System.Web.HttpResponse response) { throw null; }
+        public static void FlushKernelCache(string cacheKey) { }
         public static System.Collections.ArrayList GetContentBuffers(System.Web.HttpResponse response) { throw null; }
         public static System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<System.Web.HttpCacheValidateHandler, object>> GetValidationCallbacks(System.Web.HttpResponse response) { throw null; }
         public static void SetContentBuffers(System.Web.HttpResponse response, System.Collections.ArrayList buffers) { }
@@ -3546,6 +3537,9 @@ namespace System.Web.Configuration
     public sealed partial class CacheSection : System.Configuration.ConfigurationSection
     {
         public CacheSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("defaultProvider", DefaultValue=null)]
+        [System.Configuration.StringValidatorAttribute(MinLength=1)]
+        public string DefaultProvider { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("disableExpiration", DefaultValue="False")]
         public bool DisableExpiration { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("disableMemoryCollection", DefaultValue="False")]
@@ -3560,6 +3554,8 @@ namespace System.Web.Configuration
         [System.Configuration.ConfigurationPropertyAttribute("privateBytesPollTime", DefaultValue="00:02:00")]
         public System.TimeSpan PrivateBytesPollTime { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("providers")]
+        public System.Configuration.ProviderSettingsCollection Providers { get { throw null; } }
     }
     public sealed partial class ClientTarget : System.Configuration.ConfigurationElement
     {
@@ -5795,6 +5791,11 @@ namespace System.Web.Hosting
         public void ShutdownApplication(string appId) { }
         public void StopObject(string appId, System.Type type) { }
     }
+    public sealed partial class ApplicationMonitors
+    {
+        internal ApplicationMonitors() { }
+        public System.Web.Hosting.IApplicationMonitor MemoryMonitor { get { throw null; } set { } }
+    }
     public sealed partial class AppManagerAppDomainFactory : System.Web.Hosting.IAppManagerAppDomainFactory
     {
         public AppManagerAppDomainFactory() { }
@@ -5803,6 +5804,17 @@ namespace System.Web.Hosting
         public object Create(string appId, string appPath) { throw null; }
         public void Stop() { }
     }
+    public sealed partial class AspNetMemoryMonitor : System.IDisposable, System.IObservable<System.Web.Hosting.LowPhysicalMemoryInfo>, System.IObservable<System.Web.Hosting.RecycleLimitInfo>, System.Web.Hosting.IApplicationMonitor
+    {
+        internal AspNetMemoryMonitor() { }
+        public System.IObserver<System.Web.Hosting.LowPhysicalMemoryInfo> DefaultLowPhysicalMemoryObserver { get { throw null; } set { } }
+        public System.IObserver<System.Web.Hosting.RecycleLimitInfo> DefaultRecycleLimitObserver { get { throw null; } set { } }
+        public void Dispose() { }
+        public void Start() { }
+        public void Stop() { }
+        public System.IDisposable Subscribe(System.IObserver<System.Web.Hosting.LowPhysicalMemoryInfo> observer) { throw null; }
+        public System.IDisposable Subscribe(System.IObserver<System.Web.Hosting.RecycleLimitInfo> observer) { throw null; }
+    }
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Level=(System.Web.AspNetHostingPermissionLevel)(400))]
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Level=(System.Web.AspNetHostingPermissionLevel)(500))]
     public sealed partial class HostingEnvironment : System.MarshalByRefObject
@@ -5810,6 +5822,7 @@ namespace System.Web.Hosting
         public HostingEnvironment() { }
         public static System.Web.Hosting.IApplicationHost ApplicationHost { get { throw null; } }
         public static string ApplicationID { get { throw null; } }
+        public static System.Web.Hosting.ApplicationMonitors ApplicationMonitors { get { throw null; } }
         public static string ApplicationPhysicalPath { get { throw null; } }
         public static string ApplicationVirtualPath { get { throw null; } }
         public static System.Web.Caching.Cache Cache { get { throw null; } }
@@ -5914,6 +5927,11 @@ namespace System.Web.Hosting
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Unrestricted=true)]
         void MessageReceived();
+    }
+    public partial interface IApplicationMonitor : System.IDisposable
+    {
+        void Start();
+        void Stop();
     }
     public partial interface IApplicationPreloadManager
     {
@@ -6046,6 +6064,20 @@ namespace System.Web.Hosting
     {
         System.Action Suspend();
     }
+    public sealed partial class LowPhysicalMemoryInfo
+    {
+        public LowPhysicalMemoryInfo(int currentPercentUsed, int percentLimit) { }
+        public int CurrentPercentUsed { get { throw null; } }
+        public int PercentLimit { get { throw null; } }
+        public bool RequestGC { get { throw null; } set { } }
+    }
+    public partial class LowPhysicalMemoryObserver : System.IObserver<System.Web.Hosting.LowPhysicalMemoryInfo>
+    {
+        public LowPhysicalMemoryObserver() { }
+        public void OnCompleted() { }
+        public void OnError(System.Exception error) { }
+        public void OnNext(System.Web.Hosting.LowPhysicalMemoryInfo lowMemoryInfo) { }
+    }
     public sealed partial class ProcessHost : System.MarshalByRefObject, System.Web.Hosting.IAdphManager, System.Web.Hosting.IApplicationPreloadManager, System.Web.Hosting.IPphManager, System.Web.Hosting.IProcessHost, System.Web.Hosting.IProcessHostIdleAndHealthCheck
     {
         internal ProcessHost() { }
@@ -6078,6 +6110,42 @@ namespace System.Web.Hosting
         public abstract void StartListenerChannel(System.Web.Hosting.IListenerChannelCallback listenerChannelCallback, System.Web.Hosting.IAdphManager AdphManager);
         public abstract void StopListenerChannel(int listenerChannelId, bool immediate);
         public abstract void StopProtocol(bool immediate);
+    }
+    public sealed partial class RecycleLimitInfo
+    {
+        public RecycleLimitInfo(long currentPrivateBytes, long recycleLimit, System.Web.Hosting.RecycleLimitNotificationFrequency recycleLimitNearFrequency) { }
+        public long CurrentPrivateBytes { get { throw null; } }
+        public long RecycleLimit { get { throw null; } }
+        public bool RequestGC { get { throw null; } set { } }
+        public System.Web.Hosting.RecycleLimitNotificationFrequency TrimFrequency { get { throw null; } }
+    }
+    public partial class RecycleLimitMonitor : System.MarshalByRefObject
+    {
+        internal RecycleLimitMonitor() { }
+        public void Dispose() { }
+        public override object InitializeLifetimeService() { throw null; }
+        public partial class RecycleLimitMonitorSingleton : System.MarshalByRefObject
+        {
+            internal RecycleLimitMonitorSingleton() { }
+            public void Dispose() { }
+            public static void EnsureCreated() { }
+            public override object InitializeLifetimeService() { throw null; }
+            public void RegisterProxyAndStart(System.Web.Hosting.RecycleLimitMonitor proxy, string applicationID) { }
+            public void UnregisterProxyAndStop(System.Web.Hosting.RecycleLimitMonitor proxy) { }
+        }
+    }
+    public enum RecycleLimitNotificationFrequency
+    {
+        High = 0,
+        Low = 2,
+        Medium = 1,
+    }
+    public partial class RecycleLimitObserver : System.IObserver<System.Web.Hosting.RecycleLimitInfo>
+    {
+        public RecycleLimitObserver() { }
+        public void OnCompleted() { }
+        public void OnError(System.Exception error) { }
+        public void OnNext(System.Web.Hosting.RecycleLimitInfo recycleLimitInfo) { }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Level=(System.Web.AspNetHostingPermissionLevel)(200))]

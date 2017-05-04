@@ -3236,9 +3236,11 @@ namespace System.Security.Cryptography
     {
         public CngAlgorithm(string algorithm) { }
         public string Algorithm { get { throw null; } }
+        public static System.Security.Cryptography.CngAlgorithm ECDiffieHellman { get { throw null; } }
         public static System.Security.Cryptography.CngAlgorithm ECDiffieHellmanP256 { get { throw null; } }
         public static System.Security.Cryptography.CngAlgorithm ECDiffieHellmanP384 { get { throw null; } }
         public static System.Security.Cryptography.CngAlgorithm ECDiffieHellmanP521 { get { throw null; } }
+        public static System.Security.Cryptography.CngAlgorithm ECDsa { get { throw null; } }
         public static System.Security.Cryptography.CngAlgorithm ECDsaP256 { get { throw null; } }
         public static System.Security.Cryptography.CngAlgorithm ECDsaP384 { get { throw null; } }
         public static System.Security.Cryptography.CngAlgorithm ECDsaP521 { get { throw null; } }
@@ -3339,6 +3341,8 @@ namespace System.Security.Cryptography
     public sealed partial class CngKeyBlobFormat : System.IEquatable<System.Security.Cryptography.CngKeyBlobFormat>
     {
         public CngKeyBlobFormat(string format) { }
+        public static System.Security.Cryptography.CngKeyBlobFormat EccFullPrivateBlob { get { throw null; } }
+        public static System.Security.Cryptography.CngKeyBlobFormat EccFullPublicBlob { get { throw null; } }
         public static System.Security.Cryptography.CngKeyBlobFormat EccPrivateBlob { get { throw null; } }
         public static System.Security.Cryptography.CngKeyBlobFormat EccPublicBlob { get { throw null; } }
         public string Format { get { throw null; } }
@@ -3474,6 +3478,57 @@ namespace System.Security.Cryptography
         public override void ImportParameters(System.Security.Cryptography.DSAParameters parameters) { }
         public override bool VerifySignature(byte[] rgbHash, byte[] rgbSignature) { throw null; }
     }
+    public partial struct ECCurve
+    {
+        public byte[] A;
+        public byte[] B;
+        public byte[] Cofactor;
+        public System.Security.Cryptography.ECCurve.ECCurveType CurveType;
+        public System.Security.Cryptography.ECPoint G;
+        public System.Nullable<System.Security.Cryptography.HashAlgorithmName> Hash;
+        public byte[] Order;
+        public byte[] Polynomial;
+        public byte[] Prime;
+        public byte[] Seed;
+        public bool IsCharacteristic2 { get { throw null; } }
+        public bool IsExplicit { get { throw null; } }
+        public bool IsNamed { get { throw null; } }
+        public bool IsPrime { get { throw null; } }
+        public System.Security.Cryptography.Oid Oid { get { throw null; } }
+        public static System.Security.Cryptography.ECCurve CreateFromFriendlyName(string oidFriendlyName) { throw null; }
+        public static System.Security.Cryptography.ECCurve CreateFromOid(System.Security.Cryptography.Oid curveOid) { throw null; }
+        public static System.Security.Cryptography.ECCurve CreateFromValue(string oidValue) { throw null; }
+        public void Validate() { }
+        public enum ECCurveType
+        {
+            Characteristic2 = 4,
+            Implicit = 0,
+            Named = 5,
+            PrimeMontgomery = 3,
+            PrimeShortWeierstrass = 1,
+            PrimeTwistedEdwards = 2,
+        }
+        public static partial class NamedCurves
+        {
+            public static System.Security.Cryptography.ECCurve brainpoolP160r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP160t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP192r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP192t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP224r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP224t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP256r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP256t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP320r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP320t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP384r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP384t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP512r1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve brainpoolP512t1 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve nistP256 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve nistP384 { get { throw null; } }
+            public static System.Security.Cryptography.ECCurve nistP521 { get { throw null; } }
+        }
+    }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public abstract partial class ECDiffieHellman : System.Security.Cryptography.AsymmetricAlgorithm
     {
@@ -3482,6 +3537,8 @@ namespace System.Security.Cryptography
         public abstract System.Security.Cryptography.ECDiffieHellmanPublicKey PublicKey { get; }
         public override string SignatureAlgorithm { get { throw null; } }
         public static new System.Security.Cryptography.ECDiffieHellman Create() { throw null; }
+        public static System.Security.Cryptography.ECDiffieHellman Create(System.Security.Cryptography.ECCurve curve) { throw null; }
+        public static System.Security.Cryptography.ECDiffieHellman Create(System.Security.Cryptography.ECParameters parameters) { throw null; }
         public static new System.Security.Cryptography.ECDiffieHellman Create(string algorithm) { throw null; }
         public byte[] DeriveKeyFromHash(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public virtual byte[] DeriveKeyFromHash(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] secretPrepend, byte[] secretAppend) { throw null; }
@@ -3489,12 +3546,17 @@ namespace System.Security.Cryptography
         public virtual byte[] DeriveKeyFromHmac(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] hmacKey, byte[] secretPrepend, byte[] secretAppend) { throw null; }
         public virtual byte[] DeriveKeyMaterial(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
         public virtual byte[] DeriveKeyTls(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey, byte[] prfLabel, byte[] prfSeed) { throw null; }
+        public virtual System.Security.Cryptography.ECParameters ExportExplicitParameters(bool includePrivateParameters) { throw null; }
+        public virtual System.Security.Cryptography.ECParameters ExportParameters(bool includePrivateParameters) { throw null; }
+        public virtual void GenerateKey(System.Security.Cryptography.ECCurve curve) { }
+        public virtual void ImportParameters(System.Security.Cryptography.ECParameters parameters) { }
     }
     public sealed partial class ECDiffieHellmanCng : System.Security.Cryptography.ECDiffieHellman
     {
         public ECDiffieHellmanCng() { }
         public ECDiffieHellmanCng(int keySize) { }
         public ECDiffieHellmanCng(System.Security.Cryptography.CngKey key) { }
+        public ECDiffieHellmanCng(System.Security.Cryptography.ECCurve curve) { }
         public System.Security.Cryptography.CngAlgorithm HashAlgorithm { get { throw null; } set { } }
         public byte[] HmacKey { get { throw null; } set { } }
         public System.Security.Cryptography.CngKey Key { get { throw null; } }
@@ -3513,16 +3575,22 @@ namespace System.Security.Cryptography
         public Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle DeriveSecretAgreementHandle(System.Security.Cryptography.CngKey otherPartyPublicKey) { throw null; }
         public Microsoft.Win32.SafeHandles.SafeNCryptSecretHandle DeriveSecretAgreementHandle(System.Security.Cryptography.ECDiffieHellmanPublicKey otherPartyPublicKey) { throw null; }
         protected override void Dispose(bool disposing) { }
+        public override System.Security.Cryptography.ECParameters ExportExplicitParameters(bool includePrivateParameters) { throw null; }
+        public override System.Security.Cryptography.ECParameters ExportParameters(bool includePrivateParameters) { throw null; }
         public override void FromXmlString(string xmlString) { }
         public void FromXmlString(string xml, System.Security.Cryptography.ECKeyXmlFormat format) { }
+        public override void GenerateKey(System.Security.Cryptography.ECCurve curve) { }
+        public override void ImportParameters(System.Security.Cryptography.ECParameters parameters) { }
         public override string ToXmlString(bool includePrivateParameters) { throw null; }
         public string ToXmlString(System.Security.Cryptography.ECKeyXmlFormat format) { throw null; }
     }
     public sealed partial class ECDiffieHellmanCngPublicKey : System.Security.Cryptography.ECDiffieHellmanPublicKey
     {
-        internal ECDiffieHellmanCngPublicKey() : base (default(byte[])) { }
+        internal ECDiffieHellmanCngPublicKey() { }
         public System.Security.Cryptography.CngKeyBlobFormat BlobFormat { get { throw null; } }
         protected override void Dispose(bool disposing) { }
+        public override System.Security.Cryptography.ECParameters ExportExplicitParameters() { throw null; }
+        public override System.Security.Cryptography.ECParameters ExportParameters() { throw null; }
         public static System.Security.Cryptography.ECDiffieHellmanPublicKey FromByteArray(byte[] publicKeyBlob, System.Security.Cryptography.CngKeyBlobFormat format) { throw null; }
         public static System.Security.Cryptography.ECDiffieHellmanCngPublicKey FromXmlString(string xml) { throw null; }
         public System.Security.Cryptography.CngKey Import() { throw null; }
@@ -3538,9 +3606,12 @@ namespace System.Security.Cryptography
     [System.SerializableAttribute]
     public abstract partial class ECDiffieHellmanPublicKey : System.IDisposable
     {
+        protected ECDiffieHellmanPublicKey() { }
         protected ECDiffieHellmanPublicKey(byte[] keyBlob) { }
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
+        public virtual System.Security.Cryptography.ECParameters ExportExplicitParameters() { throw null; }
+        public virtual System.Security.Cryptography.ECParameters ExportParameters() { throw null; }
         public virtual byte[] ToByteArray() { throw null; }
         public virtual string ToXmlString() { throw null; }
     }
@@ -3551,9 +3622,15 @@ namespace System.Security.Cryptography
         public override string KeyExchangeAlgorithm { get { throw null; } }
         public override string SignatureAlgorithm { get { throw null; } }
         public static new System.Security.Cryptography.ECDsa Create() { throw null; }
+        public static System.Security.Cryptography.ECDsa Create(System.Security.Cryptography.ECCurve curve) { throw null; }
+        public static System.Security.Cryptography.ECDsa Create(System.Security.Cryptography.ECParameters parameters) { throw null; }
         public static new System.Security.Cryptography.ECDsa Create(string algorithm) { throw null; }
+        public virtual System.Security.Cryptography.ECParameters ExportExplicitParameters(bool includePrivateParameters) { throw null; }
+        public virtual System.Security.Cryptography.ECParameters ExportParameters(bool includePrivateParameters) { throw null; }
+        public virtual void GenerateKey(System.Security.Cryptography.ECCurve curve) { }
         protected virtual byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         protected virtual byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public virtual void ImportParameters(System.Security.Cryptography.ECParameters parameters) { }
         public virtual byte[] SignData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public virtual byte[] SignData(byte[] data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public virtual byte[] SignData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
@@ -3570,13 +3647,18 @@ namespace System.Security.Cryptography
         public ECDsaCng(int keySize) { }
         [System.Security.SecuritySafeCriticalAttribute]
         public ECDsaCng(System.Security.Cryptography.CngKey key) { }
+        public ECDsaCng(System.Security.Cryptography.ECCurve curve) { }
         public System.Security.Cryptography.CngAlgorithm HashAlgorithm { get { throw null; } set { } }
         public System.Security.Cryptography.CngKey Key { get { throw null; } }
         protected override void Dispose(bool disposing) { }
+        public override System.Security.Cryptography.ECParameters ExportExplicitParameters(bool includePrivateParameters) { throw null; }
+        public override System.Security.Cryptography.ECParameters ExportParameters(bool includePrivateParameters) { throw null; }
         public override void FromXmlString(string xmlString) { }
         public void FromXmlString(string xml, System.Security.Cryptography.ECKeyXmlFormat format) { }
+        public override void GenerateKey(System.Security.Cryptography.ECCurve curve) { }
         protected override byte[] HashData(byte[] data, int offset, int count, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         protected override byte[] HashData(System.IO.Stream data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public override void ImportParameters(System.Security.Cryptography.ECParameters parameters) { }
         public byte[] SignData(byte[] data) { throw null; }
         public byte[] SignData(byte[] data, int offset, int count) { throw null; }
         public byte[] SignData(System.IO.Stream data) { throw null; }
@@ -3591,6 +3673,18 @@ namespace System.Security.Cryptography
     public enum ECKeyXmlFormat
     {
         Rfc4050 = 0,
+    }
+    public partial struct ECParameters
+    {
+        public System.Security.Cryptography.ECCurve Curve;
+        public byte[] D;
+        public System.Security.Cryptography.ECPoint Q;
+        public void Validate() { }
+    }
+    public partial struct ECPoint
+    {
+        public byte[] X;
+        public byte[] Y;
     }
     public sealed partial class ManifestSignatureInformation
     {

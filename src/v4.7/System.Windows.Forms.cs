@@ -2436,6 +2436,7 @@ namespace System.Windows.Forms
         protected virtual System.Drawing.Size DefaultMinimumSize { get { throw null; } }
         protected virtual System.Windows.Forms.Padding DefaultPadding { get { throw null; } }
         protected virtual System.Drawing.Size DefaultSize { get { throw null; } }
+        public int DeviceDpi { get { throw null; } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2627,6 +2628,8 @@ namespace System.Windows.Forms
         public event System.EventHandler CursorChanged { add { } remove { } }
         public event System.EventHandler DockChanged { add { } remove { } }
         public event System.EventHandler DoubleClick { add { } remove { } }
+        public event System.EventHandler DpiChangedAfterParent { add { } remove { } }
+        public event System.EventHandler DpiChangedBeforeParent { add { } remove { } }
         public event System.Windows.Forms.DragEventHandler DragDrop { add { } remove { } }
         public event System.Windows.Forms.DragEventHandler DragEnter { add { } remove { } }
         public event System.EventHandler DragLeave { add { } remove { } }
@@ -2762,6 +2765,7 @@ namespace System.Windows.Forms
         [System.MonoTODOAttribute("Only implemented for Win32, others always return false")]
         public static bool IsKeyLocked(System.Windows.Forms.Keys keyVal) { throw null; }
         public static bool IsMnemonic(char charCode, string text) { throw null; }
+        public int LogicalToDeviceUnits(int value) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void NotifyInvalidate(System.Drawing.Rectangle invalidatedArea) { }
         protected virtual void OnAutoSizeChanged(System.EventArgs e) { }
@@ -2797,6 +2801,10 @@ namespace System.Windows.Forms
         protected virtual void OnDockChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnDoubleClick(System.EventArgs e) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        protected virtual void OnDpiChangedAfterParent(System.EventArgs e) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        protected virtual void OnDpiChangedBeforeParent(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnDragDrop(System.Windows.Forms.DragEventArgs drgevent) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -2951,6 +2959,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected static bool ReflectMessage(System.IntPtr hWnd, ref System.Windows.Forms.Message m) { throw null; }
         public virtual void Refresh() { }
+        protected virtual void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public virtual void ResetBackColor() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -2990,6 +2999,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         [System.ObsoleteAttribute]
         public void Scale(float dx, float dy) { }
+        public void ScaleBitmapLogicalToDevice(ref System.Drawing.Bitmap logicalBitmap) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -6767,6 +6777,15 @@ namespace System.Windows.Forms
             public override void RemoveAt(int item) { }
         }
     }
+    public sealed partial class DpiChangedEventArgs : System.ComponentModel.CancelEventArgs
+    {
+        internal DpiChangedEventArgs() { }
+        public int DeviceDpiNew { get { throw null; } }
+        public int DeviceDpiOld { get { throw null; } }
+        public System.Drawing.Rectangle SuggestedRectangle { get { throw null; } }
+        public override string ToString() { throw null; }
+    }
+    public delegate void DpiChangedEventHandler(object sender, System.Windows.Forms.DpiChangedEventArgs e);
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum DragAction
     {
@@ -7194,7 +7213,6 @@ namespace System.Windows.Forms
         public bool AllowVectorFonts { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool AllowVerticalFonts { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [Black]")]
         public System.Drawing.Color Color { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool FixedPitchOnly { get { throw null; } set { } }
@@ -7406,6 +7424,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public event System.ComponentModel.CancelEventHandler Closing { add { } remove { } }
         public event System.EventHandler Deactivate { add { } remove { } }
+        public event System.Windows.Forms.DpiChangedEventHandler DpiChanged { add { } remove { } }
         public event System.Windows.Forms.FormClosedEventHandler FormClosed { add { } remove { } }
         public event System.Windows.Forms.FormClosingEventHandler FormClosing { add { } remove { } }
         [System.ComponentModel.BrowsableAttribute(true)]
@@ -7472,6 +7491,8 @@ namespace System.Windows.Forms
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnDeactivate(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        protected virtual void OnDpiChanged(System.Windows.Forms.DpiChangedEventArgs e) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnEnabledChanged(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnEnter(System.EventArgs e) { }
@@ -7481,6 +7502,8 @@ namespace System.Windows.Forms
         protected virtual void OnFormClosed(System.Windows.Forms.FormClosedEventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected virtual void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e) { }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
+        protected virtual bool OnGetDpiScaledSize(int deviceDpiOld, int deviceDpiNew, ref System.Drawing.Size desiredSize) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         protected override void OnHandleCreated(System.EventArgs e) { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
@@ -9285,6 +9308,7 @@ namespace System.Windows.Forms
         public override void Refresh() { }
         protected override void RefreshItem(int index) { }
         protected override void RefreshItems() { }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public override void ResetBackColor() { }
         public override void ResetForeColor() { }
         protected override void ScaleControl(System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified) { }
@@ -10879,6 +10903,7 @@ namespace System.Windows.Forms
         public void RemoveAnnuallyBoldedDate(System.DateTime date) { }
         public void RemoveBoldedDate(System.DateTime date) { }
         public void RemoveMonthlyBoldedDate(System.DateTime date) { }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public void SetCalendarDimensions(int x, int y) { }
         public void SetDate(System.DateTime date) { }
@@ -12144,17 +12169,14 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
         public override System.Drawing.Color ForeColor { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [Control]")]
         public System.Drawing.Color HelpBackColor { get { throw null; } set { } }
         public System.Drawing.Color HelpBorderColor { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [ControlText]")]
         public System.Drawing.Color HelpForeColor { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         [System.ComponentModel.LocalizableAttribute(true)]
         public virtual bool HelpVisible { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool LargeButtons { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [InactiveBorder]")]
         public System.Drawing.Color LineColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -12197,10 +12219,8 @@ namespace System.Windows.Forms
         protected System.Windows.Forms.ToolStripRenderer ToolStripRenderer { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool UseCompatibleTextRendering { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [Window]")]
         public System.Drawing.Color ViewBackColor { get { throw null; } set { } }
         public System.Drawing.Color ViewBorderColor { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [WindowText]")]
         public System.Drawing.Color ViewForeColor { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
@@ -14072,6 +14092,10 @@ namespace System.Windows.Forms
         public static int VerticalScrollBarWidth { get { throw null; } }
         public static System.Drawing.Rectangle VirtualScreen { get { throw null; } }
         public static System.Drawing.Rectangle WorkingArea { get { throw null; } }
+        public static System.Drawing.Size GetBorderSizeForDpi(int dpi) { throw null; }
+        public static int GetHorizontalScrollBarHeightForDpi(int dpi) { throw null; }
+        public static System.Drawing.Font GetMenuFontForDpi(int dpi) { throw null; }
+        public static int GetVerticalScrollBarWidthForDpi(int dpi) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum SystemParameter
@@ -17581,10 +17605,8 @@ namespace System.Windows.Forms
         public int AutomaticDelay { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public int AutoPopDelay { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [Info]")]
         public System.Drawing.Color BackColor { get { throw null; } set { } }
         protected virtual System.Windows.Forms.CreateParams CreateParams { get { throw null; } }
-        [System.ComponentModel.DefaultValueAttribute("Color [InfoText]")]
         public System.Drawing.Color ForeColor { get { throw null; } set { } }
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public int InitialDelay { get { throw null; } set { } }
@@ -18047,7 +18069,6 @@ namespace System.Windows.Forms
         public int ItemHeight { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool LabelEdit { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute("Color [Black]")]
         public System.Drawing.Color LineColor { get { throw null; } set { } }
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(2))]
         [System.ComponentModel.LocalizableAttribute(true)]
@@ -18382,6 +18403,7 @@ namespace System.Windows.Forms
         protected virtual void OnTextBoxLostFocus(object source, System.EventArgs e) { }
         protected virtual void OnTextBoxResize(object source, System.EventArgs e) { }
         protected virtual void OnTextBoxTextChanged(object source, System.EventArgs e) { }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public void Select(int start, int length) { }
         public abstract void UpButton();
         protected abstract void UpdateEditText();
