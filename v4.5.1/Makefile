@@ -319,20 +319,3 @@ $(foreach asm, $(MSFINAL_KEY_ASSEMBLIES), $(eval $(call KEYFILE_TEMPLATE,$(asm),
 $(foreach asm, $(FACADE_ASSEMBLIES),      $(eval $(call KEYFILE_TEMPLATE,$(asm), $(MSFINAL_KEY))))
 
 $(foreach asm, $(ASSEMBLIES), $(eval $(call ASSEMBLY_TEMPLATE,$(asm))))
-
-KEY_ASSEMBLIES := $(MONO_KEY_ASSEMBLIES) $(ECMA_KEY_ASSEMBLIES) $(WINFX_KEY_ASSEMBLIES) $(MSFINAL_KEY_ASSEMBLIES)
-
-MISSING_KEY_ASSEMBLIES := $(filter-out $(KEY_ASSEMBLIES), $(ASSEMBLIES))
-
-print-missing:
-	@echo $(MISSING_KEY_ASSEMBLIES)
-	@echo $(words $(ASSEMBLIES))
-	@echo $(words $(KEY_ASSEMBLIES))
-
-gen-api:
-	for i in *.dll; do mono ../../api-snapshot/tools/genapi/GenAPI.exe -assembly:$$i -out:../src/v4.5 -typeforwardedTo -assemblyVersion -assemblyAttributes -headerFile:../../api-snapshot/profiles/license-header.txt -libPath:.; done
-#	for i in Facades/*.dll; do mono ../../api-snapshot/tools/genapi/GenAPI.exe -assembly:$$i -out:../src/v4.5/Facades -typeforwardedTo -assemblyVersion -assemblyAttributes -headerFile:../../api-snapshot/profiles/license-header.txt -libPath:.; done
-
-gen-api-info-xml:
-	for i in *.dll; do echo "INFO: `basename $$i`"; mono-api-info $$i -o=`basename $$i`.xml && sed -i '' '/attributes /d' `basename $$i`.xml && sed -i '' '/attribute .*CompilationRelaxationsAttribute/d' `basename $$i`.xml && sed -i '' '/attribute .*AssemblyDelaySignAttribute/d' `basename $$i`.xml && sed -i '' '/attribute .*AssemblyKeyFileAttribute/d' `basename $$i`.xml && python prettyprint.py `basename $$i`.xml && python prettyprint.py `basename $$i`.xml; done 
-
