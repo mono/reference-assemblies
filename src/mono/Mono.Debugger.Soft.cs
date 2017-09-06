@@ -236,6 +236,7 @@ namespace Mono.Debugger.Soft
         public System.Reflection.FieldAttributes Attributes { get { throw null; } }
         public Mono.Debugger.Soft.TypeMirror DeclaringType { get { throw null; } }
         public Mono.Debugger.Soft.TypeMirror FieldType { get { throw null; } }
+        public string FullName { get { throw null; } }
         public bool IsAssembly { get { throw null; } }
         public bool IsFamily { get { throw null; } }
         public bool IsFamilyAndAssembly { get { throw null; } }
@@ -541,6 +542,8 @@ namespace Mono.Debugger.Soft
         internal StackFrame() { }
         public int ColumnNumber { get { throw null; } }
         public Mono.Debugger.Soft.AppDomainMirror Domain { get { throw null; } }
+        public int EndColumnNumber { get { throw null; } }
+        public int EndLineNumber { get { throw null; } }
         public string FileName { get { throw null; } }
         public int ILOffset { get { throw null; } }
         public bool IsDebuggerInvoke { get { throw null; } }

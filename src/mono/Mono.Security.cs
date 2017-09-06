@@ -670,20 +670,6 @@ namespace Mono.Security.Interface
         Fatal = (byte)2,
         Warning = (byte)1,
     }
-    public partial class BufferOffsetSize : Mono.Security.Interface.SecretParameters, Mono.Security.Interface.IBufferOffsetSize
-    {
-        public BufferOffsetSize(byte[] buffer) { }
-        public BufferOffsetSize(byte[] buffer, int offset, int size) { }
-        public BufferOffsetSize(int size) { }
-        public byte[] Buffer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int EndOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int Offset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        public int Size { get { throw null; } }
-        protected override void Clear() { }
-        public byte[] GetBuffer() { throw null; }
-        protected void SetBuffer(byte[] buffer, int offset, int size) { }
-        public void TruncateTo(int newSize) { }
-    }
     public static partial class CertificateValidationHelper
     {
         public static bool SupportsTrustAnchors { get { throw null; } }
@@ -987,12 +973,6 @@ namespace Mono.Security.Interface
         Sha512 = 6,
         Unknown = 255,
     }
-    public partial interface IBufferOffsetSize
-    {
-        byte[] Buffer { get; }
-        int Offset { get; }
-        int Size { get; }
-    }
     public partial interface ICertificateValidator
     {
         Mono.Security.Interface.MonoTlsSettings Settings { get; }
@@ -1025,6 +1005,7 @@ namespace Mono.Security.Interface
         int ReadTimeout { get; set; }
         System.Security.Cryptography.X509Certificates.X509Certificate RemoteCertificate { get; }
         System.Security.Authentication.SslProtocols SslProtocol { get; }
+        System.Net.Security.SslStream SslStream { get; }
         System.Net.TransportContext TransportContext { get; }
         int WriteTimeout { get; set; }
         void AuthenticateAsClient(string targetHost);
@@ -1049,13 +1030,10 @@ namespace Mono.Security.Interface
         Mono.Security.Interface.MonoTlsConnectionInfo GetConnectionInfo();
         int Read(byte[] buffer, int offset, int count);
         void SetLength(long value);
+        System.Threading.Tasks.Task ShutdownAsync();
         void Write(byte[] buffer);
         void Write(byte[] buffer, int offset, int count);
-    }
-    public partial interface IMonoTlsEventSink
-    {
-        void Error(System.Exception exception);
-        void ReceivedCloseNotify();
+        System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken);
     }
     public enum MonoEncryptionPolicy
     {
@@ -1101,21 +1079,19 @@ namespace Mono.Security.Interface
         public static bool IsInitialized { get { throw null; } }
         public static System.Net.HttpListener CreateHttpListener(System.Security.Cryptography.X509Certificates.X509Certificate certificate, Mono.Security.Interface.MonoTlsProvider provider=null, Mono.Security.Interface.MonoTlsSettings settings=null) { throw null; }
         public static System.Net.HttpWebRequest CreateHttpsRequest(System.Uri requestUri, Mono.Security.Interface.MonoTlsProvider provider, Mono.Security.Interface.MonoTlsSettings settings=null) { throw null; }
-        [System.ObsoleteAttribute("Use GetProvider() instead.")]
-        public static Mono.Security.Interface.MonoTlsProvider GetDefaultProvider() { throw null; }
+        public static Mono.Security.Interface.IMonoSslStream GetMonoSslStream(System.Net.HttpListenerContext context) { throw null; }
         public static Mono.Security.Interface.IMonoSslStream GetMonoSslStream(System.Net.Security.SslStream stream) { throw null; }
         public static Mono.Security.Interface.MonoTlsProvider GetProvider() { throw null; }
         public static Mono.Security.Interface.MonoTlsProvider GetProvider(string provider) { throw null; }
         public static void Initialize() { }
         public static void Initialize(string provider) { }
         public static bool IsProviderSupported(string provider) { throw null; }
-        [System.ObsoleteAttribute("Use Initialize(string provider) instead.")]
-        public static void SetDefaultProvider(string name) { }
     }
     public sealed partial class MonoTlsSettings
     {
         public MonoTlsSettings() { }
         public bool CallbackNeedsCertificateChain { get { throw null; } set { } }
+        public System.Nullable<System.DateTime> CertificateValidationTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.ObsoleteAttribute("Do not use outside System.dll!")]
         public Mono.Security.Interface.ICertificateValidator CertificateValidator { get { throw null; } }
         public bool CheckCertificateName { get { throw null; } set { } }
@@ -1135,68 +1111,6 @@ namespace Mono.Security.Interface
         public Mono.Security.Interface.MonoTlsSettings CloneWithValidator(Mono.Security.Interface.ICertificateValidator validator) { throw null; }
         public static Mono.Security.Interface.MonoTlsSettings CopyDefaultSettings() { throw null; }
     }
-    public abstract partial class SecretParameters : System.IDisposable
-    {
-        protected SecretParameters() { }
-        protected void CheckDisposed() { }
-        protected abstract void Clear();
-        protected static void Clear(byte[] array) { }
-        public void Dispose() { }
-        ~SecretParameters() { }
-    }
-    public partial class SecureBuffer : Mono.Security.Interface.SecretParameters, Mono.Security.Interface.IBufferOffsetSize
-    {
-        public SecureBuffer(byte[] buffer) { }
-        public SecureBuffer(int size) { }
-        public byte[] Buffer { get { throw null; } }
-        int Mono.Security.Interface.IBufferOffsetSize.Offset { get { throw null; } }
-        public int Size { get { throw null; } }
-        protected override void Clear() { }
-        public static Mono.Security.Interface.SecureBuffer CreateCopy(byte[] buffer) { throw null; }
-        public byte[] StealBuffer() { throw null; }
-    }
-    public partial class TlsBuffer : Mono.Security.Interface.SecretParameters
-    {
-        public static readonly byte[] EmptyArray;
-        protected TlsBuffer() { }
-        public TlsBuffer(Mono.Security.Interface.IBufferOffsetSize bos) { }
-        public TlsBuffer(byte[] buffer) { }
-        public TlsBuffer(byte[] buffer, int offset, int size) { }
-        public TlsBuffer(int size) { }
-        public byte[] Buffer { get { throw null; } }
-        public int EndOffset { get { throw null; } }
-        public int Offset { get { throw null; } }
-        public int Position { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int Remaining { get { throw null; } }
-        public int Size { get { throw null; } }
-        protected override void Clear() { }
-        public static bool Compare(Mono.Security.Interface.IBufferOffsetSize buffer1, Mono.Security.Interface.IBufferOffsetSize buffer2) { throw null; }
-        public static bool Compare(byte[] buffer1, byte[] buffer2) { throw null; }
-        public static bool Compare(byte[] buffer1, int offset1, int size1, byte[] buffer2, int offset2, int size2) { throw null; }
-        public static int ConstantTimeCompare(byte[] buffer1, int offset1, int size1, byte[] buffer2, int offset2, int size2) { throw null; }
-        public Mono.Security.Interface.IBufferOffsetSize GetRemaining() { throw null; }
-        protected virtual void MakeRoomInternal(int size) { }
-        public Mono.Security.Interface.TlsBuffer ReadBuffer(int length) { throw null; }
-        public byte ReadByte() { throw null; }
-        public byte[] ReadBytes(int count) { throw null; }
-        public short ReadInt16() { throw null; }
-        public int ReadInt24() { throw null; }
-        public int ReadInt32() { throw null; }
-        public Mono.Security.Interface.SecureBuffer ReadSecureBuffer(int count) { throw null; }
-        protected void SetBuffer(byte[] buffer, int offset, int size) { }
-        public void Write(Mono.Security.Interface.IBufferOffsetSize buffer) { }
-        public void Write(byte value) { }
-        public void Write(byte[] buffer) { }
-        public void Write(byte[] buffer, int offset, int size) { }
-        public void Write(short value) { }
-        public void Write(int value) { }
-        public void Write(ulong value) { }
-        public static void WriteInt16(byte[] buffer, int offset, short value) { }
-        public static void WriteInt24(byte[] buffer, int offset, int value) { }
-        public void WriteInt24(int value) { }
-        public static void WriteInt32(byte[] buffer, int offset, int value) { }
-        public static void WriteInt64(byte[] buffer, int offset, ulong value) { }
-    }
     public sealed partial class TlsException : System.Exception
     {
         public TlsException(Mono.Security.Interface.Alert alert) { }
@@ -1206,19 +1120,6 @@ namespace Mono.Security.Interface
         public TlsException(Mono.Security.Interface.AlertDescription description, string format, params object[] args) { }
         public TlsException(Mono.Security.Interface.AlertLevel level, Mono.Security.Interface.AlertDescription description) { }
         public Mono.Security.Interface.Alert Alert { get { throw null; } }
-    }
-    public partial class TlsMultiBuffer
-    {
-        public TlsMultiBuffer() { }
-        public bool IsEmpty { get { throw null; } }
-        public bool IsSingle { get { throw null; } }
-        public void Add(Mono.Security.Interface.TlsBuffer buffer) { }
-        public void Add(byte[] buffer) { }
-        public void Add(byte[] buffer, int offset, int size) { }
-        public void Clear() { }
-        public Mono.Security.Interface.BufferOffsetSize GetBuffer() { throw null; }
-        public Mono.Security.Interface.BufferOffsetSize[] GetBufferArray() { throw null; }
-        public Mono.Security.Interface.BufferOffsetSize StealBuffer() { throw null; }
     }
     public enum TlsProtocolCode : short
     {

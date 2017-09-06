@@ -8,8 +8,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("Mono.CSharp.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Mono.CSharp.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.6.57.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.6.57.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Mono.CSharp.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -369,7 +369,7 @@ namespace Mono.CSharp
         public Mono.CSharp.AnonymousExpression Compatible(Mono.CSharp.ResolveContext ec, Mono.CSharp.AnonymousExpression ae) { throw null; }
         public override bool ContainsEmitWithAwait() { throw null; }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
-        public override void MarkReachable(Mono.CSharp.Reachability rc) { }
+        public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
         public void SetHasThisAccess() { }
         protected partial class AnonymousMethodMethod : Mono.CSharp.Method
         {
@@ -577,13 +577,14 @@ namespace Mono.CSharp
         public static Mono.CSharp.Arguments CreateForExpressionTree(Mono.CSharp.ResolveContext ec, Mono.CSharp.Arguments args, params Mono.CSharp.Expression[] e) { throw null; }
         public void Emit(Mono.CSharp.EmitContext ec) { }
         public virtual Mono.CSharp.Arguments Emit(Mono.CSharp.EmitContext ec, bool dup_args, bool prepareAwait) { throw null; }
+        public void EmitPrepare(Mono.CSharp.EmitContext ec) { }
         public virtual void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc, System.Collections.Generic.List<Mono.CSharp.MovableArgument> movable=null) { }
         public System.Collections.Generic.List<Mono.CSharp.Argument>.Enumerator GetEnumerator() { throw null; }
         public void Insert(int index, Mono.CSharp.Argument arg) { }
         public static System.Linq.Expressions.Expression[] MakeExpression(Mono.CSharp.Arguments args, Mono.CSharp.BuilderContext ctx) { throw null; }
         public Mono.CSharp.Arguments MarkOrderedArgument(Mono.CSharp.NamedArgument a) { throw null; }
         public void RemoveAt(int index) { }
-        public void Resolve(Mono.CSharp.ResolveContext ec, out bool dynamic) { dynamic = default(bool); }
+        public void Resolve(Mono.CSharp.ResolveContext rc, out bool dynamic) { dynamic = default(bool); }
     }
     public partial class ArrayAccess : Mono.CSharp.Expression, Mono.CSharp.IAssignMethod, Mono.CSharp.IMemoryLocation
     {
@@ -798,7 +799,7 @@ namespace Mono.CSharp
         public void EmitCatchBlock(Mono.CSharp.EmitContext ec) { }
         protected override void EmitMoveNextEpilogue(Mono.CSharp.EmitContext ec) { }
         public override void EmitStatement(Mono.CSharp.EmitContext ec) { }
-        public override void MarkReachable(Mono.CSharp.Reachability rc) { }
+        public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
     }
     public abstract partial class Attributable
     {
@@ -839,6 +840,7 @@ namespace Mono.CSharp
         public void Error_MissingGuidAttribute() { }
         public void Error_MisusedDynamicAttribute() { }
         public void Error_MisusedExtensionAttribute() { }
+        public void Error_MisusedTupleAttribute() { }
         public void ExtractSecurityPermissionSet(Mono.CSharp.MethodSpec ctor, ref System.Collections.Generic.Dictionary<System.Security.Permissions.SecurityAction, System.Security.PermissionSet> permissions) { }
         public Mono.CSharp.TypeSpec GetArgumentType() { throw null; }
         public System.AttributeUsageAttribute GetAttributeUsageAttribute() { throw null; }
@@ -947,7 +949,7 @@ namespace Mono.CSharp
         public override void EmitStatement(Mono.CSharp.EmitContext ec) { }
         public override Mono.CSharp.Expression EmitToField(Mono.CSharp.EmitContext ec) { throw null; }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
-        public override void MarkReachable(Mono.CSharp.Reachability rc) { }
+        public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
     }
     public partial class AwaiterDefinition
     {
@@ -2073,6 +2075,7 @@ namespace Mono.CSharp
         protected override Mono.CSharp.Expression DoResolve(Mono.CSharp.ResolveContext rc) { throw null; }
         public override Mono.CSharp.Expression DoResolveLValue(Mono.CSharp.ResolveContext rc, Mono.CSharp.Expression right_side) { throw null; }
         public override void Emit(Mono.CSharp.EmitContext ec) { }
+        public override void EmitPrepare(Mono.CSharp.EmitContext ec) { }
     }
     public partial class DefaultParameterValueExpression : Mono.CSharp.CompositeExpression
     {
@@ -2491,6 +2494,7 @@ namespace Mono.CSharp
         public string[] GetCompletions(string input, out string prefix) { prefix = default(string); throw null; }
         public string GetUsing() { throw null; }
         public string GetVars() { throw null; }
+        public void ImportTypes(bool importExtensionTypes, params System.Type[] types) { }
         public void Interrupt() { }
         public void LoadAssembly(string file) { }
         public void ReferenceAssembly(System.Reflection.Assembly a) { }
@@ -2664,6 +2668,7 @@ namespace Mono.CSharp
         public Mono.CSharp.TypeSpec Type { get { throw null; } set { } }
         public virtual object Accept(Mono.CSharp.StructuralVisitor visitor) { throw null; }
         public virtual Mono.CSharp.MethodGroupExpr CanReduceLambda(Mono.CSharp.AnonymousMethodBody body) { throw null; }
+        protected void CheckExpressionVariable(Mono.CSharp.ResolveContext rc) { }
         public virtual Mono.CSharp.Expression Clone(Mono.CSharp.CloneContext clonectx) { throw null; }
         protected virtual void CloneTo(Mono.CSharp.CloneContext clonectx, Mono.CSharp.Expression target) { }
         public static Mono.CSharp.MethodSpec ConstructorLookup(Mono.CSharp.ResolveContext rc, Mono.CSharp.TypeSpec type, ref Mono.CSharp.Arguments args, Mono.CSharp.Location loc) { throw null; }
@@ -2679,6 +2684,7 @@ namespace Mono.CSharp
         public abstract void Emit(Mono.CSharp.EmitContext ec);
         public virtual void EmitBranchable(Mono.CSharp.EmitContext ec, System.Reflection.Emit.Label target, bool on_true) { }
         protected static void EmitExpressionsList(Mono.CSharp.EmitContext ec, System.Collections.Generic.List<Mono.CSharp.Expression> expressions) { }
+        public virtual void EmitPrepare(Mono.CSharp.EmitContext ec) { }
         public virtual void EmitSideEffect(Mono.CSharp.EmitContext ec) { }
         public virtual Mono.CSharp.Expression EmitToField(Mono.CSharp.EmitContext ec) { throw null; }
         protected virtual Mono.CSharp.FieldExpr EmitToFieldSource(Mono.CSharp.EmitContext ec) { throw null; }
@@ -2717,6 +2723,7 @@ namespace Mono.CSharp
         protected Mono.CSharp.TypeSpec LiftMemberType(Mono.CSharp.ResolveContext rc, Mono.CSharp.TypeSpec type) { throw null; }
         public virtual System.Linq.Expressions.Expression MakeExpression(Mono.CSharp.BuilderContext ctx) { throw null; }
         public Mono.CSharp.Expression MakePointerAccess(Mono.CSharp.ResolveContext rc, Mono.CSharp.TypeSpec type, Mono.CSharp.Arguments args) { throw null; }
+        public virtual Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
         public static Mono.CSharp.Expression MemberLookup(Mono.CSharp.IMemberContext rc, bool errorMode, Mono.CSharp.TypeSpec queried_type, string name, int arity, Mono.CSharp.Expression.MemberLookupRestrictions restrictions, Mono.CSharp.Location loc) { throw null; }
         public static Mono.CSharp.Expression MemberLookupToExpression(Mono.CSharp.IMemberContext rc, System.Collections.Generic.IList<Mono.CSharp.MemberSpec> members, bool errorMode, Mono.CSharp.TypeSpec queried_type, string name, int arity, Mono.CSharp.Expression.MemberLookupRestrictions restrictions, Mono.CSharp.Location loc) { throw null; }
         public Mono.CSharp.Expression ProbeIdenticalTypeName(Mono.CSharp.ResolveContext rc, Mono.CSharp.Expression left, Mono.CSharp.SimpleName name) { throw null; }
@@ -2727,6 +2734,8 @@ namespace Mono.CSharp
         public Mono.CSharp.Expression ResolveLValue(Mono.CSharp.ResolveContext ec, Mono.CSharp.Expression right_side) { throw null; }
         public static void UnsafeError(Mono.CSharp.Report Report, Mono.CSharp.Location loc) { }
         public static void UnsafeError(Mono.CSharp.ResolveContext ec, Mono.CSharp.Location loc) { }
+        public static void UnsafeInsideIteratorError(Mono.CSharp.Report report, Mono.CSharp.Location loc) { }
+        public static void UnsafeInsideIteratorError(Mono.CSharp.ResolveContext rc, Mono.CSharp.Location loc) { }
         public static void Warning_UnreachableExpression(Mono.CSharp.ResolveContext rc, Mono.CSharp.Location loc) { }
         [System.FlagsAttribute]
         public enum MemberLookupRestrictions
@@ -2747,7 +2756,6 @@ namespace Mono.CSharp
         protected ExpressionStatement() { }
         public override void EmitSideEffect(Mono.CSharp.EmitContext ec) { }
         public abstract void EmitStatement(Mono.CSharp.EmitContext ec);
-        public virtual void MarkReachable(Mono.CSharp.Reachability rc) { }
         public virtual Mono.CSharp.ExpressionStatement ResolveStatement(Mono.CSharp.BlockContext ec) { throw null; }
     }
     public partial class ExtensionMethodCandidates
@@ -2932,6 +2940,7 @@ namespace Mono.CSharp
         public bool IsStructFieldDefinitelyAssigned(Mono.CSharp.VariableInfo variable, string name) { throw null; }
         public void SetLabelStack(System.Collections.Generic.Dictionary<Mono.CSharp.Statement, System.Collections.Generic.List<Mono.CSharp.DefiniteAssignmentBitSet>> labelStack) { }
         public void SetStructFieldAssigned(Mono.CSharp.VariableInfo variable, string name) { }
+        public void SetVariableAssigned(Mono.CSharp.VariableInfo variable, Mono.CSharp.DefiniteAssignmentBitSet da) { }
         public void SetVariableAssigned(Mono.CSharp.VariableInfo variable, bool generatedAssignment=false) { }
     }
     public partial class For : Mono.CSharp.LoopStatement
@@ -3046,6 +3055,7 @@ namespace Mono.CSharp
         public void Emit(Mono.CSharp.EmitContext ec) { }
         public void Emit(Mono.CSharp.EmitContext ec, bool leave_copy) { }
         public void EmitAssign(Mono.CSharp.EmitContext ec, Mono.CSharp.Expression source, bool leave_copy, bool isCompound) { }
+        public void EmitAssignFromStack(Mono.CSharp.EmitContext ec) { }
         public Mono.CSharp.Expression EmitToField(Mono.CSharp.EmitContext ec) { throw null; }
         protected virtual Mono.CSharp.FieldExpr GetFieldExpression(Mono.CSharp.EmitContext ec) { throw null; }
     }
@@ -3235,6 +3245,7 @@ namespace Mono.CSharp
     {
         public IndexerSpec(Mono.CSharp.TypeSpec declaringType, Mono.CSharp.IMemberDefinition definition, Mono.CSharp.TypeSpec memberType, Mono.CSharp.AParametersCollection parameters, System.Reflection.PropertyInfo info, Mono.CSharp.Modifiers modifiers) : base (default(Mono.CSharp.MemberKind), default(Mono.CSharp.TypeSpec), default(Mono.CSharp.IMemberDefinition), default(Mono.CSharp.TypeSpec), default(System.Reflection.PropertyInfo), default(Mono.CSharp.Modifiers)) { }
         public Mono.CSharp.AParametersCollection Parameters { get { throw null; } }
+        public static Mono.CSharp.ParametersImported CreateParametersFromSetter(Mono.CSharp.MethodSpec setter, int set_param_count) { throw null; }
         public override string GetSignatureForDocumentation() { throw null; }
         public override string GetSignatureForError() { throw null; }
         public override Mono.CSharp.MemberSpec InflateMember(Mono.CSharp.TypeParameterInflator inflator) { throw null; }
@@ -3268,6 +3279,7 @@ namespace Mono.CSharp
         public override bool IsExpressionTreeType { get { throw null; } }
         public override bool IsGenericTask { get { throw null; } }
         public override bool IsNullableType { get { throw null; } }
+        public override bool IsTupleType { get { throw null; } }
         public override Mono.CSharp.TypeSpec[] TypeArguments { get { throw null; } }
         public override bool AddInterface(Mono.CSharp.TypeSpec iface) { throw null; }
         public override void CheckObsoleteness(Mono.CSharp.IMemberContext mc, Mono.CSharp.Location loc) { }
@@ -3431,8 +3443,10 @@ namespace Mono.CSharp
         public override Mono.CSharp.Expression CreateExpressionTree(Mono.CSharp.ResolveContext ec) { throw null; }
         protected override Mono.CSharp.Expression DoResolve(Mono.CSharp.ResolveContext rc) { throw null; }
         protected virtual Mono.CSharp.Expression DoResolveDynamic(Mono.CSharp.ResolveContext ec, Mono.CSharp.Expression memberExpr) { throw null; }
+        public override Mono.CSharp.Expression DoResolveLValue(Mono.CSharp.ResolveContext rc, Mono.CSharp.Expression right_side) { throw null; }
         protected virtual Mono.CSharp.MethodGroupExpr DoResolveOverload(Mono.CSharp.ResolveContext ec) { throw null; }
         public override void Emit(Mono.CSharp.EmitContext ec) { }
+        public override void EmitPrepare(Mono.CSharp.EmitContext ec) { }
         public override void EmitStatement(Mono.CSharp.EmitContext ec) { }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
         public override string GetSignatureForError() { throw null; }
@@ -3470,7 +3484,9 @@ namespace Mono.CSharp
         protected override Mono.CSharp.Expression DoResolve(Mono.CSharp.ResolveContext rc) { throw null; }
         public override void Emit(Mono.CSharp.EmitContext ec) { }
         public override void EmitBranchable(Mono.CSharp.EmitContext ec, System.Reflection.Emit.Label target, bool on_true) { }
+        public override void EmitPrepare(Mono.CSharp.EmitContext ec) { }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
+        public override void FlowAnalysisConditional(Mono.CSharp.FlowAnalysisContext fc) { }
         protected override void ResolveProbeType(Mono.CSharp.ResolveContext rc) { }
     }
     public partial class Iterator : Mono.CSharp.StateMachineInitializer
@@ -3541,7 +3557,7 @@ namespace Mono.CSharp
     }
     public enum LanguageVersion
     {
-        Default = 6,
+        Default = 7,
         Experimental = 100,
         ISO_1 = 1,
         ISO_2 = 2,
@@ -3549,6 +3565,7 @@ namespace Mono.CSharp
         V_4 = 4,
         V_5 = 5,
         V_6 = 6,
+        V_7 = 7,
     }
     public abstract partial class LocalExitStatement : Mono.CSharp.ExitStatement
     {
@@ -3583,6 +3600,7 @@ namespace Mono.CSharp
         public bool AddressTaken { get { throw null; } }
         public Mono.CSharp.Block Block { get { throw null; } }
         public Mono.CSharp.Constant ConstantValue { get { throw null; } set { } }
+        public bool Created { get { throw null; } }
         public Mono.CSharp.HoistedVariable HoistedVariant { get { throw null; } set { } }
         public bool IsCompilerGenerated { get { throw null; } }
         public bool IsConstant { get { throw null; } }
@@ -3753,6 +3771,7 @@ namespace Mono.CSharp
     public enum LookupMode
     {
         IgnoreAccessibility = 2,
+        IgnoreStaticUsing = 1024,
         Normal = 0,
         Probing = 1,
     }
@@ -3912,6 +3931,7 @@ namespace Mono.CSharp
             HasCompliantAttribute_Undetected = 32,
             HasExplicitLayout = 8192,
             HasInstanceConstructor = 65536,
+            HasInstanceField = 1048576,
             HasStructLayout = 32768,
             HasUserOperators = 131072,
             InterfacesExpanded = 524288,
@@ -4029,7 +4049,7 @@ namespace Mono.CSharp
         protected Mono.CSharp.IMemberDefinition definition;
         public readonly Mono.CSharp.MemberKind Kind;
         protected Mono.CSharp.Modifiers modifiers;
-        protected const Mono.CSharp.MemberSpec.StateFlags SharedStateFlags = (Mono.CSharp.MemberSpec.StateFlags)(127);
+        protected const Mono.CSharp.MemberSpec.StateFlags SharedStateFlags = (Mono.CSharp.MemberSpec.StateFlags)(383);
         public Mono.CSharp.MemberSpec.StateFlags state;
         protected MemberSpec(Mono.CSharp.MemberKind kind, Mono.CSharp.TypeSpec declaringType, Mono.CSharp.IMemberDefinition definition, Mono.CSharp.Modifiers modifiers) { }
         public virtual int Arity { get { throw null; } }
@@ -4066,6 +4086,7 @@ namespace Mono.CSharp
             GenericIterateInterface = 2097152,
             GenericTask = 4194304,
             HasDynamicElement = 64,
+            HasNamedTupleElement = 256,
             InflatedExpressionType = 524288,
             InflatedNullableType = 1048576,
             InterfacesExpanded = 65536,
@@ -4082,6 +4103,7 @@ namespace Mono.CSharp
             PendingMemberCacheMembers = 16384,
             PendingMetaInflate = 4096,
             SpecialRuntimeType = 262144,
+            Tuple = 16777216,
         }
     }
     public abstract partial class MetadataImporter
@@ -4102,7 +4124,7 @@ namespace Mono.CSharp
         public Mono.CSharp.TypeSpec CreateNestedType(System.Type type, Mono.CSharp.TypeSpec declaringType) { throw null; }
         public Mono.CSharp.PropertySpec CreateProperty(System.Reflection.PropertyInfo pi, Mono.CSharp.TypeSpec declaringType, Mono.CSharp.MethodSpec @get, Mono.CSharp.MethodSpec @set) { throw null; }
         public Mono.CSharp.TypeSpec CreateType(System.Type type) { throw null; }
-        protected Mono.CSharp.TypeSpec CreateType(System.Type type, Mono.CSharp.TypeSpec declaringType, Mono.CSharp.MetadataImporter.DynamicTypeReader dtype, bool canImportBaseType) { throw null; }
+        protected Mono.CSharp.TypeSpec CreateType(System.Type type, Mono.CSharp.TypeSpec declaringType, Mono.CSharp.MetadataImporter.AttributesTypeInfoReader dtype, bool canImportBaseType) { throw null; }
         protected abstract Mono.CSharp.MemberKind DetermineKindFromBaseType(System.Type baseType);
         public Mono.CSharp.IAssemblyDefinition GetAssemblyDefinition(System.Reflection.Assembly assembly) { throw null; }
         public Mono.CSharp.ImportedAssemblyDefinition GetImportedAssemblyDefinition(System.Reflection.AssemblyName assemblyName) { throw null; }
@@ -4110,13 +4132,16 @@ namespace Mono.CSharp
         protected abstract bool HasVolatileModifier(System.Type[] modifiers);
         public Mono.CSharp.TypeSpec ImportType(System.Type type) { throw null; }
         public void ImportTypeBase(System.Type type) { }
-        protected void ImportTypes(System.Type[] types, Mono.CSharp.Namespace targetNamespace, bool importExtensionTypes) { }
+        public void ImportTypes(System.Type[] types, Mono.CSharp.Namespace targetNamespace, bool importExtensionTypes) { }
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-        protected partial struct DynamicTypeReader
+        protected partial struct AttributesTypeInfoReader
         {
-            public int Position;
-            public DynamicTypeReader(object provider) { throw null;}
+            public int DynamicPosition;
+            public int TuplePosition;
+            public AttributesTypeInfoReader(object provider) { throw null;}
+            public System.Collections.Generic.IList<string> GetNamedTupleElements(int length) { throw null; }
             public bool HasDynamicAttribute() { throw null; }
+            public bool HasNamedTupleAttribute() { throw null; }
             public bool IsDynamicObject() { throw null; }
         }
     }
@@ -4172,9 +4197,7 @@ namespace Mono.CSharp
         protected Mono.CSharp.InterfaceMemberBase member;
         public readonly Mono.CSharp.IMethodData method;
         protected Mono.CSharp.Modifiers modifiers;
-        protected Mono.CSharp.MethodSpec parent_method;
         public MethodData(Mono.CSharp.InterfaceMemberBase member, Mono.CSharp.Modifiers modifiers, System.Reflection.MethodAttributes flags, Mono.CSharp.IMethodData method) { }
-        public MethodData(Mono.CSharp.InterfaceMemberBase member, Mono.CSharp.Modifiers modifiers, System.Reflection.MethodAttributes flags, Mono.CSharp.IMethodData method, Mono.CSharp.MethodSpec parent_method) { }
         public Mono.CSharp.TypeSpec DeclaringType { get { throw null; } }
         public string MetadataName { get { throw null; } }
         public System.Reflection.Emit.MethodBuilder MethodBuilder { get { throw null; } }
@@ -4207,6 +4230,7 @@ namespace Mono.CSharp
         public override void Emit(Mono.CSharp.EmitContext ec) { }
         public void EmitCall(Mono.CSharp.EmitContext ec, Mono.CSharp.Arguments arguments, Mono.CSharp.TypeSpec conditionalAccessReceiver, bool statement) { }
         public void EmitCall(Mono.CSharp.EmitContext ec, Mono.CSharp.Arguments arguments, bool statement) { }
+        public override void EmitPrepare(Mono.CSharp.EmitContext ec) { }
         public override void Error_ValueCannotBeConverted(Mono.CSharp.ResolveContext ec, Mono.CSharp.TypeSpec target, bool expl) { }
         public virtual System.Collections.Generic.IList<Mono.CSharp.MemberSpec> GetBaseMembers(Mono.CSharp.TypeSpec type) { throw null; }
         public Mono.CSharp.IParametersMember GetOverrideMemberParameters(Mono.CSharp.MemberSpec member) { throw null; }
@@ -4375,6 +4399,21 @@ namespace Mono.CSharp
         public NamedArgument(string name, Mono.CSharp.Location loc, Mono.CSharp.Expression expr, Mono.CSharp.Argument.AType modifier) : base (default(Mono.CSharp.Argument)) { }
         public Mono.CSharp.Location Location { get { throw null; } }
         public override Mono.CSharp.Expression CreateExpressionTree(Mono.CSharp.ResolveContext ec) { throw null; }
+    }
+    public partial class NamedTupleSpec : Mono.CSharp.TypeSpec
+    {
+        internal NamedTupleSpec() : base (default(Mono.CSharp.MemberKind), default(Mono.CSharp.TypeSpec), default(Mono.CSharp.ITypeDefinition), default(System.Type), default(Mono.CSharp.Modifiers)) { }
+        public System.Collections.Generic.IList<string> Elements { get { throw null; } }
+        public override Mono.CSharp.TypeSpec[] TypeArguments { get { throw null; } }
+        public static bool CheckOverrideName(Mono.CSharp.IParametersMember member, Mono.CSharp.IParametersMember baseMember) { throw null; }
+        public static bool CheckOverrideName(Mono.CSharp.TypeSpec type, Mono.CSharp.TypeSpec baseType) { throw null; }
+        public Mono.CSharp.MemberSpec FindElement(Mono.CSharp.IMemberContext mc, string name, Mono.CSharp.Location loc) { throw null; }
+        public static string GetElementPropertyName(int index) { throw null; }
+        public override System.Type GetMetaInfo() { throw null; }
+        public override string GetSignatureForError() { throw null; }
+        public string GetSignatureForErrorWithNames() { throw null; }
+        protected override void InitializeMemberCache(bool onlyTypes) { }
+        public static Mono.CSharp.NamedTupleSpec MakeType(Mono.CSharp.ModuleContainer module, Mono.CSharp.InflatedTypeSpec tupleType, System.Collections.Generic.IList<string> names) { throw null; }
     }
     public partial class Namespace
     {
@@ -4931,6 +4970,7 @@ namespace Mono.CSharp
         public readonly Mono.CSharp.PredefinedAttribute RuntimeCompatibility;
         public readonly Mono.CSharp.PredefinedAttribute Security;
         public readonly Mono.CSharp.PredefinedAttribute StructLayout;
+        public readonly Mono.CSharp.PredefinedTupleElementNamesAttribute TupleElementNames;
         public readonly Mono.CSharp.PredefinedAttribute TypeForwarder;
         public readonly Mono.CSharp.PredefinedAttribute UnmanagedFunctionPointer;
         public readonly Mono.CSharp.PredefinedAttribute UnsafeValueType;
@@ -4977,6 +5017,14 @@ namespace Mono.CSharp
         public PredefinedStateMachineAttribute(Mono.CSharp.ModuleContainer module, string ns, string name) : base (default(Mono.CSharp.ModuleContainer), default(string), default(string)) { }
         public void EmitAttribute(System.Reflection.Emit.MethodBuilder builder, Mono.CSharp.StateMachine type) { }
     }
+    public partial class PredefinedTupleElementNamesAttribute : Mono.CSharp.PredefinedAttribute
+    {
+        public PredefinedTupleElementNamesAttribute(Mono.CSharp.ModuleContainer module, string ns, string name) : base (default(Mono.CSharp.ModuleContainer), default(string), default(string)) { }
+        public void EmitAttribute(System.Reflection.Emit.FieldBuilder builder, Mono.CSharp.TypeSpec type, Mono.CSharp.Location loc) { }
+        public void EmitAttribute(System.Reflection.Emit.ParameterBuilder builder, Mono.CSharp.TypeSpec type, Mono.CSharp.Location loc) { }
+        public void EmitAttribute(System.Reflection.Emit.PropertyBuilder builder, Mono.CSharp.TypeSpec type, Mono.CSharp.Location loc) { }
+        public void EmitAttribute(System.Reflection.Emit.TypeBuilder builder, Mono.CSharp.TypeSpec type, Mono.CSharp.Location loc) { }
+    }
     public partial class PredefinedType
     {
         protected readonly Mono.CSharp.ModuleContainer module;
@@ -5004,6 +5052,7 @@ namespace Mono.CSharp
         protected abstract string OperatorName { get; }
         protected override void CloneTo(Mono.CSharp.CloneContext clonectx, Mono.CSharp.Expression t) { }
         public override bool ContainsEmitWithAwait() { throw null; }
+        public override void EmitPrepare(Mono.CSharp.EmitContext ec) { }
         public override void EmitSideEffect(Mono.CSharp.EmitContext ec) { }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
         public override bool HasConditionalAccess() { throw null; }
@@ -5141,7 +5190,9 @@ namespace Mono.CSharp
         public override void EmitBranchable(Mono.CSharp.EmitContext ec, System.Reflection.Emit.Label target, bool on_true) { }
         public override Mono.CSharp.Expression EmitToField(Mono.CSharp.EmitContext ec) { throw null; }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
+        public override void FlowAnalysisConditional(Mono.CSharp.FlowAnalysisContext fc) { }
         public override System.Linq.Expressions.Expression MakeExpression(Mono.CSharp.BuilderContext ctx) { throw null; }
+        public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
         public partial class ReducedConstantExpression : Mono.CSharp.EmptyConstantCast
         {
             public ReducedConstantExpression(Mono.CSharp.Constant expr, Mono.CSharp.Expression orig_expr) : base (default(Mono.CSharp.Constant), default(Mono.CSharp.TypeSpec)) { }
@@ -5298,6 +5349,7 @@ namespace Mono.CSharp
             NameOfScope = 131072,
             OmitDebuggingInfo = 16777216,
             ProbingMode = 4194304,
+            QueryClauseScope = 262144,
             TryScope = 16384,
             TryWithCatchScope = 32768,
             UnsafeScope = 4,
@@ -5401,6 +5453,7 @@ namespace Mono.CSharp
     public partial class SeekableStreamReader : System.IDisposable
     {
         public const int DefaultReadAheadSize = 2048;
+        public readonly System.IO.Stream Stream;
         public SeekableStreamReader(System.IO.Stream stream, System.Text.Encoding encoding, char[] sharedBuffer=null) { }
         public int Position { get { throw null; } set { } }
         public void Dispose() { }
@@ -5457,7 +5510,7 @@ namespace Mono.CSharp
         public SimpleAssign(Mono.CSharp.Expression target, Mono.CSharp.Expression source, Mono.CSharp.Location loc) : base (default(Mono.CSharp.Expression), default(Mono.CSharp.Expression), default(Mono.CSharp.Location)) { }
         protected override Mono.CSharp.Expression DoResolve(Mono.CSharp.ResolveContext ec) { throw null; }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
-        public override void MarkReachable(Mono.CSharp.Reachability rc) { }
+        public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
     }
     public partial class SimpleMemberName
     {
@@ -5477,7 +5530,6 @@ namespace Mono.CSharp
         protected virtual void Error_TypeOrNamespaceNotFound(Mono.CSharp.IMemberContext ctx) { }
         public Mono.CSharp.SimpleName GetMethodGroup() { throw null; }
         public bool IsPossibleType(Mono.CSharp.IMemberContext mc) { throw null; }
-        public bool IsPossibleTypeOrNamespace(Mono.CSharp.IMemberContext mc) { throw null; }
         public override Mono.CSharp.Expression LookupNameExpression(Mono.CSharp.ResolveContext rc, Mono.CSharp.Expression.MemberLookupRestrictions restrictions) { throw null; }
         public override Mono.CSharp.FullNamedExpression ResolveAsTypeOrNamespace(Mono.CSharp.IMemberContext mc, bool allowUnboundTypeArguments) { throw null; }
     }
@@ -5496,10 +5548,12 @@ namespace Mono.CSharp
     public partial class SourceFile : System.IEquatable<Mono.CSharp.SourceFile>
     {
         public bool AutoGenerated;
+        public System.Func<Mono.CSharp.SourceFile, Mono.CSharp.SeekableStreamReader> GetInputStream;
         public readonly int Index;
         public readonly string Name;
         public readonly string OriginalFullPathName;
         public SourceFile(string name, string path, int index) { }
+        public SourceFile(string name, string path, int index, System.Func<Mono.CSharp.SourceFile, Mono.CSharp.SeekableStreamReader> inputStreamDelegate) { }
         public byte[] Checksum { get { throw null; } }
         public bool HasChecksum { get { throw null; } }
         public Mono.CompilerServices.SymbolWriter.SourceFileEntry SourceFileEntry { get { throw null; } }
@@ -5939,6 +5993,7 @@ namespace Mono.CSharp
         public Mono.CSharp.Expression Expr { get { throw null; } }
         public override object Accept(Mono.CSharp.StructuralVisitor visitor) { throw null; }
         protected override void CloneTo(Mono.CSharp.CloneContext clonectx, Mono.CSharp.Statement t) { }
+        public static Mono.CSharp.Expression ConvertType(Mono.CSharp.ResolveContext rc, Mono.CSharp.Expression expr) { throw null; }
         protected override void DoEmit(Mono.CSharp.EmitContext ec) { }
         protected override bool DoFlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { throw null; }
         public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
@@ -6107,6 +6162,7 @@ namespace Mono.CSharp
         public override void Emit(Mono.CSharp.EmitContext ec) { }
         public override void FlowAnalysis(Mono.CSharp.FlowAnalysisContext fc) { }
         public override System.Linq.Expressions.Expression MakeExpression(Mono.CSharp.BuilderContext ctx) { throw null; }
+        public override Mono.CSharp.Reachability MarkReachable(Mono.CSharp.Reachability rc) { throw null; }
     }
     public abstract partial class TypeContainer : Mono.CSharp.MemberCore
     {
@@ -6175,6 +6231,7 @@ namespace Mono.CSharp
         public bool HasExplicitLayout { get { throw null; } set { } }
         public bool HasGetHashCode { get { throw null; } }
         public bool HasInstanceConstructor { get { throw null; } set { } }
+        public bool HasInstanceField { get { throw null; } set { } }
         public bool HasMembersDefined { get { throw null; } }
         public bool HasOperators { get { throw null; } set { } }
         public bool HasStaticFieldInitializer { get { throw null; } set { } }
@@ -6480,6 +6537,7 @@ namespace Mono.CSharp
         public virtual Mono.CSharp.TypeSpec BaseType { get { throw null; } set { } }
         public virtual Mono.CSharp.BuiltinTypeSpec.Type BuiltinType { get { throw null; } }
         public bool HasDynamicElement { get { throw null; } }
+        public bool HasNamedTupleElement { get { throw null; } }
         public virtual System.Collections.Generic.IList<Mono.CSharp.TypeSpec> Interfaces { get { throw null; } set { } }
         public bool IsArray { get { throw null; } }
         public virtual bool IsArrayGenericInterface { get { throw null; } set { } }
@@ -6500,6 +6558,7 @@ namespace Mono.CSharp
         public bool IsSpecialRuntimeType { get { throw null; } set { } }
         public bool IsStruct { get { throw null; } }
         public bool IsStructOrEnum { get { throw null; } }
+        public virtual bool IsTupleType { get { throw null; } set { } }
         public bool IsTypeBuilder { get { throw null; } }
         public bool IsUnmanaged { get { throw null; } }
         public Mono.CSharp.MemberCache MemberCache { get { throw null; } set { } }
@@ -6972,7 +7031,7 @@ namespace Mono.CSharp.Linq
         {
             public QueryExpressionInvocation(Mono.CSharp.Linq.AQueryClause.QueryExpressionAccess expr, Mono.CSharp.Arguments arguments) : base (default(Mono.CSharp.Expression), default(Mono.CSharp.Arguments)) { }
             protected override Mono.CSharp.Expression DoResolveDynamic(Mono.CSharp.ResolveContext ec, Mono.CSharp.Expression memberExpr) { throw null; }
-            protected override Mono.CSharp.MethodGroupExpr DoResolveOverload(Mono.CSharp.ResolveContext ec) { throw null; }
+            protected override Mono.CSharp.MethodGroupExpr DoResolveOverload(Mono.CSharp.ResolveContext rc) { throw null; }
             bool Mono.CSharp.OverloadResolver.IErrorHandler.AmbiguousCandidates(Mono.CSharp.ResolveContext ec, Mono.CSharp.MemberSpec best, Mono.CSharp.MemberSpec ambiguous) { throw null; }
             bool Mono.CSharp.OverloadResolver.IErrorHandler.ArgumentMismatch(Mono.CSharp.ResolveContext rc, Mono.CSharp.MemberSpec best, Mono.CSharp.Argument arg, int index) { throw null; }
             bool Mono.CSharp.OverloadResolver.IErrorHandler.NoArgumentMatch(Mono.CSharp.ResolveContext rc, Mono.CSharp.MemberSpec best) { throw null; }
