@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.ServiceModel.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.ServiceModel.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.ServiceModel.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -1379,7 +1379,7 @@ namespace System.ServiceModel
         public System.ServiceModel.MsmqEncryptionAlgorithm MsmqEncryptionAlgorithm { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute((System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel MsmqProtectionLevel { get { throw null; } set { } }
-        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqSecureHashAlgorithm)(1))]
+        [System.ComponentModel.DefaultValueAttribute((System.ServiceModel.MsmqSecureHashAlgorithm)(2))]
         public System.ServiceModel.MsmqSecureHashAlgorithm MsmqSecureHashAlgorithm { get { throw null; } set { } }
     }
     public sealed partial class NamedPipeTransportSecurity
@@ -3766,6 +3766,7 @@ namespace System.ServiceModel.Channels
     {
         public NamedPipeTransportBindingElement() { }
         protected NamedPipeTransportBindingElement(System.ServiceModel.Channels.NamedPipeTransportBindingElement elementToBeCloned) { }
+        public System.Collections.ObjectModel.Collection<System.Security.Principal.SecurityIdentifier> AllowedSecurityIdentifiers { get { throw null; } }
         public System.ServiceModel.Channels.NamedPipeConnectionPoolSettings ConnectionPoolSettings { get { throw null; } }
         public System.ServiceModel.Channels.NamedPipeSettings PipeSettings { get { throw null; } }
         public override string Scheme { get { throw null; } }
@@ -5971,7 +5972,7 @@ namespace System.ServiceModel.Configuration
         public System.ServiceModel.MsmqEncryptionAlgorithm MsmqEncryptionAlgorithm { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("msmqProtectionLevel", DefaultValue=(System.Net.Security.ProtectionLevel)(1))]
         public System.Net.Security.ProtectionLevel MsmqProtectionLevel { get { throw null; } set { } }
-        [System.Configuration.ConfigurationPropertyAttribute("msmqSecureHashAlgorithm", DefaultValue=(System.ServiceModel.MsmqSecureHashAlgorithm)(1))]
+        [System.Configuration.ConfigurationPropertyAttribute("msmqSecureHashAlgorithm")]
         public System.ServiceModel.MsmqSecureHashAlgorithm MsmqSecureHashAlgorithm { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }

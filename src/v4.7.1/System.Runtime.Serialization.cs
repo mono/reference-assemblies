@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Runtime.Serialization.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Runtime.Serialization.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Runtime.Serialization.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -104,6 +104,14 @@ namespace System.Runtime.Serialization
         public override void WriteObjectContent(System.Xml.XmlWriter writer, object graph) { }
         public override void WriteStartObject(System.Xml.XmlDictionaryWriter writer, object graph) { }
         public override void WriteStartObject(System.Xml.XmlWriter writer, object graph) { }
+    }
+    [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+    public static partial class DataContractSerializerExtensions
+    {
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static System.Runtime.Serialization.ISerializationSurrogateProvider GetSerializationSurrogateProvider(this System.Runtime.Serialization.DataContractSerializer serializer) { throw null; }
+        [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(1))]
+        public static void SetSerializationSurrogateProvider(this System.Runtime.Serialization.DataContractSerializer serializer, System.Runtime.Serialization.ISerializationSurrogateProvider provider) { }
     }
     public partial class DataContractSerializerSettings
     {
@@ -199,6 +207,12 @@ namespace System.Runtime.Serialization
         protected InvalidDataContractException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public InvalidDataContractException(string message) { }
         public InvalidDataContractException(string message, System.Exception innerException) { }
+    }
+    public partial interface ISerializationSurrogateProvider
+    {
+        object GetDeserializedObject(object obj, System.Type targetType);
+        object GetObjectToSerialize(object obj, System.Type targetType);
+        System.Type GetSurrogateType(System.Type type);
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(12), Inherited=true, AllowMultiple=true)]
     public sealed partial class KnownTypeAttribute : System.Attribute

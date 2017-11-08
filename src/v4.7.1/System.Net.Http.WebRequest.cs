@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Net.Http.WebRequest.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Net.Http.WebRequest.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Net.Http.WebRequest.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -31,10 +31,10 @@ namespace System.Net.Http
         public bool AllowPipelining { get { throw null; } set { } }
         public System.Net.Security.AuthenticationLevel AuthenticationLevel { get { throw null; } set { } }
         public System.Net.Cache.RequestCachePolicy CachePolicy { get { throw null; } set { } }
-        public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get { throw null; } }
+        public new System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get { throw null; } }
         public System.TimeSpan ContinueTimeout { get { throw null; } set { } }
         public System.Security.Principal.TokenImpersonationLevel ImpersonationLevel { get { throw null; } set { } }
-        public int MaxResponseHeadersLength { get { throw null; } set { } }
+        public new int MaxResponseHeadersLength { get { throw null; } set { } }
         public int ReadWriteTimeout { get { throw null; } set { } }
         public System.Net.Security.RemoteCertificateValidationCallback ServerCertificateValidationCallback { get { throw null; } set { } }
         public bool UnsafeAuthenticatedConnectionSharing { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }

@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Core.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Core.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Core.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -1473,6 +1473,7 @@ namespace System.Linq
         public static bool All<TSource>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, bool> predicate) { throw null; }
         public static bool Any<TSource>(this System.Collections.Generic.IEnumerable<TSource> source) { throw null; }
         public static bool Any<TSource>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, bool> predicate) { throw null; }
+        public static System.Collections.Generic.IEnumerable<TSource> Append<TSource>(this System.Collections.Generic.IEnumerable<TSource> source, TSource element) { throw null; }
         public static System.Collections.Generic.IEnumerable<TSource> AsEnumerable<TSource>(this System.Collections.Generic.IEnumerable<TSource> source) { throw null; }
         public static decimal Average(this System.Collections.Generic.IEnumerable<decimal> source) { throw null; }
         public static double Average(this System.Collections.Generic.IEnumerable<double> source) { throw null; }
@@ -1582,6 +1583,7 @@ namespace System.Linq
         public static System.Linq.IOrderedEnumerable<TSource> OrderByDescending<TSource, TKey>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector, System.Collections.Generic.IComparer<TKey> comparer) { throw null; }
         public static System.Linq.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector) { throw null; }
         public static System.Linq.IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector, System.Collections.Generic.IComparer<TKey> comparer) { throw null; }
+        public static System.Collections.Generic.IEnumerable<TSource> Prepend<TSource>(this System.Collections.Generic.IEnumerable<TSource> source, TSource element) { throw null; }
         public static System.Collections.Generic.IEnumerable<int> Range(int start, int count) { throw null; }
         public static System.Collections.Generic.IEnumerable<TResult> Repeat<TResult>(TResult element, int count) { throw null; }
         public static System.Collections.Generic.IEnumerable<TSource> Reverse<TSource>(this System.Collections.Generic.IEnumerable<TSource> source) { throw null; }
@@ -2676,6 +2678,7 @@ namespace System.Linq.Expressions
         internal Expression() { }
         protected internal override System.Linq.Expressions.Expression Accept(System.Linq.Expressions.ExpressionVisitor visitor) { throw null; }
         public new TDelegate Compile() { throw null; }
+        public new TDelegate Compile(bool preferInterpretation) { throw null; }
         public new TDelegate Compile(System.Runtime.CompilerServices.DebugInfoGenerator debugInfoGenerator) { throw null; }
         public System.Linq.Expressions.Expression<TDelegate> Update(System.Linq.Expressions.Expression body, System.Collections.Generic.IEnumerable<System.Linq.Expressions.ParameterExpression> parameters) { throw null; }
     }
@@ -2766,6 +2769,7 @@ namespace System.Linq.Expressions
         public bool TailCall { get { throw null; } }
         public sealed override System.Type Type { get { throw null; } }
         public System.Delegate Compile() { throw null; }
+        public System.Delegate Compile(bool preferInterpretation) { throw null; }
         public System.Delegate Compile(System.Runtime.CompilerServices.DebugInfoGenerator debugInfoGenerator) { throw null; }
         public void CompileToMethod(System.Reflection.Emit.MethodBuilder method) { }
         public void CompileToMethod(System.Reflection.Emit.MethodBuilder method, System.Runtime.CompilerServices.DebugInfoGenerator debugInfoGenerator) { }
@@ -3641,8 +3645,9 @@ namespace System.Security.Cryptography
         public DSACng() { }
         public DSACng(int keySize) { }
         [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         public DSACng(System.Security.Cryptography.CngKey key) { }
-        public System.Security.Cryptography.CngKey Key { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CngKey Key { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]get { throw null; } }
         public override string KeyExchangeAlgorithm { get { throw null; } }
         public override System.Security.Cryptography.KeySizes[] LegalKeySizes { get { throw null; } }
         public override string SignatureAlgorithm { get { throw null; } }
@@ -3885,6 +3890,17 @@ namespace System.Security.Cryptography
         public byte[] X;
         public byte[] Y;
     }
+    public sealed partial class IncrementalHash : System.IDisposable
+    {
+        internal IncrementalHash() { }
+        public System.Security.Cryptography.HashAlgorithmName AlgorithmName { get { throw null; } }
+        public void AppendData(byte[] data) { }
+        public void AppendData(byte[] data, int offset, int count) { }
+        public static System.Security.Cryptography.IncrementalHash CreateHash(System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
+        public static System.Security.Cryptography.IncrementalHash CreateHMAC(System.Security.Cryptography.HashAlgorithmName hashAlgorithm, byte[] key) { throw null; }
+        public void Dispose() { }
+        public byte[] GetHashAndReset() { throw null; }
+    }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class ManifestSignatureInformation
     {
@@ -3916,8 +3932,9 @@ namespace System.Security.Cryptography
         public RSACng() { }
         public RSACng(int keySize) { }
         [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         public RSACng(System.Security.Cryptography.CngKey key) { }
-        public System.Security.Cryptography.CngKey Key { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public System.Security.Cryptography.CngKey Key { [System.Security.SecuritySafeCriticalAttribute][System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]get { throw null; } }
         public override string KeyExchangeAlgorithm { get { throw null; } }
         public override string SignatureAlgorithm { get { throw null; } }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -3934,6 +3951,7 @@ namespace System.Security.Cryptography
         [System.Security.SecuritySafeCriticalAttribute]
         public override void ImportParameters(System.Security.Cryptography.RSAParameters parameters) { }
         [System.Security.SecuritySafeCriticalAttribute]
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, UnmanagedCode=true)]
         public override byte[] SignHash(byte[] hash, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, System.Security.Cryptography.RSASignaturePadding padding) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public override bool VerifyHash(byte[] hash, byte[] signature, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, System.Security.Cryptography.RSASignaturePadding padding) { throw null; }

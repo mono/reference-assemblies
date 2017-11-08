@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("mscorlib.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("mscorlib.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("mscorlib.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -4817,10 +4817,12 @@ namespace System
         public static System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, System.ValueTuple<T8, T9>> ToValueTuple<T1, T2, T3, T4, T5, T6, T7, T8, T9>(this System.Tuple<T1, T2, T3, T4, T5, T6, T7, System.Tuple<T8, T9>> value) { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1) { }
         public T1 Item1 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4830,11 +4832,13 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2) { }
         public T1 Item1 { get { throw null; } }
         public T2 Item2 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4844,12 +4848,14 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2, T3 item3) { }
         public T1 Item1 { get { throw null; } }
         public T2 Item2 { get { throw null; } }
         public T3 Item3 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4859,13 +4865,15 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4) { }
         public T1 Item1 { get { throw null; } }
         public T2 Item2 { get { throw null; } }
         public T3 Item3 { get { throw null; } }
         public T4 Item4 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4875,7 +4883,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5) { }
         public T1 Item1 { get { throw null; } }
@@ -4883,6 +4891,8 @@ namespace System
         public T3 Item3 { get { throw null; } }
         public T4 Item4 { get { throw null; } }
         public T5 Item5 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4892,7 +4902,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6) { }
         public T1 Item1 { get { throw null; } }
@@ -4901,6 +4911,8 @@ namespace System
         public T4 Item4 { get { throw null; } }
         public T5 Item5 { get { throw null; } }
         public T6 Item6 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4910,7 +4922,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7) { }
         public T1 Item1 { get { throw null; } }
@@ -4920,6 +4932,8 @@ namespace System
         public T5 Item5 { get { throw null; } }
         public T6 Item6 { get { throw null; } }
         public T7 Item7 { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -4929,7 +4943,7 @@ namespace System
         public override string ToString() { throw null; }
     }
     [System.SerializableAttribute]
-    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable
+    public partial class Tuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.Runtime.CompilerServices.ITuple
     {
         public Tuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, TRest rest) { }
         public T1 Item1 { get { throw null; } }
@@ -4940,6 +4954,8 @@ namespace System
         public T6 Item6 { get { throw null; } }
         public T7 Item7 { get { throw null; } }
         public TRest Rest { get { throw null; } }
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public override bool Equals(object obj) { throw null; }
         public override int GetHashCode() { throw null; }
         int System.Collections.IStructuralComparable.CompareTo(object other, System.Collections.IComparer comparer) { throw null; }
@@ -5459,9 +5475,12 @@ namespace System
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
     public delegate void UnhandledExceptionEventHandler(object sender, System.UnhandledExceptionEventArgs e);
+    [System.SerializableAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
-    public partial struct ValueTuple : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple>, System.IEquatable<System.ValueTuple>
+    public partial struct ValueTuple : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple>, System.IEquatable<System.ValueTuple>, System.Runtime.CompilerServices.ITuple
     {
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple other) { throw null; }
         public static System.ValueTuple Create() { throw null; }
         public static System.ValueTuple<T1> Create<T1>(T1 item1) { throw null; }
@@ -5481,11 +5500,14 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.SerializableAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct ValueTuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1>>, System.IEquatable<System.ValueTuple<T1>>
+    public partial struct ValueTuple<T1> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1>>, System.IEquatable<System.ValueTuple<T1>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public ValueTuple(T1 item1) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1> other) { throw null; }
@@ -5496,11 +5518,14 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2>>, System.IEquatable<System.ValueTuple<T1, T2>>
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2>>, System.IEquatable<System.ValueTuple<T1, T2>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public T2 Item2;
         public ValueTuple(T1 item1, T2 item2) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2> other) { throw null; }
@@ -5511,12 +5536,15 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3>>, System.IEquatable<System.ValueTuple<T1, T2, T3>>
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2, T3> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3>>, System.IEquatable<System.ValueTuple<T1, T2, T3>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public T2 Item2;
         public T3 Item3;
         public ValueTuple(T1 item1, T2 item2, T3 item3) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2, T3> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2, T3> other) { throw null; }
@@ -5527,13 +5555,16 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4>>
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2, T3, T4> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public T2 Item2;
         public T3 Item3;
         public T4 Item4;
         public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2, T3, T4> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2, T3, T4> other) { throw null; }
@@ -5544,7 +5575,8 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5>>
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2, T3, T4, T5> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public T2 Item2;
@@ -5552,6 +5584,8 @@ namespace System
         public T4 Item4;
         public T5 Item5;
         public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5> other) { throw null; }
@@ -5562,7 +5596,8 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6>>
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public T2 Item2;
@@ -5571,6 +5606,8 @@ namespace System
         public T5 Item5;
         public T6 Item6;
         public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5, T6> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5, T6> other) { throw null; }
@@ -5581,7 +5618,8 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7>>
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6, T7> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7>>, System.Runtime.CompilerServices.ITuple
     {
         public T1 Item1;
         public T2 Item2;
@@ -5591,6 +5629,8 @@ namespace System
         public T6 Item6;
         public T7 Item7;
         public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7> other) { throw null; }
@@ -5601,7 +5641,8 @@ namespace System
         int System.IComparable.CompareTo(object other) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>> where TRest : struct
+    [System.SerializableAttribute]
+    public partial struct ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> : System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.IComparable, System.IComparable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>>, System.IEquatable<System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>>, System.Runtime.CompilerServices.ITuple where TRest : struct
     {
         public T1 Item1;
         public T2 Item2;
@@ -5612,6 +5653,8 @@ namespace System
         public T7 Item7;
         public TRest Rest;
         public ValueTuple(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5, T6 item6, T7 item7, TRest rest) { throw null;}
+        object System.Runtime.CompilerServices.ITuple.this[int index] { get { throw null; } }
+        int System.Runtime.CompilerServices.ITuple.Length { get { throw null; } }
         public int CompareTo(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> other) { throw null; }
         public override bool Equals(object obj) { throw null; }
         public bool Equals(System.ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest> other) { throw null; }
@@ -8181,6 +8224,10 @@ namespace System.Globalization
         public override bool IsLeapYear(int year, int era) { throw null; }
         public override System.DateTime ToDateTime(int year, int month, int day, int hour, int minute, int second, int millisecond, int era) { throw null; }
         public override int ToFourDigitYear(int year) { throw null; }
+    }
+    public static partial class GlobalizationExtensions
+    {
+        public static System.StringComparer GetStringComparer(this System.Globalization.CompareInfo compareInfo, System.Globalization.CompareOptions options) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -13693,6 +13740,11 @@ namespace System.Runtime.CompilerServices
     public static partial class IsBoxed
     {
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(8))]
+    public sealed partial class IsByRefLikeAttribute : System.Attribute
+    {
+        public IsByRefLikeAttribute() { }
+    }
     public static partial class IsByValue
     {
     }
@@ -13718,6 +13770,11 @@ namespace System.Runtime.CompilerServices
     public static partial class IsPinned
     {
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(32767), Inherited=false)]
+    public sealed partial class IsReadOnlyAttribute : System.Attribute
+    {
+        public IsReadOnlyAttribute() { }
+    }
     public static partial class IsSignUnspecifiedByte
     {
     }
@@ -13733,6 +13790,11 @@ namespace System.Runtime.CompilerServices
     public sealed partial class IteratorStateMachineAttribute : System.Runtime.CompilerServices.StateMachineAttribute
     {
         public IteratorStateMachineAttribute(System.Type stateMachineType) : base (default(System.Type)) { }
+    }
+    public partial interface ITuple
+    {
+        object this[int index] { get; }
+        int Length { get; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(2304), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -13813,6 +13875,11 @@ namespace System.Runtime.CompilerServices
     {
         public RuntimeCompatibilityAttribute() { }
         public bool WrapNonExceptionThrows { get { throw null; } set { } }
+    }
+    public static partial class RuntimeFeature
+    {
+        public const string PortablePdb = "PortablePdb";
+        public static bool IsSupported(string feature) { throw null; }
     }
     public static partial class RuntimeHelpers
     {
@@ -14061,6 +14128,13 @@ namespace System.Runtime.InteropServices
     public sealed partial class AllowReversePInvokeCallsAttribute : System.Attribute
     {
         public AllowReversePInvokeCallsAttribute() { }
+    }
+    public enum Architecture
+    {
+        Arm = 2,
+        Arm64 = 3,
+        X64 = 1,
+        X86 = 0,
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -15245,6 +15319,20 @@ namespace System.Runtime.InteropServices
     {
         public OptionalAttribute() { }
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct OSPlatform : System.IEquatable<System.Runtime.InteropServices.OSPlatform>
+    {
+        public static System.Runtime.InteropServices.OSPlatform Linux { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.Runtime.InteropServices.OSPlatform OSX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.Runtime.InteropServices.OSPlatform Windows { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public static System.Runtime.InteropServices.OSPlatform Create(string osPlatform) { throw null; }
+        public override bool Equals(object obj) { throw null; }
+        public bool Equals(System.Runtime.InteropServices.OSPlatform other) { throw null; }
+        public override int GetHashCode() { throw null; }
+        public static bool operator ==(System.Runtime.InteropServices.OSPlatform left, System.Runtime.InteropServices.OSPlatform right) { throw null; }
+        public static bool operator !=(System.Runtime.InteropServices.OSPlatform left, System.Runtime.InteropServices.OSPlatform right) { throw null; }
+        public override string ToString() { throw null; }
+    }
     [System.AttributeUsageAttribute((System.AttributeTargets)(2048), Inherited=false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public sealed partial class OutAttribute : System.Attribute
@@ -15369,6 +15457,14 @@ namespace System.Runtime.InteropServices
         public static object GetRuntimeInterfaceAsObject(System.Guid clsid, System.Guid riid) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.SecuritySafeCriticalAttribute]
         public static string GetSystemVersion() { throw null; }
+    }
+    public static partial class RuntimeInformation
+    {
+        public static string FrameworkDescription { get { throw null; } }
+        public static System.Runtime.InteropServices.Architecture OSArchitecture { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static string OSDescription { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static System.Runtime.InteropServices.Architecture ProcessArchitecture { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
+        public static bool IsOSPlatform(System.Runtime.InteropServices.OSPlatform osPlatform) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
@@ -25601,6 +25697,14 @@ namespace System.Threading
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(false)]
     public delegate void ParameterizedThreadStart(object obj);
+    public sealed partial class PreAllocatedOverlapped : System.IDisposable
+    {
+        [System.CLSCompliantAttribute(false)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        public PreAllocatedOverlapped(System.Threading.IOCompletionCallback callback, object state, object pinData) { }
+        public void Dispose() { }
+        ~PreAllocatedOverlapped() { }
+    }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Synchronization=true, ExternalThreading=true)]
     public sealed partial class ReaderWriterLock : System.Runtime.ConstrainedExecution.CriticalFinalizerObject
@@ -25998,6 +26102,26 @@ namespace System.Threading
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.CLSCompliantAttribute(false)]
         [System.Security.SecurityCriticalAttribute]
         public static System.Threading.RegisteredWaitHandle UnsafeRegisterWaitForSingleObject(System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, uint millisecondsTimeOutInterval, bool executeOnlyOnce) { throw null; }
+    }
+    public sealed partial class ThreadPoolBoundHandle : System.IDisposable
+    {
+        internal ThreadPoolBoundHandle() { }
+        public System.Runtime.InteropServices.SafeHandle Handle { [System.Security.SecurityCriticalAttribute]get { throw null; } }
+        [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        public unsafe System.Threading.NativeOverlapped* AllocateNativeOverlapped(System.Threading.IOCompletionCallback callback, object state, object pinData) { throw null; }
+        [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        public unsafe System.Threading.NativeOverlapped* AllocateNativeOverlapped(System.Threading.PreAllocatedOverlapped preAllocated) { throw null; }
+        [System.Security.SecurityCriticalAttribute]
+        public static System.Threading.ThreadPoolBoundHandle BindHandle(System.Runtime.InteropServices.SafeHandle handle) { throw null; }
+        public void Dispose() { }
+        [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        public unsafe void FreeNativeOverlapped(System.Threading.NativeOverlapped* overlapped) { }
+        [System.CLSCompliantAttribute(false)]
+        [System.Security.SecurityCriticalAttribute]
+        public unsafe static object GetNativeOverlappedState(System.Threading.NativeOverlapped* overlapped) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     [System.SerializableAttribute]
