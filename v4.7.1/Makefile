@@ -32,24 +32,39 @@ ASSEMBLIES := Accessibility CustomMarshalers	\
 
 ASSEMBLIES += bare/System bare/System.Xml bare/System.Configuration bare/System.ServiceModel.Activation bare/System.Web
 
-FACADE_ASSEMBLIES := Facades/System.Collections.Concurrent Facades/System.Net.Primitives Facades/System.Runtime	\
-	Facades/System.Collections Facades/System.Net.Requests Facades/System.Security.Principal	\
-	Facades/System.ComponentModel.Annotations Facades/System.ObjectModel Facades/System.ServiceModel.Duplex	\
-	Facades/System.ComponentModel.EventBasedAsync Facades/System.Reflection.Emit.ILGeneration Facades/System.ServiceModel.Http	\
-	Facades/System.ComponentModel Facades/System.Reflection.Emit.Lightweight Facades/System.ServiceModel.NetTcp	\
-	Facades/System.Diagnostics.Contracts Facades/System.Reflection.Emit Facades/System.ServiceModel.Primitives	\
-	Facades/System.Diagnostics.Debug Facades/System.Reflection.Extensions Facades/System.ServiceModel.Security	\
-	Facades/System.Diagnostics.Tools Facades/System.Reflection.Primitives Facades/System.Text.Encoding.Extensions	\
-	Facades/System.Reflection Facades/System.Text.Encoding	\
-	Facades/System.Dynamic.Runtime Facades/System.Resources.ResourceManager Facades/System.Text.RegularExpressions	\
-	Facades/System.Globalization Facades/System.Runtime.Extensions Facades/System.Threading.Tasks.Parallel	\
-	Facades/System.IO Facades/System.Runtime.InteropServices.RuntimeInformation Facades/System.Runtime.InteropServices.WindowsRuntime Facades/System.Threading.Tasks	\
-	Facades/System.Linq.Expressions Facades/System.Runtime.InteropServices Facades/System.Threading.Timer	\
-	Facades/System.Linq.Parallel Facades/System.Runtime.Numerics Facades/System.Threading	\
-	Facades/System.Linq.Queryable Facades/System.Runtime.Serialization.Json Facades/System.Xml.ReaderWriter	\
-	Facades/System.Linq Facades/System.Runtime.Serialization.Primitives Facades/System.Xml.XDocument	\
-	Facades/System.Net.NetworkInformation Facades/System.Runtime.Serialization.Xml Facades/System.Xml.XmlSerializer	\
-	Facades/System.Net.WebHeaderCollection Facades/System.Runtime.Handles
+FACADE_ASSEMBLIES := Facades/Microsoft.Win32.Primitives Facades/System.AppContext Facades/System.Collections.Concurrent	\
+	Facades/System.Collections.NonGeneric Facades/System.Collections.Specialized Facades/System.Collections	\
+	Facades/System.ComponentModel.Annotations Facades/System.ComponentModel.EventBasedAsync Facades/System.ComponentModel.Primitives	\
+	Facades/System.ComponentModel.TypeConverter Facades/System.ComponentModel Facades/System.Console Facades/System.Data.Common	\
+	Facades/System.Diagnostics.Contracts Facades/System.Diagnostics.Debug Facades/System.Diagnostics.FileVersionInfo	\
+	Facades/System.Diagnostics.Process Facades/System.Diagnostics.StackTrace Facades/System.Diagnostics.TextWriterTraceListener	\
+	Facades/System.Diagnostics.Tools Facades/System.Diagnostics.TraceSource Facades/System.Drawing.Primitives	\
+	Facades/System.Dynamic.Runtime Facades/System.Globalization.Calendars Facades/System.Globalization.Extensions	\
+	Facades/System.Globalization Facades/System.IO.Compression.ZipFile Facades/System.IO.FileSystem.DriveInfo	\
+	Facades/System.IO.FileSystem.Primitives Facades/System.IO.FileSystem.Watcher Facades/System.IO.FileSystem	\
+	Facades/System.IO.IsolatedStorage Facades/System.IO.MemoryMappedFiles Facades/System.IO.Pipes	\
+	Facades/System.IO.UnmanagedMemoryStream Facades/System.IO Facades/System.Linq.Expressions Facades/System.Linq.Parallel	\
+	Facades/System.Linq.Queryable Facades/System.Linq Facades/System.Net.Http.Rtc Facades/System.Net.NameResolution	\
+	Facades/System.Net.NetworkInformation Facades/System.Net.Ping Facades/System.Net.Primitives Facades/System.Net.Requests	\
+	Facades/System.Net.Security Facades/System.Net.Sockets Facades/System.Net.WebHeaderCollection Facades/System.Net.WebSockets.Client	\
+	Facades/System.Net.WebSockets Facades/System.ObjectModel Facades/System.Reflection.Emit.ILGeneration	\
+	Facades/System.Reflection.Emit.Lightweight Facades/System.Reflection.Emit Facades/System.Reflection.Extensions	\
+	Facades/System.Reflection.Primitives Facades/System.Reflection Facades/System.Resources.Reader	\
+	Facades/System.Resources.ResourceManager Facades/System.Resources.Writer Facades/System.Runtime.CompilerServices.VisualC	\
+	Facades/System.Runtime.Extensions Facades/System.Runtime.Handles Facades/System.Runtime.InteropServices.RuntimeInformation	\
+	Facades/System.Runtime.InteropServices.WindowsRuntime Facades/System.Runtime.InteropServices Facades/System.Runtime.Numerics	\
+	Facades/System.Runtime.Serialization.Formatters Facades/System.Runtime.Serialization.Json	\
+	Facades/System.Runtime.Serialization.Primitives Facades/System.Runtime.Serialization.Xml Facades/System.Runtime	\
+	Facades/System.Security.Claims Facades/System.Security.Cryptography.Algorithms Facades/System.Security.Cryptography.Csp	\
+	Facades/System.Security.Cryptography.Encoding Facades/System.Security.Cryptography.Primitives	\
+	Facades/System.Security.Cryptography.X509Certificates Facades/System.Security.Principal Facades/System.Security.SecureString	\
+	Facades/System.ServiceModel.Duplex Facades/System.ServiceModel.Http Facades/System.ServiceModel.NetTcp	\
+	Facades/System.ServiceModel.Primitives Facades/System.ServiceModel.Security Facades/System.Text.Encoding.Extensions	\
+	Facades/System.Text.Encoding Facades/System.Text.RegularExpressions Facades/System.Threading.Overlapped	\
+	Facades/System.Threading.Tasks.Parallel Facades/System.Threading.Tasks Facades/System.Threading.Thread	\
+	Facades/System.Threading.ThreadPool Facades/System.Threading.Timer Facades/System.Threading Facades/System.ValueTuple	\
+	Facades/System.Xml.ReaderWriter Facades/System.Xml.XDocument Facades/System.Xml.XPath.XDocument Facades/System.Xml.XPath	\
+	Facades/System.Xml.XmlDocument Facades/System.Xml.XmlSerializer Facades/netstandard
 
 ASSEMBLIES += $(FACADE_ASSEMBLIES)
 
@@ -169,25 +184,57 @@ bare/System.Configuration_REFS := mscorlib bare/System bare/System.Xml
 bare/System.ServiceModel.Activation_REFS := mscorlib System
 bare/System.Web_REFS := mscorlib System.Drawing System System.Xml System.Core System.Configuration System.Data System.Web.ApplicationServices System.ComponentModel.DataAnnotations System.EnterpriseServices
 
+Facades/Microsoft.Win32.Primitives_REFS := mscorlib System
+Facades/System.AppContext_REFS := mscorlib
 Facades/System.Collections.Concurrent_REFS := mscorlib System
+Facades/System.Collections.NonGeneric_REFS := mscorlib System
+Facades/System.Collections.Specialized_REFS := mscorlib System
 Facades/System.Collections_REFS := mscorlib System.Core System
 Facades/System.ComponentModel.Annotations_REFS := mscorlib System.ComponentModel.DataAnnotations
 Facades/System.ComponentModel.EventBasedAsync_REFS := mscorlib System
+Facades/System.ComponentModel.Primitives_REFS := mscorlib System
+Facades/System.ComponentModel.TypeConverter_REFS := mscorlib System
 Facades/System.ComponentModel_REFS := mscorlib System
+Facades/System.Console_REFS := mscorlib
+Facades/System.Data.Common_REFS := mscorlib System.Data
 Facades/System.Diagnostics.Contracts_REFS := mscorlib
 Facades/System.Diagnostics.Debug_REFS := mscorlib System
+Facades/System.Diagnostics.FileVersionInfo_REFS := mscorlib System
+Facades/System.Diagnostics.Process_REFS := mscorlib System
+Facades/System.Diagnostics.StackTrace_REFS := mscorlib System
+Facades/System.Diagnostics.TextWriterTraceListener_REFS := mscorlib System
 Facades/System.Diagnostics.Tools_REFS := mscorlib System
+Facades/System.Diagnostics.TraceSource_REFS := mscorlib System
+Facades/System.Drawing.Primitives_REFS := mscorlib System.Drawing
 Facades/System.Dynamic.Runtime_REFS := mscorlib System.Core
+Facades/System.Globalization.Calendars_REFS := mscorlib
+Facades/System.Globalization.Extensions_REFS := mscorlib System
 Facades/System.Globalization_REFS := mscorlib
+Facades/System.IO.Compression.ZipFile_REFS := mscorlib System.IO.Compression.FileSystem
+Facades/System.IO.FileSystem.DriveInfo_REFS := mscorlib
+Facades/System.IO.FileSystem.Primitives_REFS := mscorlib
+Facades/System.IO.FileSystem.Watcher_REFS := mscorlib System
+Facades/System.IO.FileSystem_REFS := mscorlib
+Facades/System.IO.IsolatedStorage_REFS := mscorlib
+Facades/System.IO.MemoryMappedFiles_REFS := mscorlib System.Core
+Facades/System.IO.Pipes_REFS := mscorlib System.Core
+Facades/System.IO.UnmanagedMemoryStream_REFS := mscorlib
 Facades/System.IO_REFS := mscorlib System
 Facades/System.Linq.Expressions_REFS := mscorlib System.Core
 Facades/System.Linq.Parallel_REFS := mscorlib System.Core
 Facades/System.Linq.Queryable_REFS := mscorlib System.Core
 Facades/System.Linq_REFS := mscorlib System.Core
+Facades/System.Net.Http.Rtc_REFS := mscorlib
+Facades/System.Net.NameResolution_REFS := mscorlib System
 Facades/System.Net.NetworkInformation_REFS := mscorlib System
+Facades/System.Net.Ping_REFS := mscorlib System
 Facades/System.Net.Primitives_REFS := mscorlib System
 Facades/System.Net.Requests_REFS := mscorlib System
+Facades/System.Net.Security_REFS := mscorlib System
+Facades/System.Net.Sockets_REFS := mscorlib System
 Facades/System.Net.WebHeaderCollection_REFS := mscorlib System
+Facades/System.Net.WebSockets.Client_REFS := mscorlib System
+Facades/System.Net.WebSockets_REFS := mscorlib System
 Facades/System.ObjectModel_REFS := mscorlib System
 Facades/System.Reflection.Emit.ILGeneration_REFS := mscorlib
 Facades/System.Reflection.Emit.Lightweight_REFS := mscorlib
@@ -195,18 +242,29 @@ Facades/System.Reflection.Emit_REFS := mscorlib
 Facades/System.Reflection.Extensions_REFS := mscorlib
 Facades/System.Reflection.Primitives_REFS := mscorlib
 Facades/System.Reflection_REFS := mscorlib
+Facades/System.Resources.Reader_REFS := mscorlib
 Facades/System.Resources.ResourceManager_REFS := mscorlib
+Facades/System.Resources.Writer_REFS := mscorlib
+Facades/System.Runtime.CompilerServices.VisualC_REFS := mscorlib
 Facades/System.Runtime.Extensions_REFS := mscorlib System
 Facades/System.Runtime.Handles_REFS := mscorlib System.Core
 Facades/System.Runtime.InteropServices.RuntimeInformation_REFS := mscorlib
 Facades/System.Runtime.InteropServices.WindowsRuntime_REFS := mscorlib
 Facades/System.Runtime.InteropServices_REFS := mscorlib System.Core System
 Facades/System.Runtime.Numerics_REFS := mscorlib System.Numerics
+Facades/System.Runtime.Serialization.Formatters_REFS := mscorlib
 Facades/System.Runtime.Serialization.Json_REFS := mscorlib System.Runtime.Serialization
 Facades/System.Runtime.Serialization.Primitives_REFS := mscorlib System.Runtime.Serialization
 Facades/System.Runtime.Serialization.Xml_REFS := mscorlib System.Runtime.Serialization System Facades/System.Runtime.Serialization.Primitives
 Facades/System.Runtime_REFS := mscorlib System.Core System System.ComponentModel.Composition
+Facades/System.Security.Claims_REFS := mscorlib
+Facades/System.Security.Cryptography.Algorithms_REFS := mscorlib System.Core
+Facades/System.Security.Cryptography.Csp_REFS := mscorlib
+Facades/System.Security.Cryptography.Encoding_REFS := mscorlib System
+Facades/System.Security.Cryptography.Primitives_REFS := mscorlib
+Facades/System.Security.Cryptography.X509Certificates_REFS := mscorlib System System.Core
 Facades/System.Security.Principal_REFS := mscorlib
+Facades/System.Security.SecureString_REFS := mscorlib System
 Facades/System.ServiceModel.Duplex_REFS := mscorlib System.ServiceModel
 Facades/System.ServiceModel.Http_REFS := mscorlib System.ServiceModel
 Facades/System.ServiceModel.NetTcp_REFS := mscorlib System.ServiceModel
@@ -215,13 +273,21 @@ Facades/System.ServiceModel.Security_REFS := mscorlib System.ServiceModel
 Facades/System.Text.Encoding.Extensions_REFS := mscorlib
 Facades/System.Text.Encoding_REFS := mscorlib
 Facades/System.Text.RegularExpressions_REFS := mscorlib System
+Facades/System.Threading.Overlapped_REFS := mscorlib
 Facades/System.Threading.Tasks.Parallel_REFS := mscorlib
 Facades/System.Threading.Tasks_REFS := mscorlib System.Core
+Facades/System.Threading.Thread_REFS := mscorlib
+Facades/System.Threading.ThreadPool_REFS := mscorlib
 Facades/System.Threading.Timer_REFS := mscorlib
 Facades/System.Threading_REFS := mscorlib System System.Core
+Facades/System.ValueTuple_REFS := mscorlib
 Facades/System.Xml.ReaderWriter_REFS := mscorlib System.Xml
 Facades/System.Xml.XDocument_REFS := mscorlib System.Xml.Linq
+Facades/System.Xml.XPath.XDocument_REFS := mscorlib System.Xml.Linq
+Facades/System.Xml.XPath_REFS := mscorlib System.Xml
+Facades/System.Xml.XmlDocument_REFS := mscorlib System.Xml
 Facades/System.Xml.XmlSerializer_REFS := mscorlib System.Xml
+Facades/netstandard_REFS := mscorlib System System.Core System.Data System.Diagnostics.Tracing System.Drawing System.IO.Compression System.IO.Compression.FileSystem System.ComponentModel.Composition System.Net.Http System.Numerics System.Runtime.Serialization System.Transactions System.Web System.Xml System.Xml.Linq
 
 mscorlib_CSC_ARGS := -runtimemetadataversion:v4.0.30319
 System_CSC_ARGS := -d:CONFIG_DEP -d:XML_DEP
