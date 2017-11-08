@@ -27,7 +27,7 @@ ASSEMBLIES := Accessibility CustomMarshalers	\
 	System.Web.Services System.Web.WebPages.Deployment System.Web.WebPages.Razor System.Web.WebPages System.Web	\
 	System.Windows.Forms.DataVisualization System.Windows.Forms System.Windows System.Xaml System.Xml.Linq	\
 	System.Xml.Serialization System.Xml System WindowsBase cscompmgd mscorlib	\
-	System.Deployment System.Numerics.Vectors System.Reflection.Context System.Runtime.InteropServices.RuntimeInformation	\
+	System.Deployment System.Numerics.Vectors System.Reflection.Context	\
 	System.Web.Mobile System.Web.RegularExpressions System.Workflow.Activities System.Workflow.ComponentModel System.Workflow.Runtime
 
 ASSEMBLIES += bare/System bare/System.Xml bare/System.Configuration bare/System.ServiceModel.Activation bare/System.Web
@@ -43,7 +43,7 @@ FACADE_ASSEMBLIES := Facades/System.Collections.Concurrent Facades/System.Net.Pr
 	Facades/System.Reflection Facades/System.Text.Encoding	\
 	Facades/System.Dynamic.Runtime Facades/System.Resources.ResourceManager Facades/System.Text.RegularExpressions	\
 	Facades/System.Globalization Facades/System.Runtime.Extensions Facades/System.Threading.Tasks.Parallel	\
-	Facades/System.IO Facades/System.Runtime.InteropServices.WindowsRuntime Facades/System.Threading.Tasks	\
+	Facades/System.IO Facades/System.Runtime.InteropServices.RuntimeInformation Facades/System.Runtime.InteropServices.WindowsRuntime Facades/System.Threading.Tasks	\
 	Facades/System.Linq.Expressions Facades/System.Runtime.InteropServices Facades/System.Threading.Timer	\
 	Facades/System.Linq.Parallel Facades/System.Runtime.Numerics Facades/System.Threading	\
 	Facades/System.Linq.Queryable Facades/System.Runtime.Serialization.Json Facades/System.Xml.ReaderWriter	\
@@ -117,7 +117,6 @@ System.Reflection.Context_REFS := mscorlib
 System.Reflection.Metadata_REFS := System.Runtime System.Resources.ResourceManager System.Collections.Immutable System.Reflection.Primitives System.Diagnostics.Debug System.Collections System.IO System.IO.Compression System.Text.Encoding System.Runtime.InteropServices System.Linq System.Reflection System.Threading System.Runtime.Extensions System.Text.Encoding.Extensions System.Reflection.Extensions
 System.Runtime.Caching_REFS := mscorlib System System.Data System.Configuration
 System.Runtime.DurableInstancing_REFS := mscorlib System.Xml.Linq System.ServiceModel.Internals System.Transactions System.Core System.Runtime.Serialization System
-System.Runtime.InteropServices.RuntimeInformation_REFS := mscorlib
 System.Runtime.Remoting_REFS := mscorlib System System.Web System.Xml System.Runtime.Serialization.Formatters.Soap
 System.Runtime.Serialization.Formatters.Soap_REFS := mscorlib System.Xml
 System.Runtime.Serialization_REFS := mscorlib System.Xml System.ServiceModel.Internals System System.Configuration System.Core
@@ -199,6 +198,7 @@ Facades/System.Reflection_REFS := mscorlib
 Facades/System.Resources.ResourceManager_REFS := mscorlib
 Facades/System.Runtime.Extensions_REFS := mscorlib System
 Facades/System.Runtime.Handles_REFS := mscorlib System.Core
+Facades/System.Runtime.InteropServices.RuntimeInformation_REFS := mscorlib
 Facades/System.Runtime.InteropServices.WindowsRuntime_REFS := mscorlib
 Facades/System.Runtime.InteropServices_REFS := mscorlib System.Core System
 Facades/System.Runtime.Numerics_REFS := mscorlib System.Numerics
@@ -257,7 +257,7 @@ MSFINAL_KEY_ASSEMBLIES := Accessibility CustomMarshalers Microsoft.Build.Engine 
 	System.Configuration.Install System.Configuration System.Deployment System.Design System.Diagnostics.Tracing System.DirectoryServices.Protocols	\
 	System.DirectoryServices System.Drawing.Design System.Drawing System.Dynamic System.EnterpriseServices System.Management	\
 	System.Messaging System.Net.Http.WebRequest System.Net.Http System.Net System.Numerics.Vectors System.Runtime.Caching	\
-	System.Runtime.InteropServices.RuntimeInformation System.Runtime.Serialization.Formatters.Soap System.Security System.ServiceProcess System.Web.Services	\
+	System.Runtime.Serialization.Formatters.Soap System.Security System.ServiceProcess System.Web.Services	\
 	System.Web System.Web.Mobile System.Web.RegularExpressions System.Windows cscompmgd bare/System.Configuration bare/System.Web
 
 all: $(addsuffix .dll, $(ASSEMBLIES))
