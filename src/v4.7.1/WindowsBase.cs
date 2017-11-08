@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("WindowsBase.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("WindowsBase.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("WindowsBase.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -1030,8 +1030,15 @@ namespace System.Windows
     public static partial class BaseCompatibilityPreferences
     {
         public static bool FlowDispatcherSynchronizationContextPriority { get { throw null; } set { } }
+        public static System.Windows.BaseCompatibilityPreferences.HandleDispatcherRequestProcessingFailureOptions HandleDispatcherRequestProcessingFailure { get { throw null; } set { } }
         public static bool InlineDispatcherSynchronizationContextSend { get { throw null; } set { } }
         public static bool ReuseDispatcherSynchronizationContextInstance { get { throw null; } set { } }
+        public enum HandleDispatcherRequestProcessingFailureOptions
+        {
+            Continue = 0,
+            Reset = 2,
+            Throw = 1,
+        }
     }
     public delegate object CoerceValueCallback(System.Windows.DependencyObject d, object baseValue);
     [System.ComponentModel.TypeDescriptionProviderAttribute("MS.Internal.ComponentModel.DependencyObjectProvider")]

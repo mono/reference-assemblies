@@ -3,12 +3,12 @@
 // See the LICENSE file in the project root for more information.
 
 [assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
-[assembly:System.Reflection.AssemblyCompanyAttribute("Xamarin, Inc.")]
-[assembly:System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2013 Xamarin Inc. (http://www.xamarin.com)")]
+[assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
+[assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Reflection.Emit.Lightweight.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Reflection.Emit.Lightweight.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Reflection.Emit.Lightweight.dll")]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]

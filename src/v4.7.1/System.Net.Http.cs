@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Net.Http.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Net.Http.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Net.Http.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -97,13 +97,21 @@ namespace System.Net.Http
         public HttpClientHandler() { }
         public bool AllowAutoRedirect { get { throw null; } set { } }
         public System.Net.DecompressionMethods AutomaticDecompression { get { throw null; } set { } }
+        public bool CheckCertificateRevocationList { get { throw null; } set { } }
         public System.Net.Http.ClientCertificateOption ClientCertificateOptions { get { throw null; } set { } }
+        public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get { throw null; } }
         public System.Net.CookieContainer CookieContainer { get { throw null; } set { } }
         public System.Net.ICredentials Credentials { get { throw null; } set { } }
+        public System.Net.ICredentials DefaultProxyCredentials { get { throw null; } set { } }
         public int MaxAutomaticRedirections { get { throw null; } set { } }
+        public int MaxConnectionsPerServer { get { throw null; } set { } }
         public long MaxRequestContentBufferSize { get { throw null; } set { } }
+        public int MaxResponseHeadersLength { get { throw null; } set { } }
         public bool PreAuthenticate { get { throw null; } set { } }
+        public System.Collections.Generic.IDictionary<string, object> Properties { get { throw null; } }
         public System.Net.IWebProxy Proxy { get { throw null; } [System.Security.SecuritySafeCriticalAttribute]set { } }
+        public System.Func<System.Net.Http.HttpRequestMessage, System.Security.Cryptography.X509Certificates.X509Certificate2, System.Security.Cryptography.X509Certificates.X509Chain, System.Net.Security.SslPolicyErrors, bool> ServerCertificateCustomValidationCallback { get { throw null; } set { } }
+        public System.Security.Authentication.SslProtocols SslProtocols { get { throw null; } set { } }
         public virtual bool SupportsAutomaticDecompression { get { throw null; } }
         public virtual bool SupportsProxy { get { throw null; } }
         public virtual bool SupportsRedirectConfiguration { get { throw null; } }

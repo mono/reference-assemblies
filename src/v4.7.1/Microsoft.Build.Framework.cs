@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("Microsoft.Build.Framework.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("Microsoft.Build.Framework.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("Microsoft.Build.Framework.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -21,7 +21,9 @@
 [assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(4096))]
 [assembly:System.Runtime.InteropServices.GuidAttribute("D8A9BA71-4724-481d-9CA7-0DA23A1D615C")]
+#if false
 [assembly:System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.microsoft.com/build/2009/properties", "Microsoft.Build.Framework.XamlTypes")]
+#endif
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Flags=(System.Security.Permissions.SecurityPermissionFlag)(8))]
 namespace Microsoft.Build.Framework
 {

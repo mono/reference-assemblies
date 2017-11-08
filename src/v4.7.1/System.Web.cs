@@ -10,8 +10,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Web.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Web.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Web.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -267,6 +267,7 @@ namespace System.Web
         public virtual string GetOutputCacheProviderName(System.Web.HttpContext context) { throw null; }
         public virtual string GetVaryByCustomString(System.Web.HttpContext context, string custom) { throw null; }
         public virtual void Init() { }
+        public void OnExecuteRequestStep(System.Action<System.Web.HttpContextBase, System.Action> callback) { }
         public static void RegisterModule(System.Type moduleType) { }
         System.IAsyncResult System.Web.IHttpAsyncHandler.BeginProcessRequest(System.Web.HttpContext context, System.AsyncCallback cb, object extraData) { throw null; }
         void System.Web.IHttpAsyncHandler.EndProcessRequest(System.IAsyncResult result) { }
@@ -966,6 +967,7 @@ namespace System.Web
         public bool Shareable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string Value { get { throw null; } set { } }
         public System.Collections.Specialized.NameValueCollection Values { get { throw null; } }
+        public static bool TryParse(string input, out System.Web.HttpCookie result) { result = default(System.Web.HttpCookie); throw null; }
     }
     public sealed partial class HttpCookieCollection : System.Collections.Specialized.NameObjectCollectionBase
     {
@@ -3826,6 +3828,9 @@ namespace System.Web.Configuration
         Clear = 0,
         MD5 = 2,
         SHA1 = 1,
+        SHA256 = 3,
+        SHA384 = 4,
+        SHA512 = 5,
     }
     public enum FormsProtectionEnum
     {

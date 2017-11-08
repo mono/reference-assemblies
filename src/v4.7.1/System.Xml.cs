@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Xml.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Xml.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Xml.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -3455,6 +3455,8 @@ namespace System.Xml.XmlConfiguration
     public sealed partial class XmlReaderSection : System.Configuration.ConfigurationSection
     {
         public XmlReaderSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("CollapseWhiteSpaceIntoEmptyString", DefaultValue="false")]
+        public string CollapseWhiteSpaceIntoEmptyStringString { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("prohibitDefaultResolver", DefaultValue="false")]
         public string ProhibitDefaultResolverString { get { throw null; } set { } }
     }

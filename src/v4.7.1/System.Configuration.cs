@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Configuration.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Configuration.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Configuration.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -113,6 +113,33 @@ namespace System.Configuration
         MachineToApplication = 100,
         MachineToLocalUser = 300,
         MachineToRoamingUser = 200,
+    }
+    public abstract partial class ConfigurationBuilder : System.Configuration.Provider.ProviderBase
+    {
+        protected ConfigurationBuilder() { }
+        public virtual System.Configuration.ConfigurationSection ProcessConfigurationSection(System.Configuration.ConfigurationSection configSection) { throw null; }
+        public virtual System.Xml.XmlNode ProcessRawXml(System.Xml.XmlNode rawXml) { throw null; }
+    }
+    public partial class ConfigurationBuilderCollection : System.Configuration.Provider.ProviderCollection
+    {
+        public ConfigurationBuilderCollection() { }
+        public new System.Configuration.ConfigurationBuilder this[string name] { get { throw null; } }
+        public override void Add(System.Configuration.Provider.ProviderBase builder) { }
+    }
+    public partial class ConfigurationBuilderSettings : System.Configuration.ConfigurationElement
+    {
+        public ConfigurationBuilderSettings() { }
+        [System.Configuration.ConfigurationPropertyAttribute("", IsDefaultCollection=true, Options=(System.Configuration.ConfigurationPropertyOptions)(1))]
+        public System.Configuration.ProviderSettingsCollection Builders { get { throw null; } }
+        protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+    }
+    public sealed partial class ConfigurationBuildersSection : System.Configuration.ConfigurationSection
+    {
+        public ConfigurationBuildersSection() { }
+        [System.Configuration.ConfigurationPropertyAttribute("builders")]
+        public System.Configuration.ProviderSettingsCollection Builders { get { throw null; } }
+        protected internal override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        public System.Configuration.ConfigurationBuilder GetBuilderFromName(string builderName) { throw null; }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(132))]
     public sealed partial class ConfigurationCollectionAttribute : System.Attribute
@@ -838,6 +865,7 @@ namespace System.Configuration
         public bool AllowLocation { get { throw null; } set { } }
         public bool AllowOverride { get { throw null; } set { } }
         public string ConfigSource { get { throw null; } set { } }
+        public System.Configuration.ConfigurationBuilder ConfigurationBuilder { get { throw null; } }
         public bool ForceSave { get { throw null; } set { } }
         public bool InheritInChildApplications { get { throw null; } set { } }
         public bool IsDeclarationRequired { get { throw null; } }
@@ -953,9 +981,10 @@ namespace System.Configuration
 }
 namespace System.Configuration.Internal
 {
-    public partial class DelegatingConfigHost : System.Configuration.Internal.IInternalConfigHost
+    public partial class DelegatingConfigHost : System.Configuration.Internal.IInternalConfigHost, System.Configuration.Internal.IInternalConfigurationBuilderHost
     {
         protected DelegatingConfigHost() { }
+        protected System.Configuration.Internal.IInternalConfigurationBuilderHost ConfigBuilderHost { get { throw null; } }
         protected System.Configuration.Internal.IInternalConfigHost Host { get { throw null; } set { } }
         public virtual bool IsRemote { get { throw null; } }
         public virtual bool SupportsChangeNotifications { get { throw null; } }
@@ -992,6 +1021,8 @@ namespace System.Configuration.Internal
         public virtual System.IO.Stream OpenStreamForWrite(string streamName, string templateStreamName, ref object writeContext, bool assertPermissions) { throw null; }
         public virtual bool PrefetchAll(string configPath, string streamName) { throw null; }
         public virtual bool PrefetchSection(string sectionGroupName, string sectionName) { throw null; }
+        public virtual System.Configuration.ConfigurationSection ProcessConfigurationSection(System.Configuration.ConfigurationSection configSection, System.Configuration.ConfigurationBuilder builder) { throw null; }
+        public virtual System.Xml.XmlNode ProcessRawXml(System.Xml.XmlNode rawXml, System.Configuration.ConfigurationBuilder builder) { throw null; }
         public virtual void RequireCompleteInit(System.Configuration.Internal.IInternalConfigRecord configRecord) { }
         public virtual object StartMonitoringStreamForChanges(string streamName, System.Configuration.Internal.StreamChangeCallback callback) { throw null; }
         public virtual void StopMonitoringStreamForChanges(string streamName, System.Configuration.Internal.StreamChangeCallback callback) { }
@@ -1128,6 +1159,12 @@ namespace System.Configuration.Internal
         bool SupportsUserConfig { get; }
         object GetSection(string configKey);
         void RefreshConfig(string sectionName);
+    }
+    [System.Runtime.InteropServices.ComVisibleAttribute(false)]
+    public partial interface IInternalConfigurationBuilderHost
+    {
+        System.Configuration.ConfigurationSection ProcessConfigurationSection(System.Configuration.ConfigurationSection configSection, System.Configuration.ConfigurationBuilder builder);
+        System.Xml.XmlNode ProcessRawXml(System.Xml.XmlNode rawXml, System.Configuration.ConfigurationBuilder builder);
     }
     public sealed partial class InternalConfigEventArgs : System.EventArgs
     {

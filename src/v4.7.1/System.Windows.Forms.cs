@@ -10,8 +10,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Windows.Forms.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Windows.Forms.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Windows.Forms.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -6835,6 +6835,7 @@ namespace System.Windows.Forms
         public partial class DomainUpDownAccessibleObject : System.Windows.Forms.Control.ControlAccessibleObject
         {
             public DomainUpDownAccessibleObject(System.Windows.Forms.Control owner) : base (default(System.Windows.Forms.Control)) { }
+            public override string Name { get { throw null; } set { } }
             public override System.Windows.Forms.AccessibleRole Role { get { throw null; } }
             public override System.Windows.Forms.AccessibleObject GetChild(int index) { throw null; }
             public override int GetChildCount() { throw null; }
@@ -10974,6 +10975,7 @@ namespace System.Windows.Forms
         public void AddAnnuallyBoldedDate(System.DateTime date) { }
         public void AddBoldedDate(System.DateTime date) { }
         public void AddMonthlyBoldedDate(System.DateTime date) { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void CreateHandle() { }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
@@ -16271,6 +16273,7 @@ namespace System.Windows.Forms
         protected override bool DefaultAutoToolTip { get { throw null; } }
         [System.ComponentModel.DefaultValueAttribute(true)]
         public bool ShowDropDownArrow { get { throw null; } set { } }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override System.Windows.Forms.ToolStripDropDown CreateDefaultDropDown() { throw null; }
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnMouseLeave(System.EventArgs e) { }
