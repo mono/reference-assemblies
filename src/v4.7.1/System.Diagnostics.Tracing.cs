@@ -2,16 +2,21 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-[assembly:System.Reflection.AssemblyVersionAttribute("4.0.20.0")]
-[assembly:System.Reflection.AssemblyCompanyAttribute("Xamarin, Inc.")]
-[assembly:System.Reflection.AssemblyCopyrightAttribute("Copyright (c) 2013 Xamarin Inc. (http://www.xamarin.com)")]
+[assembly:System.Reflection.AssemblyVersionAttribute("4.1.2.0")]
+[assembly:System.CLSCompliantAttribute(true)]
+[assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
+[assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
+[assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Diagnostics.Tracing.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Diagnostics.Tracing.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2046.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2046.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Diagnostics.Tracing.dll")]
+[assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
+[assembly:System.Runtime.CompilerServices.CompilationRelaxationsAttribute(8)]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
+[assembly:System.Runtime.CompilerServices.RuntimeCompatibilityAttribute(WrapNonExceptionThrows=true)]
+[assembly:System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly:System.Runtime.InteropServices.DefaultDllImportSearchPathsAttribute((System.Runtime.InteropServices.DllImportSearchPath)(2050))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Diagnostics.Tracing.EventActivityOptions))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Diagnostics.Tracing.EventAttribute))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Diagnostics.Tracing.EventChannel))]
@@ -36,3 +41,11 @@
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Diagnostics.Tracing.EventTask))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Diagnostics.Tracing.EventWrittenEventArgs))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Diagnostics.Tracing.NonEventAttribute))]
+namespace System.Diagnostics.Tracing
+{
+    public partial class EventCounter
+    {
+        public EventCounter(string name, System.Diagnostics.Tracing.EventSource eventSource) { }
+        public void WriteMetric(float value) { }
+    }
+}

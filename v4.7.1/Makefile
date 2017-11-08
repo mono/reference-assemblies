@@ -11,7 +11,7 @@ ASSEMBLIES := Accessibility CustomMarshalers	\
 	SMDiagnostics System.ComponentModel.Composition	\
 	System.ComponentModel.DataAnnotations System.Configuration.Install System.Configuration System.Core	\
 	System.Data.DataSetExtensions System.Data.Entity System.Data.Linq System.Data.OracleClient	\
-	System.Data.Services.Client System.Data.Services System.Data System.Design System.DirectoryServices.Protocols	\
+	System.Data.Services.Client System.Data.Services System.Data System.Design System.Diagnostics.Tracing System.DirectoryServices.Protocols	\
 	System.DirectoryServices System.Drawing.Design System.Drawing System.Dynamic System.EnterpriseServices	\
 	System.IO.Compression.FileSystem System.IO.Compression System.IdentityModel.Selectors System.IdentityModel	\
 	System.Json.Microsoft System.Json System.Management System.Messaging System.Net.Http.Formatting	\
@@ -40,7 +40,7 @@ FACADE_ASSEMBLIES := Facades/System.Collections.Concurrent Facades/System.Net.Pr
 	Facades/System.Diagnostics.Contracts Facades/System.Reflection.Emit Facades/System.ServiceModel.Primitives	\
 	Facades/System.Diagnostics.Debug Facades/System.Reflection.Extensions Facades/System.ServiceModel.Security	\
 	Facades/System.Diagnostics.Tools Facades/System.Reflection.Primitives Facades/System.Text.Encoding.Extensions	\
-	Facades/System.Diagnostics.Tracing Facades/System.Reflection Facades/System.Text.Encoding	\
+	Facades/System.Reflection Facades/System.Text.Encoding	\
 	Facades/System.Dynamic.Runtime Facades/System.Resources.ResourceManager Facades/System.Text.RegularExpressions	\
 	Facades/System.Globalization Facades/System.Runtime.Extensions Facades/System.Threading.Tasks.Parallel	\
 	Facades/System.IO Facades/System.Runtime.InteropServices.WindowsRuntime Facades/System.Threading.Tasks	\
@@ -81,6 +81,7 @@ System.Data.Services_REFS := mscorlib System.Configuration System.ServiceModel S
 System.Data_REFS := mscorlib System.Configuration System.Xml System System.Numerics System.Core System.Transactions System.EnterpriseServices
 System.Deployment_REFS := mscorlib
 System.Design_REFS := mscorlib System.Drawing System.Drawing.Design System System.Windows.Forms System.Data bare/System.Web System.Configuration System.Xml
+System.Diagnostics.Tracing_REFS := mscorlib
 System.DirectoryServices.Protocols_REFS := mscorlib System.Xml System System.DirectoryServices
 System.DirectoryServices_REFS := mscorlib System
 System.Drawing.Design_REFS := mscorlib System.Drawing System.Windows.Forms System
@@ -177,7 +178,6 @@ Facades/System.ComponentModel_REFS := mscorlib System
 Facades/System.Diagnostics.Contracts_REFS := mscorlib
 Facades/System.Diagnostics.Debug_REFS := mscorlib System
 Facades/System.Diagnostics.Tools_REFS := mscorlib System
-Facades/System.Diagnostics.Tracing_REFS := mscorlib
 Facades/System.Dynamic.Runtime_REFS := mscorlib System.Core
 Facades/System.Globalization_REFS := mscorlib
 Facades/System.IO_REFS := mscorlib System
@@ -254,7 +254,7 @@ WINFX_KEY_ASSEMBLIES := System.ComponentModel.DataAnnotations Microsoft.Web.Infr
 
 MSFINAL_KEY_ASSEMBLIES := Accessibility CustomMarshalers Microsoft.Build.Engine Microsoft.Build.Framework	\
 	Microsoft.Build.Tasks.v4.0 Microsoft.Build.Utilities.v4.0 Microsoft.Build Microsoft.CSharp Microsoft.VisualBasic Microsoft.VisualC	\
-	System.Configuration.Install System.Configuration System.Deployment System.Design System.DirectoryServices.Protocols	\
+	System.Configuration.Install System.Configuration System.Deployment System.Design System.Diagnostics.Tracing System.DirectoryServices.Protocols	\
 	System.DirectoryServices System.Drawing.Design System.Drawing System.Dynamic System.EnterpriseServices System.Management	\
 	System.Messaging System.Net.Http.WebRequest System.Net.Http System.Net System.Numerics.Vectors System.Runtime.Caching	\
 	System.Runtime.InteropServices.RuntimeInformation System.Runtime.Serialization.Formatters.Soap System.Security System.ServiceProcess System.Web.Services	\
