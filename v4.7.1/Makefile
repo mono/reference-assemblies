@@ -20,7 +20,7 @@ ASSEMBLIES := Accessibility CustomMarshalers	\
 	System.Reactive.PlatformServices System.Reactive.Providers System.Reactive.Runtime.Remoting System.Reactive.Windows.Forms	\
 	System.Reactive.Windows.Threading System.Runtime.Caching System.Runtime.DurableInstancing System.Runtime.Remoting	\
 	System.Runtime.Serialization.Formatters.Soap System.Runtime.Serialization System.Security System.ServiceModel.Activation	\
-	System.ServiceModel.Discovery System.ServiceModel.Internals System.ServiceModel.Routing System.ServiceModel.Web	\
+	System.ServiceModel.Discovery System.ServiceModel.Routing System.ServiceModel.Web	\
 	System.ServiceModel System.ServiceProcess System.Threading.Tasks.Dataflow System.Transactions System.Web.Abstractions	\
 	System.Web.ApplicationServices System.Web.DynamicData System.Web.Extensions.Design System.Web.Extensions	\
 	System.Web.Http.SelfHost System.Web.Http.WebHost System.Web.Http System.Web.Mvc System.Web.Razor System.Web.Routing	\
@@ -81,7 +81,7 @@ Microsoft.CSharp_REFS := mscorlib System System.Core
 Microsoft.VisualBasic_REFS := mscorlib System System.Windows.Forms System.Drawing
 Microsoft.VisualC_REFS := mscorlib
 Microsoft.Web.Infrastructure_REFS := mscorlib System System.Web
-SMDiagnostics_REFS := mscorlib System.Configuration System System.Xml System.ServiceModel.Internals
+SMDiagnostics_REFS := mscorlib System.Configuration System System.Xml
 System.ComponentModel.Composition_REFS := mscorlib System System.Core
 System.ComponentModel.DataAnnotations_REFS := mscorlib System System.Core
 System.Configuration.Install_REFS := mscorlib System
@@ -131,14 +131,13 @@ System.Reactive.Windows.Threading_REFS := mscorlib System System.Reactive.Core S
 System.Reflection.Context_REFS := mscorlib
 System.Reflection.Metadata_REFS := System.Runtime System.Resources.ResourceManager System.Collections.Immutable System.Reflection.Primitives System.Diagnostics.Debug System.Collections System.IO System.IO.Compression System.Text.Encoding System.Runtime.InteropServices System.Linq System.Reflection System.Threading System.Runtime.Extensions System.Text.Encoding.Extensions System.Reflection.Extensions
 System.Runtime.Caching_REFS := mscorlib System System.Data System.Configuration
-System.Runtime.DurableInstancing_REFS := mscorlib System.Xml.Linq System.ServiceModel.Internals System.Transactions System.Core System.Runtime.Serialization System
+System.Runtime.DurableInstancing_REFS := mscorlib System.Xml.Linq System.Transactions System.Core System.Runtime.Serialization System
 System.Runtime.Remoting_REFS := mscorlib System System.Web System.Xml System.Runtime.Serialization.Formatters.Soap
 System.Runtime.Serialization.Formatters.Soap_REFS := mscorlib System.Xml
-System.Runtime.Serialization_REFS := mscorlib System.Xml System.ServiceModel.Internals System System.Configuration System.Core
+System.Runtime.Serialization_REFS := mscorlib System.Xml System System.Configuration System.Core
 System.Security_REFS := mscorlib System System.Xml
 System.ServiceModel.Activation_REFS := mscorlib System.ServiceModel System System.Web
 System.ServiceModel.Discovery_REFS := mscorlib System.ServiceModel System System.Xml System.Xml.Linq System.Runtime.Serialization System.Configuration System.Core
-System.ServiceModel.Internals_REFS := mscorlib System System.Xml
 System.ServiceModel.Routing_REFS := mscorlib System.ServiceModel System.Configuration System System.Runtime.Serialization
 System.ServiceModel.Web_REFS := mscorlib System.ServiceModel System System.Runtime.Serialization System.Xml System.Xml.Linq System.Configuration System.ServiceModel.Activation System.Core System.Web.Extensions
 System.ServiceModel_REFS := mscorlib System.Xml System.Xml.Linq System.Xaml System System.EnterpriseServices System.Transactions System.IdentityModel System.Runtime.Serialization System.Runtime.DurableInstancing System.Security System.Web.ApplicationServices System.Messaging System.Net.Http System.IdentityModel.Selectors System.Web.Services System.Configuration System.Web System.Core bare/System.ServiceModel.Activation
@@ -303,7 +302,7 @@ MSFINAL_KEY := ../../../mcs/class/msfinal.pub   # Public Key Token: b03f5f7f11d5
 ECMA_KEY_ASSEMBLIES := SMDiagnostics System.ComponentModel.Composition System.Core System.Data.DataSetExtensions	\
 	System.Data.Entity System.Data.Linq System.Data.OracleClient System.Data.Services.Client System.Data.Services	\
 	System.Data System.IO.Compression.FileSystem System.IO.Compression System.IdentityModel.Selectors System.IdentityModel	\
-	System.Numerics System.Reflection.Context System.Runtime.Remoting System.Runtime.Serialization System.ServiceModel.Internals	\
+	System.Numerics System.Reflection.Context System.Runtime.Remoting System.Runtime.Serialization	\
 	System.ServiceModel System.Threading.Tasks.Dataflow System.Transactions System.Windows.Forms System.Xaml	\
 	System.Xml.Linq System.Xml.Serialization System.Xml System mscorlib bare/System bare/System.Xml
 
