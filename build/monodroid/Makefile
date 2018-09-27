@@ -26,8 +26,11 @@ System_CSC_ARGS := ../../src/mono/System.extra.cs
 
 ECMA_KEY := ../../../../../mono/mcs/class/ecma.pub         # Public Key Token: b77a5c561934e089
 
-ECMA_KEY_ASSEMBLIES := System.Core System.Net.Http Mono.Android System.Numerics System.Xml System mscorlib \
+ECMA_KEY_ASSEMBLIES := System.Core System.Net.Http System.Numerics System.Xml System mscorlib \
 	bare/System bare/System.Xml
+
+# Mono.Android must be signed with a different key (copied from xamarin-android repository)
+Mono.Android_KEYFILE := xa.pub
 
 all: $(addsuffix .dll, $(ASSEMBLIES))
 
