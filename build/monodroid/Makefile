@@ -2,7 +2,7 @@ PROFILE := monodroid
 SOURCEDIR := ../../src/$(PROFILE)/
 
 CSC ?= csc
-CSC_COMMON_ARGS := -langversion:latest -nologo -noconfig -optimize -nostdlib -unsafe -deterministic -publicsign -debug- -target:library -nowarn:612,618,809
+CSC_COMMON_ARGS := -nologo -noconfig -optimize -nostdlib -unsafe -deterministic -publicsign -debug- -target:library -nowarn:612,618,809
 Q_CSC = $(if $(V),,@echo "CSC   [$(PROFILE)] $(1)";)
 
 ASSEMBLIES := mscorlib System System.Xml System.Numerics System.Core System.Net.Http Mono.Android
@@ -13,7 +13,7 @@ ASSEMBLIES += bare/System bare/System.Xml
 # for i in *.dll; do ikdasm --assemblyref $i | grep Name= | sed 's/.*Name=//g' | sed -e $'s/$/\\\n/g' | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g' -e "s/^/${i%.*}_REFS := /"; done
 System.Core_REFS := mscorlib System
 System.Net.Http_REFS := mscorlib System
-Mono.Android_REFS := mscorlib System
+Mono.Android_REFS := mscorlib
 System.Numerics_REFS := mscorlib
 System_REFS := mscorlib bare/System.Xml
 System.Xml_REFS := mscorlib System
