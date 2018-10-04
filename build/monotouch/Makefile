@@ -5,7 +5,7 @@ CSC ?= csc
 CSC_COMMON_ARGS := -nologo -noconfig -optimize -nostdlib -unsafe -deterministic -publicsign -debug- -target:library -nowarn:612,618,809
 Q_CSC = $(if $(V),,@echo "CSC   [$(PROFILE)] $(1)";)
 
-ASSEMBLIES := mscorlib System System.Xml System.Numerics System.Core System.Net.Http Xamarin.iOS Xamarin.TVOS Xamarin.WatchOS
+ASSEMBLIES := mscorlib System System.Xml System.Numerics System.Core System.Net.Http Xamarin.iOS Xamarin.TVOS Xamarin.WatchOS Xamarin.Mac
 
 ASSEMBLIES += bare/System bare/System.Xml
 
@@ -19,6 +19,7 @@ System.Xml_REFS := mscorlib System
 Xamarin.iOS_REFS := mscorlib
 Xamarin.TVOS_REFS := mscorlib
 Xamarin.WatchOS_REFS := mscorlib
+Xamarin.Mac_REFS := mscorlib
 
 bare/System_REFS := mscorlib
 bare/System.Xml_REFS := mscorlib bare/System
@@ -34,6 +35,7 @@ ECMA_KEY_ASSEMBLIES := System.Core System.Net.Http System.Numerics System.Xml Sy
 Xamarin.iOS_KEYFILE := xi.snk
 Xamarin.TVOS_KEYFILE := xi.snk
 Xamarin.WatchOS_KEYFILE := xi.snk
+Xamarin.Mac_KEYFILE := xi.snk
 
 all: $(addsuffix .dll, $(ASSEMBLIES))
 
