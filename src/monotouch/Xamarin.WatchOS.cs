@@ -8,6 +8,8 @@
 
 namespace System.Drawing
 {
+    public struct Color {}
+    public enum KnownColor {}
     public struct Point {}
     public struct PointF {}
     public struct Rectangle {}
