@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Security.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Security.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Security.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -382,6 +382,7 @@ namespace System.Security.Cryptography.Pkcs
         public System.Security.Cryptography.X509Certificates.X509Certificate2 Certificate { get { throw null; } }
         public System.Security.Cryptography.Pkcs.SignerInfoCollection CounterSignerInfos { get { throw null; } }
         public System.Security.Cryptography.Oid DigestAlgorithm { get { throw null; } }
+        public System.Security.Cryptography.Oid SignatureAlgorithm { get { throw null; } }
         public System.Security.Cryptography.CryptographicAttributeObjectCollection SignedAttributes { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Security.Cryptography.Pkcs.SubjectIdentifier SignerIdentifier { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
         public System.Security.Cryptography.CryptographicAttributeObjectCollection UnsignedAttributes { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } }
@@ -392,6 +393,8 @@ namespace System.Security.Cryptography.Pkcs
         public void CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2Collection extraStore, bool verifySignatureOnly) { }
         public void ComputeCounterSignature() { }
         public void ComputeCounterSignature(System.Security.Cryptography.Pkcs.CmsSigner signer) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public byte[] GetSignature() { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public void RemoveCounterSignature(int index) { }
         [System.Security.SecuritySafeCriticalAttribute]

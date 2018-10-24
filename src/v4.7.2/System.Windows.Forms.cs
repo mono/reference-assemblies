@@ -10,8 +10,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Windows.Forms.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Windows.Forms.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Windows.Forms.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -4607,6 +4607,8 @@ namespace System.Windows.Forms
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessF2Key(System.Windows.Forms.Keys keyData) { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
+        protected bool ProcessF3Key(System.Windows.Forms.Keys keyData) { throw null; }
+        [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessHomeKey(System.Windows.Forms.Keys keyData) { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=(System.Security.Permissions.SecurityPermissionFlag)(2))]
         protected bool ProcessInsertKey(System.Windows.Forms.Keys keyData) { throw null; }
@@ -5621,6 +5623,7 @@ namespace System.Windows.Forms
         public virtual string ValueMember { get { throw null; } set { } }
         public override System.Type ValueType { get { throw null; } }
         public override object Clone() { throw null; }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public override void DetachEditingControl() { }
         protected override System.Drawing.Rectangle GetContentBounds(System.Drawing.Graphics graphics, System.Windows.Forms.DataGridViewCellStyle cellStyle, int rowIndex) { throw null; }
         protected override System.Drawing.Rectangle GetErrorIconBounds(System.Drawing.Graphics graphics, System.Windows.Forms.DataGridViewCellStyle cellStyle, int rowIndex) { throw null; }
@@ -5638,6 +5641,10 @@ namespace System.Windows.Forms
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates elementState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
         public override object ParseFormattedValue(object formattedValue, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.ComponentModel.TypeConverter formattedValueTypeConverter, System.ComponentModel.TypeConverter valueTypeConverter) { throw null; }
         public override string ToString() { throw null; }
+        protected partial class DataGridViewComboBoxCellAccessibleObject : System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject
+        {
+            public DataGridViewComboBoxCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
+        }
         [System.ComponentModel.ListBindableAttribute(false)]
         public partial class ObjectCollection : System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList
         {
@@ -5722,6 +5729,7 @@ namespace System.Windows.Forms
         public virtual System.Windows.Forms.Cursor EditingPanelCursor { get { throw null; } }
         public virtual bool RepositionEditingControlOnValueChange { get { throw null; } }
         public virtual void ApplyCellStyleToEditingControl(System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle) { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public virtual bool EditingControlWantsInputKey(System.Windows.Forms.Keys keyData, bool dataGridViewWantsInputKey) { throw null; }
         public virtual object GetEditingControlFormattedValue(System.Windows.Forms.DataGridViewDataErrorContexts context) { throw null; }
         protected override void OnSelectedIndexChanged(System.EventArgs e) { }
@@ -6426,6 +6434,7 @@ namespace System.Windows.Forms
         public virtual int MaxInputLength { get { throw null; } set { } }
         public override System.Type ValueType { get { throw null; } }
         public override object Clone() { throw null; }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute((System.ComponentModel.EditorBrowsableState)(2))]
         public override void DetachEditingControl() { }
         protected override System.Drawing.Rectangle GetContentBounds(System.Drawing.Graphics graphics, System.Windows.Forms.DataGridViewCellStyle cellStyle, int rowIndex) { throw null; }
@@ -6439,6 +6448,10 @@ namespace System.Windows.Forms
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates cellState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
         public override void PositionEditingControl(bool setLocation, bool setSize, System.Drawing.Rectangle cellBounds, System.Drawing.Rectangle cellClip, System.Windows.Forms.DataGridViewCellStyle cellStyle, bool singleVerticalBorderAdded, bool singleHorizontalBorderAdded, bool isFirstDisplayedColumn, bool isFirstDisplayedRow) { }
         public override string ToString() { throw null; }
+        protected partial class DataGridViewTextBoxCellAccessibleObject : System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject
+        {
+            public DataGridViewTextBoxCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
+        }
     }
     [System.Drawing.ToolboxBitmapAttribute(typeof(System.Windows.Forms.DataGridViewTextBoxColumn), "DataGridViewTextBoxColumn.bmp")]
     public partial class DataGridViewTextBoxColumn : System.Windows.Forms.DataGridViewColumn
@@ -6465,6 +6478,7 @@ namespace System.Windows.Forms
         public virtual System.Windows.Forms.Cursor EditingPanelCursor { get { throw null; } }
         public virtual bool RepositionEditingControlOnValueChange { get { throw null; } }
         public virtual void ApplyCellStyleToEditingControl(System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle) { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public virtual bool EditingControlWantsInputKey(System.Windows.Forms.Keys keyData, bool dataGridViewWantsInputKey) { throw null; }
         public virtual object GetEditingControlFormattedValue(System.Windows.Forms.DataGridViewDataErrorContexts context) { throw null; }
         protected override void OnMouseWheel(System.Windows.Forms.MouseEventArgs e) { }
@@ -14171,6 +14185,7 @@ namespace System.Windows.Forms
         public static System.Drawing.Rectangle VirtualScreen { get { throw null; } }
         public static System.Drawing.Rectangle WorkingArea { get { throw null; } }
         public static System.Drawing.Size GetBorderSizeForDpi(int dpi) { throw null; }
+        public static int GetHorizontalScrollBarArrowWidthForDpi(int dpi) { throw null; }
         public static int GetHorizontalScrollBarHeightForDpi(int dpi) { throw null; }
         public static System.Drawing.Font GetMenuFontForDpi(int dpi) { throw null; }
         public static int GetVerticalScrollBarWidthForDpi(int dpi) { throw null; }

@@ -2,15 +2,15 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-[assembly:System.Reflection.AssemblyVersionAttribute("4.0.0.0")]
+[assembly:System.Reflection.AssemblyVersionAttribute("4.2.0.0")]
 [assembly:System.CLSCompliantAttribute(true)]
 [assembly:System.Diagnostics.DebuggableAttribute((System.Diagnostics.DebuggableAttribute.DebuggingModes)(2))]
 [assembly:System.Reflection.AssemblyCompanyAttribute("Mono development team")]
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.IO.Compression.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.IO.Compression.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.IO.Compression.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -47,6 +47,7 @@ namespace System.IO.Compression
         internal ZipArchiveEntry() { }
         public System.IO.Compression.ZipArchive Archive { get { throw null; } }
         public long CompressedLength { get { throw null; } }
+        public int ExternalAttributes { get { throw null; } set { } }
         public string FullName { get { throw null; } }
         public System.DateTimeOffset LastWriteTime { get { throw null; } set { } }
         public long Length { get { throw null; } }
