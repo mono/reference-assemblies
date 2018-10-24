@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("mscorlib.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("mscorlib.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("mscorlib.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -6307,11 +6307,13 @@ namespace System.Collections.Concurrent
         public System.Collections.Generic.ICollection<TValue> Values { get { throw null; } }
         public TValue AddOrUpdate(TKey key, System.Func<TKey, TValue> addValueFactory, System.Func<TKey, TValue, TValue> updateValueFactory) { throw null; }
         public TValue AddOrUpdate(TKey key, TValue addValue, System.Func<TKey, TValue, TValue> updateValueFactory) { throw null; }
+        public TValue AddOrUpdate<TArg>(TKey key, System.Func<TKey, TArg, TValue> addValueFactory, System.Func<TKey, TValue, TArg, TValue> updateValueFactory, TArg factoryArgument) { throw null; }
         public void Clear() { }
         public bool ContainsKey(TKey key) { throw null; }
         public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> GetEnumerator() { throw null; }
         public TValue GetOrAdd(TKey key, System.Func<TKey, TValue> valueFactory) { throw null; }
         public TValue GetOrAdd(TKey key, TValue value) { throw null; }
+        public TValue GetOrAdd<TArg>(TKey key, System.Func<TKey, TArg, TValue> valueFactory, TArg factoryArgument) { throw null; }
         void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Add(System.Collections.Generic.KeyValuePair<TKey, TValue> keyValuePair) { }
         bool System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.Contains(System.Collections.Generic.KeyValuePair<TKey, TValue> keyValuePair) { throw null; }
         void System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<TKey,TValue>>.CopyTo(System.Collections.Generic.KeyValuePair<TKey, TValue>[] array, int index) { }
@@ -7757,7 +7759,7 @@ namespace System.Diagnostics.Tracing
         [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
         protected internal partial struct EventData
         {
-            public System.IntPtr DataPointer { get { throw null; } set { } }
+            public System.IntPtr DataPointer { [System.Security.SecuritySafeCriticalAttribute]get { throw null; } set { } }
             public int Size { get { throw null; } set { } }
         }
     }
@@ -21710,6 +21712,7 @@ namespace System.Security.Cryptography
     public partial class CryptoStream : System.IO.Stream, System.IDisposable
     {
         public CryptoStream(System.IO.Stream stream, System.Security.Cryptography.ICryptoTransform transform, System.Security.Cryptography.CryptoStreamMode mode) { }
+        public CryptoStream(System.IO.Stream stream, System.Security.Cryptography.ICryptoTransform transform, System.Security.Cryptography.CryptoStreamMode mode, bool leaveOpen) { }
         public override bool CanRead { get { throw null; } }
         public override bool CanSeek { get { throw null; } }
         public override bool CanWrite { get { throw null; } }
@@ -21823,6 +21826,8 @@ namespace System.Security.Cryptography
     {
         protected DSA() { }
         public static new System.Security.Cryptography.DSA Create() { throw null; }
+        public static System.Security.Cryptography.DSA Create(int keySizeInBits) { throw null; }
+        public static System.Security.Cryptography.DSA Create(System.Security.Cryptography.DSAParameters parameters) { throw null; }
         public static new System.Security.Cryptography.DSA Create(string algName) { throw null; }
         public abstract byte[] CreateSignature(byte[] rgbHash);
         public abstract System.Security.Cryptography.DSAParameters ExportParameters(bool includePrivateParameters);
@@ -22199,13 +22204,16 @@ namespace System.Security.Cryptography
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class Rfc2898DeriveBytes : System.Security.Cryptography.DeriveBytes
     {
-        [System.Security.SecuritySafeCriticalAttribute]
         public Rfc2898DeriveBytes(byte[] password, byte[] salt, int iterations) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public Rfc2898DeriveBytes(byte[] password, byte[] salt, int iterations, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { }
         public Rfc2898DeriveBytes(string password, byte[] salt) { }
         public Rfc2898DeriveBytes(string password, byte[] salt, int iterations) { }
+        public Rfc2898DeriveBytes(string password, byte[] salt, int iterations, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { }
         public Rfc2898DeriveBytes(string password, int saltSize) { }
-        [System.Security.SecuritySafeCriticalAttribute]
         public Rfc2898DeriveBytes(string password, int saltSize, int iterations) { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public Rfc2898DeriveBytes(string password, int saltSize, int iterations, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { }
         public int IterationCount { get { throw null; } set { } }
         public byte[] Salt { get { throw null; } set { } }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -22284,6 +22292,8 @@ namespace System.Security.Cryptography
         public override string KeyExchangeAlgorithm { get { throw null; } }
         public override string SignatureAlgorithm { get { throw null; } }
         public static new System.Security.Cryptography.RSA Create() { throw null; }
+        public static System.Security.Cryptography.RSA Create(int keySizeInBits) { throw null; }
+        public static System.Security.Cryptography.RSA Create(System.Security.Cryptography.RSAParameters parameters) { throw null; }
         public static new System.Security.Cryptography.RSA Create(string algName) { throw null; }
         public virtual byte[] Decrypt(byte[] data, System.Security.Cryptography.RSAEncryptionPadding padding) { throw null; }
         public virtual byte[] DecryptValue(byte[] rgb) { throw null; }
@@ -22774,6 +22784,7 @@ namespace System.Security.Cryptography.X509Certificates
     public enum X509KeyStorageFlags
     {
         DefaultKeySet = 0,
+        EphemeralKeySet = 32,
         Exportable = 4,
         MachineKeySet = 2,
         PersistKeySet = 16,

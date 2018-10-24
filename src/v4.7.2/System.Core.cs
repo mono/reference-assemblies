@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Core.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Core.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Core.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -63,6 +63,7 @@ namespace Microsoft.Win32.SafeHandles
     public abstract partial class SafeNCryptHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid
     {
         protected SafeNCryptHandle() : base (default(bool)) { }
+        protected SafeNCryptHandle(System.IntPtr handle, System.Runtime.InteropServices.SafeHandle parentHandle) : base (default(bool)) { }
         protected override bool ReleaseHandle() { throw null; }
         [System.Runtime.ConstrainedExecution.ReliabilityContractAttribute((System.Runtime.ConstrainedExecution.Consistency)(3), (System.Runtime.ConstrainedExecution.Cer)(2))]
         protected abstract bool ReleaseNativeHandle();
@@ -73,6 +74,7 @@ namespace Microsoft.Win32.SafeHandles
     public sealed partial class SafeNCryptKeyHandle : Microsoft.Win32.SafeHandles.SafeNCryptHandle
     {
         public SafeNCryptKeyHandle() { }
+        public SafeNCryptKeyHandle(System.IntPtr handle, System.Runtime.InteropServices.SafeHandle parentHandle) { }
         protected override bool ReleaseNativeHandle() { throw null; }
     }
     [System.Security.SecurityCriticalAttribute((System.Security.SecurityCriticalScope)(1))]
@@ -131,6 +133,8 @@ namespace System.Collections.Generic
         public HashSet(System.Collections.Generic.IEnumerable<T> collection) { }
         public HashSet(System.Collections.Generic.IEnumerable<T> collection, System.Collections.Generic.IEqualityComparer<T> comparer) { }
         public HashSet(System.Collections.Generic.IEqualityComparer<T> comparer) { }
+        public HashSet(int capacity) { }
+        public HashSet(int capacity, System.Collections.Generic.IEqualityComparer<T> comparer) { }
         protected HashSet(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) { }
         public System.Collections.Generic.IEqualityComparer<T> Comparer { get { throw null; } }
         public int Count { get { throw null; } }
@@ -162,6 +166,7 @@ namespace System.Collections.Generic
         System.Collections.Generic.IEnumerator<T> System.Collections.Generic.IEnumerable<T>.GetEnumerator() { throw null; }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { throw null; }
         public void TrimExcess() { }
+        public bool TryGetValue(T equalValue, out T actualValue) { actualValue = default(T); throw null; }
         public void UnionWith(System.Collections.Generic.IEnumerable<T> other) { }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
         [System.SerializableAttribute]
@@ -1634,6 +1639,8 @@ namespace System.Linq
         public static System.Collections.Generic.Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector, System.Collections.Generic.IEqualityComparer<TKey> comparer) { throw null; }
         public static System.Collections.Generic.Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector, System.Func<TSource, TElement> elementSelector) { throw null; }
         public static System.Collections.Generic.Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector, System.Func<TSource, TElement> elementSelector, System.Collections.Generic.IEqualityComparer<TKey> comparer) { throw null; }
+        public static System.Collections.Generic.HashSet<TSource> ToHashSet<TSource>(this System.Collections.Generic.IEnumerable<TSource> source) { throw null; }
+        public static System.Collections.Generic.HashSet<TSource> ToHashSet<TSource>(this System.Collections.Generic.IEnumerable<TSource> source, System.Collections.Generic.IEqualityComparer<TSource> comparer) { throw null; }
         public static System.Collections.Generic.List<TSource> ToList<TSource>(this System.Collections.Generic.IEnumerable<TSource> source) { throw null; }
         public static System.Linq.ILookup<TKey, TSource> ToLookup<TSource, TKey>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector) { throw null; }
         public static System.Linq.ILookup<TKey, TSource> ToLookup<TSource, TKey>(this System.Collections.Generic.IEnumerable<TSource> source, System.Func<TSource, TKey> keySelector, System.Collections.Generic.IEqualityComparer<TKey> comparer) { throw null; }
@@ -4102,8 +4109,27 @@ namespace System.Security.Cryptography.X509Certificates
         public System.Security.Cryptography.X509Certificates.TrustStatus TrustStatus { get { throw null; } }
         public System.Security.Cryptography.SignatureVerificationResult VerificationResult { get { throw null; } }
     }
+    public sealed partial class CertificateRequest
+    {
+        public CertificateRequest(System.Security.Cryptography.X509Certificates.X500DistinguishedName subjectName, System.Security.Cryptography.ECDsa key, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { }
+        public CertificateRequest(System.Security.Cryptography.X509Certificates.X500DistinguishedName subjectName, System.Security.Cryptography.RSA key, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, System.Security.Cryptography.RSASignaturePadding padding) { }
+        public CertificateRequest(System.Security.Cryptography.X509Certificates.X500DistinguishedName subjectName, System.Security.Cryptography.X509Certificates.PublicKey publicKey, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { }
+        public CertificateRequest(string subjectName, System.Security.Cryptography.ECDsa key, System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { }
+        public CertificateRequest(string subjectName, System.Security.Cryptography.RSA key, System.Security.Cryptography.HashAlgorithmName hashAlgorithm, System.Security.Cryptography.RSASignaturePadding padding) { }
+        public System.Collections.ObjectModel.Collection<System.Security.Cryptography.X509Certificates.X509Extension> CertificateExtensions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Security.Cryptography.HashAlgorithmName HashAlgorithm { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.PublicKey PublicKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X500DistinguishedName SubjectName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2 Create(System.Security.Cryptography.X509Certificates.X500DistinguishedName issuerName, System.Security.Cryptography.X509Certificates.X509SignatureGenerator generator, System.DateTimeOffset notBefore, System.DateTimeOffset notAfter, byte[] serialNumber) { throw null; }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2 Create(System.Security.Cryptography.X509Certificates.X509Certificate2 issuerCertificate, System.DateTimeOffset notBefore, System.DateTimeOffset notAfter, byte[] serialNumber) { throw null; }
+        public System.Security.Cryptography.X509Certificates.X509Certificate2 CreateSelfSigned(System.DateTimeOffset notBefore, System.DateTimeOffset notAfter) { throw null; }
+        public byte[] CreateSigningRequest() { throw null; }
+        public byte[] CreateSigningRequest(System.Security.Cryptography.X509Certificates.X509SignatureGenerator signatureGenerator) { throw null; }
+    }
     public static partial class DSACertificateExtensions
     {
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Security.Cryptography.X509Certificates.X509Certificate2 CopyWithPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Security.Cryptography.DSA privateKey) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Cryptography.DSA GetDSAPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -4112,6 +4138,8 @@ namespace System.Security.Cryptography.X509Certificates
     public static partial class ECDsaCertificateExtensions
     {
         [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Security.Cryptography.X509Certificates.X509Certificate2 CopyWithPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Security.Cryptography.ECDsa privateKey) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Cryptography.ECDsa GetECDsaPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Cryptography.ECDsa GetECDsaPublicKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
@@ -4119,9 +4147,21 @@ namespace System.Security.Cryptography.X509Certificates
     public static partial class RSACertificateExtensions
     {
         [System.Security.SecuritySafeCriticalAttribute]
+        public static System.Security.Cryptography.X509Certificates.X509Certificate2 CopyWithPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Security.Cryptography.RSA privateKey) { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Cryptography.RSA GetRSAPrivateKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
         public static System.Security.Cryptography.RSA GetRSAPublicKey(this System.Security.Cryptography.X509Certificates.X509Certificate2 certificate) { throw null; }
+    }
+    public sealed partial class SubjectAlternativeNameBuilder
+    {
+        public SubjectAlternativeNameBuilder() { }
+        public void AddDnsName(string dnsName) { }
+        public void AddEmailAddress(string emailAddress) { }
+        public void AddIpAddress(System.Net.IPAddress ipAddress) { }
+        public void AddUri(System.Uri uri) { }
+        public void AddUserPrincipalName(string upn) { }
+        public System.Security.Cryptography.X509Certificates.X509Extension Build(bool critical=false) { throw null; }
     }
     [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, MayLeakOnAbort=true)]
     public sealed partial class TimestampInformation
@@ -4141,6 +4181,16 @@ namespace System.Security.Cryptography.X509Certificates
         Trusted = 3,
         UnknownIdentity = 1,
         Untrusted = 0,
+    }
+    public abstract partial class X509SignatureGenerator
+    {
+        protected X509SignatureGenerator() { }
+        public System.Security.Cryptography.X509Certificates.PublicKey PublicKey { get { throw null; } }
+        protected abstract System.Security.Cryptography.X509Certificates.PublicKey BuildPublicKey();
+        public static System.Security.Cryptography.X509Certificates.X509SignatureGenerator CreateForECDsa(System.Security.Cryptography.ECDsa key) { throw null; }
+        public static System.Security.Cryptography.X509Certificates.X509SignatureGenerator CreateForRSA(System.Security.Cryptography.RSA key, System.Security.Cryptography.RSASignaturePadding signaturePadding) { throw null; }
+        public abstract byte[] GetSignatureAlgorithmIdentifier(System.Security.Cryptography.HashAlgorithmName hashAlgorithm);
+        public abstract byte[] SignData(byte[] data, System.Security.Cryptography.HashAlgorithmName hashAlgorithm);
     }
 }
 namespace System.Threading

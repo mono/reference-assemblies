@@ -8,8 +8,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Data.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Data.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Data.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -3890,12 +3890,46 @@ namespace System.Data.SqlClient
         Descending = 1,
         Unspecified = -1,
     }
+    public abstract partial class SqlAuthenticationInitializer
+    {
+        protected SqlAuthenticationInitializer() { }
+        public abstract void Initialize();
+    }
     public enum SqlAuthenticationMethod
     {
         ActiveDirectoryIntegrated = 3,
+        ActiveDirectoryInteractive = 4,
         ActiveDirectoryPassword = 2,
         NotSpecified = 0,
         SqlPassword = 1,
+    }
+    public partial class SqlAuthenticationParameters
+    {
+        protected SqlAuthenticationParameters(System.Data.SqlClient.SqlAuthenticationMethod authenticationMethod, string serverName, string databaseName, string resource, string authority, string userId, string password, System.Guid connectionId) { }
+        public System.Data.SqlClient.SqlAuthenticationMethod AuthenticationMethod { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Authority { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.Guid ConnectionId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string DatabaseName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Password { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Resource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string ServerName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string UserId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+    }
+    public abstract partial class SqlAuthenticationProvider
+    {
+        protected SqlAuthenticationProvider() { }
+        public abstract System.Threading.Tasks.Task<System.Data.SqlClient.SqlAuthenticationToken> AcquireTokenAsync(System.Data.SqlClient.SqlAuthenticationParameters parameters);
+        public virtual void BeforeLoad(System.Data.SqlClient.SqlAuthenticationMethod authenticationMethod) { }
+        public virtual void BeforeUnload(System.Data.SqlClient.SqlAuthenticationMethod authenticationMethod) { }
+        public static System.Data.SqlClient.SqlAuthenticationProvider GetProvider(System.Data.SqlClient.SqlAuthenticationMethod authenticationMethod) { throw null; }
+        public abstract bool IsSupported(System.Data.SqlClient.SqlAuthenticationMethod authenticationMethod);
+        public static bool SetProvider(System.Data.SqlClient.SqlAuthenticationMethod authenticationMethod, System.Data.SqlClient.SqlAuthenticationProvider provider) { throw null; }
+    }
+    public partial class SqlAuthenticationToken
+    {
+        public SqlAuthenticationToken(string accessToken, System.DateTimeOffset expiresOn) { }
+        public string AccessToken { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public System.DateTimeOffset ExpiresOn { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
     }
     public sealed partial class SqlBulkCopy : System.IDisposable
     {
@@ -3984,6 +4018,14 @@ namespace System.Data.SqlClient
         public override System.Security.CodeAccessPermission CreatePermission(System.Security.Permissions.PermissionState state) { throw null; }
         object System.IServiceProvider.GetService(System.Type serviceType) { throw null; }
     }
+    public partial class SqlClientLogger
+    {
+        public SqlClientLogger() { }
+        public bool IsLoggingEnabled { get { throw null; } }
+        public bool LogAssert(bool value, string type, string method, string message) { throw null; }
+        public void LogError(string type, string method, string message) { }
+        public void LogInfo(string type, string method, string message) { }
+    }
     public static partial class SqlClientMetaDataCollectionNames
     {
         public static readonly string Columns;
@@ -4024,6 +4066,8 @@ namespace System.Data.SqlClient
         public SqlColumnEncryptionCertificateStoreProvider() { }
         public override byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey) { throw null; }
         public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey) { throw null; }
+        public override byte[] SignColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations) { throw null; }
+        public override bool VerifyColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations, byte[] signature) { throw null; }
     }
     public partial class SqlColumnEncryptionCngProvider : System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider
     {
@@ -4031,6 +4075,8 @@ namespace System.Data.SqlClient
         public SqlColumnEncryptionCngProvider() { }
         public override byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey) { throw null; }
         public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey) { throw null; }
+        public override byte[] SignColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations) { throw null; }
+        public override bool VerifyColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations, byte[] signature) { throw null; }
     }
     public partial class SqlColumnEncryptionCspProvider : System.Data.SqlClient.SqlColumnEncryptionKeyStoreProvider
     {
@@ -4038,12 +4084,24 @@ namespace System.Data.SqlClient
         public SqlColumnEncryptionCspProvider() { }
         public override byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey) { throw null; }
         public override byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey) { throw null; }
+        public override byte[] SignColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations) { throw null; }
+        public override bool VerifyColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations, byte[] signature) { throw null; }
+    }
+    public abstract partial class SqlColumnEncryptionEnclaveProvider
+    {
+        protected SqlColumnEncryptionEnclaveProvider() { }
+        public abstract void CreateEnclaveSession(byte[] enclaveAttestationInfo, System.Security.Cryptography.ECDiffieHellmanCng clientDiffieHellmanKey, string attestationUrl, string servername, out System.Data.SqlClient.SqlEnclaveSession sqlEnclaveSession, out long counter);
+        public abstract System.Data.SqlClient.SqlEnclaveAttestationParameters GetAttestationParameters();
+        public abstract void GetEnclaveSession(string serverName, string attestationUrl, out System.Data.SqlClient.SqlEnclaveSession sqlEnclaveSession, out long counter);
+        public abstract void InvalidateEnclaveSession(string serverName, string enclaveAttestationUrl, System.Data.SqlClient.SqlEnclaveSession enclaveSession);
     }
     public abstract partial class SqlColumnEncryptionKeyStoreProvider
     {
         protected SqlColumnEncryptionKeyStoreProvider() { }
         public abstract byte[] DecryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] encryptedColumnEncryptionKey);
         public abstract byte[] EncryptColumnEncryptionKey(string masterKeyPath, string encryptionAlgorithm, byte[] columnEncryptionKey);
+        public virtual byte[] SignColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations) { throw null; }
+        public virtual bool VerifyColumnMasterKeyMetadata(string masterKeyPath, bool allowEnclaveComputations, byte[] signature) { throw null; }
     }
     [System.ComponentModel.DefaultEventAttribute("RecordsAffected")]
     [System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.Data.VS.SqlCommandDesigner, Microsoft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
@@ -4311,6 +4369,9 @@ namespace System.Data.SqlClient
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         [System.ComponentModel.TypeConverterAttribute("System.Data.SqlClient.SqlConnectionStringBuilder.SqlDataSourceConverter")]
         public string DataSource { get { throw null; } set { } }
+        [System.ComponentModel.DisplayNameAttribute("Enclave Attestation Url")]
+        [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
+        public string EnclaveAttestationUrl { get { throw null; } set { } }
         [System.ComponentModel.DisplayNameAttribute("Encrypt")]
         [System.ComponentModel.RefreshPropertiesAttribute((System.ComponentModel.RefreshProperties)(1))]
         public bool Encrypt { get { throw null; } set { } }
@@ -4547,6 +4608,19 @@ namespace System.Data.SqlClient
         public static bool Stop(string connectionString) { throw null; }
         [System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, ExternalThreading=true)]
         public static bool Stop(string connectionString, string queue) { throw null; }
+    }
+    public partial class SqlEnclaveAttestationParameters
+    {
+        public SqlEnclaveAttestationParameters(int protocol, byte[] input, System.Security.Cryptography.ECDiffieHellmanCng clientDiffieHellmanKey) { }
+        public System.Security.Cryptography.ECDiffieHellmanCng ClientDiffieHellmanKey { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public int Protocol { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public byte[] GetInput() { throw null; }
+    }
+    public partial class SqlEnclaveSession
+    {
+        public SqlEnclaveSession(byte[] sessionKey, long sessionId) { }
+        public long SessionId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public byte[] GetSessionKey() { throw null; }
     }
     [System.SerializableAttribute]
     public sealed partial class SqlError

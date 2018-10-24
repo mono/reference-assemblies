@@ -8,7 +8,7 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("CustomMarshalers.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("CustomMarshalers.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.0.30319.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("CustomMarshalers.dll")]

@@ -10,8 +10,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Web.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Web.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Web.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -963,6 +963,7 @@ namespace System.Web
         public string this[string key] { get { throw null; } set { } }
         public string Name { get { throw null; } set { } }
         public string Path { get { throw null; } set { } }
+        public System.Web.SameSiteMode SameSite { get { throw null; } set { } }
         public bool Secure { get { throw null; } set { } }
         public bool Shareable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string Value { get { throw null; } set { } }
@@ -1603,6 +1604,7 @@ namespace System.Web
         public static string MachineConfigurationDirectory { get { throw null; } }
         public static System.Version TargetFramework { get { throw null; } }
         public static bool UsingIntegratedPipeline { get { throw null; } }
+        public static System.IServiceProvider WebObjectActivator { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         public static void Close() { }
         [System.Web.AspNetHostingPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Level=(System.Web.AspNetHostingPermissionLevel)(600))]
@@ -2196,6 +2198,12 @@ namespace System.Web
         Continue = 0,
         FinishRequest = 2,
         Pending = 1,
+    }
+    public enum SameSiteMode
+    {
+        Lax = 1,
+        None = 0,
+        Strict = 2,
     }
     public static partial class SiteMap
     {
@@ -3747,6 +3755,8 @@ namespace System.Web.Configuration
         public FormsAuthenticationConfiguration() { }
         [System.Configuration.ConfigurationPropertyAttribute("cookieless", DefaultValue=(System.Web.HttpCookieMode)(3))]
         public System.Web.HttpCookieMode Cookieless { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("cookieSameSite")]
+        public System.Web.SameSiteMode CookieSameSite { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("credentials")]
         public System.Web.Configuration.FormsAuthenticationCredentials Credentials { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("defaultUrl", DefaultValue="default.aspx")]
@@ -4104,6 +4114,8 @@ namespace System.Web.Configuration
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("requireSSL", DefaultValue=false)]
         public bool RequireSSL { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("sameSite", DefaultValue=(System.Web.SameSiteMode)(0))]
+        public System.Web.SameSiteMode SameSite { get { throw null; } set { } }
     }
     public sealed partial class HttpHandlerAction : System.Configuration.ConfigurationElement
     {
@@ -5065,6 +5077,8 @@ namespace System.Web.Configuration
         public System.Web.HttpCookieMode Cookieless { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("cookieName", DefaultValue="ASP.NET_SessionId")]
         public string CookieName { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("cookieSameSite")]
+        public System.Web.SameSiteMode CookieSameSite { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("customProvider", DefaultValue="")]
         public string CustomProvider { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationElementProperty ElementProperty { get { throw null; } }
@@ -7805,6 +7819,7 @@ namespace System.Web.Security
         [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Unrestricted=true)]
         [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.InheritanceDemand, Unrestricted=true)]
 #endif
+
         public override System.Web.Security.MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out System.Web.Security.MembershipCreateStatus status) { status = default(System.Web.Security.MembershipCreateStatus); throw null; }
 #if false
         [System.DirectoryServices.DirectoryServicesPermissionAttribute(System.Security.Permissions.SecurityAction.Assert, Unrestricted=true)]
@@ -7963,6 +7978,7 @@ namespace System.Web.Security
         public FormsAuthentication() { }
         public static string CookieDomain { get { throw null; } }
         public static System.Web.HttpCookieMode CookieMode { get { throw null; } }
+        public static System.Web.SameSiteMode CookieSameSite { get { throw null; } }
         public static bool CookiesSupported { get { throw null; } }
         public static string DefaultUrl { get { throw null; } }
         public static bool EnableCrossAppRedirects { get { throw null; } }

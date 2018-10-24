@@ -7,11 +7,11 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Net.Http.Rtc.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Net.Http.Rtc.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Net.Http.Rtc.dll")]
 [assembly:System.Runtime.CompilerServices.ReferenceAssemblyAttribute]
-#if false // it is forwarded to System.Net.Http.WebRequest.dll but doesn't actually exist there in the .NET 4.7.1 reference assemblies ...
+#if false // it is forwarded to System.Net.Http.WebRequest.dll but doesn't actually exist there in the .NET 4.7.2 reference assemblies ...
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Net.Http.RtcRequestFactory))]
 #endif
