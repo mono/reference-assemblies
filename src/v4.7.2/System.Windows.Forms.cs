@@ -1104,6 +1104,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct BindingMemberInfo
     {
+        private object _dummy;
         public BindingMemberInfo(string dataMember) { throw null;}
         public string BindingField { get { throw null; } }
         public string BindingMember { get { throw null; } }
@@ -3707,6 +3708,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct DataGridCell
     {
+        private int _dummyPrimitive;
         public DataGridCell(int r, int c) { throw null;}
         public int ColumnNumber { get { throw null; } set { } }
         public int RowNumber { get { throw null; } set { } }
@@ -8532,6 +8534,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ImeModeConversion
     {
+        private int _dummyPrimitive;
         public static System.Collections.Generic.Dictionary<System.Windows.Forms.ImeMode, System.Windows.Forms.ImeModeConversion> ImeModeConversionBits { get { throw null; } }
         public static bool IsCurrentConversionTableSupported { get { throw null; } }
     }
@@ -9048,6 +9051,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct LinkArea
     {
+        private int _dummyPrimitive;
         public LinkArea(int start, int length) { throw null;}
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute((System.ComponentModel.DesignerSerializationVisibility)(0))]
@@ -10796,6 +10800,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Message
     {
+        private int _dummyPrimitive;
         public System.IntPtr HWnd { get { throw null; } set { } }
         public System.IntPtr LParam { get { throw null; } set { } }
         public int Msg { get { throw null; } set { } }
@@ -11290,6 +11295,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Padding
     {
+        private int _dummyPrimitive;
         public static readonly System.Windows.Forms.Padding Empty;
         public Padding(int all) { throw null;}
         public Padding(int left, int top, int right, int bottom) { throw null;}
@@ -14562,6 +14568,7 @@ namespace System.Windows.Forms
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct TableLayoutPanelCellPosition
     {
+        private int _dummyPrimitive;
         public TableLayoutPanelCellPosition(int column, int row) { throw null;}
         public int Column { get { throw null; } set { } }
         public int Row { get { throw null; } set { } }
@@ -19662,6 +19669,7 @@ namespace System.Windows.Forms.VisualStyles
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct TextMetrics
     {
+        private int _dummyPrimitive;
         public int Ascent { get { throw null; } set { } }
         public int AverageCharWidth { get { throw null; } set { } }
         public char BreakChar { get { throw null; } set { } }

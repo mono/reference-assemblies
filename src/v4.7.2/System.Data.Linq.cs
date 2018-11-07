@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Data.Linq.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Data.Linq.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.2558.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.2558.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Data.Linq.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -170,6 +170,8 @@ namespace System.Data.Linq
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct EntityRef<TEntity> where TEntity : class
     {
+        private TEntity entity;
+        private object _dummy;
         public EntityRef(System.Collections.Generic.IEnumerable<TEntity> source) { throw null;}
         public EntityRef(System.Data.Linq.EntityRef<TEntity> entityRef) { throw null;}
         public EntityRef(TEntity entity) { throw null;}
@@ -262,6 +264,9 @@ namespace System.Data.Linq
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Link<T>
     {
+        private T underlyingValue;
+        private object _dummy;
+        private int _dummyPrimitive;
         public Link(System.Collections.Generic.IEnumerable<T> source) { throw null;}
         public Link(System.Data.Linq.Link<T> link) { throw null;}
         public Link(T value) { throw null;}
@@ -284,6 +289,7 @@ namespace System.Data.Linq
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct ModifiedMemberInfo
     {
+        private object _dummy;
         public object CurrentValue { get { throw null; } }
         public System.Reflection.MemberInfo Member { get { throw null; } }
         public object OriginalValue { get { throw null; } }
