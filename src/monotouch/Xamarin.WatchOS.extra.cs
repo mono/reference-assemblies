@@ -14,10 +14,6 @@ namespace ObjCRuntime
 
 namespace System.Net.Http
 {
-    public class CFNetworkHandler
-    {
-    }
-
     public class NSUrlSessionHandler
     {
     }
