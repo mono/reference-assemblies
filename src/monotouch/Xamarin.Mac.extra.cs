@@ -17,7 +17,10 @@ namespace System.Net.Http
     public class CFNetworkHandler
     {
     }
+}
 
+namespace Foundation
+{
     public class NSUrlSessionHandler
     {
     }
