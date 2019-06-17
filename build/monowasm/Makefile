@@ -3,7 +3,6 @@ SOURCEDIR := ../../src/$(PROFILE)/
 
 CSC ?= csc
 CSC_COMMON_ARGS := -nologo -noconfig -optimize -nostdlib -unsafe -deterministic -debug- -target:library -nowarn:612,618,809
-CSC_COMMON_ARGS2 := -nologo -noconfig -optimize -unsafe -deterministic -debug- -target:library -nowarn:612,618,809
 Q_CSC = $(if $(V),,@echo "CSC   [$(PROFILE)] $(1)";)
 
 ASSEMBLIES := mscorlib System System.Core System.Net.Http WebAssembly.Bindings WebAssembly.Net.Http WebAssembly.Net.WebSockets
