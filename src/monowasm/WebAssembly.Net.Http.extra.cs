@@ -8,6 +8,6 @@ namespace WebAssembly
 {
     internal class RuntimeOptions
     {
-        internal static System.Net.Http.HttpMessageHandler GetHttpMessageHandler() { throw null; }
+        internal static System.Object GetHttpMessageHandler() { throw null; }
     }
 }
