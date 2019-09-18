@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Runtime.DurableInstancing.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Runtime.DurableInstancing.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.8.3761.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.8.3761.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Runtime.DurableInstancing.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -25,7 +25,7 @@
 [assembly:System.Security.SecurityRulesAttribute(System.Security.SecurityRuleSet.Level2, SkipVerificationInFullTrust=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, Execution=true)]
 [assembly:System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
-#if false // these are forwarded to System.ServiceModel.Internals.dll but this assembly doesn't actually exist in the .NET 4.7.2 reference assemblies ...
+#if false // these are forwarded to System.ServiceModel.Internals.dll but this assembly doesn't actually exist in the .NET 4.8 reference assemblies ...
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.ActionItem))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.AsyncResult))]
 [assembly:System.Runtime.CompilerServices.TypeForwardedToAttribute(typeof(System.Runtime.AsyncResult.AsyncCompletion))]

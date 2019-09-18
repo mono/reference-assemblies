@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.ServiceModel.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.ServiceModel.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.8.3761.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.8.3761.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.ServiceModel.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -6809,6 +6809,36 @@ namespace System.ServiceModel.Configuration
         protected override bool ThrowOnDuplicate { get { throw null; } }
         protected override object GetElementKey(System.Configuration.ConfigurationElement element) { throw null; }
     }
+    public sealed partial class ServiceHealthElement : System.ServiceModel.Configuration.BehaviorExtensionElement
+    {
+        public ServiceHealthElement() { }
+        public override System.Type BehaviorType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("healthDetailsEnabled", DefaultValue=true)]
+        public bool HealthDetailsEnabled { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpGetBinding", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        public string HttpGetBinding { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpGetBindingConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        public string HttpGetBindingConfiguration { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpGetEnabled", DefaultValue=true)]
+        public bool HttpGetEnabled { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpGetUrl")]
+        public System.Uri HttpGetUrl { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpsGetBinding", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        public string HttpsGetBinding { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpsGetBindingConfiguration", DefaultValue="")]
+        [System.Configuration.StringValidatorAttribute(MinLength=0)]
+        public string HttpsGetBindingConfiguration { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpsGetEnabled", DefaultValue=true)]
+        public bool HttpsGetEnabled { get { throw null; } set { } }
+        [System.Configuration.ConfigurationPropertyAttribute("httpsGetUrl")]
+        public System.Uri HttpsGetUrl { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
+        public override void CopyFrom(System.ServiceModel.Configuration.ServiceModelExtensionElement from) { }
+        protected internal override object CreateBehavior() { throw null; }
+    }
     public sealed partial class ServiceHostingEnvironmentSection : System.Configuration.ConfigurationSection
     {
         public ServiceHostingEnvironmentSection() { }
@@ -8550,6 +8580,235 @@ namespace System.ServiceModel.Description
         public System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> FindAll(System.Xml.XmlQualifiedName contractName) { throw null; }
         protected override void InsertItem(int index, System.ServiceModel.Description.ServiceEndpoint item) { }
         protected override void SetItem(int index, System.ServiceModel.Description.ServiceEndpoint item) { }
+    }
+    public partial class ServiceHealthBehavior : System.ServiceModel.Description.ServiceHealthBehaviorBase
+    {
+        public ServiceHealthBehavior() { }
+        protected virtual bool HasXmlSupport { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        protected static void AddHttpProperty(System.ServiceModel.Channels.Message message, System.Net.HttpStatusCode status, bool isXml) { }
+        protected static bool EnsureHttpStatusCode(int code) { throw null; }
+        protected virtual System.Net.HttpStatusCode GetHttpResponseCode(System.ServiceModel.ServiceHostBase serviceHost, string[] queries) { throw null; }
+        protected virtual System.ServiceModel.Description.ServiceHealthSectionCollection GetServiceHealthSections(System.ServiceModel.ServiceHostBase serviceHost) { throw null; }
+        protected virtual System.Xml.XmlDocument GetXmlDocument(System.ServiceModel.ServiceHostBase serviceHost) { throw null; }
+        public override void HandleHealthRequest(System.ServiceModel.ServiceHostBase serviceHost, System.ServiceModel.Channels.Message httpGetRequest, string[] queries, out System.ServiceModel.Channels.Message replyMessage) { throw null; }
+        protected static bool TryParseBooleanQueryParameter(string parameterName, string parameter, bool defaultValue, out bool result) { throw null; }
+        protected static bool TryParseHttpStatusCodeQueryParameter(string parameterName, string parameter, System.Net.HttpStatusCode defaultErrorCode, out System.Net.HttpStatusCode result) { throw null; }
+    }
+    public abstract partial class ServiceHealthBehaviorBase : System.ServiceModel.Description.IServiceBehavior
+    {
+        protected ServiceHealthBehaviorBase() { }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool HealthDetailsEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public System.ServiceModel.Channels.Binding HttpGetBinding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool HttpGetEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri HttpGetUrl { get { throw null; } set { } }
+        public System.ServiceModel.Channels.Binding HttpsGetBinding { get { throw null; } set { } }
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        public bool HttpsGetEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        [System.ComponentModel.DefaultValueAttribute(null)]
+        [System.ComponentModel.TypeConverterAttribute(typeof(System.UriTypeConverter))]
+        public System.Uri HttpsGetUrl { get { throw null; } set { } }
+        protected System.DateTimeOffset ServiceStartTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public abstract void HandleHealthRequest(System.ServiceModel.ServiceHostBase serviceHost, System.ServiceModel.Channels.Message httpGetRequest, string[] queries, out System.ServiceModel.Channels.Message replyMessage);
+        void System.ServiceModel.Description.IServiceBehavior.AddBindingParameters(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters) { }
+        void System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
+        void System.ServiceModel.Description.IServiceBehavior.Validate(System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase) { }
+    }
+    public sealed partial class ServiceHealthData
+    {
+        public ServiceHealthData(string key, string[] values) { }
+        public string Key { get { throw null; } set { } }
+        public string[] Values { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+    }
+    public sealed partial class ServiceHealthDataCollection : System.Collections.ObjectModel.KeyedCollection<string, System.ServiceModel.Description.ServiceHealthData>
+    {
+        public ServiceHealthDataCollection() { }
+        public void Add(string key, string value) { }
+        public void Add(string key, string[] values) { }
+        protected override string GetKeyForItem(System.ServiceModel.Description.ServiceHealthData element) { throw null; }
+    }
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceHealth", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+    public partial class ServiceHealthModel
+    {
+        public const string Namespace = "http://schemas.microsoft.com/net/2018/08/health";
+        public ServiceHealthModel() { }
+        public ServiceHealthModel(System.ServiceModel.ServiceHostBase serviceHost) { }
+        public ServiceHealthModel(System.ServiceModel.ServiceHostBase serviceHost, System.DateTimeOffset serviceStartTime) { }
+        [System.Runtime.Serialization.DataMemberAttribute]
+        public System.ServiceModel.Description.ServiceHealthModel.ChannelDispatcherModel[] ChannelDispatchers { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Runtime.Serialization.DataMemberAttribute]
+        public System.DateTimeOffset Date { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Runtime.Serialization.DataMemberAttribute]
+        public System.ServiceModel.Description.ServiceHealthModel.ProcessInformationModel ProcessInformation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Runtime.Serialization.DataMemberAttribute]
+        public System.ServiceModel.Description.ServiceHealthModel.ProcessThreadsModel ProcessThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Runtime.Serialization.DataMemberAttribute]
+        public System.ServiceModel.Description.ServiceHealthModel.ServiceEndpointModel[] ServiceEndpoints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Runtime.Serialization.DataMemberAttribute]
+        public System.ServiceModel.Description.ServiceHealthModel.ServicePropertiesModel ServiceProperties { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [System.Runtime.Serialization.DataContractAttribute(Name="ChannelDispatcher", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+        public partial class ChannelDispatcherModel
+        {
+            public ChannelDispatcherModel() { }
+            public ChannelDispatcherModel(System.ServiceModel.Dispatcher.ChannelDispatcherBase channelDispatcher) { }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string BindingName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.ServiceModel.Description.ServiceHealthModel.CommunicationTimeoutsModel CommunicationTimeouts { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string ContractName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public bool IsSystemEndpoint { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.Nullable<System.ServiceModel.CommunicationState> ListenerState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string ListenerUri { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string MessageEncoder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string[] MessageInspectors { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.ServiceModel.Description.ServiceHealthModel.ServiceThrottleModel ServiceThrottle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.Nullable<System.ServiceModel.CommunicationState> State { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        }
+        [System.Runtime.Serialization.DataContractAttribute]
+        public partial class CommunicationTimeoutsModel
+        {
+            public CommunicationTimeoutsModel() { }
+            public CommunicationTimeoutsModel(System.ServiceModel.IDefaultCommunicationTimeouts timeouts) { }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.TimeSpan CloseTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public bool HasTimeouts { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.TimeSpan OpenTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.TimeSpan ReceiveTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.TimeSpan SendTimeout { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        }
+        [System.Runtime.Serialization.DataContractAttribute(Name="ProcessInformation", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+        public partial class ProcessInformationModel
+        {
+            public ProcessInformationModel() { }
+            public ProcessInformationModel(System.ServiceModel.ServiceHostBase serviceHost) { }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int Bitness { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string GCMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string ProcessName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.DateTimeOffset ProcessStartDate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.DateTimeOffset ServiceStartDate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.ServiceModel.Description.ServiceHealthModel.ProcessThreadsModel Threads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.TimeSpan Uptime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            public void SetServiceStartDate(System.DateTimeOffset serviceStartTime) { }
+        }
+        [System.Runtime.Serialization.DataContractAttribute(Name="ProcessThreads", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+        public partial class ProcessThreadsModel
+        {
+            public ProcessThreadsModel() { }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int AvailableCompletionPortThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int AvailableWorkerThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int MaxCompletionPortThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int MaxWorkerThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int MinCompletionPortThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int MinWorkerThreads { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int NativeThreadCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        }
+        [System.Runtime.Serialization.DataContractAttribute(Name="ServiceEndpoint", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+        public partial class ServiceEndpointModel
+        {
+            public ServiceEndpointModel() { }
+            public ServiceEndpointModel(System.ServiceModel.Description.ServiceEndpoint endpoint) { }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string Address { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string[] BehaviorNames { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string BindingName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string ContractName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        }
+        [System.Runtime.Serialization.DataContractAttribute(Name="ServiceProperties", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+        public partial class ServicePropertiesModel
+        {
+            public ServicePropertiesModel() { }
+            public ServicePropertiesModel(System.ServiceModel.ServiceHostBase serviceHost) { }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string[] BaseAddresses { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.Nullable<System.ServiceModel.ConcurrencyMode> ConcurrencyMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.Nullable<System.ServiceModel.InstanceContextMode> InstanceContextMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string[] ServiceBehaviorNames { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.ServiceModel.Description.ServiceHealthModel.ServiceThrottleModel ServiceThrottle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public string ServiceTypeName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public System.ServiceModel.CommunicationState State { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        }
+        [System.Runtime.Serialization.DataContractAttribute(Name="ServiceThrottle", Namespace="http://schemas.microsoft.com/net/2018/08/health")]
+        public partial class ServiceThrottleModel
+        {
+            public ServiceThrottleModel() { }
+            public ServiceThrottleModel(System.ServiceModel.Dispatcher.ServiceThrottle serviceThrottle) { }
+            [System.ComponentModel.DefaultValueAttribute(0)]
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int CallsCapacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.ComponentModel.DefaultValueAttribute(0)]
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int CallsCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public bool HasThrottle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.ComponentModel.DefaultValueAttribute(0)]
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int InstanceContextsCapacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.ComponentModel.DefaultValueAttribute(0)]
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int InstanceContextsCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.ComponentModel.DefaultValueAttribute(0)]
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int SessionsCapacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+            [System.ComponentModel.DefaultValueAttribute(0)]
+            [System.Runtime.Serialization.DataMemberAttribute]
+            public int SessionsCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        }
+    }
+    public sealed partial class ServiceHealthSection : System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceHealthDataCollection>
+    {
+        public ServiceHealthSection() { }
+        public ServiceHealthSection(string title) { }
+        public string BackgroundColor { get { throw null; } set { } }
+        public string ForegroundColor { get { throw null; } set { } }
+        public string Title { get { throw null; } set { } }
+        public System.ServiceModel.Description.ServiceHealthDataCollection CreateElementsCollection() { throw null; }
+    }
+    public sealed partial class ServiceHealthSectionCollection : System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceHealthSection>
+    {
+        public ServiceHealthSectionCollection() { }
+        public System.ServiceModel.Description.ServiceHealthSection CreateSection(string title) { throw null; }
+        public System.ServiceModel.Description.ServiceHealthSection CreateSection(string title, string backgroundColor) { throw null; }
+        public System.ServiceModel.Description.ServiceHealthSection CreateSection(string title, string backgroundColor, string foregroundColor) { throw null; }
     }
     public partial class ServiceMetadataBehavior : System.ServiceModel.Description.IServiceBehavior
     {

@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.8.3761.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.8.3761.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -9199,6 +9199,7 @@ namespace System.Net
         Tls = 192,
         Tls11 = 768,
         Tls12 = 3072,
+        Tls13 = 12288,
     }
     public partial class ServicePoint
     {
@@ -10174,6 +10175,8 @@ namespace System.Net.Configuration
         public System.Net.Configuration.WebProxyScriptElement WebProxyScript { get { throw null; } }
         [System.Configuration.ConfigurationPropertyAttribute("webUtility")]
         public System.Net.Configuration.WebUtilityElement WebUtility { get { throw null; } }
+        [System.Configuration.ConfigurationPropertyAttribute("windowsAuthentication")]
+        public System.Net.Configuration.WindowsAuthenticationElement WindowsAuthentication { get { throw null; } }
     }
     public sealed partial class SmtpNetworkElement : System.Configuration.ConfigurationElement
     {
@@ -10247,6 +10250,8 @@ namespace System.Net.Configuration
     public sealed partial class WebProxyScriptElement : System.Configuration.ConfigurationElement
     {
         public WebProxyScriptElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("autoConfigUrlRetryInterval", DefaultValue=600)]
+        public int AutoConfigUrlRetryInterval { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("downloadTimeout", DefaultValue="00:01:00")]
         public System.TimeSpan DownloadTimeout { get { throw null; } set { } }
         protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
@@ -10296,6 +10301,13 @@ namespace System.Net.Configuration
         public System.Net.Configuration.UnicodeDecodingConformance UnicodeDecodingConformance { get { throw null; } set { } }
         [System.Configuration.ConfigurationPropertyAttribute("unicodeEncodingConformance", DefaultValue=System.Net.Configuration.UnicodeEncodingConformance.Auto)]
         public System.Net.Configuration.UnicodeEncodingConformance UnicodeEncodingConformance { get { throw null; } set { } }
+    }
+    public sealed partial class WindowsAuthenticationElement : System.Configuration.ConfigurationElement
+    {
+        public WindowsAuthenticationElement() { }
+        [System.Configuration.ConfigurationPropertyAttribute("defaultCredentialsHandleCacheSize", DefaultValue=0)]
+        public int DefaultCredentialsHandleCacheSize { get { throw null; } set { } }
+        protected override System.Configuration.ConfigurationPropertyCollection Properties { get { throw null; } }
     }
 }
 #endif
@@ -12717,6 +12729,7 @@ namespace System.Security.Authentication
         Tls = 192,
         Tls11 = 768,
         Tls12 = 3072,
+        Tls13 = 12288,
     }
 }
 namespace System.Security.Authentication.ExtendedProtection
