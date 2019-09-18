@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("mscorlib.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("mscorlib.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.8.3761.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.8.3761.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("mscorlib.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -3116,6 +3116,8 @@ namespace System
         public static int CollectionCount(int generation) { throw null; }
         [System.Security.SecurityCriticalAttribute]
         public static void EndNoGCRegion() { }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static long GetAllocatedBytesForCurrentThread() { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Security.SecuritySafeCriticalAttribute]
         public static int GetGeneration(object obj) { throw null; }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -11279,6 +11281,7 @@ namespace System.Reflection
         OPTIL = 2,
         PreserveSig = 128,
         Runtime = 3,
+        SecurityMitigations = 1024,
         Synchronized = 32,
         Unmanaged = 4,
     }
@@ -13924,6 +13927,7 @@ namespace System.Runtime.CompilerServices
         NoInlining = 8,
         NoOptimization = 64,
         PreserveSig = 128,
+        SecurityMitigations = 1024,
         Synchronized = 32,
         Unmanaged = 4,
     }
@@ -22609,6 +22613,7 @@ namespace System.Security.Cryptography
     public partial class SHA1Managed : System.Security.Cryptography.SHA1
     {
         public SHA1Managed() { }
+        protected override void Dispose(bool disposing) { }
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
         protected override byte[] HashFinal() { throw null; }
         public override void Initialize() { }
@@ -22624,6 +22629,7 @@ namespace System.Security.Cryptography
     public partial class SHA256Managed : System.Security.Cryptography.SHA256
     {
         public SHA256Managed() { }
+        protected override void Dispose(bool disposing) { }
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
         protected override byte[] HashFinal() { throw null; }
         public override void Initialize() { }
@@ -22639,6 +22645,7 @@ namespace System.Security.Cryptography
     public partial class SHA384Managed : System.Security.Cryptography.SHA384
     {
         public SHA384Managed() { }
+        protected override void Dispose(bool disposing) { }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -22656,6 +22663,7 @@ namespace System.Security.Cryptography
     public partial class SHA512Managed : System.Security.Cryptography.SHA512
     {
         public SHA512Managed() { }
+        protected override void Dispose(bool disposing) { }
         [System.Security.SecuritySafeCriticalAttribute]
         protected override void HashCore(byte[] rgb, int ibStart, int cbSize) { }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -22798,7 +22806,10 @@ namespace System.Security.Cryptography.X509Certificates
         public virtual byte[] Export(System.Security.Cryptography.X509Certificates.X509ContentType contentType, string password) { throw null; }
         protected static string FormatDate(System.DateTime date) { throw null; }
         public virtual byte[] GetCertHash() { throw null; }
+        [System.Security.SecuritySafeCriticalAttribute]
+        public virtual byte[] GetCertHash(System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public virtual string GetCertHashString() { throw null; }
+        public virtual string GetCertHashString(System.Security.Cryptography.HashAlgorithmName hashAlgorithm) { throw null; }
         public virtual string GetEffectiveDateString() { throw null; }
         public virtual string GetExpirationDateString() { throw null; }
         public virtual string GetFormat() { throw null; }
@@ -25629,6 +25640,9 @@ namespace System.Threading
         public static long Increment(ref long location) { throw null; }
         public static void MemoryBarrier() { }
         public static long Read(ref long location) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)][System.Runtime.ConstrainedExecution.ReliabilityContractAttribute(System.Runtime.ConstrainedExecution.Consistency.WillNotCorruptState, System.Runtime.ConstrainedExecution.Cer.Success)]
+        [System.Security.SecuritySafeCriticalAttribute]
+        public static void SpeculationBarrier() { }
     }
     [System.CLSCompliantAttribute(false)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]

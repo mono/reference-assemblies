@@ -280,7 +280,7 @@ namespace Microsoft.VisualBasic
         public static System.DateTime DateAdd(string Interval, double Number, object DateValue) { throw null; }
         public static long DateDiff(Microsoft.VisualBasic.DateInterval Interval, System.DateTime Date1, System.DateTime Date2, Microsoft.VisualBasic.FirstDayOfWeek DayOfWeek = Microsoft.VisualBasic.FirstDayOfWeek.Sunday, Microsoft.VisualBasic.FirstWeekOfYear WeekOfYear = Microsoft.VisualBasic.FirstWeekOfYear.Jan1) { throw null; }
         public static long DateDiff(string Interval, object Date1, object Date2, Microsoft.VisualBasic.FirstDayOfWeek DayOfWeek = Microsoft.VisualBasic.FirstDayOfWeek.Sunday, Microsoft.VisualBasic.FirstWeekOfYear WeekOfYear = Microsoft.VisualBasic.FirstWeekOfYear.Jan1) { throw null; }
-        public static int DatePart(Microsoft.VisualBasic.DateInterval Interval, System.DateTime DateValue, Microsoft.VisualBasic.FirstDayOfWeek FirstDayOfWeekValue=Microsoft.VisualBasic.FirstDayOfWeek.Sunday, Microsoft.VisualBasic.FirstWeekOfYear FirstWeekOfYearValue = Microsoft.VisualBasic.FirstWeekOfYear.Jan1) { throw null; }
+        public static int DatePart(Microsoft.VisualBasic.DateInterval Interval, System.DateTime DateValue, Microsoft.VisualBasic.FirstDayOfWeek FirstDayOfWeekValue = Microsoft.VisualBasic.FirstDayOfWeek.Sunday, Microsoft.VisualBasic.FirstWeekOfYear FirstWeekOfYearValue = Microsoft.VisualBasic.FirstWeekOfYear.Jan1) { throw null; }
         public static int DatePart(string Interval, object DateValue, Microsoft.VisualBasic.FirstDayOfWeek DayOfWeek = Microsoft.VisualBasic.FirstDayOfWeek.Sunday, Microsoft.VisualBasic.FirstWeekOfYear WeekOfYear = Microsoft.VisualBasic.FirstWeekOfYear.Jan1) { throw null; }
         public static System.DateTime DateSerial(int Year, int Month, int Day) { throw null; }
         public static System.DateTime DateValue(string StringDate) { throw null; }
@@ -288,7 +288,7 @@ namespace Microsoft.VisualBasic
         public static int Hour(System.DateTime TimeValue) { throw null; }
         public static int Minute(System.DateTime TimeValue) { throw null; }
         public static int Month(System.DateTime DateValue) { throw null; }
-        public static string MonthName(int Month, bool Abbreviate=false) { throw null; }
+        public static string MonthName(int Month, bool Abbreviate = false) { throw null; }
         public static int Second(System.DateTime TimeValue) { throw null; }
         public static System.DateTime TimeSerial(int Hour, int Minute, int Second) { throw null; }
         public static System.DateTime TimeValue(string StringTime) { throw null; }
@@ -336,7 +336,7 @@ namespace Microsoft.VisualBasic
         [System.Security.SecuritySafeCriticalAttribute]
         public void Clear() { }
         public System.Exception GetException() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public void Raise(int Number, object Source=null, object Description=null, object HelpFile=null, object HelpContext=null) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public void Raise(int Number, object Source = null, object Description = null, object HelpFile = null, object HelpContext = null) { }
     }
     [System.FlagsAttribute]
     public enum FileAttribute
@@ -361,44 +361,44 @@ namespace Microsoft.VisualBasic
         public static string CurDir() { throw null; }
         public static string CurDir(char Drive) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string Dir() { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string Dir(string PathName, Microsoft.VisualBasic.FileAttribute Attributes=Microsoft.VisualBasic.FileAttribute.Normal) { throw null; }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static string Dir(string PathName, Microsoft.VisualBasic.FileAttribute Attributes = Microsoft.VisualBasic.FileAttribute.Normal) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static bool EOF(int FileNumber) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static Microsoft.VisualBasic.OpenMode FileAttr(int FileNumber) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileClose(params int[] FileNumbers) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileCopy(string Source, string Destination) { }
         public static System.DateTime FileDateTime(string PathName) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.Array Value, long RecordNumber=(long)-1, bool ArrayIsDynamic=false, bool StringIsFixedLength=false) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref bool Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref byte Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref char Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.DateTime Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref decimal Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref double Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref short Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref int Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref long Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref float Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.ValueType Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGetObject(int FileNumber, ref object Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.Array Value, long RecordNumber = (long)-1, bool ArrayIsDynamic = false, bool StringIsFixedLength = false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref bool Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref byte Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref char Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.DateTime Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref decimal Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref double Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref short Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref int Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref long Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref float Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref string Value, long RecordNumber = (long)-1, bool StringIsFixedLength = false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGet(int FileNumber, ref System.ValueType Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileGetObject(int FileNumber, ref object Value, long RecordNumber = (long)-1) { }
         public static long FileLen(string PathName) { throw null; }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileOpen(int FileNumber, string FileName, Microsoft.VisualBasic.OpenMode Mode, Microsoft.VisualBasic.OpenAccess Access=Microsoft.VisualBasic.OpenAccess.Default, Microsoft.VisualBasic.OpenShare Share=Microsoft.VisualBasic.OpenShare.Default, int RecordLength=-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.Array Value, long RecordNumber=(long)-1, bool ArrayIsDynamic=false, bool StringIsFixedLength=false) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, bool Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, byte Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, char Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.DateTime Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, decimal Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, double Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, short Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, int Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, long Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, float Value, long RecordNumber=(long)-1) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, string Value, long RecordNumber=(long)-1, bool StringIsFixedLength=false) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.ValueType Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileOpen(int FileNumber, string FileName, Microsoft.VisualBasic.OpenMode Mode, Microsoft.VisualBasic.OpenAccess Access = Microsoft.VisualBasic.OpenAccess.Default, Microsoft.VisualBasic.OpenShare Share = Microsoft.VisualBasic.OpenShare.Default, int RecordLength = -1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.Array Value, long RecordNumber = (long)-1, bool ArrayIsDynamic = false, bool StringIsFixedLength = false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, bool Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, byte Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, char Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.DateTime Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, decimal Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, double Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, short Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, int Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, long Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, float Value, long RecordNumber = (long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, string Value, long RecordNumber = (long)-1, bool StringIsFixedLength = false) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePut(int FileNumber, System.ValueType Value, long RecordNumber = (long)-1) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.ObsoleteAttribute("This member has been deprecated. Please use FilePutObject to write Object types, or coerce FileNumber and RecordNumber to Integer for writing non-Object types. http://go.microsoft.com/fwlink/?linkid=14202")]
         public static void FilePut(object FileNumber, object Value, object RecordNumber = null) { }
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePutObject(int FileNumber, object Value, long RecordNumber=(long)-1) { }
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FilePutObject(int FileNumber, object Value, long RecordNumber = (long)-1) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static void FileWidth(int FileNumber, int RecordWidth) { }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]public static int FreeFile() { throw null; }
         public static Microsoft.VisualBasic.FileAttribute GetAttr(string PathName) { throw null; }
@@ -446,7 +446,7 @@ namespace Microsoft.VisualBasic
         internal Financial() { }
         public static double DDB(double Cost, double Salvage, double Life, double Period, double Factor = 2) { throw null; }
         public static double FV(double Rate, double NPer, double Pmt, double PV = 0, Microsoft.VisualBasic.DueDate Due = Microsoft.VisualBasic.DueDate.EndOfPeriod) { throw null; }
-        public static double IPmt(double Rate, double Per, double NPer, double PV, double FV=0, Microsoft.VisualBasic.DueDate Due = Microsoft.VisualBasic.DueDate.EndOfPeriod) { throw null; }
+        public static double IPmt(double Rate, double Per, double NPer, double PV, double FV = 0, Microsoft.VisualBasic.DueDate Due = Microsoft.VisualBasic.DueDate.EndOfPeriod) { throw null; }
         public static double IRR(ref double[] ValueArray, double Guess = 0.1) { throw null; }
         public static double MIRR(ref double[] ValueArray, double FinanceRate, double ReinvestRate) { throw null; }
         public static double NPer(double Rate, double Pmt, double PV, double FV = 0, Microsoft.VisualBasic.DueDate Due = Microsoft.VisualBasic.DueDate.EndOfPeriod) { throw null; }
@@ -548,7 +548,7 @@ namespace Microsoft.VisualBasic
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=System.Security.Permissions.HostProtectionResource.UI)]
         public static string InputBox(string Prompt, string Title = "", string DefaultResponse = "", int XPos = -1, int YPos = -1) { throw null; }
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)][System.Security.Permissions.HostProtectionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Resources=System.Security.Permissions.HostProtectionResource.UI)]
-        public static Microsoft.VisualBasic.MsgBoxResult MsgBox(object Prompt, Microsoft.VisualBasic.MsgBoxStyle Buttons = Microsoft.VisualBasic.MsgBoxStyle.OkOnly, object Title=null) { throw null; }
+        public static Microsoft.VisualBasic.MsgBoxResult MsgBox(object Prompt, Microsoft.VisualBasic.MsgBoxStyle Buttons = Microsoft.VisualBasic.MsgBoxStyle.OkOnly, object Title = null) { throw null; }
         public static string Partition(long Number, long Start, long Stop, long Interval) { throw null; }
         public static void SaveSetting(string AppName, string Section, string Key, string Setting) { }
         [System.Security.SecuritySafeCriticalAttribute]
@@ -638,11 +638,11 @@ namespace Microsoft.VisualBasic
         public static int AscW(string String) { throw null; }
         public static char Chr(int CharCode) { throw null; }
         public static char ChrW(int CharCode) { throw null; }
-        public static string[] Filter(object[] Source, string Match, bool Include=true, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare=Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
-        public static string[] Filter(string[] Source, string Match, bool Include=true, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare=Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
-        public static string Format(object Expression, string Style="") { throw null; }
+        public static string[] Filter(object[] Source, string Match, bool Include = true, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare = Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
+        public static string[] Filter(string[] Source, string Match, bool Include = true, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare = Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
+        public static string Format(object Expression, string Style = "") { throw null; }
         public static string FormatCurrency(object Expression, int NumDigitsAfterDecimal = -1, Microsoft.VisualBasic.TriState IncludeLeadingDigit = Microsoft.VisualBasic.TriState.UseDefault, Microsoft.VisualBasic.TriState UseParensForNegativeNumbers = Microsoft.VisualBasic.TriState.UseDefault, Microsoft.VisualBasic.TriState GroupDigits = Microsoft.VisualBasic.TriState.UseDefault) { throw null; }
-        public static string FormatDateTime(System.DateTime Expression, Microsoft.VisualBasic.DateFormat NamedFormat=Microsoft.VisualBasic.DateFormat.GeneralDate) { throw null; }
+        public static string FormatDateTime(System.DateTime Expression, Microsoft.VisualBasic.DateFormat NamedFormat = Microsoft.VisualBasic.DateFormat.GeneralDate) { throw null; }
         public static string FormatNumber(object Expression, int NumDigitsAfterDecimal = -1, Microsoft.VisualBasic.TriState IncludeLeadingDigit = Microsoft.VisualBasic.TriState.UseDefault, Microsoft.VisualBasic.TriState UseParensForNegativeNumbers = Microsoft.VisualBasic.TriState.UseDefault, Microsoft.VisualBasic.TriState GroupDigits = Microsoft.VisualBasic.TriState.UseDefault) { throw null; }
         public static string FormatPercent(object Expression, int NumDigitsAfterDecimal = -1, Microsoft.VisualBasic.TriState IncludeLeadingDigit = Microsoft.VisualBasic.TriState.UseDefault, Microsoft.VisualBasic.TriState UseParensForNegativeNumbers = Microsoft.VisualBasic.TriState.UseDefault, Microsoft.VisualBasic.TriState GroupDigits = Microsoft.VisualBasic.TriState.UseDefault) { throw null; }
         public static char GetChar(string str, int Index) { throw null; }
@@ -684,7 +684,7 @@ namespace Microsoft.VisualBasic
         public static string RSet(string Source, int Length) { throw null; }
         public static string RTrim(string str) { throw null; }
         public static string Space(int Number) { throw null; }
-        public static string[] Split(string Expression, string Delimiter=" ", int Limit=-1, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare=Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
+        public static string[] Split(string Expression, string Delimiter = " ", int Limit = -1, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare = Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
         public static int StrComp(string String1, string String2, [Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute]Microsoft.VisualBasic.CompareMethod Compare = Microsoft.VisualBasic.CompareMethod.Binary) { throw null; }
         public static string StrConv(string str, Microsoft.VisualBasic.VbStrConv Conversion, int LocaleID = 0) { throw null; }
         public static string StrDup(int Number, char Character) { throw null; }

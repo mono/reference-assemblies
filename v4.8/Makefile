@@ -1,4 +1,4 @@
-PROFILE := v4.7.2
+PROFILE := v4.8
 SOURCEDIR := ../src/$(PROFILE)/
 
 CSC ?= csc

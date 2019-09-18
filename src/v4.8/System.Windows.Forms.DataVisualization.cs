@@ -9,8 +9,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Windows.Forms.DataVisualization.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Windows.Forms.DataVisualization.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.8.3761.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.8.3761.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Windows.Forms.DataVisualization.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -1198,7 +1198,9 @@ namespace System.Windows.Forms.DataVisualization.Charting
         protected virtual void OnCustomizeLegend(System.Windows.Forms.DataVisualization.Charting.LegendItemsCollection legendItems, string legendName) { }
         protected override void OnDoubleClick(System.EventArgs e) { }
         protected virtual void OnFormatNumber(System.Windows.Forms.DataVisualization.Charting.FormatNumberEventArgs e) { }
+        protected override void OnGotFocus(System.EventArgs e) { }
         protected override void OnLocationChanged(System.EventArgs e) { }
+        protected override void OnLostFocus(System.EventArgs e) { }
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e) { }

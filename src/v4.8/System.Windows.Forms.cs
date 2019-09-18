@@ -10,8 +10,8 @@
 [assembly:System.Reflection.AssemblyCopyrightAttribute("(c) Various Mono authors")]
 [assembly:System.Reflection.AssemblyDefaultAliasAttribute("System.Windows.Forms.dll")]
 [assembly:System.Reflection.AssemblyDescriptionAttribute("System.Windows.Forms.dll")]
-[assembly:System.Reflection.AssemblyFileVersionAttribute("4.7.3062.0")]
-[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.7.3062.0")]
+[assembly:System.Reflection.AssemblyFileVersionAttribute("4.8.3761.0")]
+[assembly:System.Reflection.AssemblyInformationalVersionAttribute("4.8.3761.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("Mono Common Language Infrastructure")]
 [assembly:System.Reflection.AssemblyTitleAttribute("System.Windows.Forms.dll")]
 [assembly:System.Resources.NeutralResourcesLanguageAttribute("en-US")]
@@ -242,6 +242,8 @@ namespace System.Windows.Forms
         public virtual System.Windows.Forms.AccessibleObject HitTest(int x, int y) { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
         public virtual System.Windows.Forms.AccessibleObject Navigate(System.Windows.Forms.AccessibleNavigation navdir) { throw null; }
+        public bool RaiseAutomationNotification(System.Windows.Forms.Automation.AutomationNotificationKind notificationKind, System.Windows.Forms.Automation.AutomationNotificationProcessing notificationProcessing, string notificationText) { throw null; }
+        public virtual bool RaiseLiveRegionChanged() { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.Demand, Flags=System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
         public virtual void Select(System.Windows.Forms.AccessibleSelection flags) { }
         System.Reflection.FieldInfo System.Reflection.IReflect.GetField(string name, System.Reflection.BindingFlags bindingAttr) { throw null; }
@@ -1392,6 +1394,7 @@ namespace System.Windows.Forms
         public void PerformClick() { }
         [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=System.Security.Permissions.UIPermissionWindow.AllWindows)]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public override string ToString() { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
         protected override void WndProc(ref System.Windows.Forms.Message m) { }
@@ -1600,6 +1603,7 @@ namespace System.Windows.Forms
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs mevent) { }
         [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=System.Security.Permissions.UIPermissionWindow.AllWindows)]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public override string ToString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class CheckBoxAccessibleObject : System.Windows.Forms.ButtonBase.ButtonBaseAccessibleObject
@@ -2787,6 +2791,7 @@ namespace System.Windows.Forms
         protected virtual bool IsInputKey(System.Windows.Forms.Keys keyData) { throw null; }
         public static bool IsKeyLocked(System.Windows.Forms.Keys keyVal) { throw null; }
         public static bool IsMnemonic(char charCode, string text) { throw null; }
+        public System.Drawing.Size LogicalToDeviceUnits(System.Drawing.Size value) { throw null; }
         public int LogicalToDeviceUnits(int value) { throw null; }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         protected virtual void NotifyInvalidate(System.Drawing.Rectangle invalidatedArea) { }
@@ -3103,6 +3108,7 @@ namespace System.Windows.Forms
             public void NotifyClients(System.Windows.Forms.AccessibleEvents accEvent) { }
             public void NotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int childID) { }
             public void NotifyClients(System.Windows.Forms.AccessibleEvents accEvent, int objectID, int childID) { }
+            public override bool RaiseLiveRegionChanged() { throw null; }
             public override string ToString() { throw null; }
         }
         [System.ComponentModel.ListBindableAttribute(false)]
@@ -5049,7 +5055,6 @@ namespace System.Windows.Forms
         public virtual System.Drawing.Rectangle PositionEditingPanel(System.Drawing.Rectangle cellBounds, System.Drawing.Rectangle cellClip, System.Windows.Forms.DataGridViewCellStyle cellStyle, bool singleVerticalBorderAdded, bool singleHorizontalBorderAdded, bool isFirstDisplayedColumn, bool isFirstDisplayedRow) { throw null; }
         protected virtual bool SetValue(int rowIndex, object value) { throw null; }
         public override string ToString() { throw null; }
-        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         protected partial class DataGridViewCellAccessibleObject : System.Windows.Forms.AccessibleObject
         {
             public DataGridViewCellAccessibleObject() { }
@@ -5643,6 +5648,7 @@ namespace System.Windows.Forms
         protected override void Paint(System.Drawing.Graphics graphics, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, System.Windows.Forms.DataGridViewElementStates elementState, object value, object formattedValue, string errorText, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.Windows.Forms.DataGridViewAdvancedBorderStyle advancedBorderStyle, System.Windows.Forms.DataGridViewPaintParts paintParts) { }
         public override object ParseFormattedValue(object formattedValue, System.Windows.Forms.DataGridViewCellStyle cellStyle, System.ComponentModel.TypeConverter formattedValueTypeConverter, System.ComponentModel.TypeConverter valueTypeConverter) { throw null; }
         public override string ToString() { throw null; }
+        [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         protected partial class DataGridViewComboBoxCellAccessibleObject : System.Windows.Forms.DataGridViewCell.DataGridViewCellAccessibleObject
         {
             public DataGridViewComboBoxCellAccessibleObject(System.Windows.Forms.DataGridViewCell owner) { }
@@ -6483,6 +6489,7 @@ namespace System.Windows.Forms
         protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public virtual bool EditingControlWantsInputKey(System.Windows.Forms.Keys keyData, bool dataGridViewWantsInputKey) { throw null; }
         public virtual object GetEditingControlFormattedValue(System.Windows.Forms.DataGridViewDataErrorContexts context) { throw null; }
+        protected override void OnGotFocus(System.EventArgs e) { }
         protected override void OnMouseWheel(System.Windows.Forms.MouseEventArgs e) { }
         protected override void OnTextChanged(System.EventArgs e) { }
         public virtual void PrepareEditingControlForEdit(bool selectAll) { }
@@ -8891,7 +8898,7 @@ namespace System.Windows.Forms
     [System.ComponentModel.ToolboxItemAttribute("System.Windows.Forms.Design.AutoSizeToolboxItem,System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [System.Runtime.InteropServices.ClassInterfaceAttribute(System.Runtime.InteropServices.ClassInterfaceType.AutoDispatch)]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    public partial class Label : System.Windows.Forms.Control
+    public partial class Label : System.Windows.Forms.Control, System.Windows.Forms.Automation.IAutomationLiveRegion
     {
         public Label() { }
         [System.ComponentModel.BrowsableAttribute(true)]
@@ -8944,6 +8951,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         public new System.Windows.Forms.ImeMode ImeMode { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.DefaultValueAttribute(System.Windows.Forms.Automation.AutomationLiveSetting.Off)]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Always)]
+        public System.Windows.Forms.Automation.AutomationLiveSetting LiveSetting { get { throw null; } set { } }
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -9012,6 +9023,7 @@ namespace System.Windows.Forms
         protected override void OnVisibleChanged(System.EventArgs e) { }
         [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=System.Security.Permissions.UIPermissionWindow.AllWindows)]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         protected override void SetBoundsCore(int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified) { }
         public override string ToString() { throw null; }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
@@ -9383,6 +9395,7 @@ namespace System.Windows.Forms
         protected virtual void AddItemsCore(object[] value) { }
         public void BeginUpdate() { }
         public void ClearSelected() { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected virtual System.Windows.Forms.ListBox.ObjectCollection CreateItemCollection() { throw null; }
         public void EndUpdate() { }
         public int FindString(string s) { throw null; }
@@ -9775,6 +9788,7 @@ namespace System.Windows.Forms
         public void AutoResizeColumns(System.Windows.Forms.ColumnHeaderAutoResizeStyle headerAutoResize) { }
         public void BeginUpdate() { }
         public void Clear() { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void CreateHandle() { }
         protected override void Dispose(bool disposing) { }
         public void EndUpdate() { }
@@ -12202,6 +12216,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         public new event System.EventHandler TextChanged { add { } remove { } }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected override void CreateHandle() { }
         public void Increment(int value) { }
         protected override void OnBackColorChanged(System.EventArgs e) { }
@@ -12409,6 +12424,7 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         public new event System.EventHandler TextChanged { add { } remove { } }
         public void CollapseAllGridItems() { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         protected virtual System.Windows.Forms.Design.PropertyTab CreatePropertyTab(System.Type tabType) { throw null; }
         protected override void Dispose(bool disposing) { }
         public void ExpandAllGridItems() { }
@@ -12437,6 +12453,7 @@ namespace System.Windows.Forms
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         public override void Refresh() { }
         public void RefreshTabs(System.ComponentModel.PropertyTabScope tabScope) { }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public void ResetSelectedProperty() { }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         protected override void ScaleCore(float dx, float dy) { }
@@ -12578,6 +12595,7 @@ namespace System.Windows.Forms
         public void PerformClick() { }
         [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=System.Security.Permissions.UIPermissionWindow.AllWindows)]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public override string ToString() { throw null; }
         [System.Runtime.InteropServices.ComVisibleAttribute(true)]
         public partial class RadioButtonAccessibleObject : System.Windows.Forms.ButtonBase.ButtonBaseAccessibleObject
@@ -13057,6 +13075,10 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(0)]
         [System.ComponentModel.RefreshPropertiesAttribute(System.ComponentModel.RefreshProperties.Repaint)]
         public int Minimum { get { throw null; } set { } }
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.DefaultValueAttribute(true)]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Always)]
+        public bool ScaleScrollBarForDpiChange { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(1)]
         public int SmallChange { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
@@ -13125,6 +13147,7 @@ namespace System.Windows.Forms
         protected override void OnMouseWheel(System.Windows.Forms.MouseEventArgs e) { }
         protected virtual void OnScroll(System.Windows.Forms.ScrollEventArgs se) { }
         protected virtual void OnValueChanged(System.EventArgs e) { }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         public override string ToString() { throw null; }
         protected void UpdateScrollInfo() { }
         [System.Security.Permissions.SecurityPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Flags=System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
@@ -14195,6 +14218,7 @@ namespace System.Windows.Forms
         public static int GetHorizontalScrollBarHeightForDpi(int dpi) { throw null; }
         public static System.Drawing.Font GetMenuFontForDpi(int dpi) { throw null; }
         public static int GetVerticalScrollBarWidthForDpi(int dpi) { throw null; }
+        public static int VerticalScrollBarArrowHeightForDpi(int dpi) { throw null; }
     }
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public enum SystemParameter
@@ -15551,6 +15575,7 @@ namespace System.Windows.Forms
         protected override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         [System.Security.Permissions.UIPermissionAttribute(System.Security.Permissions.SecurityAction.LinkDemand, Window=System.Security.Permissions.UIPermissionWindow.AllWindows)]
         protected internal override bool ProcessMnemonic(char charCode) { throw null; }
+        protected override void RescaleConstantsForDpi(int deviceDpiOld, int deviceDpiNew) { }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         public void ResetMinimumSize() { }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -15704,6 +15729,7 @@ namespace System.Windows.Forms
         public event System.EventHandler SelectedIndexChanged { add { } remove { } }
         public event System.EventHandler TextUpdate { add { } remove { } }
         public void BeginUpdate() { }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public void EndUpdate() { }
         public int FindString(string s) { throw null; }
         public int FindString(string s, int startIndex) { throw null; }
@@ -16378,6 +16404,7 @@ namespace System.Windows.Forms
         protected internal override bool ProcessDialogKey(System.Windows.Forms.Keys keyData) { throw null; }
         public void ShowDropDown() { }
     }
+    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class ToolStripDropDownItemAccessibleObject : System.Windows.Forms.ToolStripItem.ToolStripItemAccessibleObject
     {
         public ToolStripDropDownItemAccessibleObject(System.Windows.Forms.ToolStripDropDownItem item) : base (default(System.Windows.Forms.ToolStripItem)) { }
@@ -17257,6 +17284,8 @@ namespace System.Windows.Forms
         [System.ComponentModel.BrowsableAttribute(false)]
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
         public new event System.ComponentModel.CancelEventHandler Validating { add { } remove { } }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public void Increment(int value) { }
         protected virtual void OnRightToLeftLayoutChanged(System.EventArgs e) { }
         protected override void OnSubscribeControlEvents(System.Windows.Forms.Control control) { }
@@ -17334,6 +17363,7 @@ namespace System.Windows.Forms
         protected virtual void OnRenderToolStripPanelBackground(System.Windows.Forms.ToolStripPanelRenderEventArgs e) { }
         protected virtual void OnRenderToolStripStatusLabelBackground(System.Windows.Forms.ToolStripItemRenderEventArgs e) { }
         protected static void ScaleArrowOffsetsIfNeeded() { }
+        protected static void ScaleArrowOffsetsIfNeeded(int dpi) { }
     }
     public partial class ToolStripRenderEventArgs : System.EventArgs
     {
@@ -17523,7 +17553,7 @@ namespace System.Windows.Forms
         }
     }
     [System.Windows.Forms.Design.ToolStripItemDesignerAvailabilityAttribute(System.Windows.Forms.Design.ToolStripItemDesignerAvailability.StatusStrip)]
-    public partial class ToolStripStatusLabel : System.Windows.Forms.ToolStripLabel
+    public partial class ToolStripStatusLabel : System.Windows.Forms.ToolStripLabel, System.Windows.Forms.Automation.IAutomationLiveRegion
     {
         public ToolStripStatusLabel() { }
         public ToolStripStatusLabel(System.Drawing.Image image) { }
@@ -17539,10 +17569,16 @@ namespace System.Windows.Forms
         [System.ComponentModel.DefaultValueAttribute(System.Windows.Forms.Border3DStyle.Flat)]
         public System.Windows.Forms.Border3DStyle BorderStyle { get { throw null; } set { } }
         protected internal override System.Windows.Forms.Padding DefaultMargin { get { throw null; } }
+        [System.ComponentModel.BrowsableAttribute(true)]
+        [System.ComponentModel.DefaultValueAttribute(System.Windows.Forms.Automation.AutomationLiveSetting.Off)]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Always)]
+        public System.Windows.Forms.Automation.AutomationLiveSetting LiveSetting { get { throw null; } set { } }
         [System.ComponentModel.DefaultValueAttribute(false)]
         public bool Spring { get { throw null; } set { } }
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public override System.Drawing.Size GetPreferredSize(System.Drawing.Size constrainingSize) { throw null; }
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) { }
+        protected override void OnTextChanged(System.EventArgs e) { }
     }
     [System.ComponentModel.EditorAttribute("System.Windows.Forms.Design.BorderSidesEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
     [System.FlagsAttribute]
@@ -17673,6 +17709,8 @@ namespace System.Windows.Forms
         public void Clear() { }
         public void ClearUndo() { }
         public void Copy() { }
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        protected override System.Windows.Forms.AccessibleObject CreateAccessibilityInstance() { throw null; }
         public void Cut() { }
         public void DeselectAll() { }
         public char GetCharFromPosition(System.Drawing.Point pt) { throw null; }
@@ -19062,6 +19100,35 @@ namespace System.Windows.Forms
         public override void Post(System.Threading.SendOrPostCallback d, object state) { }
         public override void Send(System.Threading.SendOrPostCallback d, object state) { }
         public static void Uninstall() { }
+    }
+}
+namespace System.Windows.Forms.Automation
+{
+    public enum AutomationLiveSetting
+    {
+        Assertive = 2,
+        Off = 0,
+        Polite = 1,
+    }
+    public enum AutomationNotificationKind
+    {
+        ActionAborted = 3,
+        ActionCompleted = 2,
+        ItemAdded = 0,
+        ItemRemoved = 1,
+        Other = 4,
+    }
+    public enum AutomationNotificationProcessing
+    {
+        All = 2,
+        CurrentThenMostRecent = 4,
+        ImportantAll = 0,
+        ImportantMostRecent = 1,
+        MostRecent = 3,
+    }
+    public partial interface IAutomationLiveRegion
+    {
+        System.Windows.Forms.Automation.AutomationLiveSetting LiveSetting { get; set; }
     }
 }
 namespace System.Windows.Forms.ComponentModel.Com2Interop
