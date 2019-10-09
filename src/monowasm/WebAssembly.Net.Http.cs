@@ -1,7 +1,6 @@
 [assembly:System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly:System.Diagnostics.DebuggableAttribute(System.Diagnostics.DebuggableAttribute.DebuggingModes.Default | System.Diagnostics.DebuggableAttribute.DebuggingModes.DisableOptimizations | System.Diagnostics.DebuggableAttribute.DebuggingModes.EnableEditAndContinue | System.Diagnostics.DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
 [assembly:System.Reflection.AssemblyCompanyAttribute("WebAssembly.Net.Http")]
-[assembly:System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly:System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly:System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly:System.Reflection.AssemblyProductAttribute("WebAssembly.Net.Http")]
@@ -14,48 +13,34 @@ namespace WebAssembly.Net.Http.HttpClient
 {
     public enum FetchCredentialsOption
     {
-        [WebAssembly.ExportAttribute(EnumValue=WebAssembly.ConvertEnum.ToLower)]
         Include = 2,
-        [WebAssembly.ExportAttribute(EnumValue=WebAssembly.ConvertEnum.ToLower)]
         Omit = 0,
-        [WebAssembly.ExportAttribute("same-origin")]
         SameOrigin = 1,
     }
     public enum RequestCache
     {
-        [WebAssembly.ExportAttribute(EnumValue=WebAssembly.ConvertEnum.ToLower)]
         Default = 0,
-        [WebAssembly.ExportAttribute("force-cache")]
         ForceCache = 4,
-        [WebAssembly.ExportAttribute("no-cache")]
         NoCache = 3,
-        [WebAssembly.ExportAttribute("no-store")]
         NoStore = 1,
-        [WebAssembly.ExportAttribute("only-if-cached")]
         OnlyIfCached = 5,
-        [WebAssembly.ExportAttribute(EnumValue=WebAssembly.ConvertEnum.ToLower)]
         Reload = 2,
     }
     public enum RequestMode
     {
-        [WebAssembly.ExportAttribute(EnumValue=WebAssembly.ConvertEnum.ToLower)]
         Cors = 2,
-        [WebAssembly.ExportAttribute(EnumValue=WebAssembly.ConvertEnum.ToLower)]
         Navigate = 3,
-        [WebAssembly.ExportAttribute("no-cors")]
         NoCors = 1,
-        [WebAssembly.ExportAttribute("same-origin")]
         SameOrigin = 0,
     }
     public partial class WasmHttpMessageHandler : System.Net.Http.HttpMessageHandler
     {
         public WasmHttpMessageHandler() { }
-        public static WebAssembly.Net.Http.HttpClient.RequestCache Cache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static WebAssembly.Net.Http.HttpClient.FetchCredentialsOption DefaultCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static WebAssembly.Net.Http.HttpClient.RequestMode Mode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static bool StreamingEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static bool StreamingSupported { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-        [System.Diagnostics.DebuggerStepThroughAttribute]
+        public static WebAssembly.Net.Http.HttpClient.RequestCache Cache { get { throw null; } set { } }
+        public static WebAssembly.Net.Http.HttpClient.FetchCredentialsOption DefaultCredentials { get { throw null; } set { } }
+        public static WebAssembly.Net.Http.HttpClient.RequestMode Mode { get { throw null; } set { } }
+        public static bool StreamingEnabled { get { throw null; } set { } }
+        public static bool StreamingSupported { get { throw null; } }
         protected override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> SendAsync(System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) { throw null; }
     }
 }
