@@ -25,13 +25,6 @@ System_CSC_ARGS := ../../src/mono/System.extra.cs
 
 all: $(addsuffix .dll, $(ASSEMBLIES))
 
-# System.Memory is from the wasm sdk Facades build.
-clean:
-	mv System.Memory.dll System.Memory.dll1
-	rm -f *.dll
-	rm -f bare/*.dll
-	mv System.Memory.dll1 System.Memory.dll
-
 define ASSEMBLY_TEMPLATE
 $(1).dll: $(addprefix $(SOURCEDIR),$(subst bare/,,$(1)).cs) $(wildcard $(SOURCEDIR)$(1).extra.cs) $(addsuffix .dll, $($(1)_REFS)) $($(1)_KEYFILE)
 	@mkdir -p bare/
