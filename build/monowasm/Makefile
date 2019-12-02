@@ -5,7 +5,7 @@ CSC ?= csc
 CSC_COMMON_ARGS := -nologo -noconfig -optimize -nostdlib -unsafe -deterministic -publicsign -debug- -target:library -nowarn:612,618,809
 Q_CSC = $(if $(V),,@echo "CSC   [$(PROFILE)] $(1)";)
 
-ASSEMBLIES := mscorlib System System.Xml System.Numerics System.Core System.Net.Http WebAssembly.Net.Http
+ASSEMBLIES := mscorlib System System.Xml System.Numerics System.Core System.Net.Http WebAssembly.Net.Http WebAssembly.Net.WebSockets
 
 ASSEMBLIES += bare/System
 
@@ -13,10 +13,12 @@ ASSEMBLIES += bare/System
 # for i in *.dll; do ikdasm --assemblyref $i | grep Name= | sed 's/.*Name=//g' | sed -e $'s/$/\\\n/g' | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g' -e "s/^/${i%.*}_REFS := /"; done
 System.Core_REFS := mscorlib System
 System.Net.Http_REFS := mscorlib System
+System.Net.WebSockets_REFS := mscorlib System
 System_REFS := mscorlib
 System.Numerics_REFS := mscorlib
 System.Xml_REFS := mscorlib System
 WebAssembly.Net.Http_REFS := mscorlib System System.Core System.Net.Http
+WebAssembly.Net.WebSockets_REFS := mscorlib System System.Core
 
 bare/System_REFS := mscorlib
 
@@ -25,8 +27,9 @@ System_CSC_ARGS := ../../src/mono/System.extra.cs
 
 ECMA_KEY := ../../../../mcs/class/ecma.pub         # Public Key Token: b77a5c561934e089
 
-ECMA_KEY_ASSEMBLIES := System.Core System.Net.Http System System.Numerics System.Xml mscorlib bare/System
+ECMA_KEY_ASSEMBLIES := System.Core System.Net.Http System System.Numerics System.Xml mscorlib bare/System 
 WebAssembly.Net.Http_KEYFILE := ../../../../mcs/class/Open.snk
+WebAssembly.Net.WebSockets_KEYFILE := ../../../../mcs/class/Open.snk
 
 all: $(addsuffix .dll, $(ASSEMBLIES))
 
