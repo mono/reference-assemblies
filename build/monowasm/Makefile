@@ -32,6 +32,10 @@ WebAssembly.Net.WebSockets_KEYFILE := ../../../../mcs/class/Open.snk
 
 all: $(addsuffix .dll, $(ASSEMBLIES))
 
+clean:
+	rm -f *.dll
+	rm -f bare/*.dll
+
 define KEYFILE_TEMPLATE
 $(1)_KEYFILE := $(2)
 endef
