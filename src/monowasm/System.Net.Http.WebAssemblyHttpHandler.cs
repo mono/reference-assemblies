@@ -41,7 +41,6 @@ namespace System.Net.Http
         public System.Net.Http.RequestCredentials? RequestCredentials { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.Net.Http.RequestMode? RequestMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public bool StreamingEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public static bool StreamingSupported { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         [System.Diagnostics.DebuggerStepThroughAttribute]
         protected override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> SendAsync(System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken) { throw null; }
     }
